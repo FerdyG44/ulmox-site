@@ -113,18 +113,37 @@
     }
 
     .phone-screen {
-      height: 100%;
-      border-radius: 34px;
-      overflow: hidden;
-    }
+  height: 100%;
+  border-radius: 34px;
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(circle at top, #6d28d9 0%, #111827 40%, #020617 100%);
+}
 
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 34px;
-    }
+.video-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-weight: 800;
+  pointer-events: none;
+}
 
+.play-circle {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255,255,255,0.18);
+  font-size: 34px;
+}
     .features {
       margin-top: 70px;
       display: grid;
@@ -197,13 +216,16 @@
     </div>
 
     <!-- PHONE -->
-    <div class="phone-card">
-      <div class="phone-screen">
-        <video autoplay muted loop playsinline>
-          <source src="demo.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
+    <div class="phone-screen">
+  <video autoplay muted loop playsinline poster="logo.png">
+    <source src="demo.mp4" type="video/mp4">
+  </video>
+
+  <div class="video-fallback">
+    <div class="play-circle">▶</div>
+    <div>One real moment</div>
+  </div>
+</div>
 
     <!-- FEATURES -->
     <div class="features">
