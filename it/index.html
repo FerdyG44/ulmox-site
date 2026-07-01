@@ -60,28 +60,31 @@
       line-height: 1.5;
     }
 
-    .buttons {
+    .store-badges {
       margin-top: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 16px 28px;
-      border-radius: 999px;
-      background: #fff;
-      color: #000;
+    .store-badge-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 0;
       text-decoration: none;
-      font-weight: 800;
-      margin: 8px;
-      position: relative;
-      overflow: hidden;
     }
 
-    .btn-secondary {
-      background: rgba(255,255,255,0.08);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.18);
+    .store-badge {
+      display: block;
+      height: 54px;
+      width: auto;
+      max-width: min(220px, 42vw);
     }
+
+
 
     .phone-card {
       margin: 48px auto 0;
@@ -184,6 +187,9 @@
       .subtitle { font-size: 17px; }
       .phone-card { width: 220px; height: 440px; }
       .logo-img { width: 95px; }
+
+      .store-badges { gap: 12px; }
+      .store-badge { height: 48px; max-width: min(200px, 78vw); }
     }
   </style>
   <link rel="stylesheet" href="/assets/css/language-switcher.css">
@@ -208,15 +214,15 @@
       e scopri storie dalla community globale di ULMOX.
     </p>
 
-    <div class="buttons">
-      <a class="btn" href="https://apps.apple.com/se/app/ulmox/id6765990174" target="_blank">Scarica su App Store</a>
+    <div class="store-badges">
+      <a class="store-badge-link" href="https://apps.apple.com/se/app/ulmox/id6765990174" target="_blank" aria-label="Download ULMOX on the App Store">
+        <img class="store-badge store-badge-app-store" src="/assets/badges/app-store.svg" width="162" height="54" alt="Download on the App Store">
+      </a>
 
-      <a class="btn"
-       href="https://play.google.com/store/apps/details?id=com.ulmox.app"
-       target="_blank">
-         Scarica su Google Play
-    </a>
-</div>
+      <a class="store-badge-link" href="https://play.google.com/store/apps/details?id=com.ulmox.app" target="_blank" aria-label="Get ULMOX on Google Play">
+        <img class="store-badge store-badge-google-play" src="/assets/badges/google-play.png" width="140" height="54" alt="Get it on Google Play">
+      </a>
+    </div>
 
     <div class="phone-card">
       <div class="phone-screen">
