@@ -73,9 +73,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      width: 198px;
+      height: 66px;
+      box-sizing: border-box;
       line-height: 0;
       text-decoration: none;
-      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 14px;
       transition: transform 0.22s ease, filter 0.22s ease;
     }
 
@@ -87,16 +91,17 @@
     .store-badge {
       display: block;
       width: auto;
-      max-width: min(260px, 44vw);
       object-fit: contain;
     }
 
     .store-badge-app-store {
-      height: 60px;
+      height: 56px;
+      max-width: 176px;
     }
 
     .store-badge-google-play {
-      height: 66px;
+      height: 64px;
+      max-width: 188px;
     }
 
 
@@ -207,9 +212,12 @@
         flex-direction: column;
         gap: 10px;
       }
-      .store-badge { max-width: min(240px, 78vw); }
-      .store-badge-app-store { height: 56px; }
-      .store-badge-google-play { height: 62px; }
+      .store-badge-link {
+        width: min(198px, 78vw);
+        height: 66px;
+      }
+      .store-badge-app-store { height: 54px; max-width: 172px; }
+      .store-badge-google-play { height: 62px; max-width: 184px; }
     }
   </style>
   <link rel="stylesheet" href="/assets/css/language-switcher.css">
