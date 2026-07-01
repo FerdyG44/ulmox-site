@@ -65,8 +65,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
+      gap: 12px;
+      flex-wrap: nowrap;
     }
 
     .store-badge-link {
@@ -75,19 +75,26 @@
       justify-content: center;
       line-height: 0;
       text-decoration: none;
+      border-radius: 12px;
+      transition: transform 0.22s ease, filter 0.22s ease;
+    }
+
+    .store-badge-link:hover {
+      filter: drop-shadow(0 10px 22px rgba(120,80,255,0.24));
+      transform: scale(1.03);
     }
 
     .store-badge {
       display: block;
-      height: 54px;
+      height: 64px;
       width: auto;
-      max-width: min(220px, 42vw);
+      max-width: min(260px, 44vw);
     }
 
 
 
     .phone-card {
-      margin: 48px auto 0;
+      margin: 24px auto 0;
       width: 260px;
       height: 520px;
       border-radius: 46px;
@@ -188,8 +195,11 @@
       .phone-card { width: 220px; height: 440px; }
       .logo-img { width: 95px; }
 
-      .store-badges { gap: 12px; }
-      .store-badge { height: 48px; max-width: min(200px, 78vw); }
+      .store-badges {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .store-badge { height: 58px; max-width: min(240px, 78vw); }
     }
   </style>
   <link rel="stylesheet" href="/assets/css/language-switcher.css">
