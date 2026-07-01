@@ -99,9 +99,14 @@
       max-width: 176px;
     }
 
+    .store-badge-link-google-play {
+      width: 206px;
+      height: 70px;
+    }
+
     .store-badge-google-play {
-      height: 64px;
-      max-width: 188px;
+      height: 68px;
+      max-width: 198px;
     }
 
 
@@ -217,7 +222,11 @@
         height: 66px;
       }
       .store-badge-app-store { height: 54px; max-width: 172px; }
-      .store-badge-google-play { height: 62px; max-width: 184px; }
+      .store-badge-link-google-play {
+        width: min(206px, 78vw);
+        height: 70px;
+      }
+      .store-badge-google-play { height: 66px; max-width: 196px; }
     }
   </style>
   <link rel="stylesheet" href="/assets/css/language-switcher.css">
@@ -247,7 +256,7 @@
         <img class="store-badge store-badge-app-store" src="/assets/badges/app-store.svg" width="162" height="54" alt="Download on the App Store">
       </a>
 
-      <a class="store-badge-link" href="https://play.google.com/store/apps/details?id=com.ulmox.app" target="_blank" aria-label="Get ULMOX on Google Play">
+      <a class="store-badge-link store-badge-link-google-play" href="https://play.google.com/store/apps/details?id=com.ulmox.app" target="_blank" aria-label="Get ULMOX on Google Play">
         <img class="store-badge store-badge-google-play" src="/assets/badges/google-play.png" width="140" height="54" alt="Get it on Google Play">
       </a>
     </div>
