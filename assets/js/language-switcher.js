@@ -19,7 +19,7 @@
   label.style.clip = 'rect(0, 0, 0, 0)';
   label.style.whiteSpace = 'nowrap';
   label.style.border = '0';
-  var labels = { en: 'Language', sv: 'Språk', tr: 'Dil' };
+  var labels = { en: 'Language', sv: 'Språk', tr: 'Dil', de: 'Sprache', es: 'Idioma', fr: 'Langue', it: 'Lingua', pt: 'Idioma', nl: 'Taal', pl: 'Język', fi: 'Kieli', ru: 'Язык', ja: '言語', ko: '언어', zh: '语言', ar: 'اللغة', hi: 'भाषा', th: 'ภาษา', vi: 'Ngôn ngữ' };
   label.textContent = labels[currentLanguage] || 'Language';
 
   var select = document.createElement('select');
