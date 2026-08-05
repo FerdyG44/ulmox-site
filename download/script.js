@@ -15,49 +15,82 @@
     "campaign",
   ];
 
-  const REDIRECT_STORAGE_KEY = "ulmoxDownloadRedirect";
-  const ATTRIBUTION_STORAGE_KEY = "ulmoxDownloadAttribution";
+  const REDIRECT_STORAGE_KEY =
+    "ulmoxDownloadRedirect";
+
+  const ATTRIBUTION_STORAGE_KEY =
+    "ulmoxDownloadAttribution";
 
   function initializeDownloadPage() {
-    const loadingState = document.getElementById("loadingState");
-    const downloadState = document.getElementById("downloadState");
-    const loadingMessage = document.getElementById("loadingMessage");
-    const fallbackButton = document.getElementById("fallbackButton");
-    const appStoreLink = document.getElementById("appStoreLink");
-    const playStoreLink = document.getElementById("playStoreLink");
-    const instagramHelp = document.getElementById("instagramHelp");
+    const loadingState =
+      document.getElementById("loadingState");
+
+    const downloadState =
+      document.getElementById("downloadState");
+
+    const loadingMessage =
+      document.getElementById("loadingMessage");
+
+    const fallbackButton =
+      document.getElementById("fallbackButton");
+
+    const appStoreLink =
+      document.getElementById("appStoreLink");
+
+    const playStoreLink =
+      document.getElementById("playStoreLink");
+
+    const instagramHelp =
+      document.getElementById("instagramHelp");
 
     /*
-     * Always keep real store URLs in the anchors.
-     * The links must remain usable even when JavaScript redirects fail.
+     * Keep genuine HTTPS store links in the HTML and JavaScript.
+     * Do not use window.open, preventDefault or custom URL schemes.
      */
     if (appStoreLink) {
-      appStoreLink.setAttribute("href", APP_STORE_URL);
-      appStoreLink.setAttribute("target", "_self");
-      appStoreLink.setAttribute("rel", "noopener noreferrer");
+      appStoreLink.setAttribute(
+        "href",
+        APP_STORE_URL,
+      );
+
+      appStoreLink.setAttribute(
+        "rel",
+        "noopener noreferrer",
+      );
     }
 
     if (playStoreLink) {
-      playStoreLink.setAttribute("href", PLAY_STORE_URL);
-      playStoreLink.setAttribute("target", "_self");
-      playStoreLink.setAttribute("rel", "noopener noreferrer");
+      playStoreLink.setAttribute(
+        "href",
+        PLAY_STORE_URL,
+      );
+
+      playStoreLink.setAttribute(
+        "rel",
+        "noopener noreferrer",
+      );
     }
 
     if (fallbackButton) {
-      fallbackButton.setAttribute("target", "_self");
-      fallbackButton.setAttribute("rel", "noopener noreferrer");
+      fallbackButton.setAttribute(
+        "rel",
+        "noopener noreferrer",
+      );
     }
 
     function saveAttribution() {
       try {
-        const params = new URLSearchParams(window.location.search);
+        const params =
+          new URLSearchParams(window.location.search);
+
         const attribution = {};
 
         TRACKING_KEYS.forEach(function (key) {
           const value = params.get(key);
 
           if (value) {
-            attribution[key] = value.slice(0, 160);
+            attribution[key] =
+              value.slice(0, 160);
           }
         });
 
@@ -66,18 +99,24 @@
             ATTRIBUTION_STORAGE_KEY,
             JSON.stringify({
               ...attribution,
-              capturedAt: new Date().toISOString(),
-              path: window.location.pathname,
+              capturedAt:
+                new Date().toISOString(),
+              path:
+                window.location.pathname,
             }),
           );
         }
       } catch (_) {
-        // Storage can be unavailable in private or embedded browsers.
+        /*
+         * Storage may be blocked in private
+         * or embedded browsers.
+         */
       }
     }
 
     function isProbablyBot() {
-      const userAgent = navigator.userAgent || "";
+      const userAgent =
+        navigator.userAgent || "";
 
       return /bot|crawler|spider|crawling|facebookexternalhit|twitterbot|slackbot|discordbot|linkedinbot|whatsapp/i.test(
         userAgent,
@@ -85,7 +124,8 @@
     }
 
     function isEmbeddedSocialBrowser() {
-      const userAgent = navigator.userAgent || "";
+      const userAgent =
+        navigator.userAgent || "";
 
       return /Instagram|FBAN|FBAV|Facebook|TikTok|Bytedance/i.test(
         userAgent,
@@ -93,12 +133,20 @@
     }
 
     function detectPlatform() {
-      const userAgent = navigator.userAgent || "";
-      const platformName = navigator.platform || "";
-      const maxTouchPoints = navigator.maxTouchPoints || 0;
+      const userAgent =
+        navigator.userAgent || "";
 
-      const isAndroid = /Android/i.test(userAgent);
-      const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+      const platformName =
+        navigator.platform || "";
+
+      const maxTouchPoints =
+        navigator.maxTouchPoints || 0;
+
+      const isAndroid =
+        /Android/i.test(userAgent);
+
+      const isIOS =
+        /iPhone|iPad|iPod/i.test(userAgent);
 
       const isModernIPadOS =
         /Macintosh/i.test(userAgent) &&
@@ -122,18 +170,21 @@
 
     function recentlyRedirected(platformName) {
       try {
-        const rawValue = sessionStorage.getItem(
-          REDIRECT_STORAGE_KEY,
-        );
+        const rawValue =
+          sessionStorage.getItem(
+            REDIRECT_STORAGE_KEY,
+          );
 
         if (!rawValue) {
           return false;
         }
 
-        const savedValue = JSON.parse(rawValue);
+        const savedValue =
+          JSON.parse(rawValue);
 
         return (
-          savedValue.platform === platformName &&
+          savedValue.platform ===
+            platformName &&
           Date.now() - savedValue.at < 3000
         );
       } catch (_) {
@@ -151,40 +202,63 @@
           }),
         );
       } catch (_) {
-        // Redirect should continue if sessionStorage is unavailable.
+        /*
+         * Redirect should continue even when
+         * sessionStorage is unavailable.
+         */
       }
     }
 
     function showDownloadOptions() {
-      document.body.classList.remove("is-loading");
+      document.body.classList.remove(
+        "is-loading",
+      );
 
       if (loadingState) {
-        loadingState.classList.add("hidden");
+        loadingState.classList.add(
+          "hidden",
+        );
       }
 
       if (downloadState) {
-        downloadState.classList.remove("hidden");
+        downloadState.classList.remove(
+          "hidden",
+        );
       }
     }
 
     function showInstagramHelp() {
       if (instagramHelp) {
-        instagramHelp.classList.remove("hidden");
+        instagramHelp.classList.remove(
+          "hidden",
+        );
       }
     }
 
-    function configureFallbackButton(url, label) {
+    function configureFallbackButton(
+      url,
+      label,
+    ) {
       if (!fallbackButton) {
         return;
       }
 
-      fallbackButton.textContent = label;
-      fallbackButton.setAttribute("href", url);
-      fallbackButton.classList.remove("hidden");
+      fallbackButton.textContent =
+        label;
+
+      fallbackButton.setAttribute(
+        "href",
+        url,
+      );
+
+      fallbackButton.classList.remove(
+        "hidden",
+      );
 
       /*
-       * Do not attach an onclick handler and do not use preventDefault.
-       * Let the browser follow the real anchor URL.
+       * Do not attach click handlers.
+       * Allow the browser to follow the
+       * genuine anchor URL.
        */
       fallbackButton.onclick = null;
     }
@@ -196,10 +270,14 @@
       buttonLabel,
     ) {
       if (loadingMessage) {
-        loadingMessage.textContent = openingLabel;
+        loadingMessage.textContent =
+          openingLabel;
       }
 
-      configureFallbackButton(url, buttonLabel);
+      configureFallbackButton(
+        url,
+        buttonLabel,
+      );
 
       if (recentlyRedirected(platformName)) {
         showDownloadOptions();
@@ -217,7 +295,8 @@
       }, 250);
 
       /*
-       * Reveal manual buttons if the redirect is blocked.
+       * If automatic redirection is blocked,
+       * show the direct store buttons.
        */
       window.setTimeout(function () {
         showDownloadOptions();
@@ -226,13 +305,19 @@
 
     saveAttribution();
 
-    const detectedPlatform = detectPlatform();
-    const embeddedSocialBrowser = isEmbeddedSocialBrowser();
+    const detectedPlatform =
+      detectPlatform();
+
+    const embeddedSocialBrowser =
+      isEmbeddedSocialBrowser();
 
     /*
-     * Instagram and similar iOS browsers commonly block App Store
-     * application handoff. Do not force an automatic redirect there.
-     * Show the genuine link and Safari instructions immediately.
+     * Instagram/Facebook/TikTok on iOS can
+     * block the App Store handoff.
+     *
+     * Do not redirect users to a white page.
+     * Show the download page and Safari
+     * instructions immediately.
      */
     if (
       detectedPlatform === "ios" &&
@@ -244,7 +329,8 @@
     }
 
     /*
-     * Safari and ordinary iOS browsers may redirect automatically.
+     * Safari and regular iOS browsers:
+     * automatically open the App Store.
      */
     if (detectedPlatform === "ios") {
       attemptAutomaticRedirect(
@@ -253,12 +339,13 @@
         "Opening App Store...",
         "Open App Store",
       );
+
       return;
     }
 
     /*
-     * Android embedded browsers generally support the HTTPS Play Store
-     * product page, so the existing automatic behavior can remain.
+     * Android browsers:
+     * automatically open Google Play.
      */
     if (detectedPlatform === "android") {
       attemptAutomaticRedirect(
@@ -267,9 +354,14 @@
         "Opening Google Play...",
         "Open Google Play",
       );
+
       return;
     }
 
+    /*
+     * Desktop and unsupported platforms:
+     * display both store options.
+     */
     showDownloadOptions();
   }
 
