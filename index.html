@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>ULMOX</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05030a">
 
   <style>
     body {
@@ -20,9 +21,7 @@
       padding: 70px 24px 40px;
     }
 
-    .logo-wrap {
-      margin-bottom: 55px;
-    }
+    .logo-wrap { margin-bottom: 55px; }
 
     .logo-img {
       width: 110px;
@@ -83,6 +82,7 @@
       transition: transform 0.22s ease, filter 0.22s ease;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
+      cursor: pointer;
     }
 
     .store-badge-link:hover {
@@ -95,22 +95,39 @@
       width: auto;
       object-fit: contain;
       pointer-events: none;
+      user-select: none;
     }
 
-    .store-badge-app-store {
-      height: 56px;
-      max-width: 176px;
+    .store-badge-app-store { height: 56px; max-width: 176px; }
+    .store-badge-link-google-play { width: 198px; height: 66px; overflow: visible; }
+    .store-badge-google-play { height: 74px; max-width: 198px; }
+
+    .browser-help {
+      display: none;
+      margin: 18px auto 0;
+      max-width: 560px;
+      padding: 16px 18px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      color: #e5e5ea;
+      font-size: 15px;
+      line-height: 1.45;
     }
 
-    .store-badge-link-google-play {
-      width: 198px;
-      height: 66px;
-      overflow: visible;
-    }
+    .browser-help.visible { display: block; }
 
-    .store-badge-google-play {
-      height: 74px;
-      max-width: 198px;
+    .copy-link {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 11px 14px;
+      margin-top: 12px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
     }
 
     .phone-card {
@@ -166,10 +183,7 @@
       font-size: 34px;
     }
 
-    .phone-text {
-      font-size: 18px;
-      font-weight: 800;
-    }
+    .phone-text { font-size: 18px; font-weight: 800; }
 
     .features {
       margin-top: 70px;
@@ -185,10 +199,7 @@
       border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .feature h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-    }
+    .feature h3 { margin: 0 0 8px; font-size: 18px; }
 
     .feature p {
       margin: 0;
@@ -197,11 +208,7 @@
       line-height: 1.4;
     }
 
-    footer {
-      margin-top: 70px;
-      color: #777;
-      font-size: 14px;
-    }
+    footer { margin-top: 70px; color: #777; font-size: 14px; }
 
     footer a {
       color: #aaa;
@@ -225,21 +232,9 @@
         height: 66px;
       }
 
-      .store-badge-app-store {
-        height: 54px;
-        max-width: 172px;
-      }
-
-      .store-badge-link-google-play {
-        width: min(198px, 78vw);
-        height: 66px;
-        overflow: visible;
-      }
-
-      .store-badge-google-play {
-        height: 72px;
-        max-width: 194px;
-      }
+      .store-badge-app-store { height: 54px; max-width: 172px; }
+      .store-badge-link-google-play { width: min(198px, 78vw); height: 66px; }
+      .store-badge-google-play { height: 72px; max-width: 194px; }
     }
   </style>
 
@@ -248,7 +243,6 @@
 
 <body>
   <div class="container">
-
     <div class="logo-wrap">
       <img src="logo.png" class="logo-img" alt="ULMOX logo">
       <div class="logo-text">ULMOX</div>
@@ -269,9 +263,7 @@
       <a
         id="appStoreLink"
         class="store-badge-link"
-        href="https://apps.apple.com/app/id6765990174"
-        target="_self"
-        rel="noopener noreferrer"
+        href="https://apps.apple.com/se/app/ulmox/id6765990174"
         aria-label="Download ULMOX on the App Store"
       >
         <img
@@ -287,8 +279,6 @@
         id="playStoreLink"
         class="store-badge-link store-badge-link-google-play"
         href="https://play.google.com/store/apps/details?id=com.ulmox.app"
-        target="_self"
-        rel="noopener noreferrer"
         aria-label="Get ULMOX on Google Play"
       >
         <img
@@ -299,6 +289,16 @@
           alt="Get it on Google Play"
         >
       </a>
+    </div>
+
+    <div id="browserHelp" class="browser-help" role="status" aria-live="polite">
+      Instagram may block opening the App Store inside its browser.
+      Tap the <strong>•••</strong> menu and choose
+      <strong>Open in external browser</strong> or <strong>Open in Safari</strong>.
+      <br>
+      <button id="copyStoreLink" class="copy-link" type="button">
+        Copy App Store link
+      </button>
     </div>
 
     <div class="phone-card">
@@ -345,7 +345,6 @@
       <a href="safety.html">Safety &amp; Moderation</a>
       <p>© 2026 ULMOX</p>
     </footer>
-
   </div>
 
   <script src="/assets/js/i18n-config.js"></script>
@@ -355,24 +354,87 @@
     (function () {
       "use strict";
 
-      const APP_STORE_URL = "https://apps.apple.com/app/id6765990174";
+      const APP_STORE_WEB_URL =
+        "https://apps.apple.com/se/app/ulmox/id6765990174";
+      const APP_STORE_SCHEME_URL =
+        "itms-apps://itunes.apple.com/app/id6765990174";
       const PLAY_STORE_URL =
         "https://play.google.com/store/apps/details?id=com.ulmox.app";
+
+      function isInstagramBrowser() {
+        return /Instagram/i.test(navigator.userAgent || "");
+      }
+
+      function isIOS() {
+        const ua = navigator.userAgent || "";
+        return (
+          /iPhone|iPad|iPod/i.test(ua) ||
+          (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1)
+        );
+      }
 
       function initializeStoreLinks() {
         const appStoreLink = document.getElementById("appStoreLink");
         const playStoreLink = document.getElementById("playStoreLink");
-
-        if (appStoreLink) {
-          appStoreLink.setAttribute("href", APP_STORE_URL);
-          appStoreLink.setAttribute("target", "_self");
-          appStoreLink.setAttribute("rel", "noopener noreferrer");
-        }
+        const browserHelp = document.getElementById("browserHelp");
+        const copyStoreLink = document.getElementById("copyStoreLink");
 
         if (playStoreLink) {
-          playStoreLink.setAttribute("href", PLAY_STORE_URL);
-          playStoreLink.setAttribute("target", "_self");
-          playStoreLink.setAttribute("rel", "noopener noreferrer");
+          playStoreLink.href = PLAY_STORE_URL;
+        }
+
+        if (appStoreLink) {
+          appStoreLink.href = APP_STORE_WEB_URL;
+
+          appStoreLink.addEventListener("click", function (event) {
+            if (!isIOS()) return;
+
+            event.preventDefault();
+
+            /*
+             * Must run directly inside the user's tap.
+             * Instagram may still block this custom scheme.
+             */
+            window.location.href = APP_STORE_SCHEME_URL;
+
+            /*
+             * Fall back to Apple's HTTPS product page.
+             * If Instagram blocks both handoffs, show clear external-browser help.
+             */
+            window.setTimeout(function () {
+              window.location.href = APP_STORE_WEB_URL;
+            }, 700);
+
+            window.setTimeout(function () {
+              if (browserHelp && isInstagramBrowser()) {
+                browserHelp.classList.add("visible");
+              }
+            }, 1300);
+          });
+        }
+
+        if (copyStoreLink) {
+          copyStoreLink.addEventListener("click", async function () {
+            try {
+              await navigator.clipboard.writeText(APP_STORE_WEB_URL);
+              copyStoreLink.textContent = "App Store link copied";
+            } catch (_) {
+              const temporaryInput = document.createElement("textarea");
+              temporaryInput.value = APP_STORE_WEB_URL;
+              temporaryInput.setAttribute("readonly", "");
+              temporaryInput.style.position = "fixed";
+              temporaryInput.style.opacity = "0";
+              document.body.appendChild(temporaryInput);
+              temporaryInput.select();
+              document.execCommand("copy");
+              temporaryInput.remove();
+              copyStoreLink.textContent = "App Store link copied";
+            }
+          });
+        }
+
+        if (browserHelp && isInstagramBrowser() && isIOS()) {
+          browserHelp.classList.add("visible");
         }
       }
 
