@@ -1,9 +1,11 @@
 (function () {
   "use strict";
 
-  const APP_STORE_URL = "https://apps.apple.com/se/app/ulmox/id6765990174?l=en-GB"
+  const APP_STORE_URL =
+    "https://apps.apple.com/se/app/ulmox/id6765990174?l=en-GB";
+
   const PLAY_STORE_URL =
-    "https://play.google.com/store/apps/details?id=com.ulmox.app";
+    "https://play.google.com/store/apps/details?id=com.ulmox.app&pcampaignid=web_share";
 
   const TRACKING_KEYS = [
     "source",
@@ -23,11 +25,11 @@
     const fallbackButton = document.getElementById("fallbackButton");
     const appStoreLink = document.getElementById("appStoreLink");
     const playStoreLink = document.getElementById("playStoreLink");
+    const instagramHelp = document.getElementById("instagramHelp");
 
     /*
-     * Direct href values are essential.
-     * Instagram, Facebook and TikTok in-app browsers may block
-     * JavaScript redirects, but a genuine anchor tap can still work.
+     * Always keep real store URLs in the anchors.
+     * The links must remain usable even when JavaScript redirects fail.
      */
     if (appStoreLink) {
       appStoreLink.setAttribute("href", APP_STORE_URL);
@@ -53,6 +55,7 @@
 
         TRACKING_KEYS.forEach(function (key) {
           const value = params.get(key);
+
           if (value) {
             attribution[key] = value.slice(0, 160);
           }
@@ -69,7 +72,7 @@
           );
         }
       } catch (_) {
-        // Storage may be unavailable in embedded or private browsers.
+        // Storage can be unavailable in private or embedded browsers.
       }
     }
 
@@ -77,6 +80,14 @@
       const userAgent = navigator.userAgent || "";
 
       return /bot|crawler|spider|crawling|facebookexternalhit|twitterbot|slackbot|discordbot|linkedinbot|whatsapp/i.test(
+        userAgent,
+      );
+    }
+
+    function isEmbeddedSocialBrowser() {
+      const userAgent = navigator.userAgent || "";
+
+      return /Instagram|FBAN|FBAV|Facebook|TikTok|Bytedance/i.test(
         userAgent,
       );
     }
@@ -94,17 +105,30 @@
         /Mac/i.test(platformName) &&
         maxTouchPoints > 1;
 
-      if (isProbablyBot()) return "desktop";
-      if (isIOS || isModernIPadOS) return "ios";
-      if (isAndroid) return "android";
+      if (isProbablyBot()) {
+        return "desktop";
+      }
+
+      if (isIOS || isModernIPadOS) {
+        return "ios";
+      }
+
+      if (isAndroid) {
+        return "android";
+      }
 
       return "desktop";
     }
 
     function recentlyRedirected(platformName) {
       try {
-        const rawValue = sessionStorage.getItem(REDIRECT_STORAGE_KEY);
-        if (!rawValue) return false;
+        const rawValue = sessionStorage.getItem(
+          REDIRECT_STORAGE_KEY,
+        );
+
+        if (!rawValue) {
+          return false;
+        }
 
         const savedValue = JSON.parse(rawValue);
 
@@ -127,7 +151,7 @@
           }),
         );
       } catch (_) {
-        // Redirect must continue even if sessionStorage is unavailable.
+        // Redirect should continue if sessionStorage is unavailable.
       }
     }
 
@@ -143,21 +167,34 @@
       }
     }
 
+    function showInstagramHelp() {
+      if (instagramHelp) {
+        instagramHelp.classList.remove("hidden");
+      }
+    }
+
     function configureFallbackButton(url, label) {
-      if (!fallbackButton) return;
+      if (!fallbackButton) {
+        return;
+      }
 
       fallbackButton.textContent = label;
       fallbackButton.setAttribute("href", url);
       fallbackButton.classList.remove("hidden");
 
       /*
-       * Do not use preventDefault here.
-       * The browser must be allowed to follow the real anchor URL.
+       * Do not attach an onclick handler and do not use preventDefault.
+       * Let the browser follow the real anchor URL.
        */
       fallbackButton.onclick = null;
     }
 
-    function attemptRedirect(platformName, url, openingLabel, buttonLabel) {
+    function attemptAutomaticRedirect(
+      platformName,
+      url,
+      openingLabel,
+      buttonLabel,
+    ) {
       if (loadingMessage) {
         loadingMessage.textContent = openingLabel;
       }
@@ -171,11 +208,6 @@
 
       markRedirect(platformName);
 
-      /*
-       * location.assign is generally less problematic than window.open.
-       * Some embedded browsers may still block the automatic redirect,
-       * so the visible direct link remains available.
-       */
       window.setTimeout(function () {
         try {
           window.location.assign(url);
@@ -185,8 +217,7 @@
       }, 250);
 
       /*
-       * If the embedded browser refuses the automatic redirect,
-       * reveal the direct store buttons instead of leaving a spinner.
+       * Reveal manual buttons if the redirect is blocked.
        */
       window.setTimeout(function () {
         showDownloadOptions();
@@ -196,9 +227,27 @@
     saveAttribution();
 
     const detectedPlatform = detectPlatform();
+    const embeddedSocialBrowser = isEmbeddedSocialBrowser();
 
+    /*
+     * Instagram and similar iOS browsers commonly block App Store
+     * application handoff. Do not force an automatic redirect there.
+     * Show the genuine link and Safari instructions immediately.
+     */
+    if (
+      detectedPlatform === "ios" &&
+      embeddedSocialBrowser
+    ) {
+      showDownloadOptions();
+      showInstagramHelp();
+      return;
+    }
+
+    /*
+     * Safari and ordinary iOS browsers may redirect automatically.
+     */
     if (detectedPlatform === "ios") {
-      attemptRedirect(
+      attemptAutomaticRedirect(
         "ios",
         APP_STORE_URL,
         "Opening App Store...",
@@ -207,8 +256,12 @@
       return;
     }
 
+    /*
+     * Android embedded browsers generally support the HTTPS Play Store
+     * product page, so the existing automatic behavior can remain.
+     */
     if (detectedPlatform === "android") {
-      attemptRedirect(
+      attemptAutomaticRedirect(
         "android",
         PLAY_STORE_URL,
         "Opening Google Play...",
@@ -220,12 +273,11 @@
     showDownloadOptions();
   }
 
-  /*
-   * Prevent null-element errors when this script is loaded in <head>
-   * without the defer attribute.
-   */
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initializeDownloadPage);
+    document.addEventListener(
+      "DOMContentLoaded",
+      initializeDownloadPage,
+    );
   } else {
     initializeDownloadPage();
   }
