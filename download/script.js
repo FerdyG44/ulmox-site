@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const APP_STORE_URL = "https://apps.apple.com/app/id6765990174";
+  const APP_STORE_URL = "https://apps.apple.com/se/app/ulmox/id6765990174?l=en-GB"
   const PLAY_STORE_URL =
     "https://play.google.com/store/apps/details?id=com.ulmox.app";
 
