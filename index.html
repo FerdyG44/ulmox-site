@@ -81,6 +81,8 @@
       border: 1px solid rgba(255,255,255,0.14);
       border-radius: 14px;
       transition: transform 0.22s ease, filter 0.22s ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
 
     .store-badge-link:hover {
@@ -92,6 +94,7 @@
       display: block;
       width: auto;
       object-fit: contain;
+      pointer-events: none;
     }
 
     .store-badge-app-store {
@@ -109,8 +112,6 @@
       height: 74px;
       max-width: 198px;
     }
-
-
 
     .phone-card {
       margin: 24px auto 0;
@@ -218,19 +219,30 @@
         flex-direction: column;
         gap: 10px;
       }
+
       .store-badge-link {
         width: min(198px, 78vw);
         height: 66px;
       }
-      .store-badge-app-store { height: 54px; max-width: 172px; }
+
+      .store-badge-app-store {
+        height: 54px;
+        max-width: 172px;
+      }
+
       .store-badge-link-google-play {
         width: min(198px, 78vw);
         height: 66px;
         overflow: visible;
       }
-      .store-badge-google-play { height: 72px; max-width: 194px; }
+
+      .store-badge-google-play {
+        height: 72px;
+        max-width: 194px;
+      }
     }
   </style>
+
   <link rel="stylesheet" href="/assets/css/language-switcher.css">
 </head>
 
@@ -254,12 +266,38 @@
     </p>
 
     <div class="store-badges">
-      <a class="store-badge-link" href="https://apps.apple.com/se/app/ulmox/id6765990174" target="_blank" aria-label="Download ULMOX on the App Store">
-        <img class="store-badge store-badge-app-store" src="/assets/badges/app-store.svg" width="162" height="54" alt="Download on the App Store">
+      <a
+        id="appStoreLink"
+        class="store-badge-link"
+        href="https://apps.apple.com/app/id6765990174"
+        target="_self"
+        rel="noopener noreferrer"
+        aria-label="Download ULMOX on the App Store"
+      >
+        <img
+          class="store-badge store-badge-app-store"
+          src="/assets/badges/app-store.svg"
+          width="162"
+          height="54"
+          alt="Download on the App Store"
+        >
       </a>
 
-      <a class="store-badge-link store-badge-link-google-play" href="https://play.google.com/store/apps/details?id=com.ulmox.app" target="_blank" aria-label="Get ULMOX on Google Play">
-        <img class="store-badge store-badge-google-play" src="/assets/badges/google-play.png" width="140" height="54" alt="Get it on Google Play">
+      <a
+        id="playStoreLink"
+        class="store-badge-link store-badge-link-google-play"
+        href="https://play.google.com/store/apps/details?id=com.ulmox.app"
+        target="_self"
+        rel="noopener noreferrer"
+        aria-label="Get ULMOX on Google Play"
+      >
+        <img
+          class="store-badge store-badge-google-play"
+          src="/assets/badges/google-play.png"
+          width="140"
+          height="54"
+          alt="Get it on Google Play"
+        >
       </a>
     </div>
 
@@ -294,25 +332,56 @@
     </div>
 
     <div style="margin-top:60px;">
-    <h2 style="font-size:28px;">Available now on App Store and Google Play</h2>
-    <p style="color:#aaa;max-width:600px;margin:10px auto 25px;">
-      Download ULMOX today from App Store or Google Play and start sharing real video moments.
-    </p>
-
-
-
-</div>
+      <h2 style="font-size:28px;">Available now on App Store and Google Play</h2>
+      <p style="color:#aaa;max-width:600px;margin:10px auto 25px;">
+        Download ULMOX today from App Store or Google Play and start sharing real video moments.
+      </p>
+    </div>
 
     <footer>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms</a>
       <a href="support.html">Support</a>
-      <a href="safety.html">Safety & Moderation</a>
+      <a href="safety.html">Safety &amp; Moderation</a>
       <p>© 2026 ULMOX</p>
     </footer>
 
   </div>
+
   <script src="/assets/js/i18n-config.js"></script>
   <script src="/assets/js/language-redirect.js"></script>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const APP_STORE_URL = "https://apps.apple.com/app/id6765990174";
+      const PLAY_STORE_URL =
+        "https://play.google.com/store/apps/details?id=com.ulmox.app";
+
+      function initializeStoreLinks() {
+        const appStoreLink = document.getElementById("appStoreLink");
+        const playStoreLink = document.getElementById("playStoreLink");
+
+        if (appStoreLink) {
+          appStoreLink.setAttribute("href", APP_STORE_URL);
+          appStoreLink.setAttribute("target", "_self");
+          appStoreLink.setAttribute("rel", "noopener noreferrer");
+        }
+
+        if (playStoreLink) {
+          playStoreLink.setAttribute("href", PLAY_STORE_URL);
+          playStoreLink.setAttribute("target", "_self");
+          playStoreLink.setAttribute("rel", "noopener noreferrer");
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initializeStoreLinks);
+      } else {
+        initializeStoreLinks();
+      }
+    })();
+  </script>
 </body>
 </html>
