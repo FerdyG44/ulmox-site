@@ -1,0 +1,11 @@
+{
+  "name": "ulmox-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static ULMOX marketing and support website",
+  "scripts": {
+    "build": "node scripts/build-site.js",
+    "lint": "node --check assets/js/analytics.js && node --check download/script.js && node --check scripts/build-site.js",
+    "test": "node --test tests/*.test.js && node scripts/verify-locales.js"
+  }
+}

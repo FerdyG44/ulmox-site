@@ -12,6 +12,8 @@
     "utm_source",
     "utm_medium",
     "utm_campaign",
+    "utm_content",
+    "utm_term",
     "campaign",
   ];
 
@@ -43,6 +45,23 @@
     const instagramHelp =
       document.getElementById("instagramHelp");
 
+    function trackStoreClick(
+      platformName,
+      url,
+      buttonLocation,
+    ) {
+      if (!window.ULMOXAnalytics) {
+        return;
+      }
+
+      window.ULMOXAnalytics.trackStoreClick({
+        platform: platformName,
+        linkUrl: url,
+        buttonLocation:
+          buttonLocation,
+      });
+    }
+
     /*
      * Keep genuine HTTPS store links in the HTML and JavaScript.
      * Do not use window.open, preventDefault or custom URL schemes.
@@ -57,6 +76,17 @@
         "rel",
         "noopener noreferrer",
       );
+
+      appStoreLink.addEventListener(
+        "click",
+        function () {
+          trackStoreClick(
+            "ios",
+            APP_STORE_URL,
+            "app_store_button",
+          );
+        },
+      );
     }
 
     if (playStoreLink) {
@@ -69,6 +99,17 @@
         "rel",
         "noopener noreferrer",
       );
+
+      playStoreLink.addEventListener(
+        "click",
+        function () {
+          trackStoreClick(
+            "android",
+            PLAY_STORE_URL,
+            "google_play_button",
+          );
+        },
+      );
     }
 
     if (fallbackButton) {
@@ -76,25 +117,63 @@
         "rel",
         "noopener noreferrer",
       );
+
+      fallbackButton.addEventListener(
+        "click",
+        function () {
+          const destination =
+            fallbackButton.getAttribute(
+              "href",
+            );
+
+          if (
+            destination === APP_STORE_URL
+          ) {
+            trackStoreClick(
+              "ios",
+              APP_STORE_URL,
+              "fallback_button",
+            );
+          }
+
+          if (
+            destination === PLAY_STORE_URL
+          ) {
+            trackStoreClick(
+              "android",
+              PLAY_STORE_URL,
+              "fallback_button",
+            );
+          }
+        },
+      );
     }
 
     function saveAttribution() {
       try {
         const params =
-          new URLSearchParams(window.location.search);
+          new URLSearchParams(
+            window.location.search,
+          );
 
         const attribution = {};
 
-        TRACKING_KEYS.forEach(function (key) {
-          const value = params.get(key);
+        TRACKING_KEYS.forEach(
+          function (key) {
+            const value =
+              params.get(key);
 
-          if (value) {
-            attribution[key] =
-              value.slice(0, 160);
-          }
-        });
+            if (value) {
+              attribution[key] =
+                value.slice(0, 160);
+            }
+          },
+        );
 
-        if (Object.keys(attribution).length > 0) {
+        if (
+          Object.keys(attribution)
+            .length > 0
+        ) {
           localStorage.setItem(
             ATTRIBUTION_STORAGE_KEY,
             JSON.stringify({
@@ -146,7 +225,9 @@
         /Android/i.test(userAgent);
 
       const isIOS =
-        /iPhone|iPad|iPod/i.test(userAgent);
+        /iPhone|iPad|iPod/i.test(
+          userAgent,
+        );
 
       const isModernIPadOS =
         /Macintosh/i.test(userAgent) &&
@@ -157,7 +238,10 @@
         return "desktop";
       }
 
-      if (isIOS || isModernIPadOS) {
+      if (
+        isIOS ||
+        isModernIPadOS
+      ) {
         return "ios";
       }
 
@@ -168,7 +252,9 @@
       return "desktop";
     }
 
-    function recentlyRedirected(platformName) {
+    function recentlyRedirected(
+      platformName,
+    ) {
       try {
         const rawValue =
           sessionStorage.getItem(
@@ -185,19 +271,24 @@
         return (
           savedValue.platform ===
             platformName &&
-          Date.now() - savedValue.at < 3000
+          Date.now() -
+            savedValue.at <
+            3000
         );
       } catch (_) {
         return false;
       }
     }
 
-    function markRedirect(platformName) {
+    function markRedirect(
+      platformName,
+    ) {
       try {
         sessionStorage.setItem(
           REDIRECT_STORAGE_KEY,
           JSON.stringify({
-            platform: platformName,
+            platform:
+              platformName,
             at: Date.now(),
           }),
         );
@@ -254,13 +345,6 @@
       fallbackButton.classList.remove(
         "hidden",
       );
-
-      /*
-       * Do not attach click handlers.
-       * Allow the browser to follow the
-       * genuine anchor URL.
-       */
-      fallbackButton.onclick = null;
     }
 
     function attemptAutomaticRedirect(
@@ -279,28 +363,48 @@
         buttonLabel,
       );
 
-      if (recentlyRedirected(platformName)) {
+      if (
+        recentlyRedirected(
+          platformName,
+        )
+      ) {
         showDownloadOptions();
         return;
       }
 
-      markRedirect(platformName);
+      markRedirect(
+        platformName,
+      );
 
-      window.setTimeout(function () {
-        try {
-          window.location.assign(url);
-        } catch (_) {
-          showDownloadOptions();
-        }
-      }, 250);
+      trackStoreClick(
+        platformName,
+        url,
+        "automatic_device_redirect",
+      );
+
+      window.setTimeout(
+        function () {
+          try {
+            window.location.assign(
+              url,
+            );
+          } catch (_) {
+            showDownloadOptions();
+          }
+        },
+        250,
+      );
 
       /*
        * If automatic redirection is blocked,
        * show the direct store buttons.
        */
-      window.setTimeout(function () {
-        showDownloadOptions();
-      }, 1600);
+      window.setTimeout(
+        function () {
+          showDownloadOptions();
+        },
+        1600,
+      );
     }
 
     saveAttribution();
@@ -320,7 +424,8 @@
      * instructions immediately.
      */
     if (
-      detectedPlatform === "ios" &&
+      detectedPlatform ===
+        "ios" &&
       embeddedSocialBrowser
     ) {
       showDownloadOptions();
@@ -332,7 +437,10 @@
      * Safari and regular iOS browsers:
      * automatically open the App Store.
      */
-    if (detectedPlatform === "ios") {
+    if (
+      detectedPlatform ===
+      "ios"
+    ) {
       attemptAutomaticRedirect(
         "ios",
         APP_STORE_URL,
@@ -347,7 +455,10 @@
      * Android browsers:
      * automatically open Google Play.
      */
-    if (detectedPlatform === "android") {
+    if (
+      detectedPlatform ===
+      "android"
+    ) {
       attemptAutomaticRedirect(
         "android",
         PLAY_STORE_URL,
@@ -365,7 +476,10 @@
     showDownloadOptions();
   }
 
-  if (document.readyState === "loading") {
+  if (
+    document.readyState ===
+    "loading"
+  ) {
     document.addEventListener(
       "DOMContentLoaded",
       initializeDownloadPage,
