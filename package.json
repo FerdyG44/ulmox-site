@@ -5,7 +5,8 @@
   "description": "Static ULMOX marketing and support website",
   "scripts": {
     "build": "node scripts/build-site.js",
-    "lint": "node --check assets/js/analytics.js && node --check download/script.js && node --check scripts/build-site.js",
-    "test": "node --test tests/*.test.js && node scripts/verify-locales.js"
+    "lint": "node --check assets/js/analytics.js && node --check download/script.js && node --check scripts/build-site.js && node --check scripts/verify-production-build.js",
+    "test": "node --test tests/*.test.js && node scripts/verify-locales.js",
+    "verify:dist": "node scripts/verify-production-build.js"
   }
 }

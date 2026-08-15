@@ -33,8 +33,7 @@ analytics configuration and tags are included on every HTML page.
    GA_MEASUREMENT_ID=G-XXXXXXXXXX npm run build
    ```
 
-6. Deploy the generated `dist/` directory with the existing GitHub Pages or
-   static-hosting deployment process.
+6. Deploy the generated `dist/` directory with the GitHub Pages workflow.
 7. Open the deployed site and verify page views and store events with GA4
    Realtime and DebugView.
 
@@ -96,3 +95,24 @@ document.dispatchEvent(new CustomEvent("ulmox:analytics-consent", {
 Advertising consent remains denied in both cases. Any future consent rollout
 must be reviewed against the jurisdictions where ULMOX operates before the
 production behavior is changed.
+
+## Production deployment
+
+`.github/workflows/deploy-pages.yml` deploys pushes to `main` and can also be
+started manually. It installs from `package-lock.json`, runs syntax checks and
+tests, builds with `NODE_ENV=production`, verifies the contents of `dist/`, and
+publishes only that directory through the official GitHub Pages artifact and
+deployment actions.
+
+Before the first workflow deployment:
+
+1. Open **Settings → Secrets and variables → Actions → Variables**.
+2. Add a repository variable named `GA_MEASUREMENT_ID` with the real production
+   GA4 Measurement ID.
+3. Open **Settings → Pages → Build and deployment** and select **GitHub Actions**
+   as the source.
+
+The workflow stops before build and deployment when the variable is absent,
+malformed, or still a placeholder. The production verification also requires
+`dist/CNAME` to contain `ulmoxapp.com`, so a build cannot silently drop the
+custom domain.
