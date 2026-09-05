@@ -1,26 +1,293 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eliminación de cuenta - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Cómo eliminar permanentemente tu cuenta de ULMOX, en la aplicación o por correo, y qué ocurre después con tus datos." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">Ir al contenido</a>
+<div class="container">
+  <main id="main">
+    <h1>Elimina tu cuenta de ULMOX</h1>
+    <p class="effective">En vigor desde el 2026-09-04. Actualizado por última vez el 2026-09-04.</p>
 
-  <h1>Eliminar tu cuenta</h1>
+    <p>Esta página explica cómo eliminar permanentemente tu cuenta de ULMOX y qué ocurre después con tus datos.</p>
 
-  <p>Si quieres eliminar tu cuenta de ULMOX, contáctanos:</p>
+    <div class="callout">
+      <p><strong>Desactivar no es eliminar.</strong> La desactivación oculta tu perfil y tu contenido y puede deshacerse. Eliminar tu cuenta es permanente y no puede deshacerse.</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>Opción 1 — eliminar en la aplicación (preferida)</h2>
 
-  <p>Incluye tu correo electrónico registrado.</p>
+    <p>Es la vía más rápida y no requiere intercambio de correos. No está disponible para todas las cuentas en todos los dispositivos: una cuenta vinculada a Iniciar sesión con Apple no puede completar la eliminación desde un teléfono Android y se dirige a <a href="support.html">Soporte</a>. Consulta más abajo <a href="#apple-linked">Si tu cuenta está vinculada a Iniciar sesión con Apple</a>.</p>
 
-  <p>Tu cuenta y todos los datos asociados se eliminarán permanentemente en un plazo de 7 días.</p>
+    <ol>
+      <li>Abre ULMOX y ve a <strong>Perfil &rarr; Aspectos legales y seguridad &rarr; Gestión de la cuenta &rarr; Eliminar cuenta</strong>.</li>
+      <li>Lee la confirmación, que explica que la eliminación es permanente.</li>
+      <li>Confirma. Puede que primero se te pida iniciar sesión de nuevo, lo que protege tu cuenta de que otra persona la elimine.</li>
+    </ol>
 
-  <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
+    <h2>Opción 2 — solicitar la eliminación por correo</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>Si no puedes abrir la aplicación, puedes pedirnos que eliminemos tu cuenta.</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">Escribe a ulmoxapp@outlook.com con el asunto «ULMOX Account Deletion Request»</a></p>
+
+    <p>Incluye solo lo mínimo necesario para encontrar tu cuenta:</p>
+
+    <ul>
+      <li>la dirección de correo asociada a tu cuenta de ULMOX, y</li>
+      <li>tu nombre de usuario de ULMOX, si lo conoces.</li>
+    </ul>
+
+    <p>Cuando sea posible, escribe desde la dirección de correo asociada a tu cuenta. Si tu cuenta está vinculada a Iniciar sesión con Apple y usaste <strong>Ocultar mi correo</strong>, escribe desde tu dirección de reenvío de Apple o danos suficientes datos no secretos de la cuenta para identificarla.</p>
+
+    <div class="callout">
+      <p><strong>Nunca te pediremos una contraseña, una contraseña de Apple o de Google, un código de autenticación de un solo uso, un código de autorización, un token de inicio de sesión ni una fotografía de un documento de identidad</strong>, y nunca te pediremos que nos envíes nada de eso por correo. Si recibes un mensaje que dice venir de ULMOX y pide algo de esto, no es nuestro.</p>
+    </div>
+
+    <p>Comprobamos que la cuenta es tuya antes de eliminarla. Una solicitud enviada desde un formulario web público o desde una dirección no verificada no elimina una cuenta por sí sola. Podemos pedirte que confirmes la titularidad por una vía segura, como responder desde la dirección de correo de la cuenta.</p>
+
+    <h2>Qué ocurre cuando se elimina una cuenta</h2>
+
+    <ul>
+      <li>El acceso y la visibilidad se retiran en cuanto la eliminación se inicia correctamente. Tu perfil deja de ser visible para otras personas y tu cuenta deja de seleccionarse para nuevas entregas.</li>
+      <li>El borrado físico de los datos almacenados continúa después en segundo plano. El objetivo es completarlo en un plazo de 30 días, salvo que una obligación justificada de seguridad o legal exija una conservación limitada.</li>
+      <li>Se retiran los vídeos que grabaste, sus miniaturas, la información de tu perfil, tu foto de perfil y el contenido Global del que eres propietario.</li>
+      <li>El contenido que pertenece a otra persona <em>no</em> se elimina solo porque tú lo compartieras. En su lugar se retira tu asociación con él, y el vídeo sigue con quien lo creó.</li>
+      <li>Tu nombre de usuario queda reservado 90 días tras la eliminación antes de poder reutilizarse, para que nadie pueda tomarlo de inmediato.</li>
+      <li>Pueden conservarse registros limitados de seguridad, legales o transaccionales cuando exista un motivo justificado, y solo mientras ese motivo se mantenga. Cuando se conserva un registro de seguridad, los vínculos que lo unen a tu identidad se eliminan como parte del borrado, de modo que lo que queda es un registro de lo ocurrido y no un registro sobre ti.</li>
+      <li>Eliminar tu cuenta no elimina la de nadie más. En una Connection hay dos personas, y los mensajes, vídeos y registros de la otra siguen con ella.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>La prueba de seguridad no es el historial ordinario de mensajes.</strong> Connections y la traducción opcional de mensajes se están implantando de forma gradual y puede que todavía no estén disponibles en todas las cuentas ni en todas las versiones instaladas de la aplicación. Si tienes una Connection: un mensaje ordinario en ella se considera caducado unos siete días después de enviarse. Un mensaje que ha sido denunciado ya no se rige por eso: es prueba en una revisión, y se conserva mientras la revisión esté abierta y después cuando el resultado lo justifique, incluso tras eliminarse la cuenta de la que procede. Eliminar tu cuenta no retira una denuncia que hayas presentado y no borra una denuncia presentada sobre ti.</p>
+    </div>
+
+    <h2 id="apple-linked">Si tu cuenta está vinculada a Iniciar sesión con Apple</h2>
+
+    <p>Algunas cuentas de ULMOX están vinculadas a Iniciar sesión con Apple. Si la tuya lo está, la eliminación permanente tiene un paso adicional, porque Apple exige que una aplicación renuncie a su autorización de Iniciar sesión con Apple al eliminar una cuenta, en lugar de borrar solo su propio registro.</p>
+
+    <ol>
+      <li>En un dispositivo Apple, ULMOX te pide confirmar una vez más directamente con Apple. Esa confirmación ocurre entre tú y Apple en tu propio dispositivo. <strong>ULMOX no recibe tu contraseña de Apple</strong> y nunca te la pedimos.</li>
+      <li>Esa confirmación es lo que permite a ULMOX revocar su propia autorización de Iniciar sesión con Apple para tu cuenta.</li>
+      <li>Solo entonces comienza la eliminación permanente descrita arriba.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Si ese paso no se completa, no se elimina nada.</strong> Si cierras la pantalla de Apple, si la confirmación devuelve una cuenta de Apple distinta de la que ha iniciado sesión, o si el paso falla por cualquier otro motivo, ULMOX se detiene antes de que ocurra nada permanente y te dice que no se ha eliminado nada. Puedes volver a intentarlo.</p>
+    </div>
+
+    <p>Tres cosas distintas se confunden con facilidad:</p>
+
+    <ul>
+      <li><strong>Revocar la autorización de Iniciar sesión con Apple de ULMOX</strong> impide que ULMOX pueda usar Iniciar sesión con Apple contigo. Por sí solo no elimina tu cuenta de ULMOX y no borra los datos que contiene.</li>
+      <li><strong>Eliminar tu cuenta de ULMOX</strong> es la acción que retira tus datos de ULMOX. Solo está completa cuando se ha ejecutado el borrado descrito en esta página: ningún cambio en una autorización de inicio de sesión la completa.</li>
+      <li><strong>Eliminar tu ID de Apple</strong> es algo que solo Apple puede hacer, a petición tuya: ULMOX nunca lo hace y no puede hacerlo.</li>
+    </ul>
+
+    <h3>Eliminar desde un dispositivo Android una cuenta vinculada a Apple</h3>
+
+    <p>El paso de confirmación de Apple solo puede completarse en un dispositivo Apple. Si intentas eliminar desde un teléfono Android una cuenta de ULMOX vinculada a Apple, ULMOX se detiene antes de retirar nada y te dice que <strong>no se ha eliminado nada</strong>. Termina la eliminación en un dispositivo Apple, o <a href="support.html">escribe al soporte</a> y lo gestionaremos por ti.</p>
+
+    <p>Una cuenta que use solo el inicio de sesión con Google, o solo una dirección de correo, se elimina con normalidad en cualquiera de los dos tipos de dispositivo. Una cuenta vinculada a Apple y a Google sigue necesitando el paso de Apple.</p>
+
+    <h2>Si solo quieres una pausa</h2>
+
+    <p>La desactivación oculta tu perfil y tu contenido Global y puede revertirse volviendo a iniciar sesión. Los vídeos que ya enviaste pueden seguir con quienes los recibieron durante su periodo de conservación habitual. La desactivación no satisface una solicitud de eliminación: si quieres que tus datos se retiren, usa Eliminar cuenta.</p>
+
+    <p>Desactivar no borra los registros de seguridad, y reactivar no deshace nada. Volver restaura tu acceso; no revierte una decisión de moderación, no recupera contenido que la moderación retirara u ocultara y no reabre una Connection que se hubiera terminado. Terminar una Connection es definitivo para ese par. El bloqueo funciona de otro modo: un bloqueo termina la Connection que tienes ahora y detiene el contacto en ambos sentidos mientras está activo. Retirar un bloqueo tampoco restaura la Connection anterior: las dos cuentas tendrían que volver a cumplir los requisitos desde el principio, con dos nuevos intercambios de vídeo válidos y una nueva aprobación de cada persona.</p>
+
+    <h2>Preguntas</h2>
+
+    <p>Escribe a <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Consulta también <a href="privacy.html">Política de privacidad</a> y <a href="terms.html">Términos</a>.</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Información legal y soporte">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="privacy.html">Política de privacidad</a></li>
+        <li><a href="terms.html">Términos</a></li>
+        <li><a href="safety.html">Seguridad y moderación</a></li>
+        <li><a href="support.html">Soporte</a></li>
+        <li><span aria-current="page">Eliminar cuenta</span></li>
+        <li><a href="translation.html">Información sobre la traducción</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

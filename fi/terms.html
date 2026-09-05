@@ -1,45 +1,323 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Käyttöehdot - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="ULMOXin käyttöä koskevat ehdot: kelpoisuus, sisältö, Connections, moderointi ja muutoksenhaku." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;line-height:1.7;max-width:900px;margin:auto;">
-<h1>Käyttöehdot</h1>
-<p><strong>Päivitetty viimeksi:</strong> elokuu 2026</p>
-<p>Käyttöehdot ULMOX. Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</p>
-<h2>ULMOX turvallisuus ja moderointi</h2>
-<p>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</p>
-<p>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</p>
-<ul><li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li>
-  <li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li>
-  <li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li>
-  <li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li>
-  <li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li>
-  <li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li>
-  <li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li></ul>
-<h2>Käyttöehdot</h2>
-<p>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</p>
-<p>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</p>
-<h2>Yhteystiedot</h2>
-<p>Käyttäjät voivat ilmoittaa sopimattomasta sisällöstä suoraan sovelluksessa. Kaikki ilmoitukset tarkistetaan ja sääntöjä rikkova sisältö poistetaan nopeasti.</p>
-<h2>ULMOX turvallisuus ja moderointi</h2>
-<p>ULMOX sitoutuu turvalliseen ja kunnioittavaan ympäristöön kaikille käyttäjille.</p>
-<h2>ULMOX turvallisuus ja moderointi</h2>
-<p>ULMOX sitoutuu turvalliseen ja kunnioittavaan ympäristöön kaikille käyttäjille.</p>
-<h2>Tietosuojakäytäntö</h2>
-<p>ULMOX kunnioittaa yksityisyyttäsi. Keräämme vain palvelun tarjoamiseen tarvittavat perustiedot.</p>
-<h2>Käyttöehdot</h2>
-<p>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</p>
-<h2>Käyttöehdot</h2>
-<p>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</p>
-<h2 id="ulmox-music">ULMOX Music</h2>
-<p>ULMOX voi tarjota musiikkia käytettäväksi Moments-videoissa. Näiden ehtojen mukaisesti voit synkronoida musiikin ULMOXissa luomiisi videoihin ja jakaa valmiit videot ULMOXin kautta. Et saa erottaa, jakaa edelleen, myydä tai asettaa musiikkia saataville itsenäisenä äänitiedostona.</p>
-<h2>Yhteystiedot</h2>
-<p>Yhteystiedot<br><br>ulmoxapp@outlook.com</p>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+<body>
+  <a class="ulmox-skip-link" href="#main">Siirry sisältöön</a>
+<div class="container">
+  <main id="main">
+    <h1>Käyttöehdot</h1>
+    <p class="effective">Voimassa 2026-09-04 alkaen. Viimeksi päivitetty 2026-09-04.</p>
+
+    <p>Nämä ehdot koskevat ULMOXin käyttöä. Jos et hyväksy niitä, älä käytä palvelua.</p>
+
+    <h2>1. Kuka saa käyttää ULMOXia</h2>
+
+    <ul>
+      <li>Sinun on oltava <strong>18 vuotta täyttänyt</strong>.</li>
+      <li>Sinun on annettava ikäsi totuudenmukaisesti.</li>
+      <li>Et saa yrittää kiertää ikävaatimusta etkä auttaa ketään muuta tekemään niin.</li>
+      <li>Tilit ovat pysyviä eivätkä anonyymejä. Kirjaudut tuetulla palveluntarjoajalla ja säilytät yhden identiteetin koko palvelussa.</li>
+    </ul>
+
+    <h2>2. Sinun sisältösi</h2>
+
+    <p>Vastaat luomistasi ja lataamistasi videoista ja profiilisisällöstä. Sinulla on oltava oikeus jakaa lataamasi sisältö, eikä se saa rikkoa näitä ehtoja tai lakia.</p>
+
+    <h3>Omistus ja käyttöoikeus</h3>
+
+    <p><strong>Säilytät sisältösi omistusoikeuden.</strong> Palvelun ylläpitämiseksi myönnät ULMOXille ei-yksinomaisen, maailmanlaajuisen ja rojaltivapaan käyttöoikeuden isännöidä, tallentaa, kopioida ja välittää sisältöäsi, yksinomaan jotta voimme toimittaa sen sille valitulle vastaanottajalle, luoda pikkukuvia ja näyttää sen Global-syötteessä, jos vastaanottaja jakaa sen sinne. Käyttöoikeus on olemassa vain ULMOXin toiminnan vuoksi ja päättyy, kun sisältö poistetaan, paitsi silloin kun meidän on säilytettävä kopio turvallisuuden todistusaineistona tai lakisääteisen velvoitteen täyttämiseksi.</p>
+
+    <p>Kun joku jakaa saamansa videon Global-syötteeseen, hänestä <strong>ei</strong> tule sen omistajaa. Videon kuvannut henkilö säilyy omistajana.</p>
+
+    <h2>3. Connections</h2>
+
+    <div class="callout">
+      <p><strong>Connections ja valinnainen viestien kääntäminen otetaan käyttöön vaiheittain, eivätkä ne välttämättä ole vielä käytettävissä jokaisella tilillä tai jokaisessa asennetussa sovellusversiossa.</strong></p>
+    </div>
+
+    <p>Connection on kahden aikuisen välinen molemminpuolinen, pelkkään tekstiin perustuva keskustelu, joiden välillä on jo vaihdettu videohetkiä. Se ei ole keskusteluhakemisto eikä avoin viestintä. Näillä säännöillä se toimii:</p>
+
+    <ul>
+      <li><strong>Vain aikuiset.</strong> Connections on osa 18 vuotta täyttäneiden palvelua ja on käytettävissä vain tileille, jotka ovat läpäisseet ikävaatimuksen.</li>
+      <li><strong>Et voi hakea ihmisiä.</strong> ULMOXissa ei ole käyttäjähakua eikä mitään tapaa etsiä jotakuta yhteydenottoa varten. Connection voi syntyä vain jo olemassa olleesta kontaktista.</li>
+      <li><strong>Kaksi aiempaa kelpoisuusehdot täyttävää videokohtaamista.</strong> Pari tulee kelpoiseksi vasta kahden erillisen kelpoisuusehdot täyttävän videovaihdon jälkeen näiden kahden tilin välillä. Yksi ei riitä.</li>
+      <li><strong>Molempien on hyväksyttävä.</strong> Kumpikin hyväksyy itsenäisesti. Ennen kuin molemmat ovat hyväksyneet, Connectionia ei ole eikä viestiä voi lähettää.</li>
+      <li><strong>Vain tekstiä, ei liitteitä.</strong> Connection välittää kirjoitettuja viestejä. Liitteitä ei ole — ei kuvia, ei videoita, ei tiedostoja, ei ääniviestejä.</li>
+      <li><strong>Tilit ovat pysyviä eivätkä anonyymejä.</strong> Henkilöllä, johon olet yhteydessä, on ULMOXissa sama yksi identiteetti kuin kaikilla muillakin.</li>
+      <li><strong>Viestit vanhenevat.</strong> Tavallisen viestin katsotaan vanhenevan noin seitsemän päivää lähettämisen jälkeen. Ilmoitetut viestit käsitellään toisin — katso tietosuojakäytäntö.</li>
+      <li><strong>Ilmoittaminen ja poistuminen toimivat aina.</strong> Voit käyttää toimintoja <strong>Ilmoita käyttäjä</strong> ja <strong>Ilmoita viesti</strong>, voit <strong>Estää</strong> ja voit <strong>Päättää Connectionin</strong>. Connectionin päättäminen on lopullista tälle parille: se ei jatku, eikä myöhempi kohtaaminen avaa sitä uudelleen. Esto ei ole sama asia. Esto päättää nykyisen Connectionisi ja pysäyttää yhteydenpidon molempiin suuntiin niin kauan kuin se on voimassa. Eston poistaminen ei palauta vanhaa Connectionia: parin olisi täytettävä ehdot uudelleen alusta, kahden uuden kelpoisuusehdot täyttävän videovaihdon ja molempien osapuolten uuden hyväksynnän kautta.</li>
+      <li><strong>Ilmoitukset käsittelevät ihmiset, eivät koneet.</strong> Ilmoitetun viestin arvioi ihminen.</li>
+      <li><strong>Kääntäminen on vapaaehtoista.</strong> Voit kääntää saamasi viestin omalla laitteellasi. Alkuperäinen on se, joka ratkaisee ja jonka käsittelijä lukee. Katso <a href="translation.html">Tietoa kääntämisestä</a>.</li>
+    </ul>
+
+    <h2>4. Mikä ei ole sallittua</h2>
+
+    <p>ULMOXissa on kiellettyä seuraava:</p>
+
+    <ul>
+      <li>Lasten seksuaalinen hyväksikäyttö ja riisto (CSAE) sekä lasten seksuaaliseen hyväksikäyttöön liittyvä materiaali (CSAM), missä tahansa muodossa.</li>
+      <li>Kenen tahansa seksuaalinen riisto.</li>
+      <li>Seksuaalinen sisältö ilman suostumusta sekä seksuaalinen sisältö, jossa on mukana joku, joka saattaa olla alle 18-vuotias.</li>
+      <li>Uhkaukset, väkivaltaan yllyttäminen ja väkivaltaa ihannoiva sisältö.</li>
+      <li>Vihapuhe ja kohdennettu häirintä.</li>
+      <li>Toisen henkilön tai organisaation esittäminen.</li>
+      <li>Huijaukset, petokset ja roskaposti.</li>
+      <li>Laiton sisältö ja laiton toiminta.</li>
+      <li>Toisen henkilön yksityisten tietojen jakaminen ilman hänen lupaansa.</li>
+    </ul>
+
+    <h2>5. Ilmoittaminen, estäminen ja moderointi</h2>
+
+    <ul>
+      <li>Voit ilmoittaa sisällöstä ja voit ilmoittaa käyttäjistä sovelluksen sisältä. Käytössä on oma lasten turvallisuuden luokka.</li>
+      <li>Voit estää toisen käyttäjän. Estäminen pysäyttää vuorovaikutuksen molempiin suuntiin, eikä estetylle henkilölle kerrota siitä.</li>
+      <li>Ilmoitettu sisältö voidaan asettaa <strong>peruutettavaan karanteeniin</strong> käsittelyn ajaksi. Karanteeni piilottaa sisällön väliaikaisesti; se ei poista sitä eikä ole tiliin kohdistuva seuraamus.</li>
+      <li>Moderointipäätökset tekevät ihmiset, eivät automaatit. Sekä ilmoitetut videot että ilmoitetut viestit käsittelee ihminen.</li>
+      <li>Viesti, jonka automaattinen turvasuodatin pysäyttää, <strong>ei</strong> ole tiliäsi koskeva päätös. Viestin pysäyttäminen tai sisällön asettaminen karanteeniin rajoittaa vain kyseistä kohdetta eikä mitään muuta.</li>
+      <li>Jos käsittelijä hyväksyy videon, se palaa Global-syötteeseen vain, jos se edelleen itsenäisesti täyttää sen ehdot. Video, jonka omistaja on lähtenyt, jota on rajoitettu tai jonka omistaja on suljettu, tai joka on jostain muusta syystä poissa saatavilta, pysyy poissa saatavilta riippumatta siitä, mikä ilmoituspäätös oli.</li>
+      <li>Kun ilmoitus on ratkaistu, se poistuu aktiivisesta käsittelylistasta. Sitä ei poisteta: todistusaineisto ja merkintä päätöksestä säilytetään siellä, missä säilyttämiseen on perusteltu syy.</li>
+      <li>Ilmoitus koskee aina alkuperäistä sisältöä. Käännös, jonka valitsit luettavaksi, ei ole koskaan käsittelyn kohde eikä koskaan todistusaineistoa.</li>
+      <li>Emme julkaise turvajärjestelmiemme sisäisiä kynnysarvoja, työkaluja tai työtapoja.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Ilmoitukset eivät sulje tilejä.</strong> Mikään määrä ilmoituksia ei sulje tiliä automaattisesti. Ei myöskään mikään muu: ei viestin pysäyttävä automaattinen suodatin, ei karanteeni, ei käännös eikä päätös poistaa yksittäinen sisältö. Vain valtuutettu ULMOXin ylläpitäjä voi sulkea tilin, erillisenä ja harkittuna päätöksenä ja vasta tapauksen tarkastelun jälkeen.</p>
+    </div>
+
+    <p>ULMOX ei analysoi automaattisesti videokuvia, ääntä eikä litterointeja. Turvallisuus perustuu ilmoituksiin, peruutettavaan karanteeniin, estämiseen ja ihmisen tekemään käsittelyyn.</p>
+
+    <h2>6. Käytöstä poistaminen ja poistaminen</h2>
+
+    <ul>
+      <li><strong>Käytöstä poistaminen</strong> on peruutettavissa. Profiilisi ja Global-sisältösi piilotetaan ja tietosi säilytetään, jotta tili voidaan palauttaa. Jo lähettämäsi videot voivat säilyä niiden saaneilla heidän tavanomaisen säilytysaikansa.</li>
+      <li><strong>Poistaminen</strong> on pysyvää eikä sitä voi peruuttaa. Pääsy ja löydettävyys päättyvät välittömästi, ja poisto jatkuu taustalla. Rajoitettuja turvallisuus-, oikeudellisia tai tapahtumamerkintöjä voidaan säilyttää silloin kun se on perusteltua. Katso <a href="delete_account.html">Poista tili</a>.</li>
+    </ul>
+
+    <h2>7. Toimeenpano ja muutoksenhaku</h2>
+
+    <p>Voimme piilottaa sisällön sen käsittelyn ajaksi, poistaa näitä ehtoja rikkovan sisällön ja valtuutetun ylläpitäjän kautta jäädyttää tai sulkea tilin. Jos katsot, että sisältöäsi tai tiliäsi koskeva päätös oli virheellinen, kirjoita osoitteeseen <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>, niin ihminen käsittelee sen. Katso <a href="support.html">Tuki</a>.</p>
+
+    <h2>Konekäännös</h2>
+
+    <ul>
+      <li>ULMOX voi tarjota saamastasi viestistä vapaaehtoisen konekäännöksen. <strong>Konekäännökset voivat olla puutteellisia tai virheellisiä.</strong></li>
+      <li>Kun merkityksellä on väliä, luota alkuperäiseen viestiin. Alkuperäinen pysyy näkyvissä ja on ratkaiseva versio.</li>
+      <li>Viestin kääntäminen ei muuta vastuutasi kirjoittamastasi sisällöstä. Vastaat edelleen alkuperäisestä viestistäsi.</li>
+      <li>Kääntäminen ei luo poikkeusta näihin ehtoihin. Sääntöjä rikkova sisältö rikkoo niitä kaikilla kielillä.</li>
+      <li>Google tarjoaa käännösteknologian. Google ei kirjoita, tarkasta, hyväksy tai tue mitään ULMOXin kautta lähetettyä viestiä.</li>
+    </ul>
+
+    <p>Katso <a href="translation.html">Tietoa kääntämisestä</a>.</p>
+
+    <h2 id="ulmox-music">ULMOX Music</h2>
+
+    <p>ULMOX voi tarjota musiikkia käytettäväksi Moments-videoissa. Näiden ehtojen mukaisesti voit synkronoida musiikin ULMOXissa luomiisi videoihin ja jakaa valmiit videot ULMOXin kautta. Et saa erottaa, jakaa edelleen, myydä tai asettaa musiikkia saataville itsenäisenä äänitiedostona.</p>
+
+    <h2>8. Näiden ehtojen muutokset</h2>
+
+    <p>Voimme päivittää näitä ehtoja. Yllä oleva päivämäärä osoittaa voimassa olevan version. Kun muutos on olennainen, voimme pyytää sinua hyväksymään päivitetyt ehdot sovelluksessa ennen ULMOXin käytön jatkamista.</p>
+
+    <h2>9. Aiheeseen liittyvät sivut</h2>
+
+    <p>
+      <a href="privacy.html">Tietosuojakäytäntö</a>
+      &middot;
+      <a href="safety.html">Turvallisuus ja moderointi</a>
+      &middot;
+      <a href="support.html">Tuki</a>
+      &middot;
+      <a href="delete_account.html">Poista tili</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Juridiset tiedot ja tuki">
+      <ul>
+        <li><a href="index.html">Etusivu</a></li>
+        <li><a href="privacy.html">Tietosuojakäytäntö</a></li>
+        <li><span aria-current="page">Ehdot</span></li>
+        <li><a href="safety.html">Turvallisuus ja moderointi</a></li>
+        <li><a href="support.html">Tuki</a></li>
+        <li><a href="delete_account.html">Poista tili</a></li>
+        <li><a href="translation.html">Tietoa kääntämisestä</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

@@ -1,26 +1,293 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kontolöschung - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Wie Sie Ihr ULMOX-Konto dauerhaft löschen, in der App oder per E-Mail, und was danach mit Ihren Daten geschieht." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">Zum Inhalt springen</a>
+<div class="container">
+  <main id="main">
+    <h1>Ihr ULMOX-Konto löschen</h1>
+    <p class="effective">Gültig ab 2026-09-04. Zuletzt geändert am 2026-09-04.</p>
 
-  <h1>Dein Konto löschen</h1>
+    <p>Diese Seite erklärt, wie Sie Ihr ULMOX-Konto dauerhaft löschen und was danach mit Ihren Daten geschieht.</p>
 
-  <p>Wenn du dein ULMOX-Konto löschen möchtest, kontaktiere uns bitte:</p>
+    <div class="callout">
+      <p><strong>Deaktivieren ist nicht Löschen.</strong> Die Deaktivierung blendet Ihr Profil und Ihre Inhalte aus und lässt sich rückgängig machen. Das Löschen Ihres Kontos ist dauerhaft und kann nicht rückgängig gemacht werden.</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>Möglichkeit 1 — in der App löschen (empfohlen)</h2>
 
-  <p>Gib deine registrierte E-Mail-Adresse an.</p>
+    <p>Das ist der schnellste Weg und erfordert keinen E-Mail-Austausch. Er steht nicht jedem Konto auf jedem Gerät offen: ein mit Mit Apple anmelden verknüpftes Konto kann die Löschung auf einem Android-Telefon nicht abschließen und wird stattdessen zu <a href="support.html">Support</a> geleitet. Siehe unten <a href="#apple-linked">Wenn Ihr Konto mit Mit Apple anmelden verknüpft ist</a>.</p>
 
-  <p>Dein Konto und alle zugehörigen Daten werden innerhalb von 7 Tagen dauerhaft gelöscht.</p>
+    <ol>
+      <li>Öffnen Sie ULMOX und gehen Sie zu <strong>Profil &rarr; Rechtliches und Sicherheit &rarr; Kontoverwaltung &rarr; Konto löschen</strong>.</li>
+      <li>Lesen Sie die Bestätigung, die erklärt, dass die Löschung dauerhaft ist.</li>
+      <li>Bestätigen Sie. Möglicherweise werden Sie zuerst gebeten, sich erneut anzumelden; das schützt Ihr Konto davor, von jemand anderem gelöscht zu werden.</li>
+    </ol>
 
-  <p>Wenn du Fragen hast, kannst du uns jederzeit kontaktieren.</p>
+    <h2>Möglichkeit 2 — Löschung per E-Mail beantragen</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>Wenn Sie die App nicht öffnen können, können Sie uns bitten, Ihr Konto zu löschen.</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">Schreiben Sie an ulmoxapp@outlook.com mit dem Betreff „ULMOX Account Deletion Request“</a></p>
+
+    <p>Geben Sie bitte nur das Nötigste an, damit wir Ihr Konto finden:</p>
+
+    <ul>
+      <li>die E-Mail-Adresse, die zu Ihrem ULMOX-Konto gehört, und</li>
+      <li>Ihren ULMOX-Nutzernamen, falls Sie ihn kennen.</li>
+    </ul>
+
+    <p>Schreiben Sie nach Möglichkeit von der E-Mail-Adresse, die zu Ihrem Konto gehört. Ist Ihr Konto mit Mit Apple anmelden verknüpft und haben Sie <strong>E-Mail-Adresse verbergen</strong> genutzt, schreiben Sie von Ihrer Apple-Weiterleitungsadresse oder nennen Sie uns genügend nicht geheime Kontoangaben, um das Konto zu identifizieren.</p>
+
+    <div class="callout">
+      <p><strong>Wir fragen Sie niemals nach einem Passwort, einem Apple- oder Google-Passwort, einem Einmalcode zur Authentifizierung, einem Autorisierungscode, einem Anmeldetoken oder einem Foto eines Ausweisdokuments</strong>, und wir bitten Sie niemals, uns so etwas per E-Mail zu senden. Wenn Sie eine Nachricht erhalten, die angeblich von ULMOX stammt und danach fragt, stammt sie nicht von uns.</p>
+    </div>
+
+    <p>Wir prüfen, dass Ihnen das Konto gehört, bevor wir es löschen. Eine Anfrage aus einem öffentlichen Webformular oder von einer nicht bestätigten Adresse löscht für sich genommen kein Konto. Wir können Sie bitten, die Inhaberschaft auf sicherem Weg zu bestätigen, etwa indem Sie von der Konto-E-Mail-Adresse antworten.</p>
+
+    <h2>Was geschieht, wenn ein Konto gelöscht wird</h2>
+
+    <ul>
+      <li>Zugang und Auffindbarkeit werden entfernt, sobald die Löschung erfolgreich gestartet wurde. Ihr Profil ist für andere nicht mehr sichtbar, und Ihr Konto wird nicht mehr für neue Zustellungen ausgewählt.</li>
+      <li>Die physische Löschung gespeicherter Daten läuft danach im Hintergrund weiter. Ziel ist der Abschluss innerhalb von 30 Tagen, sofern nicht eine begründete Sicherheits- oder Rechtspflicht eine begrenzte Aufbewahrung verlangt.</li>
+      <li>Von Ihnen aufgenommene Videos, deren Vorschaubilder, Ihre Profilangaben, Ihr Profilbild und Global-Inhalte, die Ihnen gehören, werden entfernt.</li>
+      <li>Inhalte, die jemand anderem gehören, werden <em>nicht</em> gelöscht, nur weil Sie sie geteilt haben. Stattdessen wird Ihre Verknüpfung damit entfernt, und das Video bleibt bei der Person, die es erstellt hat.</li>
+      <li>Ihr Nutzername bleibt nach der Löschung 90 Tage lang reserviert, bevor er neu vergeben werden kann, sodass ihn niemand sofort übernehmen kann.</li>
+      <li>Begrenzte Sicherheits-, Rechts- oder Transaktionsvermerke können aufbewahrt werden, wo es einen begründeten Anlass gibt, und nur so lange dieser Anlass besteht. Wo ein Sicherheitsvermerk aufbewahrt wird, werden die Verknüpfungen zu Ihrer Identität im Rahmen der Löschung entfernt, sodass ein Vermerk über das Geschehene bleibt und nicht ein Vermerk über Sie.</li>
+      <li>Das Löschen Ihres Kontos löscht nicht das Konto einer anderen Person. An einer Connection sind zwei Personen beteiligt, und die Nachrichten, Videos und Vermerke der anderen Person bleiben bei ihr.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Sicherheitsbelege sind kein gewöhnlicher Nachrichtenverlauf.</strong> Connections und die optionale Nachrichtenübersetzung werden schrittweise eingeführt und sind möglicherweise noch nicht für jedes Konto oder jede installierte App-Version verfügbar. Wenn Sie eine Connection haben: eine gewöhnliche Nachricht darin gilt etwa sieben Tage nach dem Senden als abgelaufen. Für eine gemeldete Nachricht gilt das nicht mehr: sie ist Beleg in einer Prüfung und bleibt erhalten, solange die Prüfung läuft, und danach, wo das Ergebnis dies rechtfertigt — auch nachdem das Konto gelöscht wurde, von dem sie stammt. Das Löschen Ihres Kontos nimmt eine von Ihnen erstattete Meldung nicht zurück und löscht keine Meldung über Sie.</p>
+    </div>
+
+    <h2 id="apple-linked">Wenn Ihr Konto mit Mit Apple anmelden verknüpft ist</h2>
+
+    <p>Manche ULMOX-Konten sind mit Mit Apple anmelden verknüpft. Ist Ihres dabei, hat die dauerhafte Löschung einen zusätzlichen Schritt, weil Apple verlangt, dass eine App beim Löschen eines Kontos ihre Berechtigung für Mit Apple anmelden aufgibt und nicht nur ihren eigenen Datensatz löscht.</p>
+
+    <ol>
+      <li>Auf einem Apple-Gerät bittet ULMOX Sie, direkt gegenüber Apple noch einmal zu bestätigen. Diese Bestätigung findet zwischen Ihnen und Apple auf Ihrem eigenen Gerät statt. <strong>ULMOX erhält Ihr Apple-Passwort nicht</strong>, und wir fragen Sie nie danach.</li>
+      <li>Erst diese Bestätigung erlaubt ULMOX, die eigene Berechtigung für Mit Apple anmelden für Ihr Konto zu widerrufen.</li>
+      <li>Erst danach beginnt die oben beschriebene dauerhafte Löschung.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Wird dieser Schritt nicht abgeschlossen, wird nichts gelöscht.</strong> Wenn Sie den Apple-Bildschirm schließen, wenn die Bestätigung ein anderes Apple-Konto zurückgibt als das angemeldete, oder wenn der Schritt aus einem anderen Grund scheitert, bricht ULMOX ab, bevor etwas Dauerhaftes geschieht, und teilt Ihnen mit, dass nichts gelöscht wurde. Sie können es erneut versuchen.</p>
+    </div>
+
+    <p>Drei Dinge werden leicht verwechselt:</p>
+
+    <ul>
+      <li><strong>Den Widerruf der ULMOX-Berechtigung für Mit Apple anmelden</strong> hindert ULMOX daran, Mit Apple anmelden für Sie zu verwenden. Für sich genommen löscht er Ihr ULMOX-Konto nicht und beseitigt die darin enthaltenen Daten nicht.</li>
+      <li><strong>Das Löschen Ihres ULMOX-Kontos</strong> ist die Handlung, die Ihre ULMOX-Daten entfernt. Sie ist erst abgeschlossen, wenn die auf dieser Seite beschriebene Löschung durchgelaufen ist — keine Änderung einer Anmeldeberechtigung schließt sie ab.</li>
+      <li><strong>Das Löschen Ihrer Apple-ID</strong> kann nur Apple auf Ihren eigenen Wunsch tun — ULMOX tut das nie und kann es nicht tun.</li>
+    </ul>
+
+    <h3>Ein mit Apple verknüpftes Konto von einem Android-Gerät aus löschen</h3>
+
+    <p>Der Apple-Bestätigungsschritt kann nur auf einem Apple-Gerät abgeschlossen werden. Wenn Sie versuchen, ein mit Apple verknüpftes ULMOX-Konto von einem Android-Telefon aus zu löschen, bricht ULMOX ab, bevor etwas entfernt wird, und teilt Ihnen mit, dass <strong>nichts gelöscht wurde</strong>. Schließen Sie die Löschung auf einem Apple-Gerät ab oder <a href="support.html">wenden Sie sich an den Support</a>; wir erledigen es für Sie.</p>
+
+    <p>Ein Konto, das nur die Anmeldung mit Google oder nur eine E-Mail-Adresse verwendet, wird auf beiden Gerätearten normal gelöscht. Ein Konto, das sowohl mit Apple als auch mit Google verknüpft ist, benötigt weiterhin den Apple-Schritt.</p>
+
+    <h2>Wenn Sie nur eine Pause wollen</h2>
+
+    <p>Die Deaktivierung blendet Ihr Profil und Ihre Global-Inhalte aus und lässt sich durch erneutes Anmelden rückgängig machen. Bereits gesendete Videos können bei den Empfangenden für deren übliche Aufbewahrungsdauer verbleiben. Die Deaktivierung erfüllt kein Löschverlangen — wenn Sie Ihre Daten entfernt haben möchten, nutzen Sie Konto löschen.</p>
+
+    <p>Die Deaktivierung beseitigt keine Sicherheitsvermerke, und die Reaktivierung macht nichts rückgängig. Die Rückkehr stellt Ihren Zugang wieder her; sie hebt keine Moderationsentscheidung auf, bringt keine von der Moderation entfernten oder ausgeblendeten Inhalte zurück und öffnet keine beendete Connection erneut. Das Beenden einer Connection ist für dieses Paar endgültig. Das Blockieren wirkt anders: eine Blockierung beendet die bestehende Connection und stoppt den Kontakt in beide Richtungen, solange sie besteht. Eine Blockierung aufzuheben stellt die alte Connection ebenfalls nicht wieder her — die beiden Konten müssten sich von vorn neu qualifizieren, durch zwei neue qualifizierende Videoaustausche und eine erneute Zustimmung beider Personen.</p>
+
+    <h2>Fragen</h2>
+
+    <p>Wenden Sie sich an <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Siehe auch <a href="privacy.html">Datenschutzerklärung</a> und <a href="terms.html">Bedingungen</a>.</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Rechtliches und Support">
+      <ul>
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="privacy.html">Datenschutzerklärung</a></li>
+        <li><a href="terms.html">Bedingungen</a></li>
+        <li><a href="safety.html">Sicherheit &amp; Moderation</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><span aria-current="page">Konto löschen</span></li>
+        <li><a href="translation.html">Informationen zur Übersetzung</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

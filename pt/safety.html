@@ -1,61 +1,305 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Segurança e moderação ULMOX - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Como a ULMOX previne, deteta e atua perante o abuso e a exploração sexual de crianças." />
   <style>
-    body { margin: 0; padding: 0; background-color: #0d0d0f; color: #ffffff; font-family: Arial, sans-serif; line-height: 1.7; }
-    .container { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
-    h1 { font-size: 42px; margin-bottom: 30px; }
-    h2 { margin-top: 42px; font-size: 24px; color: #ffffff; }
-    p, li { color: #d0d0d0; font-size: 17px; }
-    ul { padding-left: 22px; }
-    a { color: #9d7bff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .footer { margin-top: 60px; padding-top: 30px; border-top: 1px solid #2a2a2e; color: #888; font-size: 14px; }
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Segurança e moderação ULMOX</h1>
-    <p>A ULMOX compromete-se a oferecer um ambiente seguro e respeitoso para todos os utilizadores.</p>
-    <h2>Segurança e moderação ULMOX</h2>
-    <p>A ULMOX compromete-se a oferecer um ambiente seguro e respeitoso para todos os utilizadores.</p>
-    <p>A ULMOX compromete-se a oferecer um ambiente seguro e respeitoso para todos os utilizadores.</p>
-    <ul><li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li>
-      <li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li>
-      <li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li>
-      <li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li>
-      <li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li>
-      <li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li>
-      <li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li></ul>
-    <h2>Contacto</h2>
-    <p>Os utilizadores podem denunciar conteúdo inadequado diretamente na app. Todas as denúncias são analisadas e o conteúdo que viola as regras é removido rapidamente.</p>
-    <p>Os utilizadores podem denunciar conteúdo inadequado diretamente na app. Todas as denúncias são analisadas e o conteúdo que viola as regras é removido rapidamente.</p>
-    <ul><li>Os utilizadores podem denunciar conteúdo inadequado diretamente na app. Todas as denúncias são analisadas e o conteúdo que viola as regras é removido rapidamente.</li>
-      <li>Os utilizadores podem denunciar conteúdo inadequado diretamente na app. Todas as denúncias são analisadas e o conteúdo que viola as regras é removido rapidamente.</li>
-      <li>Os utilizadores podem denunciar conteúdo inadequado diretamente na app. Todas as denúncias são analisadas e o conteúdo que viola as regras é removido rapidamente.</li>
-      <li>Os utilizadores podem denunciar conteúdo inadequado diretamente na app. Todas as denúncias são analisadas e o conteúdo que viola as regras é removido rapidamente.</li></ul>
-    <h2>Contacto</h2>
-    <p>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</p>
-    <p>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</p>
-    <h2>Segurança e moderação ULMOX</h2>
-    <p>A ULMOX compromete-se a oferecer um ambiente seguro e respeitoso para todos os utilizadores.</p>
-    <p>A ULMOX compromete-se a oferecer um ambiente seguro e respeitoso para todos os utilizadores.</p>
-    <h2>Segurança e moderação ULMOX</h2>
-    <p>A ULMOX compromete-se a oferecer um ambiente seguro e respeitoso para todos os utilizadores.</p>
-    <p>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</p>
-    <h2>Normas de Segurança Infantil</h2>
-    <p>A ULMOX tem tolerância zero a qualquer forma de abuso ou exploração sexual de crianças (CSAE).</p>
-    <p>A ULMOX tem tolerância zero a qualquer forma de abuso ou exploração sexual de crianças (CSAE).</p>
-    <h2>Contacto</h2>
-    <p>Contacto:</p>
-    <p><a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
-    <div class="footer">© 2026 ULMOX</div>
+  <a class="ulmox-skip-link" href="#main">Ir para o conteúdo</a>
+<div class="container">
+  <main id="main">
+    <h1>Normas de Segurança Infantil da ULMOX</h1>
+    <p class="effective">Em vigor a partir de 2026-09-04. Alterado pela última vez em 2026-09-04.</p>
+
+    <p>A ULMOX está reservada a pessoas adultas com <strong>18 anos ou mais</strong>. Esta página expõe como prevenimos, detetamos e atuamos perante o abuso e a exploração sexual de crianças.</p>
+
+    <div class="callout">
+      <p><strong>Se uma criança estiver em perigo imediato, contacte primeiro os serviços de emergência locais.</strong> Denunciar à ULMOX não substitui o recurso às autoridades.</p>
+    </div>
+
+    <h2>Tolerância zero</h2>
+
+    <p>A ULMOX tem tolerância zero para o abuso e a exploração sexual de crianças (CSAE) e para o material de abuso sexual de crianças (CSAM). As contas e os conteúdos envolvidos são removidos.</p>
+
+    <h2>O que é proibido</h2>
+
+    <p>Dito com clareza, o seguinte nunca é permitido na ULMOX:</p>
+
+    <ul>
+      <li>Qualquer conteúdo sexual que envolva uma pessoa com menos de 18 anos, real ou representada.</li>
+      <li>Aliciamento: criar confiança com um menor para o explorar sexualmente, incluindo pedir-lhe que mantenha o contacto em segredo dos pais ou tutores.</li>
+      <li>Sexualizar um menor, ou pedir a um menor imagens sexuais ou contacto sexual.</li>
+      <li>Coação, chantagem (incluindo sextorsão), tráfico, ou qualquer conduta que coloque um menor em perigo grave.</li>
+      <li>Publicitar, procurar ou remeter por hiperligação para material deste tipo.</li>
+    </ul>
+
+    <h2>Como denunciar</h2>
+
+    <p>Dentro da aplicação pode usar <strong>Denunciar conteúdo</strong> e <strong>Denunciar utilizador</strong>. Ambos oferecem uma categoria dedicada de <strong>segurança infantil</strong>. Pode também bloquear uma pessoa, o que interrompe toda a interação entre vocês em ambos os sentidos.</p>
+
+    <p>Também nos pode escrever:</p>
+
+    <p><strong>Contacto de Segurança Infantil da ULMOX</strong><br /> <a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ulmoxapp@outlook.com</a></p>
+
+    <h2>O que acontece a seguir</h2>
+
+    <ul>
+      <li>As denúncias de segurança infantil recebem a <strong>maior prioridade</strong> para análise humana.</li>
+      <li>O conteúdo denunciado em concreto é imediatamente colocado numa <strong>quarentena reversível</strong>, para deixar de ser mostrado publicamente e de ser entregue, enquanto uma pessoa o analisa.</li>
+      <li>As provas são preservadas para análise e só são acessíveis a moderadores autorizados.</li>
+      <li>As denúncias <strong>não</strong> banem automaticamente uma conta. Também não o fazem o número de denúncias, um filtro automático que retém uma mensagem, uma quarentena ou uma tradução. Um banimento é uma decisão separada e deliberada que só uma pessoa administradora autorizada da ULMOX pode tomar, e apenas depois de analisar o caso.</li>
+      <li>Resolver uma denúncia retira-a da lista ativa de análise. Não a apaga: as provas e o registo do que foi decidido são conservados onde exista um motivo justificado, para que uma decisão possa ser auditada e um recurso possa ter resposta.</li>
+      <li>Se quem analisa aprovar um vídeo denunciado, este só volta ao feed Global se continuar a ser elegível por si próprio. Conteúdo cujo proprietário saiu, foi restringido ou banido, ou que está indisponível por outro motivo, mantém-se indisponível seja qual for a decisão sobre a denúncia.</li>
+      <li>Onde a lei aplicável o exigir, comunicamos à autoridade legalmente designada competente.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>O nosso objetivo é analisar denúncias urgentes de segurança infantil no prazo de 24 horas.</strong> É um objetivo para iniciar a análise humana. Não é uma garantia de que cada caso fique definitivamente resolvido em 24 horas, e os casos complexos podem demorar mais.</p>
+    </div>
+
+    <p>As restantes denúncias de segurança são analisadas com a maior rapidez razoavelmente possível.</p>
+
+    <h2>Segurança nas Connections</h2>
+
+    <div class="callout">
+      <p><strong>O Connections e a tradução opcional de mensagens estão a ser introduzidos gradualmente e podem ainda não estar disponíveis em todas as contas nem em todas as versões instaladas da aplicação.</strong></p>
+    </div>
+
+    <p>Uma Connection é uma conversa apenas de texto entre duas pessoas adultas que a aprovaram ambas depois de duas trocas de vídeo válidas e distintas. A ULMOX não tem pesquisa de utilizadores, pelo que ninguém o pode encontrar para lhe escrever. Estes são os controlos de segurança dentro de uma Connection:</p>
+
+    <ul>
+      <li><strong>Denunciar mensagem.</strong> Disponível numa mensagem que tenha recebido. A denúncia envia a mensagem original para uma pessoa analisar.</li>
+      <li><strong>Denunciar oculta a mensagem para si, e apenas para si.</strong> Depois de denunciar uma mensagem, ela desaparece da sua vista da conversa. A cópia de quem a enviou fica inalterada e essa pessoa não é informada de que a denunciou. Ocultá-la é em seu benefício; não é uma sanção contra ela, e a decisão sobre a mensagem continua a caber a uma pessoa.</li>
+      <li><strong>Denunciar utilizador.</strong> Disponível em separado, para a pessoa em vez de uma mensagem isolada. Ambos têm uma categoria dedicada à segurança infantil.</li>
+      <li><strong>Bloquear.</strong> O bloqueio interrompe a interação em ambos os sentidos. É proposto depois de uma denúncia como escolha separada, nunca incluído nela, e recusá-lo deixa a sua denúncia intacta. Um bloqueio termina também a Connection que tem agora. Retirá-lo não devolve essa Connection: o par teria de voltar a ficar elegível desde o início, através de duas novas trocas de vídeo válidas e de uma nova aprovação de cada pessoa.</li>
+      <li><strong>Terminar Connection.</strong> Termina a conversa para as duas pessoas. Não pode ser reposta e não reabre num encontro futuro. Terminar não é o mesmo que bloquear, e não apaga as denúncias que já tenha feito.</li>
+      <li><strong>Sair funciona sempre.</strong> Bloquear e terminar uma Connection continuam ao seu alcance aconteça o que acontecer: uma ação de segurança nunca é aquilo que deixa de estar disponível.</li>
+      <li><strong>As mensagens expiram.</strong> Uma mensagem comum numa Connection é considerada expirada cerca de sete dias depois de enviada. Uma mensagem que denuncie é tratada de outra forma: assim que é prova numa análise, a expiração de sete dias deixa de a reger, e é conservada enquanto a análise estiver aberta e depois disso quando o resultado o justificar.</li>
+      <li><strong>Não há anexos.</strong> As Connections transportam apenas mensagens escritas: nem fotografias, nem vídeos, nem ficheiros, nem mensagens de voz.</li>
+    </ul>
+
+    <h2>Mensagens traduzidas</h2>
+
+    <ul>
+      <li>Uma denúncia diz sempre respeito à <strong>mensagem original</strong>. A denúncia transporta o original, e é isso que quem modera lê.</li>
+      <li>Uma tradução opcional mostrada a quem lê não é uma decisão de moderação e não é prova.</li>
+      <li>Uma tradução não pode tornar uma mensagem entregável. Conteúdo bloqueado ou retido mantém-se bloqueado ou retido em qualquer idioma em que seja lido.</li>
+      <li>Nenhuma conta é banida por causa do que uma tradução produziu. Só uma pessoa administradora autorizada da ULMOX pode banir uma conta, e apenas depois de analisar as provas originais.</li>
+    </ul>
+
+    <p>Consulte <a href="translation.html">Informações sobre a tradução</a>.</p>
+
+    <h2>O que a ULMOX não faz</h2>
+
+    <ul>
+      <li>A ULMOX não analisa automaticamente fotogramas de vídeo, áudio nem transcrições. A segurança do vídeo assenta nas denúncias, na quarentena reversível, no bloqueio e na análise humana.</li>
+      <li>A ULMOX não bane contas automaticamente, e nenhum número de denúncias produz um banimento automático.</li>
+      <li>A ULMOX não afirma que alguma verificação automática encontra todas as violações. As denúncias e a análise humana são aquilo em que assenta a segurança deste serviço.</li>
+      <li>A ULMOX não publica os limiares internos, as ferramentas nem os procedimentos de trabalho dos seus sistemas de segurança, porque publicá-los diria exatamente o que evitar às pessoas que procuramos travar.</li>
+    </ul>
+
+    <h2>Recursos</h2>
+
+    <p>Se considerar que houve uma atuação errada sobre um conteúdo ou uma conta, escreva para <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> e uma pessoa irá analisá-la. Consulte <a href="support.html">Suporte</a> para saber o que incluir.</p>
+
+    <h2>Páginas relacionadas</h2>
+
+    <p>
+      <a href="terms.html">Termos</a>
+      &middot;
+      <a href="privacy.html">Política de Privacidade</a>
+      &middot;
+      <a href="support.html">Suporte</a>
+      &middot;
+      <a href="delete_account.html">Eliminar conta</a>
+    </p>
+  </main>
+
   </div>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+  <footer>
+    <nav aria-label="Informações legais e suporte">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="privacy.html">Política de Privacidade</a></li>
+        <li><a href="terms.html">Termos</a></li>
+        <li><span aria-current="page">Segurança e moderação</span></li>
+        <li><a href="support.html">Suporte</a></li>
+        <li><a href="delete_account.html">Eliminar conta</a></li>
+        <li><a href="translation.html">Informações sobre a tradução</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

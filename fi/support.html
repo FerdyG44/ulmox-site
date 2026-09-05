@@ -1,24 +1,275 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tuki - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Miten otat yhteyttä ULMOXiin, kuinka nopeasti vastaamme ja miten haet muutosta päätökseen." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;">
+<body>
+  <a class="ulmox-skip-link" href="#main">Siirry sisältöön</a>
+<div class="container">
+  <main id="main">
+    <h1>ULMOX-tuki</h1>
+    <p class="effective">Voimassa 2026-09-04 alkaen. Viimeksi päivitetty 2026-09-04.</p>
 
-Tuki
+    <p>Kirjoita osoitteeseen <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Jonkin alla olevan aiherivin käyttäminen auttaa meitä ohjaamaan viestisi oikein.</p>
 
-Tarvitsetko apua?
+    <table>
+      <tr><th scope="col">Tarvitsen apua asiassa</th><th scope="col">Aiherivi</th><th scope="col">Huomautuksia</th></tr>
+      <tr><td>Yleinen tuki</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Support">ULMOX Support</a></td><td>Kaikki, mitä alla ei mainita.</td></tr>
+      <tr><td>Tilini poistaminen</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">ULMOX Account Deletion Request</a></td><td>Katso ensin <a href="delete_account.html">Poista tili</a> — sovelluksen kautta se on nopeampaa.</td></tr>
+      <tr><td>Ikävarmistukseni korjaaminen</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Age%20Verification%20Correction">ULMOX Age Verification Correction</a></td><td>Jos syötit syntymäaikasi väärin. Et voi muuttaa tätä itse.</td></tr>
+      <tr><td>Sisältöä koskevan päätöksen muutoksenhaku</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Content%20Appeal">ULMOX Content Appeal</a></td><td>Jos sisältösi on piilotettu tai poistettu.</td></tr>
+      <tr><td>Tilirajoituksen muutoksenhaku</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Appeal">ULMOX Account Appeal</a></td><td>Jos tilisi on jäädytetty tai suljettu.</td></tr>
+      <tr><td>Lasten turvallisuutta koskeva ilmoitus</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ULMOX Child Safety Report</a></td><td>Korkein prioriteetti. Katso <a href="safety.html">Turvallisuus ja moderointi</a>.</td></tr>
+    </table>
 
-Lähetä meille sähköpostia:
+    <h2>Kuinka nopeasti vastaamme</h2>
 
-<h2>ulmoxapp@outlook.com</h2>
+    <ul>
+      <li><strong>Kiireellisissä lasten turvallisuutta koskevissa ilmoituksissa</strong> tavoitteena on ihmisen tekemä käsittely <strong>24 tunnin kuluessa</strong>. Se on tavoite käsittelyn aloittamiselle, ei takuu siitä, että tapaus ratkaistaan lopullisesti 24 tunnissa.</li>
+      <li><strong>Kaikki muu</strong> hoidetaan niin nopeasti kuin kohtuudella on mahdollista.</li>
+    </ul>
 
-Vastaamme yleensä 24 tunnin kuluessa.
+    <div class="callout">
+      <p><strong>Emme koskaan pyydä sinulta salasanaa, Apple- tai Google-salasanaa, kertakäyttöistä todennuskoodia, valtuutuskoodia tai kirjautumistunnistetta, emmekä koskaan pyydä sinua lähettämään sähköpostitse passia tai muuta henkilöllisyystodistusta.</strong> Älä lähetä niitä. Jos ULMOXilta väitetysti tuleva viesti pyytää mitään näistä, se ei ole meiltä.</p>
+    </div>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <h2>Connections ja viestien kääntäminen</h2>
+
+    <div class="callout">
+      <p><strong>Connections ja valinnainen viestien kääntäminen otetaan käyttöön vaiheittain, eivätkä ne välttämättä ole vielä käytettävissä jokaisella tilillä tai jokaisessa asennetussa sovellusversiossa.</strong></p>
+    </div>
+
+    <p>Jos Connections ei ole tililläsi, korjattavaa ei ole eikä meiltä ole mitään pyydettävää: se ei ole virhe, ei vika tililläsi eikä jotain, minkä tuki voisi kytkeä sinulle päälle. Ainoa kannattava asia on päivittää sovellus nykyiseen versioon.</p>
+
+    <p>Kun kääntäminen on käytettävissäsi, nämä ovat tavallisimmat ongelmat ja niiden ratkaisut. Katso <a href="translation.html">Tietoa kääntämisestä</a> siitä, miten ominaisuus toimii.</p>
+
+    <table>
+      <tr><th scope="col">Mitä näet</th><th scope="col">Mitä se tarkoittaa</th></tr>
+      <tr><td>Kielipaketti latautuu vielä</td><td>Kieli on ladattava kerran ennen kuin sitä voi kääntää. Jätä näyttö auki; alkuperäinen viesti pysyy luettavana koko ajan.</td></tr>
+      <tr><td>Lataus ei käynnisty</td><td>Lataukset käyttävät oletuksena Wi-Fiä. Mobiilidatalla se on valittava nimenomaisesti — ULMOX ei kuluta dataasi pyytämättä.</td></tr>
+      <tr><td>Lataus epäonnistui</td><td>Yritä uudelleen vakaalla yhteydellä. Viestissä ei muutu mikään, jos lataus epäonnistuu.</td></tr>
+      <tr><td>”Tätä viestiä ei voi kääntää”</td><td>Kieli on tuettujen ulkopuolella tai sitä ei voitu tunnistaa riittävän varmasti. ULMOX näyttää mieluummin ei mitään kuin arvaa.</td></tr>
+      <tr><td>Käännös kuulostaa oudolta</td><td>Konekäännös voi olla väärässä kuulostaen silti varmalta, ja kielipari, jossa ei ole englantia, voidaan kääntää englannin kautta. Lue alkuperäinen.</td></tr>
+      <tr><td>Haluat tilaa takaisin</td><td>Poista ladatut kielipaketit sovelluksen kohdasta Käännösmallit.</td></tr>
+      <tr><td>Viesti on turvallisuusongelma</td><td>Ilmoita siitä sovelluksessa. Ilmoitus sisältää alkuperäisen viestin, jonka ihminen käsittelee.</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>Älä lähetä viestiä meille sähköpostitse.</strong> Älä lähetä viestitekstiä, kuvakaappauksia yksityisestä keskustelusta, todennustietoja tai laitetunnisteita. Ilmoita viestistä sen sijaan sovelluksessa — se antaa käsittelijälle alkuperäisen turvallisesti, emmekä koskaan tarvitse kopiota sinulta.</p>
+    </div>
+
+    <h2>Muutoksenhaku</h2>
+
+    <p>Muutoksenhaku on käytettävissä riippumatta siitä, voitko juuri nyt käyttää sovellusta, ja sovelluksen sisäinen tukilinkki pysyy saavutettavana, jos tiliäsi on rajoitettu.</p>
+
+    <ul>
+      <li>Muutoksenhaun lukee valtuutettu henkilö.</li>
+      <li>Muutoksenhaun jättäminen ei palauta tiliäsi tai sisältöäsi automaattisesti.</li>
+      <li>Muutoksenhaut eivät poista ilmoituksia tai turvallisuusmerkintöjä.</li>
+      <li>Emme kerro, kuka ilmoitti sinusta, emmekä selitä turvajärjestelmiemme sisäisiä kynnysarvoja.</li>
+    </ul>
+
+    <p>Liitä mukaan ULMOX-käyttäjätunnuksesi ja, jos se on olennaista, suunnilleen milloin päätös tehtiin. Älä liitä salasanoja tai henkilöllisyystodistuksia.</p>
+
+    <h2>Aiheeseen liittyvät sivut</h2>
+
+    <p>
+      <a href="privacy.html">Tietosuojakäytäntö</a>
+      &middot;
+      <a href="terms.html">Ehdot</a>
+      &middot;
+      <a href="safety.html">Turvallisuus ja moderointi</a>
+      &middot;
+      <a href="delete_account.html">Poista tili</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Juridiset tiedot ja tuki">
+      <ul>
+        <li><a href="index.html">Etusivu</a></li>
+        <li><a href="privacy.html">Tietosuojakäytäntö</a></li>
+        <li><a href="terms.html">Ehdot</a></li>
+        <li><a href="safety.html">Turvallisuus ja moderointi</a></li>
+        <li><span aria-current="page">Tuki</span></li>
+        <li><a href="delete_account.html">Poista tili</a></li>
+        <li><a href="translation.html">Tietoa kääntämisestä</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

@@ -29,6 +29,9 @@ test("production artifact passes deployment safety checks", (t) => {
   });
 
   const result = verifyProductionBuild({ outputRoot, measurementId });
+  // Stage 0.13: 161 HTML pages exist; the 40 account-deletion pages are
+  // deliberately excluded from analytics, leaving 101 instrumented.
+  assert.equal(result.htmlFiles, 161);
   assert.equal(result.instrumentedHtmlFiles, 121);
   assert.equal(result.customDomain, "ulmoxapp.com");
   assert.equal(result.analyticsConfigured, true);

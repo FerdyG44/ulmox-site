@@ -1,26 +1,293 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>删除账户 - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="如何在应用内或通过邮件永久删除 ULMOX 账号，以及之后你的数据会怎样。" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">跳到主要内容</a>
+<div class="container">
+  <main id="main">
+    <h1>删除你的 ULMOX 账号</h1>
+    <p class="effective">自 2026-09-04 起生效。最近更新于 2026-09-04。</p>
 
-  <h1>删除你的账户</h1>
+    <p>本页说明如何永久删除你的 ULMOX 账号，以及之后你的数据会发生什么。</p>
 
-  <p>如果你想删除 ULMOX 账户，请联系我们：</p>
+    <div class="callout">
+      <p><strong>停用不是删除。</strong>停用会隐藏你的资料和内容，并且可以撤销。删除账号是永久性的，无法撤销。</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>方式 1 — 在应用内删除（推荐）</h2>
 
-  <p>请附上你的注册邮箱地址。</p>
+    <p>这是最快的途径，也不需要往来邮件。它并非对每个设备上的每个账号都可用：关联了通过 Apple 登录的账号无法在 Android 手机上完成删除，会改为引导至<a href="support.html">支持</a>。请见下方<a href="#apple-linked">如果你的账号关联了通过 Apple 登录</a>。</p>
 
-  <p>你的账户及所有相关数据将在 7 天内永久删除。</p>
+    <ol>
+      <li>打开 ULMOX，进入<strong>个人资料 &rarr; 法律与安全 &rarr; 账号管理 &rarr; 删除账号</strong>。</li>
+      <li>阅读确认说明，其中说明删除是永久性的。</li>
+      <li>确认。可能会先要求你重新登录，这是为了防止他人删除你的账号。</li>
+    </ol>
 
-  <p>如有任何问题，欢迎联系我们。</p>
+    <h2>方式 2 — 通过邮件申请删除</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>如果你无法打开应用，可以请我们删除你的账号。</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">以主题“ULMOX Account Deletion Request”写信至 ulmoxapp@outlook.com</a></p>
+
+    <p>请只提供找到你账号所需的最少信息：</p>
+
+    <ul>
+      <li>与你的 ULMOX 账号关联的电子邮件地址，以及</li>
+      <li>如果你知道，你的 ULMOX 用户名。</li>
+    </ul>
+
+    <p>在可能的情况下，请使用与你账号关联的邮箱来信。如果你的账号关联了通过 Apple 登录并使用了<strong>隐藏我的邮件地址</strong>，请使用你的 Apple 中转地址来信，或提供足以识别该账号的非机密账号信息。</p>
+
+    <div class="callout">
+      <p><strong>我们绝不会向你索取密码、Apple 或 Google 密码、一次性验证码、授权码、登录令牌或身份证件的照片</strong>，也绝不会要求你把其中任何一项用邮件发给我们。如果你收到自称来自 ULMOX 并索要这些内容的消息，那它不是我们发出的。</p>
+    </div>
+
+    <p>在删除之前，我们会核实账号确实属于你。仅凭从公开网页表单或未经验证的地址发来的请求，并不会删除账号。我们可能会请你通过安全的方式确认所有权，例如使用账号邮箱回复。</p>
+
+    <h2>账号被删除时会发生什么</h2>
+
+    <ul>
+      <li>删除一旦成功启动，访问和可被发现的状态即被移除。你的资料不再对他人可见，你的账号也不再被选为新的投递对象。</li>
+      <li>此后，已存储数据的物理清除会在后台继续进行。目标是在 30 天内完成，除非有正当的安全或法律义务要求有限保留。</li>
+      <li>你录制的视频、其缩略图、你的资料信息、你的头像以及你拥有的 Global 内容都会被移除。</li>
+      <li>属于他人的内容<em>不会</em>仅因为你分享过就被删除。被移除的是你与它的关联，视频仍留在创建它的人那里。</li>
+      <li>你的用户名在删除后会保留 90 天才可被重新使用，因此不会立即被别人占用。</li>
+      <li>在有正当理由的情况下，并且只在该理由仍然成立期间，可能保留有限的安全、法律或交易记录。当保留某项安全记录时，将其与你身份相关联的连接会在清除过程中一并去除，因此留下的是关于发生了什么的记录，而不是关于你的记录。</li>
+      <li>删除你的账号不会删除其他任何人的账号。一个 Connection 有两个人，另一方的消息、视频和记录仍留在他那里。</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>安全证据不同于普通的消息记录。</strong>Connections 与可选的消息翻译正在逐步推出，可能尚未对每个账号或每个已安装的应用版本开放。 如果你有 Connection：其中的普通消息在发送约七天后被视为过期。已被举报的消息不再受此约束：它是审核中的证据，会在审核进行期间保留，并在结果证明有理由时于其后继续保留——包括在其来源账号被删除之后。删除你的账号不会撤回你提交的举报，也不会抹除针对你的举报。</p>
+    </div>
+
+    <h2 id="apple-linked">如果你的账号关联了通过 Apple 登录</h2>
+
+    <p>有些 ULMOX 账号关联了通过 Apple 登录。如果你的账号是这样，永久删除会多一个步骤，因为 Apple 要求应用在删除账号时放弃其通过 Apple 登录的授权，而不只是删掉自己的记录。</p>
+
+    <ol>
+      <li>在 Apple 设备上，ULMOX 会请你再次直接向 Apple 确认。该确认在你与 Apple 之间、在你自己的设备上进行。<strong>ULMOX 不会收到你的 Apple 密码</strong>，我们也从不向你索取。</li>
+      <li>正是这一确认，才使 ULMOX 能够撤销自己针对你账号的通过 Apple 登录授权。</li>
+      <li>此后，上文所述的永久删除才会开始。</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>如果该步骤未完成，则不会删除任何内容。</strong>如果你关闭了 Apple 的界面、确认返回的 Apple 账号与已登录的不同，或该步骤因其他原因失败，ULMOX 会在任何永久性操作发生之前停止，并告知你没有任何内容被删除。你可以再试一次。</p>
+    </div>
+
+    <p>有三件容易混淆的不同事情：</p>
+
+    <ul>
+      <li><strong>撤销 ULMOX 的通过 Apple 登录授权</strong>会使 ULMOX 无法再为你使用通过 Apple 登录。仅此本身并不会删除你的 ULMOX 账号，也不会清除其中的数据。</li>
+      <li><strong>删除你的 ULMOX 账号</strong>才是移除你 ULMOX 数据的操作。只有当本页所述的清除已经执行，它才算完成——任何登录授权的变更都无法使其完成。</li>
+      <li><strong>删除你的 Apple ID</strong> 只有 Apple 才能应你本人的请求执行——ULMOX 从不这样做，也无法这样做。</li>
+    </ul>
+
+    <h3>从 Android 设备删除关联 Apple 的账号</h3>
+
+    <p>Apple 的确认步骤只能在 Apple 设备上完成。如果你尝试从 Android 手机删除关联了 Apple 的 ULMOX 账号，ULMOX 会在移除任何内容之前停止，并告知你<strong>没有任何内容被删除</strong>。请在 Apple 设备上完成删除，或<a href="support.html">联系支持</a>，我们会代为处理。</p>
+
+    <p>仅使用 Google 登录或仅使用电子邮件地址的账号，在两类设备上都能正常删除。同时关联 Apple 和 Google 的账号仍然需要 Apple 这一步。</p>
+
+    <h2>如果你只是想休息一下</h2>
+
+    <p>停用会隐藏你的资料和 Global 内容，重新登录即可撤销。你已经发送的视频可能会在接收者那里保留其通常的保存期限。停用并不满足删除请求——如果你希望移除数据，请使用“删除账号”。</p>
+
+    <p>停用不会抹除安全记录，重新启用也不会撤销任何东西。回来会恢复你的访问权限；它不会撤销审核决定，不会找回被审核删除或隐藏的内容，也不会重新打开已结束的 Connection。结束 Connection 对该组合而言是最终的。拉黑的作用方式不同：拉黑会结束你当前的 Connection，并在其生效期间双向中止联系。解除拉黑同样不会恢复原来的 Connection——两个账号需要从头重新符合条件，也就是重新完成两次符合条件的视频往来并再次获得双方同意。</p>
+
+    <h2>疑问</h2>
+
+    <p>请联系 <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>。另请参见<a href="privacy.html">隐私政策</a>和<a href="terms.html">条款</a>。</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="法律信息与支持">
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="privacy.html">隐私政策</a></li>
+        <li><a href="terms.html">条款</a></li>
+        <li><a href="safety.html">安全与审核</a></li>
+        <li><a href="support.html">支持</a></li>
+        <li><span aria-current="page">删除账号</span></li>
+        <li><a href="translation.html">翻译说明</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

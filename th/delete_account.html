@@ -1,26 +1,293 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>การลบบัญชี - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="วิธีลบบัญชี ULMOX อย่างถาวร ทั้งในแอปหรือทางอีเมล และสิ่งที่เกิดขึ้นกับข้อมูลของคุณ" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
+<div class="container">
+  <main id="main">
+    <h1>ลบบัญชี ULMOX ของคุณ</h1>
+    <p class="effective">มีผลตั้งแต่ 2026-09-04 อัปเดตล่าสุด 2026-09-04</p>
 
-  <h1>ลบบัญชีของคุณ</h1>
+    <p>หน้านี้อธิบายวิธีลบบัญชี ULMOX ของคุณอย่างถาวร และสิ่งที่เกิดขึ้นกับข้อมูลของคุณหลังจากนั้น</p>
 
-  <p>หากคุณต้องการลบบัญชี ULMOX โปรดติดต่อเรา:</p>
+    <div class="callout">
+      <p><strong>การปิดใช้งานไม่ใช่การลบ</strong> การปิดใช้งานซ่อนโปรไฟล์และเนื้อหาของคุณ และย้อนกลับได้ ส่วนการลบบัญชีเป็นการถาวรและย้อนกลับไม่ได้</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>ทางเลือกที่ 1 — ลบในแอป (แนะนำ)</h2>
 
-  <p>โปรดระบุอีเมลที่ลงทะเบียนไว้</p>
+    <p>นี่เป็นเส้นทางที่เร็วที่สุดและไม่ต้องส่งอีเมลไปมา แต่ไม่ได้ใช้ได้กับทุกบัญชีบนทุกอุปกรณ์ บัญชีที่เชื่อมโยงกับลงชื่อเข้าใช้ด้วย Apple ไม่สามารถทำการลบให้เสร็จจากโทรศัพท์ Android ได้ และจะถูกนำไปยัง <a href="support.html">ฝ่ายสนับสนุน</a> แทน ดูด้านล่าง <a href="#apple-linked">หากบัญชีของคุณเชื่อมโยงกับลงชื่อเข้าใช้ด้วย Apple</a></p>
 
-  <p>บัญชีของคุณและข้อมูลที่เกี่ยวข้องทั้งหมดจะถูกลบถาวรภายใน 7 วัน</p>
+    <ol>
+      <li>เปิด ULMOX แล้วไปที่ <strong>โปรไฟล์ &rarr; กฎหมายและความปลอดภัย &rarr; การจัดการบัญชี &rarr; ลบบัญชี</strong></li>
+      <li>อ่านข้อความยืนยันที่อธิบายว่าการลบเป็นการถาวร</li>
+      <li>ยืนยัน คุณอาจถูกขอให้ลงชื่อเข้าใช้อีกครั้งก่อน ซึ่งช่วยปกป้องบัญชีของคุณจากการถูกผู้อื่นลบ</li>
+    </ol>
 
-  <p>หากมีคำถาม สามารถติดต่อเราได้เสมอ</p>
+    <h2>ทางเลือกที่ 2 — ขอให้ลบทางอีเมล</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>หากคุณเปิดแอปไม่ได้ คุณสามารถขอให้เราลบบัญชีของคุณได้</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">ส่งอีเมลถึง ulmoxapp@outlook.com โดยใช้หัวเรื่อง “ULMOX Account Deletion Request”</a></p>
+
+    <p>โปรดระบุเพียงข้อมูลขั้นต่ำที่จำเป็นต่อการค้นหาบัญชีของคุณ:</p>
+
+    <ul>
+      <li>ที่อยู่อีเมลที่ผูกกับบัญชี ULMOX ของคุณ และ</li>
+      <li>ชื่อผู้ใช้ ULMOX ของคุณ หากคุณทราบ</li>
+    </ul>
+
+    <p>หากเป็นไปได้ โปรดเขียนจากที่อยู่อีเมลที่ผูกกับบัญชีของคุณ หากบัญชีของคุณเชื่อมโยงกับลงชื่อเข้าใช้ด้วย Apple และคุณใช้ <strong>ซ่อนอีเมลของฉัน</strong> โปรดเขียนจากที่อยู่ส่งต่อของ Apple หรือให้รายละเอียดบัญชีที่ไม่เป็นความลับมากพอที่จะระบุบัญชีได้</p>
+
+    <div class="callout">
+      <p><strong>เราจะไม่ขอรหัสผ่าน รหัสผ่าน Apple หรือ Google รหัสยืนยันตัวตนแบบใช้ครั้งเดียว รหัสอนุญาต โทเค็นการลงชื่อเข้าใช้ หรือภาพถ่ายเอกสารแสดงตนจากคุณเลย</strong> และจะไม่ขอให้คุณส่งสิ่งใดในนี้มาทางอีเมลเลย หากคุณได้รับข้อความที่อ้างว่ามาจาก ULMOX และขอสิ่งเหล่านี้ ข้อความนั้นไม่ได้มาจากเรา</p>
+    </div>
+
+    <p>เราตรวจสอบว่าบัญชีเป็นของคุณก่อนที่จะลบ คำขอที่ส่งจากแบบฟอร์มเว็บสาธารณะหรือจากที่อยู่ที่ยังไม่ได้ยืนยันไม่ได้ลบบัญชีด้วยตัวมันเอง เราอาจขอให้คุณยืนยันความเป็นเจ้าของผ่านกระบวนการที่ปลอดภัย เช่น การตอบกลับจากที่อยู่อีเมลของบัญชี</p>
+
+    <h2>สิ่งที่เกิดขึ้นเมื่อบัญชีถูกลบ</h2>
+
+    <ul>
+      <li>สิทธิ์เข้าถึงและการค้นพบจะถูกยกเลิกทันทีที่การลบเริ่มต้นสำเร็จ โปรไฟล์ของคุณจะไม่ปรากฏต่อผู้อื่นอีก และบัญชีของคุณจะไม่ถูกเลือกสำหรับการส่งใหม่</li>
+      <li>จากนั้นการลบข้อมูลที่จัดเก็บไว้จริงจะดำเนินต่อไปเบื้องหลัง โดยตั้งเป้าให้เสร็จภายใน 30 วัน เว้นแต่มีข้อผูกพันด้านความปลอดภัยหรือกฎหมายอันชอบธรรมที่ต้องเก็บไว้อย่างจำกัด</li>
+      <li>วิดีโอที่คุณบันทึก ภาพย่อของวิดีโอเหล่านั้น ข้อมูลโปรไฟล์ของคุณ รูปโปรไฟล์ของคุณ และเนื้อหา Global ที่คุณเป็นเจ้าของ จะถูกนำออก</li>
+      <li>เนื้อหาที่ผู้อื่นเป็นเจ้าของจะ<em>ไม่</em>ถูกลบเพียงเพราะคุณเคยแชร์ แต่ความเชื่อมโยงของคุณกับเนื้อหานั้นจะถูกนำออกแทน และวิดีโอยังคงอยู่กับผู้ที่สร้างมันขึ้น</li>
+      <li>ชื่อผู้ใช้ของคุณจะถูกสงวนไว้ 90 วันหลังการลบก่อนที่จะนำกลับมาใช้ใหม่ได้ เพื่อไม่ให้ผู้อื่นนำไปใช้ได้ทันที</li>
+      <li>อาจมีการเก็บบันทึกด้านความปลอดภัย กฎหมาย หรือธุรกรรมอย่างจำกัดในที่ที่มีเหตุผลอันชอบธรรม และเก็บไว้เพียงตราบที่เหตุผลนั้นยังใช้ได้ ในที่ที่เก็บบันทึกด้านความปลอดภัยไว้ ลิงก์ที่เชื่อมโยงบันทึกนั้นกับตัวตนของคุณจะถูกลบออกเป็นส่วนหนึ่งของการลบข้อมูล สิ่งที่เหลืออยู่จึงเป็นบันทึกว่าเกิดอะไรขึ้น ไม่ใช่บันทึกเกี่ยวกับตัวคุณ</li>
+      <li>การลบบัญชีของคุณไม่ได้ลบบัญชีของผู้อื่น ใน Connection มีคนสองคน และข้อความ วิดีโอ และบันทึกของอีกฝ่ายยังคงอยู่กับเขา</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>หลักฐานความปลอดภัยไม่ใช่ประวัติข้อความทั่วไป</strong> Connections และการแปลข้อความซึ่งเป็นตัวเลือกเสริมกำลังทยอยเปิดให้ใช้งาน และอาจยังไม่พร้อมใช้งานสำหรับทุกบัญชีหรือทุกเวอร์ชันของแอปที่ติดตั้งไว้ หากคุณมี Connection ข้อความทั่วไปในนั้นจะถือว่าหมดอายุประมาณเจ็ดวันหลังจากส่ง ส่วนข้อความที่ถูกรายงานแล้วจะไม่อยู่ภายใต้กฎนั้นอีกต่อไป เพราะเป็นหลักฐานในการตรวจสอบ และจะถูกเก็บไว้ตลอดที่การตรวจสอบยังดำเนินอยู่ และหลังจากนั้นเมื่อผลลัพธ์ทำให้การเก็บไว้มีเหตุผลรองรับ — รวมถึงหลังจากบัญชีต้นทางของข้อความถูกลบไปแล้ว การลบบัญชีของคุณไม่ได้ถอนรายงานที่คุณส่งไว้ และไม่ได้ลบรายงานที่มีผู้ส่งเกี่ยวกับคุณ</p>
+    </div>
+
+    <h2 id="apple-linked">หากบัญชีของคุณเชื่อมโยงกับลงชื่อเข้าใช้ด้วย Apple</h2>
+
+    <p>บัญชี ULMOX บางบัญชีเชื่อมโยงกับลงชื่อเข้าใช้ด้วย Apple หากบัญชีของคุณเป็นเช่นนั้น การลบถาวรจะมีขั้นตอนเพิ่มอีกหนึ่งขั้น เพราะ Apple กำหนดให้แอปสละการอนุญาตลงชื่อเข้าใช้ด้วย Apple เมื่อลบบัญชี ไม่ใช่เพียงลบระเบียนของตนเองเท่านั้น</p>
+
+    <ol>
+      <li>บนอุปกรณ์ Apple ULMOX จะขอให้คุณยืนยันอีกครั้งกับ Apple โดยตรง การยืนยันนั้นเกิดขึ้นระหว่างคุณกับ Apple บนอุปกรณ์ของคุณเอง <strong>ULMOX ไม่ได้รับรหัสผ่าน Apple ของคุณ</strong> และเราไม่เคยขอรหัสผ่านนั้นจากคุณ</li>
+      <li>การยืนยันนั้นเองคือสิ่งที่ทำให้ ULMOX เพิกถอนการอนุญาตลงชื่อเข้าใช้ด้วย Apple ของตนเองสำหรับบัญชีของคุณได้</li>
+      <li>หลังจากนั้นเท่านั้น การลบถาวรตามที่อธิบายไว้ข้างต้นจึงจะเริ่มขึ้น</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>หากขั้นตอนนั้นไม่เสร็จสมบูรณ์ จะไม่มีสิ่งใดถูกลบ</strong> หากคุณปิดหน้าจอของ Apple หากการยืนยันคืนค่าบัญชี Apple ที่ต่างจากบัญชีที่ลงชื่อเข้าใช้อยู่ หรือหากขั้นตอนล้มเหลวด้วยเหตุอื่นใด ULMOX จะหยุดก่อนที่จะเกิดสิ่งใดอย่างถาวร และแจ้งคุณว่าไม่มีสิ่งใดถูกลบ คุณลองใหม่ได้</p>
+    </div>
+
+    <p>มีสามสิ่งที่แยกจากกันซึ่งสับสนได้ง่าย:</p>
+
+    <ul>
+      <li><strong>การเพิกถอนการอนุญาตลงชื่อเข้าใช้ด้วย Apple ของ ULMOX</strong> ทำให้ ULMOX ใช้ลงชื่อเข้าใช้ด้วย Apple แทนคุณไม่ได้อีก ลำพังสิ่งนี้ไม่ได้ลบบัญชี ULMOX ของคุณ และไม่ได้ลบข้อมูลในบัญชีนั้น</li>
+      <li><strong>การลบบัญชี ULMOX ของคุณ</strong> คือการกระทำที่นำข้อมูล ULMOX ของคุณออก จะถือว่าเสร็จสมบูรณ์ก็ต่อเมื่อการลบข้อมูลตามที่อธิบายในหน้านี้ได้ทำงานแล้ว — ไม่มีการเปลี่ยนแปลงการอนุญาตลงชื่อเข้าใช้ใดที่ทำให้เสร็จสมบูรณ์ได้</li>
+      <li><strong>การลบ Apple ID ของคุณ</strong> เป็นสิ่งที่มีเพียง Apple เท่านั้นที่ทำได้ตามคำขอของคุณเอง — ULMOX ไม่เคยทำและทำไม่ได้</li>
+    </ul>
+
+    <h3>การลบบัญชีที่เชื่อมโยงกับ Apple จากอุปกรณ์ Android</h3>
+
+    <p>ขั้นตอนยืนยันของ Apple ทำให้เสร็จได้บนอุปกรณ์ Apple เท่านั้น หากคุณพยายามลบบัญชี ULMOX ที่เชื่อมโยงกับ Apple จากโทรศัพท์ Android ULMOX จะหยุดก่อนที่จะนำสิ่งใดออก และแจ้งคุณว่า<strong>ไม่มีสิ่งใดถูกลบ</strong> โปรดดำเนินการลบให้เสร็จบนอุปกรณ์ Apple หรือ<a href="support.html">ติดต่อฝ่ายสนับสนุน</a> แล้วเราจะจัดการให้คุณ</p>
+
+    <p>บัญชีที่ใช้เฉพาะการลงชื่อเข้าใช้ด้วย Google หรือเฉพาะที่อยู่อีเมล จะลบได้ตามปกติบนอุปกรณ์ทั้งสองประเภท ส่วนบัญชีที่เชื่อมโยงทั้งกับ Apple และ Google ยังคงต้องผ่านขั้นตอนของ Apple</p>
+
+    <h2>หากคุณเพียงต้องการพัก</h2>
+
+    <p>การปิดใช้งานซ่อนโปรไฟล์และเนื้อหา Global ของคุณ และย้อนกลับได้ด้วยการลงชื่อเข้าใช้อีกครั้ง วิดีโอที่คุณส่งไปแล้วอาจยังอยู่กับผู้ที่ได้รับตามระยะเวลาเก็บรักษาตามปกติ การปิดใช้งานไม่ถือว่าเป็นการทำตามคำขอให้ลบข้อมูล — หากคุณต้องการให้นำข้อมูลของคุณออก โปรดใช้ ลบบัญชี</p>
+
+    <p>การปิดใช้งานไม่ลบบันทึกด้านความปลอดภัย และการเปิดใช้งานใหม่ไม่ย้อนกลับสิ่งใด การกลับมาคืนสิทธิ์เข้าถึงให้คุณ แต่ไม่ยกเลิกคำวินิจฉัยการกำกับดูแล ไม่นำเนื้อหาที่ถูกลบหรือถูกซ่อนโดยการกำกับดูแลกลับมา และไม่เปิด Connection ที่สิ้นสุดไปแล้วขึ้นใหม่ การสิ้นสุด Connection ถือเป็นที่สุดสำหรับคู่นั้น ส่วนการบล็อกทำงานต่างออกไป การบล็อกจะสิ้นสุด Connection ที่คุณมีอยู่ตอนนี้ และหยุดการติดต่อทั้งสองทางตราบที่ยังบล็อกอยู่ การยกเลิกบล็อกก็ไม่คืน Connection เดิมเช่นกัน — ทั้งสองบัญชีต้องมีคุณสมบัติใหม่ตั้งแต่ต้น ผ่านการแลกเปลี่ยนวิดีโอที่เข้าเกณฑ์ใหม่สองครั้งและการอนุมัติใหม่จากทั้งสองฝ่าย</p>
+
+    <h2>คำถาม</h2>
+
+    <p>ติดต่อ <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> ดูเพิ่มเติมที่ <a href="privacy.html">นโยบายความเป็นส่วนตัว</a> และ <a href="terms.html">ข้อกำหนด</a></p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="ข้อมูลทางกฎหมายและการสนับสนุน">
+      <ul>
+        <li><a href="index.html">หน้าแรก</a></li>
+        <li><a href="privacy.html">นโยบายความเป็นส่วนตัว</a></li>
+        <li><a href="terms.html">ข้อกำหนด</a></li>
+        <li><a href="safety.html">ความปลอดภัยและการดูแลเนื้อหา</a></li>
+        <li><a href="support.html">ฝ่ายสนับสนุน</a></li>
+        <li><span aria-current="page">ลบบัญชี</span></li>
+        <li><a href="translation.html">ข้อมูลการแปล</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

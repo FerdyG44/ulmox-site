@@ -1,45 +1,323 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Servicevoorwaarden - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="De voorwaarden die gelden bij het gebruik van ULMOX: toegang, inhoud, Connections, moderatie en bezwaar." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;line-height:1.7;max-width:900px;margin:auto;">
-<h1>Servicevoorwaarden</h1>
-<p><strong>Laatst bijgewerkt:</strong> augustus 2026</p>
-<p>Servicevoorwaarden ULMOX. Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</p>
-<h2>ULMOX veiligheid en moderatie</h2>
-<p>Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</p>
-<p>Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</p>
-<ul><li>Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</li>
-  <li>Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</li>
-  <li>Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</li>
-  <li>Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</li>
-  <li>Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</li>
-  <li>Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</li>
-  <li>Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</li></ul>
-<h2>Servicevoorwaarden</h2>
-<p>Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</p>
-<p>Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</p>
-<h2>Contact</h2>
-<p>Gebruikers kunnen ongepaste inhoud rechtstreeks in de app melden. Alle meldingen worden beoordeeld en inhoud die regels schendt wordt snel verwijderd.</p>
-<h2>ULMOX veiligheid en moderatie</h2>
-<p>ULMOX zet zich in voor een veilige en respectvolle omgeving voor alle gebruikers.</p>
-<h2>ULMOX veiligheid en moderatie</h2>
-<p>ULMOX zet zich in voor een veilige en respectvolle omgeving voor alle gebruikers.</p>
-<h2>Privacybeleid</h2>
-<p>ULMOX respecteert je privacy. We verzamelen alleen basisgegevens die nodig zijn om de dienst te leveren.</p>
-<h2>Servicevoorwaarden</h2>
-<p>Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</p>
-<h2>Servicevoorwaarden</h2>
-<p>Gebruikers moeten ULMOX respectvol, veilig en wettig gebruiken.</p>
-<h2 id="ulmox-music">ULMOX Music</h2>
-<p>ULMOX kan muziek beschikbaar stellen voor gebruik in Moments. Onder deze Voorwaarden mag je die muziek synchroniseren met video's die je in ULMOX maakt en de voltooide video's via ULMOX delen. Je mag de muziek niet extraheren, herdistribueren, verkopen of als zelfstandige audio beschikbaar stellen.</p>
-<h2>Contact</h2>
-<p>Contact<br><br>ulmoxapp@outlook.com</p>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+<body>
+  <a class="ulmox-skip-link" href="#main">Naar de inhoud</a>
+<div class="container">
+  <main id="main">
+    <h1>Servicevoorwaarden</h1>
+    <p class="effective">Van kracht vanaf 2026-09-04. Voor het laatst gewijzigd op 2026-09-04.</p>
+
+    <p>Deze voorwaarden gelden wanneer je ULMOX gebruikt. Ga je er niet mee akkoord, gebruik de dienst dan niet.</p>
+
+    <h2>1. Wie ULMOX mag gebruiken</h2>
+
+    <ul>
+      <li>Je moet <strong>18 jaar of ouder</strong> zijn.</li>
+      <li>Je moet naar waarheid opgeven hoe oud je bent.</li>
+      <li>Je mag niet proberen de leeftijdseis te omzeilen en je mag niemand anders daarbij helpen.</li>
+      <li>Accounts zijn blijvend en niet anoniem. Je logt in met een ondersteunde aanbieder en houdt één identiteit binnen de hele dienst.</li>
+    </ul>
+
+    <h2>2. Jouw inhoud</h2>
+
+    <p>Je bent verantwoordelijk voor de video’s en profielinhoud die je maakt en uploadt. Je moet het recht hebben te delen wat je uploadt, en het mag deze voorwaarden noch de wet schenden.</p>
+
+    <h3>Eigendom en licentie</h3>
+
+    <p><strong>Je behoudt het eigendom van je inhoud.</strong> Om de dienst te kunnen draaien verleen je ULMOX een niet-exclusieve, wereldwijde, royaltyvrije licentie om je inhoud te hosten, op te slaan, te verveelvoudigen en door te geven, uitsluitend zodat wij die kunnen afleveren bij de daarvoor gekozen ontvanger, miniaturen kunnen genereren en de inhoud in de Global-feed kunnen tonen als een ontvanger die daar deelt. De licentie bestaat alleen om ULMOX te laten werken en eindigt wanneer de inhoud wordt verwijderd, behalve waar wij een kopie moeten bewaren als veiligheidsbewijs of om aan een wettelijke verplichting te voldoen.</p>
+
+    <p>Wanneer iemand een ontvangen video in de Global-feed deelt, wordt die persoon <strong>niet</strong> de eigenaar. Wie de video heeft opgenomen blijft de eigenaar.</p>
+
+    <h2>3. Connections</h2>
+
+    <div class="callout">
+      <p><strong>Connections en de optionele berichtvertaling worden geleidelijk ingevoerd en zijn mogelijk nog niet beschikbaar voor elk account of elke geïnstalleerde app-versie.</strong></p>
+    </div>
+
+    <p>Een Connection is een wederzijds gesprek, alleen in tekst, tussen twee volwassenen die al videomomenten hebben uitgewisseld. Het is geen chatgids en geen open berichtenverkeer. Dit zijn de regels waarmee het werkt:</p>
+
+    <ul>
+      <li><strong>Alleen volwassenen.</strong> Connections is onderdeel van een dienst voor 18 jaar en ouder en is alleen beschikbaar voor accounts die aan de leeftijdseis voldoen.</li>
+      <li><strong>Je kunt niet naar mensen zoeken.</strong> ULMOX heeft geen gebruikerszoekfunctie en geen manier om iemand op te zoeken om contact te leggen. Een Connection kan alleen voortkomen uit contact dat er al was.</li>
+      <li><strong>Twee eerdere kwalificerende video-ontmoetingen.</strong> Een paar komt pas in aanmerking na twee afzonderlijke kwalificerende video-uitwisselingen tussen die twee accounts. Eén is niet genoeg.</li>
+      <li><strong>Beide personen moeten goedkeuren.</strong> Ieder keurt onafhankelijk goed. Tot beiden dat hebben gedaan is er geen Connection en kan er geen bericht worden verstuurd.</li>
+      <li><strong>Alleen tekst, en geen bijlagen.</strong> Een Connection draagt geschreven berichten. Er zijn geen bijlagen — geen foto’s, geen video’s, geen bestanden, geen spraakberichten.</li>
+      <li><strong>Accounts zijn blijvend en niet anoniem.</strong> De persoon met wie je verbonden bent heeft binnen ULMOX dezelfde enkele identiteit als iedereen.</li>
+      <li><strong>Berichten verlopen.</strong> Een gewoon bericht wordt behandeld alsof het ongeveer zeven dagen na verzending verloopt. Gemelde berichten worden anders behandeld — zie het privacybeleid.</li>
+      <li><strong>Melden en weggaan werken altijd.</strong> Je kunt <strong>Gebruiker melden</strong> en <strong>Bericht melden</strong> gebruiken, je kunt <strong>Blokkeren</strong> en je kunt de <strong>Connection beëindigen</strong>. Een Connection beëindigen is definitief voor dat paar: ze hervat niet, en een latere ontmoeting heropent haar niet. Een blokkering is niet hetzelfde. Een blokkering beëindigt de Connection die je nu hebt en stopt contact in beide richtingen zolang ze geldt. Een blokkering opheffen herstelt de oude Connection niet: het paar zou opnieuw vanaf het begin in aanmerking moeten komen, via twee nieuwe kwalificerende video-uitwisselingen en een nieuwe goedkeuring van beide personen.</li>
+      <li><strong>Mensen beoordelen meldingen, geen machines.</strong> Een gemeld bericht wordt door een mens beoordeeld.</li>
+      <li><strong>Vertalen is optioneel.</strong> Je mag een bericht dat je hebt ontvangen op je eigen toestel vertalen. Het origineel is wat telt en wat een beoordelaar leest. Zie <a href="translation.html">Informatie over vertalen</a>.</li>
+    </ul>
+
+    <h2>4. Wat niet is toegestaan</h2>
+
+    <p>Het volgende is verboden op ULMOX:</p>
+
+    <ul>
+      <li>Seksueel misbruik en seksuele uitbuiting van kinderen (CSAE) en materiaal van seksueel kindermisbruik (CSAM), in welke vorm dan ook.</li>
+      <li>Seksuele uitbuiting van welke persoon dan ook.</li>
+      <li>Seksuele inhoud zonder toestemming, en seksuele inhoud waarbij iemand betrokken is die onder de 18 kan zijn.</li>
+      <li>Bedreigingen, aanzetten tot geweld en inhoud die geweld verheerlijkt.</li>
+      <li>Haatzaaiende uitingen en gerichte intimidatie.</li>
+      <li>Je voordoen als een andere persoon of organisatie.</li>
+      <li>Oplichting, fraude en spam.</li>
+      <li>Illegale inhoud en illegale activiteiten.</li>
+      <li>Privégegevens van iemand anders delen zonder diens toestemming.</li>
+    </ul>
+
+    <h2>5. Melden, blokkeren en moderatie</h2>
+
+    <ul>
+      <li>Je kunt inhoud melden en je kunt gebruikers melden vanuit de app. Er is een aparte categorie voor kinderveiligheid.</li>
+      <li>Je kunt een andere gebruiker blokkeren. Blokkeren stopt interactie in beide richtingen, en de geblokkeerde persoon krijgt dat niet te horen.</li>
+      <li>Gemelde inhoud kan tijdens de beoordeling in <strong>omkeerbare quarantaine</strong> worden geplaatst. Quarantaine verbergt inhoud tijdelijk; ze verwijdert die niet en is geen sanctie tegen het account.</li>
+      <li>Moderatiebeslissingen worden door mensen genomen, niet automatisch. Zowel gemelde video’s als gemelde berichten worden door een mens beoordeeld.</li>
+      <li>Een bericht dat door een automatisch veiligheidsfilter wordt tegengehouden is <strong>geen</strong> beslissing over je account. Een bericht tegenhouden, of inhoud in quarantaine plaatsen, beperkt dat item en verder niets.</li>
+      <li>Als een beoordelaar een video goedkeurt, keert die alleen terug in de Global-feed als de video daar zelfstandig nog voor in aanmerking komt. Een video waarvan de eigenaar is vertrokken, beperkt of verbannen is, of die om een andere reden niet beschikbaar is, blijft onbeschikbaar wat de beslissing over de melding ook was.</li>
+      <li>Wanneer een melding is afgehandeld, verdwijnt ze uit de actieve beoordelingslijst. Ze wordt niet gewist: het bewijs en de vastlegging van wat is beslist blijven bewaard waar daar een gerechtvaardigde reden voor is.</li>
+      <li>Een melding gaat altijd over de oorspronkelijke inhoud. Een vertaling die jij hebt gelezen is nooit datgene wat wordt beoordeeld en is nooit bewijs.</li>
+      <li>We publiceren de interne drempelwaarden, hulpmiddelen of werkwijzen van onze veiligheidssystemen niet.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Meldingen verbannen geen accounts.</strong> Geen enkel aantal meldingen verbant een account automatisch. Niets anders doet dat evenmin: geen automatisch filter dat een bericht tegenhoudt, geen quarantaine, geen vertaling en geen beslissing om één stuk inhoud te verwijderen. Alleen een bevoegde ULMOX-beheerder kan een account verbannen, als afzonderlijke en bewuste beslissing en pas na beoordeling van de zaak.</p>
+    </div>
+
+    <p>ULMOX analyseert videobeelden, audio of transcripties niet automatisch. De veiligheid steunt op melden, omkeerbare quarantaine, blokkeren en menselijke beoordeling.</p>
+
+    <h2>6. Deactiveren en verwijderen</h2>
+
+    <ul>
+      <li><strong>Deactiveren</strong> is omkeerbaar. Je profiel en je Global-inhoud worden verborgen en je gegevens blijven bewaard zodat het account kan worden hersteld. Video’s die je al hebt verzonden kunnen bij de ontvangers blijven gedurende hun gebruikelijke bewaartermijn.</li>
+      <li><strong>Verwijderen</strong> is definitief en kan niet ongedaan worden gemaakt. Toegang en vindbaarheid eindigen onmiddellijk en de wissing loopt op de achtergrond door. Beperkte veiligheids-, wettelijke of transactieregistraties kunnen bewaard blijven waar dat gerechtvaardigd is. Zie <a href="delete_account.html">Account verwijderen</a>.</li>
+    </ul>
+
+    <h2>7. Handhaving en bezwaar</h2>
+
+    <p>We kunnen inhoud verbergen zolang die wordt beoordeeld, inhoud verwijderen die deze voorwaarden schendt en, via een bevoegde beheerder, een account opschorten of beëindigen. Vind je een beslissing over je inhoud of je account onjuist, schrijf dan naar <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>; een mens beoordeelt die dan. Zie <a href="support.html">Support</a>.</p>
+
+    <h2>Machinevertaling</h2>
+
+    <ul>
+      <li>ULMOX kan een optionele machinevertaling aanbieden van een bericht dat je hebt ontvangen. <strong>Machinevertalingen kunnen onvolledig of onjuist zijn.</strong></li>
+      <li>Waar de betekenis ertoe doet, ga af op het oorspronkelijke bericht. Het origineel blijft zichtbaar en is de doorslaggevende versie.</li>
+      <li>Een bericht vertalen verandert niets aan je verantwoordelijkheid voor inhoud die jij hebt geschreven. Je blijft verantwoordelijk voor je oorspronkelijke bericht.</li>
+      <li>Vertaling schept geen uitzondering op deze voorwaarden. Inhoud die de regels schendt, schendt ze in elke taal.</li>
+      <li>Google levert de vertaaltechnologie. Google schrijft, beoordeelt, keurt of onderschrijft geen enkel bericht dat via ULMOX wordt verstuurd.</li>
+    </ul>
+
+    <p>Zie <a href="translation.html">Informatie over vertalen</a>.</p>
+
+    <h2 id="ulmox-music">ULMOX Music</h2>
+
+    <p>ULMOX kan muziek beschikbaar stellen voor gebruik in Moments. Onder deze Voorwaarden mag je die muziek synchroniseren met video's die je in ULMOX maakt en de voltooide video's via ULMOX delen. Je mag de muziek niet extraheren, herdistribueren, verkopen of als zelfstandige audio beschikbaar stellen.</p>
+
+    <h2>8. Wijzigingen van deze voorwaarden</h2>
+
+    <p>We kunnen deze voorwaarden bijwerken. De datum hierboven toont de geldende versie. Bij een ingrijpende wijziging kunnen we je vragen de bijgewerkte voorwaarden in de app te accepteren voordat je ULMOX verder gebruikt.</p>
+
+    <h2>9. Gerelateerde pagina’s</h2>
+
+    <p>
+      <a href="privacy.html">Privacybeleid</a>
+      &middot;
+      <a href="safety.html">Veiligheid en moderatie</a>
+      &middot;
+      <a href="support.html">Support</a>
+      &middot;
+      <a href="delete_account.html">Account verwijderen</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Juridische informatie en support">
+      <ul>
+        <li><a href="index.html">Startpagina</a></li>
+        <li><a href="privacy.html">Privacybeleid</a></li>
+        <li><span aria-current="page">Voorwaarden</span></li>
+        <li><a href="safety.html">Veiligheid en moderatie</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="delete_account.html">Account verwijderen</a></li>
+        <li><a href="translation.html">Informatie over vertalen</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

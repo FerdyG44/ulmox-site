@@ -1,119 +1,323 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Användarvillkor - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Villkoren som gäller när du använder ULMOX: behörighet, innehåll, Connections, moderering och överklagande." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;line-height:1.7;max-width:900px;margin:auto;">
+<body>
+  <a class="ulmox-skip-link" href="#main">Hoppa till innehållet</a>
+<div class="container">
+  <main id="main">
+    <h1>Användarvillkor</h1>
+    <p class="effective">Gäller från 2026-09-04. Senast uppdaterad 2026-09-04.</p>
 
-<h1>Användarvillkor</h1>
+    <p>Dessa villkor gäller när du använder ULMOX. Om du inte godtar dem ber vi dig att inte använda tjänsten.</p>
 
-<p><strong>Senast uppdaterad:</strong> augusti 2026</p>
+    <h2>1. Vem får använda ULMOX</h2>
 
-<p>
-Välkommen till ULMOX. ULMOX är en plattform för att dela autentiska videostunder mellan verkliga människor runt om i världen. Genom att skapa ett konto eller använda ULMOX godkänner du dessa användarvillkor och våra communityriktlinjer.
-</p>
+    <ul>
+      <li>Du måste vara <strong>18 år eller äldre</strong>.</li>
+      <li>Du måste lämna sanningsenlig information om din ålder.</li>
+      <li>Du får inte försöka kringgå ålderskravet och du får inte hjälpa någon annan att göra det.</li>
+      <li>Konton är beständiga och inte anonyma. Du loggar in med en leverantör som stöds och behåller en identitet i hela tjänsten.</li>
+    </ul>
 
-<h2>Tillåten användning</h2>
+    <h2>2. Ditt innehåll</h2>
 
-<p>Användare måste använda ULMOX på ett respektfullt, säkert och lagligt sätt.</p>
+    <p>Du ansvarar för de videor och det profilinnehåll du skapar och laddar upp. Du måste ha rätt att dela det du laddar upp, och det får inte bryta mot dessa villkor eller mot lagen.</p>
 
-<p>Följande innehåll och beteenden är strängt förbjudna:</p>
+    <h3>Äganderätt och licens</h3>
 
-<ul>
-  <li>Nakenhet eller sexuellt explicit innehåll</li>
-  <li>Våld, grafiskt innehåll eller hot</li>
-  <li>Trakasserier, mobbning, kränkande beteende eller hotfullt uppträdande</li>
-  <li>Hatpropaganda, diskriminering eller uppmaning till hat</li>
-  <li>Olagliga aktiviteter eller främjande av olagliga aktiviteter</li>
-  <li>Spam, bedrägerier, vilseledande eller missvisande innehåll</li>
-  <li>Innehåll som kränker en annan persons integritet, rättigheter eller säkerhet</li>
-  <li>Försök att kringgå plattformens säkerhetssystem eller modereringsverktyg</li>
-</ul>
+    <p><strong>Du behåller äganderätten till ditt innehåll.</strong> För att driva tjänsten ger du ULMOX en icke-exklusiv, världsomspännande och royaltyfri licens att lagra, återge och överföra ditt innehåll, enbart så att vi kan leverera det till den mottagare som valts för det, generera miniatyrbilder och visa det i Global-flödet om en mottagare delar det där. Licensen finns endast för att driva ULMOX och upphör när innehållet tas bort, utom där vi måste behålla en kopia som säkerhetsbevis eller för att uppfylla en rättslig skyldighet.</p>
 
-<h2>Användargenererat innehåll</h2>
+    <p>När någon delar en video hen har fått till Global-flödet blir hen <strong>inte</strong> dess ägare. Den som spelade in den förblir ägare.</p>
 
-<p>
-Användare är själva ansvariga för innehåll som de skapar, laddar upp, skickar eller delar via ULMOX.
-</p>
+    <h2>3. Connections</h2>
 
-<p>
-ULMOX stödjer inte användargenererat innehåll och förbehåller sig rätten att granska, begränsa, ta bort eller moderera innehåll som bryter mot dessa användarvillkor eller communityriktlinjerna.
-</p>
+    <div class="callout">
+      <p><strong>Connections och valfri meddelandeöversättning införs stegvis och är kanske ännu inte tillgängliga för varje konto eller varje installerad appversion.</strong></p>
+    </div>
 
-<h2 id="ulmox-music">ULMOX Music</h2>
+    <p>En Connection är ett ömsesidigt samtal med enbart text mellan två vuxna som redan har utbytt videoögonblick. Det är inte en chattkatalog och det är inte öppen meddelandefunktion. Så här fungerar den:</p>
 
-<p>
-ULMOX kan tillhandahålla musik för användning i Moments. I enlighet med dessa villkor får du synkronisera sådan musik med videor som du skapar i ULMOX och dela de färdiga videorna via ULMOX. Du får inte extrahera, vidaredistribuera, sälja eller göra musiken tillgänglig som fristående ljud.
-</p>
+    <ul>
+      <li><strong>Endast vuxna.</strong> Connections är en del av en tjänst för 18 år och äldre och är endast tillgängligt för konton som har klarat ålderskravet.</li>
+      <li><strong>Du kan inte söka efter personer.</strong> ULMOX har ingen användarsökning och inget sätt att slå upp någon för att kontakta hen. En Connection kan bara växa ur kontakt du redan hade.</li>
+      <li><strong>Två tidigare kvalificerande videomöten.</strong> Ett par blir behörigt först efter två separata kvalificerande videoutbyten mellan de två kontona. Ett räcker inte.</li>
+      <li><strong>Båda måste godkänna.</strong> Var och en godkänner självständigt. Innan båda har gjort det finns ingen Connection och inget meddelande kan skickas.</li>
+      <li><strong>Endast text, ingenting bifogat.</strong> En Connection bär skrivna meddelanden. Det finns inga bilagor — inga foton, inga videor, inga filer, inga röstmeddelanden.</li>
+      <li><strong>Konton är beständiga och inte anonyma.</strong> Den du är kopplad till har samma enda identitet i hela ULMOX som alla andra.</li>
+      <li><strong>Meddelanden upphör.</strong> Ett vanligt meddelande behandlas som att det upphör ungefär sju dagar efter att det skickats. Anmälda meddelanden hanteras annorlunda — se integritetspolicyn.</li>
+      <li><strong>Att anmäla och att lämna fungerar alltid.</strong> Du kan använda <strong>Anmäl användare</strong> och <strong>Anmäl meddelande</strong>, du kan <strong>Blockera</strong> och du kan <strong>Avsluta Connection</strong>. Att avsluta en Connection är slutgiltigt för det paret: den återupptas inte, och ett senare möte återöppnar den inte. En blockering är inte samma sak. En blockering avslutar den Connection du har nu och stoppar kontakt i båda riktningarna så länge den gäller. Att ta bort en blockering återställer inte den gamla Connection: paret skulle behöva kvalificera sig på nytt från början, genom två nya kvalificerande videoutbyten och ett nytt godkännande från var och en.</li>
+      <li><strong>Människor granskar anmälningar, inte maskiner.</strong> Ett anmält meddelande bedöms av en människa.</li>
+      <li><strong>Översättning är frivillig.</strong> Du får översätta ett meddelande du har fått, på din egen enhet. Originalet är det som gäller och det som en granskare läser. Se <a href="translation.html">Om översättning</a>.</li>
+    </ul>
 
-<h2>Rapportering och blockering</h2>
+    <h2>4. Vad som inte är tillåtet</h2>
 
-<p>
-Användare kan när som helst rapportera stötande innehåll eller blockera andra användare.
-</p>
+    <p>Följande är förbjudet på ULMOX:</p>
 
-<p>
-Rapporterat innehåll kan granskas av ULMOX moderatorer. När en användare blockeras tas den användarens innehåll omedelbart bort från den blockerande användarens upplevelse och kan leda till ytterligare modereringsgranskning.
-</p>
+    <ul>
+      <li>Sexuella övergrepp mot och sexuell exploatering av barn (CSAE) och material med sexuella övergrepp mot barn (CSAM), i alla former.</li>
+      <li>Sexuell exploatering av någon person.</li>
+      <li>Sexuellt innehåll utan samtycke, och sexuellt innehåll som rör någon som kan vara under 18 år.</li>
+      <li>Hot, uppvigling till våld och innehåll som förhärligar våld.</li>
+      <li>Hatpropaganda och riktade trakasserier.</li>
+      <li>Att utge sig för att vara en annan person eller organisation.</li>
+      <li>Bedrägerier, bluffar och skräppost.</li>
+      <li>Olagligt innehåll och olaglig verksamhet.</li>
+      <li>Att dela någon annans privata uppgifter utan hens tillåtelse.</li>
+    </ul>
 
-<h2>Moderering och verkställighet</h2>
+    <h2>5. Anmälan, blockering och moderering</h2>
 
-<p>
-ULMOX tillämpar nolltolerans mot stötande innehåll och användare som beter sig kränkande.
-</p>
+    <ul>
+      <li>Du kan anmäla innehåll och du kan anmäla användare inifrån appen. Det finns en särskild kategori för barns säkerhet.</li>
+      <li>Du kan blockera en annan användare. Blockering stoppar interaktion i båda riktningarna, och den du blockerar får inte veta det.</li>
+      <li>Anmält innehåll kan placeras i en <strong>reversibel karantän</strong> medan det granskas. Karantän döljer innehåll tillfälligt; den raderar det inte och den är inte en påföljd mot kontot.</li>
+      <li>Modereringsbeslut fattas av människor, inte automatiskt. Både anmälda videor och anmälda meddelanden granskas av en människa.</li>
+      <li>Ett meddelande som hålls tillbaka av ett automatiskt säkerhetsfilter är <strong>inte</strong> ett beslut om ditt konto. Att hålla tillbaka ett meddelande, eller att sätta innehåll i karantän, begränsar det objektet och ingenting annat.</li>
+      <li>Om en granskare godkänner en video återvänder den till Global-flödet endast om den självständigt fortfarande kvalificerar sig. En video vars ägare har lämnat, blivit begränsad eller avstängd, eller som är otillgänglig av ett annat skäl, förblir otillgänglig oavsett vad anmälningsbeslutet blev.</li>
+      <li>När en anmälan är avgjord lämnar den den aktiva granskningslistan. Den raderas inte: bevisen och uppgiften om vad som beslutades behålls där det finns ett berättigat skäl att behålla dem.</li>
+      <li>En anmälan gäller alltid originalinnehållet. En översättning du valde att läsa är aldrig det som granskas och är aldrig bevis.</li>
+      <li>Vi publicerar inte de interna tröskelvärden, verktyg eller arbetssätt som våra säkerhetssystem använder.</li>
+    </ul>
 
-<p>
-ULMOX kan, efter eget gottfinnande och utan föregående meddelande:
-</p>
+    <div class="callout">
+      <p><strong>Anmälningar stänger inte av konton.</strong> Inget antal anmälningar stänger av ett konto automatiskt. Inget annat gör det heller: inte ett automatiskt filter som håller tillbaka ett meddelande, inte en karantän, inte en översättning och inte ett beslut att ta bort ett enskilt innehåll. Endast en behörig ULMOX-administratör kan stänga av ett konto, som ett separat och medvetet beslut, och först efter att ha granskat ärendet.</p>
+    </div>
 
-<ul>
-  <li>Ta bort innehåll</li>
-  <li>Begränsa kontofunktioner</li>
-  <li>Stänga av konton</li>
-  <li>Avsluta konton permanent</li>
-  <li>Vidta ytterligare modereringsåtgärder när det behövs för att skydda användare och plattformen</li>
-</ul>
+    <p>ULMOX analyserar inte automatiskt videobildrutor, ljud eller transkriptioner. Säkerheten vilar på anmälningar, reversibel karantän, blockering och mänsklig granskning.</p>
 
-<h2>Global synlighet för innehåll</h2>
+    <h2>6. Inaktivering och radering</h2>
 
-<p>
-Ögonblick som laddas upp till ULMOX publiceras inte automatiskt globalt.
-</p>
+    <ul>
+      <li><strong>Inaktivering</strong> går att ångra. Din profil och ditt Global-innehåll döljs och dina uppgifter behålls så att kontot kan återställas. Videor du redan skickat kan finnas kvar hos dem som tog emot dem under deras normala lagringstid.</li>
+      <li><strong>Radering</strong> är permanent och kan inte ångras. Åtkomst och synlighet upphör omedelbart och raderingen fortsätter i bakgrunden. Begränsade säkerhets-, rättsliga eller transaktionsrelaterade poster kan behållas där det är berättigat. Se <a href="delete_account.html">Radera konto</a>.</li>
+    </ul>
 
-<p>
-Varje ögonblick levereras först privat till en mottagare. Endast ögonblick som användare själva väljer att dela kan bli aktuella för bredare synlighet i plattformen. ULMOX kan dessutom begränsa, ta bort eller moderera innehåll som bryter mot dessa villkor eller communityriktlinjer.
-</p>
+    <h2>7. Efterlevnad och överklagande</h2>
 
-<h2>Integritet och säkerhet</h2>
+    <p>Vi kan dölja innehåll medan det granskas, ta bort innehåll som bryter mot dessa villkor och, genom en behörig administratör, stänga av eller avsluta ett konto. Om du anser att ett beslut om ditt innehåll eller ditt konto var fel, skriv till <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> så granskar en människa det. Se <a href="support.html">Kundsupport</a>.</p>
 
-<p>
-Användare måste respektera andras integritet och säkerhet. Det är förbjudet att dela personuppgifter, privata data eller innehåll som är avsett att skada, hota eller utnyttja andra.
-</p>
+    <h2>Maskinöversättning</h2>
 
-<h2>Ansvarsfriskrivning</h2>
+    <ul>
+      <li>ULMOX kan erbjuda en frivillig maskinöversättning av ett meddelande du har fått. <strong>Maskinöversättningar kan vara ofullständiga eller felaktiga.</strong></li>
+      <li>När betydelsen spelar roll, förlita dig på originalmeddelandet. Originalet förblir synligt och är den version som gäller.</li>
+      <li>Att översätta ett meddelande ändrar inte ditt ansvar för innehåll du själv skrivit. Du är fortsatt ansvarig för ditt originalmeddelande.</li>
+      <li>Översättning skapar inget undantag från dessa villkor. Innehåll som bryter mot reglerna bryter mot dem på alla språk.</li>
+      <li>Google tillhandahåller översättningstekniken. Google skriver, granskar, godkänner eller stöder inte något meddelande som skickas genom ULMOX.</li>
+    </ul>
 
-<p>
-ULMOX tillhandahålls i befintligt skick och i mån av tillgänglighet. Även om vi strävar efter att erbjuda en säker och tillförlitlig tjänst garanterar vi inte oavbruten tillgänglighet eller felfri drift.
-</p>
+    <p>Se <a href="translation.html">Om översättning</a>.</p>
 
-<h2>Ändringar av dessa villkor</h2>
+    <h2 id="ulmox-music">ULMOX Music</h2>
 
-<p>
-ULMOX kan uppdatera dessa användarvillkor från tid till annan. Fortsatt användning av tjänsten efter att ändringar har trätt i kraft innebär att du accepterar de uppdaterade villkoren.
-</p>
+    <p>ULMOX kan tillhandahålla musik för användning i Moments. I enlighet med dessa villkor får du synkronisera sådan musik med videor som du skapar i ULMOX och dela de färdiga videorna via ULMOX. Du får inte extrahera, vidaredistribuera, sälja eller göra musiken tillgänglig som fristående ljud.</p>
 
-<h2>Kontakt</h2>
+    <h2>8. Ändringar av dessa villkor</h2>
 
-<p>
-För frågor, rapporter, säkerhetsärenden eller supportförfrågningar:
-<br><br>
-ulmoxapp@outlook.com
-</p>
+    <p>Vi kan uppdatera dessa villkor. Datumet ovan visar den aktuella versionen. När en ändring är väsentlig kan vi be dig att godkänna de uppdaterade villkoren i appen innan du fortsätter använda ULMOX.</p>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <h2>9. Relaterade sidor</h2>
+
+    <p>
+      <a href="privacy.html">Integritetspolicy</a>
+      &middot;
+      <a href="safety.html">Säkerhet och moderering</a>
+      &middot;
+      <a href="support.html">Kundsupport</a>
+      &middot;
+      <a href="delete_account.html">Radera konto</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Juridik och support">
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="privacy.html">Integritetspolicy</a></li>
+        <li><span aria-current="page">Villkor</span></li>
+        <li><a href="safety.html">Säkerhet och moderering</a></li>
+        <li><a href="support.html">Kundsupport</a></li>
+        <li><a href="delete_account.html">Radera konto</a></li>
+        <li><a href="translation.html">Om översättning</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

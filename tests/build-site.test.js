@@ -25,7 +25,9 @@ test("production build injects GA4 once into every HTML page", (t) => {
     environment: "production"
   });
 
-  assert.equal(result.htmlFiles, 141);
+  // Stage 0.13: the 40 account-deletion pages are deliberately excluded from
+  // analytics, so 121 of the 161 pages are instrumented.
+  assert.equal(result.htmlFiles, 161);
   assert.equal(result.instrumentedHtmlFiles, 121);
   const htmlFiles = [];
   function collect(directory) {
@@ -36,9 +38,19 @@ test("production build injects GA4 once into every HTML page", (t) => {
     }
   }
   collect(outputRoot);
+  const { isAnalyticsExcluded } = require("../scripts/build-site.js");
   for (const htmlPath of htmlFiles) {
     const html = fs.readFileSync(htmlPath, "utf8");
     if (!html.trim()) continue;
+
+    const relativePath = path.relative(outputRoot, htmlPath);
+    if (isAnalyticsExcluded(relativePath)) {
+      // The deletion route must carry no tag at all.
+      assert.equal(html.split(ANALYTICS_MARKER).length - 1, 0, htmlPath);
+      assert.equal(html.split('/assets/js/analytics.js').length - 1, 0, htmlPath);
+      continue;
+    }
+
     assert.equal(html.split(ANALYTICS_MARKER).length - 1, 1, htmlPath);
     assert.equal(html.split('/assets/js/analytics.js').length - 1, 1, htmlPath);
   }

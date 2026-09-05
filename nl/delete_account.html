@@ -1,26 +1,293 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Account verwijderen - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Hoe je je ULMOX-account definitief verwijdert, in de app of per e-mail, en wat er daarna met je gegevens gebeurt." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">Naar de inhoud</a>
+<div class="container">
+  <main id="main">
+    <h1>Je ULMOX-account verwijderen</h1>
+    <p class="effective">Van kracht vanaf 2026-09-04. Voor het laatst gewijzigd op 2026-09-04.</p>
 
-  <h1>Je account verwijderen</h1>
+    <p>Deze pagina legt uit hoe je je ULMOX-account definitief verwijdert en wat er daarna met je gegevens gebeurt.</p>
 
-  <p>Als je je ULMOX-account wilt verwijderen, neem dan contact met ons op:</p>
+    <div class="callout">
+      <p><strong>Deactiveren is niet verwijderen.</strong> Deactiveren verbergt je profiel en je inhoud en kan ongedaan worden gemaakt. Je account verwijderen is definitief en kan niet ongedaan worden gemaakt.</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>Optie 1 — verwijderen in de app (aanbevolen)</h2>
 
-  <p>Vermeld je geregistreerde e-mailadres.</p>
+    <p>Dit is de snelste weg en er komt geen e-mailwisseling aan te pas. Hij is niet voor elk account op elk toestel beschikbaar: een account dat is gekoppeld aan Inloggen met Apple kan de verwijdering niet afronden op een Android-telefoon en wordt in plaats daarvan naar <a href="support.html">Support</a> verwezen. Zie hieronder <a href="#apple-linked">Als je account is gekoppeld aan Inloggen met Apple</a>.</p>
 
-  <p>Je account en alle bijbehorende gegevens worden binnen 7 dagen permanent verwijderd.</p>
+    <ol>
+      <li>Open ULMOX en ga naar <strong>Profiel &rarr; Juridisch en veiligheid &rarr; Accountbeheer &rarr; Account verwijderen</strong>.</li>
+      <li>Lees de bevestiging, die uitlegt dat verwijderen definitief is.</li>
+      <li>Bevestig. Mogelijk wordt je eerst gevraagd opnieuw in te loggen; dat beschermt je account tegen verwijdering door iemand anders.</li>
+    </ol>
 
-  <p>Neem gerust contact met ons op als je vragen hebt.</p>
+    <h2>Optie 2 — verwijdering per e-mail aanvragen</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>Kun je de app niet openen, dan kun je ons vragen je account te verwijderen.</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">Mail ulmoxapp@outlook.com met als onderwerp ‘ULMOX Account Deletion Request’</a></p>
+
+    <p>Vermeld alleen het minimum dat nodig is om je account te vinden:</p>
+
+    <ul>
+      <li>het e-mailadres dat bij je ULMOX-account hoort, en</li>
+      <li>je ULMOX-gebruikersnaam, als je die kent.</li>
+    </ul>
+
+    <p>Schrijf waar mogelijk vanaf het e-mailadres dat bij je account hoort. Is je account gekoppeld aan Inloggen met Apple en heb je <strong>Verberg mijn e-mailadres</strong> gebruikt, schrijf dan vanaf je Apple-doorstuuradres, of geef ons genoeg niet-geheime accountgegevens om het account te vinden.</p>
+
+    <div class="callout">
+      <p><strong>We vragen je nooit om een wachtwoord, een Apple- of Google-wachtwoord, een eenmalige verificatiecode, een autorisatiecode, een inlogtoken of een foto van een identiteitsbewijs</strong>, en we vragen je nooit iets daarvan per e-mail te sturen. Krijg je een bericht dat zegt van ULMOX te komen en daarom vraagt, dan is het niet van ons.</p>
+    </div>
+
+    <p>We controleren dat het account van jou is voordat we het verwijderen. Een verzoek vanaf een openbaar webformulier of een niet-geverifieerd adres verwijdert op zichzelf geen account. We kunnen je vragen het eigendom via een veilige weg te bevestigen, bijvoorbeeld door te antwoorden vanaf het e-mailadres van het account.</p>
+
+    <h2>Wat er gebeurt wanneer een account wordt verwijderd</h2>
+
+    <ul>
+      <li>Toegang en vindbaarheid worden weggenomen zodra de verwijdering met succes is gestart. Je profiel is niet langer zichtbaar voor anderen en je account wordt niet meer geselecteerd voor nieuwe leveringen.</li>
+      <li>De fysieke wissing van opgeslagen gegevens loopt daarna op de achtergrond door. Het doel is afronding binnen 30 dagen, tenzij een gerechtvaardigde veiligheids- of wettelijke verplichting beperkte bewaring vereist.</li>
+      <li>Video’s die je hebt opgenomen, hun miniaturen, je profielgegevens, je profielfoto en Global-inhoud waarvan jij de eigenaar bent, worden verwijderd.</li>
+      <li>Inhoud die van iemand anders is wordt <em>niet</em> verwijderd alleen omdat jij die hebt gedeeld. In plaats daarvan wordt jouw koppeling ermee weggehaald, en de video blijft bij degene die hem heeft gemaakt.</li>
+      <li>Je gebruikersnaam blijft na verwijdering 90 dagen gereserveerd voordat die opnieuw kan worden gebruikt, zodat iemand anders hem niet meteen kan innemen.</li>
+      <li>Beperkte veiligheids-, wettelijke of transactieregistraties kunnen bewaard blijven waar daar een gerechtvaardigde reden voor is, en alleen zolang die reden geldt. Waar een veiligheidsregistratie bewaard blijft, worden de koppelingen naar jouw identiteit als onderdeel van de wissing verwijderd, zodat er een vastlegging overblijft van wat er is gebeurd en niet een vastlegging over jou.</li>
+      <li>Je account verwijderen verwijdert dat van niemand anders. Bij een Connection zijn twee mensen betrokken, en de berichten, video’s en registraties van de ander blijven bij hem of haar.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Veiligheidsbewijs is geen gewone berichtgeschiedenis.</strong> Connections en de optionele berichtvertaling worden geleidelijk ingevoerd en zijn mogelijk nog niet beschikbaar voor elk account of elke geïnstalleerde app-versie. Heb je een Connection: een gewoon bericht daarin wordt behandeld alsof het ongeveer zeven dagen na verzending verloopt. Voor een gemeld bericht geldt dat niet meer: het is bewijs in een beoordeling en blijft bewaard zolang de beoordeling loopt en daarna waar de uitkomst dat rechtvaardigt — ook nadat het account waarvan het komt is verwijderd. Je account verwijderen trekt een melding die jij hebt gedaan niet in en wist geen melding die over jou is gedaan.</p>
+    </div>
+
+    <h2 id="apple-linked">Als je account is gekoppeld aan Inloggen met Apple</h2>
+
+    <p>Sommige ULMOX-accounts zijn gekoppeld aan Inloggen met Apple. Is dat bij jou het geval, dan heeft definitieve verwijdering één extra stap, omdat Apple eist dat een app zijn machtiging voor Inloggen met Apple opgeeft wanneer die een account verwijdert, in plaats van alleen zijn eigen registratie te wissen.</p>
+
+    <ol>
+      <li>Op een Apple-toestel vraagt ULMOX je nog één keer rechtstreeks bij Apple te bevestigen. Die bevestiging gebeurt tussen jou en Apple, op je eigen toestel. <strong>ULMOX ontvangt je Apple-wachtwoord niet</strong>, en we vragen er nooit om.</li>
+      <li>Die bevestiging is wat ULMOX in staat stelt zijn eigen machtiging voor Inloggen met Apple voor jouw account in te trekken.</li>
+      <li>Pas daarna begint de hierboven beschreven definitieve verwijdering.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Wordt die stap niet afgerond, dan wordt er niets verwijderd.</strong> Sluit je het Apple-scherm, geeft de bevestiging een ander Apple-account terug dan het ingelogde, of mislukt de stap om een andere reden, dan stopt ULMOX voordat er iets onomkeerbaars gebeurt en meldt dat er niets is verwijderd. Je kunt het opnieuw proberen.</p>
+    </div>
+
+    <p>Drie verschillende dingen worden gemakkelijk verward:</p>
+
+    <ul>
+      <li><strong>De machtiging van ULMOX voor Inloggen met Apple intrekken</strong> zorgt ervoor dat ULMOX Inloggen met Apple niet meer voor jou kan gebruiken. Op zichzelf verwijdert dat je ULMOX-account niet en wist het de gegevens erin niet.</li>
+      <li><strong>Je ULMOX-account verwijderen</strong> is de handeling die je ULMOX-gegevens weghaalt. Die is pas voltooid wanneer de op deze pagina beschreven wissing is uitgevoerd — geen enkele wijziging aan een inlogmachtiging voltooit haar.</li>
+      <li><strong>Je Apple-ID verwijderen</strong> kan alleen Apple doen, op jouw eigen verzoek — ULMOX doet dat nooit en kan dat niet.</li>
+    </ul>
+
+    <h3>Een aan Apple gekoppeld account vanaf een Android-toestel verwijderen</h3>
+
+    <p>De bevestigingsstap van Apple kan alleen op een Apple-toestel worden afgerond. Probeer je een aan Apple gekoppeld ULMOX-account vanaf een Android-telefoon te verwijderen, dan stopt ULMOX voordat er iets wordt weggehaald en meldt dat er <strong>niets is verwijderd</strong>. Rond de verwijdering af op een Apple-toestel, of <a href="support.html">neem contact op met support</a> en wij regelen het voor je.</p>
+
+    <p>Een account dat alleen inloggen met Google of alleen een e-mailadres gebruikt, wordt op beide soorten toestellen gewoon verwijderd. Een account dat zowel aan Apple als aan Google is gekoppeld heeft nog steeds de Apple-stap nodig.</p>
+
+    <h2>Als je alleen even pauze wilt</h2>
+
+    <p>Deactiveren verbergt je profiel en je Global-inhoud en kan ongedaan worden gemaakt door opnieuw in te loggen. Video’s die je al hebt verzonden kunnen bij de ontvangers blijven gedurende hun gebruikelijke bewaartermijn. Deactiveren voldoet niet aan een verwijderingsverzoek — wil je dat je gegevens worden weggehaald, gebruik dan Account verwijderen.</p>
+
+    <p>Deactiveren wist geen veiligheidsregistraties, en heractiveren draait niets terug. Terugkomen herstelt je toegang; het draait een moderatiebeslissing niet terug, brengt inhoud die door moderatie is verwijderd of verborgen niet terug en heropent geen Connection die is beëindigd. Een Connection beëindigen is definitief voor dat paar. Blokkeren werkt anders: een blokkering beëindigt de Connection die je nu hebt en stopt contact in beide richtingen zolang ze geldt. Een blokkering opheffen herstelt de oude Connection evenmin — de twee accounts zouden opnieuw vanaf het begin in aanmerking moeten komen, via twee nieuwe kwalificerende video-uitwisselingen en een nieuwe goedkeuring van beide personen.</p>
+
+    <h2>Vragen</h2>
+
+    <p>Schrijf naar <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Zie ook <a href="privacy.html">Privacybeleid</a> en <a href="terms.html">Voorwaarden</a>.</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Juridische informatie en support">
+      <ul>
+        <li><a href="index.html">Startpagina</a></li>
+        <li><a href="privacy.html">Privacybeleid</a></li>
+        <li><a href="terms.html">Voorwaarden</a></li>
+        <li><a href="safety.html">Veiligheid en moderatie</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><span aria-current="page">Account verwijderen</span></li>
+        <li><a href="translation.html">Informatie over vertalen</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

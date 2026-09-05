@@ -1,26 +1,293 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kontoborttagning - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Hur du permanent raderar ditt ULMOX-konto, i appen eller via e-post, och vad som händer med dina uppgifter." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">Hoppa till innehållet</a>
+<div class="container">
+  <main id="main">
+    <h1>Radera ditt ULMOX-konto</h1>
+    <p class="effective">Gäller från 2026-09-04. Senast uppdaterad 2026-09-04.</p>
 
-  <h1>Ta bort ditt konto</h1>
+    <p>Den här sidan förklarar hur du permanent raderar ditt ULMOX-konto och vad som händer med dina uppgifter efteråt.</p>
 
-  <p>Om du vill ta bort ditt ULMOX-konto, kontakta oss:</p>
+    <div class="callout">
+      <p><strong>Att inaktivera är inte att radera.</strong> Inaktivering döljer din profil och ditt innehåll och går att ångra. Att radera ditt konto är permanent och kan inte ångras.</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>Alternativ 1 — radera i appen (rekommenderas)</h2>
 
-  <p>Ange den e-postadress som är registrerad för kontot.</p>
+    <p>Det här är den snabbaste vägen och kräver ingen e-postväxling. Den är inte tillgänglig för varje konto på varje enhet: ett konto som är kopplat till Logga in med Apple kan inte slutföra radering från en Android-telefon och hänvisas i stället till <a href="support.html">Kundsupport</a>. Se <a href="#apple-linked">Om ditt konto är kopplat till Logga in med Apple</a> nedan.</p>
 
-  <p>Ditt konto och all tillhörande data raderas permanent inom 7 dagar.</p>
+    <ol>
+      <li>Öppna ULMOX och gå till <strong>Profil &rarr; Juridik och säkerhet &rarr; Kontohantering &rarr; Radera konto</strong>.</li>
+      <li>Läs bekräftelsen, som förklarar att raderingen är permanent.</li>
+      <li>Bekräfta. Du kan behöva logga in igen först, vilket skyddar ditt konto från att raderas av någon annan.</li>
+    </ol>
 
-  <p>Kontakta oss gärna om du har några frågor.</p>
+    <h2>Alternativ 2 — begär radering via e-post</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>Om du inte kan öppna appen kan du be oss radera ditt konto.</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">Mejla ulmoxapp@outlook.com med ämnet ”ULMOX Account Deletion Request”</a></p>
+
+    <p>Ta bara med det minsta som behövs för att hitta ditt konto:</p>
+
+    <ul>
+      <li>e-postadressen som är kopplad till ditt ULMOX-konto, och</li>
+      <li>ditt ULMOX-användarnamn, om du känner till det.</li>
+    </ul>
+
+    <p>Skriv om möjligt från den e-postadress som är kopplad till ditt konto. Om ditt konto är kopplat till Logga in med Apple och du använde <strong>Dölj min e-postadress</strong>, skriv från din vidarebefordringsadress hos Apple eller ge oss tillräckligt med icke-hemliga kontouppgifter för att identifiera kontot.</p>
+
+    <div class="callout">
+      <p><strong>Vi ber dig aldrig om ett lösenord, ett Apple- eller Google-lösenord, en engångskod för autentisering, en auktoriseringskod, en inloggningstoken eller ett fotografi av en identitetshandling</strong>, och vi ber dig aldrig att skicka något av det till oss via e-post. Om du får ett meddelande som utger sig för att komma från ULMOX och ber om något av detta kommer det inte från oss.</p>
+    </div>
+
+    <p>Vi kontrollerar att du äger kontot innan vi raderar det. En begäran som skickas från ett offentligt webbformulär eller en overifierad adress raderar inte i sig ett konto. Vi kan be dig bekräfta ägarskapet på ett säkert sätt, till exempel genom att svara från kontots e-postadress.</p>
+
+    <h2>Vad som händer när ett konto raderas</h2>
+
+    <ul>
+      <li>Åtkomst och synlighet tas bort så snart raderingen har startats. Din profil slutar synas för andra och ditt konto väljs inte längre ut för nya leveranser.</li>
+      <li>Den fysiska raderingen av lagrade uppgifter fortsätter i bakgrunden därefter. Målet är att den ska vara klar inom 30 dagar, om inte en berättigad säkerhets- eller rättslig skyldighet kräver begränsad lagring.</li>
+      <li>Videor du spelat in, deras miniatyrbilder, dina profiluppgifter, din profilbild och det Global-innehåll du äger tas bort.</li>
+      <li>Innehåll som ägs av någon annan raderas <em>inte</em> bara för att du delade det. I stället tas din koppling till det bort, och videon stannar hos den som skapade den.</li>
+      <li>Ditt användarnamn hålls i 90 dagar efter raderingen innan det kan användas igen, så att det inte omedelbart kan tas av någon annan.</li>
+      <li>Begränsade säkerhets-, rättsliga eller transaktionsrelaterade poster kan behållas där det finns ett berättigat skäl, och endast så länge det skälet gäller. Där en säkerhetspost behålls rensas de kopplingar som binder den till din identitet bort som en del av raderingen, så att det som återstår är en uppgift om vad som hände snarare än en uppgift om dig.</li>
+      <li>Att radera ditt konto raderar inte någon annans. En Connection har två personer i sig, och den andra deltagarens meddelanden, videor och poster stannar hos hen.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Säkerhetsbevis är inte vanlig meddelandehistorik.</strong> Connections och valfri meddelandeöversättning införs stegvis och är kanske ännu inte tillgängliga för varje konto eller varje installerad appversion. Om du har en Connection: ett vanligt meddelande i den behandlas som att det upphör ungefär sju dagar efter att det skickats. Ett meddelande som har anmälts styrs inte längre av det: det är bevis i en granskning, och det behålls medan granskningen pågår och därefter där utfallet motiverar det — även efter att kontot det kom från har raderats. Att radera ditt konto drar inte tillbaka en anmälan du gjort och raderar inte en anmälan som gjorts om dig.</p>
+    </div>
+
+    <h2 id="apple-linked">Om ditt konto är kopplat till Logga in med Apple</h2>
+
+    <p>Vissa ULMOX-konton är kopplade till Logga in med Apple. Om ditt är det har permanent radering ett extra steg, eftersom Apple kräver att en app avsäger sig sin behörighet för Logga in med Apple när den raderar ett konto, i stället för att bara radera sin egen post.</p>
+
+    <ol>
+      <li>På en Apple-enhet ber ULMOX dig att bekräfta en gång till direkt med Apple. Den bekräftelsen sker mellan dig och Apple på din egen enhet. <strong>ULMOX tar inte emot ditt Apple-lösenord</strong>, och vi ber dig aldrig om det.</li>
+      <li>Den bekräftelsen är det som låter ULMOX återkalla sin egen behörighet för Logga in med Apple för ditt konto.</li>
+      <li>Först därefter börjar den permanenta radering som beskrivs ovan.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Om det steget inte slutförs raderas ingenting.</strong> Om du avfärdar Apple-skärmen, om bekräftelsen returnerar ett annat Apple-konto än det som är inloggat, eller om steget misslyckas av något annat skäl, stannar ULMOX innan något permanent sker och talar om för dig att ingenting har raderats. Du kan försöka igen.</p>
+    </div>
+
+    <p>Tre skilda saker är lätta att blanda ihop:</p>
+
+    <ul>
+      <li><strong>Att återkalla ULMOX behörighet för Logga in med Apple</strong> hindrar ULMOX från att kunna använda Logga in med Apple för dig. I sig raderar det inte ditt ULMOX-konto och det raderar inte uppgifterna i det.</li>
+      <li><strong>Att radera ditt ULMOX-konto</strong> är den åtgärd som tar bort dina ULMOX-uppgifter. Den är klar först när den radering som beskrivs på den här sidan har körts — ingen ändring av en inloggningsbehörighet slutför den.</li>
+      <li><strong>Att radera ditt Apple-ID</strong> är något bara Apple kan göra, på din egen begäran — ULMOX gör det aldrig och kan inte göra det.</li>
+    </ul>
+
+    <h3>Att radera ett Apple-kopplat konto från en Android-enhet</h3>
+
+    <p>Apples bekräftelsesteg kan endast slutföras på en Apple-enhet. Om du försöker radera ett Apple-kopplat ULMOX-konto från en Android-telefon stannar ULMOX innan något tas bort och talar om för dig att <strong>ingenting har raderats</strong>. Slutför raderingen på en Apple-enhet, eller <a href="support.html">kontakta supporten</a> så hanterar vi det åt dig.</p>
+
+    <p>Ett konto som bara använder inloggning med Google, eller bara en e-postadress, raderas normalt på båda slagen av enhet. Ett konto som är kopplat till både Apple och Google behöver fortfarande Apple-steget.</p>
+
+    <h2>Om du bara vill ta en paus</h2>
+
+    <p>Inaktivering döljer din profil och ditt Global-innehåll och kan ångras genom att du loggar in igen. Videor du redan skickat kan finnas kvar hos dem som tog emot dem under deras normala lagringstid. Inaktivering uppfyller inte en begäran om radering — vill du få dina uppgifter borttagna, använd Radera konto.</p>
+
+    <p>Att inaktivera raderar inte säkerhetsposter, och att återaktivera ångrar ingenting. Att komma tillbaka återställer din åtkomst; det upphäver inte ett modereringsbeslut, det återställer inte innehåll som moderering tagit bort eller dolt, och det återöppnar inte en Connection som avslutats. Att avsluta en Connection är slutgiltigt för det paret. Blockering fungerar annorlunda: en blockering avslutar den Connection du har nu och stoppar kontakt i båda riktningarna så länge den gäller. Att ta bort en blockering återställer inte heller den gamla Connection — de två kontona skulle behöva kvalificera sig på nytt från början, genom två nya kvalificerande videoutbyten och ett nytt godkännande från var och en.</p>
+
+    <h2>Frågor</h2>
+
+    <p>Kontakta <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Se även <a href="privacy.html">Integritetspolicy</a> och <a href="terms.html">Villkor</a>.</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Juridik och support">
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="privacy.html">Integritetspolicy</a></li>
+        <li><a href="terms.html">Villkor</a></li>
+        <li><a href="safety.html">Säkerhet och moderering</a></li>
+        <li><a href="support.html">Kundsupport</a></li>
+        <li><span aria-current="page">Radera konto</span></li>
+        <li><a href="translation.html">Om översättning</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

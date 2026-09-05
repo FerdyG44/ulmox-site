@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# The /delete-account/ path only redirects to the real page; indexing the
+# canonical URL avoids a duplicate listing.
+Disallow: /delete-account/
+
+Sitemap: https://ulmoxapp.com/sitemap.xml

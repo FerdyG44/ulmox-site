@@ -1,45 +1,323 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>شروط الخدمة - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="الشروط السارية عند استخدام ULMOX: الأهلية، والمحتوى، وConnections، والإشراف، والتظلّم." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;line-height:1.7;max-width:900px;margin:auto;">
-<h1>شروط الخدمة</h1>
-<p><strong>آخر تحديث:</strong> أغسطس 2026</p>
-<p>شروط الخدمة ULMOX. يجب على المستخدمين استخدام ULMOX بطريقة محترمة وآمنة وقانونية.</p>
-<h2>السلامة والإشراف في ULMOX</h2>
-<p>يجب على المستخدمين استخدام ULMOX بطريقة محترمة وآمنة وقانونية.</p>
-<p>يجب على المستخدمين استخدام ULMOX بطريقة محترمة وآمنة وقانونية.</p>
-<ul><li>المضايقة أو التنمر</li>
-  <li>خطاب الكراهية</li>
-  <li>محتوى جنسي أو صريح</li>
-  <li>محتوى عنيف أو صادم</li>
-  <li>رسائل مزعجة أو محتوى مضلل</li>
-  <li>نشاط غير قانوني</li>
-  <li>استغلال الأطفال أو السلوك المسيء</li></ul>
-<h2>شروط الخدمة</h2>
-<p>يجب على المستخدمين استخدام ULMOX بطريقة محترمة وآمنة وقانونية.</p>
-<p>يجب على المستخدمين استخدام ULMOX بطريقة محترمة وآمنة وقانونية.</p>
-<h2>التواصل</h2>
-<p>يمكن للمستخدمين الإبلاغ عن المحتوى غير المناسب مباشرة داخل التطبيق. تتم مراجعة جميع البلاغات وإزالة المحتوى المخالف بسرعة.</p>
-<h2>السلامة والإشراف في ULMOX</h2>
-<p>تلتزم ULMOX بتوفير بيئة آمنة ومحترمة لجميع المستخدمين.</p>
-<h2>السلامة والإشراف في ULMOX</h2>
-<p>تلتزم ULMOX بتوفير بيئة آمنة ومحترمة لجميع المستخدمين.</p>
-<h2>سياسة الخصوصية</h2>
-<p>تحترم ULMOX خصوصيتك. نجمع فقط البيانات الأساسية اللازمة لتقديم الخدمة.</p>
-<h2>شروط الخدمة</h2>
-<p>يجب على المستخدمين استخدام ULMOX بطريقة محترمة وآمنة وقانونية.</p>
-<h2>شروط الخدمة</h2>
-<p>يجب على المستخدمين استخدام ULMOX بطريقة محترمة وآمنة وقانونية.</p>
-<h2 id="ulmox-music">ULMOX Music</h2>
-<p>قد توفر ULMOX موسيقى لاستخدامها في Moments. وفقًا لهذه الشروط، يجوز لك مزامنة تلك الموسيقى مع مقاطع الفيديو التي تنشئها في ULMOX ومشاركة مقاطع الفيديو المكتملة من خلال ULMOX. لا يجوز لك استخراج الموسيقى أو إعادة توزيعها أو بيعها أو إتاحتها كملف صوتي مستقل.</p>
-<h2>التواصل</h2>
-<p>التواصل<br><br>ulmoxapp@outlook.com</p>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+<body>
+  <a class="ulmox-skip-link" href="#main">تخطَّ إلى المحتوى</a>
+<div class="container">
+  <main id="main">
+    <h1>شروط الخدمة</h1>
+    <p class="effective">سارية اعتبارًا من 2026-09-04. آخر تحديث في 2026-09-04.</p>
+
+    <p>تسري هذه الشروط عند استخدامك ULMOX. وإن لم توافق عليها، فيُرجى عدم استخدام الخدمة.</p>
+
+    <h2>1. من يجوز له استخدام ULMOX</h2>
+
+    <ul>
+      <li>يجب أن يكون سنك <strong>18 عامًا أو أكثر</strong>.</li>
+      <li>يجب أن تقدّم معلومات صادقة عن سنك.</li>
+      <li>يجب ألا تحاول التحايل على شرط السن، وألا تساعد أحدًا غيرك على ذلك.</li>
+      <li>الحسابات دائمة وغير مجهولة. تسجّل الدخول بمزوّد مدعوم وتحتفظ بهوية واحدة عبر الخدمة كلها.</li>
+    </ul>
+
+    <h2>2. المحتوى الخاص بك</h2>
+
+    <p>أنت مسؤول عن مقاطع الفيديو ومحتوى الملف الشخصي التي تنشئها وترفعها. ويجب أن يكون لديك الحق في مشاركة ما ترفعه، وألا يخالف هذه الشروط أو القانون.</p>
+
+    <h3>الملكية والترخيص</h3>
+
+    <p><strong>تبقى ملكية محتواك لك.</strong> ولتشغيل الخدمة، تمنح ULMOX ترخيصًا غير حصري وعالميًا وخاليًا من الإتاوات لاستضافة محتواك وتخزينه ونسخه ونقله، وذلك فقط كي نتمكّن من تسليمه إلى المستلم المختار له، وتوليد صور مصغّرة، وعرضه في تدفّق Global إذا شاركه المستلم هناك. ولا يوجد هذا الترخيص إلا لتشغيل ULMOX وينتهي عند إزالة المحتوى، إلا حيث يتعيّن علينا الاحتفاظ بنسخة كدليل سلامة أو للوفاء بالتزام قانوني.</p>
+
+    <p>وعندما يشارك شخص مقطعًا تلقّاه في تدفّق Global، فإنه <strong>لا</strong> يصبح مالكه. فمن سجّله يظل مالكه.</p>
+
+    <h2>3. Connections</h2>
+
+    <div class="callout">
+      <p><strong>يجري طرح ميزتَي Connections وترجمة الرسائل الاختيارية تدريجيًا، وقد لا تكونان متاحتين بعد لكل حساب أو لكل إصدار مثبَّت من التطبيق.</strong></p>
+    </div>
+
+    <p>الـ Connection محادثة متبادلة نصية فقط بين بالغَين سبق أن تبادلا لحظات فيديو. وهي ليست دليل محادثات وليست مراسلة مفتوحة. وهذه هي القواعد التي تعمل بها:</p>
+
+    <ul>
+      <li><strong>للبالغين فقط.</strong> Connections جزء من خدمة لمن هم في سن 18 عامًا فأكثر، وهي متاحة فقط للحسابات التي اجتازت شرط السن.</li>
+      <li><strong>لا يمكنك البحث عن أشخاص.</strong> لا يوجد في ULMOX بحث عن المستخدمين ولا أي طريقة للعثور على أحد بغرض التواصل معه. ولا يمكن أن ينشأ الـ Connection إلا من تواصل كان قائمًا بالفعل.</li>
+      <li><strong>لقاءان مؤهِّلان سابقان بالفيديو.</strong> لا يصبح الثنائي مؤهَّلًا إلا بعد تبادلين مؤهِّلين منفصلين بالفيديو بين هذين الحسابين. وواحد لا يكفي.</li>
+      <li><strong>يجب أن يوافق الطرفان.</strong> يوافق كل طرف على حدة. وحتى يوافق الاثنان، لا يوجد Connection ولا يمكن إرسال أي رسالة.</li>
+      <li><strong>نص فقط ولا مرفقات.</strong> يحمل الـ Connection رسائل مكتوبة. ولا توجد مرفقات — لا صور ولا مقاطع فيديو ولا ملفات ولا رسائل صوتية.</li>
+      <li><strong>الحسابات دائمة وغير مجهولة.</strong> فالشخص المرتبط بك له في ULMOX الهوية الواحدة نفسها التي لكل شخص آخر.</li>
+      <li><strong>الرسائل تنتهي.</strong> تُعامَل الرسالة العادية على أنها تنتهي بعد نحو سبعة أيام من إرسالها. أما الرسائل المُبلَّغ عنها فتُعامَل بطريقة مختلفة — انظر سياسة الخصوصية.</li>
+      <li><strong>الإبلاغ والمغادرة يعملان دائمًا.</strong> يمكنك استخدام <strong>الإبلاغ عن مستخدم</strong> و<strong>الإبلاغ عن رسالة</strong>، ويمكنك <strong>الحظر</strong>، ويمكنك <strong>إنهاء الـ Connection</strong>. وإنهاء الـ Connection نهائي لذلك الثنائي: فهو لا يُستأنف، ولا يعيد فتحه لقاء لاحق. والحظر ليس الأمر نفسه. فالحظر ينهي الـ Connection القائم لديك الآن ويوقف التواصل في الاتجاهين ما دام قائمًا. ورفع الحظر لا يعيد الـ Connection السابق: إذ سيتعيّن على الثنائي أن يستوفي الشروط من جديد من البداية، عبر تبادلين جديدين مؤهِّلين للفيديو وموافقة جديدة من كل طرف.</li>
+      <li><strong>البلاغات يراجعها بشر لا آلات.</strong> فالرسالة المُبلَّغ عنها يحكم عليها إنسان.</li>
+      <li><strong>الترجمة اختيارية.</strong> يمكنك ترجمة رسالة تلقّيتها على جهازك أنت. والمعتمَد هو الأصل، وهو ما يقرأه المراجع. انظر <a href="translation.html">معلومات الترجمة</a>.</li>
+    </ul>
+
+    <h2>4. ما هو غير مسموح به</h2>
+
+    <p>يُحظر ما يلي على ULMOX:</p>
+
+    <ul>
+      <li>الاعتداء والاستغلال الجنسي للأطفال (CSAE) ومواد الاعتداء الجنسي على الأطفال (CSAM)، بأي شكل.</li>
+      <li>الاستغلال الجنسي لأي شخص.</li>
+      <li>المحتوى الجنسي غير الرضائي، والمحتوى الجنسي الذي يشمل أي شخص قد يكون دون 18 عامًا.</li>
+      <li>التهديدات والتحريض على العنف والمحتوى الذي يمجّد العنف.</li>
+      <li>خطاب الكراهية والمضايقة الموجَّهة.</li>
+      <li>انتحال شخصية شخص آخر أو منظمة.</li>
+      <li>الاحتيال والغش والرسائل غير المرغوب فيها.</li>
+      <li>المحتوى غير القانوني والنشاط غير القانوني.</li>
+      <li>مشاركة المعلومات الخاصة بشخص آخر دون إذنه.</li>
+    </ul>
+
+    <h2>5. الإبلاغ والحظر والإشراف</h2>
+
+    <ul>
+      <li>يمكنك الإبلاغ عن المحتوى وعن المستخدمين من داخل التطبيق. وهناك فئة مخصّصة لسلامة الأطفال.</li>
+      <li>يمكنك حظر مستخدم آخر. والحظر يوقف التفاعل في الاتجاهين، ولا يُبلَّغ الشخص المحظور به.</li>
+      <li>قد يوضع المحتوى المُبلَّغ عنه في <strong>حجر قابل للتراجع</strong> أثناء مراجعته. والحجر يخفي المحتوى مؤقتًا؛ ولا يحذفه وليس عقوبة على الحساب.</li>
+      <li>قرارات الإشراف يتّخذها بشر لا آليات. فمقاطع الفيديو المُبلَّغ عنها والرسائل المُبلَّغ عنها يراجعها إنسان في كلتا الحالتين.</li>
+      <li>الرسالة التي يحجزها مرشّح أمان آلي <strong>ليست</strong> قرارًا بشأن حسابك. فحجز رسالة، أو وضع محتوى في الحجر، يقيّد ذلك العنصر وحده لا غير.</li>
+      <li>إذا وافق مراجع على مقطع فيديو، فإنه لا يعود إلى تدفّق Global إلا إذا ظل مؤهَّلًا له بذاته. وأي مقطع غادر مالكه أو جرى تقييده أو حظره، أو صار غير متاح لسبب منفصل، يبقى غير متاح مهما كان قرار البلاغ.</li>
+      <li>عند البتّ في بلاغ يخرج من قائمة المراجعة النشطة. ولا يُمحى: فالأدلة وسجل ما تقرّر يُحفظان حيث يوجد سبب مبرَّر لحفظهما.</li>
+      <li>البلاغ يتعلق دائمًا بالمحتوى الأصلي. والترجمة التي اخترت قراءتها ليست أبدًا ما يُراجَع وليست أبدًا دليلًا.</li>
+      <li>لا ننشر العتبات الداخلية ولا الأدوات ولا إجراءات العمل التي تستخدمها أنظمة السلامة لدينا.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>البلاغات لا تحظر الحسابات.</strong> فلا عدد من البلاغات يحظر حسابًا تلقائيًا. ولا شيء آخر يفعل ذلك أيضًا: لا مرشّح آلي يحجز رسالة، ولا حجر، ولا ترجمة، ولا قرار بإزالة قطعة محتوى واحدة. ولا يمكن حظر حساب إلا لمسؤول مخوّل في ULMOX، بوصفه قرارًا منفصلًا ومقصودًا، وبعد مراجعة الحالة فقط.</p>
+    </div>
+
+    <p>لا يحلّل ULMOX تلقائيًا لقطات الفيديو أو الصوت أو النصوص المفرَّغة. وتقوم السلامة على الإبلاغ والحجر القابل للتراجع والحظر والمراجعة البشرية.</p>
+
+    <h2>6. التعطيل والحذف</h2>
+
+    <ul>
+      <li><strong>التعطيل</strong> قابل للتراجع. يُخفى ملفك الشخصي ومحتوى Global الخاص بك وتُحفَظ بياناتك ليتسنّى استعادة الحساب. وقد تبقى مقاطع الفيديو التي أرسلتها من قبل لدى من تلقّوها طوال مدة الاحتفاظ المعتادة لها.</li>
+      <li><strong>الحذف</strong> دائم ولا يمكن التراجع عنه. تنتهي إمكانية الوصول والظهور فورًا، ويستمر المحو في الخلفية. وقد تُحفظ سجلات أمنية أو قانونية أو معاملاتية محدودة حيث يكون ذلك مبرَّرًا. انظر <a href="delete_account.html">حذف الحساب</a>.</li>
+    </ul>
+
+    <h2>7. الإنفاذ والتظلّم</h2>
+
+    <p>يجوز لنا إخفاء محتوى أثناء مراجعته، وإزالة محتوى يخالف هذه الشروط، وتعليق حساب أو إنهاؤه عبر مسؤول مخوّل. وإذا رأيت أن قرارًا بشأن محتواك أو حسابك كان خاطئًا، فاكتب إلى <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> وسيراجعه إنسان. انظر <a href="support.html">الدعم</a>.</p>
+
+    <h2>الترجمة الآلية</h2>
+
+    <ul>
+      <li>قد يوفّر ULMOX ترجمة آلية اختيارية لرسالة تلقّيتها. <strong>وقد تكون الترجمات الآلية ناقصة أو غير دقيقة.</strong></li>
+      <li>وحيث يهمّ المعنى، اعتمد على الرسالة الأصلية. فالأصل يبقى ظاهرًا وهو النسخة المعتمدة.</li>
+      <li>ترجمة رسالة لا تغيّر مسؤوليتك عن المحتوى الذي كتبته. فتبقى مسؤولًا عن رسالتك الأصلية.</li>
+      <li>الترجمة لا تنشئ استثناءً من هذه الشروط. فالمحتوى المخالف للقواعد يخالفها بكل لغة.</li>
+      <li>توفّر Google تقنية الترجمة. ولا تكتب Google أي رسالة تُرسَل عبر ULMOX ولا تراجعها ولا توافق عليها ولا تتبنّاها.</li>
+    </ul>
+
+    <p>انظر <a href="translation.html">معلومات الترجمة</a>.</p>
+
+    <h2 id="ulmox-music">ULMOX Music</h2>
+
+    <p>قد توفر ULMOX موسيقى لاستخدامها في Moments. وفقًا لهذه الشروط، يجوز لك مزامنة تلك الموسيقى مع مقاطع الفيديو التي تنشئها في ULMOX ومشاركة مقاطع الفيديو المكتملة من خلال ULMOX. لا يجوز لك استخراج الموسيقى أو إعادة توزيعها أو بيعها أو إتاحتها كملف صوتي مستقل.</p>
+
+    <h2>8. تغييرات هذه الشروط</h2>
+
+    <p>قد نحدّث هذه الشروط. والتاريخ المذكور أعلاه يبيّن النسخة السارية. وعندما يكون التغيير جوهريًا، قد نطلب منك قبول الشروط المحدّثة داخل التطبيق قبل مواصلة استخدام ULMOX.</p>
+
+    <h2>9. صفحات ذات صلة</h2>
+
+    <p>
+      <a href="privacy.html">سياسة الخصوصية</a>
+      &middot;
+      <a href="safety.html">السلامة والإشراف</a>
+      &middot;
+      <a href="support.html">الدعم</a>
+      &middot;
+      <a href="delete_account.html">حذف الحساب</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="المعلومات القانونية والدعم">
+      <ul>
+        <li><a href="index.html">الصفحة الرئيسية</a></li>
+        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+        <li><span aria-current="page">الشروط</span></li>
+        <li><a href="safety.html">السلامة والإشراف</a></li>
+        <li><a href="support.html">الدعم</a></li>
+        <li><a href="delete_account.html">حذف الحساب</a></li>
+        <li><a href="translation.html">معلومات الترجمة</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

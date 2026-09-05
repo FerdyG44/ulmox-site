@@ -1,24 +1,275 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ฝ่ายสนับสนุน - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="วิธีติดต่อ ULMOX เราตอบเร็วเพียงใด และจะอุทธรณ์คำวินิจฉัยได้อย่างไร" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;">
+<body>
+  <a class="ulmox-skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
+<div class="container">
+  <main id="main">
+    <h1>ฝ่ายสนับสนุน ULMOX</h1>
+    <p class="effective">มีผลตั้งแต่ 2026-09-04 อัปเดตล่าสุด 2026-09-04</p>
 
-ฝ่ายสนับสนุน
+    <p>เขียนถึง <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> การใช้หัวเรื่องใดหัวเรื่องหนึ่งด้านล่างช่วยให้เราส่งข้อความของคุณไปยังผู้รับผิดชอบได้ถูกต้อง</p>
 
-ต้องการความช่วยเหลือไหม?
+    <table>
+      <tr><th scope="col">ฉันต้องการความช่วยเหลือเรื่อง</th><th scope="col">หัวเรื่อง</th><th scope="col">หมายเหตุ</th></tr>
+      <tr><td>การสนับสนุนทั่วไป</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Support">ULMOX Support</a></td><td>ทุกเรื่องที่ไม่ได้ระบุไว้ด้านล่าง</td></tr>
+      <tr><td>การลบบัญชีของฉัน</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">ULMOX Account Deletion Request</a></td><td>ดู <a href="delete_account.html">ลบบัญชี</a> ก่อน — เส้นทางในแอปเร็วกว่า</td></tr>
+      <tr><td>การแก้ไขการยืนยันอายุของฉัน</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Age%20Verification%20Correction">ULMOX Age Verification Correction</a></td><td>หากคุณกรอกวันเกิดผิด คุณเปลี่ยนเองไม่ได้</td></tr>
+      <tr><td>การอุทธรณ์คำวินิจฉัยเกี่ยวกับเนื้อหา</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Content%20Appeal">ULMOX Content Appeal</a></td><td>หากเนื้อหาของคุณถูกซ่อนหรือถูกนำออก</td></tr>
+      <tr><td>การอุทธรณ์การจำกัดบัญชี</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Appeal">ULMOX Account Appeal</a></td><td>หากบัญชีของคุณถูกระงับหรือถูกแบน</td></tr>
+      <tr><td>การรายงานข้อกังวลด้านความปลอดภัยของเด็ก</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ULMOX Child Safety Report</a></td><td>ลำดับความสำคัญสูงสุด ดู <a href="safety.html">ความปลอดภัยและการดูแลเนื้อหา</a></td></tr>
+    </table>
 
-ส่งอีเมลถึงเราได้ที่:
+    <h2>เราตอบเร็วเพียงใด</h2>
 
-<h2>ulmoxapp@outlook.com</h2>
+    <ul>
+      <li><strong>รายงานด้านความปลอดภัยของเด็กที่เร่งด่วน</strong>ตั้งเป้าให้เข้าสู่การตรวจสอบโดยมนุษย์<strong>ภายใน 24 ชั่วโมง</strong> นั่นเป็นเป้าหมายสำหรับการเริ่มตรวจสอบ ไม่ใช่การรับประกันว่ากรณีจะได้ข้อยุติภายใน 24 ชั่วโมง</li>
+      <li><strong>เรื่องอื่นทั้งหมด</strong>จะได้รับการดำเนินการโดยเร็วที่สุดเท่าที่สมเหตุสมผล</li>
+    </ul>
 
-โดยปกติเราจะตอบกลับภายใน 24 ชั่วโมง
+    <div class="callout">
+      <p><strong>เราจะไม่ขอรหัสผ่าน รหัสผ่าน Apple หรือ Google รหัสยืนยันตัวตนแบบใช้ครั้งเดียว รหัสอนุญาต หรือโทเค็นการลงชื่อเข้าใช้จากคุณเลย และจะไม่ขอให้คุณส่งหนังสือเดินทางหรือเอกสารแสดงตนอื่นทางอีเมลเลย</strong> โปรดอย่าส่งสิ่งเหล่านี้ หากมีข้อความที่อ้างว่ามาจาก ULMOX ขอสิ่งใดในนี้ ข้อความนั้นไม่ได้มาจากเรา</p>
+    </div>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <h2>Connections และการแปลข้อความ</h2>
+
+    <div class="callout">
+      <p><strong>Connections และการแปลข้อความซึ่งเป็นตัวเลือกเสริมกำลังทยอยเปิดให้ใช้งาน และอาจยังไม่พร้อมใช้งานสำหรับทุกบัญชีหรือทุกเวอร์ชันของแอปที่ติดตั้งไว้</strong></p>
+    </div>
+
+    <p>หากบัญชีของคุณไม่มี Connections ก็ไม่มีอะไรต้องแก้ไขและไม่มีอะไรต้องขอจากเรา เพราะนั่นไม่ใช่ข้อผิดพลาด ไม่ใช่ความบกพร่องของบัญชีคุณ และไม่ใช่สิ่งที่ฝ่ายสนับสนุนจะเปิดให้คุณได้ สิ่งเดียวที่ควรทำคืออัปเดตแอปเป็นเวอร์ชันปัจจุบัน</p>
+
+    <p>เมื่อการแปลพร้อมใช้งานสำหรับคุณ ต่อไปนี้คือปัญหาที่มักเกิดขึ้นและวิธีจัดการ ดูวิธีทำงานของฟีเจอร์นี้ได้ที่ <a href="translation.html">ข้อมูลการแปล</a></p>
+
+    <table>
+      <tr><th scope="col">สิ่งที่คุณเห็น</th><th scope="col">ความหมาย</th></tr>
+      <tr><td>แพ็กภาษายังดาวน์โหลดอยู่</td><td>ภาษาหนึ่งต้องดาวน์โหลดหนึ่งครั้งก่อนจึงจะแปลได้ ปล่อยหน้าจอเปิดไว้ ข้อความต้นฉบับยังอ่านได้ตลอดเวลานั้น</td></tr>
+      <tr><td>การดาวน์โหลดไม่เริ่มต้น</td><td>การดาวน์โหลดใช้ Wi-Fi โดยค่าเริ่มต้น บนเน็ตมือถือคุณต้องเลือกอย่างชัดเจน — ULMOX จะไม่ใช้ดาต้าของคุณโดยไม่ถาม</td></tr>
+      <tr><td>การดาวน์โหลดล้มเหลว</td><td>ลองอีกครั้งบนการเชื่อมต่อที่เสถียร หากการดาวน์โหลดล้มเหลว ตัวข้อความจะไม่เปลี่ยนแปลงใด ๆ</td></tr>
+      <tr><td>“ไม่สามารถแปลข้อความนี้ได้”</td><td>ภาษานั้นอยู่นอกชุดที่รองรับ หรือระบุไม่ได้อย่างมั่นใจเพียงพอ ULMOX เลือกที่จะไม่แสดงอะไรเลยมากกว่าจะเดา</td></tr>
+      <tr><td>คำแปลอ่านแล้วแปลก ๆ</td><td>การแปลด้วยเครื่องอาจผิดพลาดทั้งที่ดูเหมือนมั่นใจ และคู่ภาษาที่ไม่มีภาษาอังกฤษอยู่ด้วยอาจถูกแปลผ่านภาษาอังกฤษ โปรดอ่านต้นฉบับ</td></tr>
+      <tr><td>คุณต้องการพื้นที่คืน</td><td>ลบแพ็กภาษาที่ดาวน์โหลดไว้ได้ที่ โมเดลการแปล ในแอป</td></tr>
+      <tr><td>ข้อความนั้นเป็นปัญหาด้านความปลอดภัย</td><td>รายงานในแอป รายงานจะพาข้อความต้นฉบับไปด้วย ซึ่งเป็นสิ่งที่บุคคลตรวจสอบ</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>อย่าส่งข้อความนั้นมาทางอีเมล</strong> โปรดอย่าส่งตัวข้อความ ภาพหน้าจอของบทสนทนาส่วนตัว ข้อมูลยืนยันตัวตน หรือตัวระบุอุปกรณ์ ให้รายงานข้อความนั้นในแอปแทน — วิธีนั้นส่งต้นฉบับให้ผู้ตรวจสอบอย่างปลอดภัย และเราไม่เคยต้องการสำเนาจากคุณ</p>
+    </div>
+
+    <h2>การอุทธรณ์</h2>
+
+    <p>การอุทธรณ์ทำได้ไม่ว่าคุณจะใช้แอปได้ในขณะนี้หรือไม่ และลิงก์ฝ่ายสนับสนุนในแอปยังเข้าถึงได้หากบัญชีของคุณถูกจำกัด</p>
+
+    <ul>
+      <li>การอุทธรณ์จะถูกอ่านโดยบุคคลที่ได้รับมอบอำนาจ</li>
+      <li>การยื่นอุทธรณ์ไม่ได้คืนบัญชีหรือเนื้อหาของคุณโดยอัตโนมัติ</li>
+      <li>การอุทธรณ์ไม่ลบรายงานหรือบันทึกด้านความปลอดภัย</li>
+      <li>เราไม่บอกคุณว่าใครรายงานคุณ และไม่อธิบายเกณฑ์ภายในที่ระบบความปลอดภัยของเราใช้</li>
+    </ul>
+
+    <p>โปรดระบุชื่อผู้ใช้ ULMOX ของคุณ และหากเกี่ยวข้อง ระบุคร่าว ๆ ว่าคำวินิจฉัยเกิดขึ้นเมื่อใด อย่าใส่รหัสผ่านหรือเอกสารแสดงตน</p>
+
+    <h2>หน้าที่เกี่ยวข้อง</h2>
+
+    <p>
+      <a href="privacy.html">นโยบายความเป็นส่วนตัว</a>
+      &middot;
+      <a href="terms.html">ข้อกำหนด</a>
+      &middot;
+      <a href="safety.html">ความปลอดภัยและการดูแลเนื้อหา</a>
+      &middot;
+      <a href="delete_account.html">ลบบัญชี</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="ข้อมูลทางกฎหมายและการสนับสนุน">
+      <ul>
+        <li><a href="index.html">หน้าแรก</a></li>
+        <li><a href="privacy.html">นโยบายความเป็นส่วนตัว</a></li>
+        <li><a href="terms.html">ข้อกำหนด</a></li>
+        <li><a href="safety.html">ความปลอดภัยและการดูแลเนื้อหา</a></li>
+        <li><span aria-current="page">ฝ่ายสนับสนุน</span></li>
+        <li><a href="delete_account.html">ลบบัญชี</a></li>
+        <li><a href="translation.html">ข้อมูลการแปล</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

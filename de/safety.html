@@ -3,168 +3,303 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ULMOX Sicherheit & Moderation</title>
-
+  <title>ULMOX Sicherheit und Moderation</title>
+  <meta name="description" content="Wie ULMOX sexuellen Missbrauch und sexuelle Ausbeutung von Kindern verhindert, erkennt und ahndet." />
   <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      padding: 0;
-      background-color: #0d0d0f;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
     }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
 
     .container {
-      max-width: 900px;
+      max-width: 860px;
       margin: 0 auto;
-      padding: 60px 24px;
+      padding: 48px 20px 72px;
     }
 
-    h1 {
-      font-size: 42px;
-      margin-bottom: 30px;
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
     }
 
-    h2 {
-      margin-top: 42px;
-      font-size: 24px;
-      color: #ffffff;
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
     }
 
-    p, li {
-      color: #d0d0d0;
-      font-size: 17px;
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
     }
 
-    ul {
-      padding-left: 22px;
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
     }
 
-    a {
-      color: #9d7bff;
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
     }
 
-    .footer {
-      margin-top: 60px;
-      padding-top: 30px;
-      border-top: 1px solid #2a2a2e;
-      color: #888;
-      font-size: 14px;
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
     }
   </style>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
 </head>
-
 <body>
+  <a class="ulmox-skip-link" href="#main">Zum Inhalt springen</a>
+<div class="container">
+  <main id="main">
+    <h1>ULMOX-Standards zum Kinderschutz</h1>
+    <p class="effective">Gültig ab 2026-09-04. Zuletzt geändert am 2026-09-04.</p>
 
-  <div class="container">
+    <p>ULMOX steht ausschließlich Erwachsenen <strong>ab 18 Jahren</strong> offen. Diese Seite beschreibt, wie wir sexuellem Missbrauch und sexueller Ausbeutung von Kindern vorbeugen, sie erkennen und darauf reagieren.</p>
 
-    <h1>ULMOX Sicherheit & Moderation</h1>
-
-    <p>
-      ULMOX setzt sich für eine sichere und respektvolle Umgebung für alle Nutzer ein.
-    </p>
-
-    <h2>Inhaltsmoderation</h2>
-
-    <p>
-      Auf ULMOX geteilte Inhalte können durch automatisierte Erkennungssysteme und Moderationstools geprüft werden.
-    </p>
-
-    <p>
-      Wir überwachen aktiv und entfernen Inhalte, die gegen unsere Richtlinien verstoßen, darunter:
-    </p>
-
-    <ul>
-      <li>Belästigung oder Mobbing</li>
-      <li>Hassrede</li>
-      <li>Sexuelle oder explizite Inhalte</li>
-      <li>Gewalttätiges oder drastisches Material</li>
-      <li>Spam oder irreführende Inhalte</li>
-      <li>Illegale Aktivitäten</li>
-      <li>Ausbeutung von Kindern oder missbräuchliches Verhalten</li>
-    </ul>
-
-    <h2>Meldesystem</h2>
-
-    <p>
-      Nutzer können Inhalte direkt in der App melden.
-    </p>
-
-    <p>
-      Gemeldete Inhalte werden geprüft und können:
-    </p>
-
-    <ul>
-      <li>Entfernt werden</li>
-      <li>Aus öffentlichen Feeds ausgeblendet werden</li>
-      <li>Zur weiteren Prüfung eskaliert werden</li>
-      <li>Zur Sperrung oder Verbannung von Konten verwendet werden</li>
-    </ul>
-
-    <h2>Blockierfunktionen</h2>
-
-    <p>
-      Nutzer können andere Nutzer jederzeit blockieren.
-    </p>
-
-    <p>
-      Blockierte Nutzer können nicht mehr mit der meldenden Person interagieren oder in deren Nutzungserlebnis erscheinen.
-    </p>
-
-    <h2>KI-gestützte Erkennung</h2>
-
-    <p>
-      ULMOX kann automatisierte Systeme einsetzen, um potenziell unsichere oder unangemessene Inhalte vor einer weiteren Verbreitung zu erkennen.
-    </p>
-
-    <p>
-      Von automatisierten Systemen markierte Inhalte können zusätzlich geprüft werden.
-    </p>
-
-    <h2>Nutzersicherheit</h2>
-
-    <p>
-      Wir fördern respektvolle Kommunikation und positive Interaktionen.
-    </p>
-
-    <p>
-      Konten, die wiederholt gegen unsere Regeln verstoßen, können vorübergehend gesperrt oder dauerhaft gesperrt werden.
-    </p>
-
-    <h2>Kindersicherheit</h2>
-
-    <p>
-      ULMOX verfolgt eine Null-Toleranz-Politik gegenüber Material über sexuellen Missbrauch von Kindern (CSAM) oder ausbeuterischem Verhalten.
-    </p>
-
-    <p>
-      Erkannte CSAM-bezogene Inhalte oder Aktivitäten werden sofort entfernt und können den zuständigen Behörden gemeldet werden.
-    </p>
-
-    <h2>Kontakt</h2>
-
-    <p>
-      Bei Sicherheitsanliegen oder Einsprüchen gegen Moderationsentscheidungen:
-    </p>
-
-    <p>
-      <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>
-    </p>
-
-    <div class="footer">
-      © 2026 ULMOX. Alle Rechte vorbehalten.
+    <div class="callout">
+      <p><strong>Wenn ein Kind in unmittelbarer Gefahr ist, wenden Sie sich zuerst an den örtlichen Notruf.</strong> Eine Meldung an ULMOX ersetzt nicht den Kontakt zu den Behörden.</p>
     </div>
 
-  </div>
+    <h2>Null Toleranz</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>ULMOX duldet sexuellen Missbrauch und sexuelle Ausbeutung von Kindern (CSAE) und Darstellungen sexuellen Kindesmissbrauchs (CSAM) in keiner Form. Beteiligte Konten und Inhalte werden entfernt.</p>
+
+    <h2>Was verboten ist</h2>
+
+    <p>Klar gesagt ist Folgendes auf ULMOX niemals erlaubt:</p>
+
+    <ul>
+      <li>Jeder sexuelle Inhalt mit einer Person unter 18 Jahren, real oder dargestellt.</li>
+      <li>Grooming: das Aufbauen von Vertrauen zu einem Kind, um es sexuell auszubeuten, einschließlich der Aufforderung, den Kontakt vor Eltern oder Sorgeberechtigten geheim zu halten.</li>
+      <li>Ein Kind zu sexualisieren oder ein Kind um sexuelle Bilder oder Kontakt zu bitten.</li>
+      <li>Nötigung, Erpressung (auch sexuelle Erpressung), Menschenhandel oder jedes Verhalten, das ein Kind in ernste Gefahr bringt.</li>
+      <li>Material dieser Art zu bewerben, zu suchen oder darauf zu verlinken.</li>
+    </ul>
+
+    <h2>So melden Sie</h2>
+
+    <p>In der App können Sie <strong>Inhalt melden</strong> und <strong>Nutzer melden</strong> verwenden. Beide bieten eine eigene Kategorie <strong>Kinderschutz</strong>. Sie können außerdem eine Person blockieren, was jede Interaktion zwischen Ihnen in beide Richtungen beendet.</p>
+
+    <p>Sie können uns auch schreiben:</p>
+
+    <p><strong>ULMOX-Kontaktstelle für Kinderschutz</strong><br /> <a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ulmoxapp@outlook.com</a></p>
+
+    <h2>Was danach geschieht</h2>
+
+    <ul>
+      <li>Meldungen zum Kinderschutz erhalten für die menschliche Prüfung <strong>höchste Priorität</strong>.</li>
+      <li>Der konkret gemeldete Inhalt wird sofort in eine <strong>umkehrbare Quarantäne</strong> gestellt, sodass er weder öffentlich gezeigt noch zugestellt wird, während ein Mensch ihn prüft.</li>
+      <li>Belege werden für die Prüfung gesichert und sind nur autorisierten Moderatorinnen und Moderatoren zugänglich.</li>
+      <li>Meldungen sperren ein Konto <strong>nicht</strong> automatisch. Das tun auch die Zahl der Meldungen, ein automatischer Filter, der eine Nachricht zurückhält, eine Quarantäne oder eine Übersetzung nicht. Eine Sperre ist eine eigene, bewusste Entscheidung, die nur eine autorisierte ULMOX-Administration treffen kann, und erst nach Prüfung des Falls.</li>
+      <li>Die Erledigung einer Meldung nimmt sie von der aktiven Prüfliste. Sie wird dadurch nicht gelöscht: die Belege und der Vermerk über die Entscheidung bleiben dort erhalten, wo es einen begründeten Anlass gibt, damit eine Entscheidung nachvollzogen und ein Widerspruch beantwortet werden kann.</li>
+      <li>Gibt eine prüfende Person ein gemeldetes Video frei, kehrt es nur dann in den Global-Feed zurück, wenn es dafür weiterhin eigenständig infrage kommt. Inhalte, deren Eigentümerin oder Eigentümer den Dienst verlassen hat, eingeschränkt oder gesperrt wurde, oder die aus einem anderen Grund nicht verfügbar sind, bleiben unabhängig von der Meldeentscheidung nicht verfügbar.</li>
+      <li>Wo das anwendbare Recht es verlangt, melden wir an die zuständige gesetzlich benannte Stelle.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Unser Ziel ist es, dringende Meldungen zum Kinderschutz innerhalb von 24 Stunden zu prüfen.</strong> Das ist ein Ziel für den Beginn der menschlichen Prüfung. Es ist keine Garantie, dass jeder Fall innerhalb von 24 Stunden abschließend geklärt ist; komplexe Fälle können länger dauern.</p>
+    </div>
+
+    <p>Andere Sicherheitsmeldungen werden so schnell geprüft, wie es vernünftigerweise möglich ist.</p>
+
+    <h2>Sicherheit in Connections</h2>
+
+    <div class="callout">
+      <p><strong>Connections und die optionale Nachrichtenübersetzung werden schrittweise eingeführt und sind möglicherweise noch nicht für jedes Konto oder jede installierte App-Version verfügbar.</strong></p>
+    </div>
+
+    <p>Eine Connection ist ein reines Textgespräch zwischen zwei Erwachsenen, die ihr nach zwei getrennten qualifizierenden Videoaustauschen beide zugestimmt haben. ULMOX hat keine Nutzersuche, sodass niemand Sie nachschlagen kann, um Ihnen zu schreiben. Dies sind die Sicherheitsfunktionen innerhalb einer Connection:</p>
+
+    <ul>
+      <li><strong>Nachricht melden.</strong> Verfügbar bei einer Nachricht, die Sie empfangen haben. Die Meldung übergibt einem Menschen die Originalnachricht zur Prüfung.</li>
+      <li><strong>Eine Meldung blendet die Nachricht für Sie aus, und nur für Sie.</strong> Nachdem Sie eine Nachricht gemeldet haben, verschwindet sie aus Ihrer Ansicht des Gesprächs. Die Kopie der sendenden Person bleibt unverändert, und ihr wird nicht mitgeteilt, dass Sie gemeldet haben. Das Ausblenden dient Ihrem Schutz; es ist keine Sanktion gegen sie, und die Entscheidung über die Nachricht trifft weiterhin ein Mensch.</li>
+      <li><strong>Nutzer melden.</strong> Separat verfügbar, für die Person statt für eine einzelne Nachricht. Beide bieten eine eigene Kategorie für Kinderschutz.</li>
+      <li><strong>Blockieren.</strong> Blockieren stoppt die Interaktion in beide Richtungen. Es wird nach einer Meldung als eigene Wahl angeboten, nie mit ihr gebündelt, und wenn Sie ablehnen, bleibt Ihre Meldung bestehen. Eine Blockierung beendet zudem die bestehende Connection. Sie wieder aufzuheben bringt diese Connection nicht zurück: das Paar müsste sich von vorn neu qualifizieren, durch zwei neue qualifizierende Videoaustausche und eine erneute Zustimmung beider Personen.</li>
+      <li><strong>Connection beenden.</strong> Beendet das Gespräch für beide. Es kann nicht wiederhergestellt werden und öffnet sich bei einer künftigen Begegnung nicht erneut. Beenden ist nicht dasselbe wie Blockieren, und es löscht keine Meldungen, die Sie bereits gemacht haben.</li>
+      <li><strong>Verlassen funktioniert immer.</strong> Blockieren und das Beenden einer Connection bleiben Ihnen offen, was auch immer sonst geschieht — eine Schutzmaßnahme ist nie das, was nicht verfügbar ist.</li>
+      <li><strong>Nachrichten laufen ab.</strong> Eine gewöhnliche Nachricht in einer Connection gilt etwa sieben Tage nach dem Senden als abgelaufen. Eine Nachricht, die Sie melden, wird anders behandelt: sobald sie Beleg in einer Prüfung ist, gilt die Siebentagesregel nicht mehr für sie, und sie bleibt erhalten, solange die Prüfung läuft, und danach, wo das Ergebnis dies rechtfertigt.</li>
+      <li><strong>Nichts wird angehängt.</strong> Connections tragen ausschließlich geschriebene Nachrichten — keine Fotos, Videos, Dateien oder Sprachnachrichten.</li>
+    </ul>
+
+    <h2>Übersetzte Nachrichten</h2>
+
+    <ul>
+      <li>Eine Meldung betrifft immer die <strong>Originalnachricht</strong>. Die Meldung trägt das Original, und das ist, was eine moderierende Person liest.</li>
+      <li>Eine optionale Übersetzung, die einer lesenden Person angezeigt wird, ist keine Moderationsentscheidung und kein Beleg.</li>
+      <li>Eine Übersetzung kann eine Nachricht nicht zustellbar machen. Blockierte oder zurückgehaltene Inhalte bleiben blockiert oder zurückgehalten, in welcher Sprache sie auch gelesen werden.</li>
+      <li>Kein Konto wird wegen des Ergebnisses einer Übersetzung gesperrt. Nur eine autorisierte ULMOX-Administration kann ein Konto sperren, und erst nach Prüfung der Originalbelege.</li>
+    </ul>
+
+    <p>Siehe <a href="translation.html">Informationen zur Übersetzung</a>.</p>
+
+    <h2>Was ULMOX nicht tut</h2>
+
+    <ul>
+      <li>ULMOX analysiert Videobilder, Ton oder Transkripte nicht automatisch. Die Videosicherheit beruht auf Meldungen, umkehrbarer Quarantäne, Blockieren und menschlicher Prüfung.</li>
+      <li>ULMOX sperrt Konten nicht automatisch, und keine Zahl von Meldungen führt zu einer automatischen Sperre.</li>
+      <li>ULMOX behauptet nicht, dass irgendeine automatische Prüfung jeden Verstoß findet. Die Sicherheit dieses Dienstes beruht auf Meldungen und menschlicher Prüfung.</li>
+      <li>ULMOX veröffentlicht die internen Schwellenwerte, Werkzeuge und Arbeitsweisen seiner Sicherheitssysteme nicht, denn sie zu veröffentlichen hieße, genau jenen Personen zu sagen, was sie vermeiden müssen, die wir aufhalten wollen.</li>
+    </ul>
+
+    <h2>Widerspruch</h2>
+
+    <p>Wenn Sie meinen, dass gegen einen Inhalt oder ein Konto zu Unrecht vorgegangen wurde, schreiben Sie an <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>; ein Mensch prüft es. Was Sie angeben sollten, steht unter <a href="support.html">Support</a>.</p>
+
+    <h2>Verwandte Seiten</h2>
+
+    <p>
+      <a href="terms.html">Bedingungen</a>
+      &middot;
+      <a href="privacy.html">Datenschutzerklärung</a>
+      &middot;
+      <a href="support.html">Support</a>
+      &middot;
+      <a href="delete_account.html">Konto löschen</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Rechtliches und Support">
+      <ul>
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="privacy.html">Datenschutzerklärung</a></li>
+        <li><a href="terms.html">Bedingungen</a></li>
+        <li><span aria-current="page">Sicherheit &amp; Moderation</span></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="delete_account.html">Konto löschen</a></li>
+        <li><a href="translation.html">Informationen zur Übersetzung</a></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Informations sur la traduction - ULMOX</title>
+  <meta name="description" content="La traduction dans ULMOX est assurée par Google Translate." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Informations sur la traduction</a>
+  <div class="container">
+  <main id="main">
+    <h1>Informations sur la traduction</h1>
+    <div class="callout">
+      <p><strong>Connections et la traduction facultative des messages sont déployées progressivement et peuvent ne pas encore être disponibles pour chaque compte ni pour chaque version installée de l’application.</strong></p>
+    </div>
+
+    <p>La traduction dans ULMOX est assurée par Google Translate.</p>
+
+    <ul>
+      <li>La traduction est facultative. Rien n'est traduit sans que vous le demandiez, un message à la fois.</li>
+      <li>La traduction d'un message se fait sur cet appareil. Ni le message ni la traduction ne sont envoyés ailleurs pour être traduits.</li>
+      <li>Un pack de langue doit être téléchargé avant qu'une langue puisse être traduite. ULMOX vous demande d'abord et télécharge en Wi-Fi, sauf si vous en décidez autrement.</li>
+      <li>Le composant de traduction de Google peut malgré tout utiliser le réseau de lui-même : pour télécharger les packs de langue, pour lire sa propre configuration à distance et pour remonter des diagnostics et des statistiques d'usage le concernant. Le texte de vos messages n'en fait pas partie.</li>
+      <li>La traduction automatique peut se tromper, et se tromper d'un ton parfaitement assuré.</li>
+      <li>Entre deux langues dont aucune n'est l'anglais, la traduction peut passer par l'anglais, et le résultat peut être nettement moins bon.</li>
+      <li>C'est le message d'origine qui fait foi. Il reste affiché, et c'est la seule chose à laquelle un signalement se réfère.</li>
+      <li>Traduire un message ne change rien aux signalements, aux blocages, à la modération ni aux décisions concernant un compte. Un signalement contient toujours le message d'origine, et c'est cet original qu'une personne examine — jamais la traduction.</li>
+      <li>ULMOX ne conserve pas la traduction. Elle n'est pas enregistrée comme un message distinct sur nos serveurs, et elle n'est jointe ni à un signalement, ni à une notification, ni aux éléments de modération, ni aux statistiques.</li>
+      <li>Tu peux voir et supprimer les packs de langue téléchargés dans Modèles de traduction, dans l'application. Si tu supprimes ULMOX, ils sont supprimés aussi, de la manière habituelle dont ton système d'exploitation supprime les fichiers d'une application.</li>
+    </ul>
+
+    <h2>Avertissement de Google</h2>
+    <div class="callout">
+      <p>THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</p>
+    </div>
+    <p>Google exige que cet avis apparaisse exactement tel quel : il n'est donc pas traduit.</p>
+
+    <h2>À propos du service de traduction</h2>
+    <p>
+      <a href="https://translate.google.com/" target="_blank" rel="noopener noreferrer">Google Translate</a>
+      &middot;
+      <a href="https://cloud.google.com/translate" target="_blank" rel="noopener noreferrer">Cloud Translation</a>
+    </p>
+  </main>
+  <footer>
+    <nav aria-label="Informations légales et support">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="privacy.html">Politique de confidentialité</a></li>
+        <li><a href="terms.html">Conditions</a></li>
+        <li><a href="safety.html">Sécurité et modération</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="delete_account.html">Supprimer le compte</a></li>
+        <li><span aria-current="page">Informations sur la traduction</span></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+  </div>
+</body>
+</html>
