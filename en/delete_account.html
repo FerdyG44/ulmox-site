@@ -1,26 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
-  <title>Account Deletion - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Your ULMOX Account</title>
+  <meta name="description" content="How to permanently delete your ULMOX account, in the app or by request." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>
+  <div class="container">
+  <main id="main">
+    <h1>Delete your ULMOX account</h1>
+    <p class="effective">Effective 2026-09-04. Last updated 2026-09-04.</p>
+    <p>
+      This page explains how to permanently delete your ULMOX account and what
+      happens to your data afterwards.
+    </p>
 
-  <h1>Delete Your Account</h1>
+    <div class="callout">
+      <p>
+        <strong>Deactivating is not deleting.</strong> Deactivation hides your
+        profile and your content and can be undone. Deleting your account is
+        permanent and cannot be undone.
+      </p>
+    </div>
 
-  <p>If you want to delete your ULMOX account, please contact us:</p>
+    <h2>Option 1 — delete in the app (preferred)</h2>
+    <p>
+      This is the fastest route and needs no email exchange. It is not available
+      to every account on every device: an account linked with Sign in with
+      Apple cannot finish deletion from an Android phone, and must complete it
+      on an Apple device. See
+      <a href="#apple-linked">If your account is linked with Sign in with
+      Apple</a> below.
+    </p>
+    <ol>
+      <li>Open ULMOX and go to <strong>Profile &rarr; Legal &amp; Safety &rarr; Account Management &rarr; Delete Account</strong>.</li>
+      <li>Read the confirmation, which explains that deletion is permanent.</li>
+      <li>Confirm. You may be asked to sign in again first, which protects your
+        account from someone else deleting it.</li>
+    </ol>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>Option 2 — request deletion by email</h2>
+    <p>
+      If you cannot open the app, you can ask us to delete your account.
+    </p>
+    <p>
+      <a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">Email ulmoxapp@outlook.com with the subject &ldquo;ULMOX Account Deletion Request&rdquo;</a>
+    </p>
+    <p>Please include only the minimum needed to find your account:</p>
+    <ul>
+      <li>the email address associated with your ULMOX account, and</li>
+      <li>your ULMOX username, if you know it.</li>
+    </ul>
+    <p>
+      Where possible, write from the email address associated with your account.
+      If your account is linked with Sign in with Apple and you used
+      <strong>Hide My Email</strong>, write
+      from your Apple relay address, or give us enough non-secret account details
+      to identify the account.
+    </p>
 
-  <p>Include your registered email address.</p>
+    <div class="callout">
+      <p>
+        <strong>We will never ask you for a password, an Apple or Google
+        password, a one-time authentication code, an authorisation code, a
+        sign-in token, or a photograph of an identity
+        document</strong>, and we will never ask you to send any of them to us by
+        email. If you receive a message claiming to be from ULMOX and
+        asking for any of these, it is not from us.
+      </p>
+    </div>
 
-  <p>Your account and all associated data will be permanently deleted within 7 days.</p>
+    <p>
+      We verify that you own the account before deleting it. A request sent from
+      a public web form or an unverified address does not delete an account by
+      itself. We may ask you to confirm ownership through a safe process, such as
+      replying from the account email address.
+    </p>
 
-  <p>If you have any questions, feel free to contact us.</p>
+    <h2>What happens when an account is deleted</h2>
+    <ul>
+      <li>Access and discoverability are removed as soon as deletion is
+        successfully started. Your profile stops being visible to other people
+        and your account stops being selected for new deliveries.</li>
+      <li>Physical erasure of stored data continues in the background after
+        that. It is targeted for completion within 30 days, unless a justified
+        safety or legal obligation requires limited retention.</li>
+      <li>Videos you recorded, their thumbnails, your profile information, your
+        profile photo and Global content you own are removed.</li>
+      <li>Content owned by someone else is <em>not</em> deleted just because you
+        shared it. Your association with it is removed instead, and the video
+        stays with the person who created it.</li>
+      <li>Your username is held for 90 days after deletion before it can be
+        reused, so it cannot immediately be taken by someone else.</li>
+      <li>Limited safety, legal or transactional records may be kept where there
+        is a justified reason, and only for as long as that reason applies.
+        Where a safety record is kept, the links tying it to your identity are
+        scrubbed as part of the erasure, so what remains is a record of what
+        happened rather than a record of you.</li>
+      <li>Deleting your account does not delete anyone else&rsquo;s. A
+        Connection has two people in it, and the messages, videos and records
+        belonging to the other participant stay with them.</li>
+    </ul>
+    <div class="callout">
+      <p>
+        <strong>Safety evidence is not ordinary message history.</strong>
+        Connections and optional message translation are being introduced gradually and may not yet be available for every account or installed app version. If you have a Connection: an
+        ordinary message in it is treated as expiring about seven days
+        after it is sent. A message that has been reported is no longer governed
+        by that: it is evidence in a review, and it is kept while the review is
+        open and afterwards where the outcome justifies keeping it &mdash;
+        including after the account it came from is deleted. Deleting your
+        account does not withdraw a report you made and does not erase a report
+        made about you.
+      </p>
+    </div>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <h2 id="apple-linked">If your account is linked with Sign in with Apple</h2>
+    <p>
+      Some ULMOX accounts are linked with Sign in with Apple. If yours is,
+      permanent deletion has one extra step, because Apple requires an app to
+      give up its Sign in with Apple authorisation when it deletes an account,
+      rather than only deleting its own record.
+    </p>
+    <ol>
+      <li>On an Apple device, ULMOX asks you to confirm once more directly with
+        Apple. That confirmation happens between you and Apple on your own
+        device. <strong>ULMOX does not receive your Apple password</strong>, and
+        we never ask you for it.</li>
+      <li>That confirmation is what lets ULMOX revoke its own Sign in with Apple
+        authorisation for your account.</li>
+      <li>Only then does the permanent deletion described above begin.</li>
+    </ol>
+
+    <div class="callout">
+      <p>
+        <strong>If that step does not finish, nothing is deleted.</strong> If you
+        dismiss the Apple screen, if the confirmation returns a different Apple
+        account than the one signed in, or if the step fails for any other
+        reason, ULMOX stops before anything permanent happens and tells you that
+        nothing has been deleted. You can try again.
+      </p>
+    </div>
+
+    <p>Three separate things are easy to confuse:</p>
+    <ul>
+      <li><strong>Revoking ULMOX&rsquo;s Sign in with Apple authorisation</strong>
+        stops ULMOX from being able to use Sign in with Apple for you. On its
+        own it does not delete your ULMOX account and it does not erase the data
+        in it.</li>
+      <li><strong>Deleting your ULMOX account</strong> is the action that removes
+        your ULMOX data. It is complete only when the erasure described on this
+        page has run &mdash; no change to a sign-in authorisation completes it.</li>
+      <li><strong>Deleting your Apple ID</strong> is something only Apple can do,
+        at your own request &mdash; ULMOX never does it and cannot do it.</li>
+    </ul>
+
+    <h3>Deleting an Apple-linked account from an Android device</h3>
+    <p>
+      The Apple confirmation step can only be completed on an Apple device. If
+      you try to delete an Apple-linked ULMOX account from an Android phone,
+      ULMOX stops before anything is removed and tells you that
+      <strong>nothing has been deleted</strong>. Finish the deletion on an Apple
+      device.
+    </p>
+    <p>
+      An account that uses only Google Sign-In, or only an email address, deletes
+      normally on either kind of device. An account linked with both Apple and
+      Google still needs the Apple step.
+    </p>
+
+    <h2>If you only want a break</h2>
+    <p>
+      Deactivation hides your profile and your Global content and can be
+      reversed by signing back in and choosing <strong>Reactivate</strong>.
+      Signing in on its own does not reactivate the account. Videos you already sent may remain with the
+      people who received them for their normal retention period. Deactivation
+      does not satisfy a deletion request &mdash; if you want your data removed,
+      use Delete Account.
+    </p>
+    <p>
+      Deactivating does not erase safety records, and reactivating does not undo
+      anything. Coming back restores your access; it does not reverse a
+      moderation decision, does not bring back content that moderation removed
+      or hid, and does not reopen a Connection that was ended. Ending a
+      Connection is final for that pair. Blocking works differently: a block
+      ends the Connection you have now and stops contact in both directions
+      while it stands. Removing a block does not restore the old Connection
+      either &mdash; the two accounts would have to qualify again from the
+      beginning, through two fresh qualifying video exchanges and a fresh
+      approval from each person.
+    </p>
+
+    <h2>Questions</h2>
+    <p>
+      Contact <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. See also our
+      <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Legal and support">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="safety.html">Child Safety Standards</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><span aria-current="page">Delete Account</span></li>
+        <li><a href="translation.html">Translation Information</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">The English version of this policy is the authoritative one. If a translation differs from it, the English version applies.</p>
+    <p>ULMOX is an 18+ service. Contact: <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

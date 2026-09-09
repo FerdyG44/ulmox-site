@@ -1,28 +1,403 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>隐私政策 - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="ULMOX 收集哪些数据、用于什么、由谁处理、保留多久，以及如何删除。" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;">
-<h1>隐私政策</h1>
-<section id="child-safety" style="margin-top:40px;">
-  <h2>儿童安全标准</h2>
-  <p>ULMOX 对任何形式的儿童性虐待或剥削（CSAE）采取零容忍政策。</p>
-  <p>用户可以直接在应用内举报不当内容。所有举报都会被审核，违反规则的内容会被及时移除。</p>
-  <p>用户可以直接在应用内举报不当内容。所有举报都会被审核，违反规则的内容会被及时移除。</p>
-  <p>用户可以直接在应用内举报不当内容。所有举报都会被审核，违反规则的内容会被及时移除。</p>
-  <p>ULMOX 致力于为所有用户提供安全且相互尊重的环境。</p>
-</section>
-<p>ULMOX 尊重你的隐私。我们只收集提供服务所需的基本信息。</p>
-<p>ULMOX 尊重你的隐私。我们只收集提供服务所需的基本信息。</p>
-<p>ULMOX 尊重你的隐私。我们只收集提供服务所需的基本信息。</p>
-<p>ULMOX 尊重你的隐私。我们只收集提供服务所需的基本信息。</p>
-<p>ULMOX 尊重你的隐私。我们只收集提供服务所需的基本信息。</p>
-<p>联系: ulmoxapp@outlook.com</p>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+<body>
+  <a class="ulmox-skip-link" href="#main">跳到主要内容</a>
+<div class="container">
+  <main id="main">
+    <h1>隐私政策</h1>
+    <p class="effective">自 2026-09-04 起生效。最近更新于 2026-09-04。</p>
+
+    <p>ULMOX 是一款视频分享应用。你录制一段短视频，我们的服务器会随机选出一位符合条件的接收者并投递给他。只有接收者才可以选择把收到的视频分享到公开的 Global 信息流。</p>
+
+    <p>ULMOX 由 Ferdi G&uuml;lseren 运营。任何隐私相关问题请联系 <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>。</p>
+
+    <h2>1. 谁可以使用 ULMOX</h2>
+
+    <p>ULMOX 是面向 <strong>18 岁及以上</strong>用户的服务。它不面向儿童，我们也不会有意收集未满 18 岁人士的数据。</p>
+
+    <h2>2. 我们收集什么</h2>
+
+    <h3>账号与登录</h3>
+
+    <ul>
+      <li>电子邮件地址和显示名称。</li>
+      <li>账号与登录服务商的标识符。</li>
+      <li>创建和访问你的账号会使用受支持的登录服务商。如果账号关联了<strong>通过 Apple 登录</strong>并使用了 Apple 的<strong>隐藏我的邮件地址</strong>，我们收到的是中转地址而不是你的真实地址。</li>
+    </ul>
+
+    <h3>你创建的内容</h3>
+
+    <ul>
+      <li>你录制的视频以及由此生成的缩略图。</li>
+      <li>你的头像和资料信息。</li>
+      <li>当接收者公开分享视频时产生的 Global 内容。</li>
+      <li>你提交的举报，以及你为其添加的可选自由文本说明。</li>
+    </ul>
+
+    <h3>摄像头、麦克风和照片</h3>
+
+    <ul>
+      <li><strong>摄像头和麦克风。</strong>ULMOX 请求这两项权限，是为了让你能录制带声音的视频瞬间并拍摄头像。录制只有在你启动时才会开始。</li>
+      <li><strong>选择照片。</strong>设置头像时，ULMOX 会打开图片选择界面，并且只接收你选中的那张图片。在较新的 Android 版本上，这是系统自带的图片选择器，因此 ULMOX 不会请求访问你整个照片库的权限。在 iOS 上，ULMOX 仅在确实需要的流程中请求照片访问权限，而 iOS 允许你只授权所选照片而非整个照片库。</li>
+      <li><strong>保存到设备。</strong>如果你选择把某个瞬间保存到手机，ULMOX 会请求把它添加到照片库的权限。该权限用于添加文件，而不是读取你的照片库。</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>你创建的媒体会被上传，不会只留在你的设备上。</strong>视频、由其生成的缩略图和你的头像会上传并存储在 Firebase Cloud Storage，以便投递和显示。把自己的副本保存到手机是另一个独立且可选的步骤。</p>
+    </div>
+
+    <p>在 Android 上，由于系统图片选择器已取代它们，ULMOX 不再声明 Android 13 及以上版本使用的宽泛照片与视频访问权限。仍有两项较旧的存储权限被声明，二者都继承自 ULMOX 所依赖的组件，且都设有上限，使较新的 Android 版本无法授予：</p>
+
+    <ul>
+      <li>一项旧式存储<strong>读取</strong>权限，仅为兼容 Android 12 及更早版本而声明。</li>
+      <li>一项旧式存储<strong>写入</strong>权限，仅为兼容 <strong>Android 9 及更早版本</strong>而声明。这是分区存储之前向共享存储写入文件的旧方式。它不是现代的照片或视频库权限，也不属于上文所述的 Android 13+ 媒体权限。</li>
+    </ul>
+
+    <p>上限本身就写在声明里，因此在较新的 Android 版本上该权限不会被授予、不会被请求，也不会产生任何作用。ULMOX 从不向你索取其中任何一项。在较新的 Android 版本上，选择图片会经由系统图片选择器完成，完全不需要存储权限。</p>
+
+    <p>ULMOX 不请求任何广告标识符。我们构建的 Android 应用中不存在广告和广告归因权限，因此广告主或广告网络无从读取。</p>
+
+    <h3>位置</h3>
+
+    <p>在你许可的情况下，ULMOX 会使用设备位置来显示某个瞬间的录制城市和国家，并把内容标注在世界地图上。如果你拒绝，应用仍可照常使用。</p>
+
+    <p>位置<strong>仅在你使用应用期间</strong>读取，且只在录制那一刻读取一次。ULMOX 不会在后台跟随你的位置，不会持续追踪，也不会在应用关闭时读取。</p>
+
+    <p>ULMOX 只请求使用期间的位置。它不使用后台位置、持续监测、显著变化监测或地理围栏，应用也未声明任何可实现上述功能的权限。</p>
+
+    <h3>消息翻译（Google ML Kit）</h3>
+
+    <p>ULMOX 为你收到的 Connections 消息提供可选翻译。只有当你对某条消息选择<strong>Translate with Google</strong>时才会运行，原始消息会保留在屏幕上，并且仍然是以其为准的版本。Connections 与可选的消息翻译正在逐步推出，可能尚未对每个账号或每个已安装的应用版本开放。 参见<a href="translation.html">翻译说明</a>。</p>
+
+    <table>
+      <caption class="effective">翻译的各个部分如何处理数据。</caption>
+      <tr><th scope="col">部分</th><th scope="col">会发生什么</th></tr>
+      <tr><td>消息及其译文</td><td>由 Google ML Kit 在你的设备上处理。ULMOX 不会把二者中的任何一个发送到别处进行翻译，也不会把译文保存在我们的服务器、举报、审核证据、通知、分析或日志中。</td></tr>
+      <tr><td>语言包</td><td>在首次翻译某种语言时下载到你的设备。ULMOX 会先询问，并在你没有明确选择移动数据时通过 Wi-Fi 下载。你可以在应用中查看并删除它们；卸载 ULMOX 会按操作系统删除应用文件的常规方式一并删除。</td></tr>
+      <tr><td>翻译与语言元数据</td><td>配置了哪些语言、识别出哪种语言，用于选择模型并标注结果。它们不会与某条消息、某个账号或某个 Connection 一起写入记录。</td></tr>
+      <tr><td>Google ML Kit 自身的网络使用</td><td>Google 的组件可能出于自身目的使用网络：投递语言包、读取其自身的远程配置，以及上报有关该组件的诊断和使用分析。Google 在文档中说明其会收集应用与设备信息、按安装生成的标识符、性能数据、API 配置、功能事件、错误代码、已配置的翻译语言以及识别出的语言。</td></tr>
+      <tr><td>ULMOX 服务器上的数据</td><td>保持不变。我们的服务器只保存原始消息，其处理方式与本政策其他部分所述完全一致。</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>我们不作的三项声称。</strong>我们不声称 Google 会收到你的消息文本——Google 关于该功能的文档并未表示它会被上传。我们也不声称没有任何东西离开你的设备：Google 的组件会为上述目的建立自己的网络连接。我们同样不声称已经排除了这个问题——Google 针对其机器学习套件的隐私声明涵盖该套件中的每一项功能，包括那些确实处理用户内容的功能，而该组件并非开源，我们无法自行检查。我们只告诉你我们能够核实的内容，而不是用一句安慰去填补空白。</p>
+    </div>
+
+    <p>翻译数据绝不会被我们或代表我们用于广告或用户画像。译文也绝不会成为审核证据：举报以及审核举报的人员使用的是原始消息。</p>
+
+    <h3>设备与技术信息</h3>
+
+    <ul>
+      <li>设备与安装标识符、应用版本和平台。</li>
+      <li>推送通知令牌，以便我们投递通知。</li>
+      <li>用于保护服务免受滥用的信号，例如是否有多个账号共用一台设备。</li>
+    </ul>
+
+    <h3>使用情况与诊断</h3>
+
+    <ul>
+      <li>Firebase Analytics：汇总的产品使用情况。</li>
+      <li>Firebase Crashlytics：崩溃报告。</li>
+      <li>Firebase Performance Monitoring：性能测量。</li>
+      <li>用于运行和保护服务的服务器运维日志。</li>
+    </ul>
+
+    <h3>年龄核验</h3>
+
+    <p>为确认你已年满 18 岁，ULMOX 会在可用时使用你所在平台提供的年龄信号，否则会询问你的出生日期。</p>
+
+    <div class="callout">
+      <p><strong>你的出生日期不会被存储。</strong>它仅在处理该请求期间使用，用于判断你是否已年满 18 岁。我们保留的是结果——你是否符合条件——而不是日期本身、你的确切年龄或年龄段。</p>
+    </div>
+
+    <p>年龄信息绝不会用于广告、用户画像、排序或分析。</p>
+
+    <h3>举报、审核与拉黑</h3>
+
+    <ul>
+      <li>关于内容和用户的举报，其中包含专门的儿童安全类别。</li>
+      <li>在审核举报时生成的审核记录。</li>
+      <li>你设置的拉黑。拉黑是一项私密的安全操作；被拉黑的人不会收到通知。</li>
+    </ul>
+
+    <p>被举报的内容可能会在人工审核期间被置于可撤销的隔离状态。举报不会封禁账号。只有经授权的 ULMOX 管理员才能封禁账号，且必须经过人工审核。</p>
+
+    <p>ULMOX 不会自动分析视频画面、音频或转录文本。</p>
+
+    <h2>3. 停用与删除</h2>
+
+    <h3>停用</h3>
+
+    <p>停用可以撤销：重新登录并选择<strong>重新启用</strong>即可恢复账号；仅登录不会恢复。你的资料和 Global 内容会被隐藏，你的账号不会被选为新的投递对象。你的数据会保留，以便账号可以恢复。你已经发送的视频可能会在接收者那里保留其通常的保存期限。</p>
+
+    <p>停用不是抹除，也不会清除安全记录。举报、审核决定、拉黑及其他安全证据不受停用或重新启用的影响。重新启用会恢复你的访问权限；它不会撤销审核决定，不会找回被审核删除或隐藏的内容，也不会重新打开已结束的 Connection。结束 Connection 对该组合而言是最终的。拉黑的作用方式不同：拉黑会结束你当前的 Connection，并在其生效期间双向中止联系。解除拉黑同样不会恢复原来的 Connection——两个账号需要从头重新符合条件，也就是重新完成两次符合条件的视频往来并再次获得双方同意。</p>
+
+    <h3>删除</h3>
+
+    <p>删除是永久性的。删除一旦成功启动，访问和可被发现的状态即被移除，数据的物理清除会在后台继续进行，目标是在 30 天内完成，除非有正当的安全或法律义务要求有限保留。你的用户名会保留 90 天后才可被重新使用。参见<a href="delete_account.html">删除账号</a>。</p>
+
+    <p>如果你的账号关联了<strong>通过 Apple 登录</strong>，在 Apple 设备上进行永久删除时会要求你再次直接向 Apple 确认，以便 ULMOX 在删除账号之前撤销自己的通过 Apple 登录授权。我们不会收到你的 Apple 密码。如果该步骤未完成，则不会删除任何内容。关联 Apple 的账号无法在 Android 设备上完成该步骤；ULMOX 会在移除任何内容之前停止，并请你在 Apple 设备上完成。</p>
+
+    <p>删除 ULMOX 账号不会删除你的 <strong>Apple ID</strong> 或你的 Google 账号。ULMOX 无法删除其中任何一个。撤销 ULMOX 的通过 Apple 登录授权同样是与删除账号不同的操作，单独进行并不会清除你的 ULMOX 数据。</p>
+
+    <p>删除你的账号会移除你的数据，但不会移除他人的数据：一个 Connection 有两个人，另一方的消息、视频和记录仍留在他那里。当出于正当理由必须保留安全证据时，将其与你身份相关联的连接会在清除过程中一并去除，因此留下的是关于发生了什么的记录，而不是关于你的记录。</p>
+
+    <h2>4. 我们保留多久</h2>
+
+    <table>
+      <caption class="effective">保留期限由下列条件决定，而不是某个单一的固定期限。</caption>
+      <tr><th scope="col">数据</th><th scope="col">保留多久</th></tr>
+      <tr><td>账号资料与设置</td><td>在你的账号存在期间。</td></tr>
+      <tr><td>从未被打开的视频</td><td>发送后约 7 天移除。</td></tr>
+      <tr><td>已打开但未分享到 Global 的视频</td><td>发送后约 15 天移除。</td></tr>
+      <tr><td>Global 内容</td><td>在其保持可用期间保留，直到其所有者删除或审核将其移除。我们不会按固定计时器删除 Global 内容。</td></tr>
+      <tr><td>未完成的上传</td><td>在中断约 24 小时后清理。</td></tr>
+      <tr><td>推送令牌与设备记录</td><td>在注册期间保留；停用和删除时移除。</td></tr>
+      <tr><td>年龄资格结果</td><td>在你的账号存在期间。你的出生日期从不被存储。</td></tr>
+      <tr><td>删除后的用户名保留</td><td>90 天。</td></tr>
+      <tr><td>内部删除记录</td><td>90 天，保留以便对删除进行事后核查。</td></tr>
+      <tr><td>Connection 消息</td><td>Connection 中的普通消息在发送约七天后被视为过期，并从那时起不再属于该对话。这是关于消息的规则，而不是对计时器的承诺：所存记录的自动过期目前并未开启，因此移除是通过例行清理进行的，而不是在某个固定时刻发生。</td></tr>
+      <tr><td>举报、审核记录、拉黑与安全事件</td><td>只要存在正当的安全或法律理由，就会作为安全证据保留，包括账号被删除之后。安全证据不同于普通的消息记录：一旦某条消息被附加到举报中，七天过期便不再约束它，它会在审核进行期间保留，并在结果证明有理由时于其后继续保留。</td></tr>
+      <tr><td>分析、崩溃与性能数据</td><td>按照相应 Google 服务中配置的保留设置进行保留。</td></tr>
+    </table>
+
+    <h2>5. 谁为我们处理数据</h2>
+
+    <p>ULMOX 使用以下服务：</p>
+
+    <ul>
+      <li>Firebase Authentication、Cloud Firestore、Cloud Storage、Cloud Functions 和 Cloud Messaging（Google）。</li>
+      <li>Firebase Analytics、Crashlytics 和 Performance Monitoring（Google）。</li>
+      <li>Firebase App Check，一项设备完整性检查，在平台支持的情况下用于减少对服务的自动化滥用。</li>
+      <li>用于身份验证的 Google 登录，以及针对已关联账号的通过 Apple 登录。</li>
+      <li>Google ML Kit 翻译与语言识别，它们在你的设备上执行消息翻译，并可能按上文“消息翻译”所述使用网络。</li>
+      <li>Firebase Remote Config 和 Firebase Installations，ML Kit 用它们进行自身配置，并用于上文所述的按安装标识符。</li>
+      <li>来自 Google Play 和 Apple 平台的年龄信号，前提是平台提供且你选择分享。</li>
+    </ul>
+
+    <p>我们不出售个人信息，也不将其用于广告或跨应用追踪。</p>
+
+    <h2>6. 跨境处理</h2>
+
+    <p>ULMOX 面向全球提供，我们的服务商在多个国家运营数据中心，因此你的数据可能在你居住国之外被处理。对于此类传输，我们依赖服务商提供的保障措施。</p>
+
+    <h2>7. 你的权利</h2>
+
+    <p>视你所在地区而定，你可能有权访问、更正或删除你的数据，反对或限制某些处理，并在处理以同意为依据时撤回同意。你可以在应用中自行删除账号，其他权利可以通过写信至 <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> 行使。</p>
+
+    <p>如果你对我们的答复不满意，可以向你所在地区的数据保护机构投诉。</p>
+
+    <h2>8. 安全</h2>
+
+    <p>数据通过加密连接传输，并存储在服务商托管的基础设施上。对审核证据的访问仅限经授权的审核人员。没有任何在线服务能够承诺完美的安全性，我们也不作此声称。</p>
+
+    <h2>9. 变更</h2>
+
+    <p>当我们的做法发生变化时，我们会更新本页面并更新上方的日期。重大变更可能需要你在应用中接受更新后的条款。</p>
+
+    <h2>10. 相关页面</h2>
+
+    <p>
+      <a href="delete_account.html">删除账号</a>
+      &middot;
+      <a href="terms.html">条款</a>
+      &middot;
+      <a href="safety.html">安全与审核</a>
+      &middot;
+      <a href="support.html">支持</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="法律信息与支持">
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><span aria-current="page">隐私政策</span></li>
+        <li><a href="terms.html">条款</a></li>
+        <li><a href="safety.html">安全与审核</a></li>
+        <li><a href="support.html">支持</a></li>
+        <li><a href="delete_account.html">删除账号</a></li>
+        <li><a href="translation.html">翻译说明</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">本政策以英文版为准。如译文与英文版不一致，以英文版为准。</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

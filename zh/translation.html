@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>翻译说明 - ULMOX</title>
+  <meta name="description" content="ULMOX 的翻译由 Google Translate 提供。" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">翻译说明</a>
+  <div class="container">
+  <main id="main">
+    <h1>翻译说明</h1>
+    <div class="callout">
+      <p><strong>Connections 与可选的消息翻译正在逐步推出，可能尚未对每个账号或每个已安装的应用版本开放。</strong></p>
+    </div>
+
+    <p>ULMOX 的翻译由 Google Translate 提供。</p>
+
+    <ul>
+      <li>翻译是可选的。除非你主动要求，否则什么都不会被翻译，而且一次只翻译一条消息。</li>
+      <li>消息的翻译在本设备上完成。消息和译文都不会被送到任何地方去翻译。</li>
+      <li>要翻译某种语言，得先下载它的语言包。ULMOX 会先询问，并且在你没有另作选择时只用 Wi-Fi 下载。</li>
+      <li>Google 的翻译组件本身仍可能联网：下载语言包、读取它自己的远程配置，以及上报关于该组件的诊断和使用分析。你的消息内容不在其中。</li>
+      <li>机器翻译可能出错，而且可能一边出错一边显得很笃定。</li>
+      <li>在两种都不是英语的语言之间，翻译可能中途经过英语，结果会明显更差。</li>
+      <li>以原始消息为准。它会一直留在屏幕上，举报指向的也只有它。</li>
+      <li>翻译消息不会改变举报、拉黑、审核或账号处理的任何结果。举报始终附带原始消息，审核人员查看的也是该原文，而不是译文。</li>
+      <li>ULMOX 不保存译文。译文不会作为单独的消息存储在我们的服务器上，也不会附加到举报、通知、审核材料或分析数据中。</li>
+      <li>你可以在应用内的“翻译模型”中查看和删除已下载的语言包。卸载 ULMOX 时，它们也会按照操作系统删除应用文件的常规方式一并删除。</li>
+    </ul>
+
+    <h2>Google 的免责声明</h2>
+    <div class="callout">
+      <p>THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</p>
+    </div>
+    <p>Google 要求这段文字原样呈现，因此没有翻译。</p>
+
+    <h2>关于翻译服务</h2>
+    <p>
+      <a href="https://translate.google.com/" target="_blank" rel="noopener noreferrer">Google Translate</a>
+      &middot;
+      <a href="https://cloud.google.com/translate" target="_blank" rel="noopener noreferrer">Cloud Translation</a>
+    </p>
+  </main>
+  <footer>
+    <nav aria-label="法律信息与支持">
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="privacy.html">隐私政策</a></li>
+        <li><a href="terms.html">条款</a></li>
+        <li><a href="safety.html">安全与审核</a></li>
+        <li><a href="support.html">支持</a></li>
+        <li><a href="delete_account.html">删除账号</a></li>
+        <li><span aria-current="page">翻译说明</span></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+  </div>
+</body>
+</html>

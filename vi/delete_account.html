@@ -1,26 +1,294 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Xóa tài khoản - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Cách xóa vĩnh viễn tài khoản ULMOX của bạn, trong ứng dụng hoặc qua email, và điều gì xảy ra với dữ liệu của bạn." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">Chuyển đến nội dung</a>
+<div class="container">
+  <main id="main">
+    <h1>Xóa tài khoản ULMOX của bạn</h1>
+    <p class="effective">Có hiệu lực từ 2026-09-04. Cập nhật lần cuối 2026-09-04.</p>
 
-  <h1>Xóa tài khoản của bạn</h1>
+    <p>Trang này giải thích cách xóa vĩnh viễn tài khoản ULMOX của bạn và điều gì xảy ra với dữ liệu của bạn sau đó.</p>
 
-  <p>Nếu bạn muốn xóa tài khoản ULMOX, vui lòng liên hệ với chúng tôi:</p>
+    <div class="callout">
+      <p><strong>Vô hiệu hóa không phải là xóa.</strong> Vô hiệu hóa ẩn hồ sơ và nội dung của bạn và có thể hoàn tác. Xóa tài khoản là vĩnh viễn và không thể hoàn tác.</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>Cách 1 — xóa trong ứng dụng (nên dùng)</h2>
 
-  <p>Vui lòng cung cấp địa chỉ email đã đăng ký.</p>
+    <p>Đây là cách nhanh nhất và không cần trao đổi email. Cách này không dành cho mọi tài khoản trên mọi thiết bị: tài khoản liên kết với Đăng nhập bằng Apple không thể hoàn tất việc xóa từ điện thoại Android, và phải hoàn tất trên thiết bị Apple. Xem bên dưới <a href="#apple-linked">Nếu tài khoản của bạn liên kết với Đăng nhập bằng Apple</a>.</p>
 
-  <p>Tài khoản và toàn bộ dữ liệu liên quan sẽ bị xóa vĩnh viễn trong vòng 7 ngày.</p>
+    <ol>
+      <li>Mở ULMOX và vào <strong>Hồ sơ &rarr; Pháp lý và an toàn &rarr; Quản lý tài khoản &rarr; Xóa tài khoản</strong>.</li>
+      <li>Đọc phần xác nhận, trong đó giải thích rằng việc xóa là vĩnh viễn.</li>
+      <li>Xác nhận. Bạn có thể được yêu cầu đăng nhập lại trước, điều này bảo vệ tài khoản của bạn khỏi bị người khác xóa.</li>
+    </ol>
 
-  <p>Nếu có câu hỏi, hãy liên hệ với chúng tôi.</p>
+    <h2>Cách 2 — yêu cầu xóa qua email</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>Nếu bạn không mở được ứng dụng, bạn có thể yêu cầu chúng tôi xóa tài khoản của bạn.</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">Gửi email tới ulmoxapp@outlook.com với tiêu đề “ULMOX Account Deletion Request”</a></p>
+
+    <p>Vui lòng chỉ nêu những thông tin tối thiểu cần để tìm ra tài khoản của bạn:</p>
+
+    <ul>
+      <li>địa chỉ email gắn với tài khoản ULMOX của bạn, và</li>
+      <li>tên người dùng ULMOX của bạn, nếu bạn biết.</li>
+    </ul>
+
+    <p>Nếu có thể, hãy viết thư từ địa chỉ email gắn với tài khoản của bạn. Nếu tài khoản của bạn liên kết với Đăng nhập bằng Apple và bạn đã dùng <strong>Ẩn Email Của Tôi</strong>, hãy viết từ địa chỉ chuyển tiếp của Apple, hoặc cung cấp đủ thông tin tài khoản không bí mật để chúng tôi nhận ra tài khoản.</p>
+
+    <div class="callout">
+      <p><strong>Chúng tôi sẽ không bao giờ hỏi bạn mật khẩu, mật khẩu Apple hay Google, mã xác thực một lần, mã ủy quyền, mã thông báo đăng nhập, hay ảnh chụp giấy tờ tùy thân</strong>, và sẽ không bao giờ yêu cầu bạn gửi bất kỳ thứ nào trong số đó cho chúng tôi qua email. Nếu bạn nhận được tin nhắn tự nhận là từ ULMOX và hỏi những điều này, nó không phải từ chúng tôi.</p>
+    </div>
+
+    <p>Chúng tôi xác minh rằng tài khoản là của bạn trước khi xóa. Một yêu cầu gửi từ biểu mẫu web công khai hoặc từ địa chỉ chưa xác minh không tự nó xóa được tài khoản. Chúng tôi có thể đề nghị bạn xác nhận quyền sở hữu qua một cách an toàn, chẳng hạn trả lời thư từ địa chỉ email của tài khoản.</p>
+
+    <h2>Điều gì xảy ra khi một tài khoản bị xóa</h2>
+
+    <ul>
+      <li>Quyền truy cập và khả năng được tìm thấy bị gỡ ngay khi việc xóa được khởi động thành công. Hồ sơ của bạn không còn hiển thị với người khác và tài khoản của bạn không còn được chọn cho các lượt chuyển mới.</li>
+      <li>Sau đó việc xóa dữ liệu đã lưu tiếp tục chạy nền. Mục tiêu là hoàn tất trong vòng 30 ngày, trừ khi một nghĩa vụ an toàn hoặc pháp lý chính đáng đòi hỏi lưu giữ hạn chế.</li>
+      <li>Video bạn đã quay, ảnh thu nhỏ của chúng, thông tin hồ sơ, ảnh hồ sơ và nội dung Global mà bạn sở hữu đều bị gỡ.</li>
+      <li>Nội dung thuộc sở hữu của người khác <em>không</em> bị xóa chỉ vì bạn đã chia sẻ nó. Thay vào đó, mối liên hệ của bạn với nội dung ấy được gỡ, và video vẫn ở lại với người đã tạo ra nó.</li>
+      <li>Tên người dùng của bạn được giữ 90 ngày sau khi xóa trước khi có thể dùng lại, nên người khác không thể lấy ngay.</li>
+      <li>Một số bản ghi an toàn, pháp lý hoặc giao dịch có giới hạn có thể được giữ ở nơi có lý do chính đáng, và chỉ trong thời gian lý do đó còn áp dụng. Ở nơi một bản ghi an toàn được giữ, các liên kết gắn nó với danh tính của bạn sẽ được xóa như một phần của quá trình xóa dữ liệu, nên thứ còn lại là bản ghi về điều đã xảy ra chứ không phải bản ghi về bạn.</li>
+      <li>Việc xóa tài khoản của bạn không xóa tài khoản của bất kỳ ai khác. Một Connection có hai người, và tin nhắn, video cùng bản ghi của người kia vẫn ở lại với họ.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Bằng chứng an toàn không phải lịch sử tin nhắn thông thường.</strong> Connections và tính năng dịch tin nhắn tùy chọn đang được triển khai dần và có thể chưa khả dụng với mọi tài khoản hoặc mọi phiên bản ứng dụng đã cài đặt. Nếu bạn có một Connection: một tin nhắn thông thường trong đó được coi là hết hạn khoảng bảy ngày sau khi gửi. Tin nhắn đã bị báo cáo thì không còn chịu quy tắc đó nữa: nó là bằng chứng trong một lần xem xét, và được giữ trong lúc việc xem xét còn mở và sau đó ở nơi kết quả biện minh cho việc giữ lại — kể cả sau khi tài khoản gửi nó đã bị xóa. Việc xóa tài khoản của bạn không rút lại báo cáo bạn đã gửi và không xóa báo cáo mà người khác đã gửi về bạn.</p>
+    </div>
+
+    <h2 id="apple-linked">Nếu tài khoản của bạn liên kết với Đăng nhập bằng Apple</h2>
+
+    <p>Một số tài khoản ULMOX liên kết với Đăng nhập bằng Apple. Nếu tài khoản của bạn như vậy, việc xóa vĩnh viễn có thêm một bước, bởi Apple yêu cầu ứng dụng phải từ bỏ ủy quyền Đăng nhập bằng Apple khi xóa một tài khoản, chứ không chỉ xóa bản ghi của riêng mình.</p>
+
+    <ol>
+      <li>Trên thiết bị Apple, ULMOX yêu cầu bạn xác nhận thêm một lần trực tiếp với Apple. Việc xác nhận đó diễn ra giữa bạn và Apple, trên chính thiết bị của bạn. <strong>ULMOX không nhận mật khẩu Apple của bạn</strong>, và chúng tôi không bao giờ hỏi bạn mật khẩu ấy.</li>
+      <li>Chính việc xác nhận đó cho phép ULMOX thu hồi ủy quyền Đăng nhập bằng Apple của mình đối với tài khoản của bạn.</li>
+      <li>Chỉ sau đó, việc xóa vĩnh viễn mô tả ở trên mới bắt đầu.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Nếu bước đó không hoàn tất, không có gì bị xóa.</strong> Nếu bạn đóng màn hình của Apple, nếu việc xác nhận trả về một tài khoản Apple khác với tài khoản đang đăng nhập, hoặc nếu bước đó thất bại vì bất kỳ lý do nào khác, ULMOX dừng lại trước khi có điều gì vĩnh viễn xảy ra và báo cho bạn biết rằng không có gì bị xóa. Bạn có thể thử lại.</p>
+    </div>
+
+    <p>Có ba việc khác nhau rất dễ nhầm lẫn:</p>
+
+    <ul>
+      <li><strong>Thu hồi ủy quyền Đăng nhập bằng Apple của ULMOX</strong> khiến ULMOX không còn dùng được Đăng nhập bằng Apple cho bạn. Riêng việc này không xóa tài khoản ULMOX của bạn và không xóa dữ liệu trong đó.</li>
+      <li><strong>Xóa tài khoản ULMOX của bạn</strong> mới là hành động gỡ dữ liệu ULMOX của bạn. Nó chỉ hoàn tất khi việc xóa dữ liệu mô tả trên trang này đã chạy xong — không thay đổi nào về ủy quyền đăng nhập làm nó hoàn tất được.</li>
+      <li><strong>Xóa ID Apple của bạn</strong> là việc chỉ Apple mới làm được, theo yêu cầu của chính bạn — ULMOX không bao giờ làm và không thể làm.</li>
+    </ul>
+
+    <h3>Xóa tài khoản liên kết với Apple từ thiết bị Android</h3>
+
+    <p>Bước xác nhận của Apple chỉ có thể hoàn tất trên thiết bị Apple. Nếu bạn thử xóa một tài khoản ULMOX liên kết với Apple từ điện thoại Android, ULMOX dừng lại trước khi gỡ bất cứ thứ gì và báo cho bạn biết rằng <strong>không có gì bị xóa</strong>. Hãy hoàn tất việc xóa trên thiết bị Apple.</p>
+
+    <p>Tài khoản chỉ dùng đăng nhập bằng Google, hoặc chỉ dùng một địa chỉ email, sẽ xóa được bình thường trên cả hai loại thiết bị. Tài khoản liên kết với cả Apple và Google vẫn cần bước của Apple.</p>
+
+    <h2>Nếu bạn chỉ muốn tạm nghỉ</h2>
+
+    <p>Vô hiệu hóa ẩn hồ sơ và nội dung Global của bạn và có thể hoàn tác bằng cách đăng nhập lại rồi chọn <strong>Kích hoạt lại</strong>. Chỉ đăng nhập thôi không kích hoạt lại tài khoản. Những video bạn đã gửi có thể vẫn còn ở phía người nhận trong thời hạn lưu giữ thông thường của chúng. Vô hiệu hóa không đáp ứng một yêu cầu xóa dữ liệu — nếu bạn muốn dữ liệu của mình được gỡ, hãy dùng Xóa tài khoản.</p>
+
+    <p>Vô hiệu hóa không xóa các bản ghi an toàn, và kích hoạt lại không hoàn tác điều gì. Quay lại sẽ khôi phục quyền truy cập của bạn; nhưng không đảo ngược một quyết định kiểm duyệt, không mang lại nội dung đã bị kiểm duyệt gỡ hoặc ẩn, và không mở lại một Connection đã kết thúc. Kết thúc một Connection là dứt điểm với cặp đó. Chặn hoạt động khác: một lượt chặn kết thúc Connection bạn đang có và ngăn liên lạc theo cả hai chiều chừng nào nó còn hiệu lực. Bỏ chặn cũng không khôi phục Connection cũ — hai tài khoản sẽ phải đủ điều kiện lại từ đầu, qua hai lượt trao đổi video hợp lệ mới và sự chấp thuận mới của cả hai người.</p>
+
+    <h2>Câu hỏi</h2>
+
+    <p>Liên hệ <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Xem thêm <a href="privacy.html">Chính sách quyền riêng tư</a> và <a href="terms.html">Điều khoản</a>.</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Thông tin pháp lý và hỗ trợ">
+      <ul>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="privacy.html">Chính sách quyền riêng tư</a></li>
+        <li><a href="terms.html">Điều khoản</a></li>
+        <li><a href="safety.html">An toàn và kiểm duyệt</a></li>
+        <li><a href="support.html">Hỗ trợ</a></li>
+        <li><span aria-current="page">Xóa tài khoản</span></li>
+        <li><a href="translation.html">Thông tin về dịch</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Bản tiếng Anh của chính sách này là bản có hiệu lực. Nếu bản dịch khác với bản tiếng Anh, bản tiếng Anh sẽ được áp dụng.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

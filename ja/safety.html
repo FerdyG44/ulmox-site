@@ -1,61 +1,306 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
-  <title>ULMOXの安全性とモデレーション - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ULMOXの安全性とモデレーション</title>
+  <meta name="description" content="ULMOX が児童性的虐待・搾取をどのように防ぎ、検知し、対処しているか。" />
   <style>
-    body { margin: 0; padding: 0; background-color: #0d0d0f; color: #ffffff; font-family: Arial, sans-serif; line-height: 1.7; }
-    .container { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
-    h1 { font-size: 42px; margin-bottom: 30px; }
-    h2 { margin-top: 42px; font-size: 24px; color: #ffffff; }
-    p, li { color: #d0d0d0; font-size: 17px; }
-    ul { padding-left: 22px; }
-    a { color: #9d7bff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .footer { margin-top: 60px; padding-top: 30px; border-top: 1px solid #2a2a2e; color: #888; font-size: 14px; }
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>ULMOXの安全性とモデレーション</h1>
-    <p>ULMOXはすべてのユーザーに安全で敬意ある環境を提供することに取り組んでいます。</p>
-    <h2>ULMOXの安全性とモデレーション</h2>
-    <p>ULMOXはすべてのユーザーに安全で敬意ある環境を提供することに取り組んでいます。</p>
-    <p>ULMOXはすべてのユーザーに安全で敬意ある環境を提供することに取り組んでいます。</p>
-    <ul><li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li>
-      <li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li>
-      <li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li>
-      <li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li>
-      <li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li>
-      <li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li>
-      <li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li></ul>
-    <h2>お問い合わせ</h2>
-    <p>ユーザーは不適切なコンテンツをアプリ内で直接報告できます。すべての報告は確認され、規則に違反するコンテンツは速やかに削除されます。</p>
-    <p>ユーザーは不適切なコンテンツをアプリ内で直接報告できます。すべての報告は確認され、規則に違反するコンテンツは速やかに削除されます。</p>
-    <ul><li>ユーザーは不適切なコンテンツをアプリ内で直接報告できます。すべての報告は確認され、規則に違反するコンテンツは速やかに削除されます。</li>
-      <li>ユーザーは不適切なコンテンツをアプリ内で直接報告できます。すべての報告は確認され、規則に違反するコンテンツは速やかに削除されます。</li>
-      <li>ユーザーは不適切なコンテンツをアプリ内で直接報告できます。すべての報告は確認され、規則に違反するコンテンツは速やかに削除されます。</li>
-      <li>ユーザーは不適切なコンテンツをアプリ内で直接報告できます。すべての報告は確認され、規則に違反するコンテンツは速やかに削除されます。</li></ul>
-    <h2>お問い合わせ</h2>
-    <p>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</p>
-    <p>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</p>
-    <h2>ULMOXの安全性とモデレーション</h2>
-    <p>ULMOXはすべてのユーザーに安全で敬意ある環境を提供することに取り組んでいます。</p>
-    <p>ULMOXはすべてのユーザーに安全で敬意ある環境を提供することに取り組んでいます。</p>
-    <h2>ULMOXの安全性とモデレーション</h2>
-    <p>ULMOXはすべてのユーザーに安全で敬意ある環境を提供することに取り組んでいます。</p>
-    <p>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</p>
-    <h2>児童安全基準</h2>
-    <p>ULMOXは、児童の性的虐待または搾取（CSAE）を一切容認しません。</p>
-    <p>ULMOXは、児童の性的虐待または搾取（CSAE）を一切容認しません。</p>
-    <h2>お問い合わせ</h2>
-    <p>お問い合わせ:</p>
-    <p><a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
-    <div class="footer">© 2026 ULMOX</div>
+  <a class="ulmox-skip-link" href="#main">本文へスキップ</a>
+<div class="container">
+  <main id="main">
+    <h1>ULMOX 児童安全基準</h1>
+    <p class="effective">発効日 2026-09-04。最終更新 2026-09-04。</p>
+
+    <p>ULMOX は<strong>18 歳以上</strong>の成人に限定されています。このページでは、児童性的虐待・搾取をどのように防ぎ、検知し、対処しているかを説明します。</p>
+
+    <div class="callout">
+      <p><strong>子どもに差し迫った危険がある場合は、まずお住まいの地域の緊急通報機関にご連絡ください。</strong> ULMOX への報告は、当局への連絡に代わるものではありません。</p>
+    </div>
+
+    <h2>一切許容しません</h2>
+
+    <p>ULMOX は児童性的虐待・搾取（CSAE）および児童性的虐待コンテンツ（CSAM）を一切許容しません。関与したアカウントとコンテンツは削除されます。</p>
+
+    <h2>禁止されていること</h2>
+
+    <p>端的に言えば、ULMOX では次のことは決して許されません。</p>
+
+    <ul>
+      <li>18 歳未満の人物が関わるあらゆる性的コンテンツ。実在・描写を問いません。</li>
+      <li>グルーミング：性的に搾取する目的で未成年者との信頼関係を築くこと。保護者に接触を秘密にするよう求めることを含みます。</li>
+      <li>未成年者を性的に扱うこと、または未成年者に性的な画像や接触を求めること。</li>
+      <li>強要、脅迫（性的脅迫を含む）、人身取引、その他未成年者を重大な危険にさらす行為。</li>
+      <li>この種の素材を宣伝すること、求めること、リンクすること。</li>
+    </ul>
+
+    <h2>報告の方法</h2>
+
+    <p>アプリ内で<strong>コンテンツを報告</strong>と<strong>ユーザーを報告</strong>を利用できます。いずれにも<strong>児童の安全</strong>の専用カテゴリがあります。利用者をブロックすることもでき、その場合は双方向のやり取りがすべて止まります。</p>
+
+    <p>メールでご連絡いただくこともできます。</p>
+
+    <p><strong>ULMOX 児童安全担当窓口</strong><br /> <a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ulmoxapp@outlook.com</a></p>
+
+    <h2>その後の流れ</h2>
+
+    <ul>
+      <li>児童の安全に関する報告は、人による審査で<strong>最優先</strong>に扱われます。</li>
+      <li>報告された当該コンテンツは直ちに<strong>取り消し可能な隔離</strong>に置かれ、担当者が審査する間、公開表示も配信もされなくなります。</li>
+      <li>証拠は審査のために保全され、権限を持つモデレーターのみがアクセスできます。</li>
+      <li>報告によって自動的にアカウントが利用停止になることは<strong>ありません</strong>。報告の件数も、メッセージを保留する自動フィルタも、隔離も、翻訳も同様です。利用停止は、権限を持つ ULMOX の管理者だけが、事案を検討したうえで行う、独立した意図的な判断です。</li>
+      <li>報告を解決すると、進行中の審査リストから外れます。それによって消去されるわけではありません。判断を後から確認でき、異議申し立てに回答できるよう、証拠と何が決定されたかの記録は、保持する正当な理由がある場合に保持されます。</li>
+      <li>審査担当者が報告された動画を承認した場合でも、その動画が Global フィードに戻るのは、それ自体が引き続き条件を満たす場合に限られます。所有者が離脱した、制限された、利用停止になったコンテンツ、または別の理由で利用できないコンテンツは、報告の判断がどうであれ利用できないままです。</li>
+      <li>適用される法律が求める場合、当社は法令で定められた所管当局に通報します。</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>当社の目標は、緊急の児童安全報告を 24 時間以内に審査することです。</strong> これは人による審査を開始することについての目標です。すべての事案が 24 時間以内に最終的に解決することを保証するものではなく、複雑な事案にはより長い時間がかかることがあります。</p>
+    </div>
+
+    <p>その他の安全に関する報告は、合理的に可能な限り速やかに審査します。</p>
+
+    <h2>Connections における安全性</h2>
+
+    <div class="callout">
+      <p><strong>Connections と任意のメッセージ翻訳は段階的に導入されており、すべてのアカウントやインストール済みのすべてのアプリバージョンでまだ利用できるとは限りません。</strong></p>
+    </div>
+
+    <p>Connection は、要件を満たす動画のやり取りを別々に 2 回行った後、双方が承認した 2 人の成人の間の、テキストのみの会話です。ULMOX にはユーザー検索がないため、誰かがあなたを探してメッセージを送ることはできません。Connection 内の安全機能は次のとおりです。</p>
+
+    <ul>
+      <li><strong>メッセージを報告。</strong> 受け取ったメッセージで利用できます。報告により、原文のメッセージが審査のために担当者へ渡されます。</li>
+      <li><strong>報告すると、そのメッセージはあなたにだけ非表示になります。</strong> メッセージを報告すると、あなたの会話画面からは消えます。送信者側の表示は変わらず、あなたが報告したことも送信者には伝えられません。非表示はあなたのためのもので、相手への制裁ではありません。メッセージについての判断は引き続き人が行います。</li>
+      <li><strong>ユーザーを報告。</strong> 個々のメッセージではなく人に対して、別途利用できます。いずれにも児童の安全の専用カテゴリがあります。</li>
+      <li><strong>ブロック。</strong> ブロックは双方向のやり取りを止めます。報告の後に別個の選択肢として提示され、報告に組み込まれることはなく、断っても報告はそのまま残ります。ブロックは現在の Connection も終了させます。ブロックを解除しても、その Connection は戻りません。ペアはあらためて最初から条件を満たす必要があります。すなわち、新たに 2 回の要件を満たす動画のやり取りと、双方の新たな承認です。</li>
+      <li><strong>Connection を終了。</strong> 双方にとって会話を終了します。復元はできず、将来の出会いで再び開くこともありません。終了はブロックとは異なり、すでに行った報告を消去するものでもありません。</li>
+      <li><strong>離脱はいつでも機能します。</strong> 他に何が起きていても、ブロックと Connection の終了は使えます。安全のための操作が使えなくなることはありません。</li>
+      <li><strong>メッセージは期限切れになります。</strong> Connection 内の通常のメッセージは、送信からおよそ 7 日後に期限切れとして扱われます。報告したメッセージの扱いは異なります。審査における証拠になった時点で 7 日の失効はそれを規律しなくなり、審査が続く間、そして結果がそれを正当化する場合はその後も保持されます。</li>
+      <li><strong>添付はありません。</strong> Connections がやり取りするのは書かれたメッセージのみで、写真、動画、ファイル、音声メモはありません。</li>
+    </ul>
+
+    <h2>翻訳されたメッセージ</h2>
+
+    <ul>
+      <li>報告は常に<strong>原文のメッセージ</strong>に関するものです。報告には原文が含まれ、モデレーターが読むのはそれです。</li>
+      <li>読み手に表示される任意の翻訳は、モデレーションの判断ではなく、証拠でもありません。</li>
+      <li>翻訳によってメッセージが配信可能になることはありません。ブロックまたは保留されたコンテンツは、どの言語で読まれても、ブロックまたは保留されたままです。</li>
+      <li>翻訳が出力した内容を理由にアカウントが利用停止になることはありません。アカウントを利用停止にできるのは権限を持つ ULMOX の管理者のみで、原文の証拠を検討したうえでのみ行われます。</li>
+    </ul>
+
+    <p><a href="translation.html">翻訳について</a>をご覧ください。</p>
+
+    <h2>ULMOX が行わないこと</h2>
+
+    <ul>
+      <li>ULMOX は動画のフレーム、音声、書き起こしを自動的に解析しません。動画の安全性は報告、取り消し可能な隔離、ブロック、人による審査に依拠しています。</li>
+      <li>ULMOX が自動的にアカウントを利用停止にすることはなく、報告の件数がいくつであっても自動的な利用停止は生じません。</li>
+      <li>ULMOX は、いかなる自動チェックもすべての違反を見つけると主張しません。本サービスの安全性が拠って立つのは、報告と人による審査です。</li>
+      <li>ULMOX は安全システムが用いる内部のしきい値、ツール、運用手順を公開しません。公開すれば、当社が止めようとしている相手に、何を避ければよいかを正確に教えることになるからです。</li>
+    </ul>
+
+    <h2>異議申し立て</h2>
+
+    <p>コンテンツやアカウントに対する措置が誤りだとお考えの場合は、<a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> 宛にご連絡ください。人が確認します。記載いただく内容は <a href="support.html">サポート</a> をご覧ください。</p>
+
+    <h2>関連ページ</h2>
+
+    <p>
+      <a href="terms.html">利用規約</a>
+      &middot;
+      <a href="privacy.html">プライバシーポリシー</a>
+      &middot;
+      <a href="support.html">サポート</a>
+      &middot;
+      <a href="delete_account.html">アカウントを削除</a>
+    </p>
+  </main>
+
   </div>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+  <footer>
+    <nav aria-label="法的情報とサポート">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+        <li><a href="terms.html">利用規約</a></li>
+        <li><span aria-current="page">安全性とモデレーション</span></li>
+        <li><a href="support.html">サポート</a></li>
+        <li><a href="delete_account.html">アカウントを削除</a></li>
+        <li><a href="translation.html">翻訳について</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">本ポリシーは英語版を正文とします。翻訳が英語版と異なる場合は、英語版が適用されます。</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

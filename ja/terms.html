@@ -1,45 +1,324 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>利用規約 - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="ULMOX の利用に適用される条件：利用資格、コンテンツ、Connections、モデレーション、異議申し立て。" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;line-height:1.7;max-width:900px;margin:auto;">
-<h1>利用規約</h1>
-<p><strong>最終更新日：</strong> 2026年8月</p>
-<p>利用規約 ULMOX. ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</p>
-<h2>ULMOXの安全性とモデレーション</h2>
-<p>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</p>
-<p>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</p>
-<ul><li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li>
-  <li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li>
-  <li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li>
-  <li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li>
-  <li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li>
-  <li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li>
-  <li>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</li></ul>
-<h2>利用規約</h2>
-<p>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</p>
-<p>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</p>
-<h2>お問い合わせ</h2>
-<p>ユーザーは不適切なコンテンツをアプリ内で直接報告できます。すべての報告は確認され、規則に違反するコンテンツは速やかに削除されます。</p>
-<h2>ULMOXの安全性とモデレーション</h2>
-<p>ULMOXはすべてのユーザーに安全で敬意ある環境を提供することに取り組んでいます。</p>
-<h2>ULMOXの安全性とモデレーション</h2>
-<p>ULMOXはすべてのユーザーに安全で敬意ある環境を提供することに取り組んでいます。</p>
-<h2>プライバシーポリシー</h2>
-<p>ULMOXはあなたのプライバシーを尊重します。サービス提供に必要な基本情報のみを収集します。</p>
-<h2>利用規約</h2>
-<p>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</p>
-<h2>利用規約</h2>
-<p>ユーザーはULMOXを敬意を持って安全かつ合法的に利用する必要があります。</p>
-<h2 id="ulmox-music">ULMOX Music</h2>
-<p>ULMOXは、Momentsで使用するための音楽を提供することがあります。本規約に従い、その音楽をULMOXで作成する動画と同期し、完成した動画をULMOXを通じて共有できます。音楽を抽出、再配布、販売、または単独の音声として提供することはできません。</p>
-<h2>お問い合わせ</h2>
-<p>お問い合わせ<br><br>ulmoxapp@outlook.com</p>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+<body>
+  <a class="ulmox-skip-link" href="#main">本文へスキップ</a>
+<div class="container">
+  <main id="main">
+    <h1>利用規約</h1>
+    <p class="effective">発効日 2026-09-04。最終更新 2026-09-04。</p>
+
+    <p>本規約は ULMOX をご利用になる際に適用されます。同意いただけない場合は、本サービスをご利用にならないでください。</p>
+
+    <h2>1. ULMOX を利用できる方</h2>
+
+    <ul>
+      <li><strong>18 歳以上</strong>である必要があります。</li>
+      <li>年齢について正確な情報を申告する必要があります。</li>
+      <li>年齢要件を回避しようとしてはならず、他人がそうすることを手助けしてもなりません。</li>
+      <li>アカウントは継続的で匿名ではありません。対応するプロバイダでサインインし、サービス全体で 1 つの同一性を保ちます。</li>
+    </ul>
+
+    <h2>2. お客様のコンテンツ</h2>
+
+    <p>作成しアップロードする動画とプロフィールのコンテンツについては、お客様が責任を負います。アップロードするものを共有する権利を有している必要があり、その内容は本規約および法令に違反してはなりません。</p>
+
+    <h3>所有権とライセンス</h3>
+
+    <p><strong>コンテンツの所有権はお客様に残ります。</strong> サービスを運営するため、お客様は ULMOX に対し、非独占的、世界的、無償のライセンスを付与します。これはコンテンツをホストし、保存し、複製し、送信するためのもので、選ばれた受信者に配信すること、サムネイルを生成すること、受信者が Global フィードで共有した場合にそこで表示することにのみ用いられます。このライセンスは ULMOX の運営のためだけに存在し、コンテンツが削除された時点で終了します。ただし、安全性の証拠として、または法的義務を果たすために複製を保持しなければならない場合を除きます。</p>
+
+    <p>受け取った動画を Global フィードで共有しても、その人が所有者になるわけでは<strong>ありません</strong>。所有者は撮影した本人のままです。</p>
+
+    <h2>3. Connections</h2>
+
+    <div class="callout">
+      <p><strong>Connections と任意のメッセージ翻訳は段階的に導入されており、すべてのアカウントやインストール済みのすべてのアプリバージョンでまだ利用できるとは限りません。</strong></p>
+    </div>
+
+    <p>Connection は、すでに動画モーメントをやり取りした 2 人の成人の間で成立する、相互の、テキストのみの会話です。チャットの名簿でもなければ、オープンなメッセージ機能でもありません。次の規則で動作します。</p>
+
+    <ul>
+      <li><strong>成人限定。</strong> Connections は 18 歳以上のサービスの一部であり、年齢要件を満たしたアカウントにのみ提供されます。</li>
+      <li><strong>人を検索することはできません。</strong> ULMOX にはユーザー検索がなく、誰かを探して連絡する手段もありません。Connection は、すでにあった接点からしか生まれません。</li>
+      <li><strong>事前に 2 回の要件を満たす動画のやり取り。</strong> ペアが対象になるのは、その 2 つのアカウントの間で要件を満たす動画のやり取りが別々に 2 回行われた後です。1 回では足りません。</li>
+      <li><strong>双方の承認が必要です。</strong> それぞれが独立して承認します。双方が承認するまで Connection は存在せず、メッセージも送れません。</li>
+      <li><strong>テキストのみで、添付はありません。</strong> Connection がやり取りするのは書かれたメッセージです。添付はありません。写真も、動画も、ファイルも、音声メモもありません。</li>
+      <li><strong>アカウントは継続的で匿名ではありません。</strong> つながっている相手も、ULMOX 全体で他の誰とも同じ 1 つの同一性を持っています。</li>
+      <li><strong>メッセージは期限切れになります。</strong> 通常のメッセージは、送信からおよそ 7 日後に期限切れとして扱われます。報告されたメッセージの扱いは異なります。プライバシーポリシーをご覧ください。</li>
+      <li><strong>報告と離脱はいつでも機能します。</strong> <strong>ユーザーを報告</strong>と<strong>メッセージを報告</strong>を利用でき、<strong>ブロック</strong>でき、<strong>Connection を終了</strong>できます。Connection の終了はその 2 人にとって最終的です。再開することはなく、後日の出会いによって再び開くこともありません。ブロックはこれとは別です。ブロックは現在の Connection を終了させ、有効な間は双方向の接触を止めます。ブロックを解除しても以前の Connection は戻りません。ペアはあらためて最初から条件を満たす必要があります。すなわち、新たに 2 回の要件を満たす動画のやり取りと、双方の新たな承認です。</li>
+      <li><strong>報告を審査するのは機械ではなく人です。</strong> 報告されたメッセージは人が判断します。</li>
+      <li><strong>翻訳は任意です。</strong> 受け取ったメッセージを、ご自身の端末で翻訳できます。判断の基準となり、審査担当者が読むのは原文です。<a href="translation.html">翻訳について</a>をご覧ください。</li>
+    </ul>
+
+    <h2>4. 禁止されていること</h2>
+
+    <p>ULMOX では次の行為を禁止します。</p>
+
+    <ul>
+      <li>あらゆる形態の児童性的虐待・搾取（CSAE）および児童性的虐待コンテンツ（CSAM）。</li>
+      <li>あらゆる人物に対する性的搾取。</li>
+      <li>同意のない性的コンテンツ、および 18 歳未満の可能性がある人物が関わる性的コンテンツ。</li>
+      <li>脅迫、暴力の扇動、暴力を賛美するコンテンツ。</li>
+      <li>ヘイトスピーチおよび標的型のハラスメント。</li>
+      <li>他人や団体になりすます行為。</li>
+      <li>詐欺、不正、スパム。</li>
+      <li>違法なコンテンツおよび違法な活動。</li>
+      <li>他人の私的な情報を許可なく共有すること。</li>
+    </ul>
+
+    <h2>5. 報告、ブロック、モデレーション</h2>
+
+    <ul>
+      <li>アプリ内からコンテンツを報告でき、利用者を報告できます。児童の安全のための専用カテゴリがあります。</li>
+      <li>他の利用者をブロックできます。ブロックは双方向のやり取りを止め、ブロックされた相手に通知されることはありません。</li>
+      <li>報告されたコンテンツは、審査の間<strong>取り消し可能な隔離</strong>に置かれることがあります。隔離はコンテンツを一時的に非表示にするもので、削除ではなく、アカウントへの制裁でもありません。</li>
+      <li>モデレーションの判断は自動ではなく人が行います。報告された動画も報告されたメッセージも、いずれも人が審査します。</li>
+      <li>自動の安全フィルタによって保留されたメッセージは、アカウントについての判断では<strong>ありません</strong>。メッセージの保留やコンテンツの隔離は、その項目だけを制限するものであり、それ以外には及びません。</li>
+      <li>審査担当者が動画を承認した場合でも、その動画が Global フィードに戻るのは、それ自体が引き続き条件を満たす場合に限られます。所有者が離脱した、制限された、利用停止になった動画、または別の理由で利用できない動画は、報告の判断がどうであれ利用できないままです。</li>
+      <li>報告が解決すると、進行中の審査リストから外れます。消去されるわけではありません。証拠と何が決定されたかの記録は、保持する正当な理由がある場合に保持されます。</li>
+      <li>報告は常に原文のコンテンツについてのものです。お客様が読むことを選んだ翻訳が審査の対象になることはなく、証拠になることもありません。</li>
+      <li>当社の安全システムが用いる内部のしきい値、ツール、運用手順を公開することはありません。</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>報告によってアカウントが利用停止になることはありません。</strong> 報告の件数がいくつであっても、自動的にアカウントが利用停止になることはありません。他の何かがそうすることもありません。メッセージを保留する自動フィルタも、隔離も、翻訳も、単一のコンテンツを削除する判断もです。アカウントを利用停止にできるのは権限を持つ ULMOX の管理者のみで、独立した意図的な判断として、事案を検討したうえでのみ行われます。</p>
+    </div>
+
+    <p>ULMOX が動画のフレーム、音声、書き起こしを自動的に解析することはありません。安全性は報告、取り消し可能な隔離、ブロック、人による審査に依拠しています。</p>
+
+    <h2>6. 利用停止と削除</h2>
+
+    <ul>
+      <li><strong>利用停止</strong>は元に戻せます。再度サインインして<strong>再開する</strong>を選ぶと復元されます。サインインするだけでは復元されません。プロフィールと Global コンテンツは非表示になり、アカウントを復元できるようデータは保持されます。すでに送信した動画は、受け取った相手のもとで通常の保存期間にわたり残ることがあります。</li>
+      <li><strong>削除</strong>は永久的で、取り消せません。アクセスと検索可能性は直ちに終了し、消去はバックグラウンドで続きます。正当な場合には、限定的な安全上、法律上、取引上の記録が保持されることがあります。<a href="delete_account.html">アカウントを削除</a>をご覧ください。</li>
+    </ul>
+
+    <h2>7. 措置と異議申し立て</h2>
+
+    <p>当社は、審査の間コンテンツを非表示にし、本規約に違反するコンテンツを削除し、権限を持つ管理者を通じてアカウントを停止または終了することがあります。お客様のコンテンツやアカウントに関する判断が誤りだとお考えの場合は、<a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> 宛にご連絡ください。人が確認します。<a href="support.html">サポート</a>をご覧ください。</p>
+
+    <h2>機械翻訳</h2>
+
+    <ul>
+      <li>ULMOX は、受け取ったメッセージについて任意の機械翻訳を提供することがあります。<strong>機械翻訳は不完全であったり誤っていたりすることがあります。</strong></li>
+      <li>意味が重要な場面では原文のメッセージに依拠してください。原文は表示され続け、判断の基準となる版です。</li>
+      <li>メッセージを翻訳しても、ご自身が書いた内容についての責任は変わりません。原文のメッセージについては引き続きお客様が責任を負います。</li>
+      <li>翻訳が本規約の例外を生むことはありません。規則に反するコンテンツは、どの言語であっても規則に反します。</li>
+      <li>翻訳技術は Google が提供しています。Google が ULMOX を通じて送られたメッセージを書いたり、確認したり、承認したり、推奨したりすることはありません。</li>
+    </ul>
+
+    <p><a href="translation.html">翻訳について</a>をご覧ください。</p>
+
+    <h2 id="ulmox-music">ULMOX Music</h2>
+
+    <p>ULMOXは、Momentsで使用するための音楽を提供することがあります。本規約に従い、その音楽をULMOXで作成する動画と同期し、完成した動画をULMOXを通じて共有できます。音楽を抽出、再配布、販売、または単独の音声として提供することはできません。</p>
+
+    <h2>8. 本規約の変更</h2>
+
+    <p>当社は本規約を更新することがあります。上記の日付が現行の版を示します。変更が重要な場合、ULMOX の利用を続ける前にアプリ内で更新後の規約への同意をお願いすることがあります。</p>
+
+    <h2>9. 関連ページ</h2>
+
+    <p>
+      <a href="privacy.html">プライバシーポリシー</a>
+      &middot;
+      <a href="safety.html">安全性とモデレーション</a>
+      &middot;
+      <a href="support.html">サポート</a>
+      &middot;
+      <a href="delete_account.html">アカウントを削除</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="法的情報とサポート">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+        <li><span aria-current="page">利用規約</span></li>
+        <li><a href="safety.html">安全性とモデレーション</a></li>
+        <li><a href="support.html">サポート</a></li>
+        <li><a href="delete_account.html">アカウントを削除</a></li>
+        <li><a href="translation.html">翻訳について</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">本ポリシーは英語版を正文とします。翻訳が英語版と異なる場合は、英語版が適用されます。</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

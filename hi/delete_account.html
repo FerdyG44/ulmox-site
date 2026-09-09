@@ -1,26 +1,294 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>खाता हटाना - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="अपना ULMOX खाता ऐप में या ईमेल से स्थायी रूप से कैसे हटाएँ, और उसके बाद आपके डेटा का क्या होता है।" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">सामग्री पर जाएं</a>
+<div class="container">
+  <main id="main">
+    <h1>अपना ULMOX खाता हटाएँ</h1>
+    <p class="effective">2026-09-04 से प्रभावी। अंतिम बार 2026-09-04 को अद्यतन किया गया।</p>
 
-  <h1>अपना खाता हटाएं</h1>
+    <p>यह पृष्ठ बताता है कि अपना ULMOX खाता स्थायी रूप से कैसे हटाएँ और उसके बाद आपके डेटा का क्या होता है।</p>
 
-  <p>यदि आप अपना ULMOX खाता हटाना चाहते हैं, तो कृपया हमसे संपर्क करें:</p>
+    <div class="callout">
+      <p><strong>निष्क्रिय करना, हटाना नहीं है।</strong> निष्क्रिय करना आपकी प्रोफ़ाइल और आपकी सामग्री छिपाता है और इसे पलटा जा सकता है। खाता हटाना स्थायी है और इसे पलटा नहीं जा सकता।</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>विकल्प 1 — ऐप में हटाएँ (अनुशंसित)</h2>
 
-  <p>अपना पंजीकृत ईमेल पता शामिल करें।</p>
+    <p>यह सबसे तेज़ रास्ता है और इसमें ईमेल के आदान-प्रदान की ज़रूरत नहीं। यह हर डिवाइस पर हर खाते के लिए उपलब्ध नहीं है: Apple से साइन इन करें से जुड़ा खाता Android फ़ोन से हटाने की प्रक्रिया पूरी नहीं कर सकता, और उसे इसे किसी Apple डिवाइस पर पूरा करना होगा। नीचे देखें <a href="#apple-linked">यदि आपका खाता Apple से साइन इन करें से जुड़ा है</a>।</p>
 
-  <p>आपका खाता और उससे संबंधित सभी डेटा 7 दिनों के भीतर स्थायी रूप से हटा दिया जाएगा।</p>
+    <ol>
+      <li>ULMOX खोलें और <strong>प्रोफ़ाइल &rarr; कानूनी और सुरक्षा &rarr; खाता प्रबंधन &rarr; खाता हटाएँ</strong> पर जाएँ।</li>
+      <li>वह पुष्टि पढ़ें जो बताती है कि हटाना स्थायी है।</li>
+      <li>पुष्टि करें। आपसे पहले दोबारा साइन इन करने को कहा जा सकता है, जो आपके खाते को किसी और द्वारा हटाए जाने से बचाता है।</li>
+    </ol>
 
-  <p>यदि आपके कोई प्रश्न हैं, तो बेझिझक हमसे संपर्क करें।</p>
+    <h2>विकल्प 2 — ईमेल से हटाने का अनुरोध करें</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>यदि आप ऐप नहीं खोल सकते, तो आप हमसे अपना खाता हटाने का अनुरोध कर सकते हैं।</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">विषय “ULMOX Account Deletion Request” के साथ ulmoxapp@outlook.com पर ईमेल करें</a></p>
+
+    <p>कृपया केवल उतना ही शामिल करें जितना आपका खाता खोजने के लिए आवश्यक हो:</p>
+
+    <ul>
+      <li>आपके ULMOX खाते से जुड़ा ईमेल पता, और</li>
+      <li>आपका ULMOX उपयोगकर्ता नाम, यदि आप जानते हों।</li>
+    </ul>
+
+    <p>जहाँ संभव हो, अपने खाते से जुड़े ईमेल पते से लिखें। यदि आपका खाता Apple से साइन इन करें से जुड़ा है और आपने <strong>मेरा ईमेल छिपाएँ</strong> का उपयोग किया था, तो अपने Apple रिले पते से लिखें, या खाता पहचानने के लिए पर्याप्त गैर-गोपनीय खाता विवरण दें।</p>
+
+    <div class="callout">
+      <p><strong>हम आपसे कभी पासवर्ड, Apple या Google पासवर्ड, एक-बार का प्रमाणीकरण कोड, प्राधिकरण कोड, साइन-इन टोकन, या किसी पहचान दस्तावेज़ की तस्वीर नहीं माँगेंगे</strong>, और न ही कभी यह कहेंगे कि आप इनमें से कुछ भी हमें ईमेल करें। यदि आपको ULMOX होने का दावा करने वाला ऐसा कोई संदेश मिले जो इनमें से कुछ माँगे, तो वह हमारी ओर से नहीं है।</p>
+    </div>
+
+    <p>किसी खाते को हटाने से पहले हम यह सत्यापित करते हैं कि वह आपका ही है। किसी सार्वजनिक वेब फ़ॉर्म या असत्यापित पते से भेजा गया अनुरोध अपने आप किसी खाते को नहीं हटाता। हम आपसे किसी सुरक्षित तरीके से स्वामित्व की पुष्टि करने को कह सकते हैं, जैसे खाते के ईमेल पते से उत्तर देना।</p>
+
+    <h2>खाता हटाए जाने पर क्या होता है</h2>
+
+    <ul>
+      <li>हटाने की प्रक्रिया सफलतापूर्वक शुरू होते ही पहुँच और खोज-योग्यता समाप्त हो जाती है। आपकी प्रोफ़ाइल दूसरों को दिखनी बंद हो जाती है और आपका खाता नए वितरणों के लिए चुना जाना बंद हो जाता है।</li>
+      <li>इसके बाद संग्रहीत डेटा का भौतिक मिटाव पृष्ठभूमि में जारी रहता है। इसका लक्ष्य 30 दिनों के भीतर पूरा होना है, बशर्ते कोई उचित सुरक्षा या कानूनी बाध्यता सीमित अवधारण की माँग न करे।</li>
+      <li>आपके रिकॉर्ड किए गए वीडियो, उनके थंबनेल, आपकी प्रोफ़ाइल जानकारी, आपकी प्रोफ़ाइल फ़ोटो और आपकी स्वामित्व वाली Global सामग्री हटा दी जाती है।</li>
+      <li>किसी और की स्वामित्व वाली सामग्री केवल इसलिए <em>नहीं</em> हटाई जाती कि आपने उसे साझा किया था। इसके बजाय उससे आपका संबंध हटा दिया जाता है, और वीडियो उसी के पास रहता है जिसने उसे बनाया।</li>
+      <li>आपका उपयोगकर्ता नाम हटाने के बाद 90 दिनों तक रोक कर रखा जाता है, ताकि उसे तुरंत कोई और न ले सके।</li>
+      <li>जहाँ उचित कारण हो, वहाँ सीमित सुरक्षा, कानूनी या लेन-देन संबंधी अभिलेख रखे जा सकते हैं, और केवल तब तक जब तक वह कारण लागू रहे। जहाँ कोई सुरक्षा अभिलेख रखा जाता है, वहाँ उसे आपकी पहचान से जोड़ने वाली कड़ियाँ मिटाव की प्रक्रिया के हिस्से के रूप में हटा दी जाती हैं, ताकि जो बचे वह आपके बारे में अभिलेख न होकर यह अभिलेख हो कि क्या हुआ था।</li>
+      <li>आपका खाता हटाने से किसी और का खाता नहीं हटता। एक Connection में दो लोग होते हैं, और दूसरे प्रतिभागी के संदेश, वीडियो और अभिलेख उसी के पास रहते हैं।</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>सुरक्षा साक्ष्य सामान्य संदेश इतिहास नहीं है।</strong> Connections और वैकल्पिक संदेश अनुवाद को चरणबद्ध रूप से पेश किया जा रहा है, और ये हर खाते या ऐप के हर इंस्टॉल किए गए संस्करण पर अभी उपलब्ध नहीं हो सकते हैं। यदि आपका कोई Connection है: उसमें सामान्य संदेश भेजे जाने के लगभग सात दिन बाद समाप्त माना जाता है। जिस संदेश की रिपोर्ट हो चुकी है, उस पर यह अब लागू नहीं होता: वह किसी समीक्षा में साक्ष्य है, और समीक्षा जारी रहने तक तथा उसके बाद भी जहाँ परिणाम उचित ठहराए, वह रखा जाता है — उस खाते के हट जाने के बाद भी जहाँ से वह आया था। आपका खाता हटाने से आपके द्वारा की गई रिपोर्ट वापस नहीं होती और आपके बारे में की गई रिपोर्ट भी नहीं मिटती।</p>
+    </div>
+
+    <h2 id="apple-linked">यदि आपका खाता Apple से साइन इन करें से जुड़ा है</h2>
+
+    <p>कुछ ULMOX खाते Apple से साइन इन करें से जुड़े हैं। यदि आपका भी ऐसा है, तो स्थायी रूप से हटाने में एक अतिरिक्त चरण होता है, क्योंकि Apple अपेक्षा करता है कि खाता हटाते समय ऐप केवल अपना अभिलेख न मिटाए, बल्कि अपना Apple से साइन इन करें प्राधिकरण भी छोड़े।</p>
+
+    <ol>
+      <li>किसी Apple डिवाइस पर ULMOX आपसे सीधे Apple के पास एक बार और पुष्टि करने को कहता है। वह पुष्टि आपके अपने डिवाइस पर, आपके और Apple के बीच होती है। <strong>ULMOX को आपका Apple पासवर्ड नहीं मिलता</strong>, और हम आपसे वह कभी नहीं माँगते।</li>
+      <li>वही पुष्टि ULMOX को इस योग्य बनाती है कि वह आपके खाते के लिए अपना Apple से साइन इन करें प्राधिकरण वापस ले सके।</li>
+      <li>उसके बाद ही ऊपर बताई गई स्थायी हटाने की प्रक्रिया शुरू होती है।</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>यदि वह चरण पूरा नहीं होता, तो कुछ भी नहीं हटाया जाता।</strong> यदि आप Apple की स्क्रीन बंद कर देते हैं, यदि पुष्टि में साइन इन किए गए खाते से भिन्न कोई Apple खाता लौटता है, या यदि वह चरण किसी अन्य कारण से विफल होता है, तो ULMOX कोई स्थायी कार्रवाई होने से पहले रुक जाता है और आपको बताता है कि कुछ भी नहीं हटाया गया। आप फिर से प्रयास कर सकते हैं।</p>
+    </div>
+
+    <p>तीन अलग-अलग बातें आसानी से मिल जाती हैं:</p>
+
+    <ul>
+      <li><strong>ULMOX का Apple से साइन इन करें प्राधिकरण वापस लेना</strong> ULMOX को आपके लिए Apple से साइन इन करें का उपयोग करने से रोक देता है। अकेले इससे आपका ULMOX खाता नहीं हटता और उसमें मौजूद डेटा भी नहीं मिटता।</li>
+      <li><strong>अपना ULMOX खाता हटाना</strong> वह कार्रवाई है जो आपका ULMOX डेटा हटाती है। यह तभी पूरी होती है जब इस पृष्ठ पर बताया गया मिटाव चल चुका हो — साइन-इन प्राधिकरण में कोई भी बदलाव इसे पूरा नहीं करता।</li>
+      <li><strong>अपना Apple ID हटाना</strong> ऐसा काम है जो केवल Apple ही, आपके अपने अनुरोध पर, कर सकता है — ULMOX न कभी यह करता है और न कर सकता है।</li>
+    </ul>
+
+    <h3>Apple से जुड़ा खाता Android डिवाइस से हटाना</h3>
+
+    <p>Apple का पुष्टि चरण केवल किसी Apple डिवाइस पर ही पूरा किया जा सकता है। यदि आप Apple से जुड़ा ULMOX खाता Android फ़ोन से हटाने का प्रयास करते हैं, तो ULMOX कुछ भी हटाए जाने से पहले रुक जाता है और आपको बताता है कि <strong>कुछ भी नहीं हटाया गया</strong>। हटाने की प्रक्रिया किसी Apple डिवाइस पर पूरी करें।</p>
+
+    <p>जो खाता केवल Google से साइन इन, या केवल किसी ईमेल पते का उपयोग करता है, वह दोनों तरह के डिवाइसों पर सामान्य रूप से हट जाता है। जो खाता Apple और Google दोनों से जुड़ा है, उसे अब भी Apple वाला चरण चाहिए।</p>
+
+    <h2>यदि आप केवल विराम चाहते हैं</h2>
+
+    <p>निष्क्रिय करना आपकी प्रोफ़ाइल और आपकी Global सामग्री छिपा देता है और दोबारा साइन इन करके <strong>पुनः सक्रिय करें</strong> चुनने पर इसे पलटा जा सकता है। केवल साइन इन करने से खाता पुनः सक्रिय नहीं होता। जो वीडियो आप पहले ही भेज चुके हैं, वे प्राप्तकर्ताओं के पास उनकी सामान्य अवधारण अवधि तक रह सकते हैं। निष्क्रिय करना हटाने के अनुरोध को पूरा नहीं करता — यदि आप अपना डेटा हटवाना चाहते हैं, तो खाता हटाएँ का उपयोग करें।</p>
+
+    <p>निष्क्रिय करने से सुरक्षा अभिलेख नहीं मिटते, और फिर से सक्रिय करने से कुछ भी पलटता नहीं। लौटने पर आपकी पहुँच बहाल होती है; पर इससे कोई मॉडरेशन निर्णय नहीं पलटता, मॉडरेशन द्वारा हटाई या छिपाई गई सामग्री वापस नहीं आती, और समाप्त हो चुका कोई Connection दोबारा नहीं खुलता। किसी Connection को समाप्त करना उस जोड़ी के लिए अंतिम है। ब्लॉक करना अलग तरह से काम करता है: ब्लॉक आपके मौजूदा Connection को समाप्त कर देता है और जब तक वह लागू है, दोनों दिशाओं में संपर्क रोक देता है। ब्लॉक हटाने से भी पुराना Connection वापस नहीं आता — दोनों खातों को शुरुआत से फिर पात्र होना होगा, यानी दो नए अर्हक वीडियो आदान-प्रदान और दोनों की नई स्वीकृति।</p>
+
+    <h2>प्रश्न</h2>
+
+    <p><a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> पर संपर्क करें। यह भी देखें <a href="privacy.html">गोपनीयता नीति</a> और <a href="terms.html">शर्तें</a>।</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="कानूनी जानकारी और सहायता">
+      <ul>
+        <li><a href="index.html">होम</a></li>
+        <li><a href="privacy.html">गोपनीयता नीति</a></li>
+        <li><a href="terms.html">शर्तें</a></li>
+        <li><a href="safety.html">सुरक्षा और मॉडरेशन</a></li>
+        <li><a href="support.html">सहायता</a></li>
+        <li><span aria-current="page">खाता हटाएं</span></li>
+        <li><a href="translation.html">अनुवाद की जानकारी</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">इस नीति का अंग्रेज़ी संस्करण ही प्रामाणिक है। यदि कोई अनुवाद उससे भिन्न हो, तो अंग्रेज़ी संस्करण लागू होगा।</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

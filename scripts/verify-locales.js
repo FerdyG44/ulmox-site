@@ -3,7 +3,7 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const languages = ['en', 'sv', 'tr', 'de', 'es', 'fr', 'it', 'pt', 'nl', 'pl', 'fi', 'ru', 'ja', 'ko', 'zh', 'ar', 'hi', 'th', 'vi'];
-const pages = ['index.html', 'support.html', 'safety.html', 'privacy.html', 'terms.html', 'delete_account.html', 'delete-account/index.html'];
+const pages = ['index.html', 'support.html', 'safety.html', 'privacy.html', 'terms.html', 'delete_account.html', 'delete-account/index.html', 'translation.html'];
 const appStore = 'https://apps.apple.com/se/app/ulmox/id6765990174';
 const googlePlay = 'https://play.google.com/store/apps/details?id=com.ulmox.app';
 

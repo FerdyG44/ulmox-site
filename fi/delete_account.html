@@ -1,26 +1,294 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tilin poistaminen - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Miten poistat ULMOX-tilisi pysyvästi, sovelluksessa tai sähköpostitse, ja mitä tiedoillesi tapahtuu." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">Siirry sisältöön</a>
+<div class="container">
+  <main id="main">
+    <h1>Poista ULMOX-tilisi</h1>
+    <p class="effective">Voimassa 2026-09-04 alkaen. Viimeksi päivitetty 2026-09-04.</p>
 
-  <h1>Poista tilisi</h1>
+    <p>Tällä sivulla kerrotaan, miten poistat ULMOX-tilisi pysyvästi ja mitä tiedoillesi sen jälkeen tapahtuu.</p>
 
-  <p>Jos haluat poistaa ULMOX-tilisi, ota meihin yhteyttä:</p>
+    <div class="callout">
+      <p><strong>Käytöstä poistaminen ei ole poistamista.</strong> Käytöstä poistaminen piilottaa profiilisi ja sisältösi ja on peruutettavissa. Tilisi poistaminen on pysyvää eikä sitä voi peruuttaa.</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>Vaihtoehto 1 — poista sovelluksessa (suositeltu)</h2>
 
-  <p>Liitä mukaan rekisteröity sähköpostiosoitteesi.</p>
+    <p>Tämä on nopein tapa eikä vaadi sähköpostinvaihtoa. Se ei ole käytettävissä jokaiselle tilille jokaisella laitteella: Kirjaudu Apple-tunnuksella -palveluun liitetty tili ei voi viimeistellä poistoa Android-puhelimella, ja se on viimeisteltävä Apple-laitteella. Katso alla <a href="#apple-linked">Jos tilisi on liitetty Kirjaudu Apple-tunnuksella -palveluun</a>.</p>
 
-  <p>Tilisi ja kaikki siihen liittyvät tiedot poistetaan pysyvästi 7 päivän kuluessa.</p>
+    <ol>
+      <li>Avaa ULMOX ja siirry kohtaan <strong>Profiili &rarr; Juridiset tiedot ja turvallisuus &rarr; Tilin hallinta &rarr; Poista tili</strong>.</li>
+      <li>Lue vahvistus, jossa kerrotaan, että poisto on pysyvä.</li>
+      <li>Vahvista. Sinua voidaan pyytää ensin kirjautumaan uudelleen, mikä suojaa tiliäsi siltä, että joku muu poistaisi sen.</li>
+    </ol>
 
-  <p>Jos sinulla on kysyttävää, ota meihin yhteyttä.</p>
+    <h2>Vaihtoehto 2 — pyydä poistoa sähköpostitse</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>Jos et voi avata sovellusta, voit pyytää meitä poistamaan tilisi.</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">Kirjoita osoitteeseen ulmoxapp@outlook.com aiheella ”ULMOX Account Deletion Request”</a></p>
+
+    <p>Liitä mukaan vain vähimmäistiedot, joilla tilisi löytyy:</p>
+
+    <ul>
+      <li>ULMOX-tiliisi liitetty sähköpostiosoite ja</li>
+      <li>ULMOX-käyttäjätunnuksesi, jos tiedät sen.</li>
+    </ul>
+
+    <p>Kirjoita mahdollisuuksien mukaan tiliisi liitetystä sähköpostiosoitteesta. Jos tilisi on liitetty Kirjaudu Apple-tunnuksella -palveluun ja käytit toimintoa <strong>Piilota sähköpostiosoite</strong>, kirjoita Applen välitysosoitteestasi tai anna meille riittävästi ei-salaisia tilitietoja tilin tunnistamiseksi.</p>
+
+    <div class="callout">
+      <p><strong>Emme koskaan pyydä sinulta salasanaa, Apple- tai Google-salasanaa, kertakäyttöistä todennuskoodia, valtuutuskoodia, kirjautumistunnistetta tai valokuvaa henkilöllisyystodistuksesta</strong>, emmekä koskaan pyydä sinua lähettämään mitään näistä meille sähköpostitse. Jos saat viestin, jonka väitetään tulevan ULMOXilta ja jossa pyydetään mitään näistä, se ei ole meiltä.</p>
+    </div>
+
+    <p>Varmistamme, että tili on sinun, ennen kuin poistamme sen. Julkisesta verkkolomakkeesta tai varmentamattomasta osoitteesta lähetetty pyyntö ei sinänsä poista tiliä. Voimme pyytää sinua vahvistamaan omistajuuden turvallisella tavalla, esimerkiksi vastaamalla tilin sähköpostiosoitteesta.</p>
+
+    <h2>Mitä tapahtuu, kun tili poistetaan</h2>
+
+    <ul>
+      <li>Pääsy ja löydettävyys poistetaan heti, kun poisto on onnistuneesti käynnistetty. Profiilisi ei enää näy muille eikä tiliäsi enää valita uusiin toimituksiin.</li>
+      <li>Tallennettujen tietojen fyysinen poisto jatkuu tämän jälkeen taustalla. Tavoitteena on valmistua 30 päivässä, ellei perusteltu turvallisuus- tai lakisääteinen velvoite edellytä rajoitettua säilyttämistä.</li>
+      <li>Kuvaamasi videot, niiden pikkukuvat, profiilitietosi, profiilikuvasi ja omistamasi Global-sisältö poistetaan.</li>
+      <li>Toisen omistamaa sisältöä <em>ei</em> poisteta pelkästään siksi, että jaoit sen. Sen sijaan yhteytesi siihen poistetaan, ja video jää sen luoneelle henkilölle.</li>
+      <li>Käyttäjätunnuksesi pidetään varattuna 90 päivää poiston jälkeen ennen kuin se voidaan ottaa uudelleen käyttöön, jottei joku muu voi ottaa sitä heti.</li>
+      <li>Rajoitettuja turvallisuus-, oikeudellisia tai tapahtumamerkintöjä voidaan säilyttää silloin kun siihen on perusteltu syy, ja vain niin kauan kuin tuo syy on voimassa. Kun turvallisuusmerkintä säilytetään, siihen henkilöllisyytesi yhdistävät linkit poistetaan osana poistoa, joten jäljelle jää merkintä tapahtuneesta eikä merkintä sinusta.</li>
+      <li>Tilisi poistaminen ei poista kenenkään muun tiliä. Connectionissa on kaksi henkilöä, ja toisen osapuolen viestit, videot ja merkinnät jäävät hänelle.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Turvallisuuden todistusaineisto ei ole tavallista viestihistoriaa.</strong> Connections ja valinnainen viestien kääntäminen otetaan käyttöön vaiheittain, eivätkä ne välttämättä ole vielä käytettävissä jokaisella tilillä tai jokaisessa asennetussa sovellusversiossa. Jos sinulla on Connection: sen tavallisen viestin katsotaan vanhenevan noin seitsemän päivää lähettämisen jälkeen. Ilmoitettua viestiä tämä ei enää koske: se on todistusaineistoa käsittelyssä, ja se säilytetään käsittelyn ajan ja sen jälkeen silloin, kun lopputulos sen oikeuttaa — myös sen jälkeen, kun tili, jolta se tuli, on poistettu. Tilisi poistaminen ei peruuta tekemääsi ilmoitusta eikä poista sinusta tehtyä ilmoitusta.</p>
+    </div>
+
+    <h2 id="apple-linked">Jos tilisi on liitetty Kirjaudu Apple-tunnuksella -palveluun</h2>
+
+    <p>Osa ULMOX-tileistä on liitetty Kirjaudu Apple-tunnuksella -palveluun. Jos omasi on, pysyvässä poistossa on yksi lisävaihe, koska Apple edellyttää, että sovellus luopuu Kirjaudu Apple-tunnuksella -valtuutuksestaan poistaessaan tilin, eikä vain poista omaa tietuettaan.</p>
+
+    <ol>
+      <li>Apple-laitteella ULMOX pyytää sinua vahvistamaan vielä kerran suoraan Applelle. Tuo vahvistus tapahtuu sinun ja Applen välillä omalla laitteellasi. <strong>ULMOX ei saa Apple-salasanaasi</strong>, emmekä koskaan pyydä sitä sinulta.</li>
+      <li>Juuri tuo vahvistus antaa ULMOXille mahdollisuuden perua oman Kirjaudu Apple-tunnuksella -valtuutuksensa tilillesi.</li>
+      <li>Vasta sen jälkeen alkaa edellä kuvattu pysyvä poisto.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Jos tuo vaihe ei valmistu, mitään ei poisteta.</strong> Jos suljet Applen näytön, jos vahvistus palauttaa eri Apple-tilin kuin sisäänkirjautuneen, tai jos vaihe epäonnistuu jostain muusta syystä, ULMOX pysähtyy ennen kuin mitään pysyvää tapahtuu ja kertoo sinulle, ettei mitään ole poistettu. Voit yrittää uudelleen.</p>
+    </div>
+
+    <p>Kolme eri asiaa menee helposti sekaisin:</p>
+
+    <ul>
+      <li><strong>ULMOXin Kirjaudu Apple-tunnuksella -valtuutuksen peruminen</strong> estää ULMOXia käyttämästä Kirjaudu Apple-tunnuksella -palvelua puolestasi. Yksinään se ei poista ULMOX-tiliäsi eikä poista siinä olevia tietoja.</li>
+      <li><strong>ULMOX-tilisi poistaminen</strong> on toimenpide, joka poistaa ULMOX-tietosi. Se on valmis vasta, kun tällä sivulla kuvattu poisto on suoritettu — mikään kirjautumisvaltuutuksen muutos ei saata sitä päätökseen.</li>
+      <li><strong>Apple ID:n poistaminen</strong> on jotain, minkä vain Apple voi tehdä sinun omasta pyynnöstäsi — ULMOX ei tee sitä koskaan eikä voi tehdä sitä.</li>
+    </ul>
+
+    <h3>Appleen liitetyn tilin poistaminen Android-laitteelta</h3>
+
+    <p>Applen vahvistusvaihe voidaan suorittaa vain Apple-laitteella. Jos yrität poistaa Appleen liitetyn ULMOX-tilin Android-puhelimella, ULMOX pysähtyy ennen kuin mitään poistetaan ja kertoo sinulle, että <strong>mitään ei ole poistettu</strong>. Viimeistele poisto Apple-laitteella.</p>
+
+    <p>Tili, joka käyttää vain Google-kirjautumista tai vain sähköpostiosoitetta, poistuu normaalisti kummallakin laitetyypillä. Tili, joka on liitetty sekä Appleen että Googleen, tarvitsee edelleen Apple-vaiheen.</p>
+
+    <h2>Jos haluat vain tauon</h2>
+
+    <p>Käytöstä poistaminen piilottaa profiilisi ja Global-sisältösi ja voidaan peruuttaa kirjautumalla takaisin sisään ja valitsemalla <strong>Palauta käyttöön</strong>. Pelkkä kirjautuminen ei palauta tiliä. Jo lähettämäsi videot voivat säilyä niiden saaneilla heidän tavanomaisen säilytysaikansa. Käytöstä poistaminen ei täytä poistopyyntöä — jos haluat tietosi poistettavan, käytä toimintoa Poista tili.</p>
+
+    <p>Käytöstä poistaminen ei poista turvallisuusmerkintöjä, eikä uudelleen käyttöönotto kumoa mitään. Palaaminen palauttaa pääsysi; se ei kumoa moderointipäätöstä, ei palauta moderoinnin poistamaa tai piilottamaa sisältöä eikä avaa uudelleen päätettyä Connectionia. Connectionin päättäminen on lopullista tälle parille. Estäminen toimii toisin: esto päättää nykyisen Connectionisi ja pysäyttää yhteydenpidon molempiin suuntiin niin kauan kuin se on voimassa. Eston poistaminenkaan ei palauta vanhaa Connectionia — kahden tilin olisi täytettävä ehdot uudelleen alusta, kahden uuden kelpoisuusehdot täyttävän videovaihdon ja molempien osapuolten uuden hyväksynnän kautta.</p>
+
+    <h2>Kysymykset</h2>
+
+    <p>Ota yhteyttä: <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Katso myös <a href="privacy.html">Tietosuojakäytäntö</a> ja <a href="terms.html">Ehdot</a>.</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Juridiset tiedot ja tuki">
+      <ul>
+        <li><a href="index.html">Etusivu</a></li>
+        <li><a href="privacy.html">Tietosuojakäytäntö</a></li>
+        <li><a href="terms.html">Ehdot</a></li>
+        <li><a href="safety.html">Turvallisuus ja moderointi</a></li>
+        <li><a href="support.html">Tuki</a></li>
+        <li><span aria-current="page">Poista tili</span></li>
+        <li><a href="translation.html">Tietoa kääntämisestä</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Tämän käytännön englanninkielinen versio on määräävä. Jos käännös poikkeaa siitä, sovelletaan englanninkielistä versiota.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

@@ -3,165 +3,326 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ULMOX Safety & Moderation</title>
-
+  <title>ULMOX Child Safety Standards</title>
+  <meta name="description" content="ULMOX child safety standards: 18+ only, zero tolerance for CSAE, reporting, blocking and human review." />
   <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      padding: 0;
-      background-color: #0d0d0f;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
     }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
 
     .container {
-      max-width: 900px;
+      max-width: 860px;
       margin: 0 auto;
-      padding: 60px 24px;
+      padding: 48px 20px 72px;
     }
 
-    h1 {
-      font-size: 42px;
-      margin-bottom: 30px;
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
     }
 
-    h2 {
-      margin-top: 42px;
-      font-size: 24px;
-      color: #ffffff;
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
     }
 
-    p, li {
-      color: #d0d0d0;
-      font-size: 17px;
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
     }
 
-    ul {
-      padding-left: 22px;
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
     }
 
-    a {
-      color: #9d7bff;
-      text-decoration: none;
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
     }
 
-    a:hover {
-      text-decoration: underline;
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
     }
 
-    .footer {
-      margin-top: 60px;
-      padding-top: 30px;
-      border-top: 1px solid #2a2a2e;
-      color: #888;
-      font-size: 14px;
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
     }
   </style>
 </head>
-
 <body>
-
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="container">
-
-    <h1>ULMOX Safety & Moderation</h1>
-
+  <main id="main">
+    <h1>ULMOX Child Safety Standards</h1>
+    <p class="effective">Effective 2026-09-04. Last updated 2026-09-04.</p>
     <p>
-      ULMOX is committed to creating a safe and respectful environment for all users.
+      ULMOX is restricted to adults aged <strong>18 or older</strong>. This page
+      sets out how we prevent, detect and act on child sexual abuse and
+      exploitation.
     </p>
 
-    <h2>Content Moderation</h2>
-
-    <p>
-      All content shared on ULMOX may be reviewed through automated detection systems and moderation tools.
-    </p>
-
-    <p>
-      We actively monitor and remove content that violates our policies, including:
-    </p>
-
-    <ul>
-      <li>Harassment or bullying</li>
-      <li>Hate speech</li>
-      <li>Sexual or explicit content</li>
-      <li>Violent or graphic material</li>
-      <li>Spam or misleading content</li>
-      <li>Illegal activity</li>
-      <li>Child exploitation or abusive behavior</li>
-    </ul>
-
-    <h2>Reporting System</h2>
-
-    <p>
-      Users can report any content directly inside the app.
-    </p>
-
-    <p>
-      Reported content is reviewed and may be:
-    </p>
-
-    <ul>
-      <li>Removed</li>
-      <li>Hidden from public feeds</li>
-      <li>Escalated for further review</li>
-      <li>Used to suspend or ban accounts</li>
-    </ul>
-
-    <h2>Blocking Features</h2>
-
-    <p>
-      Users can block other users at any time.
-    </p>
-
-    <p>
-      Blocked users can no longer interact with or appear in the reporting user’s experience.
-    </p>
-
-    <h2>AI-Assisted Detection</h2>
-
-    <p>
-      ULMOX may use automated systems to detect potentially unsafe or inappropriate content before it reaches wider distribution.
-    </p>
-
-    <p>
-      Content flagged by automated systems may undergo additional review.
-    </p>
-
-    <h2>User Safety</h2>
-
-    <p>
-      We encourage respectful communication and positive interactions.
-    </p>
-
-    <p>
-      Accounts that repeatedly violate our rules may be suspended or permanently banned.
-    </p>
-
-    <h2>Child Safety</h2>
-
-    <p>
-      ULMOX has zero tolerance for child sexual abuse material (CSAM) or exploitative behavior.
-    </p>
-
-    <p>
-      Any detected CSAM-related content or activity will be removed immediately and may be reported to relevant authorities.
-    </p>
-
-    <h2>Contact</h2>
-
-    <p>
-      For safety concerns or moderation appeals:
-    </p>
-
-    <p>
-      <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>
-    </p>
-
-    <div class="footer">
-      © 2026 ULMOX. All rights reserved.
+    <div class="callout">
+      <p>
+        <strong>If a child is in immediate danger, contact your local emergency
+        services first.</strong> Reporting to ULMOX is not a substitute for
+        contacting the authorities.
+      </p>
     </div>
 
-  </div>
+    <h2>Zero tolerance</h2>
+    <p>
+      ULMOX has zero tolerance for child sexual abuse and exploitation (CSAE)
+      and for child sexual abuse material (CSAM). Accounts and content involved
+      in it are removed.
+    </p>
 
+    <h2>What is prohibited</h2>
+    <p>
+      In plain terms, the following are never allowed on ULMOX:
+    </p>
+    <ul>
+      <li>Any sexual content involving a person under 18, real or depicted.</li>
+      <li>Grooming: building trust with a minor in order to sexually exploit
+        them, including asking a minor to keep contact secret from their parents
+        or guardians.</li>
+      <li>Sexualising a minor, or asking a minor for sexual images or contact.</li>
+      <li>Coercion, blackmail (including sexual extortion), trafficking, or any
+        conduct that places a minor in serious danger.</li>
+      <li>Advertising, seeking or linking to material of this kind.</li>
+    </ul>
+
+    <h2>How to report</h2>
+    <p>
+      Inside the app you can <strong>Report Content</strong> and
+      <strong>Report User</strong>. Both offer a dedicated
+      <strong>Child Safety</strong> category. You can also block a user, which
+      stops all interaction between you in both directions.
+    </p>
+    <p>
+      You can also write to us:
+    </p>
+    <p>
+      <strong>ULMOX Child Safety Contact</strong><br />
+      <a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ulmoxapp@outlook.com</a>
+    </p>
+
+    <h2>What happens next</h2>
+    <ul>
+      <li>Child safety reports are given the <strong>highest priority</strong>
+        for human review.</li>
+      <li>The specific reported content is immediately placed in a
+        <strong>reversible quarantine</strong> so it is no longer shown publicly
+        or delivered, while a person reviews it.</li>
+      <li>Evidence is preserved for review and is accessible only to authorised
+        moderators.</li>
+      <li>Reports do <strong>not</strong> automatically ban an account. Neither
+        does the number of reports, an automated filter holding a message back,
+        a quarantine, or a translation. A ban is a separate, deliberate decision
+        that only an authorised ULMOX administrator can make, and only after
+        reviewing the case.</li>
+      <li>Resolving a report takes it off the active review list. It does not
+        erase it: the evidence and the record of what was decided are kept where
+        there is a justified reason to keep them, so a decision can be audited
+        and an appeal can be answered.</li>
+      <li>If a reviewer approves a reported video, it returns to the Global feed
+        only if it independently still qualifies. Content whose owner has left,
+        been restricted or been banned, or which is unavailable for a separate
+        reason, stays unavailable whatever the report decision was.</li>
+      <li>Where applicable law requires it, we report to the appropriate legally
+        designated authority.</li>
+    </ul>
+
+    <div class="callout">
+      <p>
+        <strong>Our target is to review urgent child safety reports within 24
+        hours.</strong> This is a target for beginning human review. It is not a
+        guarantee that every case is finally resolved within 24 hours, and
+        complex cases can take longer.
+      </p>
+    </div>
+
+    <p>
+      Other safety reports are reviewed as quickly as reasonably possible.
+    </p>
+
+    <h2>Safety in Connections</h2>
+    <div class="callout">
+      <p><strong>Connections and optional message translation are being introduced gradually and may not yet be available for every account or installed app version.</strong></p>
+    </div>
+    <p>
+      A Connection is a text-only conversation between two adults who both
+      approved it after two separate qualifying video exchanges. ULMOX has no
+      user search, so nobody can look you up in order to message you. These are
+      the safety controls inside a Connection:
+    </p>
+    <ul>
+      <li><strong>Report Message.</strong> Available on a message you have
+        received. Reporting sends a person the original message to review.</li>
+      <li><strong>Reporting hides the message for you, and only for you.</strong>
+        After you report a message it disappears from your view of the
+        conversation. The sender&rsquo;s copy is unchanged and the sender is not
+        told that you reported it. Hiding it is for your benefit; it is not a
+        penalty applied to them, and the decision about the message is still a
+        person&rsquo;s to make.</li>
+      <li><strong>Report User.</strong> Available separately, for the person
+        rather than a single message. There is a dedicated child safety
+        category on both.</li>
+      <li><strong>Block.</strong> Blocking stops interaction in both directions.
+        It is offered after a report as a separate choice, never bundled into
+        it, and declining it leaves your report intact. A block also ends the
+        Connection you have now. Removing the block does not bring that
+        Connection back: the pair would have to qualify again from the
+        beginning, through two fresh qualifying video exchanges and a fresh
+        approval from each person.</li>
+      <li><strong>End Connection.</strong> Ends the conversation for both
+        people. It cannot be restored and it does not reopen on a future
+        encounter. Ending is not the same as blocking, and it does not erase
+        reports you have already made.</li>
+      <li><strong>Leaving always works.</strong> Blocking and ending a
+        Connection stay available to you whatever else is happening &mdash; a
+        safety action is never the thing that is unavailable.</li>
+      <li><strong>Messages expire.</strong> An ordinary message in a Connection
+        is treated as expiring about seven days after it is sent. A message you
+        report is treated differently: once it is evidence in a review, seven-day
+        expiry no longer governs it, and it is kept while the review is open and
+        afterwards where the outcome justifies keeping it.</li>
+      <li><strong>Nothing is attached.</strong> Connections carry written
+        messages only &mdash; no photos, videos, files or voice notes.</li>
+    </ul>
+
+    <h2>Translated messages</h2>
+    <ul>
+      <li>A report always concerns the <strong>original message</strong>. The
+        report carries the original, and that is what a moderator reads.</li>
+      <li>An optional translation shown to a reader is not a moderation decision
+        and is not evidence.</li>
+      <li>A translation cannot make a message deliverable. Content that is
+        blocked or held stays blocked or held whatever language it is read
+        in.</li>
+      <li>No account is banned because of what a translation produced. Only an
+        authorised ULMOX administrator can ban an account, and only after
+        reviewing the original evidence.</li>
+    </ul>
+    <p>
+      See <a href="translation.html">Translation information</a>.
+    </p>
+
+    <h2>What ULMOX does not do</h2>
+    <ul>
+      <li>ULMOX does not automatically analyse video frames, audio or
+        transcripts. Video safety relies on reporting, reversible quarantine,
+        blocking and human review.</li>
+      <li>ULMOX does not ban accounts automatically, and no number of reports
+        produces an automatic ban.</li>
+      <li>ULMOX does not claim that any automated check finds every violation.
+        Reporting and human review are what the safety of this service rests
+        on.</li>
+      <li>ULMOX does not publish the internal thresholds, tooling or working
+        procedures its safety systems use, because publishing them would tell
+        the people we are trying to stop exactly what to avoid.</li>
+    </ul>
+
+    <h2>Appeals</h2>
+    <p>
+      If you believe content or an account was actioned in error, write to
+      <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> and a person will
+      review it. See <a href="support.html">Support</a> for what to include.
+    </p>
+
+    <h2>Related pages</h2>
+    <p>
+      <a href="terms.html">Terms of Service</a> &middot;
+      <a href="privacy.html">Privacy Policy</a> &middot;
+      <a href="support.html">Support</a> &middot;
+      <a href="delete_account.html">Delete your account</a>
+    </p>
+  </main>
+  <footer>
+    <nav aria-label="Legal and support">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><span aria-current="page">Child Safety Standards</span></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="delete_account.html">Delete Account</a></li>
+        <li><a href="translation.html">Translation Information</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">The English version of this policy is the authoritative one. If a translation differs from it, the English version applies.</p>
+    <p>ULMOX is an 18+ service. Contact: <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+  </div>
 </body>
 </html>

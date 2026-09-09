@@ -1,24 +1,276 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Destek - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="ULMOX ile nasıl iletişime geçilir, ne kadar sürede yanıt veririz ve bir kararı nasıl itiraza taşırsınız." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;">
+<body>
+  <a class="ulmox-skip-link" href="#main">İçeriğe geç</a>
+<div class="container">
+  <main id="main">
+    <h1>ULMOX Destek</h1>
+    <p class="effective">Yürürlük tarihi 2026-09-04. Son güncelleme 2026-09-04.</p>
 
-<h1>Destek</h1>
+    <p><a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> adresine yazın. Aşağıdaki konu satırlarından birini kullanmanız, mesajınızı doğru şekilde yönlendirmemize yardımcı olur.</p>
 
-<p>Yardıma mı ihtiyacınız var?</p>
+    <table>
+      <tr><th scope="col">Konu</th><th scope="col">Konu satırı</th><th scope="col">Notlar</th></tr>
+      <tr><td>Genel destek</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Support">ULMOX Support</a></td><td>Aşağıda yer almayan her şey.</td></tr>
+      <tr><td>Hesabımı silme</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">ULMOX Account Deletion Request</a></td><td>Önce bkz. <a href="delete_account.html">Hesabı Sil</a> — uygulama içi yol daha hızlıdır.</td></tr>
+      <tr><td>Yaş doğrulamamı düzeltme</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Age%20Verification%20Correction">ULMOX Age Verification Correction</a></td><td>Doğum tarihinizi yanlış girdiyseniz. Bunu kendiniz değiştiremezsiniz.</td></tr>
+      <tr><td>Bir içerik kararına itiraz</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Content%20Appeal">ULMOX Content Appeal</a></td><td>İçeriğiniz gizlendiyse veya kaldırıldıysa.</td></tr>
+      <tr><td>Bir hesap kısıtlamasına itiraz</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Appeal">ULMOX Account Appeal</a></td><td>Hesabınız askıya alındıysa veya yasaklandıysa.</td></tr>
+      <tr><td>Bir çocuk güvenliği endişesini bildirme</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ULMOX Child Safety Report</a></td><td>En yüksek öncelik. Bkz. <a href="safety.html">Güvenlik ve Moderasyon</a>.</td></tr>
+    </table>
 
-<p>Bize e-posta gönderin:</p>
+    <h2>Ne kadar sürede yanıt veriyoruz</h2>
 
-<h2>ulmoxapp@outlook.com</h2>
+    <ul>
+      <li><strong>Acil çocuk güvenliği raporları</strong> için insan incelemesinin <strong>24 saat içinde</strong> başlatılması hedeflenir. Bu, incelemeye başlamaya ilişkin bir hedeftir; bir vakanın 24 saat içinde kesin olarak sonuçlandırılacağının garantisi değildir.</li>
+      <li><strong>Diğer her şey</strong> makul ölçüde mümkün olan en kısa sürede ele alınır.</li>
+    </ul>
 
-<p>Genellikle 24 saat içinde yanıt veririz.</p>
+    <div class="callout">
+      <p><strong>Sizden hiçbir zaman bir parola, Apple veya Google parolası, tek kullanımlık kimlik doğrulama kodu, yetkilendirme kodu ya da oturum açma jetonu istemeyiz ve hiçbir zaman pasaport veya başka bir kimlik belgesini e-postayla göndermenizi istemeyiz.</strong> Lütfen bunları göndermeyin. ULMOX’tan geldiğini iddia eden bir mesaj bunlardan herhangi birini istiyorsa, o mesaj bizden değildir.</p>
+    </div>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <h2>Bağlantılar ve mesaj çevirisi</h2>
+
+    <div class="callout">
+      <p><strong>Connections ve isteğe bağlı mesaj çevirisi kademeli olarak kullanıma sunuluyor; her hesapta veya yüklü her uygulama sürümünde henüz mevcut olmayabilir.</strong></p>
+    </div>
+
+    <p>Bağlantılar hesabınızda yoksa düzeltilecek bir şey ve bizden isteyeceğiniz bir şey yoktur: bu bir hata değildir, hesabınızdaki bir sorun değildir ve desteğin sizin için açabileceği bir şey değildir. Yapılmaya değer tek şey, uygulamanın güncel sürümüne geçmektir.</p>
+
+    <p>Çeviri size açık olduğunda genellikle ters giden şeyler ve bunlarla ilgili yapılacaklar şunlardır. Özelliğin nasıl çalıştığı için bkz. <a href="translation.html">Çeviri bilgileri</a>.</p>
+
+    <table>
+      <tr><th scope="col">Gördüğünüz</th><th scope="col">Anlamı</th></tr>
+      <tr><td>Dil paketi hâlâ indiriliyor</td><td>Bir dilin çevrilebilmesi için bir kez indirilmesi gerekir. Ekranı açık bırakın; orijinal mesaj bu süre boyunca okunabilir kalır.</td></tr>
+      <tr><td>İndirme başlamıyor</td><td>İndirmeler varsayılan olarak Wi-Fi kullanır. Mobil veride bunu açıkça seçmeniz gerekir — ULMOX sizden izin almadan verinizi harcamaz.</td></tr>
+      <tr><td>İndirme başarısız oldu</td><td>Kararlı bir bağlantıda yeniden deneyin. Bir indirme başarısız olursa mesajla ilgili hiçbir şey değişmez.</td></tr>
+      <tr><td>“Bu mesaj çevrilemiyor”</td><td>Dil desteklenen kümenin dışındadır ya da yeterli kesinlikte tanınamamıştır. ULMOX tahmin yürütmek yerine hiçbir şey göstermez.</td></tr>
+      <tr><td>Çeviri tuhaf okunuyor</td><td>Makine çevirisi kendinden emin görünürken yanlış olabilir ve içinde İngilizce bulunmayan bir dil çifti İngilizce üzerinden çevrilebilir. Orijinali okuyun.</td></tr>
+      <tr><td>Yer açmak istiyorsunuz</td><td>İndirilen dil paketlerini uygulamadaki Çeviri modelleri bölümünden silin.</td></tr>
+      <tr><td>Mesaj bir güvenlik sorunu</td><td>Uygulamada bildirin. Bildirim, bir kişinin incelediği şey olan orijinal mesajı taşır.</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>Mesajı bize e-postayla göndermeyin.</strong> Lütfen mesaj metni, özel bir konuşmanın ekran görüntüleri, kimlik doğrulama verileri veya cihaz tanımlayıcıları göndermeyin. Bunun yerine mesajı uygulamada bildirin — bu, orijinali bir inceleyiciye güvenli biçimde ulaştırır ve sizden hiçbir zaman bir kopyaya ihtiyacımız olmaz.</p>
+    </div>
+
+    <h2>İtirazlar</h2>
+
+    <p>İtirazlar, uygulamayı şu anda kullanabiliyor olsanız da olmasanız da açıktır ve hesabınız kısıtlıysa uygulama içindeki Destek bağlantısı erişilebilir kalır.</p>
+
+    <ul>
+      <li>Bir itirazı yetkili bir kişi okur.</li>
+      <li>İtiraz göndermek hesabınızı veya içeriğinizi otomatik olarak geri getirmez.</li>
+      <li>İtirazlar raporları veya güvenlik kayıtlarını silmez.</li>
+      <li>Sizi kimin bildirdiğini söylemeyiz ve güvenlik sistemlerimizin kullandığı dahili eşikleri açıklamayız.</li>
+    </ul>
+
+    <p>Lütfen ULMOX kullanıcı adınızı ve ilgiliyse kararın yaklaşık ne zaman verildiğini ekleyin. Parola veya kimlik belgesi eklemeyin.</p>
+
+    <h2>İlgili sayfalar</h2>
+
+    <p>
+      <a href="privacy.html">Gizlilik Politikası</a>
+      &middot;
+      <a href="terms.html">Şartlar</a>
+      &middot;
+      <a href="safety.html">Güvenlik ve Moderasyon</a>
+      &middot;
+      <a href="delete_account.html">Hesabı Sil</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Yasal bilgiler ve destek">
+      <ul>
+        <li><a href="index.html">Ana sayfa</a></li>
+        <li><a href="privacy.html">Gizlilik Politikası</a></li>
+        <li><a href="terms.html">Şartlar</a></li>
+        <li><a href="safety.html">Güvenlik ve Moderasyon</a></li>
+        <li><span aria-current="page">Destek</span></li>
+        <li><a href="delete_account.html">Hesabı Sil</a></li>
+        <li><a href="translation.html">Çeviri bilgileri</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Bu politikanın İngilizce sürümü esas alınan sürümdür. Bir çeviri bundan farklıysa İngilizce sürüm geçerlidir.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

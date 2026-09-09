@@ -1,28 +1,403 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacybeleid - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Welke gegevens ULMOX verzamelt, waarvoor, wie ze verwerkt, hoe lang ze worden bewaard en hoe je ze verwijdert." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;">
-<h1>Privacybeleid</h1>
-<section id="child-safety" style="margin-top:40px;">
-  <h2>Normen voor kindveiligheid</h2>
-  <p>ULMOX tolereert geen enkele vorm van seksueel misbruik of uitbuiting van kinderen (CSAE).</p>
-  <p>Gebruikers kunnen ongepaste inhoud rechtstreeks in de app melden. Alle meldingen worden beoordeeld en inhoud die regels schendt wordt snel verwijderd.</p>
-  <p>Gebruikers kunnen ongepaste inhoud rechtstreeks in de app melden. Alle meldingen worden beoordeeld en inhoud die regels schendt wordt snel verwijderd.</p>
-  <p>Gebruikers kunnen ongepaste inhoud rechtstreeks in de app melden. Alle meldingen worden beoordeeld en inhoud die regels schendt wordt snel verwijderd.</p>
-  <p>ULMOX zet zich in voor een veilige en respectvolle omgeving voor alle gebruikers.</p>
-</section>
-<p>ULMOX respecteert je privacy. We verzamelen alleen basisgegevens die nodig zijn om de dienst te leveren.</p>
-<p>ULMOX respecteert je privacy. We verzamelen alleen basisgegevens die nodig zijn om de dienst te leveren.</p>
-<p>ULMOX respecteert je privacy. We verzamelen alleen basisgegevens die nodig zijn om de dienst te leveren.</p>
-<p>ULMOX respecteert je privacy. We verzamelen alleen basisgegevens die nodig zijn om de dienst te leveren.</p>
-<p>ULMOX respecteert je privacy. We verzamelen alleen basisgegevens die nodig zijn om de dienst te leveren.</p>
-<p>Contact: ulmoxapp@outlook.com</p>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+<body>
+  <a class="ulmox-skip-link" href="#main">Naar de inhoud</a>
+<div class="container">
+  <main id="main">
+    <h1>Privacybeleid</h1>
+    <p class="effective">Van kracht vanaf 2026-09-04. Voor het laatst gewijzigd op 2026-09-04.</p>
+
+    <p>ULMOX is een app om video’s te delen. Je neemt een korte video op en onze server levert die af bij één willekeurig gekozen, in aanmerking komende ontvanger. Alleen wie een video ontvangt, kan die in de openbare Global-feed delen.</p>
+
+    <p>ULMOX wordt beheerd door Ferdi G&uuml;lseren. Voor vragen over privacy kun je schrijven naar <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>.</p>
+
+    <h2>1. Wie ULMOX mag gebruiken</h2>
+
+    <p>ULMOX is een dienst voor <strong>18 jaar en ouder</strong>. De dienst is niet bedoeld voor kinderen, en we verzamelen niet bewust gegevens van iemand onder de 18.</p>
+
+    <h2>2. Wat we verzamelen</h2>
+
+    <h3>Account en inloggen</h3>
+
+    <ul>
+      <li>E-mailadres en weergavenaam.</li>
+      <li>Identificatoren van het account en van de inlogaanbieder.</li>
+      <li>Voor het aanmaken van en het toegang krijgen tot je account wordt een ondersteunde inlogaanbieder gebruikt. Als een account is gekoppeld aan <strong>Inloggen met Apple</strong> en gebruikmaakt van Apples <strong>Verberg mijn e-mailadres</strong>, ontvangen wij een doorstuuradres in plaats van je echte adres.</li>
+    </ul>
+
+    <h3>Inhoud die je maakt</h3>
+
+    <ul>
+      <li>Video’s die je opneemt en de daaruit gegenereerde miniaturen.</li>
+      <li>Je profielfoto en je profielgegevens.</li>
+      <li>Global-inhoud, wanneer een ontvanger een video openbaar deelt.</li>
+      <li>Meldingen die je indient en de optionele vrije tekst die je daaraan toevoegt.</li>
+    </ul>
+
+    <h3>Camera, microfoon en foto’s</h3>
+
+    <ul>
+      <li><strong>Camera en microfoon.</strong> ULMOX vraagt hierom zodat je een videomoment met geluid kunt opnemen en een profielfoto kunt maken. De opname begint alleen wanneer jij die start.</li>
+      <li><strong>Een foto kiezen.</strong> Wanneer je een profielfoto instelt, opent ULMOX een fotokiezer en ontvangt alleen de afbeelding die je kiest. Op een actuele Android-versie is dat de fotokiezer van het systeem, zodat ULMOX geen toestemming vraagt voor je bredere fotobibliotheek. Op iOS vraagt ULMOX alleen fototoegang voor de stappen die die echt nodig hebben, en met iOS kun je toegang geven tot geselecteerde foto’s in plaats van tot je hele bibliotheek.</li>
+      <li><strong>Opslaan op je toestel.</strong> Als je ervoor kiest een moment op je telefoon te bewaren, vraagt ULMOX toestemming om het aan je fotobibliotheek toe te voegen. Die toestemming voegt een bestand toe; ze leest je bibliotheek niet.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Media die je maakt worden geüpload; ze blijven niet alleen op je toestel.</strong> Video’s, de daaruit gegenereerde miniaturen en je profielfoto worden geüpload naar en opgeslagen in Firebase Cloud Storage, zodat ze kunnen worden afgeleverd en weergegeven. Je eigen kopie op je telefoon bewaren is een aparte en optionele stap.</p>
+    </div>
+
+    <p>Op Android declareert ULMOX niet langer de brede toestemmingen voor toegang tot foto’s en video’s die Android 13 en later gebruiken, omdat de fotokiezer van het systeem die vervangt. Twee oudere opslagtoestemmingen zijn nog wel gedeclareerd, allebei geërfd van onderdelen waarop ULMOX voortbouwt en allebei begrensd zodat een moderne Android-versie ze niet kan verlenen:</p>
+
+    <ul>
+      <li>Een verouderde toestemming om opslag te <strong>lezen</strong>, uitsluitend gedeclareerd voor compatibiliteit met Android 12 en eerder.</li>
+      <li>Een verouderde toestemming om naar opslag te <strong>schrijven</strong>, uitsluitend gedeclareerd voor compatibiliteit met <strong>Android 9 en eerder</strong>. Dit is de oudere manier, van vóór scoped storage, om een bestand naar gedeelde opslag te schrijven. Het is geen moderne toestemming voor een foto- of videobibliotheek en het is geen van de hierboven beschreven mediatoestemmingen van Android 13 en later.</li>
+    </ul>
+
+    <p>De begrenzing is onderdeel van de declaratie zelf, dus op een nieuwere Android-versie wordt de toestemming niet verleend, niet gevraagd en heeft ze geen effect. ULMOX vraagt je nooit om een van beide. Op een actuele Android-versie verloopt het kiezen van een afbeelding via de fotokiezer van het systeem, die helemaal geen opslagtoestemming nodig heeft.</p>
+
+    <p>ULMOX vraagt geen advertentie-identificator op. De toestemmingen voor advertenties en advertentietoeschrijving ontbreken in de Android-app die wij bouwen, dus er valt voor een adverteerder of advertentienetwerk niets te lezen.</p>
+
+    <h3>Locatie</h3>
+
+    <p>Met jouw toestemming gebruikt ULMOX de locatie van je toestel om de stad en het land te tonen waar een moment is opgenomen en om inhoud op de wereldkaart te plaatsen. Als je weigert, blijft de app zonder werken.</p>
+
+    <p>De locatie wordt <strong>alleen gelezen terwijl je de app gebruikt</strong>, als één meting op het moment dat je opneemt. ULMOX volgt je locatie niet op de achtergrond, houdt die niet doorlopend bij en leest die niet uit terwijl de app gesloten is.</p>
+
+    <p>ULMOX vraagt uitsluitend om locatie tijdens gebruik. De app gebruikt geen achtergrondlocatie, geen doorlopende bewaking, geen bewaking van significante wijzigingen en geen geofencing, en declareert geen enkele toestemming die dat mogelijk zou maken.</p>
+
+    <h3>Berichtvertaling (Google ML Kit)</h3>
+
+    <p>ULMOX biedt optionele vertaling van een Connections-bericht dat je hebt ontvangen. Ze draait alleen wanneer je bij één bericht <strong>Translate with Google</strong> kiest, en het oorspronkelijke bericht blijft in beeld en blijft doorslaggevend. Connections en de optionele berichtvertaling worden geleidelijk ingevoerd en zijn mogelijk nog niet beschikbaar voor elk account of elke geïnstalleerde app-versie. Zie <a href="translation.html">Informatie over vertalen</a>.</p>
+
+    <table>
+      <caption class="effective">Wat elk onderdeel van de vertaling met gegevens doet.</caption>
+      <tr><th scope="col">Onderdeel</th><th scope="col">Wat er gebeurt</th></tr>
+      <tr><td>Het bericht en de vertaling ervan</td><td>Worden op je toestel verwerkt door Google ML Kit. ULMOX stuurt geen van beide ergens heen om te laten vertalen en bewaart de vertaling niet op onze servers, niet in een melding, niet in moderatiebewijs, niet in een pushbericht, niet in analytics en niet in onze logboeken.</td></tr>
+      <tr><td>Taalpakketten</td><td>Worden naar je toestel gedownload wanneer een taal voor het eerst wordt vertaald. ULMOX vraagt het eerst en downloadt via wifi tenzij je uitdrukkelijk mobiele data kiest. Je kunt ze in de app bekijken en verwijderen; ULMOX verwijderen haalt ze weg op de gebruikelijke manier waarop je besturingssysteem de bestanden van een app verwijdert.</td></tr>
+      <tr><td>Vertaal- en taalmetagegevens</td><td>Welke talen zijn ingesteld en welke taal is herkend, dienen om een model te kiezen en het resultaat te labelen. Ze worden niet vastgelegd bij een bericht, een account of een Connection.</td></tr>
+      <tr><td>Eigen netwerkgebruik van Google ML Kit</td><td>Het onderdeel van Google kan het netwerk voor eigen doeleinden gebruiken: taalpakketten leveren, de eigen configuratie op afstand uitlezen en diagnostiek en gebruiksstatistieken over het onderdeel rapporteren. Google documenteert dat daarbij app- en toestelgegevens, een identificator per installatie, prestatiegegevens, de API-configuratie, functiegebeurtenissen, foutcodes, de ingestelde vertaaltalen en de herkende taal worden verzameld.</td></tr>
+      <tr><td>Gegevens op de ULMOX-servers</td><td>Ongewijzigd. Onze servers bewaren uitsluitend het oorspronkelijke bericht, precies zoals elders in dit beleid beschreven.</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>Drie dingen die we niet beweren.</strong> We beweren niet dat Google de tekst van je berichten ontvangt — de documentatie van Google voor deze functie zegt niet dat die wordt geüpload. We beweren evenmin dat er nooit iets van je toestel af gaat: het onderdeel van Google legt voor de hierboven genoemde doeleinden eigen netwerkverbindingen aan. En we beweren niet dat we de vraag hebben uitgesloten — de privacyverklaring van Google voor zijn machinelearningkit dekt elke functie in dat pakket, ook functies die wél gebruikersinhoud verwerken, en het onderdeel is geen open source, dus we kunnen het zelf niet inspecteren. We vertellen je wat we kunnen verifiëren in plaats van het gat te vullen met een geruststelling.</p>
+    </div>
+
+    <p>Vertaalgegevens worden nooit gebruikt voor advertenties of profilering, niet door ons en niet namens ons. Een vertaling wordt nooit moderatiebewijs: meldingen en de mensen die ze beoordelen gebruiken het oorspronkelijke bericht.</p>
+
+    <h3>Toestel- en technische informatie</h3>
+
+    <ul>
+      <li>Toestel- en installatie-identificatoren, appversie en platform.</li>
+      <li>Pushtokens, zodat we meldingen kunnen afleveren.</li>
+      <li>Signalen om de dienst tegen misbruik te beschermen, bijvoorbeeld of meerdere accounts één toestel delen.</li>
+    </ul>
+
+    <h3>Gebruik en diagnostiek</h3>
+
+    <ul>
+      <li>Firebase Analytics: geaggregeerd productgebruik.</li>
+      <li>Firebase Crashlytics: crashrapporten.</li>
+      <li>Firebase Performance Monitoring: prestatiemetingen.</li>
+      <li>Operationele serverlogboeken, gebruikt om de dienst te draaien en te beveiligen.</li>
+    </ul>
+
+    <h3>Leeftijdscontrole</h3>
+
+    <p>Om te bevestigen dat je 18 jaar of ouder bent, gebruikt ULMOX het leeftijdssignaal dat je platform levert waar dat beschikbaar is, en vraagt anders om je geboortedatum.</p>
+
+    <div class="callout">
+      <p><strong>Je geboortedatum wordt niet bewaard.</strong> Ze wordt alleen gebruikt terwijl het verzoek wordt verwerkt, om vast te stellen of je 18 jaar of ouder bent. We bewaren de uitkomst — of je in aanmerking komt — en niet de datum zelf, niet je precieze leeftijd en geen leeftijdscategorie.</p>
+    </div>
+
+    <p>Leeftijdsgegevens worden nooit gebruikt voor advertenties, profilering, rangschikking of analytics.</p>
+
+    <h3>Meldingen, moderatie en blokkeren</h3>
+
+    <ul>
+      <li>Meldingen over inhoud en over gebruikers, met een aparte categorie voor kinderveiligheid.</li>
+      <li>Moderatieregistraties die ontstaan wanneer een melding wordt beoordeeld.</li>
+      <li>Blokkeringen die je instelt. Blokkeren is een privéveiligheidsmaatregel; de geblokkeerde persoon krijgt dat niet te horen.</li>
+    </ul>
+
+    <p>Gemelde inhoud kan in omkeerbare quarantaine worden geplaatst terwijl een mens die beoordeelt. Meldingen verbannen geen accounts. Alleen een bevoegde ULMOX-beheerder kan een account verbannen, en uitsluitend na menselijke beoordeling.</p>
+
+    <p>ULMOX analyseert videobeelden, audio of transcripties niet automatisch.</p>
+
+    <h2>3. Deactiveren en verwijderen</h2>
+
+    <h3>Deactiveren</h3>
+
+    <p>Deactiveren is omkeerbaar: je herstelt het account door opnieuw in te loggen en <strong>Heractiveren</strong> te kiezen, wat alleen inloggen niet doet. Je profiel en je Global-inhoud worden verborgen en je account wordt niet geselecteerd voor nieuwe leveringen. Je gegevens blijven bewaard zodat het account kan worden hersteld. Video’s die je al hebt verzonden kunnen bij de ontvangers blijven gedurende hun gebruikelijke bewaartermijn.</p>
+
+    <p>Deactiveren is geen wissing en verwijdert geen veiligheidsregistraties. Meldingen, moderatiebeslissingen, blokkeringen en ander veiligheidsbewijs worden niet geraakt door deactiveren of heractiveren. Heractiveren herstelt je toegang; het draait een moderatiebeslissing niet terug, brengt inhoud die door moderatie is verwijderd of verborgen niet terug en heropent geen Connection die is beëindigd. Een Connection beëindigen is definitief voor dat paar. Blokkeren werkt anders: een blokkering beëindigt de Connection die je nu hebt en stopt contact in beide richtingen zolang ze geldt. Een blokkering opheffen herstelt de oude Connection evenmin — de twee accounts zouden opnieuw vanaf het begin in aanmerking moeten komen, via twee nieuwe kwalificerende video-uitwisselingen en een nieuwe goedkeuring van beide personen.</p>
+
+    <h3>Verwijderen</h3>
+
+    <p>Verwijderen is definitief. Toegang en vindbaarheid worden weggenomen zodra de verwijdering met succes is gestart, en de fysieke wissing loopt op de achtergrond door, met als doel afronding binnen 30 dagen tenzij een gerechtvaardigde veiligheids- of wettelijke verplichting beperkte bewaring vereist. Je gebruikersnaam blijft 90 dagen gereserveerd voordat die opnieuw kan worden gebruikt. Zie <a href="delete_account.html">Account verwijderen</a>.</p>
+
+    <p>Als je account is gekoppeld aan <strong>Inloggen met Apple</strong>, vraagt definitieve verwijdering op een Apple-toestel je om nog één keer rechtstreeks bij Apple te bevestigen, zodat ULMOX zijn eigen machtiging voor Inloggen met Apple kan intrekken voordat het account wordt verwijderd. Wij ontvangen je Apple-wachtwoord niet. Als die stap niet wordt afgerond, wordt er niets verwijderd. Een aan Apple gekoppeld account kan deze stap niet afronden op een Android-toestel; ULMOX stopt voordat er iets wordt weggehaald en vraagt je het op een Apple-toestel af te ronden.</p>
+
+    <p>Je ULMOX-account verwijderen verwijdert je <strong>Apple-ID</strong> of je Google-account niet. ULMOX kan geen van beide verwijderen. De machtiging van ULMOX voor Inloggen met Apple intrekken is bovendien een andere handeling dan je account verwijderen en wist op zichzelf je ULMOX-gegevens niet.</p>
+
+    <p>Je account verwijderen haalt jouw gegevens weg. Het haalt niet die van iemand anders weg: bij een Connection zijn twee mensen betrokken, en de berichten, video’s en registraties van de andere deelnemer blijven bij hem of haar. Waar veiligheidsbewijs om een gerechtvaardigde reden bewaard moet blijven, worden de koppelingen naar jouw identiteit als onderdeel van de wissing verwijderd, zodat er een vastlegging overblijft van wat er is gebeurd en niet een vastlegging over jou.</p>
+
+    <h2>4. Hoe lang we dingen bewaren</h2>
+
+    <table>
+      <caption class="effective">De bewaring wordt bepaald door de onderstaande voorwaarden en niet door één vaste termijn.</caption>
+      <tr><th scope="col">Gegeven</th><th scope="col">Hoe lang</th></tr>
+      <tr><td>Accountprofiel en instellingen</td><td>Zolang je account bestaat.</td></tr>
+      <tr><td>Video’s die nooit zijn geopend</td><td>Ongeveer 7 dagen na verzending verwijderd.</td></tr>
+      <tr><td>Video’s die zijn geopend maar niet in Global gedeeld</td><td>Ongeveer 15 dagen na verzending verwijderd.</td></tr>
+      <tr><td>Global-inhoud</td><td>Bewaard zolang die beschikbaar blijft, totdat de eigenaar die verwijdert of moderatie die weghaalt. We verwijderen Global-inhoud niet volgens een vaste timer.</td></tr>
+      <tr><td>Onvoltooide uploads</td><td>Ongeveer 24 uur na afbreken opgeruimd.</td></tr>
+      <tr><td>Pushtokens en toestelregistraties</td><td>Zolang ze geregistreerd zijn; verwijderd bij deactiveren en bij verwijderen.</td></tr>
+      <tr><td>Uitkomst van de leeftijdscontrole</td><td>Zolang je account bestaat. Je geboortedatum wordt nooit bewaard.</td></tr>
+      <tr><td>Reservering van de gebruikersnaam na verwijdering</td><td>90 dagen.</td></tr>
+      <tr><td>Interne verwijderingsregistratie</td><td>90 dagen, bewaard zodat een verwijdering controleerbaar is.</td></tr>
+      <tr><td>Connection-berichten</td><td>Een gewoon bericht in een Connection wordt behandeld alsof het ongeveer zeven dagen na verzending verloopt, en maakt dan geen deel meer uit van het gesprek. Dat is een regel over het bericht, geen belofte over een timer: automatisch verlopen van de opgeslagen registratie staat op dit moment niet aan, dus verwijdering gebeurt via routineopruiming en niet op een vast moment.</td></tr>
+      <tr><td>Meldingen, moderatieregistraties, blokkeringen en veiligheidsgebeurtenissen</td><td>Bewaard als veiligheidsbewijs, ook nadat een account is verwijderd, zolang er een gerechtvaardigde veiligheids- of wettelijke reden bestaat. Veiligheidsbewijs is geen gewone berichtgeschiedenis: zodra een bericht aan een melding is gekoppeld, geldt de zevendagenregel er niet meer voor, en blijft het bewaard zolang een beoordeling loopt en daarna waar de uitkomst dat rechtvaardigt.</td></tr>
+      <tr><td>Analytics-, crash- en prestatiegegevens</td><td>Bewaard volgens de bewaarinstelling die in de betreffende Google-dienst is geconfigureerd.</td></tr>
+    </table>
+
+    <h2>5. Wie gegevens voor ons verwerkt</h2>
+
+    <p>ULMOX gebruikt de volgende diensten:</p>
+
+    <ul>
+      <li>Firebase Authentication, Cloud Firestore, Cloud Storage, Cloud Functions en Cloud Messaging (Google).</li>
+      <li>Firebase Analytics, Crashlytics en Performance Monitoring (Google).</li>
+      <li>Firebase App Check, een integriteitscontrole van het toestel die, waar het platform dat ondersteunt, geautomatiseerd misbruik van de dienst helpt beperken.</li>
+      <li>Inloggen met Google, en Inloggen met Apple voor accounts die daaraan gekoppeld zijn, voor authenticatie.</li>
+      <li>Google ML Kit Vertaling en Taalherkenning, die berichtvertaling op je toestel uitvoeren en het netwerk kunnen gebruiken zoals hierboven onder ‘Berichtvertaling’ beschreven.</li>
+      <li>Firebase Remote Config en Firebase Installations, die ML Kit gebruikt voor de eigen configuratie en voor de hierboven beschreven identificator per installatie.</li>
+      <li>Leeftijdssignalen van de platformen Google Play en Apple, waar het platform ze beschikbaar stelt en jij ervoor kiest ze te delen.</li>
+    </ul>
+
+    <p>We verkopen geen persoonsgegevens en gebruiken ze niet voor advertenties of tracking tussen apps.</p>
+
+    <h2>6. Internationale verwerking</h2>
+
+    <p>ULMOX is wereldwijd beschikbaar en onze leveranciers exploiteren datacenters in verschillende landen, dus je gegevens kunnen buiten het land waar je woont worden verwerkt. Voor die doorgiften steunen we op de waarborgen die onze leveranciers bieden.</p>
+
+    <h2>7. Je rechten</h2>
+
+    <p>Afhankelijk van waar je woont heb je mogelijk het recht om je gegevens in te zien, te corrigeren of te laten wissen, om bezwaar te maken tegen bepaalde verwerkingen of die te beperken, en om toestemming in te trekken waar de verwerking daarop berust. Je account kun je zelf in de app verwijderen, en andere rechten kun je uitoefenen door te schrijven naar <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>.</p>
+
+    <p>Ben je niet tevreden met ons antwoord, dan kun je een klacht indienen bij je lokale toezichthouder voor gegevensbescherming.</p>
+
+    <h2>8. Beveiliging</h2>
+
+    <p>Gegevens worden over versleutelde verbindingen verzonden en opgeslagen op de beheerde infrastructuur van onze leveranciers. Toegang tot moderatiebewijs is beperkt tot bevoegde beoordelaars. Geen enkele onlinedienst kan perfecte beveiliging beloven, en wij beweren dat ook niet.</p>
+
+    <h2>9. Wijzigingen</h2>
+
+    <p>We werken deze pagina bij wanneer onze werkwijze verandert en passen dan de datum hierboven aan. Ingrijpende wijzigingen kunnen betekenen dat je in de app bijgewerkte voorwaarden moet accepteren.</p>
+
+    <h2>10. Gerelateerde pagina’s</h2>
+
+    <p>
+      <a href="delete_account.html">Account verwijderen</a>
+      &middot;
+      <a href="terms.html">Voorwaarden</a>
+      &middot;
+      <a href="safety.html">Veiligheid en moderatie</a>
+      &middot;
+      <a href="support.html">Support</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Juridische informatie en support">
+      <ul>
+        <li><a href="index.html">Startpagina</a></li>
+        <li><span aria-current="page">Privacybeleid</span></li>
+        <li><a href="terms.html">Voorwaarden</a></li>
+        <li><a href="safety.html">Veiligheid en moderatie</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="delete_account.html">Account verwijderen</a></li>
+        <li><a href="translation.html">Informatie over vertalen</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">De Engelse versie van dit beleid is de gezaghebbende versie. Wijkt een vertaling daarvan af, dan geldt de Engelse versie.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

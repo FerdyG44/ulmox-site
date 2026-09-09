@@ -1,54 +1,403 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gizlilik Politikası - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="ULMOX hangi verileri neden topluyor, kimler işliyor, ne kadar süre saklanıyor ve nasıl silinir." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;">
+<body>
+  <a class="ulmox-skip-link" href="#main">İçeriğe geç</a>
+<div class="container">
+  <main id="main">
+    <h1>Gizlilik Politikası</h1>
+    <p class="effective">Yürürlük tarihi 2026-09-04. Son güncelleme 2026-09-04.</p>
 
-<h1>Gizlilik Politikası</h1>
+    <p>ULMOX bir video paylaşım uygulamasıdır. Kısa bir video kaydedersiniz ve sunucumuz bu videoyu rastgele seçilen uygun bir alıcıya iletir. Yalnızca alıcı, aldığı bir videoyu herkese açık Global akışta paylaşmayı seçebilir.</p>
 
-  <section id="child-safety" style="margin-top:40px;">
-  <h2>Çocuk Güvenliği Standartları</h2>
+    <p>ULMOX, Ferdi G&uuml;lseren tarafından işletilmektedir. Gizlilikle ilgili her soru için <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> adresine yazabilirsiniz.</p>
 
-  <p>
-    ULMOX, çocuklara yönelik her türlü cinsel istismar veya sömürüye (CSAE) karşı sıfır tolerans uygular.
-  </p>
+    <h2>1. ULMOX’u kimler kullanabilir</h2>
 
-  <p>
-    Kullanıcılar uygunsuz veya zararlı içerikleri doğrudan uygulama içinden raporlayabilir.
-    Tüm raporlar incelenir ve politikalarımızı ihlal eden içerikler hızla kaldırılır.
-  </p>
+    <p>ULMOX <strong>18 yaş ve üzeri</strong> bir hizmettir. Çocuklara yönelik değildir ve 18 yaşından küçük kişilerden bilerek veri toplamayız.</p>
 
-  <p>
-    Bu kuralları ihlal eden kullanıcılara karşı, hesap askıya alma veya kalıcı yasaklama dahil olmak üzere
-    gerekli işlemleri uygularız.
-  </p>
+    <h2>2. Hangi verileri topluyoruz</h2>
 
-  <p>
-    ULMOX, yasaların gerektirdiği durumlarda kolluk kuvvetleriyle iş birliği yapar.
-  </p>
+    <h3>Hesap ve kimlik doğrulama</h3>
 
-  <p>
-    Tüm kullanıcılar için güvenli bir ortam sağlamaya kararlıyız.
-  </p>
-</section>
+    <ul>
+      <li>E-posta adresi ve görünen ad.</li>
+      <li>Hesap ve oturum açma sağlayıcısı tanımlayıcıları.</li>
+      <li>Hesabınızı oluşturmak ve hesabınıza erişmek için desteklenen bir oturum açma sağlayıcısı kullanılır. Bir hesap <strong>Apple ile Giriş Yap</strong> ile bağlıysa ve Apple’ın <strong>E-postamı Gizle</strong> özelliğini kullanıyorsa, gerçek adresiniz yerine bir yönlendirme adresi alırız.</li>
+    </ul>
 
-<p>ULMOX gizliliğinize saygı duyar.</p>
+    <h3>Oluşturduğunuz içerikler</h3>
 
-<p>Hizmetimizi sunabilmek için ad, e-posta adresi ve yüklenen video içerikleri gibi temel kullanıcı verilerini toplarız.</p>
+    <ul>
+      <li>Kaydettiğiniz videolar ve bunlardan üretilen küçük resimler.</li>
+      <li>Profil fotoğrafınız ve profil bilgileriniz.</li>
+      <li>Bir alıcı bir videoyu herkese açık paylaştığında oluşan Global içerik.</li>
+      <li>Gönderdiğiniz raporlar ve bunlara eklediğiniz isteğe bağlı serbest metin açıklamaları.</li>
+    </ul>
 
-<p>Verileriniz hiçbir zaman üçüncü taraflara satılmaz.</p>
+    <h3>Kamera, mikrofon ve fotoğraflar</h3>
 
-<p>Kimlik doğrulama ve veri depolama için Firebase hizmetlerini kullanırız.</p>
+    <ul>
+      <li><strong>Kamera ve mikrofon.</strong> ULMOX bunları, sesli bir video anı kaydedebilmeniz ve profil fotoğrafı çekebilmeniz için ister. Kayıt yalnızca siz başlattığınızda başlar.</li>
+      <li><strong>Fotoğraf seçme.</strong> Profil fotoğrafı belirlediğinizde ULMOX bir fotoğraf seçiciyi açar ve yalnızca seçtiğiniz görseli alır. Güncel bir Android sürümünde bu, sistemin kendi fotoğraf seçicisidir; bu nedenle ULMOX geniş fotoğraf kitaplığınız için hiçbir izin istemez. iOS’ta ULMOX yalnızca gerçekten ihtiyaç duyan akışlar için fotoğraf erişimi ister ve iOS, kitaplığınızın tamamı yerine yalnızca seçtiğiniz fotoğraflara erişim vermenize izin verir.</li>
+      <li><strong>Cihazınıza kaydetme.</strong> Bir anı telefonunuza kaydetmeyi seçerseniz ULMOX, dosyayı fotoğraf kitaplığınıza eklemek için izin ister. Bu izin dosya ekler; kitaplığınızı okumaz.</li>
+    </ul>
 
-<p>Hesabınızın silinmesini istediğiniz zaman talep edebilirsiniz.</p>
+    <div class="callout">
+      <p><strong>Oluşturduğunuz medya yüklenir; yalnızca cihazınızda kalmaz.</strong> Videolar, bunlardan üretilen küçük resimler ve profil fotoğrafınız, iletilebilmeleri ve görüntülenebilmeleri için Firebase Cloud Storage’a yüklenir ve orada saklanır. Kendi kopyanızı telefonunuza kaydetmeniz ayrı ve isteğe bağlı bir adımdır.</p>
+    </div>
 
-<p>İletişim: ulmoxapp@outlook.com</p>
+    <p>Android’de ULMOX, Android 13 ve sonrasının kullandığı geniş fotoğraf ve video erişim izinlerini artık tanımlamıyor; çünkü sistemin fotoğraf seçicisi bu izinlerin yerini alıyor. İki eski depolama izni hâlâ tanımlı; her ikisi de ULMOX’un üzerine kurulu olduğu bileşenlerden devralınmış ve her ikisi de güncel bir Android sürümünün bunları veremeyeceği şekilde sınırlandırılmıştır:</p>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <ul>
+      <li>Yalnızca Android 12 ve öncesiyle uyumluluk için tanımlanmış eski bir <strong>okuma</strong> depolama izni.</li>
+      <li>Yalnızca <strong>Android 9 ve öncesiyle</strong> uyumluluk için tanımlanmış eski bir <strong>yazma</strong> depolama izni. Bu, paylaşılan depolama alanına dosya yazmanın kapsamlı depolama öncesindeki eski yoludur. Modern bir fotoğraf veya video kitaplığı izni değildir ve yukarıda anlatılan Android 13+ medya izinlerinden biri de değildir.</li>
+    </ul>
+
+    <p>Sınırlamanın kendisi tanımın bir parçasıdır; bu nedenle daha yeni bir Android sürümünde izin verilmez, istenmez ve hiçbir etkisi olmaz. ULMOX bunların hiçbirini sizden istemez. Güncel bir Android sürümünde görsel seçimi, hiçbir depolama izni gerektirmeyen sistem fotoğraf seçicisi üzerinden yapılır.</p>
+
+    <p>ULMOX hiçbir reklam tanımlayıcısı istemez. Reklam ve reklam ilişkilendirme izinleri, derlediğimiz Android uygulamasında bulunmaz; bu nedenle bir reklamverenin veya reklam ağının okuyabileceği bir şey yoktur.</p>
+
+    <h3>Konum</h3>
+
+    <p>İzniniz varsa ULMOX, bir anın kaydedildiği şehri ve ülkeyi göstermek ve içeriği dünya haritasına yerleştirmek için cihaz konumunuzu kullanır. Reddederseniz uygulama konum olmadan çalışmaya devam eder.</p>
+
+    <p>Konum <strong>yalnızca uygulamayı kullanırken</strong>, kayıt yaptığınız anda alınan tek bir okuma olarak okunur. ULMOX konumunuzu arka planda izlemez, sürekli takip etmez ve uygulama kapalıyken okumaz.</p>
+
+    <p>ULMOX yalnızca kullanım sırasındaki konumu ister. Arka plan konumu, sürekli izleme, önemli değişiklik izlemesi veya coğrafi sınır özelliklerini kullanmaz ve uygulama bunlardan herhangi birini yapmasına imkân verecek hiçbir izin tanımlamaz.</p>
+
+    <h3>Mesaj çevirisi (Google ML Kit)</h3>
+
+    <p>ULMOX, aldığınız bir Bağlantı mesajı için isteğe bağlı çeviri sunar. Yalnızca tek bir mesajda <strong>Translate with Google</strong> seçeneğini seçtiğinizde çalışır; orijinal mesaj ekranda kalır ve esas alınan sürüm olmayı sürdürür. Connections ve isteğe bağlı mesaj çevirisi kademeli olarak kullanıma sunuluyor; her hesapta veya yüklü her uygulama sürümünde henüz mevcut olmayabilir. Bkz. <a href="translation.html">Çeviri bilgileri</a>.</p>
+
+    <table>
+      <caption class="effective">Çevirinin her parçasının verilerle ne yaptığı.</caption>
+      <tr><th scope="col">Bölüm</th><th scope="col">Ne oluyor</th></tr>
+      <tr><td>Mesaj ve çevirisi</td><td>Cihazınızda Google ML Kit tarafından işlenir. ULMOX bunlardan hiçbirini çevrilmek üzere başka bir yere göndermez ve çeviriyi sunucularımızda, bir raporda, moderasyon kanıtında, bir bildirimde, analitikte veya günlüklerimizde saklamaz.</td></tr>
+      <tr><td>Dil paketleri</td><td>Bir dil ilk kez çevrildiğinde cihazınıza indirilir. ULMOX önce sorar ve siz açıkça mobil veriyi seçmediğiniz sürece Wi-Fi üzerinden indirir. Bunları uygulamada görüntüleyip silebilirsiniz; ULMOX’u kaldırmak, işletim sisteminizin bir uygulamanın dosyalarını kaldırdığı olağan biçimde bunları da kaldırır.</td></tr>
+      <tr><td>Çeviri ve dil meta verileri</td><td>Hangi dillerin yapılandırıldığı ve hangi dilin tanındığı, bir model seçmek ve sonucu etiketlemek için kullanılır. Bir mesaja, bir hesaba veya bir Bağlantıya kaydedilmez.</td></tr>
+      <tr><td>Google ML Kit’in kendi ağ kullanımı</td><td>Google’ın bileşeni kendi amaçları için ağı kullanabilir: dil paketlerini sunmak, kendi uzak yapılandırmasını okumak ve bileşen hakkında tanılama ile kullanım analitiği bildirmek. Google, uygulama ve cihaz bilgilerini, kurulum başına bir tanımlayıcıyı, performans verilerini, API yapılandırmasını, özellik olaylarını, hata kodlarını, yapılandırılan çeviri dillerini ve tanınan dili topladığını belgeliyor.</td></tr>
+      <tr><td>ULMOX sunucu verileri</td><td>Değişmez. Sunucularımız yalnızca orijinal mesajı tutar; tam olarak bu politikanın başka bölümlerinde anlatıldığı gibi.</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>İleri sürmeyeceğimiz üç şey.</strong> Google’ın mesajlarınızın metnini aldığını iddia etmiyoruz — Google’ın bu özelliğe ilişkin belgeleri metnin yüklendiğini söylemiyor. Cihazınızdan hiçbir şeyin ayrılmadığını da iddia etmiyoruz: Google’ın bileşeni yukarıda sayılan amaçlarla kendi ağ bağlantılarını kurar. Ve bu soruyu tamamen kapattığımızı da iddia etmiyoruz — Google’ın makine öğrenimi kitine ilişkin gizlilik beyanı, kullanıcı içeriğini işleyenler dahil kitteki her özelliği kapsıyor ve bileşen açık kaynak olmadığı için kendimiz inceleyemiyoruz. Boşluğu bir güvence ile doldurmak yerine doğrulayabildiğimizi anlatıyoruz.</p>
+    </div>
+
+    <p>Çeviri verileri ne bizim tarafımızdan ne de bizim adımıza reklam veya profilleme için kullanılır. Bir çeviri hiçbir zaman moderasyon kanıtı hâline gelmez: raporlar ve bunları inceleyen kişiler orijinal mesajı kullanır.</p>
+
+    <h3>Cihaz ve teknik bilgiler</h3>
+
+    <ul>
+      <li>Cihaz ve kurulum tanımlayıcıları, uygulama sürümü ve platform.</li>
+      <li>Bildirim gönderebilmemiz için anlık bildirim jetonları.</li>
+      <li>Hizmeti kötüye kullanıma karşı korumak için kullanılan sinyaller; örneğin birden fazla hesabın tek bir cihazı paylaşıp paylaşmadığı.</li>
+    </ul>
+
+    <h3>Kullanım ve tanılama</h3>
+
+    <ul>
+      <li>Firebase Analytics: toplu ürün kullanımı.</li>
+      <li>Firebase Crashlytics: çökme raporları.</li>
+      <li>Firebase Performance Monitoring: performans ölçümleri.</li>
+      <li>Hizmeti çalıştırmak ve güvenliğini sağlamak için kullanılan operasyonel sunucu günlükleri.</li>
+    </ul>
+
+    <h3>Yaş doğrulama</h3>
+
+    <p>18 yaşında veya daha büyük olduğunuzu doğrulamak için ULMOX, platformunuzun sunduğu yaş sinyalini varsa onu kullanır; yoksa doğum tarihinizi sorar.</p>
+
+    <div class="callout">
+      <p><strong>Doğum tarihiniz saklanmaz.</strong> Yalnızca istek işlenirken, 18 yaşında veya daha büyük olup olmadığınızı belirlemek için kullanılır. Sonucu — uygun olup olmadığınızı — tutarız; tarihin kendisini, tam yaşınızı veya bir yaş aralığını değil.</p>
+    </div>
+
+    <p>Yaş bilgisi hiçbir zaman reklam, profilleme, sıralama veya analitik için kullanılmaz.</p>
+
+    <h3>Raporlama, moderasyon ve engelleme</h3>
+
+    <ul>
+      <li>İçerik ve kullanıcı hakkındaki raporlar; buna ayrı bir çocuk güvenliği kategorisi dahildir.</li>
+      <li>Bir rapor incelendiğinde oluşturulan moderasyon kayıtları.</li>
+      <li>Oluşturduğunuz engellemeler. Engelleme özel bir güvenlik eylemidir; engellediğiniz kişiye bildirilmez.</li>
+    </ul>
+
+    <p>Raporlanan içerik, bir kişi inceleme yaparken geri alınabilir bir karantinaya alınabilir. Raporlar hesap yasaklamaz. Bir hesabı yalnızca yetkili bir ULMOX yöneticisi ve yalnızca insan incelemesinden sonra yasaklayabilir.</p>
+
+    <p>ULMOX video karelerini, sesi veya dökümleri otomatik olarak analiz etmez.</p>
+
+    <h2>3. Devre dışı bırakma ve silme</h2>
+
+    <h3>Devre dışı bırakma</h3>
+
+    <p>Devre dışı bırakma geri alınabilir: hesabı yeniden oturum açıp <strong>Yeniden Etkinleştir</strong> seçerek geri getirirsiniz; yalnızca oturum açmak bunu yapmaz. Profiliniz ve Global içeriğiniz gizlenir ve hesabınız yeni gönderimler için seçilmez. Hesap geri getirilebilsin diye verileriniz saklanır. Daha önce gönderdiğiniz videolar, olağan saklama süreleri boyunca bunları alan kişilerde kalabilir.</p>
+
+    <p>Devre dışı bırakma bir silme değildir ve güvenlik kayıtlarını temizlemez. Raporlar, moderasyon kararları, engellemeler ve diğer güvenlik kanıtları, devre dışı bırakmadan ve yeniden etkinleştirmeden etkilenmez. Yeniden etkinleştirme erişiminizi geri verir; bir moderasyon kararını geri almaz, moderasyonun kaldırdığı veya gizlediği içeriği geri getirmez ve sonlandırılmış bir Bağlantıyı yeniden açmaz. Bir Bağlantıyı sonlandırmak o çift için kesindir. Engelleme farklı işler: bir engelleme mevcut Bağlantınızı sonlandırır ve yürürlükte olduğu sürece her iki yönde de teması durdurur. Engellemeyi kaldırmak eski Bağlantıyı da geri getirmez — iki hesabın baştan yeniden uygun hâle gelmesi, yani iki yeni nitelikli video alışverişi ve her iki kişiden yeni birer onay gerekir.</p>
+
+    <h3>Silme</h3>
+
+    <p>Silme kalıcıdır. Silme başarıyla başlatıldığı anda erişim ve bulunabilirlik kaldırılır; fiziksel silme arka planda sürer ve haklı bir güvenlik veya yasal yükümlülük sınırlı saklama gerektirmedikçe 30 gün içinde tamamlanması hedeflenir. Kullanıcı adınız yeniden kullanılabilir hâle gelmeden önce 90 gün tutulur. Bkz. <a href="delete_account.html">Hesabı Sil</a>.</p>
+
+    <p>Hesabınız <strong>Apple ile Giriş Yap</strong> ile bağlıysa, bir Apple cihazında kalıcı silme sizden doğrudan Apple ile bir kez daha onay vermenizi ister; böylece ULMOX, hesap silinmeden önce kendi Apple ile Giriş Yap yetkilendirmesini geri çekebilir. Apple parolanızı almayız. Bu adım tamamlanmazsa hiçbir şey silinmez. Apple ile bağlı bir hesap bu adımı bir Android cihazda tamamlayamaz; ULMOX hiçbir şeyi kaldırmadan durur ve işlemi bir Apple cihazında tamamlamanızı ister.</p>
+
+    <p>ULMOX hesabınızı silmek <strong>Apple Kimliğinizi</strong> veya Google Hesabınızı silmez. ULMOX bunların hiçbirini silemez. ULMOX’un Apple ile Giriş Yap yetkilendirmesini geri çekmek de hesabınızı silmekten farklı bir işlemdir ve tek başına ULMOX verilerinizi silmez.</p>
+
+    <p>Hesabınızı silmek sizin verilerinizi kaldırır. Başka birinin verilerini kaldırmaz: bir Bağlantıda iki kişi vardır ve diğer katılımcıya ait mesajlar, videolar ve kayıtlar onda kalır. Güvenlik kanıtının haklı bir nedenle saklanması gerektiğinde, bunu kimliğinizle ilişkilendiren bağlantılar silme işleminin bir parçası olarak temizlenir; böylece geriye sizin kaydınız değil, olanların kaydı kalır.</p>
+
+    <h2>4. Verileri ne kadar süre saklıyoruz</h2>
+
+    <table>
+      <caption class="effective">Saklama süresi tek bir sabit süre yerine aşağıdaki koşullara göre belirlenir.</caption>
+      <tr><th scope="col">Veri</th><th scope="col">Ne kadar süre</th></tr>
+      <tr><td>Hesap profili ve ayarları</td><td>Hesabınız var olduğu sürece.</td></tr>
+      <tr><td>Hiç açılmamış videolar</td><td>Gönderildikten yaklaşık 7 gün sonra kaldırılır.</td></tr>
+      <tr><td>Açılmış ancak Global’de paylaşılmamış videolar</td><td>Gönderildikten yaklaşık 15 gün sonra kaldırılır.</td></tr>
+      <tr><td>Global içerik</td><td>Erişilebilir kaldığı sürece, sahibi silene veya moderasyon kaldırana kadar tutulur. Global içeriği sabit bir zamanlayıcıya göre silmeyiz.</td></tr>
+      <tr><td>Tamamlanmamış yüklemeler</td><td>Yarıda bırakıldıktan yaklaşık 24 saat sonra temizlenir.</td></tr>
+      <tr><td>Bildirim jetonları ve cihaz kayıtları</td><td>Kayıtlı olduğu sürece; devre dışı bırakmada ve silmede kaldırılır.</td></tr>
+      <tr><td>Yaş uygunluğu sonucu</td><td>Hesabınız var olduğu sürece. Doğum tarihiniz hiçbir zaman saklanmaz.</td></tr>
+      <tr><td>Silme sonrası kullanıcı adı rezervasyonu</td><td>90 gün.</td></tr>
+      <tr><td>Dahili silme kaydı</td><td>90 gün; bir silmenin denetlenebilmesi için tutulur.</td></tr>
+      <tr><td>Bağlantı mesajları</td><td>Bir Bağlantıdaki olağan bir mesaj, gönderilmesinden yaklaşık yedi gün sonra süresi dolmuş sayılır ve o noktada konuşmanın parçası olmaktan çıkar. Bu, mesaja ilişkin bir kuraldır; bir zamanlayıcı sözü değildir: saklanan kaydın otomatik olarak süresinin dolması şu anda etkin değildir, bu nedenle kaldırma sabit bir anda değil, olağan temizlik işlemleriyle gerçekleşir.</td></tr>
+      <tr><td>Raporlar, moderasyon kayıtları, engellemeler ve güvenlik olayları</td><td>Haklı bir güvenlik veya yasal neden bulunduğu sürece, hesap silindikten sonra da güvenlik kanıtı olarak saklanır. Güvenlik kanıtı olağan mesaj geçmişi değildir: bir mesaj bir rapora eklendiğinde yedi günlük süre artık onu yönetmez; inceleme açık olduğu sürece ve sonucun saklamayı haklı çıkardığı durumlarda sonrasında da tutulur.</td></tr>
+      <tr><td>Analitik, çökme ve performans verileri</td><td>İlgili Google hizmetinde yapılandırılan saklama ayarına göre tutulur.</td></tr>
+    </table>
+
+    <h2>5. Bizim için kimler veri işliyor</h2>
+
+    <p>ULMOX aşağıdaki hizmetleri kullanır:</p>
+
+    <ul>
+      <li>Firebase Authentication, Cloud Firestore, Cloud Storage, Cloud Functions ve Cloud Messaging (Google).</li>
+      <li>Firebase Analytics, Crashlytics ve Performance Monitoring (Google).</li>
+      <li>Firebase App Check; platformun desteklediği yerlerde hizmetin otomatik kötüye kullanımını azaltmak için kullanılan bir cihaz bütünlüğü denetimi.</li>
+      <li>Kimlik doğrulama için Google ile oturum açma ve bununla bağlı hesaplar için Apple ile Giriş Yap.</li>
+      <li>Mesaj çevirisini cihazınızda çalıştıran ve yukarıda “Mesaj çevirisi” bölümünde anlatıldığı gibi ağı kullanabilen Google ML Kit Çeviri ve Dil Tanıma.</li>
+      <li>ML Kit’in kendi yapılandırması ve yukarıda anlatılan kurulum başına tanımlayıcı için kullandığı Firebase Remote Config ve Firebase Installations.</li>
+      <li>Platformun sunduğu ve sizin paylaşmayı seçtiğiniz durumlarda Google Play ve Apple’ın platform yaş sinyalleri.</li>
+    </ul>
+
+    <p>Kişisel bilgileri satmayız ve bunları reklam ya da uygulamalar arası izleme için kullanmayız.</p>
+
+    <h2>6. Uluslararası veri işleme</h2>
+
+    <p>ULMOX dünya genelinde kullanılabilir ve sağlayıcılarımız birkaç ülkede veri merkezi işletir; bu nedenle verileriniz yaşadığınız ülkenin dışında işlenebilir. Bu aktarımlar için sağlayıcılarımızın sunduğu güvencelere dayanırız.</p>
+
+    <h2>7. Haklarınız</h2>
+
+    <p>Yaşadığınız yere bağlı olarak verilerinize erişme, bunları düzeltme veya silme, belirli işlemelere itiraz etme ya da bunları sınırlandırma ve işlemenin rızaya dayandığı durumlarda rızanızı geri çekme hakkınız olabilir. Hesabınızı uygulamada kendiniz silebilirsiniz; diğer hakları <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> adresine yazarak kullanabilirsiniz.</p>
+
+    <p>Yanıtımızdan memnun kalmazsanız yerel veri koruma otoritenize şikâyette bulunabilirsiniz.</p>
+
+    <h2>8. Güvenlik</h2>
+
+    <p>Veriler şifreli bağlantılar üzerinden iletilir ve sağlayıcılarımızın yönetilen altyapısında saklanır. Moderasyon kanıtlarına erişim yetkili inceleyicilerle sınırlıdır. Hiçbir çevrimiçi hizmet kusursuz güvenlik vaat edemez; biz de böyle bir iddiada bulunmuyoruz.</p>
+
+    <h2>9. Değişiklikler</h2>
+
+    <p>Uygulamalarımız değiştiğinde bu sayfayı güncelleyecek ve yukarıdaki yürürlük tarihini yenileyeceğiz. Önemli değişiklikler, güncellenmiş Şartları uygulamada kabul etmenizi gerektirebilir.</p>
+
+    <h2>10. İlgili sayfalar</h2>
+
+    <p>
+      <a href="delete_account.html">Hesabı Sil</a>
+      &middot;
+      <a href="terms.html">Şartlar</a>
+      &middot;
+      <a href="safety.html">Güvenlik ve Moderasyon</a>
+      &middot;
+      <a href="support.html">Destek</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Yasal bilgiler ve destek">
+      <ul>
+        <li><a href="index.html">Ana sayfa</a></li>
+        <li><span aria-current="page">Gizlilik Politikası</span></li>
+        <li><a href="terms.html">Şartlar</a></li>
+        <li><a href="safety.html">Güvenlik ve Moderasyon</a></li>
+        <li><a href="support.html">Destek</a></li>
+        <li><a href="delete_account.html">Hesabı Sil</a></li>
+        <li><a href="translation.html">Çeviri bilgileri</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Bu politikanın İngilizce sürümü esas alınan sürümdür. Bir çeviri bundan farklıysa İngilizce sürüm geçerlidir.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

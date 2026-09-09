@@ -1,28 +1,403 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tietosuojakäytäntö - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Mitä tietoja ULMOX kerää, mihin, kuka niitä käsittelee, kuinka kauan niitä säilytetään ja miten ne poistetaan." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;">
-<h1>Tietosuojakäytäntö</h1>
-<section id="child-safety" style="margin-top:40px;">
-  <h2>Lasten turvallisuusstandardit</h2>
-  <p>ULMOX ei hyväksy minkäänlaista lasten seksuaalista hyväksikäyttöä tai riistoa (CSAE).</p>
-  <p>Käyttäjät voivat ilmoittaa sopimattomasta sisällöstä suoraan sovelluksessa. Kaikki ilmoitukset tarkistetaan ja sääntöjä rikkova sisältö poistetaan nopeasti.</p>
-  <p>Käyttäjät voivat ilmoittaa sopimattomasta sisällöstä suoraan sovelluksessa. Kaikki ilmoitukset tarkistetaan ja sääntöjä rikkova sisältö poistetaan nopeasti.</p>
-  <p>Käyttäjät voivat ilmoittaa sopimattomasta sisällöstä suoraan sovelluksessa. Kaikki ilmoitukset tarkistetaan ja sääntöjä rikkova sisältö poistetaan nopeasti.</p>
-  <p>ULMOX sitoutuu turvalliseen ja kunnioittavaan ympäristöön kaikille käyttäjille.</p>
-</section>
-<p>ULMOX kunnioittaa yksityisyyttäsi. Keräämme vain palvelun tarjoamiseen tarvittavat perustiedot.</p>
-<p>ULMOX kunnioittaa yksityisyyttäsi. Keräämme vain palvelun tarjoamiseen tarvittavat perustiedot.</p>
-<p>ULMOX kunnioittaa yksityisyyttäsi. Keräämme vain palvelun tarjoamiseen tarvittavat perustiedot.</p>
-<p>ULMOX kunnioittaa yksityisyyttäsi. Keräämme vain palvelun tarjoamiseen tarvittavat perustiedot.</p>
-<p>ULMOX kunnioittaa yksityisyyttäsi. Keräämme vain palvelun tarjoamiseen tarvittavat perustiedot.</p>
-<p>Yhteystiedot: ulmoxapp@outlook.com</p>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+<body>
+  <a class="ulmox-skip-link" href="#main">Siirry sisältöön</a>
+<div class="container">
+  <main id="main">
+    <h1>Tietosuojakäytäntö</h1>
+    <p class="effective">Voimassa 2026-09-04 alkaen. Viimeksi päivitetty 2026-09-04.</p>
+
+    <p>ULMOX on videoiden jakosovellus. Kuvaat lyhyen videon, ja palvelimemme toimittaa sen yhdelle satunnaisesti valitulle kelpoiselle vastaanottajalle. Vain vastaanottaja voi halutessaan jakaa saamansa videon julkiseen Global-syötteeseen.</p>
+
+    <p>ULMOXia ylläpitää Ferdi G&uuml;lseren. Tietosuojaa koskevissa kysymyksissä kirjoita osoitteeseen <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>.</p>
+
+    <h2>1. Kuka voi käyttää ULMOXia</h2>
+
+    <p>ULMOX on <strong>18 vuotta täyttäneiden</strong> palvelu. Sitä ei ole tarkoitettu lapsille, emmekä tietoisesti kerää tietoja alle 18-vuotiailta.</p>
+
+    <h2>2. Mitä keräämme</h2>
+
+    <h3>Tili ja kirjautuminen</h3>
+
+    <ul>
+      <li>Sähköpostiosoite ja näyttönimi.</li>
+      <li>Tilin ja kirjautumispalvelun tunnisteet.</li>
+      <li>Tilin luomiseen ja käyttöön käytetään tuettua kirjautumispalvelua. Jos tili on liitetty <strong>Kirjaudu Apple-tunnuksella</strong> -palveluun ja käytössä on Applen <strong>Piilota sähköpostiosoite</strong>, saamme välitysosoitteen oikean osoitteesi sijaan.</li>
+    </ul>
+
+    <h3>Luomasi sisältö</h3>
+
+    <ul>
+      <li>Kuvaamasi videot ja niistä luodut pikkukuvat.</li>
+      <li>Profiilikuvasi ja profiilitietosi.</li>
+      <li>Global-sisältö, kun vastaanottaja jakaa videon julkisesti.</li>
+      <li>Lähettämäsi ilmoitukset ja niihin lisäämäsi vapaaehtoiset vapaan tekstin tiedot.</li>
+    </ul>
+
+    <h3>Kamera, mikrofoni ja kuvat</h3>
+
+    <ul>
+      <li><strong>Kamera ja mikrofoni.</strong> ULMOX pyytää näitä, jotta voit kuvata videohetken äänen kanssa ja ottaa profiilikuvan. Tallennus alkaa vain, kun käynnistät sen itse.</li>
+      <li><strong>Kuvan valitseminen.</strong> Kun asetat profiilikuvan, ULMOX avaa kuvavalitsimen ja saa vain valitsemasi kuvan. Nykyisessä Android-versiossa se on järjestelmän oma kuvavalitsin, joten ULMOX ei pyydä lupaa laajempaan kuvakirjastoosi. iOS:ssä ULMOX pyytää kuvien käyttöoikeutta vain niihin toimintoihin, jotka sitä aidosti tarvitsevat, ja iOS antaa sinun myöntää pääsyn valittuihin kuviin koko kirjaston sijaan.</li>
+      <li><strong>Tallentaminen laitteellesi.</strong> Jos valitset hetken tallentamisen puhelimeesi, ULMOX pyytää luvan lisätä sen kuvakirjastoosi. Tämä lupa lisää tiedoston; se ei lue kirjastoasi.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Luomasi media ladataan palvelimelle; se ei jää vain laitteellesi.</strong> Videot, niistä luodut pikkukuvat ja profiilikuvasi ladataan Firebase Cloud Storageen ja säilytetään siellä, jotta ne voidaan toimittaa ja näyttää. Oman kopion tallentaminen puhelimeen on erillinen ja vapaaehtoinen vaihe.</p>
+    </div>
+
+    <p>Androidissa ULMOX ei enää ilmoita laajoja kuvien ja videoiden käyttöoikeuksia, joita Android 13 ja uudemmat käyttävät, koska järjestelmän kuvavalitsin korvaa ne. Kaksi vanhempaa tallennustilan käyttöoikeutta on yhä ilmoitettuna; molemmat on peritty osista, joiden varaan ULMOX rakentuu, ja molemmat on rajattu niin, ettei nykyaikainen Android-versio voi myöntää niitä:</p>
+
+    <ul>
+      <li>Vanha tallennustilan <strong>lukuoikeus</strong>, joka on ilmoitettu vain Android 12:n ja sitä vanhempien yhteensopivuutta varten.</li>
+      <li>Vanha tallennustilan <strong>kirjoitusoikeus</strong>, joka on ilmoitettu vain <strong>Android 9:n ja sitä vanhempien</strong> yhteensopivuutta varten. Tämä on vanha, rajattua tallennustilaa edeltänyt tapa kirjoittaa tiedosto jaettuun tallennustilaan. Se ei ole nykyaikainen kuva- tai videokirjaston käyttöoikeus eikä mikään edellä kuvatuista Android 13:n ja uudempien mediaoikeuksista.</li>
+    </ul>
+
+    <p>Rajaus on osa itse ilmoitusta, joten uudemmassa Android-versiossa oikeutta ei myönnetä, sitä ei pyydetä eikä sillä ole vaikutusta. ULMOX ei koskaan pyydä sinulta kumpaakaan. Nykyisessä Android-versiossa kuvan valinta tapahtuu järjestelmän kuvavalitsimella, joka ei tarvitse lainkaan tallennustilan käyttöoikeutta.</p>
+
+    <p>ULMOX ei pyydä mainostunnistetta. Mainonnan ja mainosten kohdistuksen käyttöoikeudet puuttuvat rakentamastamme Android-sovelluksesta, joten mainostajalla tai mainosverkostolla ei ole mitään luettavaa.</p>
+
+    <h3>Sijainti</h3>
+
+    <p>Luvallasi ULMOX käyttää laitteesi sijaintia näyttääkseen kaupungin ja maan, jossa hetki kuvattiin, ja sijoittaakseen sisällön maailmankartalle. Jos kieltäydyt, sovellus toimii edelleen ilman sitä.</p>
+
+    <p>Sijainti luetaan <strong>vain sovellusta käyttäessäsi</strong>, yhtenä lukemana kuvaushetkellä. ULMOX ei seuraa sijaintiasi taustalla, ei jäljitä sitä jatkuvasti eikä lue sitä sovelluksen ollessa suljettuna.</p>
+
+    <p>ULMOX pyytää vain käytönaikaista sijaintia. Se ei käytä taustasijaintia, jatkuvaa seurantaa, merkittävien muutosten seurantaa eikä geoaitausta, eikä sovellus ilmoita mitään käyttöoikeutta, joka mahdollistaisi minkään näistä.</p>
+
+    <h3>Viestien kääntäminen (Google ML Kit)</h3>
+
+    <p>ULMOX tarjoaa saamallesi Connections-viestille vapaaehtoisen käännöksen. Se suoritetaan vain, kun valitset yksittäiselle viestille <strong>Translate with Google</strong>, ja alkuperäinen viesti pysyy näytöllä ja on edelleen se, joka ratkaisee. Connections ja valinnainen viestien kääntäminen otetaan käyttöön vaiheittain, eivätkä ne välttämättä ole vielä käytettävissä jokaisella tilillä tai jokaisessa asennetussa sovellusversiossa. Katso <a href="translation.html">Tietoa kääntämisestä</a>.</p>
+
+    <table>
+      <caption class="effective">Mitä kukin kääntämisen osa tekee tiedoille.</caption>
+      <tr><th scope="col">Osa</th><th scope="col">Mitä tapahtuu</th></tr>
+      <tr><td>Viesti ja sen käännös</td><td>Käsitellään laitteellasi Google ML Kitillä. ULMOX ei lähetä kumpaakaan mihinkään käännettäväksi eikä tallenna käännöstä palvelimillemme, ilmoitukseen, moderoinnin todistusaineistoon, push-ilmoitukseen, analytiikkaan tai lokeihimme.</td></tr>
+      <tr><td>Kielipaketit</td><td>Ladataan laitteellesi, kun kieli käännetään ensimmäisen kerran. ULMOX kysyy ensin ja lataa Wi-Fillä, ellet nimenomaisesti valitse mobiilidataa. Voit tarkastella ja poistaa niitä sovelluksessa; ULMOXin poistaminen poistaa ne tavalliseen tapaan, jolla käyttöjärjestelmäsi poistaa sovelluksen tiedostot.</td></tr>
+      <tr><td>Käännös- ja kielimetatiedot</td><td>Tieto siitä, mitkä kielet on määritetty ja mikä kieli tunnistettiin, käytetään mallin valintaan ja tuloksen merkitsemiseen. Sitä ei kirjata viestiin, tiliin tai Connectioniin.</td></tr>
+      <tr><td>Google ML Kitin oma verkonkäyttö</td><td>Googlen komponentti voi käyttää verkkoa omiin tarkoituksiinsa: kielipakettien toimittamiseen, oman etämäärityksensä lukemiseen sekä komponenttia koskevien diagnostiikka- ja käyttötietojen raportointiin. Google dokumentoi keräävänsä sovellus- ja laitetietoja, asennuskohtaisen tunnisteen, suorituskykytietoja, API-määrityksen, ominaisuustapahtumia, virhekoodeja, määritetyt käännöskielet ja tunnistetun kielen.</td></tr>
+      <tr><td>ULMOXin palvelimilla olevat tiedot</td><td>Ennallaan. Palvelimemme säilyttävät vain alkuperäisen viestin, täsmälleen kuten tämän käytännön muissa kohdissa kuvataan.</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>Kolme asiaa, joita emme väitä.</strong> Emme väitä, että Google saisi viestiesi tekstin — Googlen tätä ominaisuutta koskeva dokumentaatio ei sano, että se ladattaisiin. Emmekä väitä, ettei mikään koskaan poistuisi laitteeltasi: Googlen komponentti muodostaa omia verkkoyhteyksiään edellä lueteltuihin tarkoituksiin. Emmekä väitä sulkeneemme kysymystä pois — Googlen koneoppimispakettia koskeva tietosuojailmoitus kattaa paketin jokaisen ominaisuuden, myös sellaiset, jotka todella käsittelevät käyttäjän sisältöä, eikä komponentti ole avointa lähdekoodia, joten emme voi tarkastaa sitä itse. Kerromme sen, minkä voimme todentaa, sen sijaan että täyttäisimme aukon vakuuttelulla.</p>
+    </div>
+
+    <p>Käännöstietoja ei koskaan käytetä mainontaan tai profilointiin, ei meidän toimestamme eikä puolestamme. Käännöksestä ei koskaan tule moderoinnin todistusaineistoa: ilmoitukset ja niitä käsittelevät ihmiset käyttävät alkuperäistä viestiä.</p>
+
+    <h3>Laite- ja tekniset tiedot</h3>
+
+    <ul>
+      <li>Laite- ja asennustunnisteet, sovellusversio ja alusta.</li>
+      <li>Push-ilmoitusten tunnukset, jotta voimme toimittaa ilmoituksia.</li>
+      <li>Signaalit, joilla palvelua suojataan väärinkäytöltä, esimerkiksi se, jakavatko useat tilit yhden laitteen.</li>
+    </ul>
+
+    <h3>Käyttö ja diagnostiikka</h3>
+
+    <ul>
+      <li>Firebase Analytics: koostettu tuotteen käyttö.</li>
+      <li>Firebase Crashlytics: kaatumisraportit.</li>
+      <li>Firebase Performance Monitoring: suorituskykymittaukset.</li>
+      <li>Palvelimen operatiiviset lokit, joita käytetään palvelun ylläpitoon ja suojaamiseen.</li>
+    </ul>
+
+    <h3>Iän varmistaminen</h3>
+
+    <p>Vahvistaakseen, että olet 18-vuotias tai vanhempi, ULMOX käyttää alustasi tarjoamaa ikäsignaalia silloin kun se on saatavilla, ja kysyy muutoin syntymäaikaasi.</p>
+
+    <div class="callout">
+      <p><strong>Syntymäaikaasi ei tallenneta.</strong> Sitä käytetään vain pyynnön käsittelyn ajan sen selvittämiseen, oletko 18-vuotias tai vanhempi. Säilytämme lopputuloksen — sen, oletko kelpoinen — emmekä itse päivämäärää, tarkkaa ikääsi tai ikäryhmää.</p>
+    </div>
+
+    <p>Ikätietoja ei koskaan käytetä mainontaan, profilointiin, järjestämiseen tai analytiikkaan.</p>
+
+    <h3>Ilmoitukset, moderointi ja estäminen</h3>
+
+    <ul>
+      <li>Sisältöä ja käyttäjiä koskevat ilmoitukset, mukaan lukien oma lasten turvallisuuden luokka.</li>
+      <li>Moderointimerkinnät, jotka syntyvät ilmoitusta käsiteltäessä.</li>
+      <li>Tekemäsi estot. Estäminen on yksityinen turvatoimi; estetylle henkilölle ei kerrota siitä.</li>
+    </ul>
+
+    <p>Ilmoitettu sisältö voidaan asettaa peruutettavaan karanteeniin siksi aikaa, kun ihminen käsittelee sen. Ilmoitukset eivät sulje tilejä. Vain valtuutettu ULMOXin ylläpitäjä voi sulkea tilin, ja vain ihmisen tekemän käsittelyn jälkeen.</p>
+
+    <p>ULMOX ei analysoi automaattisesti videokuvia, ääntä eikä litterointeja.</p>
+
+    <h2>3. Käytöstä poistaminen ja poistaminen</h2>
+
+    <h3>Käytöstä poistaminen</h3>
+
+    <p>Käytöstä poistaminen on peruutettavissa: palautat tilin kirjautumalla takaisin sisään ja valitsemalla <strong>Palauta käyttöön</strong>, mitä pelkkä kirjautuminen ei tee. Profiilisi ja Global-sisältösi piilotetaan, eikä tiliäsi valita uusiin toimituksiin. Tietosi säilytetään, jotta tili voidaan palauttaa. Jo lähettämäsi videot voivat säilyä niiden saaneilla heidän tavanomaisen säilytysaikansa.</p>
+
+    <p>Käytöstä poistaminen ei ole poistamista eikä se tyhjennä turvallisuusmerkintöjä. Ilmoitukset, moderointipäätökset, estot ja muu turvallisuuden todistusaineisto eivät muutu käytöstä poistamisen tai uudelleen käyttöönoton myötä. Uudelleen käyttöönotto palauttaa pääsysi; se ei kumoa moderointipäätöstä, ei palauta moderoinnin poistamaa tai piilottamaa sisältöä eikä avaa uudelleen päätettyä Connectionia. Connectionin päättäminen on lopullista tälle parille. Estäminen toimii toisin: esto päättää nykyisen Connectionisi ja pysäyttää yhteydenpidon molempiin suuntiin niin kauan kuin se on voimassa. Eston poistaminenkaan ei palauta vanhaa Connectionia — kahden tilin olisi täytettävä ehdot uudelleen alusta, kahden uuden kelpoisuusehdot täyttävän videovaihdon ja molempien osapuolten uuden hyväksynnän kautta.</p>
+
+    <h3>Poistaminen</h3>
+
+    <p>Poistaminen on pysyvää. Pääsy ja löydettävyys poistetaan heti, kun poisto on onnistuneesti käynnistetty, ja fyysinen poisto jatkuu taustalla tavoitteena valmistua 30 päivässä, ellei perusteltu turvallisuus- tai lakisääteinen velvoite edellytä rajoitettua säilyttämistä. Käyttäjätunnuksesi pidetään varattuna 90 päivää ennen kuin se voidaan ottaa uudelleen käyttöön. Katso <a href="delete_account.html">Poista tili</a>.</p>
+
+    <p>Jos tilisi on liitetty <strong>Kirjaudu Apple-tunnuksella</strong> -palveluun, pysyvä poisto Apple-laitteella pyytää sinua vahvistamaan vielä kerran suoraan Applelle, jotta ULMOX voi perua oman Kirjaudu Apple-tunnuksella -valtuutuksensa ennen tilin poistamista. Emme saa Apple-salasanaasi. Jos tuo vaihe ei valmistu, mitään ei poisteta. Appleen liitetty tili ei voi suorittaa tätä vaihetta Android-laitteella; ULMOX pysähtyy ennen kuin mitään poistetaan ja pyytää sinua viimeistelemään Apple-laitteella.</p>
+
+    <p>ULMOX-tilisi poistaminen ei poista <strong>Apple ID:täsi</strong> eikä Google-tiliäsi. ULMOX ei voi poistaa kumpaakaan. ULMOXin Kirjaudu Apple-tunnuksella -valtuutuksen peruminen on niin ikään eri toimenpide kuin tilisi poistaminen, eikä se yksinään poista ULMOX-tietojasi.</p>
+
+    <p>Tilisi poistaminen poistaa sinun tietosi. Se ei poista toisen henkilön tietoja: Connectionissa on kaksi henkilöä, ja toisen osapuolen viestit, videot ja merkinnät jäävät hänelle. Kun turvallisuuden todistusaineistoa on säilytettävä perustellusta syystä, siihen liittyvät henkilöllisyytesi yhdistävät linkit poistetaan osana poistoa, joten jäljelle jää merkintä tapahtuneesta eikä merkintä sinusta.</p>
+
+    <h2>4. Kuinka kauan säilytämme tietoja</h2>
+
+    <table>
+      <caption class="effective">Säilytysaika määräytyy alla olevien ehtojen mukaan eikä yhden kiinteän ajan perusteella.</caption>
+      <tr><th scope="col">Tieto</th><th scope="col">Kuinka kauan</th></tr>
+      <tr><td>Tilin profiili ja asetukset</td><td>Niin kauan kuin tilisi on olemassa.</td></tr>
+      <tr><td>Videot, joita ei koskaan avattu</td><td>Poistetaan noin 7 päivää lähettämisen jälkeen.</td></tr>
+      <tr><td>Avatut videot, joita ei jaettu Globaliin</td><td>Poistetaan noin 15 päivää lähettämisen jälkeen.</td></tr>
+      <tr><td>Global-sisältö</td><td>Säilytetään niin kauan kuin se on saatavilla, kunnes omistaja poistaa sen tai moderointi poistaa sen. Emme poista Global-sisältöä kiinteän ajastimen mukaan.</td></tr>
+      <tr><td>Keskeneräiset lataukset</td><td>Siivotaan noin 24 tuntia hylkäämisen jälkeen.</td></tr>
+      <tr><td>Push-tunnukset ja laitemerkinnät</td><td>Niin kauan kuin ne on rekisteröity; poistetaan käytöstä poistettaessa ja poistettaessa.</td></tr>
+      <tr><td>Ikäkelpoisuuden tulos</td><td>Niin kauan kuin tilisi on olemassa. Syntymäaikaasi ei koskaan tallenneta.</td></tr>
+      <tr><td>Käyttäjätunnuksen varaus poiston jälkeen</td><td>90 päivää.</td></tr>
+      <tr><td>Sisäinen poistomerkintä</td><td>90 päivää, säilytetään jotta poisto voidaan tarkastaa jälkikäteen.</td></tr>
+      <tr><td>Connection-viestit</td><td>Tavallisen Connection-viestin katsotaan vanhenevan noin seitsemän päivää lähettämisen jälkeen, jolloin se lakkaa olemasta osa keskustelua. Tämä on viestiä koskeva sääntö, ei lupaus ajastimesta: tallennetun tietueen automaattinen vanheneminen ei ole tällä hetkellä käytössä, joten poisto tapahtuu rutiinisiivouksen kautta eikä kiinteällä hetkellä.</td></tr>
+      <tr><td>Ilmoitukset, moderointimerkinnät, estot ja turvallisuustapahtumat</td><td>Säilytetään turvallisuuden todistusaineistona, myös tilin poistamisen jälkeen, niin kauan kuin perusteltu turvallisuus- tai oikeudellinen syy on olemassa. Turvallisuuden todistusaineisto ei ole tavallista viestihistoriaa: kun viesti on liitetty ilmoitukseen, seitsemän päivän vanheneminen ei enää koske sitä, ja se säilytetään käsittelyn ajan ja sen jälkeen silloin, kun lopputulos sen oikeuttaa.</td></tr>
+      <tr><td>Analytiikka-, kaatumis- ja suorituskykytiedot</td><td>Säilytetään kyseiseen Google-palveluun määritetyn säilytysasetuksen mukaisesti.</td></tr>
+    </table>
+
+    <h2>5. Kuka käsittelee tietoja puolestamme</h2>
+
+    <p>ULMOX käyttää seuraavia palveluita:</p>
+
+    <ul>
+      <li>Firebase Authentication, Cloud Firestore, Cloud Storage, Cloud Functions ja Cloud Messaging (Google).</li>
+      <li>Firebase Analytics, Crashlytics ja Performance Monitoring (Google).</li>
+      <li>Firebase App Check, laitteen eheystarkistus, jota käytetään siellä missä alusta sen tukee vähentämään palvelun automatisoitua väärinkäyttöä.</li>
+      <li>Google-kirjautuminen ja Kirjaudu Apple-tunnuksella siihen liitetyille tileille, todennusta varten.</li>
+      <li>Google ML Kit -kääntäminen ja -kielentunnistus, jotka suorittavat viestin kääntämisen laitteellasi ja voivat käyttää verkkoa edellä kohdassa ”Viestien kääntäminen” kuvatulla tavalla.</li>
+      <li>Firebase Remote Config ja Firebase Installations, joita ML Kit käyttää omaan määritykseensä ja edellä kuvattuun asennuskohtaiseen tunnisteeseen.</li>
+      <li>Google Playn ja Applen alustojen ikäsignaalit, kun alusta tarjoaa ne ja päätät jakaa ne.</li>
+    </ul>
+
+    <p>Emme myy henkilötietoja emmekä käytä niitä mainontaan tai sovellusten väliseen seurantaan.</p>
+
+    <h2>6. Kansainvälinen käsittely</h2>
+
+    <p>ULMOX on saatavilla maailmanlaajuisesti ja palveluntarjoajillamme on datakeskuksia useissa maissa, joten tietojasi voidaan käsitellä asuinmaasi ulkopuolella. Näissä siirroissa nojaudumme palveluntarjoajiemme tarjoamiin suojatoimiin.</p>
+
+    <h2>7. Oikeutesi</h2>
+
+    <p>Asuinpaikastasi riippuen sinulla voi olla oikeus saada pääsy tietoihisi, oikaista tai poistaa ne, vastustaa tiettyä käsittelyä tai rajoittaa sitä sekä perua suostumus silloin, kun käsittely perustuu suostumukseen. Voit poistaa tilisi itse sovelluksessa, ja voit käyttää muita oikeuksia kirjoittamalla osoitteeseen <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>.</p>
+
+    <p>Jos et ole tyytyväinen vastaukseemme, voit tehdä valituksen paikalliselle tietosuojaviranomaiselle.</p>
+
+    <h2>8. Tietoturva</h2>
+
+    <p>Tiedot siirretään salattujen yhteyksien kautta ja säilytetään palveluntarjoajiemme hallinnoimassa infrastruktuurissa. Pääsy moderoinnin todistusaineistoon on rajattu valtuutettuihin käsittelijöihin. Mikään verkkopalvelu ei voi luvata täydellistä tietoturvaa, emmekä me väitä niin.</p>
+
+    <h2>9. Muutokset</h2>
+
+    <p>Päivitämme tämän sivun, kun käytäntömme muuttuvat, ja päivitämme yllä olevan päivämäärän. Olennaiset muutokset voivat edellyttää, että hyväksyt päivitetyt ehdot sovelluksessa.</p>
+
+    <h2>10. Aiheeseen liittyvät sivut</h2>
+
+    <p>
+      <a href="delete_account.html">Poista tili</a>
+      &middot;
+      <a href="terms.html">Ehdot</a>
+      &middot;
+      <a href="safety.html">Turvallisuus ja moderointi</a>
+      &middot;
+      <a href="support.html">Tuki</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Juridiset tiedot ja tuki">
+      <ul>
+        <li><a href="index.html">Etusivu</a></li>
+        <li><span aria-current="page">Tietosuojakäytäntö</span></li>
+        <li><a href="terms.html">Ehdot</a></li>
+        <li><a href="safety.html">Turvallisuus ja moderointi</a></li>
+        <li><a href="support.html">Tuki</a></li>
+        <li><a href="delete_account.html">Poista tili</a></li>
+        <li><a href="translation.html">Tietoa kääntämisestä</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Tämän käytännön englanninkielinen versio on määräävä. Jos käännös poikkeaa siitä, sovelletaan englanninkielistä versiota.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

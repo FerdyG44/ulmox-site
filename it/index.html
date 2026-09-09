@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>ULMOX</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#05030a" />
+  <title>ULMOX — Condividi veri momenti video.</title>
+  <meta name="description" content="Condividi veri momenti video con persone in tutto il mondo. Cattura esperienze autentiche, ricevi momenti inattesi e scopri storie dalla community globale di ULMOX." />
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       background: radial-gradient(circle at top, #24113f 0%, #05030a 42%, #000 100%);
-      color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: #05030a;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       text-align: center;
     }
 
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 70px 24px 40px;
+      padding: 70px 24px 0;
     }
 
-    .logo-wrap {
-      margin-bottom: 55px;
-    }
+    .logo-wrap { margin-bottom: 55px; }
 
     .logo-img {
       width: 110px;
       padding: 18px;
       border-radius: 28px;
-      background: rgba(255,255,255,0.92);
-      box-shadow: 0 18px 50px rgba(120,80,255,0.45);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 18px 50px rgba(120, 80, 255, 0.45);
     }
 
     .logo-text {
@@ -46,27 +48,53 @@
       font-weight: 900;
     }
 
+    /*
+     * The gradient is decoration on top of a real colour. Browsers that do not
+     * clip a background to text still render #ffffff, so the headline never
+     * depends on the gradient to be readable.
+     */
     .gradient-text {
+      color: #ffffff;
       background: linear-gradient(90deg, #ffffff, #b794ff, #66e7ff);
+      background-clip: text;
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    }
+
+    @supports (background-clip: text) or (-webkit-background-clip: text) {
+      .gradient-text { -webkit-text-fill-color: transparent; }
     }
 
     .subtitle {
       margin: 24px auto 0;
       max-width: 620px;
-      color: #cfcfd6;
+      color: #d6d6d6;
       font-size: 20px;
       line-height: 1.5;
     }
 
+    .store-cta { margin-top: 56px; }
+
+    .store-cta h2 {
+      font-size: 28px;
+      margin: 0;
+      line-height: 1.25;
+    }
+
+    .store-cta p {
+      color: #d6d6d6;
+      max-width: 600px;
+      margin: 12px auto 0;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
     .store-badges {
-      margin-top: 38px;
+      margin-top: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
     }
 
     .store-badge-link {
@@ -75,99 +103,125 @@
       justify-content: center;
       width: 198px;
       height: 66px;
-      box-sizing: border-box;
       line-height: 0;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.14);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 14px;
       transition: transform 0.22s ease, filter 0.22s ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      cursor: pointer;
     }
 
     .store-badge-link:hover {
-      filter: drop-shadow(0 10px 22px rgba(120,80,255,0.24));
+      filter: drop-shadow(0 10px 22px rgba(120, 80, 255, 0.24));
       transform: scale(1.03);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .store-badge-link { transition: none; }
+      .store-badge-link:hover { transform: none; }
     }
 
     .store-badge {
       display: block;
       width: auto;
       object-fit: contain;
+      pointer-events: none;
+      user-select: none;
     }
 
-    .store-badge-app-store {
-      height: 56px;
-      max-width: 176px;
+    .store-badge-app-store { height: 56px; max-width: 176px; }
+    .store-badge-link-google-play { width: 198px; height: 66px; overflow: visible; }
+    .store-badge-google-play { height: 74px; max-width: 198px; }
+
+    .browser-help {
+      display: none;
+      margin: 18px auto 0;
+      max-width: 560px;
+      padding: 16px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #e5e5ea;
+      font-size: 15px;
+      line-height: 1.45;
+      text-align: start;
     }
 
-    .store-badge-link-google-play {
-      width: 198px;
-      height: 66px;
-      overflow: visible;
+    .browser-help.visible { display: block; }
+
+    .copy-link {
+      appearance: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 11px 14px;
+      margin-top: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
     }
 
-    .store-badge-google-play {
-      height: 74px;
-      max-width: 198px;
-    }
+    /*
+     * The product introduction. This is the region that used to hold an
+     * autoplaying <video> pointing at a file that does not exist. It is now a
+     * static, decorative device frame around the ULMOX mark: no media request,
+     * no playback control, nothing that suggests something is about to play.
+     */
+    .intro { margin-top: 64px; }
 
-
-
-    .phone-card {
-      margin: 24px auto 0;
+    .device {
+      margin: 0 auto;
       width: 260px;
-      height: 520px;
+      max-width: 78vw;
+      aspect-ratio: 1 / 2;
       border-radius: 46px;
       background: linear-gradient(180deg, #171722, #07070b);
-      border: 1px solid rgba(255,255,255,0.16);
-      box-shadow: 0 30px 90px rgba(120,80,255,0.35);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 30px 90px rgba(120, 80, 255, 0.35);
       padding: 18px;
     }
 
-    .phone-screen {
+    .device-screen {
       height: 100%;
       border-radius: 34px;
-      overflow: hidden;
-      position: relative;
       background: radial-gradient(circle at top, #6d28d9 0%, #111827 40%, #020617 100%);
       display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .phone-screen video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 34px;
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-    }
-
-    .phone-fallback {
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       flex-direction: column;
-    }
-
-    .play-circle {
-      width: 78px;
-      height: 78px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.16);
-      display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 18px;
-      border: 1px solid rgba(255,255,255,0.18);
-      font-size: 34px;
+      gap: 16px;
+      padding: 24px 18px;
     }
 
-    .phone-text {
-      font-size: 18px;
+    .device-mark {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 12px;
+    }
+
+    .device-wordmark {
+      font-size: 15px;
+      letter-spacing: 4px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    /*
+     * The caption *is* the section heading. Repeating the same sentence above
+     * the frame and inside it would make a screen reader read the region
+     * twice for a difference only a sighted reader can see.
+     */
+    .device-caption {
+      margin: 0;
+      font-size: 20px;
       font-weight: 800;
+      color: #ffffff;
+      line-height: 1.35;
     }
 
     .features {
@@ -175,143 +229,197 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 16px;
+      text-align: start;
     }
 
     .feature {
       padding: 24px;
       border-radius: 24px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .feature h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-    }
+    .feature h2 { margin: 0 0 8px; font-size: 18px; }
 
     .feature p {
       margin: 0;
-      color: #aaa;
-      font-size: 14px;
-      line-height: 1.4;
-    }
-
-    footer {
-      margin-top: 70px;
-      color: #777;
-      font-size: 14px;
-    }
-
-    footer a {
-      color: #aaa;
-      margin: 0 10px;
-      text-decoration: none;
+      color: #d6d6d6;
+      font-size: 15px;
+      line-height: 1.5;
     }
 
     @media (max-width: 600px) {
+      .container { padding: 56px 20px 0; }
       h1 { font-size: 42px; }
       .subtitle { font-size: 17px; }
-      .phone-card { width: 220px; height: 440px; }
+      .store-cta h2 { font-size: 24px; }
       .logo-img { width: 95px; }
 
-      .store-badges {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .store-badge-link {
-        width: min(198px, 78vw);
-        height: 66px;
-      }
+      .store-badges { flex-direction: column; gap: 10px; }
+      .store-badge-link { width: min(198px, 78vw); height: 66px; }
       .store-badge-app-store { height: 54px; max-width: 172px; }
-      .store-badge-link-google-play {
-        width: min(198px, 78vw);
-        height: 66px;
-        overflow: visible;
-      }
+      .store-badge-link-google-play { width: min(198px, 78vw); height: 66px; }
       .store-badge-google-play { height: 72px; max-width: 194px; }
+    }
+
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
     }
   </style>
   <link rel="stylesheet" href="/assets/css/language-switcher.css">
 </head>
 
 <body>
+  <a class="ulmox-skip-link" href="#main">Vai al contenuto</a>
+
   <div class="container">
+    <main id="main">
+      <div class="logo-wrap">
+        <img src="/logo.png" class="logo-img" alt="ULMOX logo">
+        <div class="logo-text">ULMOX</div>
+      </div>
 
-    <div class="logo-wrap">
-      <img src="/logo.png" class="logo-img" alt="ULMOX logo">
-      <div class="logo-text">ULMOX</div>
-    </div>
+      <h1>
+        Condividi veri<br>
+        <span class="gradient-text">momenti video.</span>
+      </h1>
 
-    <h1>
-      Condividi veri<br>
-      <span class="gradient-text">momenti video.</span>
-    </h1>
+      <p class="subtitle">
+        Condividi veri momenti video con persone in tutto il mondo. Cattura esperienze autentiche, ricevi momenti inattesi e scopri storie dalla community globale di ULMOX.
+      </p>
 
-    <p class="subtitle">
-      Condividi veri momenti video con persone in tutto il mondo.
-      Cattura esperienze autentiche, ricevi momenti inattesi
-      e scopri storie dalla community globale di ULMOX.
-    </p>
+      <section class="store-cta" aria-labelledby="store-cta-heading">
+        <h2 id="store-cta-heading">Disponibile ora su App Store e Google Play</h2>
+        <p>Scarica ULMOX oggi da App Store o Google Play e inizia a condividere veri momenti video.</p>
 
-    <div class="store-badges">
-      <a class="store-badge-link" href="https://apps.apple.com/se/app/ulmox/id6765990174" target="_blank" aria-label="Download ULMOX on the App Store">
-        <img class="store-badge store-badge-app-store" src="/assets/badges/app-store.svg" width="162" height="54" alt="Download on the App Store">
-      </a>
+        <div class="store-badges">
+          <a
+            class="store-badge-link"
+            href="https://apps.apple.com/se/app/ulmox/id6765990174"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Download ULMOX on the App Store"
+          >
+            <img
+              class="store-badge store-badge-app-store"
+              src="/assets/badges/app-store.svg"
+              width="162"
+              height="54"
+              alt="Download on the App Store"
+            >
+          </a>
 
-      <a class="store-badge-link store-badge-link-google-play" href="https://play.google.com/store/apps/details?id=com.ulmox.app" target="_blank" aria-label="Get ULMOX on Google Play">
-        <img class="store-badge store-badge-google-play" src="/assets/badges/google-play.png" width="140" height="54" alt="Get it on Google Play">
-      </a>
-    </div>
-
-    <div class="phone-card">
-      <div class="phone-screen">
-        <div class="phone-fallback">
-          <div class="play-circle">▶</div>
-          <div class="phone-text">Un momento reale</div>
+          <a
+            class="store-badge-link store-badge-link-google-play"
+            href="https://play.google.com/store/apps/details?id=com.ulmox.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Get ULMOX on Google Play"
+          >
+            <img
+              class="store-badge store-badge-google-play"
+              src="/assets/badges/google-play.png"
+              width="140"
+              height="54"
+              alt="Get it on Google Play"
+            >
+          </a>
         </div>
+      </section>
 
-        <video autoplay muted loop playsinline>
-          <source src="/demo.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
+      <section class="intro" aria-labelledby="intro-heading">
+        <div class="device">
+          <div class="device-screen">
+            <img class="device-mark" src="/logo.png" alt="" width="72" height="72">
+            <span class="device-wordmark">ULMOX</span>
+            <h2 class="device-caption" id="intro-heading">Un momento reale</h2>
+          </div>
+        </div>
+      </section>
 
-    <div class="features">
-      <div class="feature">
-        <h3>Video reali</h3>
-        <p>Nessun momento costruito. Cattura ciò che sembra vero.</p>
-      </div>
+      <section class="features">
+          <div class="feature">
+            <h2>Video reali</h2>
+            <p>Nessun momento costruito. Cattura ciò che sembra vero.</p>
+          </div>
 
-      <div class="feature">
-        <h3>Momenti quotidiani</h3>
-        <p>Un sistema limitato di condivisione quotidiana.</p>
-      </div>
+          <div class="feature">
+            <h2>Momenti quotidiani</h2>
+            <p>Un sistema limitato di condivisione quotidiana.</p>
+          </div>
 
-      <div class="feature">
-        <h3>Feed globale</h3>
-        <p>Condividi momenti selezionati con il mondo.</p>
-      </div>
-    </div>
-
-    <div style="margin-top:60px;">
-    <h2 style="font-size:28px;">Disponibile ora su App Store e Google Play</h2>
-    <p style="color:#aaa;max-width:600px;margin:10px auto 25px;">
-      Scarica ULMOX oggi da App Store o Google Play e inizia a condividere veri momenti video.
-    </p>
-
-
-
-</div>
-
-    <footer>
-      <a href="privacy.html">Informativa sulla privacy</a>
-      <a href="terms.html">Termini</a>
-      <a href="support.html">Supporto</a>
-      <a href="safety.html">Sicurezza e moderazione</a>
-      <p>© 2026 ULMOX</p>
-    </footer>
-
+          <div class="feature">
+            <h2>Feed globale</h2>
+            <p>Condividi momenti selezionati con il mondo.</p>
+          </div>
+      </section>
+    </main>
   </div>
+
+  <footer>
+    <nav aria-label="Informazioni legali e supporto">
+      <ul>
+        <li><span aria-current="page">Home page</span></li>
+        <li><a href="privacy.html">Informativa sulla privacy</a></li>
+        <li><a href="terms.html">Termini</a></li>
+        <li><a href="safety.html">Sicurezza e moderazione</a></li>
+        <li><a href="support.html">Supporto</a></li>
+        <li><a href="delete_account.html">Elimina account</a></li>
+        <li><a href="translation.html">Informazioni sulla traduzione</a></li>
+      </ul>
+    </nav>
+    <p>© 2026 ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+
   <script src="/assets/js/i18n-config.js"></script>
   <script src="/assets/js/language-switcher.js" defer></script>
 </body>

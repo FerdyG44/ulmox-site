@@ -1,61 +1,306 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>An toàn và kiểm duyệt ULMOX - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Cách ULMOX phòng ngừa, phát hiện và xử lý hành vi xâm hại và bóc lột tình dục trẻ em." />
   <style>
-    body { margin: 0; padding: 0; background-color: #0d0d0f; color: #ffffff; font-family: Arial, sans-serif; line-height: 1.7; }
-    .container { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
-    h1 { font-size: 42px; margin-bottom: 30px; }
-    h2 { margin-top: 42px; font-size: 24px; color: #ffffff; }
-    p, li { color: #d0d0d0; font-size: 17px; }
-    ul { padding-left: 22px; }
-    a { color: #9d7bff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .footer { margin-top: 60px; padding-top: 30px; border-top: 1px solid #2a2a2e; color: #888; font-size: 14px; }
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>An toàn và kiểm duyệt ULMOX</h1>
-    <p>ULMOX cam kết mang đến môi trường an toàn và tôn trọng cho mọi người dùng.</p>
-    <h2>An toàn và kiểm duyệt ULMOX</h2>
-    <p>ULMOX cam kết mang đến môi trường an toàn và tôn trọng cho mọi người dùng.</p>
-    <p>ULMOX cam kết mang đến môi trường an toàn và tôn trọng cho mọi người dùng.</p>
-    <ul><li>Người dùng phải sử dụng ULMOX một cách tôn trọng, an toàn và hợp pháp.</li>
-      <li>Người dùng phải sử dụng ULMOX một cách tôn trọng, an toàn và hợp pháp.</li>
-      <li>Người dùng phải sử dụng ULMOX một cách tôn trọng, an toàn và hợp pháp.</li>
-      <li>Người dùng phải sử dụng ULMOX một cách tôn trọng, an toàn và hợp pháp.</li>
-      <li>Người dùng phải sử dụng ULMOX một cách tôn trọng, an toàn và hợp pháp.</li>
-      <li>Người dùng phải sử dụng ULMOX một cách tôn trọng, an toàn và hợp pháp.</li>
-      <li>Người dùng phải sử dụng ULMOX một cách tôn trọng, an toàn và hợp pháp.</li></ul>
-    <h2>Liên hệ</h2>
-    <p>Người dùng có thể báo cáo nội dung không phù hợp trực tiếp trong ứng dụng. Tất cả báo cáo đều được xem xét và nội dung vi phạm sẽ được gỡ bỏ nhanh chóng.</p>
-    <p>Người dùng có thể báo cáo nội dung không phù hợp trực tiếp trong ứng dụng. Tất cả báo cáo đều được xem xét và nội dung vi phạm sẽ được gỡ bỏ nhanh chóng.</p>
-    <ul><li>Người dùng có thể báo cáo nội dung không phù hợp trực tiếp trong ứng dụng. Tất cả báo cáo đều được xem xét và nội dung vi phạm sẽ được gỡ bỏ nhanh chóng.</li>
-      <li>Người dùng có thể báo cáo nội dung không phù hợp trực tiếp trong ứng dụng. Tất cả báo cáo đều được xem xét và nội dung vi phạm sẽ được gỡ bỏ nhanh chóng.</li>
-      <li>Người dùng có thể báo cáo nội dung không phù hợp trực tiếp trong ứng dụng. Tất cả báo cáo đều được xem xét và nội dung vi phạm sẽ được gỡ bỏ nhanh chóng.</li>
-      <li>Người dùng có thể báo cáo nội dung không phù hợp trực tiếp trong ứng dụng. Tất cả báo cáo đều được xem xét và nội dung vi phạm sẽ được gỡ bỏ nhanh chóng.</li></ul>
-    <h2>Liên hệ</h2>
-    <p>Người dùng phải sử dụng ULMOX một cách tôn trọng, an toàn và hợp pháp.</p>
-    <p>Người dùng phải sử dụng ULMOX một cách tôn trọng, an toàn và hợp pháp.</p>
-    <h2>An toàn và kiểm duyệt ULMOX</h2>
-    <p>ULMOX cam kết mang đến môi trường an toàn và tôn trọng cho mọi người dùng.</p>
-    <p>ULMOX cam kết mang đến môi trường an toàn và tôn trọng cho mọi người dùng.</p>
-    <h2>An toàn và kiểm duyệt ULMOX</h2>
-    <p>ULMOX cam kết mang đến môi trường an toàn và tôn trọng cho mọi người dùng.</p>
-    <p>Người dùng phải sử dụng ULMOX một cách tôn trọng, an toàn và hợp pháp.</p>
-    <h2>Tiêu chuẩn an toàn trẻ em</h2>
-    <p>ULMOX không khoan nhượng với bất kỳ hình thức lạm dụng hoặc bóc lột tình dục trẻ em nào (CSAE).</p>
-    <p>ULMOX không khoan nhượng với bất kỳ hình thức lạm dụng hoặc bóc lột tình dục trẻ em nào (CSAE).</p>
-    <h2>Liên hệ</h2>
-    <p>Liên hệ:</p>
-    <p><a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
-    <div class="footer">© 2026 ULMOX</div>
+  <a class="ulmox-skip-link" href="#main">Chuyển đến nội dung</a>
+<div class="container">
+  <main id="main">
+    <h1>Tiêu chuẩn an toàn trẻ em của ULMOX</h1>
+    <p class="effective">Có hiệu lực từ 2026-09-04. Cập nhật lần cuối 2026-09-04.</p>
+
+    <p>ULMOX chỉ dành cho người trưởng thành <strong>từ 18 tuổi trở lên</strong>. Trang này trình bày cách chúng tôi phòng ngừa, phát hiện và xử lý hành vi xâm hại và bóc lột tình dục trẻ em.</p>
+
+    <div class="callout">
+      <p><strong>Nếu một trẻ em đang gặp nguy hiểm tức thời, hãy liên hệ dịch vụ khẩn cấp tại địa phương của bạn trước.</strong> Báo cáo với ULMOX không thay thế việc liên hệ cơ quan chức năng.</p>
+    </div>
+
+    <h2>Không khoan nhượng</h2>
+
+    <p>ULMOX không khoan nhượng với hành vi xâm hại và bóc lột tình dục trẻ em (CSAE) và với tài liệu xâm hại tình dục trẻ em (CSAM). Các tài khoản và nội dung liên quan sẽ bị gỡ bỏ.</p>
+
+    <h2>Những gì bị cấm</h2>
+
+    <p>Nói rõ ràng, những điều sau không bao giờ được phép trên ULMOX:</p>
+
+    <ul>
+      <li>Mọi nội dung tình dục liên quan đến người dưới 18 tuổi, dù là người thật hay được mô tả.</li>
+      <li>Dụ dỗ (grooming): xây dựng lòng tin với trẻ vị thành niên nhằm bóc lột tình dục, kể cả việc yêu cầu trẻ giữ bí mật liên lạc với cha mẹ hoặc người giám hộ.</li>
+      <li>Tình dục hóa trẻ vị thành niên, hoặc yêu cầu trẻ gửi hình ảnh tình dục hay tiếp xúc tình dục.</li>
+      <li>Cưỡng ép, tống tiền (kể cả tống tiền tình dục), buôn người, hay bất kỳ hành vi nào đặt trẻ vị thành niên vào tình trạng nguy hiểm nghiêm trọng.</li>
+      <li>Quảng cáo, tìm kiếm hoặc dẫn liên kết tới tài liệu thuộc loại này.</li>
+    </ul>
+
+    <h2>Cách báo cáo</h2>
+
+    <p>Trong ứng dụng, bạn có thể dùng <strong>Báo cáo nội dung</strong> và <strong>Báo cáo người dùng</strong>. Cả hai đều có một hạng mục riêng về <strong>an toàn trẻ em</strong>. Bạn cũng có thể chặn một người dùng, điều này ngăn mọi tương tác giữa hai bên theo cả hai chiều.</p>
+
+    <p>Bạn cũng có thể viết thư cho chúng tôi:</p>
+
+    <p><strong>Đầu mối an toàn trẻ em của ULMOX</strong><br /> <a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ulmoxapp@outlook.com</a></p>
+
+    <h2>Điều gì xảy ra tiếp theo</h2>
+
+    <ul>
+      <li>Báo cáo về an toàn trẻ em được ưu tiên <strong>cao nhất</strong> khi con người xem xét.</li>
+      <li>Nội dung bị báo cáo cụ thể được đưa ngay vào <strong>trạng thái cách ly có thể đảo ngược</strong> để không còn được hiển thị công khai hay chuyển đi, trong khi một người xem xét.</li>
+      <li>Bằng chứng được bảo toàn để phục vụ việc xem xét và chỉ những người kiểm duyệt được ủy quyền mới truy cập được.</li>
+      <li>Báo cáo <strong>không</strong> tự động cấm một tài khoản. Số lượng báo cáo cũng không, bộ lọc tự động giữ một tin nhắn cũng không, việc cách ly cũng không, và bản dịch cũng không. Việc cấm là một quyết định riêng biệt, có chủ ý, chỉ quản trị viên ULMOX được ủy quyền mới có thể đưa ra, và chỉ sau khi xem xét vụ việc.</li>
+      <li>Giải quyết một báo cáo sẽ đưa nó ra khỏi danh sách xem xét đang hoạt động. Điều đó không xóa nó: bằng chứng và bản ghi về điều đã quyết định được giữ ở nơi có lý do chính đáng, để một quyết định có thể được kiểm chứng và một khiếu nại có thể được trả lời.</li>
+      <li>Nếu người xem xét chấp thuận một video bị báo cáo, video ấy chỉ trở lại bảng tin Global nếu bản thân nó vẫn còn đủ điều kiện. Nội dung mà chủ sở hữu đã rời đi, bị hạn chế hoặc bị cấm, hoặc không khả dụng vì lý do riêng khác, vẫn không khả dụng bất kể quyết định về báo cáo là gì.</li>
+      <li>Ở nơi pháp luật hiện hành yêu cầu, chúng tôi báo cáo tới cơ quan được pháp luật chỉ định.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Mục tiêu của chúng tôi là xem xét các báo cáo khẩn về an toàn trẻ em trong vòng 24 giờ.</strong> Đây là mục tiêu cho việc bắt đầu xem xét bởi con người. Đây không phải cam kết rằng mọi vụ việc sẽ được giải quyết dứt điểm trong 24 giờ, và những vụ phức tạp có thể mất nhiều thời gian hơn.</p>
+    </div>
+
+    <p>Các báo cáo an toàn khác được xem xét nhanh nhất trong khả năng hợp lý.</p>
+
+    <h2>An toàn trong Connections</h2>
+
+    <div class="callout">
+      <p><strong>Connections và tính năng dịch tin nhắn tùy chọn đang được triển khai dần và có thể chưa khả dụng với mọi tài khoản hoặc mọi phiên bản ứng dụng đã cài đặt.</strong></p>
+    </div>
+
+    <p>Connection là cuộc trò chuyện chỉ có văn bản giữa hai người trưởng thành đã cùng chấp thuận sau hai lượt trao đổi video hợp lệ riêng biệt. ULMOX không có tính năng tìm kiếm người dùng, nên không ai có thể tra ra bạn để nhắn tin. Đây là các công cụ an toàn bên trong một Connection:</p>
+
+    <ul>
+      <li><strong>Báo cáo tin nhắn.</strong> Có sẵn với tin nhắn bạn đã nhận. Việc báo cáo gửi tin nhắn gốc tới một người để xem xét.</li>
+      <li><strong>Báo cáo sẽ ẩn tin nhắn đối với bạn, và chỉ đối với bạn.</strong> Sau khi bạn báo cáo một tin nhắn, nó biến mất khỏi khung nhìn cuộc trò chuyện của bạn. Bản của người gửi không đổi và người gửi không được cho biết bạn đã báo cáo. Việc ẩn là vì lợi ích của bạn; đó không phải hình phạt đối với họ, và quyết định về tin nhắn vẫn thuộc về một con người.</li>
+      <li><strong>Báo cáo người dùng.</strong> Có sẵn riêng biệt, dành cho con người thay vì một tin nhắn đơn lẻ. Cả hai đều có hạng mục riêng về an toàn trẻ em.</li>
+      <li><strong>Chặn.</strong> Chặn ngăn tương tác theo cả hai chiều. Nó được đề xuất sau một báo cáo như một lựa chọn riêng, không bao giờ gộp vào báo cáo, và việc từ chối không ảnh hưởng gì tới báo cáo của bạn. Một lượt chặn cũng kết thúc Connection bạn đang có. Bỏ chặn không mang Connection ấy trở lại: cặp đó sẽ phải đủ điều kiện lại từ đầu, qua hai lượt trao đổi video hợp lệ mới và sự chấp thuận mới của mỗi người.</li>
+      <li><strong>Kết thúc Connection.</strong> Kết thúc cuộc trò chuyện cho cả hai người. Nó không thể khôi phục và không mở lại ở một lần gặp trong tương lai. Kết thúc không giống chặn, và nó không xóa những báo cáo bạn đã gửi.</li>
+      <li><strong>Rời đi luôn hoạt động.</strong> Dù có chuyện gì khác đang xảy ra, việc chặn và kết thúc một Connection vẫn sẵn có với bạn — một hành động an toàn không bao giờ là thứ trở nên không dùng được.</li>
+      <li><strong>Tin nhắn hết hạn.</strong> Một tin nhắn thông thường trong Connection được coi là hết hạn khoảng bảy ngày sau khi gửi. Tin nhắn mà bạn báo cáo được xử lý khác: một khi nó là bằng chứng trong một lần xem xét, quy tắc hết hạn bảy ngày không còn chi phối nó nữa, và nó được giữ trong lúc việc xem xét còn mở và sau đó ở nơi kết quả biện minh cho việc giữ lại.</li>
+      <li><strong>Không có gì được đính kèm.</strong> Connections chỉ mang tin nhắn viết — không ảnh, không video, không tệp, không tin nhắn thoại.</li>
+    </ul>
+
+    <h2>Tin nhắn đã dịch</h2>
+
+    <ul>
+      <li>Một báo cáo luôn liên quan đến <strong>tin nhắn gốc</strong>. Báo cáo mang theo bản gốc, và đó là thứ người kiểm duyệt đọc.</li>
+      <li>Bản dịch tùy chọn hiển thị cho người đọc không phải là quyết định kiểm duyệt và không phải bằng chứng.</li>
+      <li>Bản dịch không thể khiến một tin nhắn trở nên gửi được. Nội dung bị chặn hoặc bị giữ vẫn bị chặn hoặc bị giữ, dù được đọc bằng ngôn ngữ nào.</li>
+      <li>Không tài khoản nào bị cấm vì những gì một bản dịch tạo ra. Chỉ quản trị viên ULMOX được ủy quyền mới có thể cấm một tài khoản, và chỉ sau khi xem xét bằng chứng gốc.</li>
+    </ul>
+
+    <p>Xem <a href="translation.html">Thông tin về dịch</a>.</p>
+
+    <h2>Những gì ULMOX không làm</h2>
+
+    <ul>
+      <li>ULMOX không tự động phân tích khung hình video, âm thanh hay bản ghi lời thoại. An toàn của video dựa vào việc báo cáo, cách ly có thể đảo ngược, chặn và xem xét bởi con người.</li>
+      <li>ULMOX không tự động cấm tài khoản, và không có số lượng báo cáo nào tạo ra một lệnh cấm tự động.</li>
+      <li>ULMOX không tuyên bố rằng bất kỳ cơ chế kiểm tra tự động nào cũng tìm ra mọi vi phạm. An toàn của dịch vụ này dựa trên việc báo cáo và xem xét bởi con người.</li>
+      <li>ULMOX không công bố các ngưỡng nội bộ, công cụ hay quy trình làm việc mà hệ thống an toàn sử dụng, bởi công bố chúng nghĩa là chỉ ra chính xác điều cần né tránh cho những người mà chúng tôi đang cố ngăn chặn.</li>
+    </ul>
+
+    <h2>Khiếu nại</h2>
+
+    <p>Nếu bạn cho rằng một nội dung hoặc một tài khoản bị xử lý nhầm, hãy viết thư tới <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> và sẽ có người xem xét. Xem <a href="support.html">Hỗ trợ</a> để biết nên đưa vào những gì.</p>
+
+    <h2>Trang liên quan</h2>
+
+    <p>
+      <a href="terms.html">Điều khoản</a>
+      &middot;
+      <a href="privacy.html">Chính sách quyền riêng tư</a>
+      &middot;
+      <a href="support.html">Hỗ trợ</a>
+      &middot;
+      <a href="delete_account.html">Xóa tài khoản</a>
+    </p>
+  </main>
+
   </div>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+  <footer>
+    <nav aria-label="Thông tin pháp lý và hỗ trợ">
+      <ul>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="privacy.html">Chính sách quyền riêng tư</a></li>
+        <li><a href="terms.html">Điều khoản</a></li>
+        <li><span aria-current="page">An toàn và kiểm duyệt</span></li>
+        <li><a href="support.html">Hỗ trợ</a></li>
+        <li><a href="delete_account.html">Xóa tài khoản</a></li>
+        <li><a href="translation.html">Thông tin về dịch</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Bản tiếng Anh của chính sách này là bản có hiệu lực. Nếu bản dịch khác với bản tiếng Anh, bản tiếng Anh sẽ được áp dụng.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

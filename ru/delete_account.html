@@ -1,26 +1,294 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Удаление аккаунта - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Как безвозвратно удалить аккаунт ULMOX — в приложении или по электронной почте — и что происходит с вашими данными." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">Перейти к содержимому</a>
+<div class="container">
+  <main id="main">
+    <h1>Удалите свой аккаунт ULMOX</h1>
+    <p class="effective">Действует с 2026-09-04. Последнее изменение: 2026-09-04.</p>
 
-  <h1>Удалить аккаунт</h1>
+    <p>На этой странице объясняется, как безвозвратно удалить аккаунт ULMOX и что происходит с вашими данными после этого.</p>
 
-  <p>Если вы хотите удалить свой аккаунт ULMOX, свяжитесь с нами:</p>
+    <div class="callout">
+      <p><strong>Деактивация — не удаление.</strong> Деактивация скрывает ваш профиль и ваш контент и может быть отменена. Удаление аккаунта необратимо и не может быть отменено.</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>Вариант 1 — удалить в приложении (предпочтительно)</h2>
 
-  <p>Укажите зарегистрированный адрес электронной почты.</p>
+    <p>Это самый быстрый путь, и он не требует переписки. Он доступен не для каждого аккаунта на каждом устройстве: аккаунт, связанный с Вход с Apple, не может завершить удаление с телефона на Android и должен завершить его на устройстве Apple. См. ниже <a href="#apple-linked">Если ваш аккаунт связан с Вход с Apple</a>.</p>
 
-  <p>Ваш аккаунт и все связанные данные будут окончательно удалены в течение 7 дней.</p>
+    <ol>
+      <li>Откройте ULMOX и перейдите в <strong>Профиль &rarr; Правовая информация и безопасность &rarr; Управление аккаунтом &rarr; Удалить аккаунт</strong>.</li>
+      <li>Прочитайте подтверждение, в котором сказано, что удаление необратимо.</li>
+      <li>Подтвердите. Сначала вас могут попросить войти заново — это защищает ваш аккаунт от удаления кем-то другим.</li>
+    </ol>
 
-  <p>Если у вас есть вопросы, напишите нам.</p>
+    <h2>Вариант 2 — запросить удаление по электронной почте</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>Если вы не можете открыть приложение, вы можете попросить нас удалить ваш аккаунт.</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">Напишите на ulmoxapp@outlook.com с темой «ULMOX Account Deletion Request»</a></p>
+
+    <p>Укажите только минимум, необходимый для поиска вашего аккаунта:</p>
+
+    <ul>
+      <li>адрес электронной почты, связанный с вашим аккаунтом ULMOX, и</li>
+      <li>ваше имя пользователя ULMOX, если вы его знаете.</li>
+    </ul>
+
+    <p>По возможности пишите с адреса электронной почты, связанного с вашим аккаунтом. Если ваш аккаунт связан с Вход с Apple и вы использовали <strong>Скрыть e-mail</strong>, напишите со своего ретрансляционного адреса Apple либо сообщите достаточно несекретных сведений об аккаунте, чтобы его опознать.</p>
+
+    <div class="callout">
+      <p><strong>Мы никогда не попросим у вас пароль, пароль Apple или Google, одноразовый код аутентификации, код авторизации, токен входа или фотографию документа, удостоверяющего личность</strong>, и никогда не попросим прислать что-либо из этого по электронной почте. Если вы получили сообщение, якобы от ULMOX, с такой просьбой, оно не от нас.</p>
+    </div>
+
+    <p>Прежде чем удалить аккаунт, мы проверяем, что он принадлежит вам. Запрос, отправленный из публичной веб-формы или с неподтверждённого адреса, сам по себе аккаунт не удаляет. Мы можем попросить подтвердить владение безопасным способом, например ответить с адреса электронной почты аккаунта.</p>
+
+    <h2>Что происходит при удалении аккаунта</h2>
+
+    <ul>
+      <li>Доступ и обнаруживаемость снимаются, как только удаление успешно запущено. Ваш профиль перестаёт быть виден другим, а ваш аккаунт перестаёт выбираться для новых доставок.</li>
+      <li>Физическое стирание сохранённых данных продолжается затем в фоне. Цель — завершить его в течение 30 дней, если обоснованная обязанность по безопасности или закону не требует ограниченного хранения.</li>
+      <li>Записанные вами видео, их миниатюры, сведения профиля, ваше фото профиля и принадлежащий вам контент Global удаляются.</li>
+      <li>Контент, принадлежащий другому человеку, <em>не</em> удаляется только потому, что вы им поделились. Вместо этого убирается ваша связь с ним, а видео остаётся у того, кто его создал.</li>
+      <li>Ваше имя пользователя удерживается 90 дней после удаления, прежде чем его можно будет использовать повторно, чтобы его не занял сразу кто-то другой.</li>
+      <li>Ограниченные записи безопасности, юридические или транзакционные записи могут сохраняться там, где для этого есть обоснованная причина, и только пока эта причина действует. Там, где сохраняется запись безопасности, связи, привязывающие её к вашей личности, вычищаются в рамках стирания, так что остаётся запись о том, что произошло, а не запись о вас.</li>
+      <li>Удаление вашего аккаунта не удаляет ничей чужой. В Connection участвуют двое, и сообщения, видео и записи второго участника остаются у него.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Доказательства безопасности — не обычная история сообщений.</strong> Connections и необязательный перевод сообщений вводятся постепенно и могут быть доступны пока не для каждого аккаунта и не для каждой установленной версии приложения. Если у вас есть Connection: обычное сообщение в ней считается истекающим примерно через семь дней после отправки. Сообщение, на которое пожаловались, этому больше не подчиняется: оно является доказательством при рассмотрении и хранится, пока идёт рассмотрение, и после него там, где это оправдано результатом, — в том числе после удаления аккаунта, с которого оно пришло. Удаление вашего аккаунта не отзывает поданную вами жалобу и не стирает жалобу, поданную на вас.</p>
+    </div>
+
+    <h2 id="apple-linked">Если ваш аккаунт связан с Вход с Apple</h2>
+
+    <p>Часть аккаунтов ULMOX связана с Вход с Apple. Если ваш из их числа, в безвозвратном удалении есть дополнительный шаг, потому что Apple требует, чтобы приложение при удалении аккаунта отказалось от своего разрешения Вход с Apple, а не просто стёрло собственную запись.</p>
+
+    <ol>
+      <li>На устройстве Apple ULMOX просит вас подтвердить ещё раз напрямую в Apple. Это подтверждение происходит между вами и Apple на вашем собственном устройстве. <strong>ULMOX не получает ваш пароль Apple</strong>, и мы никогда его не спрашиваем.</li>
+      <li>Именно это подтверждение позволяет ULMOX отозвать собственное разрешение Вход с Apple для вашего аккаунта.</li>
+      <li>Только после этого начинается описанное выше безвозвратное удаление.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Если этот шаг не завершится, ничего не удаляется.</strong> Если вы закроете экран Apple, если подтверждение вернёт аккаунт Apple, отличный от того, под которым выполнен вход, или если шаг не удастся по любой другой причине, ULMOX останавливается до того, как произойдёт что-либо необратимое, и сообщает вам, что ничего не удалено. Вы можете попробовать снова.</p>
+    </div>
+
+    <p>Три разные вещи легко перепутать:</p>
+
+    <ul>
+      <li><strong>Отзыв разрешения ULMOX на Вход с Apple</strong> лишает ULMOX возможности использовать Вход с Apple для вас. Сам по себе он не удаляет ваш аккаунт ULMOX и не стирает данные в нём.</li>
+      <li><strong>Удаление аккаунта ULMOX</strong> — это действие, которое убирает ваши данные в ULMOX. Оно завершено только тогда, когда выполнено описанное на этой странице стирание: никакое изменение разрешения на вход его не завершает.</li>
+      <li><strong>Удаление Apple ID</strong> может сделать только Apple по вашей собственной просьбе — ULMOX этого никогда не делает и не может сделать.</li>
+    </ul>
+
+    <h3>Удаление связанного с Apple аккаунта с устройства Android</h3>
+
+    <p>Шаг подтверждения Apple можно выполнить только на устройстве Apple. Если вы попытаетесь удалить связанный с Apple аккаунт ULMOX с телефона на Android, ULMOX остановится, ничего не удалив, и сообщит вам, что <strong>ничего не удалено</strong>. Завершите удаление на устройстве Apple.</p>
+
+    <p>Аккаунт, который использует только вход через Google или только адрес электронной почты, удаляется обычным образом на устройствах обоих типов. Аккаунту, связанному и с Apple, и с Google, по-прежнему нужен шаг Apple.</p>
+
+    <h2>Если вы просто хотите сделать паузу</h2>
+
+    <p>Деактивация скрывает ваш профиль и ваш контент Global и отменяется повторным входом с последующим выбором <strong>Реактивировать</strong>. Один только вход аккаунт не восстанавливает. Уже отправленные вами видео могут оставаться у получателей в течение их обычного срока хранения. Деактивация не удовлетворяет запрос на удаление — если вы хотите, чтобы ваши данные были убраны, используйте «Удалить аккаунт».</p>
+
+    <p>Деактивация не стирает записи безопасности, а повторная активация ничего не отменяет. Возвращение восстанавливает ваш доступ; оно не отменяет решение модерации, не возвращает контент, удалённый или скрытый модерацией, и не открывает заново завершённую Connection. Завершение Connection окончательно для этой пары. Блокировка работает иначе: блокировка завершает вашу текущую Connection и останавливает контакт в обе стороны, пока действует. Снятие блокировки тоже не восстанавливает прежнюю Connection — двум аккаунтам пришлось бы снова пройти путь с самого начала: два новых засчитанных обмена видео и новое согласие каждого из них.</p>
+
+    <h2>Вопросы</h2>
+
+    <p>Пишите на <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. См. также <a href="privacy.html">Политика конфиденциальности</a> и <a href="terms.html">Условия</a>.</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Правовая информация и поддержка">
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+        <li><a href="terms.html">Условия</a></li>
+        <li><a href="safety.html">Безопасность и модерация</a></li>
+        <li><a href="support.html">Поддержка</a></li>
+        <li><span aria-current="page">Удалить аккаунт</span></li>
+        <li><a href="translation.html">О переводе</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Версия этой политики на английском языке является определяющей. Если перевод отличается от неё, применяется английская версия.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

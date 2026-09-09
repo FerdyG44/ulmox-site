@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>번역 정보 - ULMOX</title>
+  <meta name="description" content="ULMOX의 번역은 Google Translate로 제공됩니다." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">번역 정보</a>
+  <div class="container">
+  <main id="main">
+    <h1>번역 정보</h1>
+    <div class="callout">
+      <p><strong>Connections와 선택적 메시지 번역은 단계적으로 도입되고 있으며, 모든 계정이나 설치된 모든 앱 버전에서 아직 사용하지 못할 수 있습니다.</strong></p>
+    </div>
+
+    <p>ULMOX의 번역은 Google Translate로 제공됩니다.</p>
+
+    <ul>
+      <li>번역은 선택 사항입니다. 요청하지 않으면 아무것도 번역되지 않으며, 한 번에 메시지 하나씩만 번역됩니다.</li>
+      <li>메시지 번역은 이 기기에서 이루어집니다. 메시지도 번역 결과도 번역을 위해 어딘가로 보내지지 않습니다.</li>
+      <li>어떤 언어를 번역하려면 먼저 언어 팩을 내려받아야 합니다. ULMOX는 먼저 묻고, 달리 선택하지 않으면 Wi-Fi로 내려받습니다.</li>
+      <li>Google의 번역 구성 요소는 스스로 네트워크를 쓸 수 있습니다. 언어 팩 내려받기, 자체 원격 설정 읽기, 그리고 구성 요소에 대한 진단 및 사용 분석 전송입니다. 메시지 본문은 여기에 포함되지 않습니다.</li>
+      <li>기계 번역은 틀릴 수 있고, 틀리면서도 확신에 찬 것처럼 읽힐 수 있습니다.</li>
+      <li>둘 다 영어가 아닌 두 언어 사이에서는 번역이 중간에 영어를 거칠 수 있고, 결과가 눈에 띄게 나빠질 수 있습니다.</li>
+      <li>기준은 원문 메시지입니다. 화면에 계속 남아 있고, 신고가 가리키는 것도 그것뿐입니다.</li>
+      <li>메시지를 번역해도 신고, 차단, 검토, 계정 관련 결정은 전혀 달라지지 않습니다. 신고에는 항상 원본 메시지가 포함되며, 담당자는 번역문이 아니라 그 원본을 검토합니다.</li>
+      <li>ULMOX는 번역문을 보관하지 않습니다. 번역문은 서버에 별도의 메시지로 저장되지 않으며 신고, 알림, 검토 자료, 분석에도 첨부되지 않습니다.</li>
+      <li>내려받은 언어 팩은 앱의 번역 모델에서 확인하고 삭제할 수 있습니다. ULMOX를 삭제하면 운영체제가 앱 파일을 지우는 일반적인 방식으로 언어 팩도 함께 삭제됩니다.</li>
+    </ul>
+
+    <h2>Google의 고지</h2>
+    <div class="callout">
+      <p>THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</p>
+    </div>
+    <p>Google이 이 문구를 쓰인 그대로 표시하도록 요구하므로 번역하지 않았습니다.</p>
+
+    <h2>번역 서비스에 대하여</h2>
+    <p>
+      <a href="https://translate.google.com/" target="_blank" rel="noopener noreferrer">Google Translate</a>
+      &middot;
+      <a href="https://cloud.google.com/translate" target="_blank" rel="noopener noreferrer">Cloud Translation</a>
+    </p>
+  </main>
+  <footer>
+    <nav aria-label="법적 고지 및 지원">
+      <ul>
+        <li><a href="index.html">홈</a></li>
+        <li><a href="privacy.html">개인정보 처리방침</a></li>
+        <li><a href="terms.html">약관</a></li>
+        <li><a href="safety.html">안전 및 모더레이션</a></li>
+        <li><a href="support.html">지원</a></li>
+        <li><a href="delete_account.html">계정 삭제</a></li>
+        <li><span aria-current="page">번역 정보</span></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+  </div>
+</body>
+</html>

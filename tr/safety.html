@@ -4,167 +4,303 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ULMOX Güvenlik ve Moderasyon</title>
-
+  <meta name="description" content="ULMOX’un çocukların cinsel istismarını ve sömürüsünü nasıl önlediği, tespit ettiği ve ele aldığı." />
   <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      padding: 0;
-      background-color: #0d0d0f;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
     }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
 
     .container {
-      max-width: 900px;
+      max-width: 860px;
       margin: 0 auto;
-      padding: 60px 24px;
+      padding: 48px 20px 72px;
     }
 
-    h1 {
-      font-size: 42px;
-      margin-bottom: 30px;
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
     }
 
-    h2 {
-      margin-top: 42px;
-      font-size: 24px;
-      color: #ffffff;
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
     }
 
-    p, li {
-      color: #d0d0d0;
-      font-size: 17px;
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
     }
 
-    ul {
-      padding-left: 22px;
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
     }
 
-    a {
-      color: #9d7bff;
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
     }
 
-    .footer {
-      margin-top: 60px;
-      padding-top: 30px;
-      border-top: 1px solid #2a2a2e;
-      color: #888;
-      font-size: 14px;
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
     }
   </style>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
 </head>
-
 <body>
+  <a class="ulmox-skip-link" href="#main">İçeriğe geç</a>
+<div class="container">
+  <main id="main">
+    <h1>ULMOX Çocuk Güvenliği Standartları</h1>
+    <p class="effective">Yürürlük tarihi 2026-09-04. Son güncelleme 2026-09-04.</p>
 
-  <div class="container">
+    <p>ULMOX yalnızca <strong>18 yaş ve üzeri</strong> yetişkinlere açıktır. Bu sayfa, çocukların cinsel istismarını ve sömürüsünü nasıl önlediğimizi, tespit ettiğimizi ve bunlara karşı nasıl işlem yaptığımızı açıklar.</p>
 
-    <h1>ULMOX Güvenlik ve Moderasyon</h1>
-
-    <p>
-      ULMOX, tüm kullanıcılar için güvenli ve saygılı bir ortam sunmayı taahhüt eder.
-    </p>
-
-    <h2>İçerik Moderasyonu</h2>
-
-    <p>
-      ULMOX’ta paylaşılan içerikler otomatik tespit sistemleri ve moderasyon araçlarıyla incelenebilir.
-    </p>
-
-    <p>
-      Politikalarımızı ihlal eden içerikleri aktif olarak izler ve kaldırırız. Bunlara şunlar dahildir:
-    </p>
-
-    <ul>
-      <li>Taciz veya zorbalık</li>
-      <li>Nefret söylemi</li>
-      <li>Cinsel veya açık içerik</li>
-      <li>Şiddet içeren veya rahatsız edici görsel materyal</li>
-      <li>Spam veya yanıltıcı içerik</li>
-      <li>Yasa dışı faaliyet</li>
-      <li>Çocuk istismarı veya kötüye kullanım davranışı</li>
-    </ul>
-
-    <h2>Raporlama Sistemi</h2>
-
-    <p>
-      Kullanıcılar içerikleri doğrudan uygulama içinden raporlayabilir.
-    </p>
-
-    <p>
-      Raporlanan içerikler incelenir ve şu işlemlere tabi tutulabilir:
-    </p>
-
-    <ul>
-      <li>Kaldırılabilir</li>
-      <li>Herkese açık akışlardan gizlenebilir</li>
-      <li>Daha ayrıntılı incelemeye aktarılabilir</li>
-      <li>Hesapların askıya alınması veya yasaklanması için kullanılabilir</li>
-    </ul>
-
-    <h2>Engelleme Özellikleri</h2>
-
-    <p>
-      Kullanıcılar diğer kullanıcıları istedikleri zaman engelleyebilir.
-    </p>
-
-    <p>
-      Engellenen kullanıcılar, engelleyen kullanıcının deneyiminde artık etkileşim kuramaz veya görünemez.
-    </p>
-
-    <h2>Yapay Zeka Destekli Tespit</h2>
-
-    <p>
-      ULMOX, potansiyel olarak güvensiz veya uygunsuz içerikleri daha geniş kitlelere ulaşmadan önce tespit etmek için otomatik sistemler kullanabilir.
-    </p>
-
-    <p>
-      Otomatik sistemler tarafından işaretlenen içerikler ek incelemeye alınabilir.
-    </p>
-
-    <h2>Kullanıcı Güvenliği</h2>
-
-    <p>
-      Saygılı iletişimi ve olumlu etkileşimleri teşvik ederiz.
-    </p>
-
-    <p>
-      Kurallarımızı tekrar tekrar ihlal eden hesaplar askıya alınabilir veya kalıcı olarak yasaklanabilir.
-    </p>
-
-    <h2>Çocuk Güvenliği</h2>
-
-    <p>
-      ULMOX, çocukların cinsel istismarına ilişkin materyallere (CSAM) ve sömürücü davranışlara karşı sıfır tolerans uygular.
-    </p>
-
-    <p>
-      Tespit edilen CSAM bağlantılı içerik veya faaliyet derhal kaldırılır ve ilgili makamlara bildirilebilir.
-    </p>
-
-    <h2>İletişim</h2>
-
-    <p>
-      Güvenlik endişeleri veya moderasyon itirazları için:
-    </p>
-
-    <p>
-      <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>
-    </p>
-
-    <div class="footer">
-      © 2026 ULMOX. Tüm hakları saklıdır.
+    <div class="callout">
+      <p><strong>Bir çocuk ani tehlike altındaysa önce yerel acil durum hizmetlerini arayın.</strong> ULMOX’a bildirimde bulunmak, yetkililere başvurmanın yerine geçmez.</p>
     </div>
 
-  </div>
+    <h2>Sıfır tolerans</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>ULMOX, çocukların cinsel istismarı ve sömürüsüne (CSAE) ve çocuk cinsel istismarı materyaline (CSAM) sıfır tolerans gösterir. Bunlarla ilgili hesaplar ve içerikler kaldırılır.</p>
+
+    <h2>Neler yasaktır</h2>
+
+    <p>Açıkça söylemek gerekirse, ULMOX’ta aşağıdakilere asla izin verilmez:</p>
+
+    <ul>
+      <li>18 yaşından küçük bir kişiyi içeren, gerçek veya canlandırılmış her türlü cinsel içerik.</li>
+      <li>Çocuğu cinsel olarak sömürmek amacıyla güven inşa etmek (grooming); buna, bir çocuktan teması ebeveynlerinden veya vasilerinden gizli tutmasını istemek de dahildir.</li>
+      <li>Bir çocuğu cinselleştirmek ya da çocuktan cinsel görsel veya temas istemek.</li>
+      <li>Zorlama, şantaj (cinsel şantaj dahil), insan ticareti veya bir çocuğu ciddi tehlikeye atan her türlü davranış.</li>
+      <li>Bu tür materyalin reklamını yapmak, aramak veya buna bağlantı vermek.</li>
+    </ul>
+
+    <h2>Nasıl bildirilir</h2>
+
+    <p>Uygulama içinde <strong>İçeriği Bildir</strong> ve <strong>Kullanıcıyı Bildir</strong> seçeneklerini kullanabilirsiniz. Her ikisinde de ayrı bir <strong>Çocuk Güvenliği</strong> kategorisi vardır. Ayrıca bir kullanıcıyı engelleyebilirsiniz; bu, aranızdaki tüm etkileşimi her iki yönde durdurur.</p>
+
+    <p>Bize yazabilirsiniz de:</p>
+
+    <p><strong>ULMOX Çocuk Güvenliği İletişimi</strong><br /> <a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ulmoxapp@outlook.com</a></p>
+
+    <h2>Bundan sonra ne olur</h2>
+
+    <ul>
+      <li>Çocuk güvenliği raporlarına insan incelemesinde <strong>en yüksek öncelik</strong> verilir.</li>
+      <li>Bildirilen içerik, bir kişi incelerken herkese açık olarak gösterilmemesi ve iletilmemesi için hemen <strong>geri alınabilir bir karantinaya</strong> alınır.</li>
+      <li>Kanıtlar inceleme için korunur ve yalnızca yetkili moderatörler tarafından erişilebilir.</li>
+      <li>Raporlar bir hesabı otomatik olarak yasaklamaz. Rapor sayısı da, bir mesajı tutan otomatik filtre de, bir karantina da, bir çeviri de yasaklamaz. Yasaklama, yalnızca yetkili bir ULMOX yöneticisinin verebileceği ve yalnızca vakayı inceledikten sonra vereceği ayrı ve bilinçli bir karardır.</li>
+      <li>Bir raporun sonuçlandırılması onu etkin inceleme listesinden çıkarır. Bu, onu silmez: bir kararın denetlenebilmesi ve bir itirazın yanıtlanabilmesi için kanıt ve verilen kararın kaydı, saklamak için haklı bir neden bulunduğu yerlerde tutulur.</li>
+      <li>Bir inceleyici bildirilen bir videoyu onaylarsa, video Global akışa yalnızca bağımsız olarak hâlâ uygunsa döner. Sahibi ayrılmış, kısıtlanmış veya yasaklanmış ya da ayrı bir nedenle erişilemez olan içerik, rapor kararı ne olursa olsun erişilemez kalır.</li>
+      <li>Geçerli yasa gerektirdiğinde, yasal olarak yetkilendirilmiş uygun makama bildirimde bulunuruz.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Hedefimiz, acil çocuk güvenliği raporlarını 24 saat içinde incelemeye almaktır.</strong> Bu, insan incelemesinin başlatılmasına ilişkin bir hedeftir. Her vakanın 24 saat içinde kesin olarak sonuçlandırılacağının garantisi değildir ve karmaşık vakalar daha uzun sürebilir.</p>
+    </div>
+
+    <p>Diğer güvenlik raporları makul ölçüde mümkün olan en kısa sürede incelenir.</p>
+
+    <h2>Bağlantılarda güvenlik</h2>
+
+    <div class="callout">
+      <p><strong>Connections ve isteğe bağlı mesaj çevirisi kademeli olarak kullanıma sunuluyor; her hesapta veya yüklü her uygulama sürümünde henüz mevcut olmayabilir.</strong></p>
+    </div>
+
+    <p>Bağlantı, iki ayrı nitelikli video alışverişinden sonra her ikisinin de onayladığı, iki yetişkin arasındaki yalnızca metinden oluşan bir konuşmadır. ULMOX’ta kullanıcı araması yoktur; bu nedenle kimse size mesaj göndermek için sizi aratamaz. Bir Bağlantı içindeki güvenlik denetimleri şunlardır:</p>
+
+    <ul>
+      <li><strong>Mesajı Bildir.</strong> Aldığınız bir mesajda kullanılabilir. Bildirim, incelenmek üzere orijinal mesajı bir kişiye gönderir.</li>
+      <li><strong>Bildirim, mesajı yalnızca sizin için gizler.</strong> Bir mesajı bildirdikten sonra mesaj, konuşmanın sizdeki görünümünden kaybolur. Gönderenin kopyası değişmez ve gönderene bildirimde bulunduğunuz söylenmez. Gizleme sizin yararınızadır; ona uygulanan bir yaptırım değildir ve mesaj hakkındaki karar yine bir kişiye aittir.</li>
+      <li><strong>Kullanıcıyı Bildir.</strong> Tek bir mesaj yerine kişi için ayrıca kullanılabilir. Her ikisinde de ayrı bir çocuk güvenliği kategorisi vardır.</li>
+      <li><strong>Engelle.</strong> Engelleme etkileşimi her iki yönde durdurur. Bir bildirimden sonra ayrı bir seçenek olarak sunulur, hiçbir zaman bildirime dahil edilmez ve bunu reddetmeniz bildiriminizi etkilemez. Bir engelleme mevcut Bağlantınızı da sonlandırır. Engellemeyi kaldırmak o Bağlantıyı geri getirmez: çiftin baştan yeniden uygun hâle gelmesi, yani iki yeni nitelikli video alışverişi ve her iki kişiden yeni birer onay gerekir.</li>
+      <li><strong>Bağlantıyı Sonlandır.</strong> Konuşmayı her iki kişi için de sonlandırır. Geri getirilemez ve gelecekteki bir karşılaşmada yeniden açılmaz. Sonlandırmak engellemekle aynı şey değildir ve daha önce yaptığınız bildirimleri silmez.</li>
+      <li><strong>Ayrılmak her zaman çalışır.</strong> Başka ne olursa olsun engelleme ve Bağlantıyı sonlandırma size açık kalır — bir güvenlik eylemi hiçbir zaman kullanılamayan şey değildir.</li>
+      <li><strong>Mesajların süresi dolar.</strong> Bir Bağlantıdaki olağan bir mesaj, gönderilmesinden yaklaşık yedi gün sonra süresi dolmuş sayılır. Bildirdiğiniz bir mesaj farklı işlenir: bir incelemede kanıt hâline geldiğinde yedi günlük süre artık onu yönetmez; inceleme açık olduğu sürece ve sonucun saklamayı haklı çıkardığı durumlarda sonrasında da tutulur.</li>
+      <li><strong>Hiçbir ek yoktur.</strong> Bağlantılar yalnızca yazılı mesaj taşır — fotoğraf, video, dosya veya sesli not yoktur.</li>
+    </ul>
+
+    <h2>Çevrilen mesajlar</h2>
+
+    <ul>
+      <li>Bir bildirim her zaman <strong>orijinal mesajla</strong> ilgilidir. Bildirim orijinali taşır ve moderatörün okuduğu şey budur.</li>
+      <li>Bir okuyucuya gösterilen isteğe bağlı çeviri, bir moderasyon kararı değildir ve kanıt değildir.</li>
+      <li>Bir çeviri, bir mesajı iletilebilir hâle getiremez. Engellenen veya tutulan içerik, hangi dilde okunursa okunsun engellenmiş veya tutulmuş kalır.</li>
+      <li>Bir çevirinin ürettiği şey nedeniyle hiçbir hesap yasaklanmaz. Bir hesabı yalnızca yetkili bir ULMOX yöneticisi ve yalnızca orijinal kanıtı inceledikten sonra yasaklayabilir.</li>
+    </ul>
+
+    <p>Bkz. <a href="translation.html">Çeviri bilgileri</a>.</p>
+
+    <h2>ULMOX’un yapmadıkları</h2>
+
+    <ul>
+      <li>ULMOX video karelerini, sesi veya dökümleri otomatik olarak analiz etmez. Video güvenliği; raporlamaya, geri alınabilir karantinaya, engellemeye ve insan incelemesine dayanır.</li>
+      <li>ULMOX hesapları otomatik olarak yasaklamaz ve hiçbir rapor sayısı otomatik bir yasaklama üretmez.</li>
+      <li>ULMOX, herhangi bir otomatik denetimin her ihlali bulduğunu iddia etmez. Bu hizmetin güvenliği raporlamaya ve insan incelemesine dayanır.</li>
+      <li>ULMOX, güvenlik sistemlerinin kullandığı dahili eşikleri, araçları veya çalışma yöntemlerini yayımlamaz; çünkü bunları yayımlamak, durdurmaya çalıştığımız kişilere tam olarak neden kaçınmaları gerektiğini söylemek olurdu.</li>
+    </ul>
+
+    <h2>İtirazlar</h2>
+
+    <p>Bir içerik veya hesap hakkında hatalı işlem yapıldığını düşünüyorsanız <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> adresine yazın; bir kişi bunu inceleyecektir. Nelerin ekleneceği için bkz. <a href="support.html">Destek</a>.</p>
+
+    <h2>İlgili sayfalar</h2>
+
+    <p>
+      <a href="terms.html">Şartlar</a>
+      &middot;
+      <a href="privacy.html">Gizlilik Politikası</a>
+      &middot;
+      <a href="support.html">Destek</a>
+      &middot;
+      <a href="delete_account.html">Hesabı Sil</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Yasal bilgiler ve destek">
+      <ul>
+        <li><a href="index.html">Ana sayfa</a></li>
+        <li><a href="privacy.html">Gizlilik Politikası</a></li>
+        <li><a href="terms.html">Şartlar</a></li>
+        <li><span aria-current="page">Güvenlik ve Moderasyon</span></li>
+        <li><a href="support.html">Destek</a></li>
+        <li><a href="delete_account.html">Hesabı Sil</a></li>
+        <li><a href="translation.html">Çeviri bilgileri</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Bu politikanın İngilizce sürümü esas alınan sürümdür. Bir çeviri bundan farklıysa İngilizce sürüm geçerlidir.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

@@ -1,119 +1,324 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kullanım Şartları - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="ULMOX’u kullanırken geçerli olan şartlar: uygunluk, içerik, Bağlantılar, moderasyon ve itirazlar." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;line-height:1.7;max-width:900px;margin:auto;">
+<body>
+  <a class="ulmox-skip-link" href="#main">İçeriğe geç</a>
+<div class="container">
+  <main id="main">
+    <h1>Kullanım Şartları</h1>
+    <p class="effective">Yürürlük tarihi 2026-09-04. Son güncelleme 2026-09-04.</p>
 
-<h1>Kullanım Şartları</h1>
+    <p>Bu Şartlar, ULMOX’u kullandığınızda geçerlidir. Bunları kabul etmiyorsanız lütfen hizmeti kullanmayın.</p>
 
-<p><strong>Son Güncelleme:</strong> Ağustos 2026</p>
+    <h2>1. ULMOX’u kimler kullanabilir</h2>
 
-<p>
-ULMOX’a hoş geldiniz. ULMOX, dünyanın dört bir yanındaki gerçek insanlar arasında samimi video anlarının paylaşılması için tasarlanmış bir platformdur. Bir hesap oluşturarak veya ULMOX’u kullanarak bu Kullanım Şartları’nı ve Topluluk Kurallarımızı kabul etmiş olursunuz.
-</p>
+    <ul>
+      <li><strong>18 yaşında veya daha büyük</strong> olmalısınız.</li>
+      <li>Yaşınız hakkında doğru bilgi vermelisiniz.</li>
+      <li>Yaş şartını aşmaya çalışmamalı ve başkasının bunu yapmasına yardım etmemelisiniz.</li>
+      <li>Hesaplar kalıcıdır ve anonim değildir. Desteklenen bir sağlayıcıyla oturum açar ve hizmet genelinde tek bir kimliği korursunuz.</li>
+    </ul>
 
-<h2>Kabul Edilebilir Kullanım</h2>
+    <h2>2. İçerikleriniz</h2>
 
-<p>Kullanıcılar ULMOX’u saygılı, güvenli ve yasalara uygun şekilde kullanmalıdır.</p>
+    <p>Oluşturduğunuz ve yüklediğiniz videolardan ve profil içeriğinden siz sorumlusunuz. Yüklediğiniz şeyi paylaşma hakkına sahip olmalısınız ve bu içerik bu Şartları veya yasayı ihlal etmemelidir.</p>
 
-<p>Aşağıdaki içerik ve davranışlar kesinlikle yasaktır:</p>
+    <h3>Mülkiyet ve lisans</h3>
 
-<ul>
-  <li>Çıplaklık veya cinsel açıdan açık içerik</li>
-  <li>Şiddet, rahatsız edici görsel içerik veya tehditler</li>
-  <li>Taciz, zorbalık, kötüye kullanım veya sindirme davranışları</li>
-  <li>Nefret söylemi, ayrımcılık veya nefreti teşvik etme</li>
-  <li>Yasa dışı faaliyetler veya yasa dışı faaliyetleri teşvik etme</li>
-  <li>Spam, dolandırıcılık, aldatıcı veya yanıltıcı içerik</li>
-  <li>Başka bir kişinin gizliliğini, haklarını veya güvenliğini ihlal eden içerik</li>
-  <li>Platform güvenlik sistemlerini veya moderasyon araçlarını aşmaya yönelik girişimler</li>
-</ul>
+    <p><strong>İçeriğinizin mülkiyeti sizde kalır.</strong> Hizmeti işletebilmek için ULMOX’a, içeriğinizi barındırmak, saklamak, çoğaltmak ve iletmek üzere münhasır olmayan, dünya çapında, telifsiz bir lisans verirsiniz; bu lisans yalnızca içeriği seçilen alıcıya iletebilmemiz, küçük resim üretebilmemiz ve bir alıcı içeriği Global akışta paylaşırsa orada gösterebilmemiz içindir. Lisans yalnızca ULMOX’u çalıştırmak için vardır ve içerik kaldırıldığında sona erer; güvenlik kanıtı olarak veya bir yasal yükümlülüğü yerine getirmek için bir kopya tutmamız gereken durumlar hariç.</p>
 
-<h2>Kullanıcı Tarafından Oluşturulan İçerik</h2>
+    <p>Bir kişi aldığı videoyu Global akışta paylaştığında videonun sahibi <strong>olmaz</strong>. Videoyu kaydeden kişi sahibi olmayı sürdürür.</p>
 
-<p>
-Kullanıcılar, ULMOX üzerinden oluşturdukları, yükledikleri, gönderdikleri veya paylaştıkları içerikten yalnızca kendileri sorumludur.
-</p>
+    <h2>3. Bağlantılar</h2>
 
-<p>
-ULMOX, kullanıcı tarafından oluşturulan içerikleri onaylamaz ve bu Kullanım Şartları’nı veya Topluluk Kuralları’nı ihlal eden içerikleri inceleme, kısıtlama, kaldırma veya moderasyona tabi tutma hakkını saklı tutar.
-</p>
+    <div class="callout">
+      <p><strong>Connections ve isteğe bağlı mesaj çevirisi kademeli olarak kullanıma sunuluyor; her hesapta veya yüklü her uygulama sürümünde henüz mevcut olmayabilir.</strong></p>
+    </div>
 
-<h2 id="ulmox-music">ULMOX Music</h2>
+    <p>Bağlantı, daha önce video anları alışverişinde bulunmuş iki yetişkin arasındaki karşılıklı ve yalnızca metinden oluşan bir konuşmadır. Bir sohbet rehberi değildir ve açık mesajlaşma değildir. İşleyiş kuralları şunlardır:</p>
 
-<p>
-ULMOX, Anlarda kullanılmak üzere müzik sunabilir. Bu Kullanım Şartları’na tabi olarak, bu müziği ULMOX’ta oluşturduğunuz videolarla senkronize edebilir ve tamamlanan videoları ULMOX üzerinden paylaşabilirsiniz. Müziği ayrı bir ses dosyası olarak çıkaramaz, yeniden dağıtamaz, satamaz veya erişime sunamazsınız.
-</p>
+    <ul>
+      <li><strong>Yalnızca yetişkinler.</strong> Bağlantılar 18+ bir hizmetin parçasıdır ve yalnızca yaş şartını geçmiş hesaplara açıktır.</li>
+      <li><strong>İnsan arayamazsınız.</strong> ULMOX’ta kullanıcı araması yoktur ve birine ulaşmak için onu aratmanın hiçbir yolu yoktur. Bir Bağlantı yalnızca zaten var olan bir temastan doğabilir.</li>
+      <li><strong>Önceden iki nitelikli video teması.</strong> Bir çift, yalnızca bu iki hesap arasında iki ayrı nitelikli video alışverişinden sonra uygun hâle gelir. Bir tanesi yeterli değildir.</li>
+      <li><strong>Her iki kişinin de onaylaması gerekir.</strong> Her kişi bağımsız olarak onaylar. İkisi de onaylamadan Bağlantı yoktur ve hiçbir mesaj gönderilemez.</li>
+      <li><strong>Yalnızca metin, hiçbir ek yok.</strong> Bir Bağlantı yazılı mesaj taşır. Ek yoktur — fotoğraf, video, dosya veya sesli not yoktur.</li>
+      <li><strong>Hesaplar kalıcıdır ve anonim değildir.</strong> Bağlandığınız kişi, ULMOX genelinde herkes gibi tek bir kimliğe sahiptir.</li>
+      <li><strong>Mesajların süresi dolar.</strong> Olağan bir mesaj, gönderilmesinden yaklaşık yedi gün sonra süresi dolmuş sayılır. Raporlanan mesajlar farklı işlenir — bkz. Gizlilik Politikası.</li>
+      <li><strong>Raporlama ve ayrılma her zaman çalışır.</strong> <strong>Kullanıcıyı Bildir</strong> ve <strong>Mesajı Bildir</strong> seçeneklerini kullanabilir, <strong>Engelle</strong> diyebilir ve <strong>Bağlantıyı Sonlandır</strong> seçeneğini kullanabilirsiniz. Bir Bağlantıyı sonlandırmak o çift için kesindir: yeniden başlamaz ve sonraki bir karşılaşma onu yeniden açmaz. Engelleme aynı şey değildir. Bir engelleme mevcut Bağlantınızı sonlandırır ve yürürlükte olduğu sürece her iki yönde de teması durdurur. Engellemeyi kaldırmak eski Bağlantıyı geri getirmez: çiftin baştan yeniden uygun hâle gelmesi, yani iki yeni nitelikli video alışverişi ve her iki kişiden yeni birer onay gerekir.</li>
+      <li><strong>Raporları makineler değil insanlar inceler.</strong> Raporlanan bir mesajı bir kişi değerlendirir.</li>
+      <li><strong>Çeviri isteğe bağlıdır.</strong> Aldığınız bir mesajı kendi cihazınızda çevirebilirsiniz. Esas olan ve bir inceleyicinin okuduğu şey orijinaldir. Bkz. <a href="translation.html">Çeviri bilgileri</a>.</li>
+    </ul>
 
-<h2>Raporlama ve Engelleme</h2>
+    <h2>4. Neye izin verilmez</h2>
 
-<p>
-Kullanıcılar sakıncalı içerikleri bildirebilir veya diğer kullanıcıları istedikleri zaman engelleyebilir.
-</p>
+    <p>ULMOX’ta aşağıdakiler yasaktır:</p>
 
-<p>
-Raporlanan içerikler ULMOX moderatörleri tarafından incelenebilir. Bir kullanıcıyı engellemek, o kullanıcının içeriklerini engelleyen kullanıcının deneyiminden hemen kaldırır ve ek moderasyon incelemesini tetikleyebilir.
-</p>
+    <ul>
+      <li>Her biçimde çocukların cinsel istismarı ve sömürüsü (CSAE) ile çocuk cinsel istismarı materyali (CSAM).</li>
+      <li>Herhangi bir kişinin cinsel sömürüsü.</li>
+      <li>Rıza dışı cinsel içerik ve 18 yaşından küçük olabilecek kişileri içeren cinsel içerik.</li>
+      <li>Tehditler, şiddete teşvik ve şiddeti yücelten içerik.</li>
+      <li>Nefret söylemi ve hedefli taciz.</li>
+      <li>Başka bir kişinin veya kurumun kimliğine bürünmek.</li>
+      <li>Dolandırıcılık, sahtecilik ve spam.</li>
+      <li>Yasa dışı içerik ve yasa dışı faaliyet.</li>
+      <li>Bir başkasının özel bilgilerini izni olmadan paylaşmak.</li>
+    </ul>
 
-<h2>Moderasyon ve Yaptırım</h2>
+    <h2>5. Raporlama, engelleme ve moderasyon</h2>
 
-<p>
-ULMOX, sakıncalı içeriklere ve kötüye kullanımda bulunan kullanıcılara karşı sıfır tolerans politikası uygular.
-</p>
+    <ul>
+      <li>Uygulamanın içinden içerik ve kullanıcı bildirebilirsiniz. Ayrı bir çocuk güvenliği kategorisi vardır.</li>
+      <li>Başka bir kullanıcıyı engelleyebilirsiniz. Engelleme etkileşimi her iki yönde durdurur ve engellediğiniz kişiye bildirilmez.</li>
+      <li>Raporlanan içerik, incelenirken <strong>geri alınabilir bir karantinaya</strong> alınabilir. Karantina içeriği geçici olarak gizler; onu silmez ve hesaba karşı bir yaptırım değildir.</li>
+      <li>Moderasyon kararları otomatik olarak değil, insanlar tarafından verilir. Raporlanan videolar ve raporlanan mesajların ikisi de bir kişi tarafından incelenir.</li>
+      <li>Otomatik bir güvenlik filtresi tarafından tutulan bir mesaj, hesabınız hakkında bir karar <strong>değildir</strong>. Bir mesajı tutmak veya içeriği karantinaya almak yalnızca o öğeyi kısıtlar, başka hiçbir şeyi değil.</li>
+      <li>Bir inceleyici bir videoyu onaylarsa, video Global akışa yalnızca bağımsız olarak hâlâ uygunsa döner. Sahibi ayrılmış, kısıtlanmış veya yasaklanmış ya da ayrı bir nedenle erişilemez olan bir video, rapor kararı ne olursa olsun erişilemez kalır.</li>
+      <li>Bir rapor sonuçlandığında etkin inceleme listesinden çıkar. Silinmez: kanıt ve verilen kararın kaydı, saklamak için haklı bir neden bulunduğu yerlerde tutulur.</li>
+      <li>Bir rapor her zaman orijinal içerik hakkındadır. Okumayı seçtiğiniz bir çeviri hiçbir zaman incelenen şey değildir ve hiçbir zaman kanıt değildir.</li>
+      <li>Güvenlik sistemlerimizin kullandığı dahili eşikleri, araçları veya çalışma yöntemlerini yayımlamayız.</li>
+    </ul>
 
-<p>
-ULMOX, tamamen kendi takdirine bağlı olarak ve önceden bildirimde bulunmadan şunları yapabilir:
-</p>
+    <div class="callout">
+      <p><strong>Raporlar hesap yasaklamaz.</strong> Hiçbir rapor sayısı bir hesabı otomatik olarak yasaklamaz. Başka hiçbir şey de yasaklamaz: bir mesajı tutan otomatik filtre de, bir karantina da, bir çeviri de, tek bir içeriği kaldırma kararı da. Bir hesabı yalnızca yetkili bir ULMOX yöneticisi, ayrı ve bilinçli bir karar olarak ve yalnızca vakayı inceledikten sonra yasaklayabilir.</p>
+    </div>
 
-<ul>
-  <li>İçeriği kaldırmak</li>
-  <li>Hesap işlevlerini kısıtlamak</li>
-  <li>Hesapları askıya almak</li>
-  <li>Hesapları kalıcı olarak sonlandırmak</li>
-  <li>Kullanıcıları ve platformu korumak için gerektiğinde ek moderasyon işlemleri uygulamak</li>
-</ul>
+    <p>ULMOX video karelerini, sesi veya dökümleri otomatik olarak analiz etmez. Güvenlik; raporlamaya, geri alınabilir karantinaya, engellemeye ve insan incelemesine dayanır.</p>
 
-<h2>Küresel İçerik Görünürlüğü</h2>
+    <h2>6. Devre dışı bırakma ve silme</h2>
 
-<p>
-ULMOX’a yüklenen anlar otomatik olarak global şekilde yayınlanmaz.
-</p>
+    <ul>
+      <li><strong>Devre dışı bırakma</strong> geri alınabilir: hesabı yeniden oturum açıp <strong>Yeniden Etkinleştir</strong> seçerek geri getirirsiniz; yalnızca oturum açmak bunu yapmaz. Profiliniz ve Global içeriğiniz gizlenir ve hesap geri getirilebilsin diye verileriniz saklanır. Daha önce gönderdiğiniz videolar, olağan saklama süreleri boyunca bunları alan kişilerde kalabilir.</li>
+      <li><strong>Silme</strong> kalıcıdır ve geri alınamaz. Erişim ve bulunabilirlik hemen sona erer, silme arka planda sürer. Haklı görüldüğü durumlarda sınırlı güvenlik, yasal veya işlem kayıtları tutulabilir. Bkz. <a href="delete_account.html">Hesabı Sil</a>.</li>
+    </ul>
 
-<p>
-Her an önce özel olarak bir alıcıya iletilir. Yalnızca kullanıcıların paylaşmayı seçtiği anlar platform içinde daha geniş görünürlüğe uygun hale gelebilir. ULMOX, bu şartları veya Topluluk Kuralları’nı ihlal eden içerikleri ayrıca kısıtlayabilir, kaldırabilir veya moderasyona tabi tutabilir.
-</p>
+    <h2>7. Yaptırım ve itirazlar</h2>
 
-<h2>Gizlilik ve Güvenlik</h2>
+    <p>İçeriği incelenirken gizleyebilir, bu Şartları ihlal eden içeriği kaldırabilir ve yetkili bir yönetici aracılığıyla bir hesabı askıya alabilir veya sonlandırabiliriz. İçeriğiniz veya hesabınız hakkındaki bir kararın yanlış olduğunu düşünüyorsanız <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> adresine yazın; bir kişi bunu inceleyecektir. Bkz. <a href="support.html">Destek</a>.</p>
 
-<p>
-Kullanıcılar başkalarının gizliliğine ve güvenliğine saygı göstermelidir. Kişisel bilgileri, özel verileri veya başkalarına zarar vermeyi, tehdit etmeyi ya da onları sömürmeyi amaçlayan içerikleri paylaşmak yasaktır.
-</p>
+    <h2>Makine çevirisi</h2>
 
-<h2>Sorumluluk Reddi</h2>
+    <ul>
+      <li>ULMOX, aldığınız bir mesajın isteğe bağlı makine çevirisini sunabilir. <strong>Makine çevirileri eksik veya yanlış olabilir.</strong></li>
+      <li>Anlamın önemli olduğu yerde orijinal mesaja güvenin. Orijinal görünür kalır ve esas alınan sürümdür.</li>
+      <li>Bir mesajı çevirmek, yazdığınız içerik konusundaki sorumluluğunuzu değiştirmez. Orijinal mesajınızdan siz sorumlu olmayı sürdürürsünüz.</li>
+      <li>Çeviri bu Şartlara bir istisna yaratmaz. Kuralları ihlal eden içerik her dilde ihlal eder.</li>
+      <li>Çeviri teknolojisini Google sağlar. Google, ULMOX üzerinden gönderilen hiçbir mesajı yazmaz, incelemez, onaylamaz veya desteklemez.</li>
+    </ul>
 
-<p>
-ULMOX “olduğu gibi” ve “mevcut olduğu şekilde” sunulur. Güvenli ve güvenilir bir hizmet sağlamak için çalışsak da kesintisiz erişim veya hatasız çalışma garantisi vermeyiz.
-</p>
+    <p>Bkz. <a href="translation.html">Çeviri bilgileri</a>.</p>
 
-<h2>Bu Şartlarda Yapılacak Değişiklikler</h2>
+    <h2 id="ulmox-music">ULMOX Music</h2>
 
-<p>
-ULMOX bu Kullanım Şartları’nı zaman zaman güncelleyebilir. Değişiklikler yürürlüğe girdikten sonra hizmeti kullanmaya devam etmeniz, güncellenmiş şartları kabul ettiğiniz anlamına gelir.
-</p>
+    <p>ULMOX, Anlarda kullanılmak üzere müzik sunabilir. Bu Kullanım Şartları’na tabi olarak, bu müziği ULMOX’ta oluşturduğunuz videolarla senkronize edebilir ve tamamlanan videoları ULMOX üzerinden paylaşabilirsiniz. Müziği ayrı bir ses dosyası olarak çıkaramaz, yeniden dağıtamaz, satamaz veya erişime sunamazsınız.</p>
 
-<h2>İletişim</h2>
+    <h2>8. Bu Şartlardaki değişiklikler</h2>
 
-<p>
-Sorular, raporlar, güvenlik endişeleri veya destek talepleri için:
-<br><br>
-ulmoxapp@outlook.com
-</p>
+    <p>Bu Şartları güncelleyebiliriz. Yukarıdaki yürürlük tarihi geçerli sürümü gösterir. Bir değişiklik önemli olduğunda, ULMOX’u kullanmaya devam etmeden önce güncellenmiş Şartları uygulamada kabul etmenizi isteyebiliriz.</p>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <h2>9. İlgili sayfalar</h2>
+
+    <p>
+      <a href="privacy.html">Gizlilik Politikası</a>
+      &middot;
+      <a href="safety.html">Güvenlik ve Moderasyon</a>
+      &middot;
+      <a href="support.html">Destek</a>
+      &middot;
+      <a href="delete_account.html">Hesabı Sil</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Yasal bilgiler ve destek">
+      <ul>
+        <li><a href="index.html">Ana sayfa</a></li>
+        <li><a href="privacy.html">Gizlilik Politikası</a></li>
+        <li><span aria-current="page">Şartlar</span></li>
+        <li><a href="safety.html">Güvenlik ve Moderasyon</a></li>
+        <li><a href="support.html">Destek</a></li>
+        <li><a href="delete_account.html">Hesabı Sil</a></li>
+        <li><a href="translation.html">Çeviri bilgileri</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Bu politikanın İngilizce sürümü esas alınan sürümdür. Bir çeviri bundan farklıysa İngilizce sürüm geçerlidir.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

@@ -1,26 +1,294 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suppression du compte - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Comment supprimer définitivement votre compte ULMOX, dans l’application ou par e-mail, et ce qu’il advient de vos données." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">Aller au contenu</a>
+<div class="container">
+  <main id="main">
+    <h1>Supprimer votre compte ULMOX</h1>
+    <p class="effective">En vigueur au 2026-09-04. Dernière modification le 2026-09-04.</p>
 
-  <h1>Supprimer votre compte</h1>
+    <p>Cette page explique comment supprimer définitivement votre compte ULMOX et ce qu’il advient ensuite de vos données.</p>
 
-  <p>Si vous souhaitez supprimer votre compte ULMOX, veuillez nous contacter :</p>
+    <div class="callout">
+      <p><strong>Désactiver n’est pas supprimer.</strong> La désactivation masque votre profil et vos contenus et peut être annulée. Supprimer votre compte est définitif et irréversible.</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>Option 1 — supprimer dans l’application (à privilégier)</h2>
 
-  <p>Indiquez votre adresse e-mail enregistrée.</p>
+    <p>C’est la voie la plus rapide et elle ne nécessite aucun échange d’e-mails. Elle n’est pas ouverte à tous les comptes sur tous les appareils : un compte lié à Se connecter avec Apple ne peut pas achever la suppression depuis un téléphone Android et doit la terminer sur un appareil Apple. Voir ci-dessous <a href="#apple-linked">Si votre compte est lié à Se connecter avec Apple</a>.</p>
 
-  <p>Votre compte et toutes les données associées seront supprimés définitivement sous 7 jours.</p>
+    <ol>
+      <li>Ouvrez ULMOX et allez dans <strong>Profil &rarr; Mentions légales et sécurité &rarr; Gestion du compte &rarr; Supprimer le compte</strong>.</li>
+      <li>Lisez la confirmation, qui explique que la suppression est définitive.</li>
+      <li>Confirmez. Il se peut qu’on vous demande d’abord de vous reconnecter, ce qui protège votre compte d’une suppression par quelqu’un d’autre.</li>
+    </ol>
 
-  <p>Pour toute question, n’hésitez pas à nous contacter.</p>
+    <h2>Option 2 — demander la suppression par e-mail</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>Si vous ne pouvez pas ouvrir l’application, vous pouvez nous demander de supprimer votre compte.</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">Écrivez à ulmoxapp@outlook.com avec l’objet « ULMOX Account Deletion Request »</a></p>
+
+    <p>N’indiquez que le strict nécessaire pour retrouver votre compte :</p>
+
+    <ul>
+      <li>l’adresse e-mail associée à votre compte ULMOX, et</li>
+      <li>votre nom d’utilisateur ULMOX, si vous le connaissez.</li>
+    </ul>
+
+    <p>Dans la mesure du possible, écrivez depuis l’adresse e-mail associée à votre compte. Si votre compte est lié à Se connecter avec Apple et que vous avez utilisé <strong>Masquer mon e-mail</strong>, écrivez depuis votre adresse de relais Apple, ou donnez-nous assez d’éléments non secrets pour identifier le compte.</p>
+
+    <div class="callout">
+      <p><strong>Nous ne vous demanderons jamais de mot de passe, de mot de passe Apple ou Google, de code d’authentification à usage unique, de code d’autorisation, de jeton de connexion, ni de photographie d’une pièce d’identité</strong>, et nous ne vous demanderons jamais de nous envoyer l’un de ces éléments par e-mail. Si vous recevez un message se présentant comme venant d’ULMOX et demandant l’un d’eux, il ne vient pas de nous.</p>
+    </div>
+
+    <p>Nous vérifions que le compte vous appartient avant de le supprimer. Une demande envoyée depuis un formulaire web public ou une adresse non vérifiée ne supprime pas un compte à elle seule. Nous pouvons vous demander de confirmer la propriété par un procédé sûr, par exemple en répondant depuis l’adresse e-mail du compte.</p>
+
+    <h2>Ce qui se passe lorsqu’un compte est supprimé</h2>
+
+    <ul>
+      <li>L’accès et la visibilité sont retirés dès que la suppression a démarré. Votre profil cesse d’être visible par les autres et votre compte cesse d’être retenu pour de nouvelles remises.</li>
+      <li>L’effacement physique des données stockées se poursuit ensuite en arrière-plan. L’objectif est un achèvement sous 30 jours, sauf si une obligation justifiée de sécurité ou légale impose une conservation limitée.</li>
+      <li>Les vidéos que vous avez enregistrées, leurs vignettes, les informations de votre profil, votre photo de profil et le contenu Global dont vous êtes propriétaire sont retirés.</li>
+      <li>Un contenu qui appartient à quelqu’un d’autre n’est <em>pas</em> supprimé du seul fait que vous l’avez partagé. C’est votre association avec lui qui est retirée, et la vidéo reste chez la personne qui l’a créée.</li>
+      <li>Votre nom d’utilisateur est réservé 90 jours après la suppression avant de pouvoir être réutilisé, afin qu’il ne puisse pas être pris immédiatement par quelqu’un d’autre.</li>
+      <li>Des enregistrements limités de sécurité, légaux ou transactionnels peuvent être conservés lorsqu’il existe un motif justifié, et seulement tant que ce motif s’applique. Lorsqu’un enregistrement de sécurité est conservé, les liens qui le rattachent à votre identité sont supprimés dans le cadre de l’effacement, de sorte qu’il reste une trace de ce qui s’est passé et non une trace vous concernant.</li>
+      <li>Supprimer votre compte ne supprime celui de personne d’autre. Une Connection réunit deux personnes, et les messages, vidéos et enregistrements de l’autre participante restent chez elle.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Une preuve de sécurité n’est pas un historique de messages ordinaire.</strong> Connections et la traduction facultative des messages sont déployées progressivement et peuvent ne pas encore être disponibles pour chaque compte ni pour chaque version installée de l’application. Si vous avez une Connection : un message ordinaire qui s’y trouve est considéré comme expiré environ sept jours après son envoi. Un message signalé n’est plus régi par cette règle : il est une preuve dans un examen, et il est conservé pendant l’examen puis ensuite lorsque l’issue le justifie, y compris après la suppression du compte dont il provient. Supprimer votre compte ne retire pas un signalement que vous avez fait et n’efface pas un signalement fait à votre sujet.</p>
+    </div>
+
+    <h2 id="apple-linked">Si votre compte est lié à Se connecter avec Apple</h2>
+
+    <p>Certains comptes ULMOX sont liés à Se connecter avec Apple. Si c’est le cas du vôtre, la suppression définitive comporte une étape supplémentaire, car Apple exige qu’une application renonce à son autorisation Se connecter avec Apple lorsqu’elle supprime un compte, plutôt que de n’effacer que son propre enregistrement.</p>
+
+    <ol>
+      <li>Sur un appareil Apple, ULMOX vous demande de confirmer une fois de plus directement auprès d’Apple. Cette confirmation a lieu entre vous et Apple, sur votre propre appareil. <strong>ULMOX ne reçoit pas votre mot de passe Apple</strong>, et nous ne vous le demandons jamais.</li>
+      <li>C’est cette confirmation qui permet à ULMOX de révoquer sa propre autorisation Se connecter avec Apple pour votre compte.</li>
+      <li>Ce n’est qu’ensuite que commence la suppression définitive décrite ci-dessus.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Si cette étape n’aboutit pas, rien n’est supprimé.</strong> Si vous fermez l’écran d’Apple, si la confirmation renvoie un compte Apple différent de celui qui est connecté, ou si l’étape échoue pour un autre motif, ULMOX s’arrête avant que quoi que ce soit de définitif ne se produise et vous indique que rien n’a été supprimé. Vous pouvez réessayer.</p>
+    </div>
+
+    <p>Trois choses distinctes sont faciles à confondre :</p>
+
+    <ul>
+      <li><strong>Révoquer l’autorisation Se connecter avec Apple d’ULMOX</strong> empêche ULMOX de pouvoir utiliser Se connecter avec Apple pour vous. À elle seule, cette action ne supprime pas votre compte ULMOX et n’efface pas les données qu’il contient.</li>
+      <li><strong>Supprimer votre compte ULMOX</strong> est l’action qui retire vos données ULMOX. Elle n’est achevée que lorsque l’effacement décrit sur cette page a été exécuté : aucune modification d’une autorisation de connexion ne l’achève.</li>
+      <li><strong>Supprimer votre identifiant Apple</strong> est une chose que seule Apple peut faire, à votre demande : ULMOX ne le fait jamais et ne peut pas le faire.</li>
+    </ul>
+
+    <h3>Supprimer depuis un appareil Android un compte lié à Apple</h3>
+
+    <p>L’étape de confirmation d’Apple ne peut être achevée que sur un appareil Apple. Si vous essayez de supprimer depuis un téléphone Android un compte ULMOX lié à Apple, ULMOX s’arrête avant que quoi que ce soit ne soit retiré et vous indique que <strong>rien n’a été supprimé</strong>. Terminez la suppression sur un appareil Apple.</p>
+
+    <p>Un compte qui n’utilise que la connexion avec Google, ou seulement une adresse e-mail, se supprime normalement sur l’un comme sur l’autre type d’appareil. Un compte lié à la fois à Apple et à Google nécessite toujours l’étape Apple.</p>
+
+    <h2>Si vous voulez seulement une pause</h2>
+
+    <p>La désactivation masque votre profil et votre contenu Global et peut être annulée en vous reconnectant puis en choisissant <strong>Réactiver</strong>. La seule reconnexion ne réactive pas le compte. Les vidéos que vous avez déjà envoyées peuvent rester chez les personnes qui les ont reçues pendant leur durée de conservation habituelle. La désactivation ne satisfait pas une demande de suppression : si vous voulez que vos données soient retirées, utilisez Supprimer le compte.</p>
+
+    <p>Désactiver n’efface pas les enregistrements de sécurité, et réactiver n’annule rien. Revenir rétablit votre accès ; cela n’annule pas une décision de modération, ne restitue pas un contenu retiré ou masqué par la modération et ne rouvre pas une Connection qui a été terminée. Terminer une Connection est définitif pour cette paire. Le blocage fonctionne autrement : un blocage met fin à la Connection que vous avez actuellement et arrête tout contact dans les deux sens tant qu’il est actif. Lever un blocage ne rétablit pas non plus l’ancienne Connection : les deux comptes devraient redevenir éligibles depuis le début, par deux nouveaux échanges vidéo qualifiants et une nouvelle approbation de chacun.</p>
+
+    <h2>Questions</h2>
+
+    <p>Écrivez à <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Voir aussi <a href="privacy.html">Politique de confidentialité</a> et <a href="terms.html">Conditions</a>.</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Informations légales et support">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="privacy.html">Politique de confidentialité</a></li>
+        <li><a href="terms.html">Conditions</a></li>
+        <li><a href="safety.html">Sécurité et modération</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><span aria-current="page">Supprimer le compte</span></li>
+        <li><a href="translation.html">Informations sur la traduction</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">La version anglaise de cette politique fait foi. En cas de divergence avec une traduction, la version anglaise prévaut.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

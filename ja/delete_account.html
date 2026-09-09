@@ -1,26 +1,294 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>アカウント削除 - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="ULMOX アカウントをアプリまたはメールで完全に削除する方法と、その後データがどうなるか。" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">本文へスキップ</a>
+<div class="container">
+  <main id="main">
+    <h1>ULMOX アカウントを削除する</h1>
+    <p class="effective">発効日 2026-09-04。最終更新 2026-09-04。</p>
 
-  <h1>アカウントを削除する</h1>
+    <p>このページでは、ULMOX アカウントを完全に削除する方法と、その後データがどうなるかを説明します。</p>
 
-  <p>ULMOXアカウントの削除を希望する場合は、以下までご連絡ください：</p>
+    <div class="callout">
+      <p><strong>利用停止は削除ではありません。</strong> 利用停止はプロフィールとコンテンツを非表示にするもので、元に戻せます。アカウントの削除は永久的で、取り消せません。</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>方法 1 — アプリ内で削除する（推奨）</h2>
 
-  <p>登録済みのメールアドレスを記載してください。</p>
+    <p>これが最も早く、メールのやり取りも不要です。すべてのアカウント・すべての端末で利用できるわけではありません。Appleでサインイン と連携したアカウントは Android 端末では削除を完了できず、Apple 端末で完了する必要があります。以下の<a href="#apple-linked">アカウントが Appleでサインイン と連携している場合</a>をご覧ください。</p>
 
-  <p>アカウントと関連データは7日以内に完全に削除されます。</p>
+    <ol>
+      <li>ULMOX を開き、<strong>プロフィール &rarr; 法的情報と安全 &rarr; アカウント管理 &rarr; アカウントを削除</strong>へ進みます。</li>
+      <li>削除が永久的であることを説明する確認内容をお読みください。</li>
+      <li>確認します。先に再度のサインインを求められることがありますが、これは他人にアカウントを削除されないよう保護するためです。</li>
+    </ol>
 
-  <p>ご不明な点があれば、お気軽にお問い合わせください。</p>
+    <h2>方法 2 — メールで削除を依頼する</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>アプリを開けない場合は、アカウントの削除を当社にご依頼いただけます。</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">件名「ULMOX Account Deletion Request」で ulmoxapp@outlook.com へメールを送る</a></p>
+
+    <p>アカウントを特定するために必要な最小限の情報だけをご記入ください。</p>
+
+    <ul>
+      <li>ULMOX アカウントに紐づくメールアドレス、および</li>
+      <li>分かる場合は ULMOX のユーザー名。</li>
+    </ul>
+
+    <p>可能であれば、アカウントに紐づくメールアドレスからご連絡ください。アカウントが Appleでサインイン と連携し、<strong>メールを非公開</strong>を利用していた場合は、Apple の中継アドレスからご連絡いただくか、アカウントを特定できるだけの秘密でないアカウント情報をお知らせください。</p>
+
+    <div class="callout">
+      <p><strong>当社がパスワード、Apple または Google のパスワード、ワンタイム認証コード、認可コード、サインイン用トークン、本人確認書類の写真をお尋ねすることは決してありません。</strong>また、それらをメールでお送りいただくようお願いすることも決してありません。ULMOX を名乗るメッセージがこれらを求めてきた場合、それは当社からのものではありません。</p>
+    </div>
+
+    <p>削除の前に、そのアカウントがお客様のものであることを確認します。公開のウェブフォームや未確認のアドレスから送られた依頼だけでアカウントが削除されることはありません。アカウントのメールアドレスから返信していただくなど、安全な方法で所有を確認させていただく場合があります。</p>
+
+    <h2>アカウントが削除されるとどうなるか</h2>
+
+    <ul>
+      <li>削除が正常に開始された時点で、アクセスと検索可能性が失われます。プロフィールは他の人から見えなくなり、アカウントが新しい配信の対象になることもなくなります。</li>
+      <li>保存データの物理的な消去は、その後もバックグラウンドで続きます。正当な安全上または法律上の義務により限定的な保持が必要な場合を除き、30 日以内の完了を目標としています。</li>
+      <li>撮影した動画、そのサムネイル、プロフィール情報、プロフィール写真、所有している Global コンテンツが削除されます。</li>
+      <li>他人が所有するコンテンツは、お客様が共有したというだけでは<em>削除されません</em>。代わりに、そのコンテンツとのお客様の関連付けが取り除かれ、動画は作成した本人のもとに残ります。</li>
+      <li>ユーザー名は、他の人にすぐ取得されないよう、削除後 90 日間は再利用できないよう保持されます。</li>
+      <li>正当な理由がある場合に限り、またその理由が当てはまる間に限り、限定的な安全上、法律上、取引上の記録が保持されることがあります。安全性の記録が保持される場合、それをお客様の身元と結び付ける情報は消去処理の一環として取り除かれるため、残るのは「お客様の記録」ではなく「何が起きたかの記録」です。</li>
+      <li>お客様のアカウントを削除しても、他の人のアカウントが削除されることはありません。Connection には 2 人が関わっており、相手側のメッセージ、動画、記録は相手のもとに残ります。</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>安全性の証拠は通常のメッセージ履歴とは異なります。</strong> Connections と任意のメッセージ翻訳は段階的に導入されており、すべてのアカウントやインストール済みのすべてのアプリバージョンでまだ利用できるとは限りません。 Connection がある場合、その中の通常のメッセージは送信からおよそ 7 日後に期限切れとして扱われます。報告されたメッセージはこれに従いません。審査における証拠であり、審査が続く間、そして結果がそれを正当化する場合はその後も——そのメッセージの送信元アカウントが削除された後も——保持されます。アカウントを削除しても、お客様が行った報告が取り下げられることはなく、お客様について行われた報告が消えることもありません。</p>
+    </div>
+
+    <h2 id="apple-linked">アカウントが Appleでサインイン と連携している場合</h2>
+
+    <p>一部の ULMOX アカウントは Appleでサインイン と連携しています。お客様のアカウントがそうである場合、完全削除には手順が 1 つ増えます。Apple は、アプリがアカウントを削除する際、自身のレコードを消すだけでなく Appleでサインイン の認可を手放すことを求めているためです。</p>
+
+    <ol>
+      <li>Apple 端末では、ULMOX が Apple に対して直接もう一度確認するようお願いします。その確認は、お客様と Apple の間で、お客様自身の端末上で行われます。<strong>ULMOX が Apple のパスワードを受け取ることはなく</strong>、当社がそれをお尋ねすることもありません。</li>
+      <li>その確認によって初めて、ULMOX はお客様のアカウントについて自身の Appleでサインイン の認可を取り消せます。</li>
+      <li>その後に初めて、上で述べた完全削除が始まります。</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>その手順が完了しない場合、何も削除されません。</strong> Apple の画面を閉じた場合、確認の結果がサインイン中のものと異なる Apple アカウントを返した場合、その他の理由で手順が失敗した場合、ULMOX は永久的なことが起きる前に処理を中止し、何も削除されていないことをお知らせします。やり直すことができます。</p>
+    </div>
+
+    <p>混同しやすい 3 つの別々のことがあります。</p>
+
+    <ul>
+      <li><strong>ULMOX の Appleでサインイン の認可を取り消すこと</strong>は、ULMOX がお客様のために Appleでサインイン を使えなくするものです。それ自体では ULMOX アカウントは削除されず、その中のデータも消去されません。</li>
+      <li><strong>ULMOX アカウントを削除すること</strong>が、ULMOX のデータを取り除く操作です。このページで説明する消去が実行されて初めて完了します。サインインの認可を変えても、それだけでは完了しません。</li>
+      <li><strong>Apple ID を削除すること</strong>は、お客様ご自身の依頼に基づいて Apple だけが行えることです。ULMOX が行うことはなく、行うこともできません。</li>
+    </ul>
+
+    <h3>Apple と連携したアカウントを Android 端末から削除する場合</h3>
+
+    <p>Apple の確認手順は Apple 端末でしか完了できません。Apple と連携した ULMOX アカウントを Android 端末から削除しようとすると、ULMOX は何も取り除く前に処理を中止し、<strong>何も削除されていない</strong>ことをお知らせします。Apple 端末で削除を完了してください。</p>
+
+    <p>Google ログインのみ、またはメールアドレスのみを使うアカウントは、どちらの種類の端末でも通常どおり削除できます。Apple と Google の両方と連携したアカウントには、引き続き Apple の手順が必要です。</p>
+
+    <h2>少し休みたいだけの場合</h2>
+
+    <p>利用停止はプロフィールと Global コンテンツを非表示にし、再度サインインして<strong>再開する</strong>を選ぶことで元に戻せます。サインインするだけでは再開されません。すでに送信した動画は、受け取った相手のもとで通常の保存期間にわたり残ることがあります。利用停止は削除の請求を満たすものではありません。データの削除をご希望の場合は「アカウントを削除」をご利用ください。</p>
+
+    <p>利用停止は安全性の記録を消去せず、再開しても何かが取り消されることはありません。戻ればアクセスは復旧しますが、モデレーションの判断が取り消されることはなく、モデレーションが削除または非表示にしたコンテンツが戻ることもなく、終了した Connection が再び開くこともありません。Connection の終了は、その 2 人にとって最終的なものです。ブロックは仕組みが異なります。ブロックは現在の Connection を終了させ、有効な間は双方向の接触を止めます。ブロックを解除しても以前の Connection は戻りません。2 つのアカウントは、あらためて最初から条件を満たす必要があります。すなわち、新たに 2 回の要件を満たす動画のやり取りと、双方の新たな承認です。</p>
+
+    <h2>お問い合わせ</h2>
+
+    <p><a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> までご連絡ください。<a href="privacy.html">プライバシーポリシー</a>および<a href="terms.html">利用規約</a>もあわせてご覧ください。</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="法的情報とサポート">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+        <li><a href="terms.html">利用規約</a></li>
+        <li><a href="safety.html">安全性とモデレーション</a></li>
+        <li><a href="support.html">サポート</a></li>
+        <li><span aria-current="page">アカウントを削除</span></li>
+        <li><a href="translation.html">翻訳について</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">本ポリシーは英語版を正文とします。翻訳が英語版と異なる場合は、英語版が適用されます。</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

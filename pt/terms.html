@@ -1,45 +1,324 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Termos de Serviço - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="As condições aplicáveis à utilização da ULMOX: requisitos, conteúdos, Connections, moderação e recursos." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;line-height:1.7;max-width:900px;margin:auto;">
-<h1>Termos de Serviço</h1>
-<p><strong>Última atualização:</strong> agosto de 2026</p>
-<p>Termos de Serviço ULMOX. Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</p>
-<h2>Segurança e moderação ULMOX</h2>
-<p>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</p>
-<p>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</p>
-<ul><li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li>
-  <li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li>
-  <li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li>
-  <li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li>
-  <li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li>
-  <li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li>
-  <li>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</li></ul>
-<h2>Termos de Serviço</h2>
-<p>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</p>
-<p>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</p>
-<h2>Contacto</h2>
-<p>Os utilizadores podem denunciar conteúdo inadequado diretamente na app. Todas as denúncias são analisadas e o conteúdo que viola as regras é removido rapidamente.</p>
-<h2>Segurança e moderação ULMOX</h2>
-<p>A ULMOX compromete-se a oferecer um ambiente seguro e respeitoso para todos os utilizadores.</p>
-<h2>Segurança e moderação ULMOX</h2>
-<p>A ULMOX compromete-se a oferecer um ambiente seguro e respeitoso para todos os utilizadores.</p>
-<h2>Política de Privacidade</h2>
-<p>A ULMOX respeita a sua privacidade. Recolhemos apenas dados básicos necessários para prestar o serviço.</p>
-<h2>Termos de Serviço</h2>
-<p>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</p>
-<h2>Termos de Serviço</h2>
-<p>Os utilizadores devem usar a ULMOX de forma respeitosa, segura e legal.</p>
-<h2 id="ulmox-music">ULMOX Music</h2>
-<p>A ULMOX pode disponibilizar música para utilização em Moments. Sujeito a estes Termos, pode sincronizar essa música com vídeos que cria na ULMOX e partilhar os vídeos concluídos através da ULMOX. Não pode extrair, redistribuir, vender ou disponibilizar a música como áudio autónomo.</p>
-<h2>Contacto</h2>
-<p>Contacto<br><br>ulmoxapp@outlook.com</p>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+<body>
+  <a class="ulmox-skip-link" href="#main">Ir para o conteúdo</a>
+<div class="container">
+  <main id="main">
+    <h1>Termos de Serviço</h1>
+    <p class="effective">Em vigor a partir de 2026-09-04. Alterado pela última vez em 2026-09-04.</p>
+
+    <p>Estes Termos aplicam-se quando usa a ULMOX. Se não concordar com eles, não use o serviço.</p>
+
+    <h2>1. Quem pode usar a ULMOX</h2>
+
+    <ul>
+      <li>Tem de ter <strong>18 anos ou mais</strong>.</li>
+      <li>Tem de dar informação verdadeira sobre a sua idade.</li>
+      <li>Não pode tentar contornar o requisito de idade nem ajudar outra pessoa a fazê-lo.</li>
+      <li>As contas são persistentes e não anónimas. Inicia sessão com um fornecedor suportado e mantém uma identidade única em todo o serviço.</li>
+    </ul>
+
+    <h2>2. Os seus conteúdos</h2>
+
+    <p>É responsável pelos vídeos e pelo conteúdo de perfil que cria e carrega. Tem de ter o direito de partilhar aquilo que carrega, e esse conteúdo não pode violar estes Termos nem a lei.</p>
+
+    <h3>Propriedade e licença</h3>
+
+    <p><strong>Mantém a propriedade dos seus conteúdos.</strong> Para operar o serviço, concede à ULMOX uma licença não exclusiva, mundial e gratuita para alojar, guardar, reproduzir e transmitir os seus conteúdos, unicamente para que os possamos entregar à pessoa destinatária escolhida, gerar miniaturas e apresentá-los no feed Global se quem os recebeu os partilhar aí. A licença existe apenas para fazer funcionar a ULMOX e termina quando o conteúdo é removido, exceto quando tenhamos de conservar uma cópia como prova de segurança ou para cumprir uma obrigação legal.</p>
+
+    <p>Quando alguém partilha no feed Global um vídeo que recebeu, <strong>não</strong> passa a ser o seu proprietário. Quem o gravou continua a ser o proprietário.</p>
+
+    <h2>3. Connections</h2>
+
+    <div class="callout">
+      <p><strong>O Connections e a tradução opcional de mensagens estão a ser introduzidos gradualmente e podem ainda não estar disponíveis em todas as contas nem em todas as versões instaladas da aplicação.</strong></p>
+    </div>
+
+    <p>Uma Connection é uma conversa mútua, apenas de texto, entre duas pessoas adultas que já trocaram momentos em vídeo. Não é um diretório de conversas nem mensagens abertas. Estas são as regras pelas quais funciona:</p>
+
+    <ul>
+      <li><strong>Apenas pessoas adultas.</strong> As Connections fazem parte de um serviço para maiores de 18 anos e estão disponíveis apenas para contas que cumpriram o requisito de idade.</li>
+      <li><strong>Não pode procurar pessoas.</strong> A ULMOX não tem pesquisa de utilizadores nem qualquer forma de encontrar alguém para o contactar. Uma Connection só pode nascer de um contacto que já existia.</li>
+      <li><strong>Dois encontros de vídeo válidos anteriores.</strong> Um par só se torna elegível depois de duas trocas de vídeo válidas e distintas entre essas duas contas. Uma não chega.</li>
+      <li><strong>As duas pessoas têm de aprovar.</strong> Cada uma aprova de forma independente. Enquanto ambas não o tiverem feito, não há Connection e não pode ser enviada nenhuma mensagem.</li>
+      <li><strong>Apenas texto e sem anexos.</strong> Uma Connection transporta mensagens escritas. Não há anexos: nem fotografias, nem vídeos, nem ficheiros, nem mensagens de voz.</li>
+      <li><strong>As contas são persistentes e não anónimas.</strong> A pessoa a quem está ligado tem na ULMOX a mesma identidade única que toda a gente.</li>
+      <li><strong>As mensagens expiram.</strong> Uma mensagem comum é considerada expirada cerca de sete dias depois de enviada. As mensagens denunciadas são tratadas de outra forma: consulte a política de privacidade.</li>
+      <li><strong>Denunciar e sair funcionam sempre.</strong> Pode usar <strong>Denunciar utilizador</strong> e <strong>Denunciar mensagem</strong>, pode <strong>Bloquear</strong> e pode <strong>Terminar Connection</strong>. Terminar uma Connection é definitivo para esse par: não recomeça, e um encontro posterior não a reabre. Um bloqueio não é a mesma coisa. Um bloqueio termina a Connection que tem agora e interrompe o contacto em ambos os sentidos enquanto se mantiver. Retirar um bloqueio não repõe a Connection anterior: o par teria de voltar a ficar elegível desde o início, através de duas novas trocas de vídeo válidas e de uma nova aprovação de cada pessoa.</li>
+      <li><strong>São pessoas que analisam as denúncias, não máquinas.</strong> Uma mensagem denunciada é avaliada por uma pessoa.</li>
+      <li><strong>A tradução é opcional.</strong> Pode traduzir no seu próprio dispositivo uma mensagem que tenha recebido. O que conta, e o que quem analisa lê, é o original. Consulte <a href="translation.html">Informações sobre a tradução</a>.</li>
+    </ul>
+
+    <h2>4. O que não é permitido</h2>
+
+    <p>Na ULMOX é proibido o seguinte:</p>
+
+    <ul>
+      <li>Abuso e exploração sexual de crianças (CSAE) e material de abuso sexual de crianças (CSAM), sob qualquer forma.</li>
+      <li>A exploração sexual de qualquer pessoa.</li>
+      <li>Conteúdo sexual não consentido e conteúdo sexual que envolva alguém que possa ter menos de 18 anos.</li>
+      <li>Ameaças, incitamento à violência e conteúdos que glorifiquem a violência.</li>
+      <li>Discurso de ódio e assédio dirigido.</li>
+      <li>Fazer-se passar por outra pessoa ou organização.</li>
+      <li>Burlas, fraude e spam.</li>
+      <li>Conteúdos ilegais e atividades ilegais.</li>
+      <li>Partilhar informação privada de outra pessoa sem a sua autorização.</li>
+    </ul>
+
+    <h2>5. Denúncias, bloqueio e moderação</h2>
+
+    <ul>
+      <li>Pode denunciar conteúdos e pode denunciar pessoas a partir da aplicação. Existe uma categoria dedicada à segurança infantil.</li>
+      <li>Pode bloquear outra pessoa. O bloqueio interrompe a interação em ambos os sentidos, e a pessoa bloqueada não é informada.</li>
+      <li>Conteúdo denunciado pode ser colocado numa <strong>quarentena reversível</strong> enquanto é analisado. A quarentena oculta o conteúdo temporariamente; não o elimina e não é uma sanção contra a conta.</li>
+      <li>As decisões de moderação são tomadas por pessoas, não automaticamente. Tanto os vídeos denunciados como as mensagens denunciadas são analisados por uma pessoa.</li>
+      <li>Uma mensagem retida por um filtro de segurança automático <strong>não</strong> é uma decisão sobre a sua conta. Reter uma mensagem, ou colocar conteúdo em quarentena, restringe esse item e nada mais.</li>
+      <li>Se quem analisa aprovar um vídeo, este só volta ao feed Global se continuar a ser elegível por si próprio. Um vídeo cujo proprietário saiu, foi restringido ou banido, ou que está indisponível por outro motivo, mantém-se indisponível seja qual for a decisão sobre a denúncia.</li>
+      <li>Quando uma denúncia é resolvida, sai da lista ativa de análise. Não é apagada: as provas e o registo do que foi decidido são conservados onde exista um motivo justificado para os conservar.</li>
+      <li>Uma denúncia diz sempre respeito ao conteúdo original. Uma tradução que tenha optado por ler nunca é aquilo que é analisado e nunca é prova.</li>
+      <li>Não publicamos os limiares internos, as ferramentas nem os procedimentos de trabalho usados pelos nossos sistemas de segurança.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>As denúncias não banem contas.</strong> Nenhum número de denúncias bane automaticamente uma conta. Nada mais o faz: nem um filtro automático que retém uma mensagem, nem uma quarentena, nem uma tradução, nem a decisão de remover um conteúdo isolado. Só uma pessoa administradora autorizada da ULMOX pode banir uma conta, como decisão separada e deliberada, e apenas depois de analisar o caso.</p>
+    </div>
+
+    <p>A ULMOX não analisa automaticamente fotogramas de vídeo, áudio nem transcrições. A segurança assenta nas denúncias, na quarentena reversível, no bloqueio e na análise humana.</p>
+
+    <h2>6. Desativação e eliminação</h2>
+
+    <ul>
+      <li><strong>A desativação</strong> é reversível: recupera a conta iniciando sessão de novo e escolhendo <strong>Reativar</strong>, o que iniciar sessão só por si não faz. O seu perfil e o seu conteúdo Global ficam ocultos e os seus dados são conservados para que a conta possa ser reposta. Os vídeos que já enviou podem permanecer com quem os recebeu durante o respetivo período normal de conservação.</li>
+      <li><strong>A eliminação</strong> é permanente e não pode ser anulada. O acesso e a visibilidade terminam de imediato e o apagamento continua em segundo plano. Podem ser conservados registos limitados de segurança, legais ou transacionais quando isso seja justificado. Consulte <a href="delete_account.html">Eliminar conta</a>.</li>
+    </ul>
+
+    <h2>7. Aplicação e recursos</h2>
+
+    <p>Podemos ocultar conteúdo enquanto está a ser analisado, remover conteúdo que viole estes Termos e, através de uma pessoa administradora autorizada, suspender ou encerrar uma conta. Se considerar que uma decisão sobre o seu conteúdo ou a sua conta foi errada, escreva para <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> e uma pessoa irá analisá-la. Consulte <a href="support.html">Suporte</a>.</p>
+
+    <h2>Tradução automática</h2>
+
+    <ul>
+      <li>A ULMOX pode oferecer uma tradução automática opcional de uma mensagem que tenha recebido. <strong>As traduções automáticas podem ser incompletas ou inexatas.</strong></li>
+      <li>Quando o significado importa, guie-se pela mensagem original. O original mantém-se visível e é a versão que prevalece.</li>
+      <li>Traduzir uma mensagem não altera a sua responsabilidade pelo conteúdo que escreveu. Continua responsável pela sua mensagem original.</li>
+      <li>A tradução não cria uma exceção a estes Termos. Conteúdo que viola as regras viola-as em qualquer idioma.</li>
+      <li>A tecnologia de tradução é fornecida pela Google. A Google não escreve, não analisa, não aprova nem subscreve qualquer mensagem enviada através da ULMOX.</li>
+    </ul>
+
+    <p>Consulte <a href="translation.html">Informações sobre a tradução</a>.</p>
+
+    <h2 id="ulmox-music">ULMOX Music</h2>
+
+    <p>A ULMOX pode disponibilizar música para utilização em Moments. Sujeito a estes Termos, pode sincronizar essa música com vídeos que cria na ULMOX e partilhar os vídeos concluídos através da ULMOX. Não pode extrair, redistribuir, vender ou disponibilizar a música como áudio autónomo.</p>
+
+    <h2>8. Alterações a estes Termos</h2>
+
+    <p>Podemos atualizar estes Termos. A data indicada acima mostra a versão em vigor. Quando uma alteração for substancial, podemos pedir-lhe que aceite os Termos atualizados na aplicação antes de continuar a usar a ULMOX.</p>
+
+    <h2>9. Páginas relacionadas</h2>
+
+    <p>
+      <a href="privacy.html">Política de Privacidade</a>
+      &middot;
+      <a href="safety.html">Segurança e moderação</a>
+      &middot;
+      <a href="support.html">Suporte</a>
+      &middot;
+      <a href="delete_account.html">Eliminar conta</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Informações legais e suporte">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="privacy.html">Política de Privacidade</a></li>
+        <li><span aria-current="page">Termos</span></li>
+        <li><a href="safety.html">Segurança e moderação</a></li>
+        <li><a href="support.html">Suporte</a></li>
+        <li><a href="delete_account.html">Eliminar conta</a></li>
+        <li><a href="translation.html">Informações sobre a tradução</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">A versão em inglês desta política é a autêntica. Se uma tradução divergir dela, prevalece a versão em inglês.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

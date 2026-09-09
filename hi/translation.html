@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>अनुवाद की जानकारी - ULMOX</title>
+  <meta name="description" content="ULMOX में अनुवाद Google Translate से चलता है।" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">अनुवाद की जानकारी</a>
+  <div class="container">
+  <main id="main">
+    <h1>अनुवाद की जानकारी</h1>
+    <div class="callout">
+      <p><strong>Connections और वैकल्पिक संदेश अनुवाद को चरणबद्ध रूप से पेश किया जा रहा है, और ये हर खाते या ऐप के हर इंस्टॉल किए गए संस्करण पर अभी उपलब्ध नहीं हो सकते हैं।</strong></p>
+    </div>
+
+    <p>ULMOX में अनुवाद Google Translate से चलता है।</p>
+
+    <ul>
+      <li>अनुवाद वैकल्पिक है। जब तक आप न कहें, कुछ भी अनूदित नहीं होता — एक बार में एक ही संदेश।</li>
+      <li>संदेश का अनुवाद इसी डिवाइस पर होता है। न संदेश और न अनुवाद, अनुवाद के लिए कहीं भेजे जाते हैं।</li>
+      <li>किसी भाषा का अनुवाद करने से पहले उसका भाषा पैक डाउनलोड करना पड़ता है। ULMOX पहले पूछता है और जब तक आप कुछ और न चुनें, Wi-Fi पर ही डाउनलोड करता है।</li>
+      <li>Google का अनुवाद घटक फिर भी अपने आप नेटवर्क इस्तेमाल कर सकता है: भाषा पैक डाउनलोड करने, अपनी रिमोट सेटिंग पढ़ने, और अपने बारे में डायग्नोस्टिक व उपयोग विश्लेषण भेजने के लिए। आपके संदेश का पाठ इसमें शामिल नहीं है।</li>
+      <li>मशीनी अनुवाद ग़लत हो सकता है, और ग़लत होते हुए भी पूरी तरह भरोसेमंद लग सकता है।</li>
+      <li>जब दोनों में से कोई भाषा अंग्रेज़ी न हो, तो अनुवाद बीच में अंग्रेज़ी से होकर गुज़र सकता है, और नतीजा साफ़ तौर पर कमज़ोर हो सकता है।</li>
+      <li>मूल संदेश ही मान्य है। वह स्क्रीन पर बना रहता है, और रिपोर्ट सिर्फ़ उसी की ओर इशारा करती है।</li>
+      <li>किसी संदेश का अनुवाद करने से रिपोर्ट, ब्लॉक, समीक्षा या खाते से जुड़े निर्णयों में कोई बदलाव नहीं होता। रिपोर्ट में हमेशा मूल संदेश जाता है, और समीक्षक उसी मूल को देखते हैं, अनुवाद को नहीं।</li>
+      <li>ULMOX अनुवाद को नहीं रखता। वह हमारे सर्वर पर अलग संदेश के रूप में सहेजा नहीं जाता, और न ही किसी रिपोर्ट, सूचना, समीक्षा सामग्री या विश्लेषण के साथ जोड़ा जाता है।</li>
+      <li>डाउनलोड किए गए भाषा पैक आप ऐप में अनुवाद मॉडल में देख और हटा सकते हैं। ULMOX हटाने पर वे भी हट जाते हैं, उसी सामान्य तरीके से जिससे आपका ऑपरेटिंग सिस्टम किसी ऐप की फ़ाइलें हटाता है।</li>
+    </ul>
+
+    <h2>Google का अस्वीकरण</h2>
+    <div class="callout">
+      <p>THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</p>
+    </div>
+    <p>Google की शर्त है कि यह सूचना हूबहू वैसी ही दिखे, इसलिए इसका अनुवाद नहीं किया गया।</p>
+
+    <h2>अनुवाद सेवा के बारे में</h2>
+    <p>
+      <a href="https://translate.google.com/" target="_blank" rel="noopener noreferrer">Google Translate</a>
+      &middot;
+      <a href="https://cloud.google.com/translate" target="_blank" rel="noopener noreferrer">Cloud Translation</a>
+    </p>
+  </main>
+  <footer>
+    <nav aria-label="कानूनी जानकारी और सहायता">
+      <ul>
+        <li><a href="index.html">होम</a></li>
+        <li><a href="privacy.html">गोपनीयता नीति</a></li>
+        <li><a href="terms.html">शर्तें</a></li>
+        <li><a href="safety.html">सुरक्षा और मॉडरेशन</a></li>
+        <li><a href="support.html">सहायता</a></li>
+        <li><a href="delete_account.html">खाता हटाएं</a></li>
+        <li><span aria-current="page">अनुवाद की जानकारी</span></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+  </div>
+</body>
+</html>

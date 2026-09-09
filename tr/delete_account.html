@@ -1,26 +1,294 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hesap Silme - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="ULMOX hesabınızı uygulamada veya e-postayla nasıl kalıcı olarak silersiniz ve sonrasında verilerinize ne olur." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">İçeriğe geç</a>
+<div class="container">
+  <main id="main">
+    <h1>ULMOX hesabınızı silin</h1>
+    <p class="effective">Yürürlük tarihi 2026-09-04. Son güncelleme 2026-09-04.</p>
 
-  <h1>Hesabınızı Silin</h1>
+    <p>Bu sayfa, ULMOX hesabınızı nasıl kalıcı olarak sileceğinizi ve sonrasında verilerinize ne olduğunu açıklar.</p>
 
-  <p>ULMOX hesabınızı silmek istiyorsanız lütfen bizimle iletişime geçin:</p>
+    <div class="callout">
+      <p><strong>Devre dışı bırakmak silmek değildir.</strong> Devre dışı bırakma profilinizi ve içeriğinizi gizler ve geri alınabilir. Hesabınızı silmek kalıcıdır ve geri alınamaz.</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>1. Seçenek — uygulamada silin (tercih edilen)</h2>
 
-  <p>Kayıtlı e-posta adresinizi ekleyin.</p>
+    <p>Bu en hızlı yoldur ve e-posta yazışması gerektirmez. Her cihazdaki her hesap için kullanılamaz: Apple ile Giriş Yap ile bağlı bir hesap, silme işlemini bir Android telefonda tamamlayamaz ve bunu bir Apple cihazında tamamlaması gerekir. Aşağıda bkz. <a href="#apple-linked">Hesabınız Apple ile Giriş Yap ile bağlıysa</a>.</p>
 
-  <p>Hesabınız ve ilişkili tüm veriler 7 gün içinde kalıcı olarak silinir.</p>
+    <ol>
+      <li>ULMOX’u açın ve <strong>Profil &rarr; Yasal ve Güvenlik &rarr; Hesap Yönetimi &rarr; Hesabı Sil</strong> yolunu izleyin.</li>
+      <li>Silmenin kalıcı olduğunu açıklayan onay metnini okuyun.</li>
+      <li>Onaylayın. Önce yeniden oturum açmanız istenebilir; bu, hesabınızı başkasının silmesine karşı korur.</li>
+    </ol>
 
-  <p>Herhangi bir sorunuz varsa bizimle iletişime geçebilirsiniz.</p>
+    <h2>2. Seçenek — e-postayla silme talebi</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>Uygulamayı açamıyorsanız hesabınızı silmemizi isteyebilirsiniz.</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">ulmoxapp@outlook.com adresine “ULMOX Account Deletion Request” konusuyla e-posta gönderin</a></p>
+
+    <p>Lütfen yalnızca hesabınızı bulmak için gereken en az bilgiyi ekleyin:</p>
+
+    <ul>
+      <li>ULMOX hesabınızla ilişkili e-posta adresi ve</li>
+      <li>biliyorsanız ULMOX kullanıcı adınız.</li>
+    </ul>
+
+    <p>Mümkünse hesabınızla ilişkili e-posta adresinden yazın. Hesabınız Apple ile Giriş Yap ile bağlıysa ve <strong>E-postamı Gizle</strong> özelliğini kullandıysanız, Apple yönlendirme adresinizden yazın ya da hesabı tanımlamamıza yetecek kadar gizli olmayan hesap ayrıntısı verin.</p>
+
+    <div class="callout">
+      <p><strong>Sizden hiçbir zaman bir parola, Apple veya Google parolası, tek kullanımlık kimlik doğrulama kodu, yetkilendirme kodu, oturum açma jetonu ya da bir kimlik belgesinin fotoğrafını istemeyiz</strong> ve bunların hiçbirini bize e-postayla göndermenizi asla istemeyiz. ULMOX’tan geldiğini iddia eden ve bunlardan herhangi birini isteyen bir mesaj alırsanız, o mesaj bizden değildir.</p>
+    </div>
+
+    <p>Bir hesabı silmeden önce hesabın size ait olduğunu doğrularız. Herkese açık bir web formundan veya doğrulanmamış bir adresten gönderilen bir talep, tek başına bir hesabı silmez. Sahipliği güvenli bir yolla, örneğin hesabın e-posta adresinden yanıt vererek onaylamanızı isteyebiliriz.</p>
+
+    <h2>Bir hesap silindiğinde ne olur</h2>
+
+    <ul>
+      <li>Silme başarıyla başlatıldığı anda erişim ve bulunabilirlik kaldırılır. Profiliniz başkalarına görünmez olur ve hesabınız yeni gönderimler için seçilmez.</li>
+      <li>Saklanan verilerin fiziksel olarak silinmesi bundan sonra arka planda sürer. Haklı bir güvenlik veya yasal yükümlülük sınırlı saklama gerektirmedikçe 30 gün içinde tamamlanması hedeflenir.</li>
+      <li>Kaydettiğiniz videolar, küçük resimleri, profil bilgileriniz, profil fotoğrafınız ve sahibi olduğunuz Global içerik kaldırılır.</li>
+      <li>Başkasına ait içerik, siz paylaştınız diye <em>silinmez</em>. Bunun yerine onunla olan ilişkiniz kaldırılır ve video, onu oluşturan kişide kalır.</li>
+      <li>Kullanıcı adınız, hemen başkası tarafından alınamasın diye silmeden sonra yeniden kullanılabilir hâle gelmeden önce 90 gün tutulur.</li>
+      <li>Haklı bir neden bulunduğunda ve yalnızca bu neden geçerli olduğu sürece sınırlı güvenlik, yasal veya işlem kayıtları tutulabilir. Bir güvenlik kaydı tutulduğunda, onu kimliğinizle ilişkilendiren bağlantılar silme işleminin bir parçası olarak temizlenir; böylece geriye sizin kaydınız değil, olanların kaydı kalır.</li>
+      <li>Hesabınızı silmek başkasının hesabını silmez. Bir Bağlantıda iki kişi vardır ve diğer katılımcıya ait mesajlar, videolar ve kayıtlar onda kalır.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Güvenlik kanıtı olağan mesaj geçmişi değildir.</strong> Connections ve isteğe bağlı mesaj çevirisi kademeli olarak kullanıma sunuluyor; her hesapta veya yüklü her uygulama sürümünde henüz mevcut olmayabilir. Bir Bağlantınız varsa: içindeki olağan bir mesaj, gönderilmesinden yaklaşık yedi gün sonra süresi dolmuş sayılır. Bildirilmiş bir mesaj artık buna tabi değildir: bir incelemede kanıttır ve inceleme açık olduğu sürece, sonucun saklamayı haklı çıkardığı durumlarda sonrasında da — geldiği hesap silindikten sonra bile — tutulur. Hesabınızı silmek, yaptığınız bir bildirimi geri çekmez ve hakkınızda yapılmış bir bildirimi silmez.</p>
+    </div>
+
+    <h2 id="apple-linked">Hesabınız Apple ile Giriş Yap ile bağlıysa</h2>
+
+    <p>Bazı ULMOX hesapları Apple ile Giriş Yap ile bağlıdır. Sizinki de öyleyse kalıcı silmenin fazladan bir adımı vardır; çünkü Apple, bir uygulamanın bir hesabı silerken yalnızca kendi kaydını silmesini değil, Apple ile Giriş Yap yetkilendirmesinden de vazgeçmesini gerektirir.</p>
+
+    <ol>
+      <li>Bir Apple cihazında ULMOX, doğrudan Apple ile bir kez daha onay vermenizi ister. Bu onay, kendi cihazınızda sizinle Apple arasında gerçekleşir. <strong>ULMOX Apple parolanızı almaz</strong> ve bunu sizden asla istemeyiz.</li>
+      <li>ULMOX’un hesabınıza ilişkin kendi Apple ile Giriş Yap yetkilendirmesini geri çekmesini sağlayan şey bu onaydır.</li>
+      <li>Yukarıda anlatılan kalıcı silme ancak bundan sonra başlar.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Bu adım tamamlanmazsa hiçbir şey silinmez.</strong> Apple ekranını kapatırsanız, onay oturum açmış olandan farklı bir Apple hesabı döndürürse veya adım başka bir nedenle başarısız olursa, ULMOX kalıcı hiçbir şey olmadan önce durur ve size hiçbir şeyin silinmediğini bildirir. Yeniden deneyebilirsiniz.</p>
+    </div>
+
+    <p>Birbirine karıştırılması kolay üç ayrı şey vardır:</p>
+
+    <ul>
+      <li><strong>ULMOX’un Apple ile Giriş Yap yetkilendirmesini geri çekmek</strong>, ULMOX’un sizin için Apple ile Giriş Yap’ı kullanabilmesini durdurur. Tek başına ULMOX hesabınızı silmez ve içindeki verileri temizlemez.</li>
+      <li><strong>ULMOX hesabınızı silmek</strong>, ULMOX verilerinizi kaldıran işlemdir. Ancak bu sayfada anlatılan silme çalıştığında tamamlanır — bir oturum açma yetkilendirmesindeki hiçbir değişiklik bunu tamamlamaz.</li>
+      <li><strong>Apple Kimliğinizi silmek</strong> yalnızca Apple’ın, sizin talebiniz üzerine yapabileceği bir şeydir — ULMOX bunu hiçbir zaman yapmaz ve yapamaz.</li>
+    </ul>
+
+    <h3>Apple ile bağlı bir hesabı bir Android cihazdan silme</h3>
+
+    <p>Apple onay adımı yalnızca bir Apple cihazında tamamlanabilir. Apple ile bağlı bir ULMOX hesabını bir Android telefondan silmeye çalışırsanız, ULMOX hiçbir şey kaldırılmadan durur ve size <strong>hiçbir şeyin silinmediğini</strong> bildirir. Silmeyi bir Apple cihazında tamamlayın.</p>
+
+    <p>Yalnızca Google ile oturum açma veya yalnızca bir e-posta adresi kullanan bir hesap, her iki cihaz türünde de olağan biçimde silinir. Hem Apple hem Google ile bağlı bir hesap için Apple adımı yine gereklidir.</p>
+
+    <h2>Sadece ara vermek istiyorsanız</h2>
+
+    <p>Devre dışı bırakma profilinizi ve Global içeriğinizi gizler ve yeniden oturum açıp <strong>Yeniden Etkinleştir</strong> seçilerek geri alınabilir. Yalnızca oturum açmak hesabı yeniden etkinleştirmez. Daha önce gönderdiğiniz videolar, olağan saklama süreleri boyunca bunları alan kişilerde kalabilir. Devre dışı bırakma bir silme talebini karşılamaz — verilerinizin kaldırılmasını istiyorsanız Hesabı Sil seçeneğini kullanın.</p>
+
+    <p>Devre dışı bırakmak güvenlik kayıtlarını silmez ve yeniden etkinleştirmek hiçbir şeyi geri almaz. Geri dönmek erişiminizi geri verir; bir moderasyon kararını geri almaz, moderasyonun kaldırdığı veya gizlediği içeriği geri getirmez ve sonlandırılmış bir Bağlantıyı yeniden açmaz. Bir Bağlantıyı sonlandırmak o çift için kesindir. Engelleme farklı işler: bir engelleme mevcut Bağlantınızı sonlandırır ve yürürlükte olduğu sürece her iki yönde de teması durdurur. Engellemeyi kaldırmak eski Bağlantıyı da geri getirmez — iki hesabın baştan yeniden uygun hâle gelmesi, yani iki yeni nitelikli video alışverişi ve her iki kişiden yeni birer onay gerekir.</p>
+
+    <h2>Sorular</h2>
+
+    <p><a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> adresine yazın. Ayrıca bkz. <a href="privacy.html">Gizlilik Politikası</a> ve <a href="terms.html">Şartlar</a>.</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Yasal bilgiler ve destek">
+      <ul>
+        <li><a href="index.html">Ana sayfa</a></li>
+        <li><a href="privacy.html">Gizlilik Politikası</a></li>
+        <li><a href="terms.html">Şartlar</a></li>
+        <li><a href="safety.html">Güvenlik ve Moderasyon</a></li>
+        <li><a href="support.html">Destek</a></li>
+        <li><span aria-current="page">Hesabı Sil</span></li>
+        <li><a href="translation.html">Çeviri bilgileri</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Bu politikanın İngilizce sürümü esas alınan sürümdür. Bir çeviri bundan farklıysa İngilizce sürüm geçerlidir.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

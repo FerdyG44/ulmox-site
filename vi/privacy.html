@@ -1,28 +1,403 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chính sách quyền riêng tư - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="ULMOX thu thập dữ liệu gì, để làm gì, ai xử lý, lưu trong bao lâu và cách xóa." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;">
-<h1>Chính sách quyền riêng tư</h1>
-<section id="child-safety" style="margin-top:40px;">
-  <h2>Tiêu chuẩn an toàn trẻ em</h2>
-  <p>ULMOX không khoan nhượng với bất kỳ hình thức lạm dụng hoặc bóc lột tình dục trẻ em nào (CSAE).</p>
-  <p>Người dùng có thể báo cáo nội dung không phù hợp trực tiếp trong ứng dụng. Tất cả báo cáo đều được xem xét và nội dung vi phạm sẽ được gỡ bỏ nhanh chóng.</p>
-  <p>Người dùng có thể báo cáo nội dung không phù hợp trực tiếp trong ứng dụng. Tất cả báo cáo đều được xem xét và nội dung vi phạm sẽ được gỡ bỏ nhanh chóng.</p>
-  <p>Người dùng có thể báo cáo nội dung không phù hợp trực tiếp trong ứng dụng. Tất cả báo cáo đều được xem xét và nội dung vi phạm sẽ được gỡ bỏ nhanh chóng.</p>
-  <p>ULMOX cam kết mang đến môi trường an toàn và tôn trọng cho mọi người dùng.</p>
-</section>
-<p>ULMOX tôn trọng quyền riêng tư của bạn. Chúng tôi chỉ thu thập thông tin cơ bản cần thiết để cung cấp dịch vụ.</p>
-<p>ULMOX tôn trọng quyền riêng tư của bạn. Chúng tôi chỉ thu thập thông tin cơ bản cần thiết để cung cấp dịch vụ.</p>
-<p>ULMOX tôn trọng quyền riêng tư của bạn. Chúng tôi chỉ thu thập thông tin cơ bản cần thiết để cung cấp dịch vụ.</p>
-<p>ULMOX tôn trọng quyền riêng tư của bạn. Chúng tôi chỉ thu thập thông tin cơ bản cần thiết để cung cấp dịch vụ.</p>
-<p>ULMOX tôn trọng quyền riêng tư của bạn. Chúng tôi chỉ thu thập thông tin cơ bản cần thiết để cung cấp dịch vụ.</p>
-<p>Liên hệ: ulmoxapp@outlook.com</p>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+<body>
+  <a class="ulmox-skip-link" href="#main">Chuyển đến nội dung</a>
+<div class="container">
+  <main id="main">
+    <h1>Chính sách quyền riêng tư</h1>
+    <p class="effective">Có hiệu lực từ 2026-09-04. Cập nhật lần cuối 2026-09-04.</p>
+
+    <p>ULMOX là ứng dụng chia sẻ video. Bạn quay một video ngắn và máy chủ của chúng tôi chuyển nó tới một người nhận đủ điều kiện được chọn ngẫu nhiên. Chỉ người nhận mới có thể chọn chia sẻ video mình nhận được lên bảng tin công khai Global.</p>
+
+    <p>ULMOX do Ferdi G&uuml;lseren vận hành. Mọi thắc mắc về quyền riêng tư, vui lòng liên hệ <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>.</p>
+
+    <h2>1. Ai được dùng ULMOX</h2>
+
+    <p>ULMOX là dịch vụ dành cho người <strong>từ 18 tuổi trở lên</strong>. Dịch vụ không dành cho trẻ em, và chúng tôi không cố ý thu thập dữ liệu của bất kỳ ai dưới 18 tuổi.</p>
+
+    <h2>2. Chúng tôi thu thập gì</h2>
+
+    <h3>Tài khoản và đăng nhập</h3>
+
+    <ul>
+      <li>Địa chỉ email và tên hiển thị.</li>
+      <li>Định danh của tài khoản và của nhà cung cấp đăng nhập.</li>
+      <li>Việc tạo và truy cập tài khoản của bạn sử dụng một nhà cung cấp đăng nhập được hỗ trợ. Khi tài khoản liên kết với <strong>Đăng nhập bằng Apple</strong> và dùng tính năng <strong>Ẩn Email Của Tôi</strong> của Apple, chúng tôi nhận được địa chỉ chuyển tiếp thay vì địa chỉ thật của bạn.</li>
+    </ul>
+
+    <h3>Nội dung bạn tạo</h3>
+
+    <ul>
+      <li>Video bạn quay và ảnh thu nhỏ được tạo từ chúng.</li>
+      <li>Ảnh hồ sơ và thông tin hồ sơ của bạn.</li>
+      <li>Nội dung Global, khi người nhận chia sẻ một video công khai.</li>
+      <li>Báo cáo bạn gửi, cùng phần mô tả tự do tùy chọn bạn thêm vào đó.</li>
+    </ul>
+
+    <h3>Máy ảnh, micrô và ảnh</h3>
+
+    <ul>
+      <li><strong>Máy ảnh và micrô.</strong> ULMOX xin những quyền này để bạn có thể quay một khoảnh khắc video kèm âm thanh và chụp ảnh hồ sơ. Việc quay chỉ bắt đầu khi chính bạn bắt đầu.</li>
+      <li><strong>Chọn ảnh.</strong> Khi bạn đặt ảnh hồ sơ, ULMOX mở trình chọn ảnh và chỉ nhận đúng tấm ảnh bạn chọn. Trên phiên bản Android hiện hành, đó là trình chọn ảnh của hệ thống, nên ULMOX không xin bất kỳ quyền nào với thư viện ảnh rộng hơn của bạn. Trên iOS, ULMOX chỉ xin quyền truy cập ảnh cho những luồng thực sự cần, và iOS cho phép bạn cấp quyền với các ảnh được chọn thay vì toàn bộ thư viện.</li>
+      <li><strong>Lưu vào thiết bị của bạn.</strong> Nếu bạn chọn lưu một khoảnh khắc vào điện thoại, ULMOX xin quyền thêm nó vào thư viện ảnh của bạn. Quyền này là để thêm một tệp, không phải để đọc thư viện của bạn.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Nội dung đa phương tiện bạn tạo sẽ được tải lên; chúng không chỉ nằm trên thiết bị của bạn.</strong> Video, ảnh thu nhỏ được tạo ra và ảnh hồ sơ của bạn được tải lên và lưu trong Firebase Cloud Storage để có thể chuyển và hiển thị. Việc lưu bản sao của riêng bạn vào điện thoại là một bước riêng và tùy chọn.</p>
+    </div>
+
+    <p>Trên Android, ULMOX không còn khai báo các quyền truy cập ảnh và video diện rộng mà Android 13 trở lên sử dụng, vì trình chọn ảnh của hệ thống đã thay thế chúng. Vẫn còn hai quyền lưu trữ cũ được khai báo, cả hai đều kế thừa từ các thành phần mà ULMOX dựa trên, và cả hai đều bị giới hạn sao cho phiên bản Android hiện đại không thể cấp:</p>
+
+    <ul>
+      <li>Một quyền <strong>đọc</strong> bộ nhớ kiểu cũ, chỉ khai báo để tương thích với Android 12 trở về trước.</li>
+      <li>Một quyền <strong>ghi</strong> bộ nhớ kiểu cũ, chỉ khai báo để tương thích với <strong>Android 9 trở về trước</strong>. Đây là cách ghi tệp vào bộ nhớ dùng chung từ thời trước scoped storage. Nó không phải quyền thư viện ảnh hay video hiện đại, và không phải bất kỳ quyền đa phương tiện nào của Android 13+ nói ở trên.</li>
+    </ul>
+
+    <p>Giới hạn ấy là một phần của chính khai báo, nên trên phiên bản Android mới hơn, quyền này không được cấp, không được yêu cầu và không có tác dụng gì. ULMOX không bao giờ xin bạn bất kỳ quyền nào trong hai quyền đó. Trên phiên bản Android hiện hành, việc chọn ảnh đi qua trình chọn của hệ thống, vốn không cần quyền lưu trữ nào cả.</p>
+
+    <p>ULMOX không yêu cầu bất kỳ mã định danh quảng cáo nào. Các quyền về quảng cáo và phân bổ quảng cáo không có trong ứng dụng Android mà chúng tôi tạo ra, nên không có gì để nhà quảng cáo hay mạng quảng cáo đọc được.</p>
+
+    <h3>Vị trí</h3>
+
+    <p>Khi bạn cho phép, ULMOX dùng vị trí thiết bị để hiển thị thành phố và quốc gia nơi một khoảnh khắc được quay, và để đặt nội dung lên bản đồ thế giới. Nếu bạn từ chối, ứng dụng vẫn hoạt động bình thường mà không cần đến nó.</p>
+
+    <p>Vị trí chỉ được đọc <strong>trong lúc bạn dùng ứng dụng</strong>, dưới dạng một lần đọc duy nhất tại thời điểm bạn quay. ULMOX không theo dõi vị trí của bạn ở chế độ nền, không theo dõi liên tục, và không đọc khi ứng dụng đã đóng.</p>
+
+    <p>ULMOX chỉ xin vị trí khi đang sử dụng. Ứng dụng không dùng vị trí nền, giám sát liên tục, giám sát thay đổi đáng kể hay hàng rào địa lý, và không khai báo bất kỳ quyền nào cho phép làm những việc đó.</p>
+
+    <h3>Dịch tin nhắn (Google ML Kit)</h3>
+
+    <p>ULMOX cung cấp bản dịch tùy chọn cho một tin nhắn Connections mà bạn đã nhận. Nó chỉ chạy khi bạn chọn <strong>Translate with Google</strong> trên một tin nhắn cụ thể, và tin nhắn gốc vẫn ở trên màn hình và vẫn là bản có giá trị. Connections và tính năng dịch tin nhắn tùy chọn đang được triển khai dần và có thể chưa khả dụng với mọi tài khoản hoặc mọi phiên bản ứng dụng đã cài đặt. Xem <a href="translation.html">Thông tin về dịch</a>.</p>
+
+    <table>
+      <caption class="effective">Mỗi phần của việc dịch làm gì với dữ liệu.</caption>
+      <tr><th scope="col">Phần</th><th scope="col">Điều gì xảy ra</th></tr>
+      <tr><td>Tin nhắn và bản dịch của nó</td><td>Được Google ML Kit xử lý ngay trên thiết bị của bạn. ULMOX không gửi bất kỳ cái nào trong hai thứ đó đi đâu để dịch, và không lưu bản dịch trên máy chủ của chúng tôi, trong báo cáo, trong bằng chứng kiểm duyệt, trong thông báo, trong dữ liệu phân tích hay trong nhật ký của chúng tôi.</td></tr>
+      <tr><td>Gói ngôn ngữ</td><td>Được tải về thiết bị của bạn khi một ngôn ngữ được dịch lần đầu. ULMOX hỏi trước và tải qua Wi-Fi trừ khi bạn chọn dùng dữ liệu di động một cách rõ ràng. Bạn có thể xem và xóa chúng trong ứng dụng; gỡ ULMOX sẽ xóa chúng theo cách thông thường mà hệ điều hành xóa tệp của một ứng dụng.</td></tr>
+      <tr><td>Siêu dữ liệu về dịch và ngôn ngữ</td><td>Việc những ngôn ngữ nào được thiết lập và ngôn ngữ nào được nhận diện dùng để chọn mô hình và gán nhãn kết quả. Chúng không được ghi kèm với một tin nhắn, một tài khoản hay một Connection.</td></tr>
+      <tr><td>Việc Google ML Kit tự dùng mạng</td><td>Thành phần của Google có thể dùng mạng cho mục đích riêng của nó: chuyển gói ngôn ngữ, đọc cấu hình từ xa của chính nó, và báo cáo dữ liệu chẩn đoán cùng số liệu sử dụng về thành phần đó. Google ghi trong tài liệu rằng họ thu thập thông tin ứng dụng và thiết bị, một mã định danh cho mỗi lần cài đặt, dữ liệu hiệu năng, cấu hình API, sự kiện tính năng, mã lỗi, các ngôn ngữ dịch đã thiết lập và ngôn ngữ được nhận diện.</td></tr>
+      <tr><td>Dữ liệu trên máy chủ ULMOX</td><td>Không thay đổi. Máy chủ của chúng tôi chỉ giữ tin nhắn gốc, đúng như mô tả ở những phần khác của chính sách này.</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>Ba điều chúng tôi không khẳng định.</strong> Chúng tôi không khẳng định rằng Google nhận được nội dung tin nhắn của bạn — tài liệu của Google cho tính năng này không nói rằng nội dung đó được tải lên. Chúng tôi cũng không khẳng định rằng không có gì rời khỏi thiết bị của bạn: thành phần của Google tự thiết lập các kết nối mạng riêng cho những mục đích liệt kê ở trên. Và chúng tôi không khẳng định đã loại trừ được vấn đề này — tuyên bố quyền riêng tư của Google cho bộ công cụ học máy của họ bao trùm mọi tính năng trong bộ đó, kể cả những tính năng thực sự xử lý nội dung người dùng, và thành phần này không phải mã nguồn mở nên chúng tôi không thể tự kiểm tra. Chúng tôi nói với bạn điều chúng tôi có thể xác minh, thay vì lấp khoảng trống bằng một lời trấn an.</p>
+    </div>
+
+    <p>Dữ liệu dịch không bao giờ được dùng cho quảng cáo hay lập hồ sơ, dù bởi chúng tôi hay thay mặt chúng tôi. Một bản dịch không bao giờ trở thành bằng chứng kiểm duyệt: báo cáo và những người xem xét chúng đều dùng tin nhắn gốc.</p>
+
+    <h3>Thông tin thiết bị và kỹ thuật</h3>
+
+    <ul>
+      <li>Mã định danh thiết bị và lần cài đặt, phiên bản ứng dụng và nền tảng.</li>
+      <li>Mã thông báo đẩy, để chúng tôi có thể gửi thông báo.</li>
+      <li>Các tín hiệu dùng để bảo vệ dịch vụ khỏi bị lạm dụng, chẳng hạn nhiều tài khoản có dùng chung một thiết bị hay không.</li>
+    </ul>
+
+    <h3>Sử dụng và chẩn đoán</h3>
+
+    <ul>
+      <li>Firebase Analytics: mức sử dụng sản phẩm ở dạng tổng hợp.</li>
+      <li>Firebase Crashlytics: báo cáo sự cố.</li>
+      <li>Firebase Performance Monitoring: đo lường hiệu năng.</li>
+      <li>Nhật ký vận hành máy chủ, dùng để chạy và bảo vệ dịch vụ.</li>
+    </ul>
+
+    <h3>Xác nhận độ tuổi</h3>
+
+    <p>Để xác nhận bạn từ 18 tuổi trở lên, ULMOX dùng tín hiệu độ tuổi do nền tảng của bạn cung cấp ở nơi có sẵn, và nếu không thì hỏi ngày sinh của bạn.</p>
+
+    <div class="callout">
+      <p><strong>Ngày sinh của bạn không được lưu lại.</strong> Nó chỉ được dùng trong lúc yêu cầu đang được xử lý, để xác định bạn có từ 18 tuổi trở lên hay không. Chúng tôi giữ kết quả — bạn có đủ điều kiện hay không — chứ không giữ chính ngày đó, không giữ tuổi chính xác và không giữ nhóm tuổi.</p>
+    </div>
+
+    <p>Thông tin độ tuổi không bao giờ được dùng cho quảng cáo, lập hồ sơ, xếp hạng hay phân tích.</p>
+
+    <h3>Báo cáo, kiểm duyệt và chặn</h3>
+
+    <ul>
+      <li>Báo cáo về nội dung và về người dùng, trong đó có một hạng mục riêng cho an toàn trẻ em.</li>
+      <li>Bản ghi kiểm duyệt được tạo khi một báo cáo được xem xét.</li>
+      <li>Các lượt chặn bạn thực hiện. Chặn là một hành động an toàn riêng tư; người bị chặn không được thông báo.</li>
+    </ul>
+
+    <p>Nội dung bị báo cáo có thể được đưa vào trạng thái cách ly có thể đảo ngược trong khi một người xem xét. Báo cáo không cấm tài khoản. Chỉ quản trị viên ULMOX được ủy quyền mới có thể cấm một tài khoản, và chỉ sau khi có người xem xét.</p>
+
+    <p>ULMOX không tự động phân tích khung hình video, âm thanh hay bản ghi lời thoại.</p>
+
+    <h2>3. Vô hiệu hóa và xóa</h2>
+
+    <h3>Vô hiệu hóa</h3>
+
+    <p>Vô hiệu hóa có thể đảo ngược: bạn khôi phục tài khoản bằng cách đăng nhập lại rồi chọn <strong>Kích hoạt lại</strong>, điều mà chỉ đăng nhập thôi không làm được. Hồ sơ và nội dung Global của bạn được ẩn đi và tài khoản của bạn không được chọn cho các lượt chuyển mới. Dữ liệu của bạn vẫn được giữ để có thể khôi phục tài khoản. Những video bạn đã gửi có thể vẫn còn ở phía người nhận trong thời hạn lưu giữ thông thường của chúng.</p>
+
+    <p>Vô hiệu hóa không phải là xóa và không xóa các bản ghi an toàn. Báo cáo, quyết định kiểm duyệt, lượt chặn và các bằng chứng an toàn khác không bị ảnh hưởng bởi việc vô hiệu hóa hay kích hoạt lại. Kích hoạt lại khôi phục quyền truy cập của bạn; nhưng không đảo ngược một quyết định kiểm duyệt, không mang lại nội dung đã bị kiểm duyệt gỡ hoặc ẩn, và không mở lại một Connection đã kết thúc. Kết thúc một Connection là dứt điểm với cặp đó. Chặn hoạt động khác: một lượt chặn kết thúc Connection bạn đang có và ngăn liên lạc theo cả hai chiều chừng nào nó còn hiệu lực. Bỏ chặn cũng không khôi phục Connection cũ — hai tài khoản sẽ phải đủ điều kiện lại từ đầu, qua hai lượt trao đổi video hợp lệ mới và sự chấp thuận mới của cả hai người.</p>
+
+    <h3>Xóa</h3>
+
+    <p>Xóa là vĩnh viễn. Quyền truy cập và khả năng được tìm thấy bị gỡ ngay khi việc xóa được khởi động thành công, và việc xóa dữ liệu thực tế tiếp tục chạy nền, đặt mục tiêu hoàn tất trong vòng 30 ngày, trừ khi một nghĩa vụ an toàn hoặc pháp lý chính đáng đòi hỏi lưu giữ hạn chế. Tên người dùng của bạn được giữ 90 ngày trước khi có thể dùng lại. Xem <a href="delete_account.html">Xóa tài khoản</a>.</p>
+
+    <p>Nếu tài khoản của bạn liên kết với <strong>Đăng nhập bằng Apple</strong>, việc xóa vĩnh viễn trên thiết bị Apple sẽ yêu cầu bạn xác nhận thêm một lần trực tiếp với Apple, để ULMOX có thể thu hồi ủy quyền Đăng nhập bằng Apple của chính mình trước khi tài khoản bị xóa. Chúng tôi không nhận mật khẩu Apple của bạn. Nếu bước đó không hoàn tất, không có gì bị xóa. Tài khoản liên kết với Apple không thể hoàn tất bước này trên thiết bị Android; ULMOX dừng lại trước khi gỡ bất cứ thứ gì và đề nghị bạn hoàn tất trên thiết bị Apple.</p>
+
+    <p>Xóa tài khoản ULMOX không xóa <strong>ID Apple</strong> hay Tài khoản Google của bạn. ULMOX không thể xóa cái nào trong hai cái đó. Việc thu hồi ủy quyền Đăng nhập bằng Apple của ULMOX cũng là một hành động khác với việc xóa tài khoản, và bản thân nó không xóa dữ liệu ULMOX của bạn.</p>
+
+    <p>Xóa tài khoản của bạn sẽ gỡ dữ liệu của bạn. Nó không gỡ dữ liệu của người khác: một Connection có hai người, và tin nhắn, video cùng bản ghi của người kia vẫn ở lại với họ. Ở nơi bằng chứng an toàn phải được giữ vì một lý do chính đáng, các liên kết gắn nó với danh tính của bạn sẽ được xóa như một phần của quá trình xóa dữ liệu, nên thứ còn lại là bản ghi về điều đã xảy ra chứ không phải bản ghi về bạn.</p>
+
+    <h2>4. Chúng tôi giữ mọi thứ trong bao lâu</h2>
+
+    <table>
+      <caption class="effective">Thời hạn lưu giữ được quyết định bởi các điều kiện dưới đây, chứ không phải bởi một khoảng thời gian cố định duy nhất.</caption>
+      <tr><th scope="col">Dữ liệu</th><th scope="col">Trong bao lâu</th></tr>
+      <tr><td>Hồ sơ tài khoản và cài đặt</td><td>Chừng nào tài khoản của bạn còn tồn tại.</td></tr>
+      <tr><td>Video chưa từng được mở</td><td>Bị gỡ khoảng 7 ngày sau khi gửi.</td></tr>
+      <tr><td>Video đã mở nhưng không chia sẻ lên Global</td><td>Bị gỡ khoảng 15 ngày sau khi gửi.</td></tr>
+      <tr><td>Nội dung Global</td><td>Được giữ chừng nào còn khả dụng, cho tới khi chủ sở hữu xóa hoặc kiểm duyệt gỡ bỏ. Chúng tôi không xóa nội dung Global theo một bộ đếm cố định.</td></tr>
+      <tr><td>Các lần tải lên chưa hoàn tất</td><td>Được dọn khoảng 24 giờ sau khi bị bỏ dở.</td></tr>
+      <tr><td>Mã thông báo đẩy và bản ghi thiết bị</td><td>Chừng nào còn đăng ký; bị gỡ khi vô hiệu hóa và khi xóa.</td></tr>
+      <tr><td>Kết quả đủ điều kiện về độ tuổi</td><td>Chừng nào tài khoản của bạn còn tồn tại. Ngày sinh của bạn không bao giờ được lưu.</td></tr>
+      <tr><td>Giữ chỗ tên người dùng sau khi xóa</td><td>90 ngày.</td></tr>
+      <tr><td>Bản ghi xóa nội bộ</td><td>90 ngày, được giữ để một lần xóa có thể được kiểm chứng về sau.</td></tr>
+      <tr><td>Tin nhắn trong Connections</td><td>Một tin nhắn thông thường trong Connection được coi là hết hạn khoảng bảy ngày sau khi gửi, và từ lúc đó không còn là một phần của cuộc trò chuyện. Đó là một quy tắc về tin nhắn, không phải lời hứa về một bộ đếm: việc tự động hết hạn của bản ghi đã lưu hiện chưa được bật, nên việc gỡ bỏ diễn ra qua các đợt dọn dẹp thường lệ chứ không ở một thời điểm cố định.</td></tr>
+      <tr><td>Báo cáo, bản ghi kiểm duyệt, lượt chặn và sự kiện an toàn</td><td>Được giữ làm bằng chứng an toàn, kể cả sau khi một tài khoản bị xóa, chừng nào còn một lý do an toàn hoặc pháp lý chính đáng. Bằng chứng an toàn không phải lịch sử tin nhắn thông thường: một khi tin nhắn đã gắn với một báo cáo, quy tắc hết hạn bảy ngày không còn chi phối nó nữa, và nó được giữ trong lúc việc xem xét còn mở và sau đó ở nơi kết quả biện minh cho việc giữ lại.</td></tr>
+      <tr><td>Dữ liệu phân tích, sự cố và hiệu năng</td><td>Được giữ theo thiết lập lưu giữ được cấu hình trong dịch vụ Google tương ứng.</td></tr>
+    </table>
+
+    <h2>5. Ai xử lý dữ liệu cho chúng tôi</h2>
+
+    <p>ULMOX sử dụng các dịch vụ sau:</p>
+
+    <ul>
+      <li>Firebase Authentication, Cloud Firestore, Cloud Storage, Cloud Functions và Cloud Messaging (Google).</li>
+      <li>Firebase Analytics, Crashlytics và Performance Monitoring (Google).</li>
+      <li>Firebase App Check, một cơ chế kiểm tra tính toàn vẹn của thiết bị, dùng ở nơi nền tảng hỗ trợ, nhằm giảm việc lạm dụng dịch vụ một cách tự động.</li>
+      <li>Đăng nhập bằng Google, và Đăng nhập bằng Apple với các tài khoản có liên kết, để xác thực.</li>
+      <li>Google ML Kit Dịch và Nhận diện ngôn ngữ, thực hiện việc dịch tin nhắn ngay trên thiết bị của bạn và có thể dùng mạng như mô tả ở mục “Dịch tin nhắn” bên trên.</li>
+      <li>Firebase Remote Config và Firebase Installations, được ML Kit dùng cho cấu hình riêng của nó và cho mã định danh theo lần cài đặt nói ở trên.</li>
+      <li>Tín hiệu độ tuổi từ nền tảng Google Play và Apple, ở nơi nền tảng cung cấp và bạn chọn chia sẻ.</li>
+    </ul>
+
+    <p>Chúng tôi không bán thông tin cá nhân, và không dùng nó cho quảng cáo hay theo dõi xuyên ứng dụng.</p>
+
+    <h2>6. Xử lý xuyên biên giới</h2>
+
+    <p>ULMOX có mặt trên toàn thế giới và các nhà cung cấp của chúng tôi vận hành trung tâm dữ liệu ở nhiều quốc gia, nên dữ liệu của bạn có thể được xử lý bên ngoài quốc gia nơi bạn sinh sống. Với những lần chuyển đó, chúng tôi dựa vào các biện pháp bảo vệ mà nhà cung cấp của chúng tôi đưa ra.</p>
+
+    <h2>7. Quyền của bạn</h2>
+
+    <p>Tùy nơi bạn sinh sống, bạn có thể có quyền truy cập, chỉnh sửa hoặc xóa dữ liệu của mình, phản đối hoặc hạn chế một số hoạt động xử lý, và rút lại sự đồng ý ở nơi việc xử lý dựa trên sự đồng ý. Bạn có thể tự xóa tài khoản trong ứng dụng, và thực hiện các quyền khác bằng cách viết thư tới <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>.</p>
+
+    <p>Nếu bạn không hài lòng với phản hồi của chúng tôi, bạn có thể khiếu nại tới cơ quan bảo vệ dữ liệu tại địa phương của bạn.</p>
+
+    <h2>8. Bảo mật</h2>
+
+    <p>Dữ liệu được truyền qua các kết nối mã hóa và lưu trên hạ tầng do nhà cung cấp của chúng tôi quản lý. Quyền truy cập bằng chứng kiểm duyệt chỉ dành cho những người xem xét được ủy quyền. Không dịch vụ trực tuyến nào có thể hứa hẹn bảo mật hoàn hảo, và chúng tôi không tuyên bố như vậy.</p>
+
+    <h2>9. Thay đổi</h2>
+
+    <p>Chúng tôi sẽ cập nhật trang này khi cách làm của chúng tôi thay đổi và sẽ cập nhật ngày ở trên. Những thay đổi quan trọng có thể yêu cầu bạn chấp nhận điều khoản đã cập nhật trong ứng dụng.</p>
+
+    <h2>10. Trang liên quan</h2>
+
+    <p>
+      <a href="delete_account.html">Xóa tài khoản</a>
+      &middot;
+      <a href="terms.html">Điều khoản</a>
+      &middot;
+      <a href="safety.html">An toàn và kiểm duyệt</a>
+      &middot;
+      <a href="support.html">Hỗ trợ</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Thông tin pháp lý và hỗ trợ">
+      <ul>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><span aria-current="page">Chính sách quyền riêng tư</span></li>
+        <li><a href="terms.html">Điều khoản</a></li>
+        <li><a href="safety.html">An toàn và kiểm duyệt</a></li>
+        <li><a href="support.html">Hỗ trợ</a></li>
+        <li><a href="delete_account.html">Xóa tài khoản</a></li>
+        <li><a href="translation.html">Thông tin về dịch</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Bản tiếng Anh của chính sách này là bản có hiệu lực. Nếu bản dịch khác với bản tiếng Anh, bản tiếng Anh sẽ được áp dụng.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

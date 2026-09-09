@@ -1,28 +1,403 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Informativa sulla privacy - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Quali dati raccoglie ULMOX, perché, chi li tratta, per quanto tempo sono conservati e come cancellarli." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="background:#000;color:#fff;font-family:sans-serif;padding:40px;">
-<h1>Informativa sulla privacy</h1>
-<section id="child-safety" style="margin-top:40px;">
-  <h2>Standard di sicurezza per i minori</h2>
-  <p>ULMOX adotta tolleranza zero verso qualsiasi forma di abuso sessuale o sfruttamento dei minori (CSAE).</p>
-  <p>Gli utenti possono segnalare contenuti inappropriati o dannosi direttamente nell’app. Tutte le segnalazioni vengono esaminate e i contenuti contrari alle nostre regole vengono rimossi rapidamente.</p>
-  <p>Adottiamo misure appropriate contro gli account che violano queste regole, inclusa la sospensione o il ban permanente.</p>
-  <p>ULMOX collabora con le autorità competenti quando richiesto dalla legge.</p>
-  <p>Ci impegniamo a mantenere un ambiente sicuro per tutti gli utenti.</p>
-</section>
-<p>ULMOX rispetta la tua privacy.</p>
-<p>Raccogliamo dati di base, come nome, indirizzo email e video caricati, per fornire il nostro servizio.</p>
-<p>I tuoi dati non vengono mai venduti a terzi.</p>
-<p>Usiamo Firebase per autenticazione e archiviazione dei dati.</p>
-<p>Puoi richiedere l’eliminazione dell’account in qualsiasi momento.</p>
-<p>Contatto: ulmoxapp@outlook.com</p>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+<body>
+  <a class="ulmox-skip-link" href="#main">Vai al contenuto</a>
+<div class="container">
+  <main id="main">
+    <h1>Informativa sulla privacy</h1>
+    <p class="effective">In vigore dal 2026-09-04. Ultima modifica il 2026-09-04.</p>
+
+    <p>ULMOX è un’app per condividere video. Registri un video breve e il nostro server lo consegna a una sola persona destinataria idonea, scelta a caso. Solo chi riceve un video può decidere di condividerlo nel feed pubblico Global.</p>
+
+    <p>ULMOX è gestita da Ferdi G&uuml;lseren. Per qualsiasi domanda sulla privacy scrivi a <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>.</p>
+
+    <h2>1. Chi può usare ULMOX</h2>
+
+    <p>ULMOX è un servizio per <strong>maggiori di 18 anni</strong>. Non è rivolto ai minori e non raccogliamo consapevolmente dati di persone con meno di 18 anni.</p>
+
+    <h2>2. Che cosa raccogliamo</h2>
+
+    <h3>Account e accesso</h3>
+
+    <ul>
+      <li>Indirizzo e-mail e nome visualizzato.</li>
+      <li>Identificativi dell’account e del fornitore di accesso.</li>
+      <li>Per creare il tuo account e accedervi viene usato un fornitore di accesso supportato. Quando un account è collegato ad <strong>Accedi con Apple</strong> e usa <strong>Nascondi la mia e-mail</strong> di Apple, riceviamo un indirizzo di inoltro anziché quello reale.</li>
+    </ul>
+
+    <h3>Contenuti che crei</h3>
+
+    <ul>
+      <li>I video che registri e le miniature generate da essi.</li>
+      <li>La tua foto profilo e i dati del profilo.</li>
+      <li>I contenuti Global, quando chi riceve un video lo condivide pubblicamente.</li>
+      <li>Le segnalazioni che invii e i dettagli facoltativi in testo libero che vi aggiungi.</li>
+    </ul>
+
+    <h3>Fotocamera, microfono e foto</h3>
+
+    <ul>
+      <li><strong>Fotocamera e microfono.</strong> ULMOX li richiede per permetterti di registrare un momento video con l’audio e di scattare una foto profilo. La registrazione parte solo quando la avvii tu.</li>
+      <li><strong>Scegliere una foto.</strong> Quando imposti una foto profilo, ULMOX apre un selettore di immagini e riceve solo l’immagine che scegli. Su una versione recente di Android è il selettore di sistema, quindi ULMOX non chiede alcuna autorizzazione sull’intera libreria fotografica. Su iOS ULMOX chiede l’accesso alle foto solo per i percorsi che ne hanno davvero bisogno, e iOS ti consente di concedere l’accesso a foto selezionate anziché all’intera libreria.</li>
+      <li><strong>Salvare sul dispositivo.</strong> Se scegli di salvare un momento sul telefono, ULMOX chiede l’autorizzazione per aggiungerlo alla libreria fotografica. Quell’autorizzazione aggiunge un file; non legge la tua libreria.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>I contenuti multimediali che crei vengono caricati; non restano solo sul tuo dispositivo.</strong> I video, le miniature generate e la foto profilo vengono caricati e conservati in Firebase Cloud Storage per poter essere consegnati e mostrati. Salvare una tua copia sul telefono è un passaggio separato e facoltativo.</p>
+    </div>
+
+    <p>Su Android ULMOX non dichiara più le ampie autorizzazioni di accesso a foto e video usate da Android 13 e successivi, perché il selettore di immagini di sistema le sostituisce. Restano dichiarate due vecchie autorizzazioni di archiviazione, entrambe ereditate da componenti su cui ULMOX si basa ed entrambe limitate in modo che una versione moderna di Android non possa concederle:</p>
+
+    <ul>
+      <li>Una vecchia autorizzazione di <strong>lettura</strong> dell’archiviazione, dichiarata solo per compatibilità con Android 12 e precedenti.</li>
+      <li>Una vecchia autorizzazione di <strong>scrittura</strong> dell’archiviazione, dichiarata solo per compatibilità con <strong>Android 9 e precedenti</strong>. È il vecchio modo, antecedente all’archiviazione delimitata, di scrivere un file nell’archiviazione condivisa. Non è una moderna autorizzazione alla libreria di foto o video e non è una delle autorizzazioni multimediali di Android 13 e successivi descritte sopra.</li>
+    </ul>
+
+    <p>Il limite fa parte della dichiarazione stessa, quindi su una versione più recente di Android l’autorizzazione non viene concessa, non viene richiesta e non ha effetto. ULMOX non te ne chiede mai nessuna delle due. Su una versione recente di Android la scelta di un’immagine passa dal selettore di sistema, che non richiede alcuna autorizzazione di archiviazione.</p>
+
+    <p>ULMOX non richiede alcun identificativo pubblicitario. Le autorizzazioni per la pubblicità e l’attribuzione pubblicitaria non sono presenti nell’app Android che compiliamo, quindi non c’è nulla che un inserzionista o una rete pubblicitaria possa leggere.</p>
+
+    <h3>Posizione</h3>
+
+    <p>Con il tuo permesso, ULMOX usa la posizione del dispositivo per mostrare la città e il paese in cui un momento è stato registrato e per collocare i contenuti sulla mappa del mondo. Se rifiuti, l’app continua a funzionare senza.</p>
+
+    <p>La posizione viene letta <strong>solo mentre usi l’app</strong>, come singola rilevazione effettuata nel momento della registrazione. ULMOX non segue la tua posizione in background, non la traccia in modo continuo e non la legge quando l’app è chiusa.</p>
+
+    <p>ULMOX richiede solo la posizione durante l’uso. Non usa posizione in background, monitoraggio continuo, monitoraggio delle variazioni significative o geofencing, e l’app non dichiara alcuna autorizzazione che le consentirebbe di farlo.</p>
+
+    <h3>Traduzione dei messaggi (Google ML Kit)</h3>
+
+    <p>ULMOX offre la traduzione facoltativa di un messaggio Connections che hai ricevuto. Viene eseguita solo quando scegli <strong>Translate with Google</strong> su un singolo messaggio, e il messaggio originale resta a schermo e continua a fare fede. Connections e la traduzione facoltativa dei messaggi vengono introdotte gradualmente e potrebbero non essere ancora disponibili per ogni account o per ogni versione installata dell’app. Vedi <a href="translation.html">Informazioni sulla traduzione</a>.</p>
+
+    <table>
+      <caption class="effective">Che cosa fa con i dati ciascuna parte della traduzione.</caption>
+      <tr><th scope="col">Elemento</th><th scope="col">Che cosa succede</th></tr>
+      <tr><td>Il messaggio e la sua traduzione</td><td>Gestiti sul tuo dispositivo da Google ML Kit. ULMOX non invia né l’uno né l’altra da nessuna parte per essere tradotti e non conserva la traduzione sui nostri server, né in una segnalazione, né tra le prove di moderazione, né in una notifica, né nelle statistiche, né nei nostri registri.</td></tr>
+      <tr><td>Pacchetti lingua</td><td>Vengono scaricati sul dispositivo la prima volta che una lingua viene tradotta. ULMOX chiede prima e scarica via Wi-Fi a meno che tu non scelga esplicitamente la rete mobile. Puoi vederli ed eliminarli nell’app; disinstallare ULMOX li rimuove nel modo consueto in cui il sistema operativo rimuove i file di un’app.</td></tr>
+      <tr><td>Metadati di traduzione e lingua</td><td>Quali lingue sono configurate e quale lingua è stata identificata servono a scegliere un modello e a etichettare il risultato. Non vengono registrati in associazione a un messaggio, a un account o a una Connection.</td></tr>
+      <tr><td>Uso della rete proprio di Google ML Kit</td><td>Il componente di Google può usare la rete per scopi propri: distribuire i pacchetti lingua, leggere la propria configurazione remota e inviare diagnostica e statistiche d’uso sul componente. Google documenta che raccoglie informazioni sull’app e sul dispositivo, un identificativo per installazione, dati sulle prestazioni, la configurazione dell’API, eventi di funzionalità, codici di errore, le lingue di traduzione configurate e la lingua identificata.</td></tr>
+      <tr><td>Dati sui server ULMOX</td><td>Invariati. I nostri server conservano solo il messaggio originale, esattamente come descritto altrove in questa informativa.</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>Tre cose che non affermiamo.</strong> Non affermiamo che Google riceva il testo dei tuoi messaggi: la documentazione di Google su questa funzione non dice che venga caricato. Non affermiamo nemmeno che nulla lasci mai il tuo dispositivo: il componente di Google apre proprie connessioni di rete per gli scopi elencati sopra. E non affermiamo di aver escluso la questione: l’informativa sulla privacy di Google per il suo kit di apprendimento automatico copre ogni funzione del kit, comprese quelle che trattano davvero contenuti dell’utente, e il componente non è open source, quindi non possiamo ispezionarlo noi stessi. Ti diciamo ciò che possiamo verificare invece di riempire il vuoto con una rassicurazione.</p>
+    </div>
+
+    <p>I dati di traduzione non vengono mai usati per pubblicità o profilazione, né da noi né per nostro conto. Una traduzione non diventa mai prova di moderazione: le segnalazioni e chi le esamina usano il messaggio originale.</p>
+
+    <h3>Informazioni sul dispositivo e informazioni tecniche</h3>
+
+    <ul>
+      <li>Identificativi di dispositivo e di installazione, versione dell’app e piattaforma.</li>
+      <li>Token per le notifiche push, così da poterti recapitare le notifiche.</li>
+      <li>Segnali usati per proteggere il servizio dagli abusi, ad esempio se più account condividono un unico dispositivo.</li>
+    </ul>
+
+    <h3>Utilizzo e diagnostica</h3>
+
+    <ul>
+      <li>Firebase Analytics: utilizzo aggregato del prodotto.</li>
+      <li>Firebase Crashlytics: rapporti sugli arresti anomali.</li>
+      <li>Firebase Performance Monitoring: misurazioni delle prestazioni.</li>
+      <li>Registri operativi del server, usati per far funzionare e proteggere il servizio.</li>
+    </ul>
+
+    <h3>Verifica dell’età</h3>
+
+    <p>Per confermare che hai 18 anni o più, ULMOX usa il segnale di età fornito dalla tua piattaforma quando è disponibile e, in caso contrario, ti chiede la data di nascita.</p>
+
+    <div class="callout">
+      <p><strong>La tua data di nascita non viene conservata.</strong> Viene usata solo mentre la richiesta è in elaborazione, per stabilire se hai 18 anni o più. Conserviamo l’esito — se sei idoneo — e non la data in sé, non la tua età esatta e non una fascia d’età.</p>
+    </div>
+
+    <p>Le informazioni sull’età non vengono mai usate per pubblicità, profilazione, ordinamento o statistiche.</p>
+
+    <h3>Segnalazioni, moderazione e blocco</h3>
+
+    <ul>
+      <li>Segnalazioni su contenuti e su persone, con una categoria dedicata alla sicurezza dei minori.</li>
+      <li>Registrazioni di moderazione create quando una segnalazione viene esaminata.</li>
+      <li>I blocchi che imposti. Bloccare è una misura di sicurezza privata; la persona bloccata non ne viene informata.</li>
+    </ul>
+
+    <p>Un contenuto segnalato può essere messo in quarantena reversibile mentre una persona lo esamina. Le segnalazioni non bandiscono account. Solo una persona amministratrice autorizzata di ULMOX può bandire un account, e soltanto dopo un esame umano.</p>
+
+    <p>ULMOX non analizza automaticamente i fotogrammi video, l’audio o le trascrizioni.</p>
+
+    <h2>3. Disattivazione ed eliminazione</h2>
+
+    <h3>Disattivazione</h3>
+
+    <p>La disattivazione è reversibile: ripristini l’account effettuando di nuovo l’accesso e scegliendo <strong>Riattiva</strong>, cosa che il solo accesso non fa. Il tuo profilo e i tuoi contenuti Global vengono nascosti e il tuo account non viene selezionato per nuove consegne. I tuoi dati restano conservati perché l’account possa essere ripristinato. I video già inviati possono restare presso chi li ha ricevuti per il consueto periodo di conservazione.</p>
+
+    <p>La disattivazione non è una cancellazione e non elimina le registrazioni di sicurezza. Segnalazioni, decisioni di moderazione, blocchi e altre prove di sicurezza non sono influenzati né dalla disattivazione né dalla riattivazione. La riattivazione ripristina il tuo accesso; non annulla una decisione di moderazione, non riporta contenuti rimossi o nascosti dalla moderazione e non riapre una Connection che è stata terminata. Terminare una Connection è definitivo per quella coppia. Il blocco funziona diversamente: un blocco termina la Connection che hai ora e interrompe il contatto in entrambe le direzioni finché resta attivo. Rimuovere un blocco non ripristina nemmeno la vecchia Connection: i due account dovrebbero tornare idonei dall’inizio, con due nuovi scambi video validi e una nuova approvazione da parte di ciascuno.</p>
+
+    <h3>Eliminazione</h3>
+
+    <p>L’eliminazione è definitiva. Accesso e reperibilità vengono rimossi non appena l’eliminazione è avviata correttamente, e la cancellazione fisica prosegue in background con l’obiettivo di completarsi entro 30 giorni, salvo che un obbligo giustificato di sicurezza o di legge imponga una conservazione limitata. Il tuo nome utente resta riservato per 90 giorni prima di poter essere riutilizzato. Vedi <a href="delete_account.html">Elimina account</a>.</p>
+
+    <p>Se il tuo account è collegato ad <strong>Accedi con Apple</strong>, l’eliminazione definitiva su un dispositivo Apple ti chiede di confermare ancora una volta direttamente con Apple, così che ULMOX possa revocare la propria autorizzazione Accedi con Apple prima che l’account venga eliminato. Non riceviamo la tua password Apple. Se quel passaggio non si conclude, non viene eliminato nulla. Un account collegato ad Apple non può completare questo passaggio su un dispositivo Android; ULMOX si ferma prima di rimuovere qualsiasi cosa e ti chiede di concludere su un dispositivo Apple.</p>
+
+    <p>Eliminare il tuo account ULMOX non elimina il tuo <strong>ID Apple</strong> né il tuo account Google. ULMOX non può eliminare nessuno dei due. Revocare l’autorizzazione Accedi con Apple di ULMOX è inoltre un’azione diversa dall’eliminazione dell’account e, da sola, non cancella i tuoi dati ULMOX.</p>
+
+    <p>Eliminare il tuo account rimuove i tuoi dati. Non rimuove quelli di un’altra persona: in una Connection ci sono due persone, e i messaggi, i video e le registrazioni dell’altra restano con lei. Quando una prova di sicurezza deve essere conservata per un motivo giustificato, i collegamenti che la legano alla tua identità vengono ripuliti nell’ambito della cancellazione, così che resti una traccia di ciò che è accaduto e non una traccia su di te.</p>
+
+    <h2>4. Per quanto tempo conserviamo le cose</h2>
+
+    <table>
+      <caption class="effective">La conservazione dipende dalle condizioni indicate sotto anziché da un unico periodo fisso.</caption>
+      <tr><th scope="col">Dato</th><th scope="col">Per quanto tempo</th></tr>
+      <tr><td>Profilo e impostazioni dell’account</td><td>Finché il tuo account esiste.</td></tr>
+      <tr><td>Video mai aperti</td><td>Rimossi circa 7 giorni dopo l’invio.</td></tr>
+      <tr><td>Video aperti ma non condivisi su Global</td><td>Rimossi circa 15 giorni dopo l’invio.</td></tr>
+      <tr><td>Contenuti Global</td><td>Conservati finché restano disponibili, fino a quando chi li possiede li elimina o la moderazione li rimuove. Non eliminiamo i contenuti Global con un timer fisso.</td></tr>
+      <tr><td>Caricamenti incompleti</td><td>Ripuliti circa 24 ore dopo essere stati abbandonati.</td></tr>
+      <tr><td>Token push e registrazioni del dispositivo</td><td>Finché sono registrati; rimossi con la disattivazione e con l’eliminazione.</td></tr>
+      <tr><td>Esito dell’idoneità per età</td><td>Finché il tuo account esiste. La tua data di nascita non viene mai conservata.</td></tr>
+      <tr><td>Riserva del nome utente dopo l’eliminazione</td><td>90 giorni.</td></tr>
+      <tr><td>Registrazione interna dell’eliminazione</td><td>90 giorni, conservata affinché un’eliminazione possa essere verificata.</td></tr>
+      <tr><td>Messaggi delle Connections</td><td>Un messaggio ordinario in una Connection è considerato scaduto circa sette giorni dopo l’invio e da quel momento smette di far parte della conversazione. È una regola sul messaggio, non una promessa su un timer: la scadenza automatica del record conservato non è al momento attiva, quindi la rimozione avviene con la pulizia ordinaria e non in un istante fisso.</td></tr>
+      <tr><td>Segnalazioni, registrazioni di moderazione, blocchi ed eventi di sicurezza</td><td>Conservati come prove di sicurezza, anche dopo l’eliminazione di un account, finché esiste un motivo giustificato di sicurezza o di legge. Una prova di sicurezza non è la normale cronologia dei messaggi: una volta che un messaggio è collegato a una segnalazione, la scadenza di sette giorni non lo governa più, e viene conservato finché l’esame è aperto e in seguito quando l’esito lo giustifica.</td></tr>
+      <tr><td>Dati di statistiche, arresti anomali e prestazioni</td><td>Conservati secondo l’impostazione di conservazione configurata nel relativo servizio Google.</td></tr>
+    </table>
+
+    <h2>5. Chi tratta i dati per nostro conto</h2>
+
+    <p>ULMOX utilizza i seguenti servizi:</p>
+
+    <ul>
+      <li>Firebase Authentication, Cloud Firestore, Cloud Storage, Cloud Functions e Cloud Messaging (Google).</li>
+      <li>Firebase Analytics, Crashlytics e Performance Monitoring (Google).</li>
+      <li>Firebase App Check, un controllo di integrità del dispositivo usato, dove la piattaforma lo supporta, per ridurre l’abuso automatizzato del servizio.</li>
+      <li>L’accesso con Google e Accedi con Apple per gli account collegati, per l’autenticazione.</li>
+      <li>Google ML Kit Traduzione e Identificazione della lingua, che eseguono la traduzione dei messaggi sul tuo dispositivo e possono usare la rete come descritto sopra in «Traduzione dei messaggi».</li>
+      <li>Firebase Remote Config e Firebase Installations, che ML Kit usa per la propria configurazione e per l’identificativo per installazione descritto sopra.</li>
+      <li>I segnali di età delle piattaforme Google Play e Apple, quando la piattaforma li rende disponibili e tu scegli di condividerli.</li>
+    </ul>
+
+    <p>Non vendiamo dati personali e non li usiamo per pubblicità o per il tracciamento tra app.</p>
+
+    <h2>6. Trattamento internazionale</h2>
+
+    <p>ULMOX è disponibile in tutto il mondo e i nostri fornitori gestiscono data center in vari paesi, quindi i tuoi dati possono essere trattati fuori dal paese in cui vivi. Per questi trasferimenti ci basiamo sulle garanzie offerte dai nostri fornitori.</p>
+
+    <h2>7. I tuoi diritti</h2>
+
+    <p>A seconda di dove vivi, puoi avere il diritto di accedere ai tuoi dati, rettificarli o cancellarli, di opporti a determinati trattamenti o limitarli e di revocare il consenso quando il trattamento si basa su di esso. Puoi eliminare il tuo account autonomamente nell’app, e puoi esercitare gli altri diritti scrivendo a <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>.</p>
+
+    <p>Se non sei soddisfatto della nostra risposta, puoi presentare reclamo alla tua autorità locale per la protezione dei dati.</p>
+
+    <h2>8. Sicurezza</h2>
+
+    <p>I dati sono trasmessi su connessioni cifrate e conservati sull’infrastruttura gestita dei nostri fornitori. L’accesso alle prove di moderazione è limitato a revisori autorizzati. Nessun servizio online può promettere una sicurezza perfetta, e noi non lo sosteniamo.</p>
+
+    <h2>9. Modifiche</h2>
+
+    <p>Aggiorneremo questa pagina quando cambieranno le nostre prassi e aggiorneremo la data indicata sopra. Modifiche sostanziali possono richiedere che tu accetti condizioni aggiornate nell’app.</p>
+
+    <h2>10. Pagine correlate</h2>
+
+    <p>
+      <a href="delete_account.html">Elimina account</a>
+      &middot;
+      <a href="terms.html">Termini</a>
+      &middot;
+      <a href="safety.html">Sicurezza e moderazione</a>
+      &middot;
+      <a href="support.html">Supporto</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Informazioni legali e supporto">
+      <ul>
+        <li><a href="index.html">Home page</a></li>
+        <li><span aria-current="page">Informativa sulla privacy</span></li>
+        <li><a href="terms.html">Termini</a></li>
+        <li><a href="safety.html">Sicurezza e moderazione</a></li>
+        <li><a href="support.html">Supporto</a></li>
+        <li><a href="delete_account.html">Elimina account</a></li>
+        <li><a href="translation.html">Informazioni sulla traduzione</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">La versione inglese di questa informativa è quella autentica. Se una traduzione differisce, prevale la versione inglese.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

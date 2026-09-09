@@ -5,6 +5,8 @@ const fs = require("fs");
 const path = require("path");
 const {
   ANALYTICS_MARKER,
+  REQUIRED_ROOT_FILES,
+  isAnalyticsExcluded,
   validateMeasurementId
 } = require("./build-site");
 
@@ -45,6 +47,92 @@ function validateProductionMeasurementId(value) {
   return measurementId;
 }
 
+const PRODUCTION_ORIGIN = "https://ulmoxapp.com";
+
+/**
+ * Routes that must stay indexable.
+ *
+ * robots.txt may exclude the hyphenated redirect, which only forwards to the
+ * canonical page, but it must never hide the legal, safety, support, privacy
+ * or account-deletion material a store reviewer and a regulator have to find.
+ */
+const MUST_INDEX = Object.freeze([
+  "/privacy.html",
+  "/terms.html",
+  "/safety.html",
+  "/support.html",
+  "/delete_account.html"
+]);
+
+/** Maps a sitemap <loc> to the file the deployed site would serve for it. */
+function routeToOutputPath(outputRoot, locationUrl) {
+  const routePath = locationUrl.slice(PRODUCTION_ORIGIN.length) || "/";
+  const relative = routePath.endsWith("/")
+    ? path.join(routePath.slice(1), "index.html")
+    : routePath.slice(1);
+  return path.join(outputRoot, relative);
+}
+
+/**
+ * Stage 0.14B-R: robots.txt and sitemap.xml never reached dist/, so a deployed
+ * site served neither. The build now copies both; this fails the deployment if
+ * either is missing, malformed, points at the wrong origin, lists a route the
+ * build did not produce, or hides a page that must stay indexable.
+ */
+function verifyRobotsAndSitemap(outputRoot) {
+  const robots = readRequiredFile(path.join(outputRoot, "robots.txt"));
+  const sitemap = readRequiredFile(path.join(outputRoot, "sitemap.xml"));
+
+  assert.match(
+    robots,
+    new RegExp(`^Sitemap:\\s*${PRODUCTION_ORIGIN}/sitemap\\.xml\\s*$`, "m"),
+    "robots.txt does not reference the production sitemap."
+  );
+
+  const disallowed = [...robots.matchAll(/^Disallow:\s*(\S+)\s*$/gm)]
+    .map((match) => match[1])
+    .filter((value) => value !== "");
+  for (const route of MUST_INDEX) {
+    for (const rule of disallowed) {
+      assert.ok(
+        !route.startsWith(rule),
+        `robots.txt blocks a page that must stay indexable: ${route} (Disallow: ${rule})`
+      );
+    }
+  }
+
+  assert.match(sitemap.trimStart(), /^<\?xml /, "sitemap.xml is not well formed.");
+  assert.match(sitemap, /<urlset\b/, "sitemap.xml has no <urlset>.");
+  assert.match(sitemap, /<\/urlset>\s*$/, "sitemap.xml is truncated.");
+
+  const locations = [...sitemap.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => m[1].trim());
+  assert.ok(locations.length > 0, "sitemap.xml lists no URLs.");
+
+  const seen = new Set();
+  for (const location of locations) {
+    assert.ok(location, "sitemap.xml contains an empty <loc>.");
+    assert.ok(
+      location.startsWith(`${PRODUCTION_ORIGIN}/`),
+      `sitemap.xml uses the wrong origin: ${location}`
+    );
+    assert.ok(!seen.has(location), `sitemap.xml lists a duplicate URL: ${location}`);
+    seen.add(location);
+
+    const target = routeToOutputPath(outputRoot, location);
+    assert.ok(
+      fs.existsSync(target),
+      `sitemap.xml lists a route the build did not produce: ${location}`
+    );
+  }
+
+  assert.ok(
+    seen.has(`${PRODUCTION_ORIGIN}/delete_account.html`),
+    "sitemap.xml omits the canonical account-deletion route."
+  );
+
+  return { robotsVerified: true, sitemapUrls: seen.size };
+}
+
 function verifyProductionBuild({
   outputRoot = path.resolve(__dirname, "..", "dist"),
   measurementId = process.env.GA_MEASUREMENT_ID
@@ -62,6 +150,24 @@ function verifyProductionBuild({
   for (const htmlPath of htmlFiles) {
     const html = fs.readFileSync(htmlPath, "utf8");
     if (!html.trim()) continue;
+
+    // Stage 0.13: the account-deletion route is intentionally analytics-free.
+    // Verify the absence positively, so a future build cannot quietly start
+    // measuring people while they delete their account.
+    if (isAnalyticsExcluded(path.relative(outputRoot, htmlPath))) {
+      assert.equal(
+        html.split(ANALYTICS_MARKER).length - 1,
+        0,
+        `${htmlPath}: the deletion route must carry no GA4 marker.`
+      );
+      assert.equal(
+        html.split('/assets/js/analytics.js').length - 1,
+        0,
+        `${htmlPath}: the deletion route must carry no analytics script.`
+      );
+      continue;
+    }
+
     assert.equal(
       html.split(ANALYTICS_MARKER).length - 1,
       1,
@@ -93,6 +199,46 @@ function verifyProductionBuild({
 
   const cname = readRequiredFile(path.join(outputRoot, "CNAME")).trim();
   assert.equal(cname, EXPECTED_DOMAIN, "The production CNAME is not ulmoxapp.com.");
+
+  for (const name of REQUIRED_ROOT_FILES) {
+    assert.ok(
+      fs.existsSync(path.join(outputRoot, name)),
+      `Missing production root file: ${name}`
+    );
+  }
+  const { robotsVerified, sitemapUrls } = verifyRobotsAndSitemap(outputRoot);
+
+  /*
+   * Stage 1.6W.1: a production artifact must also be *usable*.
+   *
+   * The build already refuses a broken local reference. This repeats that check
+   * on the artifact being deployed, and adds the accessibility contract every
+   * page is now generated against, so a hand edit that reaches dist/ without
+   * going through the generators cannot be deployed.
+   */
+  const {
+    auditAccessibility,
+    auditReferences,
+    auditRequiredNavigation
+  } = require("./audit-site");
+
+  const references = auditReferences(outputRoot);
+  assert.deepEqual(
+    references.findings.map((finding) => `${finding.route}: ${finding.message}`),
+    [],
+    "The production artifact contains broken local references."
+  );
+
+  const accessibility = auditAccessibility(outputRoot);
+  const navigation = auditRequiredNavigation(outputRoot);
+  const structural = [...accessibility.findings, ...navigation.findings];
+  assert.deepEqual(
+    structural
+      .slice(0, 20)
+      .map((finding) => `${finding.route} [${finding.rule}] ${finding.message}`),
+    [],
+    `The production artifact fails ${structural.length} accessibility check(s).`
+  );
 
   const homeHtml = readRequiredFile(path.join(outputRoot, "index.html"));
   const downloadHtml = readRequiredFile(
@@ -146,7 +292,12 @@ function verifyProductionBuild({
     customDomain: cname,
     analyticsConfigured: true,
     storeLinksVerified: true,
-    utmHandlingVerified: true
+    utmHandlingVerified: true,
+    robotsVerified,
+    sitemapUrls,
+    referencesChecked: references.checked,
+    mediaReferencesChecked: references.mediaChecked,
+    accessiblePages: accessibility.pages
   };
 }
 
@@ -161,6 +312,10 @@ if (require.main === module) {
 }
 
 module.exports = {
+  PRODUCTION_ORIGIN,
+  MUST_INDEX,
+  routeToOutputPath,
+  verifyRobotsAndSitemap,
   validateProductionMeasurementId,
   verifyProductionBuild
 };

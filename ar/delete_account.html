@@ -1,26 +1,294 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>حذف الحساب - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="كيف تحذف حساب ULMOX نهائيًا، داخل التطبيق أو بالبريد الإلكتروني، وماذا يحدث لبياناتك." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 40px; background:#111; color:white;">
+<body>
+  <a class="ulmox-skip-link" href="#main">تخطَّ إلى المحتوى</a>
+<div class="container">
+  <main id="main">
+    <h1>احذف حساب ULMOX الخاص بك</h1>
+    <p class="effective">سارية اعتبارًا من 2026-09-04. آخر تحديث في 2026-09-04.</p>
 
-  <h1>حذف حسابك</h1>
+    <p>تشرح هذه الصفحة كيف تحذف حساب ULMOX الخاص بك نهائيًا وماذا يحدث لبياناتك بعد ذلك.</p>
 
-  <p>إذا كنت ترغب في حذف حسابك على ULMOX، يرجى التواصل معنا:</p>
+    <div class="callout">
+      <p><strong>التعطيل ليس حذفًا.</strong> فالتعطيل يخفي ملفك الشخصي ومحتواك ويمكن التراجع عنه. أما حذف حسابك فدائم ولا يمكن التراجع عنه.</p>
+    </div>
 
-  <p><b>ulmoxapp@outlook.com</b></p>
+    <h2>الخيار 1 — الحذف داخل التطبيق (المفضَّل)</h2>
 
-  <p>يرجى تضمين عنوان بريدك الإلكتروني المسجل.</p>
+    <p>هذا أسرع مسار ولا يحتاج إلى تبادل رسائل. وهو غير متاح لكل حساب على كل جهاز: فالحساب المرتبط بتسجيل الدخول باستخدام Apple لا يستطيع إنهاء الحذف من هاتف أندرويد، ويجب إكماله على جهاز Apple. انظر أدناه <a href="#apple-linked">إذا كان حسابك مرتبطًا بتسجيل الدخول باستخدام Apple</a>.</p>
 
-  <p>سيتم حذف حسابك وجميع البيانات المرتبطة به نهائيًا خلال 7 أيام.</p>
+    <ol>
+      <li>افتح ULMOX وانتقل إلى <strong>الملف الشخصي &rarr; الشؤون القانونية والسلامة &rarr; إدارة الحساب &rarr; حذف الحساب</strong>.</li>
+      <li>اقرأ التأكيد الذي يوضّح أن الحذف دائم.</li>
+      <li>أكّد. وقد يُطلب منك تسجيل الدخول مجددًا أولًا، وهو ما يحمي حسابك من أن يحذفه شخص آخر.</li>
+    </ol>
 
-  <p>إذا كانت لديك أي أسئلة، فلا تتردد في التواصل معنا.</p>
+    <h2>الخيار 2 — طلب الحذف بالبريد الإلكتروني</h2>
 
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+    <p>إن تعذّر عليك فتح التطبيق، يمكنك أن تطلب منّا حذف حسابك.</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">راسل ulmoxapp@outlook.com بعنوان «ULMOX Account Deletion Request»</a></p>
+
+    <p>يُرجى إدراج الحد الأدنى اللازم للعثور على حسابك فقط:</p>
+
+    <ul>
+      <li>عنوان البريد الإلكتروني المرتبط بحساب ULMOX الخاص بك، و</li>
+      <li>اسم المستخدم الخاص بك في ULMOX، إن كنت تعرفه.</li>
+    </ul>
+
+    <p>وحيثما أمكن، اكتب من عنوان البريد الإلكتروني المرتبط بحسابك. وإذا كان حسابك مرتبطًا بتسجيل الدخول باستخدام Apple واستخدمت <strong>إخفاء بريدي الإلكتروني</strong>، فاكتب من عنوان التحويل الخاص بك لدى Apple، أو زوّدنا بتفاصيل حساب غير سرية تكفي لتحديد الحساب.</p>
+
+    <div class="callout">
+      <p><strong>لن نطلب منك أبدًا كلمة مرور، ولا كلمة مرور Apple أو Google، ولا رمز مصادقة لمرة واحدة، ولا رمز تفويض، ولا رمز تسجيل دخول، ولا صورة لوثيقة هوية</strong>، ولن نطلب منك أبدًا إرسال أي منها إلينا بالبريد الإلكتروني. وإذا وصلتك رسالة تدّعي أنها من ULMOX وتطلب أيًّا من ذلك، فهي ليست منّا.</p>
+    </div>
+
+    <p>نتحقّق من أن الحساب لك قبل حذفه. والطلب المرسَل من نموذج ويب عام أو من عنوان غير مُثبَت لا يحذف حسابًا بذاته. وقد نطلب منك تأكيد الملكية عبر إجراء آمن، مثل الرد من عنوان البريد الإلكتروني الخاص بالحساب.</p>
+
+    <h2>ماذا يحدث عند حذف حساب</h2>
+
+    <ul>
+      <li>تُزال إمكانية الوصول والظهور فور بدء الحذف بنجاح. ويتوقّف ظهور ملفك الشخصي للآخرين، ويتوقّف اختيار حسابك لعمليات تسليم جديدة.</li>
+      <li>ويستمر بعد ذلك المحو الفعلي للبيانات المخزَّنة في الخلفية. والهدف إتمامه خلال 30 يومًا، ما لم يوجب واجب أمني أو قانوني مبرَّر احتفاظًا محدودًا.</li>
+      <li>تُزال مقاطع الفيديو التي سجّلتها وصورها المصغّرة وبيانات ملفك الشخصي وصورة ملفك ومحتوى Global الذي تملكه.</li>
+      <li>المحتوى الذي يملكه شخص آخر <em>لا</em> يُحذف لمجرد أنك شاركته. بل يُزال ارتباطك به، ويبقى الفيديو لدى من أنشأه.</li>
+      <li>يُحجَز اسم المستخدم الخاص بك 90 يومًا بعد الحذف قبل أن يمكن استخدامه مجددًا، حتى لا يأخذه شخص آخر فورًا.</li>
+      <li>قد تُحفظ سجلات أمنية أو قانونية أو معاملاتية محدودة حيث يوجد سبب مبرَّر، وطوال سريان ذلك السبب فقط. وحيث يُحفَظ سجل سلامة، تُشطَب الروابط التي تصله بهويتك ضمن عملية المحو، فيبقى سجل لما حدث لا سجل عنك.</li>
+      <li>حذف حسابك لا يحذف حساب أي شخص آخر. ففي الـ Connection شخصان، وتبقى رسائل الطرف الآخر ومقاطعه وسجلاته لديه.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>دليل السلامة ليس سجل رسائل عاديًا.</strong> يجري طرح ميزتَي Connections وترجمة الرسائل الاختيارية تدريجيًا، وقد لا تكونان متاحتين بعد لكل حساب أو لكل إصدار مثبَّت من التطبيق. إذا كان لديك Connection: فالرسالة العادية فيه تُعامَل على أنها تنتهي بعد نحو سبعة أيام من إرسالها. أما الرسالة المُبلَّغ عنها فلم تعد خاضعة لذلك: فهي دليل في مراجعة، وتُحفَظ ما دامت المراجعة قائمة وبعدها حيث تبرّر النتيجة ذلك — بما في ذلك بعد حذف الحساب الذي جاءت منه. وحذف حسابك لا يسحب بلاغًا قدّمته ولا يمحو بلاغًا قُدّم عنك.</p>
+    </div>
+
+    <h2 id="apple-linked">إذا كان حسابك مرتبطًا بتسجيل الدخول باستخدام Apple</h2>
+
+    <p>بعض حسابات ULMOX مرتبطة بتسجيل الدخول باستخدام Apple. فإن كان حسابك كذلك، فللحذف الدائم خطوة إضافية واحدة، لأن Apple تشترط أن يتخلّى التطبيق عن تفويضه لتسجيل الدخول باستخدام Apple عند حذف حساب، لا أن يحذف سجله الخاص فحسب.</p>
+
+    <ol>
+      <li>على جهاز Apple، يطلب منك ULMOX التأكيد مرة أخرى مباشرةً لدى Apple. ويجري ذلك التأكيد بينك وبين Apple على جهازك أنت. <strong>ولا يتلقّى ULMOX كلمة مرور Apple الخاصة بك</strong>، ولا نطلبها منك أبدًا.</li>
+      <li>وذلك التأكيد هو ما يتيح لـ ULMOX إلغاء تفويضه الخاص لتسجيل الدخول باستخدام Apple لحسابك.</li>
+      <li>وعندئذ فقط يبدأ الحذف الدائم الموصوف أعلاه.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>إذا لم تكتمل تلك الخطوة، لا يُحذف شيء.</strong> فإن أغلقت شاشة Apple، أو أعاد التأكيد حساب Apple مختلفًا عن الحساب الذي سجّلت الدخول به، أو أخفقت الخطوة لأي سبب آخر، يتوقّف ULMOX قبل أن يحدث أي شيء دائم ويخبرك بأنه لم يُحذف شيء. ويمكنك المحاولة من جديد.</p>
+    </div>
+
+    <p>ثلاثة أمور منفصلة يسهل الخلط بينها:</p>
+
+    <ul>
+      <li><strong>إلغاء تفويض ULMOX لتسجيل الدخول باستخدام Apple</strong> يمنع ULMOX من أن يستخدم تسجيل الدخول باستخدام Apple من أجلك. وهو وحده لا يحذف حساب ULMOX الخاص بك ولا يمحو البيانات التي فيه.</li>
+      <li><strong>حذف حساب ULMOX الخاص بك</strong> هو الإجراء الذي يزيل بياناتك في ULMOX. ولا يكتمل إلا عندما يكون المحو الموصوف في هذه الصفحة قد تمّ — ولا يُكمله أي تغيير في تفويض تسجيل الدخول.</li>
+      <li><strong>حذف معرّف Apple الخاص بك</strong> أمر لا تستطيع أن تفعله إلا Apple بناءً على طلبك أنت — ولا يفعله ULMOX أبدًا ولا يستطيع فعله.</li>
+    </ul>
+
+    <h3>حذف حساب مرتبط بـ Apple من جهاز أندرويد</h3>
+
+    <p>لا يمكن إتمام خطوة تأكيد Apple إلا على جهاز Apple. فإن حاولت حذف حساب ULMOX مرتبط بـ Apple من هاتف أندرويد، يتوقّف ULMOX قبل إزالة أي شيء ويخبرك بأنه <strong>لم يُحذف شيء</strong>. أكمل الحذف على جهاز Apple.</p>
+
+    <p>أما الحساب الذي يستخدم تسجيل الدخول عبر Google فقط، أو عنوان بريد إلكتروني فقط، فيُحذف بشكل طبيعي على أي من نوعَي الأجهزة. والحساب المرتبط بـ Apple وGoogle معًا لا يزال يحتاج إلى خطوة Apple.</p>
+
+    <h2>إذا كنت تريد استراحة فقط</h2>
+
+    <p>التعطيل يخفي ملفك الشخصي ومحتوى Global الخاص بك ويمكن التراجع عنه بتسجيل الدخول من جديد واختيار <strong>إعادة التنشيط</strong>. وتسجيل الدخول وحده لا يعيد تنشيط الحساب. وقد تبقى مقاطع الفيديو التي أرسلتها من قبل لدى من تلقّوها طوال مدة الاحتفاظ المعتادة لها. والتعطيل لا يفي بطلب الحذف — فإن أردت إزالة بياناتك، فاستخدم «حذف الحساب».</p>
+
+    <p>التعطيل لا يمحو سجلات السلامة، وإعادة التفعيل لا تلغي شيئًا. فالعودة تعيد إليك الوصول؛ لكنها لا تلغي قرار إشراف، ولا تعيد محتوى أزاله الإشراف أو أخفاه، ولا تعيد فتح Connection انتهى. وإنهاء Connection نهائي لذلك الثنائي. أما الحظر فيعمل بطريقة مختلفة: فهو ينهي الـ Connection القائم لديك الآن ويوقف التواصل في الاتجاهين ما دام قائمًا. ورفع الحظر لا يعيد كذلك الـ Connection السابق — إذ سيتعيّن على الحسابين أن يستوفيا الشروط من جديد من البداية، عبر تبادلين جديدين مؤهِّلين للفيديو وموافقة جديدة من كل طرف.</p>
+
+    <h2>أسئلة</h2>
+
+    <p>تواصل معنا على <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. وانظر أيضًا <a href="privacy.html">سياسة الخصوصية</a> و<a href="terms.html">الشروط</a>.</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="المعلومات القانونية والدعم">
+      <ul>
+        <li><a href="index.html">الصفحة الرئيسية</a></li>
+        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+        <li><a href="terms.html">الشروط</a></li>
+        <li><a href="safety.html">السلامة والإشراف</a></li>
+        <li><a href="support.html">الدعم</a></li>
+        <li><span aria-current="page">حذف الحساب</span></li>
+        <li><a href="translation.html">معلومات الترجمة</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">النسخة الإنجليزية من هذه السياسة هي النسخة المعتمدة. وإذا اختلفت أي ترجمة عنها، فتُطبَّق النسخة الإنجليزية.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>

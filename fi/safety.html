@@ -1,61 +1,306 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ULMOX turvallisuus ja moderointi - ULMOX</title>
-  <link rel="stylesheet" href="/assets/css/language-switcher.css">
+  <meta name="description" content="Miten ULMOX ehkäisee, havaitsee ja käsittelee lasten seksuaalista hyväksikäyttöä ja riistoa." />
   <style>
-    body { margin: 0; padding: 0; background-color: #0d0d0f; color: #ffffff; font-family: Arial, sans-serif; line-height: 1.7; }
-    .container { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
-    h1 { font-size: 42px; margin-bottom: 30px; }
-    h2 { margin-top: 42px; font-size: 24px; color: #ffffff; }
-    p, li { color: #d0d0d0; font-size: 17px; }
-    ul { padding-left: 22px; }
-    a { color: #9d7bff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .footer { margin-top: 60px; padding-top: 30px; border-top: 1px solid #2a2a2e; color: #888; font-size: 14px; }
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 18px;
+      z-index: 10;
+    }
+
+    .skip-link:focus { left: 0; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-04" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible { left: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>ULMOX turvallisuus ja moderointi</h1>
-    <p>ULMOX sitoutuu turvalliseen ja kunnioittavaan ympäristöön kaikille käyttäjille.</p>
-    <h2>ULMOX turvallisuus ja moderointi</h2>
-    <p>ULMOX sitoutuu turvalliseen ja kunnioittavaan ympäristöön kaikille käyttäjille.</p>
-    <p>ULMOX sitoutuu turvalliseen ja kunnioittavaan ympäristöön kaikille käyttäjille.</p>
-    <ul><li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li>
-      <li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li>
-      <li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li>
-      <li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li>
-      <li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li>
-      <li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li>
-      <li>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</li></ul>
-    <h2>Yhteystiedot</h2>
-    <p>Käyttäjät voivat ilmoittaa sopimattomasta sisällöstä suoraan sovelluksessa. Kaikki ilmoitukset tarkistetaan ja sääntöjä rikkova sisältö poistetaan nopeasti.</p>
-    <p>Käyttäjät voivat ilmoittaa sopimattomasta sisällöstä suoraan sovelluksessa. Kaikki ilmoitukset tarkistetaan ja sääntöjä rikkova sisältö poistetaan nopeasti.</p>
-    <ul><li>Käyttäjät voivat ilmoittaa sopimattomasta sisällöstä suoraan sovelluksessa. Kaikki ilmoitukset tarkistetaan ja sääntöjä rikkova sisältö poistetaan nopeasti.</li>
-      <li>Käyttäjät voivat ilmoittaa sopimattomasta sisällöstä suoraan sovelluksessa. Kaikki ilmoitukset tarkistetaan ja sääntöjä rikkova sisältö poistetaan nopeasti.</li>
-      <li>Käyttäjät voivat ilmoittaa sopimattomasta sisällöstä suoraan sovelluksessa. Kaikki ilmoitukset tarkistetaan ja sääntöjä rikkova sisältö poistetaan nopeasti.</li>
-      <li>Käyttäjät voivat ilmoittaa sopimattomasta sisällöstä suoraan sovelluksessa. Kaikki ilmoitukset tarkistetaan ja sääntöjä rikkova sisältö poistetaan nopeasti.</li></ul>
-    <h2>Yhteystiedot</h2>
-    <p>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</p>
-    <p>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</p>
-    <h2>ULMOX turvallisuus ja moderointi</h2>
-    <p>ULMOX sitoutuu turvalliseen ja kunnioittavaan ympäristöön kaikille käyttäjille.</p>
-    <p>ULMOX sitoutuu turvalliseen ja kunnioittavaan ympäristöön kaikille käyttäjille.</p>
-    <h2>ULMOX turvallisuus ja moderointi</h2>
-    <p>ULMOX sitoutuu turvalliseen ja kunnioittavaan ympäristöön kaikille käyttäjille.</p>
-    <p>Käyttäjien on käytettävä ULMOXia kunnioittavasti, turvallisesti ja lain mukaisesti.</p>
-    <h2>Lasten turvallisuusstandardit</h2>
-    <p>ULMOX ei hyväksy minkäänlaista lasten seksuaalista hyväksikäyttöä tai riistoa (CSAE).</p>
-    <p>ULMOX ei hyväksy minkäänlaista lasten seksuaalista hyväksikäyttöä tai riistoa (CSAE).</p>
-    <h2>Yhteystiedot</h2>
-    <p>Yhteystiedot:</p>
-    <p><a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
-    <div class="footer">© 2026 ULMOX</div>
+  <a class="ulmox-skip-link" href="#main">Siirry sisältöön</a>
+<div class="container">
+  <main id="main">
+    <h1>ULMOXin lasten turvallisuuden standardit</h1>
+    <p class="effective">Voimassa 2026-09-04 alkaen. Viimeksi päivitetty 2026-09-04.</p>
+
+    <p>ULMOX on rajattu <strong>18 vuotta täyttäneille</strong> aikuisille. Tällä sivulla kerrotaan, miten ehkäisemme, havaitsemme ja käsittelemme lasten seksuaalista hyväksikäyttöä ja riistoa.</p>
+
+    <div class="callout">
+      <p><strong>Jos lapsi on välittömässä vaarassa, ota ensin yhteyttä paikalliseen hätänumeroon.</strong> ULMOXille ilmoittaminen ei korvaa yhteydenottoa viranomaisiin.</p>
+    </div>
+
+    <h2>Nollatoleranssi</h2>
+
+    <p>ULMOXilla on nollatoleranssi lasten seksuaalista hyväksikäyttöä ja riistoa (CSAE) sekä lasten seksuaaliseen hyväksikäyttöön liittyvää materiaalia (CSAM) kohtaan. Asiaan liittyvät tilit ja sisältö poistetaan.</p>
+
+    <h2>Mikä on kielletty</h2>
+
+    <p>Selkeästi sanottuna seuraava ei ole koskaan sallittua ULMOXissa:</p>
+
+    <ul>
+      <li>Kaikki seksuaalinen sisältö, jossa on mukana alle 18-vuotias henkilö, todellinen tai kuvattu.</li>
+      <li>Grooming: luottamuksen rakentaminen alaikäiseen tämän seksuaalista hyväksikäyttöä varten, mukaan lukien alaikäisen pyytäminen pitämään yhteydenpito salassa vanhemmiltaan tai huoltajiltaan.</li>
+      <li>Alaikäisen seksualisointi tai seksuaalisten kuvien tai yhteydenpidon pyytäminen alaikäiseltä.</li>
+      <li>Pakottaminen, kiristys (mukaan lukien seksuaalinen kiristys), ihmiskauppa tai mikä tahansa toiminta, joka saattaa alaikäisen vakavaan vaaraan.</li>
+      <li>Tällaisen materiaalin mainostaminen, etsiminen tai siihen linkittäminen.</li>
+    </ul>
+
+    <h2>Miten ilmoitat</h2>
+
+    <p>Sovelluksessa voit käyttää toimintoja <strong>Ilmoita sisällöstä</strong> ja <strong>Ilmoita käyttäjä</strong>. Molemmissa on oma <strong>lasten turvallisuuden</strong> luokka. Voit myös estää käyttäjän, mikä pysäyttää kaiken vuorovaikutuksen välillänne molempiin suuntiin.</p>
+
+    <p>Voit myös kirjoittaa meille:</p>
+
+    <p><strong>ULMOXin lasten turvallisuuden yhteystaho</strong><br /> <a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ulmoxapp@outlook.com</a></p>
+
+    <h2>Mitä tapahtuu seuraavaksi</h2>
+
+    <ul>
+      <li>Lasten turvallisuutta koskevat ilmoitukset saavat <strong>korkeimman prioriteetin</strong> ihmisen tekemässä käsittelyssä.</li>
+      <li>Ilmoitettu sisältö asetetaan välittömästi <strong>peruutettavaan karanteeniin</strong>, jotta sitä ei enää näytetä julkisesti eikä toimiteta, siksi aikaa kun ihminen käsittelee sen.</li>
+      <li>Todistusaineisto säilytetään käsittelyä varten ja se on vain valtuutettujen moderaattorien saatavilla.</li>
+      <li>Ilmoitukset <strong>eivät</strong> sulje tiliä automaattisesti. Eivät myöskään ilmoitusten määrä, viestin pysäyttävä automaattinen suodatin, karanteeni tai käännös. Sulkeminen on erillinen, harkittu päätös, jonka voi tehdä vain valtuutettu ULMOXin ylläpitäjä ja vain tapauksen tarkastelun jälkeen.</li>
+      <li>Ilmoituksen ratkaiseminen poistaa sen aktiivisesta käsittelylistasta. Se ei poista ilmoitusta: todistusaineisto ja merkintä päätöksestä säilytetään siellä, missä siihen on perusteltu syy, jotta päätös voidaan tarkastaa jälkikäteen ja muutoksenhakuun voidaan vastata.</li>
+      <li>Jos käsittelijä hyväksyy ilmoitetun videon, se palaa Global-syötteeseen vain, jos se edelleen itsenäisesti täyttää sen ehdot. Sisältö, jonka omistaja on lähtenyt, jota on rajoitettu tai jonka omistaja on suljettu, tai joka on jostain muusta syystä poissa saatavilta, pysyy poissa saatavilta riippumatta siitä, mikä ilmoituspäätös oli.</li>
+      <li>Kun sovellettava laki sitä edellyttää, teemme ilmoituksen asianmukaiselle lain nimeämälle viranomaiselle.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Tavoitteemme on käsitellä kiireelliset lasten turvallisuutta koskevat ilmoitukset 24 tunnin kuluessa.</strong> Tämä on tavoite ihmisen tekemän käsittelyn aloittamiselle. Se ei ole takuu siitä, että jokainen tapaus ratkaistaan lopullisesti 24 tunnissa, ja monimutkaiset tapaukset voivat kestää pidempään.</p>
+    </div>
+
+    <p>Muut turvallisuusilmoitukset käsitellään niin nopeasti kuin kohtuudella on mahdollista.</p>
+
+    <h2>Turvallisuus Connectionsissa</h2>
+
+    <div class="callout">
+      <p><strong>Connections ja valinnainen viestien kääntäminen otetaan käyttöön vaiheittain, eivätkä ne välttämättä ole vielä käytettävissä jokaisella tilillä tai jokaisessa asennetussa sovellusversiossa.</strong></p>
+    </div>
+
+    <p>Connection on kahden aikuisen välinen, pelkkään tekstiin perustuva keskustelu, jonka molemmat hyväksyivät kahden erillisen kelpoisuusehdot täyttävän videovaihdon jälkeen. ULMOXissa ei ole käyttäjähakua, joten kukaan ei voi etsiä sinua lähettääkseen sinulle viestin. Nämä ovat Connectionin sisäiset turvatoiminnot:</p>
+
+    <ul>
+      <li><strong>Ilmoita viesti.</strong> Käytettävissä saamallesi viestille. Ilmoitus lähettää ihmiselle alkuperäisen viestin käsiteltäväksi.</li>
+      <li><strong>Ilmoittaminen piilottaa viestin sinulta, ja vain sinulta.</strong> Kun olet ilmoittanut viestistä, se katoaa sinun näkymästäsi keskustelussa. Lähettäjän kopio pysyy ennallaan eikä lähettäjälle kerrota, että ilmoitit siitä. Piilottaminen on sinun hyväksesi; se ei ole häneen kohdistuva seuraamus, ja päätös viestistä on edelleen ihmisen tehtävä.</li>
+      <li><strong>Ilmoita käyttäjä.</strong> Käytettävissä erikseen, henkilöstä eikä yksittäisestä viestistä. Molemmissa on oma lasten turvallisuuden luokka.</li>
+      <li><strong>Estä.</strong> Estäminen pysäyttää vuorovaikutuksen molempiin suuntiin. Sitä tarjotaan ilmoituksen jälkeen erillisenä valintana, ei koskaan siihen niputettuna, ja kieltäytyminen jättää ilmoituksesi ennalleen. Esto myös päättää nykyisen Connectionisi. Eston poistaminen ei tuo tuota Connectionia takaisin: parin olisi täytettävä ehdot uudelleen alusta, kahden uuden kelpoisuusehdot täyttävän videovaihdon ja molempien osapuolten uuden hyväksynnän kautta.</li>
+      <li><strong>Päätä Connection.</strong> Päättää keskustelun molemmilta. Sitä ei voi palauttaa eikä se avaudu uudelleen tulevassa kohtaamisessa. Päättäminen ei ole sama asia kuin estäminen, eikä se poista jo tekemiäsi ilmoituksia.</li>
+      <li><strong>Poistuminen toimii aina.</strong> Estäminen ja Connectionin päättäminen ovat käytettävissäsi tapahtuipa muuten mitä tahansa — turvatoimi ei ole koskaan se asia, joka ei ole saatavilla.</li>
+      <li><strong>Viestit vanhenevat.</strong> Tavallisen Connection-viestin katsotaan vanhenevan noin seitsemän päivää lähettämisen jälkeen. Ilmoittamasi viesti käsitellään toisin: kun se on todistusaineistoa käsittelyssä, seitsemän päivän vanheneminen ei enää koske sitä, ja se säilytetään käsittelyn ajan ja sen jälkeen silloin, kun lopputulos sen oikeuttaa.</li>
+      <li><strong>Liitteitä ei ole.</strong> Connections välittää vain kirjoitettuja viestejä — ei kuvia, videoita, tiedostoja tai ääniviestejä.</li>
+    </ul>
+
+    <h2>Käännetyt viestit</h2>
+
+    <ul>
+      <li>Ilmoitus koskee aina <strong>alkuperäistä viestiä</strong>. Ilmoitus sisältää alkuperäisen, ja sen moderaattori lukee.</li>
+      <li>Lukijalle näytettävä vapaaehtoinen käännös ei ole moderointipäätös eikä todistusaineistoa.</li>
+      <li>Käännös ei voi tehdä viestistä toimitettavaa. Estetty tai pysäytetty sisältö pysyy estettynä tai pysäytettynä millä kielellä sitä luetaankin.</li>
+      <li>Mitään tiliä ei suljeta sen perusteella, mitä käännös tuotti. Vain valtuutettu ULMOXin ylläpitäjä voi sulkea tilin, ja vasta alkuperäisen todistusaineiston tarkastelun jälkeen.</li>
+    </ul>
+
+    <p>Katso <a href="translation.html">Tietoa kääntämisestä</a>.</p>
+
+    <h2>Mitä ULMOX ei tee</h2>
+
+    <ul>
+      <li>ULMOX ei analysoi automaattisesti videokuvia, ääntä eikä litterointeja. Videon turvallisuus perustuu ilmoituksiin, peruutettavaan karanteeniin, estämiseen ja ihmisen tekemään käsittelyyn.</li>
+      <li>ULMOX ei sulje tilejä automaattisesti, eikä mikään määrä ilmoituksia tuota automaattista sulkemista.</li>
+      <li>ULMOX ei väitä, että jokin automaattinen tarkistus löytäisi jokaisen rikkomuksen. Ilmoittaminen ja ihmisen tekemä käsittely ovat se, mihin tämän palvelun turvallisuus nojaa.</li>
+      <li>ULMOX ei julkaise turvajärjestelmiensä sisäisiä kynnysarvoja, työkaluja tai työtapoja, koska niiden julkaiseminen kertoisi juuri niille, joita yritämme pysäyttää, mitä välttää.</li>
+    </ul>
+
+    <h2>Muutoksenhaku</h2>
+
+    <p>Jos katsot, että sisältöön tai tiliin on kohdistettu toimenpide virheellisesti, kirjoita osoitteeseen <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>, niin ihminen käsittelee sen. Katso <a href="support.html">Tuki</a> siitä, mitä liittää mukaan.</p>
+
+    <h2>Aiheeseen liittyvät sivut</h2>
+
+    <p>
+      <a href="terms.html">Ehdot</a>
+      &middot;
+      <a href="privacy.html">Tietosuojakäytäntö</a>
+      &middot;
+      <a href="support.html">Tuki</a>
+      &middot;
+      <a href="delete_account.html">Poista tili</a>
+    </p>
+  </main>
+
   </div>
-  <script src="/assets/js/i18n-config.js"></script>
-  <script src="/assets/js/language-switcher.js" defer></script>
+  <footer>
+    <nav aria-label="Juridiset tiedot ja tuki">
+      <ul>
+        <li><a href="index.html">Etusivu</a></li>
+        <li><a href="privacy.html">Tietosuojakäytäntö</a></li>
+        <li><a href="terms.html">Ehdot</a></li>
+        <li><span aria-current="page">Turvallisuus ja moderointi</span></li>
+        <li><a href="support.html">Tuki</a></li>
+        <li><a href="delete_account.html">Poista tili</a></li>
+        <li><a href="translation.html">Tietoa kääntämisestä</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Tämän käytännön englanninkielinen versio on määräävä. Jos käännös poikkeaa siitä, sovelletaan englanninkielistä versiota.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
 </body>
 </html>
