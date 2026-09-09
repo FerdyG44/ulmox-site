@@ -107,13 +107,13 @@ module.exports = {
       lifecycle: ["3. Käytöstä poistaminen ja poistaminen"],
       deactivation: [
         "Käytöstä poistaminen",
-        "Käytöstä poistaminen on peruutettavissa. Profiilisi ja Global-sisältösi piilotetaan, eikä tiliäsi valita uusiin toimituksiin. Tietosi säilytetään, jotta tili voidaan palauttaa. Jo lähettämäsi videot voivat säilyä niiden saaneilla heidän tavanomaisen säilytysaikansa.",
+        "Käytöstä poistaminen on peruutettavissa: palautat tilin kirjautumalla takaisin sisään ja valitsemalla <strong>Palauta käyttöön</strong>, mitä pelkkä kirjautuminen ei tee. Profiilisi ja Global-sisältösi piilotetaan, eikä tiliäsi valita uusiin toimituksiin. Tietosi säilytetään, jotta tili voidaan palauttaa. Jo lähettämäsi videot voivat säilyä niiden saaneilla heidän tavanomaisen säilytysaikansa.",
         "Käytöstä poistaminen ei ole poistamista eikä se tyhjennä turvallisuusmerkintöjä. Ilmoitukset, moderointipäätökset, estot ja muu turvallisuuden todistusaineisto eivät muutu käytöstä poistamisen tai uudelleen käyttöönoton myötä. Uudelleen käyttöönotto palauttaa pääsysi; se ei kumoa moderointipäätöstä, ei palauta moderoinnin poistamaa tai piilottamaa sisältöä eikä avaa uudelleen päätettyä Connectionia. Connectionin päättäminen on lopullista tälle parille. Estäminen toimii toisin: esto päättää nykyisen Connectionisi ja pysäyttää yhteydenpidon molempiin suuntiin niin kauan kuin se on voimassa. Eston poistaminenkaan ei palauta vanhaa Connectionia — kahden tilin olisi täytettävä ehdot uudelleen alusta, kahden uuden kelpoisuusehdot täyttävän videovaihdon ja molempien osapuolten uuden hyväksynnän kautta.",
       ],
       deletion: [
         "Poistaminen",
         "Poistaminen on pysyvää. Pääsy ja löydettävyys poistetaan heti, kun poisto on onnistuneesti käynnistetty, ja fyysinen poisto jatkuu taustalla tavoitteena valmistua 30 päivässä, ellei perusteltu turvallisuus- tai lakisääteinen velvoite edellytä rajoitettua säilyttämistä. Käyttäjätunnuksesi pidetään varattuna 90 päivää ennen kuin se voidaan ottaa uudelleen käyttöön. Katso {{link:deleteAccount}}.",
-        "Jos tilisi on liitetty <strong>Kirjaudu Apple-tunnuksella</strong> -palveluun, pysyvä poisto Apple-laitteella pyytää sinua vahvistamaan vielä kerran suoraan Applelle, jotta ULMOX voi perua oman Kirjaudu Apple-tunnuksella -valtuutuksensa ennen tilin poistamista. Emme saa Apple-salasanaasi. Jos tuo vaihe ei valmistu, mitään ei poisteta. Appleen liitetty tili ei voi suorittaa tätä vaihetta Android-laitteella; ULMOX pysähtyy ennen kuin mitään poistetaan ja pyytää sinua viimeistelemään Apple-laitteella tai ottamaan yhteyttä: {{link:support}}.",
+        "Jos tilisi on liitetty <strong>Kirjaudu Apple-tunnuksella</strong> -palveluun, pysyvä poisto Apple-laitteella pyytää sinua vahvistamaan vielä kerran suoraan Applelle, jotta ULMOX voi perua oman Kirjaudu Apple-tunnuksella -valtuutuksensa ennen tilin poistamista. Emme saa Apple-salasanaasi. Jos tuo vaihe ei valmistu, mitään ei poisteta. Appleen liitetty tili ei voi suorittaa tätä vaihetta Android-laitteella; ULMOX pysähtyy ennen kuin mitään poistetaan ja pyytää sinua viimeistelemään Apple-laitteella.",
         "ULMOX-tilisi poistaminen ei poista <strong>Apple ID:täsi</strong> eikä Google-tiliäsi. ULMOX ei voi poistaa kumpaakaan. ULMOXin Kirjaudu Apple-tunnuksella -valtuutuksen peruminen on niin ikään eri toimenpide kuin tilisi poistaminen, eikä se yksinään poista ULMOX-tietojasi.",
         "Tilisi poistaminen poistaa sinun tietosi. Se ei poista toisen henkilön tietoja: Connectionissa on kaksi henkilöä, ja toisen osapuolen viestit, videot ja merkinnät jäävät hänelle. Kun turvallisuuden todistusaineistoa on säilytettävä perustellusta syystä, siihen liittyvät henkilöllisyytesi yhdistävät linkit poistetaan osana poistoa, joten jäljelle jää merkintä tapahtuneesta eikä merkintä sinusta.",
       ],
@@ -248,7 +248,7 @@ module.exports = {
       ],
       lifecycle: [
         "6. Käytöstä poistaminen ja poistaminen",
-        "<strong>Käytöstä poistaminen</strong> on peruutettavissa. Profiilisi ja Global-sisältösi piilotetaan ja tietosi säilytetään, jotta tili voidaan palauttaa. Jo lähettämäsi videot voivat säilyä niiden saaneilla heidän tavanomaisen säilytysaikansa.",
+        "<strong>Käytöstä poistaminen</strong> on peruutettavissa: palautat tilin kirjautumalla takaisin sisään ja valitsemalla <strong>Palauta käyttöön</strong>, mitä pelkkä kirjautuminen ei tee. Profiilisi ja Global-sisältösi piilotetaan ja tietosi säilytetään, jotta tili voidaan palauttaa. Jo lähettämäsi videot voivat säilyä niiden saaneilla heidän tavanomaisen säilytysaikansa.",
         "<strong>Poistaminen</strong> on pysyvää eikä sitä voi peruuttaa. Pääsy ja löydettävyys päättyvät välittömästi, ja poisto jatkuu taustalla. Rajoitettuja turvallisuus-, oikeudellisia tai tapahtumamerkintöjä voidaan säilyttää silloin kun se on perusteltua. Katso {{link:deleteAccount}}.",
       ],
       enforcement: [
@@ -435,7 +435,7 @@ module.exports = {
       ],
       "option-app": [
         "Vaihtoehto 1 — poista sovelluksessa (suositeltu)",
-        "Tämä on nopein tapa eikä vaadi sähköpostinvaihtoa. Se ei ole käytettävissä jokaiselle tilille jokaisella laitteella: Kirjaudu Apple-tunnuksella -palveluun liitetty tili ei voi viimeistellä poistoa Android-puhelimella, ja se ohjataan sen sijaan tähän: {{link:support}}. Katso alla {{a:#apple-linked|Jos tilisi on liitetty Kirjaudu Apple-tunnuksella -palveluun}}.",
+        "Tämä on nopein tapa eikä vaadi sähköpostinvaihtoa. Se ei ole käytettävissä jokaiselle tilille jokaisella laitteella: Kirjaudu Apple-tunnuksella -palveluun liitetty tili ei voi viimeistellä poistoa Android-puhelimella, ja se on viimeisteltävä Apple-laitteella. Katso alla {{a:#apple-linked|Jos tilisi on liitetty Kirjaudu Apple-tunnuksella -palveluun}}.",
         "Avaa ULMOX ja siirry kohtaan <strong>Profiili &rarr; Juridiset tiedot ja turvallisuus &rarr; Tilin hallinta &rarr; Poista tili</strong>.",
         "Lue vahvistus, jossa kerrotaan, että poisto on pysyvä.",
         "Vahvista. Sinua voidaan pyytää ensin kirjautumaan uudelleen, mikä suojaa tiliäsi siltä, että joku muu poistaisi sen.",
@@ -476,12 +476,12 @@ module.exports = {
       ],
       "apple-android": [
         "Appleen liitetyn tilin poistaminen Android-laitteelta",
-        "Applen vahvistusvaihe voidaan suorittaa vain Apple-laitteella. Jos yrität poistaa Appleen liitetyn ULMOX-tilin Android-puhelimella, ULMOX pysähtyy ennen kuin mitään poistetaan ja kertoo sinulle, että <strong>mitään ei ole poistettu</strong>. Viimeistele poisto Apple-laitteella tai {{a:support.html|ota yhteyttä tukeen}}, niin hoidamme sen puolestasi.",
+        "Applen vahvistusvaihe voidaan suorittaa vain Apple-laitteella. Jos yrität poistaa Appleen liitetyn ULMOX-tilin Android-puhelimella, ULMOX pysähtyy ennen kuin mitään poistetaan ja kertoo sinulle, että <strong>mitään ei ole poistettu</strong>. Viimeistele poisto Apple-laitteella.",
         "Tili, joka käyttää vain Google-kirjautumista tai vain sähköpostiosoitetta, poistuu normaalisti kummallakin laitetyypillä. Tili, joka on liitetty sekä Appleen että Googleen, tarvitsee edelleen Apple-vaiheen.",
       ],
       break: [
         "Jos haluat vain tauon",
-        "Käytöstä poistaminen piilottaa profiilisi ja Global-sisältösi ja voidaan peruuttaa kirjautumalla takaisin sisään. Jo lähettämäsi videot voivat säilyä niiden saaneilla heidän tavanomaisen säilytysaikansa. Käytöstä poistaminen ei täytä poistopyyntöä — jos haluat tietosi poistettavan, käytä toimintoa Poista tili.",
+        "Käytöstä poistaminen piilottaa profiilisi ja Global-sisältösi ja voidaan peruuttaa kirjautumalla takaisin sisään ja valitsemalla <strong>Palauta käyttöön</strong>. Pelkkä kirjautuminen ei palauta tiliä. Jo lähettämäsi videot voivat säilyä niiden saaneilla heidän tavanomaisen säilytysaikansa. Käytöstä poistaminen ei täytä poistopyyntöä — jos haluat tietosi poistettavan, käytä toimintoa Poista tili.",
         "Käytöstä poistaminen ei poista turvallisuusmerkintöjä, eikä uudelleen käyttöönotto kumoa mitään. Palaaminen palauttaa pääsysi; se ei kumoa moderointipäätöstä, ei palauta moderoinnin poistamaa tai piilottamaa sisältöä eikä avaa uudelleen päätettyä Connectionia. Connectionin päättäminen on lopullista tälle parille. Estäminen toimii toisin: esto päättää nykyisen Connectionisi ja pysäyttää yhteydenpidon molempiin suuntiin niin kauan kuin se on voimassa. Eston poistaminenkaan ei palauta vanhaa Connectionia — kahden tilin olisi täytettävä ehdot uudelleen alusta, kahden uuden kelpoisuusehdot täyttävän videovaihdon ja molempien osapuolten uuden hyväksynnän kautta.",
       ],
       questions: [

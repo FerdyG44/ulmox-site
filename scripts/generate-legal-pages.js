@@ -68,8 +68,8 @@ const deleteAccount = page({
     <p>
       This is the fastest route and needs no email exchange. It is not available
       to every account on every device: an account linked with Sign in with
-      Apple cannot finish deletion from an Android phone, and is directed to
-      <a href="support.html">Support</a> instead. See
+      Apple cannot finish deletion from an Android phone, and must complete it
+      on an Apple device. See
       <a href="#apple-linked">If your account is linked with Sign in with
       Apple</a> below.
     </p>
@@ -202,8 +202,7 @@ const deleteAccount = page({
       you try to delete an Apple-linked ULMOX account from an Android phone,
       ULMOX stops before anything is removed and tells you that
       <strong>nothing has been deleted</strong>. Finish the deletion on an Apple
-      device, or <a href="support.html">contact Support</a> and we will handle it
-      for you.
+      device.
     </p>
     <p>
       An account that uses only Google Sign-In, or only an email address, deletes
@@ -214,7 +213,8 @@ const deleteAccount = page({
     <h2>If you only want a break</h2>
     <p>
       Deactivation hides your profile and your Global content and can be
-      reversed by signing back in. Videos you already sent may remain with the
+      reversed by signing back in and choosing <strong>Reactivate</strong>.
+      Signing in on its own does not reactivate the account. Videos you already sent may remain with the
       people who received them for their normal retention period. Deactivation
       does not satisfy a deletion request &mdash; if you want your data removed,
       use Delete Account.
@@ -513,7 +513,9 @@ const privacy = page({
 
     <h3>Deactivation</h3>
     <p>
-      Deactivation is reversible. Your profile and Global content are hidden and
+      Deactivation is reversible: you restore the account by signing back in and
+      choosing <strong>Reactivate</strong>, which signing in alone does not do.
+      Your profile and Global content are hidden and
       your account is not selected for new deliveries. Your data is retained so
       the account can be restored. Videos you already sent may remain with the
       people who received them for their normal retention period.
@@ -548,8 +550,7 @@ const privacy = page({
       account is deleted. We do not receive your Apple password. If that step
       does not finish, nothing is deleted. An Apple-linked account cannot
       complete this step on an Android device; ULMOX stops before removing
-      anything and asks you to finish on an Apple device or to contact
-      <a href="support.html">Support</a>.
+      anything and asks you to finish on an Apple device.
     </p>
     <p>
       Deleting your ULMOX account does not delete your Apple ID or your Google
@@ -837,7 +838,9 @@ const terms = page({
 
     <h2>6. Deactivation and deletion</h2>
     <ul>
-      <li><strong>Deactivation</strong> is reversible. Your profile and Global
+      <li><strong>Deactivation</strong> is reversible: you restore the account by
+        signing back in and choosing <strong>Reactivate</strong>, which signing
+        in alone does not do. Your profile and Global
         content are hidden and your data is kept so the account can be restored.
         Videos you already sent may remain with the people who received them for
         their normal retention period.</li>

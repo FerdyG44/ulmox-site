@@ -107,13 +107,13 @@ module.exports = {
       lifecycle: ["3. Inaktivering och radering"],
       deactivation: [
         "Inaktivering",
-        "Inaktivering går att ångra. Din profil och ditt Global-innehåll döljs och ditt konto väljs inte ut för nya leveranser. Dina uppgifter behålls så att kontot kan återställas. Videor du redan skickat kan finnas kvar hos dem som tog emot dem under deras normala lagringstid.",
+        "Inaktivering går att ångra: du återställer kontot genom att logga in igen och välja <strong>Återaktivera</strong>, vilket inte sker enbart genom inloggning. Din profil och ditt Global-innehåll döljs och ditt konto väljs inte ut för nya leveranser. Dina uppgifter behålls så att kontot kan återställas. Videor du redan skickat kan finnas kvar hos dem som tog emot dem under deras normala lagringstid.",
         "Inaktivering är inte en radering och den rensar inte säkerhetsposter. Anmälningar, modereringsbeslut, blockeringar och andra säkerhetsbevis påverkas inte av att du inaktiverar eller återaktiverar. Återaktivering ger tillbaka din åtkomst; den upphäver inte ett modereringsbeslut, den återställer inte innehåll som moderering tagit bort eller dolt, och den återöppnar inte en Connection som avslutats. Att avsluta en Connection är slutgiltigt för det paret. Blockering fungerar annorlunda: en blockering avslutar den Connection du har nu och stoppar kontakt i båda riktningarna så länge den gäller. Att ta bort en blockering återställer inte heller den gamla Connection — de två kontona skulle behöva kvalificera sig på nytt från början, genom två nya kvalificerande videoutbyten och ett nytt godkännande från var och en.",
       ],
       deletion: [
         "Radering",
         "Radering är permanent. Åtkomst och synlighet tas bort så snart raderingen har startats, och den fysiska raderingen fortsätter i bakgrunden med målet att vara klar inom 30 dagar, om inte en berättigad säkerhets- eller rättslig skyldighet kräver begränsad lagring. Ditt användarnamn hålls i 90 dagar innan det kan användas igen. Se {{link:deleteAccount}}.",
-        "Om ditt konto är kopplat till <strong>Logga in med Apple</strong> ber permanent radering på en Apple-enhet dig att bekräfta en gång till direkt med Apple, så att ULMOX kan återkalla sin egen behörighet för Logga in med Apple innan kontot raderas. Vi tar inte emot ditt Apple-lösenord. Om det steget inte slutförs raderas ingenting. Ett Apple-kopplat konto kan inte slutföra detta steg på en Android-enhet; ULMOX stannar innan något tas bort och ber dig slutföra på en Apple-enhet eller kontakta {{link:support}}.",
+        "Om ditt konto är kopplat till <strong>Logga in med Apple</strong> ber permanent radering på en Apple-enhet dig att bekräfta en gång till direkt med Apple, så att ULMOX kan återkalla sin egen behörighet för Logga in med Apple innan kontot raderas. Vi tar inte emot ditt Apple-lösenord. Om det steget inte slutförs raderas ingenting. Ett Apple-kopplat konto kan inte slutföra detta steg på en Android-enhet; ULMOX stannar innan något tas bort och ber dig slutföra på en Apple-enhet.",
         "Att radera ditt ULMOX-konto raderar inte ditt <strong>Apple-ID</strong> eller ditt Google-konto. ULMOX kan inte radera något av dem. Att återkalla ULMOX behörighet för Logga in med Apple är också en annan åtgärd än att radera ditt konto, och den raderar inte i sig dina ULMOX-uppgifter.",
         "Att radera ditt konto tar bort dina uppgifter. Det tar inte bort någon annans: en Connection har två personer i sig, och den andra deltagarens meddelanden, videor och poster stannar hos hen. Där säkerhetsbevis måste behållas av ett berättigat skäl rensas de kopplingar som binder dem till din identitet bort som en del av raderingen, så att det som återstår är en uppgift om vad som hände snarare än en uppgift om dig.",
       ],
@@ -248,7 +248,7 @@ module.exports = {
       ],
       lifecycle: [
         "6. Inaktivering och radering",
-        "<strong>Inaktivering</strong> går att ångra. Din profil och ditt Global-innehåll döljs och dina uppgifter behålls så att kontot kan återställas. Videor du redan skickat kan finnas kvar hos dem som tog emot dem under deras normala lagringstid.",
+        "<strong>Inaktivering</strong> går att ångra: du återställer kontot genom att logga in igen och välja <strong>Återaktivera</strong>, vilket inte sker enbart genom inloggning. Din profil och ditt Global-innehåll döljs och dina uppgifter behålls så att kontot kan återställas. Videor du redan skickat kan finnas kvar hos dem som tog emot dem under deras normala lagringstid.",
         "<strong>Radering</strong> är permanent och kan inte ångras. Åtkomst och synlighet upphör omedelbart och raderingen fortsätter i bakgrunden. Begränsade säkerhets-, rättsliga eller transaktionsrelaterade poster kan behållas där det är berättigat. Se {{link:deleteAccount}}.",
       ],
       enforcement: [
@@ -435,7 +435,7 @@ module.exports = {
       ],
       "option-app": [
         "Alternativ 1 — radera i appen (rekommenderas)",
-        "Det här är den snabbaste vägen och kräver ingen e-postväxling. Den är inte tillgänglig för varje konto på varje enhet: ett konto som är kopplat till Logga in med Apple kan inte slutföra radering från en Android-telefon och hänvisas i stället till {{link:support}}. Se {{a:#apple-linked|Om ditt konto är kopplat till Logga in med Apple}} nedan.",
+        "Det här är den snabbaste vägen och kräver ingen e-postväxling. Den är inte tillgänglig för varje konto på varje enhet: ett konto som är kopplat till Logga in med Apple kan inte slutföra radering från en Android-telefon och måste slutföra den på en Apple-enhet. Se {{a:#apple-linked|Om ditt konto är kopplat till Logga in med Apple}} nedan.",
         "Öppna ULMOX och gå till <strong>Profil &rarr; Juridik och säkerhet &rarr; Kontohantering &rarr; Radera konto</strong>.",
         "Läs bekräftelsen, som förklarar att raderingen är permanent.",
         "Bekräfta. Du kan behöva logga in igen först, vilket skyddar ditt konto från att raderas av någon annan.",
@@ -476,12 +476,12 @@ module.exports = {
       ],
       "apple-android": [
         "Att radera ett Apple-kopplat konto från en Android-enhet",
-        "Apples bekräftelsesteg kan endast slutföras på en Apple-enhet. Om du försöker radera ett Apple-kopplat ULMOX-konto från en Android-telefon stannar ULMOX innan något tas bort och talar om för dig att <strong>ingenting har raderats</strong>. Slutför raderingen på en Apple-enhet, eller {{a:support.html|kontakta supporten}} så hanterar vi det åt dig.",
+        "Apples bekräftelsesteg kan endast slutföras på en Apple-enhet. Om du försöker radera ett Apple-kopplat ULMOX-konto från en Android-telefon stannar ULMOX innan något tas bort och talar om för dig att <strong>ingenting har raderats</strong>. Slutför raderingen på en Apple-enhet.",
         "Ett konto som bara använder inloggning med Google, eller bara en e-postadress, raderas normalt på båda slagen av enhet. Ett konto som är kopplat till både Apple och Google behöver fortfarande Apple-steget.",
       ],
       break: [
         "Om du bara vill ta en paus",
-        "Inaktivering döljer din profil och ditt Global-innehåll och kan ångras genom att du loggar in igen. Videor du redan skickat kan finnas kvar hos dem som tog emot dem under deras normala lagringstid. Inaktivering uppfyller inte en begäran om radering — vill du få dina uppgifter borttagna, använd Radera konto.",
+        "Inaktivering döljer din profil och ditt Global-innehåll och kan ångras genom att du loggar in igen och väljer <strong>Återaktivera</strong>. Att bara logga in återaktiverar inte kontot. Videor du redan skickat kan finnas kvar hos dem som tog emot dem under deras normala lagringstid. Inaktivering uppfyller inte en begäran om radering — vill du få dina uppgifter borttagna, använd Radera konto.",
         "Att inaktivera raderar inte säkerhetsposter, och att återaktivera ångrar ingenting. Att komma tillbaka återställer din åtkomst; det upphäver inte ett modereringsbeslut, det återställer inte innehåll som moderering tagit bort eller dolt, och det återöppnar inte en Connection som avslutats. Att avsluta en Connection är slutgiltigt för det paret. Blockering fungerar annorlunda: en blockering avslutar den Connection du har nu och stoppar kontakt i båda riktningarna så länge den gäller. Att ta bort en blockering återställer inte heller den gamla Connection — de två kontona skulle behöva kvalificera sig på nytt från början, genom två nya kvalificerande videoutbyten och ett nytt godkännande från var och en.",
       ],
       questions: [

@@ -107,13 +107,13 @@ module.exports = {
       lifecycle: ["3. Devre dışı bırakma ve silme"],
       deactivation: [
         "Devre dışı bırakma",
-        "Devre dışı bırakma geri alınabilir. Profiliniz ve Global içeriğiniz gizlenir ve hesabınız yeni gönderimler için seçilmez. Hesap geri getirilebilsin diye verileriniz saklanır. Daha önce gönderdiğiniz videolar, olağan saklama süreleri boyunca bunları alan kişilerde kalabilir.",
+        "Devre dışı bırakma geri alınabilir: hesabı yeniden oturum açıp <strong>Yeniden Etkinleştir</strong> seçerek geri getirirsiniz; yalnızca oturum açmak bunu yapmaz. Profiliniz ve Global içeriğiniz gizlenir ve hesabınız yeni gönderimler için seçilmez. Hesap geri getirilebilsin diye verileriniz saklanır. Daha önce gönderdiğiniz videolar, olağan saklama süreleri boyunca bunları alan kişilerde kalabilir.",
         "Devre dışı bırakma bir silme değildir ve güvenlik kayıtlarını temizlemez. Raporlar, moderasyon kararları, engellemeler ve diğer güvenlik kanıtları, devre dışı bırakmadan ve yeniden etkinleştirmeden etkilenmez. Yeniden etkinleştirme erişiminizi geri verir; bir moderasyon kararını geri almaz, moderasyonun kaldırdığı veya gizlediği içeriği geri getirmez ve sonlandırılmış bir Bağlantıyı yeniden açmaz. Bir Bağlantıyı sonlandırmak o çift için kesindir. Engelleme farklı işler: bir engelleme mevcut Bağlantınızı sonlandırır ve yürürlükte olduğu sürece her iki yönde de teması durdurur. Engellemeyi kaldırmak eski Bağlantıyı da geri getirmez — iki hesabın baştan yeniden uygun hâle gelmesi, yani iki yeni nitelikli video alışverişi ve her iki kişiden yeni birer onay gerekir.",
       ],
       deletion: [
         "Silme",
         "Silme kalıcıdır. Silme başarıyla başlatıldığı anda erişim ve bulunabilirlik kaldırılır; fiziksel silme arka planda sürer ve haklı bir güvenlik veya yasal yükümlülük sınırlı saklama gerektirmedikçe 30 gün içinde tamamlanması hedeflenir. Kullanıcı adınız yeniden kullanılabilir hâle gelmeden önce 90 gün tutulur. Bkz. {{link:deleteAccount}}.",
-        "Hesabınız <strong>Apple ile Giriş Yap</strong> ile bağlıysa, bir Apple cihazında kalıcı silme sizden doğrudan Apple ile bir kez daha onay vermenizi ister; böylece ULMOX, hesap silinmeden önce kendi Apple ile Giriş Yap yetkilendirmesini geri çekebilir. Apple parolanızı almayız. Bu adım tamamlanmazsa hiçbir şey silinmez. Apple ile bağlı bir hesap bu adımı bir Android cihazda tamamlayamaz; ULMOX hiçbir şeyi kaldırmadan durur ve işlemi bir Apple cihazında tamamlamanızı ya da {{link:support}} ile iletişime geçmenizi ister.",
+        "Hesabınız <strong>Apple ile Giriş Yap</strong> ile bağlıysa, bir Apple cihazında kalıcı silme sizden doğrudan Apple ile bir kez daha onay vermenizi ister; böylece ULMOX, hesap silinmeden önce kendi Apple ile Giriş Yap yetkilendirmesini geri çekebilir. Apple parolanızı almayız. Bu adım tamamlanmazsa hiçbir şey silinmez. Apple ile bağlı bir hesap bu adımı bir Android cihazda tamamlayamaz; ULMOX hiçbir şeyi kaldırmadan durur ve işlemi bir Apple cihazında tamamlamanızı ister.",
         "ULMOX hesabınızı silmek <strong>Apple Kimliğinizi</strong> veya Google Hesabınızı silmez. ULMOX bunların hiçbirini silemez. ULMOX’un Apple ile Giriş Yap yetkilendirmesini geri çekmek de hesabınızı silmekten farklı bir işlemdir ve tek başına ULMOX verilerinizi silmez.",
         "Hesabınızı silmek sizin verilerinizi kaldırır. Başka birinin verilerini kaldırmaz: bir Bağlantıda iki kişi vardır ve diğer katılımcıya ait mesajlar, videolar ve kayıtlar onda kalır. Güvenlik kanıtının haklı bir nedenle saklanması gerektiğinde, bunu kimliğinizle ilişkilendiren bağlantılar silme işleminin bir parçası olarak temizlenir; böylece geriye sizin kaydınız değil, olanların kaydı kalır.",
       ],
@@ -248,7 +248,7 @@ module.exports = {
       ],
       lifecycle: [
         "6. Devre dışı bırakma ve silme",
-        "<strong>Devre dışı bırakma</strong> geri alınabilir. Profiliniz ve Global içeriğiniz gizlenir ve hesap geri getirilebilsin diye verileriniz saklanır. Daha önce gönderdiğiniz videolar, olağan saklama süreleri boyunca bunları alan kişilerde kalabilir.",
+        "<strong>Devre dışı bırakma</strong> geri alınabilir: hesabı yeniden oturum açıp <strong>Yeniden Etkinleştir</strong> seçerek geri getirirsiniz; yalnızca oturum açmak bunu yapmaz. Profiliniz ve Global içeriğiniz gizlenir ve hesap geri getirilebilsin diye verileriniz saklanır. Daha önce gönderdiğiniz videolar, olağan saklama süreleri boyunca bunları alan kişilerde kalabilir.",
         "<strong>Silme</strong> kalıcıdır ve geri alınamaz. Erişim ve bulunabilirlik hemen sona erer, silme arka planda sürer. Haklı görüldüğü durumlarda sınırlı güvenlik, yasal veya işlem kayıtları tutulabilir. Bkz. {{link:deleteAccount}}.",
       ],
       enforcement: [
@@ -435,7 +435,7 @@ module.exports = {
       ],
       "option-app": [
         "1. Seçenek — uygulamada silin (tercih edilen)",
-        "Bu en hızlı yoldur ve e-posta yazışması gerektirmez. Her cihazdaki her hesap için kullanılamaz: Apple ile Giriş Yap ile bağlı bir hesap, silme işlemini bir Android telefonda tamamlayamaz ve bunun yerine {{link:support}} sayfasına yönlendirilir. Aşağıda bkz. {{a:#apple-linked|Hesabınız Apple ile Giriş Yap ile bağlıysa}}.",
+        "Bu en hızlı yoldur ve e-posta yazışması gerektirmez. Her cihazdaki her hesap için kullanılamaz: Apple ile Giriş Yap ile bağlı bir hesap, silme işlemini bir Android telefonda tamamlayamaz ve bunu bir Apple cihazında tamamlaması gerekir. Aşağıda bkz. {{a:#apple-linked|Hesabınız Apple ile Giriş Yap ile bağlıysa}}.",
         "ULMOX’u açın ve <strong>Profil &rarr; Yasal ve Güvenlik &rarr; Hesap Yönetimi &rarr; Hesabı Sil</strong> yolunu izleyin.",
         "Silmenin kalıcı olduğunu açıklayan onay metnini okuyun.",
         "Onaylayın. Önce yeniden oturum açmanız istenebilir; bu, hesabınızı başkasının silmesine karşı korur.",
@@ -476,12 +476,12 @@ module.exports = {
       ],
       "apple-android": [
         "Apple ile bağlı bir hesabı bir Android cihazdan silme",
-        "Apple onay adımı yalnızca bir Apple cihazında tamamlanabilir. Apple ile bağlı bir ULMOX hesabını bir Android telefondan silmeye çalışırsanız, ULMOX hiçbir şey kaldırılmadan durur ve size <strong>hiçbir şeyin silinmediğini</strong> bildirir. Silmeyi bir Apple cihazında tamamlayın ya da {{a:support.html|Destek ile iletişime geçin}}; sizin için biz halledelim.",
+        "Apple onay adımı yalnızca bir Apple cihazında tamamlanabilir. Apple ile bağlı bir ULMOX hesabını bir Android telefondan silmeye çalışırsanız, ULMOX hiçbir şey kaldırılmadan durur ve size <strong>hiçbir şeyin silinmediğini</strong> bildirir. Silmeyi bir Apple cihazında tamamlayın.",
         "Yalnızca Google ile oturum açma veya yalnızca bir e-posta adresi kullanan bir hesap, her iki cihaz türünde de olağan biçimde silinir. Hem Apple hem Google ile bağlı bir hesap için Apple adımı yine gereklidir.",
       ],
       break: [
         "Sadece ara vermek istiyorsanız",
-        "Devre dışı bırakma profilinizi ve Global içeriğinizi gizler ve yeniden oturum açarak geri alınabilir. Daha önce gönderdiğiniz videolar, olağan saklama süreleri boyunca bunları alan kişilerde kalabilir. Devre dışı bırakma bir silme talebini karşılamaz — verilerinizin kaldırılmasını istiyorsanız Hesabı Sil seçeneğini kullanın.",
+        "Devre dışı bırakma profilinizi ve Global içeriğinizi gizler ve yeniden oturum açıp <strong>Yeniden Etkinleştir</strong> seçilerek geri alınabilir. Yalnızca oturum açmak hesabı yeniden etkinleştirmez. Daha önce gönderdiğiniz videolar, olağan saklama süreleri boyunca bunları alan kişilerde kalabilir. Devre dışı bırakma bir silme talebini karşılamaz — verilerinizin kaldırılmasını istiyorsanız Hesabı Sil seçeneğini kullanın.",
         "Devre dışı bırakmak güvenlik kayıtlarını silmez ve yeniden etkinleştirmek hiçbir şeyi geri almaz. Geri dönmek erişiminizi geri verir; bir moderasyon kararını geri almaz, moderasyonun kaldırdığı veya gizlediği içeriği geri getirmez ve sonlandırılmış bir Bağlantıyı yeniden açmaz. Bir Bağlantıyı sonlandırmak o çift için kesindir. Engelleme farklı işler: bir engelleme mevcut Bağlantınızı sonlandırır ve yürürlükte olduğu sürece her iki yönde de teması durdurur. Engellemeyi kaldırmak eski Bağlantıyı da geri getirmez — iki hesabın baştan yeniden uygun hâle gelmesi, yani iki yeni nitelikli video alışverişi ve her iki kişiden yeni birer onay gerekir.",
       ],
       questions: [

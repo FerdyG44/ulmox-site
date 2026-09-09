@@ -107,13 +107,13 @@ module.exports = {
       lifecycle: ["3. Desativação e eliminação"],
       deactivation: [
         "Desativação",
-        "A desativação é reversível. O seu perfil e o seu conteúdo Global ficam ocultos e a sua conta não é selecionada para novas entregas. Os seus dados são conservados para que a conta possa ser reposta. Os vídeos que já enviou podem permanecer com quem os recebeu durante o respetivo período normal de conservação.",
+        "A desativação é reversível: recupera a conta iniciando sessão de novo e escolhendo <strong>Reativar</strong>, o que iniciar sessão só por si não faz. O seu perfil e o seu conteúdo Global ficam ocultos e a sua conta não é selecionada para novas entregas. Os seus dados são conservados para que a conta possa ser reposta. Os vídeos que já enviou podem permanecer com quem os recebeu durante o respetivo período normal de conservação.",
         "A desativação não é um apagamento e não elimina os registos de segurança. Denúncias, decisões de moderação, bloqueios e outras provas de segurança não são afetados pela desativação nem pela reativação. A reativação repõe o seu acesso; não anula uma decisão de moderação, não devolve conteúdos removidos ou ocultados pela moderação e não reabre uma Connection que tenha sido terminada. Terminar uma Connection é definitivo para esse par. O bloqueio funciona de outra forma: um bloqueio termina a Connection que tem agora e interrompe o contacto em ambos os sentidos enquanto se mantiver. Retirar um bloqueio também não repõe a Connection anterior: as duas contas teriam de voltar a ficar elegíveis desde o início, através de duas novas trocas de vídeo válidas e de uma nova aprovação de cada pessoa.",
       ],
       deletion: [
         "Eliminação",
         "A eliminação é permanente. O acesso e a visibilidade são retirados assim que a eliminação é iniciada com êxito, e o apagamento físico continua em segundo plano, com o objetivo de ficar concluído em 30 dias, salvo se uma obrigação justificada de segurança ou legal exigir uma conservação limitada. O seu nome de utilizador fica reservado durante 90 dias antes de poder ser reutilizado. Consulte {{link:deleteAccount}}.",
-        "Se a sua conta estiver associada a <strong>Iniciar sessão com a Apple</strong>, a eliminação permanente num dispositivo Apple pede-lhe que confirme mais uma vez diretamente junto da Apple, para que a ULMOX possa revogar a sua própria autorização de Iniciar sessão com a Apple antes de a conta ser eliminada. Não recebemos a sua palavra-passe da Apple. Se esse passo não for concluído, nada é eliminado. Uma conta associada à Apple não pode concluir este passo num dispositivo Android; a ULMOX para antes de remover fosse o que fosse e pede-lhe que conclua num dispositivo Apple ou que contacte o {{link:support}}.",
+        "Se a sua conta estiver associada a <strong>Iniciar sessão com a Apple</strong>, a eliminação permanente num dispositivo Apple pede-lhe que confirme mais uma vez diretamente junto da Apple, para que a ULMOX possa revogar a sua própria autorização de Iniciar sessão com a Apple antes de a conta ser eliminada. Não recebemos a sua palavra-passe da Apple. Se esse passo não for concluído, nada é eliminado. Uma conta associada à Apple não pode concluir este passo num dispositivo Android; a ULMOX para antes de remover fosse o que fosse e pede-lhe que conclua num dispositivo Apple.",
         "Eliminar a sua conta ULMOX não elimina o seu <strong>ID Apple</strong> nem a sua Conta Google. A ULMOX não pode eliminar nenhum dos dois. Revogar a autorização de Iniciar sessão com a Apple da ULMOX é também uma ação diferente de eliminar a sua conta e, por si só, não apaga os seus dados na ULMOX.",
         "Eliminar a sua conta remove os seus dados. Não remove os de outra pessoa: numa Connection há duas pessoas, e as mensagens, os vídeos e os registos da outra ficam com ela. Quando uma prova de segurança tem de ser conservada por um motivo justificado, as ligações que a associam à sua identidade são removidas como parte do apagamento, de modo que fica um registo do que aconteceu e não um registo sobre si.",
       ],
@@ -248,7 +248,7 @@ module.exports = {
       ],
       lifecycle: [
         "6. Desativação e eliminação",
-        "<strong>A desativação</strong> é reversível. O seu perfil e o seu conteúdo Global ficam ocultos e os seus dados são conservados para que a conta possa ser reposta. Os vídeos que já enviou podem permanecer com quem os recebeu durante o respetivo período normal de conservação.",
+        "<strong>A desativação</strong> é reversível: recupera a conta iniciando sessão de novo e escolhendo <strong>Reativar</strong>, o que iniciar sessão só por si não faz. O seu perfil e o seu conteúdo Global ficam ocultos e os seus dados são conservados para que a conta possa ser reposta. Os vídeos que já enviou podem permanecer com quem os recebeu durante o respetivo período normal de conservação.",
         "<strong>A eliminação</strong> é permanente e não pode ser anulada. O acesso e a visibilidade terminam de imediato e o apagamento continua em segundo plano. Podem ser conservados registos limitados de segurança, legais ou transacionais quando isso seja justificado. Consulte {{link:deleteAccount}}.",
       ],
       enforcement: [
@@ -435,7 +435,7 @@ module.exports = {
       ],
       "option-app": [
         "Opção 1 — eliminar na aplicação (preferível)",
-        "É o caminho mais rápido e não exige troca de e-mails. Não está disponível para todas as contas em todos os dispositivos: uma conta associada a Iniciar sessão com a Apple não consegue concluir a eliminação a partir de um telemóvel Android e é encaminhada para o {{link:support}}. Veja abaixo {{a:#apple-linked|Se a sua conta estiver associada a Iniciar sessão com a Apple}}.",
+        "É o caminho mais rápido e não exige troca de e-mails. Não está disponível para todas as contas em todos os dispositivos: uma conta associada a Iniciar sessão com a Apple não consegue concluir a eliminação a partir de um telemóvel Android e tem de a concluir num dispositivo Apple. Veja abaixo {{a:#apple-linked|Se a sua conta estiver associada a Iniciar sessão com a Apple}}.",
         "Abra a ULMOX e vá a <strong>Perfil &rarr; Informação legal e segurança &rarr; Gestão da conta &rarr; Eliminar conta</strong>.",
         "Leia a confirmação, que explica que a eliminação é permanente.",
         "Confirme. Pode ser-lhe pedido que inicie sessão novamente primeiro, o que protege a sua conta de ser eliminada por outra pessoa.",
@@ -476,12 +476,12 @@ module.exports = {
       ],
       "apple-android": [
         "Eliminar a partir de um dispositivo Android uma conta associada à Apple",
-        "O passo de confirmação da Apple só pode ser concluído num dispositivo Apple. Se tentar eliminar a partir de um telemóvel Android uma conta ULMOX associada à Apple, a ULMOX para antes de remover fosse o que fosse e informa-o de que <strong>nada foi eliminado</strong>. Conclua a eliminação num dispositivo Apple, ou {{a:support.html|contacte o suporte}} e tratamos disso por si.",
+        "O passo de confirmação da Apple só pode ser concluído num dispositivo Apple. Se tentar eliminar a partir de um telemóvel Android uma conta ULMOX associada à Apple, a ULMOX para antes de remover fosse o que fosse e informa-o de que <strong>nada foi eliminado</strong>. Conclua a eliminação num dispositivo Apple.",
         "Uma conta que use apenas o início de sessão com a Google, ou apenas um endereço de e-mail, é eliminada normalmente em qualquer um dos tipos de dispositivo. Uma conta associada tanto à Apple como à Google continua a precisar do passo da Apple.",
       ],
       break: [
         "Se só quiser uma pausa",
-        "A desativação oculta o seu perfil e o seu conteúdo Global e pode ser revertida iniciando sessão de novo. Os vídeos que já enviou podem permanecer com quem os recebeu durante o respetivo período normal de conservação. A desativação não satisfaz um pedido de eliminação — se quiser que os seus dados sejam removidos, use Eliminar conta.",
+        "A desativação oculta o seu perfil e o seu conteúdo Global e pode ser revertida iniciando sessão de novo e escolhendo <strong>Reativar</strong>. Iniciar sessão só por si não reativa a conta. Os vídeos que já enviou podem permanecer com quem os recebeu durante o respetivo período normal de conservação. A desativação não satisfaz um pedido de eliminação — se quiser que os seus dados sejam removidos, use Eliminar conta.",
         "Desativar não apaga os registos de segurança, e reativar não anula nada. Voltar repõe o seu acesso; não anula uma decisão de moderação, não devolve conteúdos removidos ou ocultados pela moderação e não reabre uma Connection que tenha sido terminada. Terminar uma Connection é definitivo para esse par. O bloqueio funciona de outra forma: um bloqueio termina a Connection que tem agora e interrompe o contacto em ambos os sentidos enquanto se mantiver. Retirar um bloqueio também não repõe a Connection anterior: as duas contas teriam de voltar a ficar elegíveis desde o início, através de duas novas trocas de vídeo válidas e de uma nova aprovação de cada pessoa.",
       ],
       questions: [

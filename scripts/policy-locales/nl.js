@@ -107,13 +107,13 @@ module.exports = {
       lifecycle: ["3. Deactiveren en verwijderen"],
       deactivation: [
         "Deactiveren",
-        "Deactiveren is omkeerbaar. Je profiel en je Global-inhoud worden verborgen en je account wordt niet geselecteerd voor nieuwe leveringen. Je gegevens blijven bewaard zodat het account kan worden hersteld. Video’s die je al hebt verzonden kunnen bij de ontvangers blijven gedurende hun gebruikelijke bewaartermijn.",
+        "Deactiveren is omkeerbaar: je herstelt het account door opnieuw in te loggen en <strong>Heractiveren</strong> te kiezen, wat alleen inloggen niet doet. Je profiel en je Global-inhoud worden verborgen en je account wordt niet geselecteerd voor nieuwe leveringen. Je gegevens blijven bewaard zodat het account kan worden hersteld. Video’s die je al hebt verzonden kunnen bij de ontvangers blijven gedurende hun gebruikelijke bewaartermijn.",
         "Deactiveren is geen wissing en verwijdert geen veiligheidsregistraties. Meldingen, moderatiebeslissingen, blokkeringen en ander veiligheidsbewijs worden niet geraakt door deactiveren of heractiveren. Heractiveren herstelt je toegang; het draait een moderatiebeslissing niet terug, brengt inhoud die door moderatie is verwijderd of verborgen niet terug en heropent geen Connection die is beëindigd. Een Connection beëindigen is definitief voor dat paar. Blokkeren werkt anders: een blokkering beëindigt de Connection die je nu hebt en stopt contact in beide richtingen zolang ze geldt. Een blokkering opheffen herstelt de oude Connection evenmin — de twee accounts zouden opnieuw vanaf het begin in aanmerking moeten komen, via twee nieuwe kwalificerende video-uitwisselingen en een nieuwe goedkeuring van beide personen.",
       ],
       deletion: [
         "Verwijderen",
         "Verwijderen is definitief. Toegang en vindbaarheid worden weggenomen zodra de verwijdering met succes is gestart, en de fysieke wissing loopt op de achtergrond door, met als doel afronding binnen 30 dagen tenzij een gerechtvaardigde veiligheids- of wettelijke verplichting beperkte bewaring vereist. Je gebruikersnaam blijft 90 dagen gereserveerd voordat die opnieuw kan worden gebruikt. Zie {{link:deleteAccount}}.",
-        "Als je account is gekoppeld aan <strong>Inloggen met Apple</strong>, vraagt definitieve verwijdering op een Apple-toestel je om nog één keer rechtstreeks bij Apple te bevestigen, zodat ULMOX zijn eigen machtiging voor Inloggen met Apple kan intrekken voordat het account wordt verwijderd. Wij ontvangen je Apple-wachtwoord niet. Als die stap niet wordt afgerond, wordt er niets verwijderd. Een aan Apple gekoppeld account kan deze stap niet afronden op een Android-toestel; ULMOX stopt voordat er iets wordt weggehaald en vraagt je het op een Apple-toestel af te ronden of contact op te nemen met {{link:support}}.",
+        "Als je account is gekoppeld aan <strong>Inloggen met Apple</strong>, vraagt definitieve verwijdering op een Apple-toestel je om nog één keer rechtstreeks bij Apple te bevestigen, zodat ULMOX zijn eigen machtiging voor Inloggen met Apple kan intrekken voordat het account wordt verwijderd. Wij ontvangen je Apple-wachtwoord niet. Als die stap niet wordt afgerond, wordt er niets verwijderd. Een aan Apple gekoppeld account kan deze stap niet afronden op een Android-toestel; ULMOX stopt voordat er iets wordt weggehaald en vraagt je het op een Apple-toestel af te ronden.",
         "Je ULMOX-account verwijderen verwijdert je <strong>Apple-ID</strong> of je Google-account niet. ULMOX kan geen van beide verwijderen. De machtiging van ULMOX voor Inloggen met Apple intrekken is bovendien een andere handeling dan je account verwijderen en wist op zichzelf je ULMOX-gegevens niet.",
         "Je account verwijderen haalt jouw gegevens weg. Het haalt niet die van iemand anders weg: bij een Connection zijn twee mensen betrokken, en de berichten, video’s en registraties van de andere deelnemer blijven bij hem of haar. Waar veiligheidsbewijs om een gerechtvaardigde reden bewaard moet blijven, worden de koppelingen naar jouw identiteit als onderdeel van de wissing verwijderd, zodat er een vastlegging overblijft van wat er is gebeurd en niet een vastlegging over jou.",
       ],
@@ -248,7 +248,7 @@ module.exports = {
       ],
       lifecycle: [
         "6. Deactiveren en verwijderen",
-        "<strong>Deactiveren</strong> is omkeerbaar. Je profiel en je Global-inhoud worden verborgen en je gegevens blijven bewaard zodat het account kan worden hersteld. Video’s die je al hebt verzonden kunnen bij de ontvangers blijven gedurende hun gebruikelijke bewaartermijn.",
+        "<strong>Deactiveren</strong> is omkeerbaar: je herstelt het account door opnieuw in te loggen en <strong>Heractiveren</strong> te kiezen, wat alleen inloggen niet doet. Je profiel en je Global-inhoud worden verborgen en je gegevens blijven bewaard zodat het account kan worden hersteld. Video’s die je al hebt verzonden kunnen bij de ontvangers blijven gedurende hun gebruikelijke bewaartermijn.",
         "<strong>Verwijderen</strong> is definitief en kan niet ongedaan worden gemaakt. Toegang en vindbaarheid eindigen onmiddellijk en de wissing loopt op de achtergrond door. Beperkte veiligheids-, wettelijke of transactieregistraties kunnen bewaard blijven waar dat gerechtvaardigd is. Zie {{link:deleteAccount}}.",
       ],
       enforcement: [
@@ -435,7 +435,7 @@ module.exports = {
       ],
       "option-app": [
         "Optie 1 — verwijderen in de app (aanbevolen)",
-        "Dit is de snelste weg en er komt geen e-mailwisseling aan te pas. Hij is niet voor elk account op elk toestel beschikbaar: een account dat is gekoppeld aan Inloggen met Apple kan de verwijdering niet afronden op een Android-telefoon en wordt in plaats daarvan naar {{link:support}} verwezen. Zie hieronder {{a:#apple-linked|Als je account is gekoppeld aan Inloggen met Apple}}.",
+        "Dit is de snelste weg en er komt geen e-mailwisseling aan te pas. Hij is niet voor elk account op elk toestel beschikbaar: een account dat is gekoppeld aan Inloggen met Apple kan de verwijdering niet afronden op een Android-telefoon en moet die op een Apple-toestel afronden. Zie hieronder {{a:#apple-linked|Als je account is gekoppeld aan Inloggen met Apple}}.",
         "Open ULMOX en ga naar <strong>Profiel &rarr; Juridisch en veiligheid &rarr; Accountbeheer &rarr; Account verwijderen</strong>.",
         "Lees de bevestiging, die uitlegt dat verwijderen definitief is.",
         "Bevestig. Mogelijk wordt je eerst gevraagd opnieuw in te loggen; dat beschermt je account tegen verwijdering door iemand anders.",
@@ -476,12 +476,12 @@ module.exports = {
       ],
       "apple-android": [
         "Een aan Apple gekoppeld account vanaf een Android-toestel verwijderen",
-        "De bevestigingsstap van Apple kan alleen op een Apple-toestel worden afgerond. Probeer je een aan Apple gekoppeld ULMOX-account vanaf een Android-telefoon te verwijderen, dan stopt ULMOX voordat er iets wordt weggehaald en meldt dat er <strong>niets is verwijderd</strong>. Rond de verwijdering af op een Apple-toestel, of {{a:support.html|neem contact op met support}} en wij regelen het voor je.",
+        "De bevestigingsstap van Apple kan alleen op een Apple-toestel worden afgerond. Probeer je een aan Apple gekoppeld ULMOX-account vanaf een Android-telefoon te verwijderen, dan stopt ULMOX voordat er iets wordt weggehaald en meldt dat er <strong>niets is verwijderd</strong>. Rond de verwijdering af op een Apple-toestel.",
         "Een account dat alleen inloggen met Google of alleen een e-mailadres gebruikt, wordt op beide soorten toestellen gewoon verwijderd. Een account dat zowel aan Apple als aan Google is gekoppeld heeft nog steeds de Apple-stap nodig.",
       ],
       break: [
         "Als je alleen even pauze wilt",
-        "Deactiveren verbergt je profiel en je Global-inhoud en kan ongedaan worden gemaakt door opnieuw in te loggen. Video’s die je al hebt verzonden kunnen bij de ontvangers blijven gedurende hun gebruikelijke bewaartermijn. Deactiveren voldoet niet aan een verwijderingsverzoek — wil je dat je gegevens worden weggehaald, gebruik dan Account verwijderen.",
+        "Deactiveren verbergt je profiel en je Global-inhoud en kan ongedaan worden gemaakt door opnieuw in te loggen en <strong>Heractiveren</strong> te kiezen. Alleen inloggen heractiveert het account niet. Video’s die je al hebt verzonden kunnen bij de ontvangers blijven gedurende hun gebruikelijke bewaartermijn. Deactiveren voldoet niet aan een verwijderingsverzoek — wil je dat je gegevens worden weggehaald, gebruik dan Account verwijderen.",
         "Deactiveren wist geen veiligheidsregistraties, en heractiveren draait niets terug. Terugkomen herstelt je toegang; het draait een moderatiebeslissing niet terug, brengt inhoud die door moderatie is verwijderd of verborgen niet terug en heropent geen Connection die is beëindigd. Een Connection beëindigen is definitief voor dat paar. Blokkeren werkt anders: een blokkering beëindigt de Connection die je nu hebt en stopt contact in beide richtingen zolang ze geldt. Een blokkering opheffen herstelt de oude Connection evenmin — de twee accounts zouden opnieuw vanaf het begin in aanmerking moeten komen, via twee nieuwe kwalificerende video-uitwisselingen en een nieuwe goedkeuring van beide personen.",
       ],
       questions: [

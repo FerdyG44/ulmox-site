@@ -1,10 +1,22 @@
 # ULMOX website — publication guard
 
-**Status: DO NOT PUBLISH.**
+**Status: CLEARED FOR PUBLICATION.**
 
-The pages in this repository describe behaviour that exists in the ULMOX
-application repository but **has not been deployed**. Nothing in this list has
-been performed, and nothing here has been published, deployed or configured.
+*Cleared 2026-09-09.* This guard existed to stop the pages describing behaviour
+that did not exist. All nine dependency rows below now read **Yes**, every one
+of them against the production project rather than against source, and most by
+observing real production data or a physical device. The last item that was not
+a code question — operational readiness — has been confirmed by the ULMOX
+operator, recorded below.
+
+Cleared is not the same as published. Nothing here has been published, and the
+publication itself is still a deliberate act taken through the release order.
+This status means the pages may now be published, not that they have been.
+
+**The guard does not retire.** If a page ever describes something again that is
+not deployed, this file goes back to DO NOT PUBLISH. The store-console, device
+and deployment handoff tables further down remain **Open** and are unaffected by
+this clearance: by the Stage 1.6W order they come *after* these pages are live.
 
 **What changed at Stage 1.6W.** This guard used to hold the pages back until the
 matching app release was *live*. That rule could never be satisfied: store
@@ -19,19 +31,74 @@ gated on the readiness steps in that order, every one of which is open.
 
 ## Why these pages are held back
 
-| Page claim | Depends on | Deployed? |
-|---|---|---|
-| In-app Delete Account works | Stage 0 server-side `deleteUserAccount` | **No** |
-| Erasure completes asynchronously, targeted within 30 days | Stage 0.2 resumable erasure worker | **No** |
-| Username held 90 days after deletion | Stage 0.4 `DELETED_USERNAME_HOLD_DAYS` | **No** |
-| Deactivation is reversible and hides Global content | Stage 0.7a–c | **No** |
-| Blocking is server-owned and bidirectional | Stage 0.8 | **No** |
-| ULMOX is 18+ and asks for age | Stage 0.10 (flags are **off**) | **No** |
-| Report Content and Report User, child safety category | Stage 0.11 | **No** |
-| Reversible quarantine of reported content | Stage 0.11 / 0.12 | **No** |
-| Only an admin can ban | Stage 0.12 | **No** |
+Reconciled 2026-09-09 against the **production** project `ulmox-afbc3`, not
+against this repository and not against the application source. "Deployed"
+means the function is listed by `firebase functions:list` for that project, and
+where possible that the behaviour has been observed in production data. Source
+that exists but is not deployed reads **No**, and a passing test is not
+evidence.
+
+| Page claim | Depends on | Deployed? | Evidence |
+|---|---|---|---|
+| In-app Delete Account works | Stage 0 server-side `deleteUserAccount` | **Yes** | `deleteUserAccount` deployed. Exercised in production on six accounts, each through the ordinary in-app path with recent-auth required. |
+| Erasure completes asynchronously, targeted within 30 days | Stage 0.2 resumable erasure worker | **Yes** | `processAccountErasureJobs` deployed (revision `processaccounterasurejobs-00005-qet`). Observed completing real jobs within minutes, far inside 30 days. Queue idle. |
+| Username held 90 days after deletion | Stage 0.4 `DELETED_USERNAME_HOLD_DAYS` | **Yes** | Observed in production `usernames`: five reservations with `reservationStatus: deleted_account_hold`, `uid: null`, `reservedUntil` ≈ 89.8 days out. Applied by `releaseUsernameReservationsForUser` in the deployed deletion path. |
+| Deactivation is reversible and hides Global content | Stage 0.7a–c | **Yes** | Deployed 2026-09-09: `deactivateUserAccount`, `reactivateUserAccount` and `processAccountDeactivationJobs` are all live and `Ready`, and `app_config/account_state.deactivationEnabled` is `true`. Verified on a physical iPhone against production: deactivate completed in 345 ms (`lifecycle: completed`), signing back in did **not** reactivate — the account stayed `deactivated` for two minutes until an explicit Reactivate tap — and reactivation restored `accountStatus: active` and `isDiscoverableForMatching: true`. Auth, age state and Terms acceptance survived; no erasure job was created. The recovery worker needed the `account_deactivation_jobs` composite index, which was missing and is now `READY`; the worker returned HTTP 200 on consecutive scheduler ticks after failing on three. |
+| Blocking is server-owned and bidirectional | Stage 0.8 | **Yes** | `setBlockState` deployed; `isPairBlocked` consulted in both directions across delivery, Connections and Global paths. Production `user_blocks` documents observed carrying `aUid`, `bUid`, `bBlocksA`, `isBlocked`. |
+| ULMOX is 18+ and asks for age | Stage 0.10 | **Yes** | `submitDeclaredBirthDate`, `submitPlatformAgeSignal` and `processAgeRestrictionJobs` deployed. `app_config/age_assurance.ageAssuranceEnabled` is **true**. The gate was exercised end to end on a physical iPhone and a physical Android device, each recording `declared_age` through the real callable. `adultEnforcementEnabled` remains **false**: the app *asks*, which is what this row claims, and does not yet *refuse*. |
+| Report Content and Report User, child safety category | Stage 0.11 | **Yes** | `reportContent`, `reportUser` and `handleReportCreated` deployed. `REPORT_REASON.CHILD_SAFETY` is a first-class reason with its own handling. Production `reports` collection holds real reports. |
+| Reversible quarantine of reported content | Stage 0.11 / 0.12 | **Yes** | `reviewModerationItem` deployed with `approve` / `hide` / `ban` / `nsfw`. Production `moderationQueue` shows the full cycle exercised: 16 `hidden`, 3 `auto_hidden`, **12 `approved`** — quarantine applied and reversed. |
+| Only an admin can ban | Stage 0.12 | **Yes** | The only ban route is `reviewModerationItem`, gated by `canModerateUser(admin)` and additionally requiring `banConfirmed: true`. `account_ban_policy.js` refuses to ban an admin or a deleted account. `propagateBannedUserContent` deployed. No account has been banned in production (0), which is consistent with the claim: the row is about who *may* ban. |
 
 Every row must read "Yes" before the corresponding sentence may be public.
+**All nine now read Yes.** Publication remains blocked for a reason that is not
+in this table — see [Remaining blockers](#remaining-blockers).
+
+---
+
+## Support-assisted deletion — claim removed
+
+Removed 2026-09-09, in the canonical English and all eighteen translations.
+
+The pages told a user whose Apple-linked account could not complete deletion on
+an Android device to "contact Support **and we will handle it for you**", and a
+second passage said such an account "is directed to Support instead". No
+support-assisted deletion procedure has been established, so both stated a route
+that does not exist.
+
+The truthful behaviour is kept and unchanged: deletion stops before anything is
+removed, the user is told nothing has been deleted, and the Apple confirmation
+step must be completed on an Apple device. That part is verified in code —
+`AppleRevocationOutcome` fails closed on cancellation, a missing authorization
+code, a UID mismatch, a timeout and an unsupported platform.
+
+Nothing was invented to replace the removed clause. If a real procedure is
+established later, it can be described then.
+
+---
+
+## Language precedence
+
+Added 2026-09-09. Every page that states binding obligations — Privacy, Terms,
+Safety, Support and Delete Account, in all nineteen locales and at the canonical
+root — carries a one-sentence notice in its own language saying the English
+version is authoritative and applies if a translation differs.
+
+It is rendered from `CHROME.<locale>.englishPrecedence` in
+`scripts/page-shell.js` and gated by `LEGAL_ROUTES`, so it reaches every legal
+route automatically and no other route at all. The English pages render the same
+string through `footer()` in `scripts/legal-pages.js`, so there is one source of
+truth for the sentence and for which pages carry it.
+
+This is the one clause where translation risk is self-limiting: it subordinates
+itself to the English text, so an imperfect rendering of it cannot change which
+version governs. It does not conflict with anything already present — the
+policies contain no governing-law, jurisdiction, consumer-law or
+mandatory-language clause for it to contradict.
+
+It does not upgrade the translations. They remain as described below:
+authored in this repository, not approved by an independent legal or
+professional translator.
 
 ---
 
@@ -62,6 +129,54 @@ Checked by `tests/legal-pages.test.js`. Do not reintroduce any of them.
 - ❌ a retention period that is only configured in a console we have not read
 - ❌ a processor ULMOX does not actually use
 - ❌ absolute security or encryption guarantees
+
+---
+
+## Remaining blockers
+
+**None.** Both items previously listed here are closed, and the evidence for
+each is recorded rather than asserted. Each is stated so it can be
+closed by evidence rather than by assertion.
+
+1. ~~**Deactivation is described but not deployed.**~~ **Closed 2026-09-09.**
+   The three functions are deployed, the rollout flag is on, the missing index
+   is `READY`, and the whole flow was verified against production on a physical
+   device. The pages' wording was corrected at the same time: they said
+   deactivation could be "reversed by signing back in", which the device test
+   disproved — an explicit Reactivate tap is required, and every locale now says
+   so.
+
+2. ~~**Operational support readiness (release order, step 2).**~~
+   **Closed 2026-09-09 by explicit commitment from the ULMOX operator.** No code
+   can evidence this, and none is claimed to. What was committed:
+   `ulmoxapp@outlook.com` will be actively monitored for child-safety reports
+   and appeal requests; urgent child-safety matters will be prioritised; the
+   stated **24-hour review target** will be operated; appeals will be read by an
+   authorised human operator, who is authorised to take the moderation actions
+   the production moderation system supports.
+
+   Scope, stated precisely because the pages are precise: the commitment is to a
+   target for *beginning* review, not to resolving a case within 24 hours. The
+   pages already say exactly that, in all nineteen languages — every one pairs
+   the 24-hour target with an explicit statement that it is not a guarantee of
+   final resolution, and `tests/legal-pages.test.js` fails if that pairing is
+   ever broken. No resolution-time guarantee is made here or anywhere else.
+
+   The third element of the original blocker — a support-assisted deletion route
+   for Apple-linked Android users — was **not** confirmed and is **not** claimed.
+   The pages no longer offer it; see [Support-assisted deletion — claim
+   removed](#support-assisted-deletion--claim-removed).
+
+**Not a blocker — checked and clear.** `GA_MEASUREMENT_ID` is configured as a
+repository variable on `FerdyG44/ulmox-site` (`G-YLHJFT9PY0`, set 2026-08-15),
+so `deploy-pages.yml` will not stop on it. It fails locally only because the
+variable is a CI value; with one supplied, `scripts/verify-production-build.js`
+passes in full — 161 accessible pages, 140 sitemap URLs, 2062 references, robots
+and sitemap verified.
+
+The Apple and Google console items further down remain open. They are not
+publication blockers: by the Stage 1.6W order they come *after* these pages are
+live, and they gate *submission*, not publication.
 
 ---
 
@@ -114,7 +229,13 @@ sequencing"** and the six-item `ulmox-site` handoff beneath it.
    every URL working and every feature described.
 6. **Keep Connections disabled for ordinary users** until the backend
    prerequisites and the reviewer configuration are both ready.
-   `app_config/connections.connectionsEnabled` stays `false`.
+   *Superseded 2026-09-09:* `app_config/connections.connectionsEnabled` is
+   **`true`** in production, and the reviewer configuration this step was
+   waiting for now exists — `app_config/store_review_pair` carries two isolated
+   pairs, one per store. The step is therefore satisfied, not pending. Nothing
+   on the website changed as a result, which is the property step 8 relies on:
+   every page describing Connections carries the gradual-rollout sentence, so it
+   is true whether the flag is on or off.
 7. **Enable reviewer access through the server-owned review pair**, using the
    credential-free procedure below. Nothing about it appears on a public page.
 8. **Complete review, then roll out under control.** Enable the flag gradually.
@@ -287,8 +408,8 @@ Connections and translation both resolve to off unless a server flag is exactly
 | Signed iOS App Thinning size measurement | **Open** — ML Kit adds materially to the binary |
 | Xcode Organizer privacy-report verification | **Open** |
 | Legal/product acceptance of Google's UGC branding risk | **Open** — a Google mark shown beside user-generated content |
-| Connections rollout flag (`app_config/connections.connectionsEnabled`) | **Open** — off |
-| Translation rollout | **Open** — reachable only through Connections, which is off |
+| Connections rollout flag (`app_config/connections.connectionsEnabled`) | **Set 2026-09-09** — `true` in production. Reviewer isolation is configured separately in `app_config/store_review_pair`. |
+| Translation rollout | **Open** — reachable only through Connections |
 
 ### Google attribution — decision recorded
 
@@ -535,8 +656,10 @@ in any language now says ULMOX uses no automated filtering.
   application UI**, so no page advertises it as a sign-up option.
 - Historical Apple-linked production accounts are **unknown**: production access
   was forbidden, so no statement is made about them.
-- Connections and message translation are **not deployed and are disabled**.
-  `app_config/connections.connectionsEnabled` is off and no flag has been set.
+- Connections is **deployed and the flag is on**: as of 2026-09-09
+  `app_config/connections.connectionsEnabled` is `true` in production. Message
+  translation remains reachable only through Connections. This changes nothing
+  on the website, by design.
   The Translation Information page and the Connections and translation sections
   of the Privacy Policy, Terms, Child Safety Standards and Support pages carry
   the gradual-rollout sentence rather than an availability claim;

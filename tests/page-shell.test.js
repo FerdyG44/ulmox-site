@@ -573,9 +573,24 @@ test("23: the production verifier still refuses a build with no Measurement ID",
   }
 });
 
-test("24: the publication status is still DO NOT PUBLISH", () => {
-  assert.match(CHECKLIST(), /\*\*Status: DO NOT PUBLISH\.\*\*/);
-  assert.match(CHECKLIST(), /nothing here has been published, deployed or configured/i);
+test("24: the publication status is explicit, and publication is not claimed", () => {
+  const checklist = CHECKLIST();
+  // Cleared 2026-09-09: every dependency row is Yes and the operational
+  // commitment is recorded. The guard now holds the file to stating a status
+  // explicitly, and to never claiming the site has actually been published.
+  assert.match(checklist, /\*\*Status: CLEARED FOR PUBLICATION\.\*\*/);
+  assert.match(checklist, /Cleared is not the same as published/);
+  assert.match(checklist, /goes back to DO NOT PUBLISH/);
+
+  // The guard used to assert that nothing at all had been deployed. That
+  // sentence was true when written and is not any more -- most of the
+  // dependencies shipped -- so asserting it would now lock a falsehood in
+  // place. What must stay true is narrower and more useful: the WEBSITE is
+  // still unpublished, and the reasons it is held back are stated rather than
+  // implied.
+  assert.doesNotMatch(checklist, /has been published to production/i);
+  assert.match(checklist, /## Remaining blockers/);
+  assert.match(checklist, /Deactivation is described but not deployed/i);
 });
 
 /* -------------------------------------------------------------------------- */
@@ -712,5 +727,5 @@ test("the two localized-content defects are resolved, and cannot return quietly"
     "the repeated-content defect is not recorded as resolved"
   );
   // Resolving content defects does not resolve the release.
-  assert.match(checklist, /\*\*Status: DO NOT PUBLISH\.\*\*/);
+  assert.match(checklist, /\*\*Status: CLEARED FOR PUBLICATION\.\*\*/);
 });

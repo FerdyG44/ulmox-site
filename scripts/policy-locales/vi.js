@@ -107,13 +107,13 @@ module.exports = {
       lifecycle: ["3. Vô hiệu hóa và xóa"],
       deactivation: [
         "Vô hiệu hóa",
-        "Vô hiệu hóa có thể đảo ngược. Hồ sơ và nội dung Global của bạn được ẩn đi và tài khoản của bạn không được chọn cho các lượt chuyển mới. Dữ liệu của bạn vẫn được giữ để có thể khôi phục tài khoản. Những video bạn đã gửi có thể vẫn còn ở phía người nhận trong thời hạn lưu giữ thông thường của chúng.",
+        "Vô hiệu hóa có thể đảo ngược: bạn khôi phục tài khoản bằng cách đăng nhập lại rồi chọn <strong>Kích hoạt lại</strong>, điều mà chỉ đăng nhập thôi không làm được. Hồ sơ và nội dung Global của bạn được ẩn đi và tài khoản của bạn không được chọn cho các lượt chuyển mới. Dữ liệu của bạn vẫn được giữ để có thể khôi phục tài khoản. Những video bạn đã gửi có thể vẫn còn ở phía người nhận trong thời hạn lưu giữ thông thường của chúng.",
         "Vô hiệu hóa không phải là xóa và không xóa các bản ghi an toàn. Báo cáo, quyết định kiểm duyệt, lượt chặn và các bằng chứng an toàn khác không bị ảnh hưởng bởi việc vô hiệu hóa hay kích hoạt lại. Kích hoạt lại khôi phục quyền truy cập của bạn; nhưng không đảo ngược một quyết định kiểm duyệt, không mang lại nội dung đã bị kiểm duyệt gỡ hoặc ẩn, và không mở lại một Connection đã kết thúc. Kết thúc một Connection là dứt điểm với cặp đó. Chặn hoạt động khác: một lượt chặn kết thúc Connection bạn đang có và ngăn liên lạc theo cả hai chiều chừng nào nó còn hiệu lực. Bỏ chặn cũng không khôi phục Connection cũ — hai tài khoản sẽ phải đủ điều kiện lại từ đầu, qua hai lượt trao đổi video hợp lệ mới và sự chấp thuận mới của cả hai người.",
       ],
       deletion: [
         "Xóa",
         "Xóa là vĩnh viễn. Quyền truy cập và khả năng được tìm thấy bị gỡ ngay khi việc xóa được khởi động thành công, và việc xóa dữ liệu thực tế tiếp tục chạy nền, đặt mục tiêu hoàn tất trong vòng 30 ngày, trừ khi một nghĩa vụ an toàn hoặc pháp lý chính đáng đòi hỏi lưu giữ hạn chế. Tên người dùng của bạn được giữ 90 ngày trước khi có thể dùng lại. Xem {{link:deleteAccount}}.",
-        "Nếu tài khoản của bạn liên kết với <strong>Đăng nhập bằng Apple</strong>, việc xóa vĩnh viễn trên thiết bị Apple sẽ yêu cầu bạn xác nhận thêm một lần trực tiếp với Apple, để ULMOX có thể thu hồi ủy quyền Đăng nhập bằng Apple của chính mình trước khi tài khoản bị xóa. Chúng tôi không nhận mật khẩu Apple của bạn. Nếu bước đó không hoàn tất, không có gì bị xóa. Tài khoản liên kết với Apple không thể hoàn tất bước này trên thiết bị Android; ULMOX dừng lại trước khi gỡ bất cứ thứ gì và đề nghị bạn hoàn tất trên thiết bị Apple hoặc liên hệ {{link:support}}.",
+        "Nếu tài khoản của bạn liên kết với <strong>Đăng nhập bằng Apple</strong>, việc xóa vĩnh viễn trên thiết bị Apple sẽ yêu cầu bạn xác nhận thêm một lần trực tiếp với Apple, để ULMOX có thể thu hồi ủy quyền Đăng nhập bằng Apple của chính mình trước khi tài khoản bị xóa. Chúng tôi không nhận mật khẩu Apple của bạn. Nếu bước đó không hoàn tất, không có gì bị xóa. Tài khoản liên kết với Apple không thể hoàn tất bước này trên thiết bị Android; ULMOX dừng lại trước khi gỡ bất cứ thứ gì và đề nghị bạn hoàn tất trên thiết bị Apple.",
         "Xóa tài khoản ULMOX không xóa <strong>ID Apple</strong> hay Tài khoản Google của bạn. ULMOX không thể xóa cái nào trong hai cái đó. Việc thu hồi ủy quyền Đăng nhập bằng Apple của ULMOX cũng là một hành động khác với việc xóa tài khoản, và bản thân nó không xóa dữ liệu ULMOX của bạn.",
         "Xóa tài khoản của bạn sẽ gỡ dữ liệu của bạn. Nó không gỡ dữ liệu của người khác: một Connection có hai người, và tin nhắn, video cùng bản ghi của người kia vẫn ở lại với họ. Ở nơi bằng chứng an toàn phải được giữ vì một lý do chính đáng, các liên kết gắn nó với danh tính của bạn sẽ được xóa như một phần của quá trình xóa dữ liệu, nên thứ còn lại là bản ghi về điều đã xảy ra chứ không phải bản ghi về bạn.",
       ],
@@ -248,7 +248,7 @@ module.exports = {
       ],
       lifecycle: [
         "6. Vô hiệu hóa và xóa",
-        "<strong>Vô hiệu hóa</strong> có thể đảo ngược. Hồ sơ và nội dung Global của bạn được ẩn đi và dữ liệu của bạn vẫn được giữ để có thể khôi phục tài khoản. Những video bạn đã gửi có thể vẫn còn ở phía người nhận trong thời hạn lưu giữ thông thường của chúng.",
+        "<strong>Vô hiệu hóa</strong> có thể đảo ngược: bạn khôi phục tài khoản bằng cách đăng nhập lại rồi chọn <strong>Kích hoạt lại</strong>, điều mà chỉ đăng nhập thôi không làm được. Hồ sơ và nội dung Global của bạn được ẩn đi và dữ liệu của bạn vẫn được giữ để có thể khôi phục tài khoản. Những video bạn đã gửi có thể vẫn còn ở phía người nhận trong thời hạn lưu giữ thông thường của chúng.",
         "<strong>Xóa</strong> là vĩnh viễn và không thể hoàn tác. Quyền truy cập và khả năng được tìm thấy chấm dứt ngay lập tức, và việc xóa dữ liệu tiếp tục chạy nền. Một số bản ghi an toàn, pháp lý hoặc giao dịch có giới hạn có thể được giữ ở nơi có lý do chính đáng. Xem {{link:deleteAccount}}.",
       ],
       enforcement: [
@@ -435,7 +435,7 @@ module.exports = {
       ],
       "option-app": [
         "Cách 1 — xóa trong ứng dụng (nên dùng)",
-        "Đây là cách nhanh nhất và không cần trao đổi email. Cách này không dành cho mọi tài khoản trên mọi thiết bị: tài khoản liên kết với Đăng nhập bằng Apple không thể hoàn tất việc xóa từ điện thoại Android, và sẽ được hướng tới {{link:support}}. Xem bên dưới {{a:#apple-linked|Nếu tài khoản của bạn liên kết với Đăng nhập bằng Apple}}.",
+        "Đây là cách nhanh nhất và không cần trao đổi email. Cách này không dành cho mọi tài khoản trên mọi thiết bị: tài khoản liên kết với Đăng nhập bằng Apple không thể hoàn tất việc xóa từ điện thoại Android, và phải hoàn tất trên thiết bị Apple. Xem bên dưới {{a:#apple-linked|Nếu tài khoản của bạn liên kết với Đăng nhập bằng Apple}}.",
         "Mở ULMOX và vào <strong>Hồ sơ &rarr; Pháp lý và an toàn &rarr; Quản lý tài khoản &rarr; Xóa tài khoản</strong>.",
         "Đọc phần xác nhận, trong đó giải thích rằng việc xóa là vĩnh viễn.",
         "Xác nhận. Bạn có thể được yêu cầu đăng nhập lại trước, điều này bảo vệ tài khoản của bạn khỏi bị người khác xóa.",
@@ -476,12 +476,12 @@ module.exports = {
       ],
       "apple-android": [
         "Xóa tài khoản liên kết với Apple từ thiết bị Android",
-        "Bước xác nhận của Apple chỉ có thể hoàn tất trên thiết bị Apple. Nếu bạn thử xóa một tài khoản ULMOX liên kết với Apple từ điện thoại Android, ULMOX dừng lại trước khi gỡ bất cứ thứ gì và báo cho bạn biết rằng <strong>không có gì bị xóa</strong>. Hãy hoàn tất việc xóa trên thiết bị Apple, hoặc {{a:support.html|liên hệ bộ phận hỗ trợ}} và chúng tôi sẽ xử lý giúp bạn.",
+        "Bước xác nhận của Apple chỉ có thể hoàn tất trên thiết bị Apple. Nếu bạn thử xóa một tài khoản ULMOX liên kết với Apple từ điện thoại Android, ULMOX dừng lại trước khi gỡ bất cứ thứ gì và báo cho bạn biết rằng <strong>không có gì bị xóa</strong>. Hãy hoàn tất việc xóa trên thiết bị Apple.",
         "Tài khoản chỉ dùng đăng nhập bằng Google, hoặc chỉ dùng một địa chỉ email, sẽ xóa được bình thường trên cả hai loại thiết bị. Tài khoản liên kết với cả Apple và Google vẫn cần bước của Apple.",
       ],
       break: [
         "Nếu bạn chỉ muốn tạm nghỉ",
-        "Vô hiệu hóa ẩn hồ sơ và nội dung Global của bạn và có thể hoàn tác bằng cách đăng nhập lại. Những video bạn đã gửi có thể vẫn còn ở phía người nhận trong thời hạn lưu giữ thông thường của chúng. Vô hiệu hóa không đáp ứng một yêu cầu xóa dữ liệu — nếu bạn muốn dữ liệu của mình được gỡ, hãy dùng Xóa tài khoản.",
+        "Vô hiệu hóa ẩn hồ sơ và nội dung Global của bạn và có thể hoàn tác bằng cách đăng nhập lại rồi chọn <strong>Kích hoạt lại</strong>. Chỉ đăng nhập thôi không kích hoạt lại tài khoản. Những video bạn đã gửi có thể vẫn còn ở phía người nhận trong thời hạn lưu giữ thông thường của chúng. Vô hiệu hóa không đáp ứng một yêu cầu xóa dữ liệu — nếu bạn muốn dữ liệu của mình được gỡ, hãy dùng Xóa tài khoản.",
         "Vô hiệu hóa không xóa các bản ghi an toàn, và kích hoạt lại không hoàn tác điều gì. Quay lại sẽ khôi phục quyền truy cập của bạn; nhưng không đảo ngược một quyết định kiểm duyệt, không mang lại nội dung đã bị kiểm duyệt gỡ hoặc ẩn, và không mở lại một Connection đã kết thúc. Kết thúc một Connection là dứt điểm với cặp đó. Chặn hoạt động khác: một lượt chặn kết thúc Connection bạn đang có và ngăn liên lạc theo cả hai chiều chừng nào nó còn hiệu lực. Bỏ chặn cũng không khôi phục Connection cũ — hai tài khoản sẽ phải đủ điều kiện lại từ đầu, qua hai lượt trao đổi video hợp lệ mới và sự chấp thuận mới của cả hai người.",
       ],
       questions: [

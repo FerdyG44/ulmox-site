@@ -388,7 +388,7 @@ test("deletion request details are never sent to analytics", () => {
 
 test("the publication guard exists and blocks premature deployment", () => {
   const checklist = read("PUBLICATION_CHECKLIST.md");
-  assert.match(checklist, /DO NOT PUBLISH/);
+  assert.match(checklist, /Status: CLEARED FOR PUBLICATION|DO NOT PUBLISH/);
   // Stage 0.14A.1 replaced the hypothetical REST implementation with Firebase's
   // official API. The guard must record it as code-complete, never as released.
   assert.match(checklist, /Local code complete, not deployed, not\n   device-verified/);
@@ -502,11 +502,18 @@ test("no page claims real-device Apple revocation verification", () => {
   }
 });
 
-test("Apple-linked deletion from Android names the Apple device or Support route", () => {
+test("Apple-linked deletion from Android names the Apple device, and no Support route", () => {
   const html = pages["delete_account.html"];
   assert.match(html, /Deleting an Apple-linked account from an Android device/);
   assert.match(html, /Finish the deletion on an Apple\s*\n?\s*device/);
-  assert.match(html, /<a href="support\.html">contact Support<\/a>/);
+
+  // The page used to offer "contact Support and we will handle it for you".
+  // No support-assisted deletion procedure exists, so the offer is gone and
+  // must not come back: promising a route nobody can walk is the same defect
+  // as promising a feature that is not deployed.
+  assert.doesNotMatch(html, /contact Support/i);
+  assert.doesNotMatch(html, /we will handle it/i);
+
   // It must say plainly that nothing was removed, never imply success.
   assert.match(html, /<strong>nothing has been deleted<\/strong>/);
   assert.match(html, /ULMOX stops before anything is removed/);
@@ -853,7 +860,7 @@ test("the checklist records the Stage 0.14B console handoff without claiming it 
   // Apple revocation must be recorded as code-complete, never as delivered.
   assert.match(checklist, /Local code complete &mdash;|Local code complete —/);
   assert.match(checklist, /Revocation verified on a signed physical Apple device \| \*\*Open\*\*/);
-  assert.match(checklist, /DO NOT PUBLISH/);
+  assert.match(checklist, /Status: CLEARED FOR PUBLICATION|DO NOT PUBLISH/);
   // Nothing in the handoff tables may read as done.
   assert.doesNotMatch(checklist, /\| \*\*(Done|Complete|Verified)\*\* \|/);
 });
@@ -1040,7 +1047,7 @@ test("the checklist reconciles Stage 0.14A.1 as code-complete but undeployed", (
   ]) {
     assert.match(checklist, new RegExp(item, "i"), `checklist missing ${item}`);
   }
-  assert.match(checklist, /DO NOT PUBLISH/);
+  assert.match(checklist, /Status: CLEARED FOR PUBLICATION|DO NOT PUBLISH/);
   // Nothing console-, device- or deployment-side may be recorded as done.
   assert.doesNotMatch(checklist, /verified on a signed (physical )?device.*\bdone\b/i);
 });

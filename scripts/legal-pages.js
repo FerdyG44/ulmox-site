@@ -144,6 +144,11 @@ const STYLE = `
 
 /** Footer navigation, generated so a link can never go stale on one page. */
 function footer(currentFile) {
+  // One source of truth for the sentence and for which routes carry it: the
+  // English pages render the same notice, from the same table, as the eighteen
+  // translations. Required lazily so this module stays dependency-free at load.
+  const { CHROME, LEGAL_ROUTES } = require("./page-shell");
+
   const links = PAGES.map((page) => {
     if (page.file === currentFile) {
       return `        <li><span aria-current="page">${page.label}</span></li>`;
@@ -151,13 +156,17 @@ function footer(currentFile) {
     return `        <li><a href="${page.file}">${page.label}</a></li>`;
   }).join("\n");
 
+  const precedence = LEGAL_ROUTES.includes(currentFile)
+    ? `    <p class="ulmox-precedence">${CHROME.en.englishPrecedence}</p>\n`
+    : "";
+
   return `  <footer>
     <nav aria-label="Legal and support">
       <ul>
 ${links}
       </ul>
     </nav>
-    <p>ULMOX is an 18+ service. Contact: <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></p>
+${precedence}    <p>ULMOX is an 18+ service. Contact: <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></p>
   </footer>`;
 }
 

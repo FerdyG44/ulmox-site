@@ -107,13 +107,13 @@ module.exports = {
       lifecycle: ["3. Disattivazione ed eliminazione"],
       deactivation: [
         "Disattivazione",
-        "La disattivazione è reversibile. Il tuo profilo e i tuoi contenuti Global vengono nascosti e il tuo account non viene selezionato per nuove consegne. I tuoi dati restano conservati perché l’account possa essere ripristinato. I video già inviati possono restare presso chi li ha ricevuti per il consueto periodo di conservazione.",
+        "La disattivazione è reversibile: ripristini l’account effettuando di nuovo l’accesso e scegliendo <strong>Riattiva</strong>, cosa che il solo accesso non fa. Il tuo profilo e i tuoi contenuti Global vengono nascosti e il tuo account non viene selezionato per nuove consegne. I tuoi dati restano conservati perché l’account possa essere ripristinato. I video già inviati possono restare presso chi li ha ricevuti per il consueto periodo di conservazione.",
         "La disattivazione non è una cancellazione e non elimina le registrazioni di sicurezza. Segnalazioni, decisioni di moderazione, blocchi e altre prove di sicurezza non sono influenzati né dalla disattivazione né dalla riattivazione. La riattivazione ripristina il tuo accesso; non annulla una decisione di moderazione, non riporta contenuti rimossi o nascosti dalla moderazione e non riapre una Connection che è stata terminata. Terminare una Connection è definitivo per quella coppia. Il blocco funziona diversamente: un blocco termina la Connection che hai ora e interrompe il contatto in entrambe le direzioni finché resta attivo. Rimuovere un blocco non ripristina nemmeno la vecchia Connection: i due account dovrebbero tornare idonei dall’inizio, con due nuovi scambi video validi e una nuova approvazione da parte di ciascuno.",
       ],
       deletion: [
         "Eliminazione",
         "L’eliminazione è definitiva. Accesso e reperibilità vengono rimossi non appena l’eliminazione è avviata correttamente, e la cancellazione fisica prosegue in background con l’obiettivo di completarsi entro 30 giorni, salvo che un obbligo giustificato di sicurezza o di legge imponga una conservazione limitata. Il tuo nome utente resta riservato per 90 giorni prima di poter essere riutilizzato. Vedi {{link:deleteAccount}}.",
-        "Se il tuo account è collegato ad <strong>Accedi con Apple</strong>, l’eliminazione definitiva su un dispositivo Apple ti chiede di confermare ancora una volta direttamente con Apple, così che ULMOX possa revocare la propria autorizzazione Accedi con Apple prima che l’account venga eliminato. Non riceviamo la tua password Apple. Se quel passaggio non si conclude, non viene eliminato nulla. Un account collegato ad Apple non può completare questo passaggio su un dispositivo Android; ULMOX si ferma prima di rimuovere qualsiasi cosa e ti chiede di concludere su un dispositivo Apple o di contattare il {{link:support}}.",
+        "Se il tuo account è collegato ad <strong>Accedi con Apple</strong>, l’eliminazione definitiva su un dispositivo Apple ti chiede di confermare ancora una volta direttamente con Apple, così che ULMOX possa revocare la propria autorizzazione Accedi con Apple prima che l’account venga eliminato. Non riceviamo la tua password Apple. Se quel passaggio non si conclude, non viene eliminato nulla. Un account collegato ad Apple non può completare questo passaggio su un dispositivo Android; ULMOX si ferma prima di rimuovere qualsiasi cosa e ti chiede di concludere su un dispositivo Apple.",
         "Eliminare il tuo account ULMOX non elimina il tuo <strong>ID Apple</strong> né il tuo account Google. ULMOX non può eliminare nessuno dei due. Revocare l’autorizzazione Accedi con Apple di ULMOX è inoltre un’azione diversa dall’eliminazione dell’account e, da sola, non cancella i tuoi dati ULMOX.",
         "Eliminare il tuo account rimuove i tuoi dati. Non rimuove quelli di un’altra persona: in una Connection ci sono due persone, e i messaggi, i video e le registrazioni dell’altra restano con lei. Quando una prova di sicurezza deve essere conservata per un motivo giustificato, i collegamenti che la legano alla tua identità vengono ripuliti nell’ambito della cancellazione, così che resti una traccia di ciò che è accaduto e non una traccia su di te.",
       ],
@@ -248,7 +248,7 @@ module.exports = {
       ],
       lifecycle: [
         "6. Disattivazione ed eliminazione",
-        "<strong>La disattivazione</strong> è reversibile. Il tuo profilo e i tuoi contenuti Global vengono nascosti e i tuoi dati sono conservati perché l’account possa essere ripristinato. I video già inviati possono restare presso chi li ha ricevuti per il consueto periodo di conservazione.",
+        "<strong>La disattivazione</strong> è reversibile: ripristini l’account effettuando di nuovo l’accesso e scegliendo <strong>Riattiva</strong>, cosa che il solo accesso non fa. Il tuo profilo e i tuoi contenuti Global vengono nascosti e i tuoi dati sono conservati perché l’account possa essere ripristinato. I video già inviati possono restare presso chi li ha ricevuti per il consueto periodo di conservazione.",
         "<strong>L’eliminazione</strong> è definitiva e non può essere annullata. Accesso e reperibilità cessano immediatamente e la cancellazione prosegue in background. Registrazioni limitate di sicurezza, legali o transazionali possono essere conservate dove è giustificato. Vedi {{link:deleteAccount}}.",
       ],
       enforcement: [
@@ -435,7 +435,7 @@ module.exports = {
       ],
       "option-app": [
         "Opzione 1 — eliminare nell’app (consigliata)",
-        "È il percorso più rapido e non richiede scambi di e-mail. Non è disponibile per ogni account su ogni dispositivo: un account collegato ad Accedi con Apple non può completare l’eliminazione da un telefono Android e viene indirizzato al {{link:support}}. Vedi sotto {{a:#apple-linked|Se il tuo account è collegato ad Accedi con Apple}}.",
+        "È il percorso più rapido e non richiede scambi di e-mail. Non è disponibile per ogni account su ogni dispositivo: un account collegato ad Accedi con Apple non può completare l’eliminazione da un telefono Android e deve completarla su un dispositivo Apple. Vedi sotto {{a:#apple-linked|Se il tuo account è collegato ad Accedi con Apple}}.",
         "Apri ULMOX e vai su <strong>Profilo &rarr; Note legali e sicurezza &rarr; Gestione account &rarr; Elimina account</strong>.",
         "Leggi la conferma, che spiega che l’eliminazione è definitiva.",
         "Conferma. Potrebbe esserti chiesto prima di accedere di nuovo: questo protegge il tuo account dall’essere eliminato da qualcun altro.",
@@ -476,12 +476,12 @@ module.exports = {
       ],
       "apple-android": [
         "Eliminare da un dispositivo Android un account collegato ad Apple",
-        "Il passaggio di conferma di Apple può essere completato solo su un dispositivo Apple. Se provi a eliminare da un telefono Android un account ULMOX collegato ad Apple, ULMOX si ferma prima che venga rimosso qualcosa e ti comunica che <strong>non è stato eliminato nulla</strong>. Completa l’eliminazione su un dispositivo Apple, oppure {{a:support.html|contatta il supporto}} e ce ne occupiamo noi.",
+        "Il passaggio di conferma di Apple può essere completato solo su un dispositivo Apple. Se provi a eliminare da un telefono Android un account ULMOX collegato ad Apple, ULMOX si ferma prima che venga rimosso qualcosa e ti comunica che <strong>non è stato eliminato nulla</strong>. Completa l’eliminazione su un dispositivo Apple.",
         "Un account che usa solo l’accesso con Google, o solo un indirizzo e-mail, si elimina normalmente su entrambi i tipi di dispositivo. Un account collegato sia ad Apple sia a Google richiede comunque il passaggio Apple.",
       ],
       break: [
         "Se vuoi solo una pausa",
-        "La disattivazione nasconde il tuo profilo e i tuoi contenuti Global e può essere annullata effettuando di nuovo l’accesso. I video già inviati possono restare presso chi li ha ricevuti per il consueto periodo di conservazione. La disattivazione non soddisfa una richiesta di eliminazione: se vuoi che i tuoi dati siano rimossi, usa Elimina account.",
+        "La disattivazione nasconde il tuo profilo e i tuoi contenuti Global e può essere annullata effettuando di nuovo l’accesso e scegliendo <strong>Riattiva</strong>. Il solo accesso non riattiva l’account. I video già inviati possono restare presso chi li ha ricevuti per il consueto periodo di conservazione. La disattivazione non soddisfa una richiesta di eliminazione: se vuoi che i tuoi dati siano rimossi, usa Elimina account.",
         "Disattivare non cancella le registrazioni di sicurezza, e riattivare non annulla nulla. Tornare ripristina il tuo accesso; non annulla una decisione di moderazione, non riporta contenuti rimossi o nascosti dalla moderazione e non riapre una Connection che è stata terminata. Terminare una Connection è definitivo per quella coppia. Il blocco funziona diversamente: un blocco termina la Connection che hai ora e interrompe il contatto in entrambe le direzioni finché resta attivo. Rimuovere un blocco non ripristina nemmeno la vecchia Connection: i due account dovrebbero tornare idonei dall’inizio, con due nuovi scambi video validi e una nuova approvazione da parte di ciascuno.",
       ],
       questions: [

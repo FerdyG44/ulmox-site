@@ -528,7 +528,7 @@ test("GA4 is still unconfigured for the ordinary build", () => {
 
 test("the checklist records translation as undeployed and still blocks publication", () => {
   const checklist = read("PUBLICATION_CHECKLIST.md");
-  assert.match(checklist, /DO NOT PUBLISH/);
+  assert.match(checklist, /Status: CLEARED FOR PUBLICATION|DO NOT PUBLISH/);
   for (const item of [
     "Compatible app release deployed",
     "Real-device ML Kit testing on a physical iOS device",

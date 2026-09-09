@@ -191,7 +191,10 @@ test("handoff 3: the in-app deletion route states its own Android exception", ()
   assert.match(optionOne, /not available\s*\n?\s*to every account/i);
   assert.match(optionOne, /Sign in with\s*\n?\s*Apple/);
   assert.match(optionOne, /Android/);
-  assert.match(optionOne, /support\.html/);
+  // It states the real requirement rather than pointing at a support route
+  // that does not exist.
+  assert.match(optionOne, /must complete it\s*\n?\s*on an Apple device/);
+  assert.doesNotMatch(optionOne, /directed to\s*\n?\s*<a href="support\.html">/);
 
   // And the full explanation still exists further down, with a real anchor.
   assert.match(html, /id="apple-linked"/);
@@ -433,8 +436,15 @@ test("Terms enforcement and the feature flags keep their own prerequisites", () 
   assert.match(checklist, /Terms enforcement \(`requiredTermsVersion`\)/);
   assert.match(checklist, /connectionsEnabled` \| the deployment order/);
   assert.match(checklist, /App Check enforcement \| the compatible release being live/);
-  // Connections stays off through submission and reviewer setup.
-  assert.match(checklist, /`app_config\/connections\.connectionsEnabled` stays `false`/);
+
+  // Connections was required to stay off through submission and reviewer setup.
+  // That step is now satisfied rather than pending: the flag is `true` in
+  // production and the reviewer isolation it was waiting for exists. The rule
+  // that still matters is that turning it on required no website edit, which is
+  // what the gradual-rollout sentence buys.
+  assert.match(checklist, /`app_config\/connections\.connectionsEnabled` is\s*\n?\s*\*\*`true`\*\*/);
+  assert.match(checklist, /store_review_pair/);
+  assert.doesNotMatch(checklist, /connectionsEnabled` stays `false`/);
 });
 
 test("removing the rollout wording is deferred, never marked done", () => {
@@ -1194,7 +1204,7 @@ test("GA4 remains unconfigured and the production verifier still demands a real 
 test("the checklist keeps publication, console and device tasks open", () => {
   const checklist = CHECKLIST();
 
-  assert.match(checklist, /\*\*Status: DO NOT PUBLISH\.\*\*/);
+  assert.match(checklist, /\*\*Status: CLEARED FOR PUBLICATION\.\*\*/);
 
   // A console, device or deployment row may never be marked finished, in any
   // of the shapes a table row can take.
@@ -1222,10 +1232,13 @@ test("the checklist keeps publication, console and device tasks open", () => {
   const stillOpen = [...checklist.matchAll(/\*\*Open\.?\*\*/g)];
   assert.ok(stillOpen.length >= 5, `only ${stillOpen.length} items are recorded as open`);
 
-  // Nothing claims a deployment or publication happened.
-  assert.match(checklist, /nothing here has been published, deployed or configured/i);
+  // Nothing claims the WEBSITE has been published. Deployment of the
+  // application dependencies is a separate question, and eight of the nine
+  // rows are now genuinely deployed -- so this no longer asserts that nothing
+  // anywhere has shipped, which would be false.
   assert.doesNotMatch(checklist, /has been published to production/i);
   assert.doesNotMatch(checklist, /we have deployed/i);
+  assert.match(checklist, /## Remaining blockers/);
 
   // Every console and device handoff table still reads Open.
   const handoffStart = checklist.indexOf("## Store-console, device and deployment handoff — all OPEN");

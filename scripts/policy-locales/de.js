@@ -107,13 +107,13 @@ module.exports = {
       lifecycle: ["3. Deaktivierung und Löschung"],
       deactivation: [
         "Deaktivierung",
-        "Die Deaktivierung ist umkehrbar. Ihr Profil und Ihre Global-Inhalte werden ausgeblendet, und Ihr Konto wird für neue Zustellungen nicht ausgewählt. Ihre Daten bleiben erhalten, damit das Konto wiederhergestellt werden kann. Bereits gesendete Videos können bei den Empfangenden für deren übliche Aufbewahrungsdauer verbleiben.",
+        "Die Deaktivierung ist umkehrbar: Sie stellen das Konto wieder her, indem Sie sich erneut anmelden und <strong>Reaktivieren</strong> wählen; das Anmelden allein genügt nicht. Ihr Profil und Ihre Global-Inhalte werden ausgeblendet, und Ihr Konto wird für neue Zustellungen nicht ausgewählt. Ihre Daten bleiben erhalten, damit das Konto wiederhergestellt werden kann. Bereits gesendete Videos können bei den Empfangenden für deren übliche Aufbewahrungsdauer verbleiben.",
         "Die Deaktivierung ist keine Löschung und beseitigt keine Sicherheitsvermerke. Meldungen, Moderationsentscheidungen, Blockierungen und andere Sicherheitsbelege bleiben von Deaktivierung und Reaktivierung unberührt. Die Reaktivierung stellt Ihren Zugang wieder her; sie hebt keine Moderationsentscheidung auf, bringt keine von der Moderation entfernten oder ausgeblendeten Inhalte zurück und öffnet keine beendete Connection erneut. Das Beenden einer Connection ist für dieses Paar endgültig. Das Blockieren wirkt anders: eine Blockierung beendet die bestehende Connection und stoppt den Kontakt in beide Richtungen, solange sie besteht. Eine Blockierung aufzuheben stellt die alte Connection ebenfalls nicht wieder her — die beiden Konten müssten sich von vorn neu qualifizieren, durch zwei neue qualifizierende Videoaustausche und eine erneute Zustimmung beider Personen.",
       ],
       deletion: [
         "Löschung",
         "Die Löschung ist dauerhaft. Zugang und Auffindbarkeit werden entfernt, sobald die Löschung erfolgreich gestartet wurde; die physische Löschung läuft im Hintergrund weiter, mit dem Ziel, innerhalb von 30 Tagen abgeschlossen zu sein, sofern nicht eine begründete Sicherheits- oder Rechtspflicht eine begrenzte Aufbewahrung verlangt. Ihr Nutzername bleibt 90 Tage lang reserviert, bevor er neu vergeben werden kann. Siehe {{link:deleteAccount}}.",
-        "Ist Ihr Konto mit <strong>Mit Apple anmelden</strong> verknüpft, bittet die dauerhafte Löschung auf einem Apple-Gerät um eine erneute Bestätigung direkt gegenüber Apple, damit ULMOX seine eigene Berechtigung für Mit Apple anmelden widerrufen kann, bevor das Konto gelöscht wird. Wir erhalten Ihr Apple-Passwort nicht. Wird dieser Schritt nicht abgeschlossen, wird nichts gelöscht. Ein mit Apple verknüpftes Konto kann diesen Schritt auf einem Android-Gerät nicht abschließen; ULMOX bricht ab, bevor etwas entfernt wird, und bittet Sie, die Löschung auf einem Apple-Gerät abzuschließen oder {{link:support}} zu kontaktieren.",
+        "Ist Ihr Konto mit <strong>Mit Apple anmelden</strong> verknüpft, bittet die dauerhafte Löschung auf einem Apple-Gerät um eine erneute Bestätigung direkt gegenüber Apple, damit ULMOX seine eigene Berechtigung für Mit Apple anmelden widerrufen kann, bevor das Konto gelöscht wird. Wir erhalten Ihr Apple-Passwort nicht. Wird dieser Schritt nicht abgeschlossen, wird nichts gelöscht. Ein mit Apple verknüpftes Konto kann diesen Schritt auf einem Android-Gerät nicht abschließen; ULMOX bricht ab, bevor etwas entfernt wird, und bittet Sie, die Löschung auf einem Apple-Gerät abzuschließen.",
         "Das Löschen Ihres ULMOX-Kontos löscht nicht Ihre <strong>Apple-ID</strong> und nicht Ihr Google-Konto. ULMOX kann keines von beiden löschen. Der Widerruf der ULMOX-Berechtigung für Mit Apple anmelden ist ebenfalls etwas anderes als das Löschen Ihres Kontos und beseitigt für sich genommen Ihre ULMOX-Daten nicht.",
         "Das Löschen Ihres Kontos entfernt Ihre Daten. Es entfernt nicht die einer anderen Person: an einer Connection sind zwei Personen beteiligt, und die Nachrichten, Videos und Vermerke der anderen Person bleiben bei ihr. Wo Sicherheitsbelege aus einem begründeten Anlass aufbewahrt werden müssen, werden die Verknüpfungen zu Ihrer Identität im Rahmen der Löschung entfernt, sodass ein Vermerk über das Geschehene bleibt und nicht ein Vermerk über Sie.",
       ],
@@ -248,7 +248,7 @@ module.exports = {
       ],
       lifecycle: [
         "6. Deaktivierung und Löschung",
-        "<strong>Die Deaktivierung</strong> ist umkehrbar. Ihr Profil und Ihre Global-Inhalte werden ausgeblendet, und Ihre Daten bleiben erhalten, damit das Konto wiederhergestellt werden kann. Bereits gesendete Videos können bei den Empfangenden für deren übliche Aufbewahrungsdauer verbleiben.",
+        "<strong>Die Deaktivierung</strong> ist umkehrbar: Sie stellen das Konto wieder her, indem Sie sich erneut anmelden und <strong>Reaktivieren</strong> wählen; das Anmelden allein genügt nicht. Ihr Profil und Ihre Global-Inhalte werden ausgeblendet, und Ihre Daten bleiben erhalten, damit das Konto wiederhergestellt werden kann. Bereits gesendete Videos können bei den Empfangenden für deren übliche Aufbewahrungsdauer verbleiben.",
         "<strong>Die Löschung</strong> ist dauerhaft und kann nicht rückgängig gemacht werden. Zugang und Auffindbarkeit enden sofort, und die Löschung läuft im Hintergrund weiter. Begrenzte Sicherheits-, Rechts- oder Transaktionsvermerke können aufbewahrt werden, wo dies begründet ist. Siehe {{link:deleteAccount}}.",
       ],
       enforcement: [
@@ -435,7 +435,7 @@ module.exports = {
       ],
       "option-app": [
         "Möglichkeit 1 — in der App löschen (empfohlen)",
-        "Das ist der schnellste Weg und erfordert keinen E-Mail-Austausch. Er steht nicht jedem Konto auf jedem Gerät offen: ein mit Mit Apple anmelden verknüpftes Konto kann die Löschung auf einem Android-Telefon nicht abschließen und wird stattdessen zu {{link:support}} geleitet. Siehe unten {{a:#apple-linked|Wenn Ihr Konto mit Mit Apple anmelden verknüpft ist}}.",
+        "Das ist der schnellste Weg und erfordert keinen E-Mail-Austausch. Er steht nicht jedem Konto auf jedem Gerät offen: ein mit Mit Apple anmelden verknüpftes Konto kann die Löschung auf einem Android-Telefon nicht abschließen und muss sie auf einem Apple-Gerät abschließen. Siehe unten {{a:#apple-linked|Wenn Ihr Konto mit Mit Apple anmelden verknüpft ist}}.",
         "Öffnen Sie ULMOX und gehen Sie zu <strong>Profil &rarr; Rechtliches und Sicherheit &rarr; Kontoverwaltung &rarr; Konto löschen</strong>.",
         "Lesen Sie die Bestätigung, die erklärt, dass die Löschung dauerhaft ist.",
         "Bestätigen Sie. Möglicherweise werden Sie zuerst gebeten, sich erneut anzumelden; das schützt Ihr Konto davor, von jemand anderem gelöscht zu werden.",
@@ -476,12 +476,12 @@ module.exports = {
       ],
       "apple-android": [
         "Ein mit Apple verknüpftes Konto von einem Android-Gerät aus löschen",
-        "Der Apple-Bestätigungsschritt kann nur auf einem Apple-Gerät abgeschlossen werden. Wenn Sie versuchen, ein mit Apple verknüpftes ULMOX-Konto von einem Android-Telefon aus zu löschen, bricht ULMOX ab, bevor etwas entfernt wird, und teilt Ihnen mit, dass <strong>nichts gelöscht wurde</strong>. Schließen Sie die Löschung auf einem Apple-Gerät ab oder {{a:support.html|wenden Sie sich an den Support}}; wir erledigen es für Sie.",
+        "Der Apple-Bestätigungsschritt kann nur auf einem Apple-Gerät abgeschlossen werden. Wenn Sie versuchen, ein mit Apple verknüpftes ULMOX-Konto von einem Android-Telefon aus zu löschen, bricht ULMOX ab, bevor etwas entfernt wird, und teilt Ihnen mit, dass <strong>nichts gelöscht wurde</strong>. Schließen Sie die Löschung auf einem Apple-Gerät ab.",
         "Ein Konto, das nur die Anmeldung mit Google oder nur eine E-Mail-Adresse verwendet, wird auf beiden Gerätearten normal gelöscht. Ein Konto, das sowohl mit Apple als auch mit Google verknüpft ist, benötigt weiterhin den Apple-Schritt.",
       ],
       break: [
         "Wenn Sie nur eine Pause wollen",
-        "Die Deaktivierung blendet Ihr Profil und Ihre Global-Inhalte aus und lässt sich durch erneutes Anmelden rückgängig machen. Bereits gesendete Videos können bei den Empfangenden für deren übliche Aufbewahrungsdauer verbleiben. Die Deaktivierung erfüllt kein Löschverlangen — wenn Sie Ihre Daten entfernt haben möchten, nutzen Sie Konto löschen.",
+        "Die Deaktivierung blendet Ihr Profil und Ihre Global-Inhalte aus und lässt sich rückgängig machen, indem Sie sich erneut anmelden und <strong>Reaktivieren</strong> wählen. Das Anmelden allein reaktiviert das Konto nicht. Bereits gesendete Videos können bei den Empfangenden für deren übliche Aufbewahrungsdauer verbleiben. Die Deaktivierung erfüllt kein Löschverlangen — wenn Sie Ihre Daten entfernt haben möchten, nutzen Sie Konto löschen.",
         "Die Deaktivierung beseitigt keine Sicherheitsvermerke, und die Reaktivierung macht nichts rückgängig. Die Rückkehr stellt Ihren Zugang wieder her; sie hebt keine Moderationsentscheidung auf, bringt keine von der Moderation entfernten oder ausgeblendeten Inhalte zurück und öffnet keine beendete Connection erneut. Das Beenden einer Connection ist für dieses Paar endgültig. Das Blockieren wirkt anders: eine Blockierung beendet die bestehende Connection und stoppt den Kontakt in beide Richtungen, solange sie besteht. Eine Blockierung aufzuheben stellt die alte Connection ebenfalls nicht wieder her — die beiden Konten müssten sich von vorn neu qualifizieren, durch zwei neue qualifizierende Videoaustausche und eine erneute Zustimmung beider Personen.",
       ],
       questions: [

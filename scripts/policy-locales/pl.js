@@ -107,13 +107,13 @@ module.exports = {
       lifecycle: ["3. Dezaktywacja i usunięcie"],
       deactivation: [
         "Dezaktywacja",
-        "Dezaktywacja jest odwracalna. Twój profil i treści Global zostają ukryte, a Twoje konto nie jest wybierane do nowych dostaw. Dane są zachowywane, aby konto można było przywrócić. Filmy, które już wysłałeś, mogą pozostać u odbiorców przez ich zwykły okres przechowywania.",
+        "Dezaktywacja jest odwracalna: konto przywracasz, logując się ponownie i wybierając <strong>Reaktywuj</strong>, czego samo zalogowanie nie robi. Twój profil i treści Global zostają ukryte, a Twoje konto nie jest wybierane do nowych dostaw. Dane są zachowywane, aby konto można było przywrócić. Filmy, które już wysłałeś, mogą pozostać u odbiorców przez ich zwykły okres przechowywania.",
         "Dezaktywacja nie jest usunięciem danych i nie czyści zapisów bezpieczeństwa. Zgłoszenia, decyzje moderacyjne, blokady i inne materiały dowodowe bezpieczeństwa nie zmieniają się wskutek dezaktywacji ani ponownej aktywacji. Ponowna aktywacja przywraca dostęp; nie cofa decyzji moderacyjnej, nie przywraca treści usuniętych lub ukrytych przez moderację i nie otwiera ponownie zakończonej Connection. Zakończenie Connection jest ostateczne dla tej pary. Blokowanie działa inaczej: blokada kończy Connection, którą masz obecnie, i zatrzymuje kontakt w obie strony na czas jej obowiązywania. Zdjęcie blokady również nie przywraca dawnej Connection — oba konta musiałyby ponownie spełnić warunki od początku, poprzez dwie nowe kwalifikujące wymiany wideo i nową akceptację obu osób.",
       ],
       deletion: [
         "Usunięcie",
         "Usunięcie jest trwałe. Dostęp i widoczność znikają, gdy tylko usuwanie zostanie pomyślnie rozpoczęte, a fizyczne kasowanie trwa dalej w tle, z celem zakończenia w ciągu 30 dni, chyba że uzasadniony obowiązek bezpieczeństwa lub prawny wymaga ograniczonego przechowywania. Twoja nazwa użytkownika jest zarezerwowana przez 90 dni, zanim będzie mogła zostać użyta ponownie. Zobacz {{link:deleteAccount}}.",
-        "Jeśli Twoje konto jest powiązane z <strong>Zaloguj się z Apple</strong>, trwałe usunięcie na urządzeniu Apple prosi o jeszcze jedno potwierdzenie bezpośrednio u Apple, aby ULMOX mógł cofnąć własne upoważnienie Zaloguj się z Apple przed usunięciem konta. Nie otrzymujemy Twojego hasła Apple. Jeśli ten krok nie zostanie ukończony, nic nie zostaje usunięte. Konto powiązane z Apple nie może ukończyć tego kroku na urządzeniu z Androidem; ULMOX zatrzymuje się przed usunięciem czegokolwiek i prosi o dokończenie na urządzeniu Apple lub o kontakt z {{link:support}}.",
+        "Jeśli Twoje konto jest powiązane z <strong>Zaloguj się z Apple</strong>, trwałe usunięcie na urządzeniu Apple prosi o jeszcze jedno potwierdzenie bezpośrednio u Apple, aby ULMOX mógł cofnąć własne upoważnienie Zaloguj się z Apple przed usunięciem konta. Nie otrzymujemy Twojego hasła Apple. Jeśli ten krok nie zostanie ukończony, nic nie zostaje usunięte. Konto powiązane z Apple nie może ukończyć tego kroku na urządzeniu z Androidem; ULMOX zatrzymuje się przed usunięciem czegokolwiek i prosi o dokończenie na urządzeniu Apple.",
         "Usunięcie konta ULMOX nie usuwa Twojego <strong>Apple ID</strong> ani konta Google. ULMOX nie może usunąć żadnego z nich. Cofnięcie upoważnienia ULMOX do Zaloguj się z Apple jest ponadto czynnością inną niż usunięcie konta i samo w sobie nie kasuje Twoich danych w ULMOX.",
         "Usunięcie konta usuwa Twoje dane. Nie usuwa danych innej osoby: w Connection uczestniczą dwie osoby, a wiadomości, filmy i zapisy drugiej osoby pozostają u niej. Tam, gdzie materiał dowodowy bezpieczeństwa musi być zachowany z uzasadnionego powodu, powiązania łączące go z Twoją tożsamością są usuwane w ramach kasowania, tak aby pozostał zapis tego, co się wydarzyło, a nie zapis o Tobie.",
       ],
@@ -248,7 +248,7 @@ module.exports = {
       ],
       lifecycle: [
         "6. Dezaktywacja i usunięcie",
-        "<strong>Dezaktywacja</strong> jest odwracalna. Twój profil i treści Global zostają ukryte, a dane są zachowywane, aby konto można było przywrócić. Filmy, które już wysłałeś, mogą pozostać u odbiorców przez ich zwykły okres przechowywania.",
+        "<strong>Dezaktywacja</strong> jest odwracalna: konto przywracasz, logując się ponownie i wybierając <strong>Reaktywuj</strong>, czego samo zalogowanie nie robi. Twój profil i treści Global zostają ukryte, a dane są zachowywane, aby konto można było przywrócić. Filmy, które już wysłałeś, mogą pozostać u odbiorców przez ich zwykły okres przechowywania.",
         "<strong>Usunięcie</strong> jest trwałe i nieodwracalne. Dostęp i widoczność kończą się natychmiast, a kasowanie trwa dalej w tle. Ograniczone zapisy bezpieczeństwa, prawne lub transakcyjne mogą być zachowane tam, gdzie jest to uzasadnione. Zobacz {{link:deleteAccount}}.",
       ],
       enforcement: [
@@ -435,7 +435,7 @@ module.exports = {
       ],
       "option-app": [
         "Opcja 1 — usunięcie w aplikacji (zalecane)",
-        "To najszybsza droga i nie wymaga wymiany e-maili. Nie jest dostępna dla każdego konta na każdym urządzeniu: konto powiązane z Zaloguj się z Apple nie może dokończyć usuwania z telefonu z Androidem i jest kierowane do {{link:support}}. Zobacz poniżej {{a:#apple-linked|Jeśli Twoje konto jest powiązane z Zaloguj się z Apple}}.",
+        "To najszybsza droga i nie wymaga wymiany e-maili. Nie jest dostępna dla każdego konta na każdym urządzeniu: konto powiązane z Zaloguj się z Apple nie może dokończyć usuwania z telefonu z Androidem i musi je dokończyć na urządzeniu Apple. Zobacz poniżej {{a:#apple-linked|Jeśli Twoje konto jest powiązane z Zaloguj się z Apple}}.",
         "Otwórz ULMOX i przejdź do <strong>Profil &rarr; Informacje prawne i bezpieczeństwo &rarr; Zarządzanie kontem &rarr; Usuń konto</strong>.",
         "Przeczytaj potwierdzenie, które wyjaśnia, że usunięcie jest trwałe.",
         "Potwierdź. Możesz zostać najpierw poproszony o ponowne zalogowanie; chroni to Twoje konto przed usunięciem przez kogoś innego.",
@@ -476,12 +476,12 @@ module.exports = {
       ],
       "apple-android": [
         "Usuwanie konta powiązanego z Apple z urządzenia z Androidem",
-        "Krok potwierdzenia u Apple można wykonać wyłącznie na urządzeniu Apple. Jeśli spróbujesz usunąć powiązane z Apple konto ULMOX z telefonu z Androidem, ULMOX zatrzyma się, zanim cokolwiek zostanie usunięte, i poinformuje, że <strong>nic nie zostało usunięte</strong>. Dokończ usuwanie na urządzeniu Apple albo {{a:support.html|skontaktuj się z pomocą}}, a zajmiemy się tym za Ciebie.",
+        "Krok potwierdzenia u Apple można wykonać wyłącznie na urządzeniu Apple. Jeśli spróbujesz usunąć powiązane z Apple konto ULMOX z telefonu z Androidem, ULMOX zatrzyma się, zanim cokolwiek zostanie usunięte, i poinformuje, że <strong>nic nie zostało usunięte</strong>. Dokończ usuwanie na urządzeniu Apple.",
         "Konto korzystające wyłącznie z logowania Google albo wyłącznie z adresu e-mail usuwa się normalnie na obu rodzajach urządzeń. Konto powiązane zarówno z Apple, jak i z Google, nadal wymaga kroku Apple.",
       ],
       break: [
         "Jeśli chcesz tylko przerwy",
-        "Dezaktywacja ukrywa Twój profil i treści Global i można ją cofnąć, logując się ponownie. Filmy, które już wysłałeś, mogą pozostać u odbiorców przez ich zwykły okres przechowywania. Dezaktywacja nie spełnia żądania usunięcia — jeśli chcesz, by Twoje dane zostały usunięte, użyj opcji Usuń konto.",
+        "Dezaktywacja ukrywa Twój profil i treści Global i można ją cofnąć, logując się ponownie i wybierając <strong>Reaktywuj</strong>. Samo zalogowanie nie reaktywuje konta. Filmy, które już wysłałeś, mogą pozostać u odbiorców przez ich zwykły okres przechowywania. Dezaktywacja nie spełnia żądania usunięcia — jeśli chcesz, by Twoje dane zostały usunięte, użyj opcji Usuń konto.",
         "Dezaktywacja nie kasuje zapisów bezpieczeństwa, a ponowna aktywacja niczego nie cofa. Powrót przywraca dostęp; nie cofa decyzji moderacyjnej, nie przywraca treści usuniętych lub ukrytych przez moderację i nie otwiera ponownie zakończonej Connection. Zakończenie Connection jest ostateczne dla tej pary. Blokowanie działa inaczej: blokada kończy Connection, którą masz obecnie, i zatrzymuje kontakt w obie strony na czas jej obowiązywania. Zdjęcie blokady również nie przywraca dawnej Connection — oba konta musiałyby ponownie spełnić warunki od początku, poprzez dwie nowe kwalifikujące wymiany wideo i nową akceptację obu osób.",
       ],
       questions: [

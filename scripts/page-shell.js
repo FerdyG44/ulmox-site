@@ -55,6 +55,8 @@ const CHROME = Object.freeze({
     safety: "Safety &amp; Moderation", deleteAccount: "Delete Account",
     translation: "Translation Information",
     moved: "This page has moved.", deleteHeading: "Delete Your Account",
+    englishPrecedence:
+      "The English version of this policy is the authoritative one. If a translation differs from it, the English version applies.",
   },
   sv: {
     skip: "Hoppa till innehållet", navLabel: "Juridik och support", home: "Start",
@@ -62,6 +64,8 @@ const CHROME = Object.freeze({
     safety: "Säkerhet och moderering", deleteAccount: "Radera konto",
     translation: "Om översättning",
     moved: "Den här sidan har flyttat.", deleteHeading: "Ta bort ditt konto",
+    englishPrecedence:
+      "Den engelska versionen av denna policy är den auktoritativa. Om en översättning avviker från den gäller den engelska versionen.",
   },
   tr: {
     skip: "İçeriğe geç", navLabel: "Yasal bilgiler ve destek", home: "Ana sayfa",
@@ -69,6 +73,8 @@ const CHROME = Object.freeze({
     safety: "Güvenlik ve Moderasyon", deleteAccount: "Hesabı Sil",
     translation: "Çeviri bilgileri",
     moved: "Bu sayfa taşındı.", deleteHeading: "Hesabınızı Silin",
+    englishPrecedence:
+      "Bu politikanın İngilizce sürümü esas alınan sürümdür. Bir çeviri bundan farklıysa İngilizce sürüm geçerlidir.",
   },
   de: {
     skip: "Zum Inhalt springen", navLabel: "Rechtliches und Support", home: "Startseite",
@@ -76,6 +82,8 @@ const CHROME = Object.freeze({
     safety: "Sicherheit &amp; Moderation", deleteAccount: "Konto löschen",
     translation: "Informationen zur Übersetzung",
     moved: "Diese Seite wurde verschoben.", deleteHeading: "Dein Konto löschen",
+    englishPrecedence:
+      "Die englische Fassung dieser Richtlinie ist maßgeblich. Weicht eine Übersetzung davon ab, gilt die englische Fassung.",
   },
   es: {
     skip: "Ir al contenido", navLabel: "Información legal y soporte", home: "Inicio",
@@ -83,6 +91,8 @@ const CHROME = Object.freeze({
     safety: "Seguridad y moderación", deleteAccount: "Eliminar cuenta",
     translation: "Información sobre la traducción",
     moved: "Esta página se ha movido.", deleteHeading: "Eliminar tu cuenta",
+    englishPrecedence:
+      "La versión en inglés de esta política es la auténtica. Si una traducción difiere de ella, prevalece la versión en inglés.",
   },
   fr: {
     skip: "Aller au contenu", navLabel: "Informations légales et support", home: "Accueil",
@@ -90,6 +100,8 @@ const CHROME = Object.freeze({
     safety: "Sécurité et modération", deleteAccount: "Supprimer le compte",
     translation: "Informations sur la traduction",
     moved: "Cette page a été déplacée.", deleteHeading: "Supprimer votre compte",
+    englishPrecedence:
+      "La version anglaise de cette politique fait foi. En cas de divergence avec une traduction, la version anglaise prévaut.",
   },
   it: {
     skip: "Vai al contenuto", navLabel: "Informazioni legali e supporto", home: "Home page",
@@ -97,6 +109,8 @@ const CHROME = Object.freeze({
     safety: "Sicurezza e moderazione", deleteAccount: "Elimina account",
     translation: "Informazioni sulla traduzione",
     moved: "Questa pagina è stata spostata.", deleteHeading: "Elimina il tuo account",
+    englishPrecedence:
+      "La versione inglese di questa informativa è quella autentica. Se una traduzione differisce, prevale la versione inglese.",
   },
   pt: {
     skip: "Ir para o conteúdo", navLabel: "Informações legais e suporte", home: "Início",
@@ -104,6 +118,8 @@ const CHROME = Object.freeze({
     safety: "Segurança e moderação", deleteAccount: "Eliminar conta",
     translation: "Informações sobre a tradução",
     moved: "Esta página foi movida.", deleteHeading: "Eliminar a sua conta",
+    englishPrecedence:
+      "A versão em inglês desta política é a autêntica. Se uma tradução divergir dela, prevalece a versão em inglês.",
   },
   nl: {
     skip: "Naar de inhoud", navLabel: "Juridische informatie en support", home: "Startpagina",
@@ -111,6 +127,8 @@ const CHROME = Object.freeze({
     safety: "Veiligheid en moderatie", deleteAccount: "Account verwijderen",
     translation: "Informatie over vertalen",
     moved: "Deze pagina is verplaatst.", deleteHeading: "Je account verwijderen",
+    englishPrecedence:
+      "De Engelse versie van dit beleid is de gezaghebbende versie. Wijkt een vertaling daarvan af, dan geldt de Engelse versie.",
   },
   pl: {
     skip: "Przejdź do treści", navLabel: "Informacje prawne i pomoc", home: "Strona główna",
@@ -118,6 +136,8 @@ const CHROME = Object.freeze({
     safety: "Bezpieczeństwo i moderacja", deleteAccount: "Usuń konto",
     translation: "Informacje o tłumaczeniu",
     moved: "Ta strona została przeniesiona.", deleteHeading: "Usuń swoje konto",
+    englishPrecedence:
+      "Wersja angielska tej polityki jest wersją rozstrzygającą. Jeśli tłumaczenie różni się od niej, obowiązuje wersja angielska.",
   },
   fi: {
     skip: "Siirry sisältöön", navLabel: "Juridiset tiedot ja tuki", home: "Etusivu",
@@ -125,6 +145,8 @@ const CHROME = Object.freeze({
     safety: "Turvallisuus ja moderointi", deleteAccount: "Poista tili",
     translation: "Tietoa kääntämisestä",
     moved: "Tämä sivu on siirretty.", deleteHeading: "Poista tilisi",
+    englishPrecedence:
+      "Tämän käytännön englanninkielinen versio on määräävä. Jos käännös poikkeaa siitä, sovelletaan englanninkielistä versiota.",
   },
   ru: {
     skip: "Перейти к содержимому", navLabel: "Правовая информация и поддержка", home: "Главная",
@@ -132,6 +154,8 @@ const CHROME = Object.freeze({
     safety: "Безопасность и модерация", deleteAccount: "Удалить аккаунт",
     translation: "О переводе",
     moved: "Эта страница перемещена.", deleteHeading: "Удалить аккаунт",
+    englishPrecedence:
+      "Версия этой политики на английском языке является определяющей. Если перевод отличается от неё, применяется английская версия.",
   },
   ja: {
     skip: "本文へスキップ", navLabel: "法的情報とサポート", home: "ホーム",
@@ -139,6 +163,8 @@ const CHROME = Object.freeze({
     safety: "安全性とモデレーション", deleteAccount: "アカウントを削除",
     translation: "翻訳について",
     moved: "このページは移動しました。", deleteHeading: "アカウントを削除する",
+    englishPrecedence:
+      "本ポリシーは英語版を正文とします。翻訳が英語版と異なる場合は、英語版が適用されます。",
   },
   ko: {
     skip: "본문으로 건너뛰기", navLabel: "법적 고지 및 지원", home: "홈",
@@ -146,6 +172,8 @@ const CHROME = Object.freeze({
     safety: "안전 및 모더레이션", deleteAccount: "계정 삭제",
     translation: "번역 정보",
     moved: "이 페이지는 이동되었습니다.", deleteHeading: "계정 삭제",
+    englishPrecedence:
+      "본 정책은 영문판이 정본입니다. 번역본이 영문판과 다를 경우 영문판이 우선합니다.",
   },
   zh: {
     skip: "跳到主要内容", navLabel: "法律信息与支持", home: "首页",
@@ -153,6 +181,8 @@ const CHROME = Object.freeze({
     safety: "安全与审核", deleteAccount: "删除账号",
     translation: "翻译说明",
     moved: "此页面已移动。", deleteHeading: "删除你的账户",
+    englishPrecedence:
+      "本政策以英文版为准。如译文与英文版不一致，以英文版为准。",
   },
   ar: {
     skip: "تخطَّ إلى المحتوى", navLabel: "المعلومات القانونية والدعم", home: "الصفحة الرئيسية",
@@ -160,6 +190,8 @@ const CHROME = Object.freeze({
     safety: "السلامة والإشراف", deleteAccount: "حذف الحساب",
     translation: "معلومات الترجمة",
     moved: "تم نقل هذه الصفحة.", deleteHeading: "حذف حسابك",
+    englishPrecedence:
+      "النسخة الإنجليزية من هذه السياسة هي النسخة المعتمدة. وإذا اختلفت أي ترجمة عنها، فتُطبَّق النسخة الإنجليزية.",
   },
   hi: {
     skip: "सामग्री पर जाएं", navLabel: "कानूनी जानकारी और सहायता", home: "होम",
@@ -167,6 +199,8 @@ const CHROME = Object.freeze({
     safety: "सुरक्षा और मॉडरेशन", deleteAccount: "खाता हटाएं",
     translation: "अनुवाद की जानकारी",
     moved: "यह पृष्ठ स्थानांतरित हो गया है।", deleteHeading: "अपना खाता हटाएं",
+    englishPrecedence:
+      "इस नीति का अंग्रेज़ी संस्करण ही प्रामाणिक है। यदि कोई अनुवाद उससे भिन्न हो, तो अंग्रेज़ी संस्करण लागू होगा।",
   },
   th: {
     skip: "ข้ามไปยังเนื้อหา", navLabel: "ข้อมูลทางกฎหมายและการสนับสนุน", home: "หน้าแรก",
@@ -174,6 +208,8 @@ const CHROME = Object.freeze({
     safety: "ความปลอดภัยและการดูแลเนื้อหา", deleteAccount: "ลบบัญชี",
     translation: "ข้อมูลการแปล",
     moved: "หน้านี้ถูกย้ายแล้ว", deleteHeading: "ลบบัญชีของคุณ",
+    englishPrecedence:
+      "นโยบายฉบับภาษาอังกฤษเป็นฉบับที่มีผลบังคับ หากคำแปลใดแตกต่างไปจากฉบับดังกล่าว ให้ยึดฉบับภาษาอังกฤษเป็นสำคัญ",
   },
   vi: {
     skip: "Chuyển đến nội dung", navLabel: "Thông tin pháp lý và hỗ trợ", home: "Trang chủ",
@@ -181,6 +217,8 @@ const CHROME = Object.freeze({
     safety: "An toàn và kiểm duyệt", deleteAccount: "Xóa tài khoản",
     translation: "Thông tin về dịch",
     moved: "Trang này đã được chuyển.", deleteHeading: "Xóa tài khoản của bạn",
+    englishPrecedence:
+      "Bản tiếng Anh của chính sách này là bản có hiệu lực. Nếu bản dịch khác với bản tiếng Anh, bản tiếng Anh sẽ được áp dụng.",
   },
 });
 
@@ -295,6 +333,22 @@ function pageOf(route) {
  * a screen reader announces where the reader already is and nobody is offered
  * a link to the page they are looking at.
  */
+/**
+ * The pages that state binding obligations, and therefore the pages that carry
+ * the language-precedence notice.
+ *
+ * The landing, download and translation-information routes are excluded: they
+ * describe the product rather than bind anyone, so a precedence clause on them
+ * would claim more than it should.
+ */
+const LEGAL_ROUTES = Object.freeze([
+  "privacy.html",
+  "terms.html",
+  "safety.html",
+  "support.html",
+  "delete_account.html",
+]);
+
 function siteFooter(route, { copyright } = {}) {
   const locale = localeOf(route);
   const chrome = CHROME[locale];
@@ -313,13 +367,22 @@ function siteFooter(route, { copyright } = {}) {
     ? `    <p>${copyright} &middot; <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></p>`
     : `    <p>ULMOX &middot; <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></p>`;
 
+  // Nineteen translations of a binding text need one rule saying which of them
+  // decides when they disagree. The notice is rendered in the page's own
+  // language so it can actually be read, and it subordinates itself to the
+  // English text, so a flaw in translating THIS sentence cannot change which
+  // version governs.
+  const precedence = LEGAL_ROUTES.includes(current)
+    ? `    <p class="ulmox-precedence">${chrome.englishPrecedence}</p>\n`
+    : "";
+
   return `  <footer>
     <nav aria-label="${chrome.navLabel}">
       <ul>
 ${items}
       </ul>
     </nav>
-${tail}
+${precedence}${tail}
   </footer>`;
 }
 
@@ -569,6 +632,7 @@ module.exports = {
   isRtl,
   localeOf,
   pageOf,
+  LEGAL_ROUTES,
   relativePrefix,
   siteFooter,
   skipLink,
