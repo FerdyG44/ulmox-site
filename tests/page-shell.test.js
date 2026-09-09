@@ -545,7 +545,12 @@ test("22: GA4 is still unconfigured for an ordinary build", () => {
   const { buildSite } = require("../scripts/build-site.js");
   const outputRoot = fs.mkdtempSync(path.join(os.tmpdir(), "ulmox-ga-shell-"));
   try {
-    const result = buildSite({ sourceRoot: ROOT, output: outputRoot, measurementId: undefined });
+    // `null`, not `undefined`. `undefined` is the single value that triggers
+    // buildSite's `measurementId = process.env.GA_MEASUREMENT_ID` default, so
+    // passing it here would hand this test the very ID it asserts is absent --
+    // silently, and only in an environment that has the variable set. CI sets
+    // it at job level, which is why this passed locally and failed there.
+    const result = buildSite({ sourceRoot: ROOT, output: outputRoot, measurementId: null });
     assert.equal(result.measurementIdConfigured, false);
     assert.match(
       fs.readFileSync(path.join(outputRoot, "assets", "js", "analytics-config.js"), "utf8"),
@@ -562,7 +567,7 @@ test("23: the production verifier still refuses a build with no Measurement ID",
   const { verifyProductionBuild } = require("../scripts/verify-production-build.js");
   const outputRoot = fs.mkdtempSync(path.join(os.tmpdir(), "ulmox-verify-shell-"));
   try {
-    buildSite({ sourceRoot: ROOT, output: outputRoot, measurementId: undefined });
+    buildSite({ sourceRoot: ROOT, output: outputRoot, measurementId: null });
     assert.throws(
       () => verifyProductionBuild({ outputRoot }),
       /measurement/i,

@@ -1169,7 +1169,7 @@ test("GA4 remains unconfigured and the production verifier still demands a real 
     const result = buildSite({
       sourceRoot: ROOT,
       output: outputRoot,
-      measurementId: undefined,
+      measurementId: null,
     });
     assert.equal(result.measurementIdConfigured, false);
     assert.match(

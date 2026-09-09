@@ -514,7 +514,7 @@ test("GA4 is still unconfigured for the ordinary build", () => {
   const { buildSite } = require("../scripts/build-site.js");
   const outputRoot = fs.mkdtempSync(path.join(os.tmpdir(), "ulmox-ga-"));
   try {
-    const result = buildSite({ sourceRoot: ROOT, output: outputRoot, measurementId: undefined });
+    const result = buildSite({ sourceRoot: ROOT, output: outputRoot, measurementId: null });
     assert.equal(result.measurementIdConfigured, false);
     const config = fs.readFileSync(
       path.join(outputRoot, "assets", "js", "analytics-config.js"),
