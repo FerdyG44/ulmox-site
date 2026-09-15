@@ -3,96 +3,423 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#05030a" />
-  <title>ULMOX — Gerçek video anları paylaş.</title>
-  <meta name="description" content="Dünyanın dört bir yanındaki insanlarla gerçek video anları paylaş. Samimi deneyimleri yakala, beklenmedik anlar al ve ULMOX küresel topluluğundaki hikayeleri keşfet." />
+  <meta name="theme-color" content="#07070b" />
+  <title>ULMOX — Bir an paylaş. Bir dünya keşfet.</title>
+  <meta name="description" content="ULMOX, gerçek anların gerçek insanlarla buluştuğu yer. Bir an paylaş, World Live’ı keşfet, Global’i gör ve samimi karşılaşmaların Connections’a dönüşmesine izin ver." />
+
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://ulmoxapp.com/tr/" />
+  <link rel="alternate" hreflang="en" href="https://ulmoxapp.com/en/" />
+  <link rel="alternate" hreflang="sv" href="https://ulmoxapp.com/sv/" />
+  <link rel="alternate" hreflang="tr" href="https://ulmoxapp.com/tr/" />
+  <link rel="alternate" hreflang="de" href="https://ulmoxapp.com/de/" />
+  <link rel="alternate" hreflang="es" href="https://ulmoxapp.com/es/" />
+  <link rel="alternate" hreflang="fr" href="https://ulmoxapp.com/fr/" />
+  <link rel="alternate" hreflang="it" href="https://ulmoxapp.com/it/" />
+  <link rel="alternate" hreflang="pt" href="https://ulmoxapp.com/pt/" />
+  <link rel="alternate" hreflang="nl" href="https://ulmoxapp.com/nl/" />
+  <link rel="alternate" hreflang="pl" href="https://ulmoxapp.com/pl/" />
+  <link rel="alternate" hreflang="fi" href="https://ulmoxapp.com/fi/" />
+  <link rel="alternate" hreflang="ru" href="https://ulmoxapp.com/ru/" />
+  <link rel="alternate" hreflang="ja" href="https://ulmoxapp.com/ja/" />
+  <link rel="alternate" hreflang="ko" href="https://ulmoxapp.com/ko/" />
+  <link rel="alternate" hreflang="zh" href="https://ulmoxapp.com/zh/" />
+  <link rel="alternate" hreflang="ar" href="https://ulmoxapp.com/ar/" />
+  <link rel="alternate" hreflang="hi" href="https://ulmoxapp.com/hi/" />
+  <link rel="alternate" hreflang="th" href="https://ulmoxapp.com/th/" />
+  <link rel="alternate" hreflang="vi" href="https://ulmoxapp.com/vi/" />
+  <link rel="alternate" hreflang="x-default" href="https://ulmoxapp.com/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ULMOX" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:url" content="https://ulmoxapp.com/tr/" />
+  <meta property="og:title" content="ULMOX — Bir an paylaş. Bir dünya keşfet." />
+  <meta property="og:description" content="ULMOX, gerçek anların gerçek insanlarla buluştuğu yer. Bir an paylaş, World Live’ı keşfet, Global’i gör ve samimi karşılaşmaların Connections’a dönüşmesine izin ver." />
+  <meta property="og:image" content="https://ulmoxapp.com/assets/brand/ulmox-share.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ULMOX" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ULMOX — Bir an paylaş. Bir dünya keşfet." />
+  <meta name="twitter:description" content="ULMOX, gerçek anların gerçek insanlarla buluştuğu yer. Bir an paylaş, World Live’ı keşfet, Global’i gör ve samimi karşılaşmaların Connections’a dönüşmesine izin ver." />
+  <meta name="twitter:image" content="https://ulmoxapp.com/assets/brand/ulmox-share.png" />
+  <meta name="twitter:image:alt" content="ULMOX" />
+
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/brand/ulmox-mark-192.png" />
+  <link rel="apple-touch-icon" href="/assets/brand/ulmox-mark-512.png" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ULMOX",
+      "applicationCategory": "SocialNetworkingApplication",
+      "operatingSystem": "iOS, Android",
+      "url": "https://ulmoxapp.com/tr/",
+      "inLanguage": "tr",
+      "description": "ULMOX, gerçek anların gerçek insanlarla buluştuğu yer. Bir an paylaş, World Live’ı keşfet, Global’i gör ve samimi karşılaşmaların Connections’a dönüşmesine izin ver.",
+      "image": "https://ulmoxapp.com/assets/brand/ulmox-share.png",
+      "sameAs": [
+        "https://apps.apple.com/se/app/ulmox/id6765990174",
+        "https://play.google.com/store/apps/details?id=com.ulmox.app"
+      ]
+    }
+  </script>
+
   <style>
+    :root {
+      --ink: #07070b;
+      --text: #ffffff;
+      --body: #d3d8e4;
+      --soft: #a8b0c2;
+      --amber: #ffd24d;
+      --cyan: #7fe3ff;
+      --magenta: #f0a6ff;
+      --surface: rgba(255, 255, 255, 0.045);
+      --surface-strong: rgba(255, 255, 255, 0.07);
+      --line: rgba(255, 255, 255, 0.11);
+      --line-strong: rgba(255, 255, 255, 0.18);
+      --radius: 22px;
+      --measure: 62ch;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+
     * { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
 
     body {
       margin: 0;
-      background: radial-gradient(circle at top, #24113f 0%, #05030a 42%, #000 100%);
-      background-color: #05030a;
+      background-color: #07070b;
       color: #ffffff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 70px 24px 0;
-    }
-
-    .logo-wrap { margin-bottom: 55px; }
-
-    .logo-img {
-      width: 110px;
-      padding: 18px;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 18px 50px rgba(120, 80, 255, 0.45);
-    }
-
-    .logo-text {
-      margin-top: 18px;
-      font-size: 22px;
-      letter-spacing: 5px;
-      font-weight: 900;
-    }
-
-    h1 {
-      font-size: 58px;
-      line-height: 1.05;
-      margin: 0;
-      font-weight: 900;
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      text-align: start;
+      -webkit-font-smoothing: antialiased;
     }
 
     /*
-     * The gradient is decoration on top of a real colour. Browsers that do not
-     * clip a background to text still render #ffffff, so the headline never
-     * depends on the gradient to be readable.
+     * The colour wash sits on a fixed pseudo-element rather than on the body's
+     * own background with background-attachment: fixed, which iOS Safari does
+     * not honour — there the gradient would be sized to the whole scroll
+     * height and wash out. Every stop is rgba() over the one real ground
+     * colour above, so the ground stays exactly #07070b.
      */
-    .gradient-text {
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image:
+        radial-gradient(1200px 700px at 50% -15%, rgba(168, 85, 247, 0.17), rgba(7, 7, 11, 0) 62%),
+        radial-gradient(820px 560px at 92% 6%, rgba(56, 189, 248, 0.12), rgba(7, 7, 11, 0) 60%),
+        radial-gradient(900px 620px at 4% 34%, rgba(255, 138, 76, 0.07), rgba(7, 7, 11, 0) 60%);
+    }
+
+    .page {
+      max-width: 1120px;
+      margin-inline: auto;
+      padding-inline: 20px;
+    }
+
+    /* ---------------------------------------------------------------- type */
+
+    h1, h2, h3 {
       color: #ffffff;
-      background: linear-gradient(90deg, #ffffff, #b794ff, #66e7ff);
+      margin: 0;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+
+    h1 { font-size: clamp(38px, 8.4vw, 68px); line-height: 1.04; font-weight: 800; }
+    h2 { font-size: clamp(27px, 5.4vw, 42px); line-height: 1.1; font-weight: 800; }
+    h3 { font-size: clamp(17px, 2.6vw, 19px); line-height: 1.3; font-weight: 700; }
+
+    p { margin: 0; color: #d3d8e4; }
+
+    .lede { font-size: clamp(17px, 2.6vw, 20px); color: #d3d8e4; max-width: var(--measure); }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #a8b0c2;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    /*
+     * The gradient is decoration on top of a real colour. A browser that does
+     * not clip a background to text still renders #ffffff, so the headline is
+     * never invisible because an effect failed.
+     */
+    .accent {
+      display: block;
+      color: #ffffff;
+      background-image: linear-gradient(96deg, #ffffff 4%, #f0a6ff 46%, #7fe3ff 96%);
       background-clip: text;
       -webkit-background-clip: text;
     }
 
     @supports (background-clip: text) or (-webkit-background-clip: text) {
-      .gradient-text { -webkit-text-fill-color: transparent; }
+      .accent { -webkit-text-fill-color: transparent; }
     }
 
-    .subtitle {
-      margin: 24px auto 0;
-      max-width: 620px;
-      color: #d6d6d6;
-      font-size: 20px;
-      line-height: 1.5;
+    /* -------------------------------------------------------------- brand */
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 30px;
     }
 
-    .store-cta { margin-top: 56px; }
-
-    .store-cta h2 {
-      font-size: 28px;
-      margin: 0;
-      line-height: 1.25;
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 15px;
+      display: block;
+      box-shadow: 0 10px 34px rgba(168, 85, 247, 0.34);
     }
 
-    .store-cta p {
-      color: #d6d6d6;
-      max-width: 600px;
-      margin: 12px auto 0;
+    .brand-word {
+      color: #ffffff;
       font-size: 17px;
-      line-height: 1.55;
+      font-weight: 800;
+      letter-spacing: 0.34em;
     }
 
-    .store-badges {
-      margin-top: 28px;
+    /* --------------------------------------------------------------- hero */
+
+    .hero { padding-block: 64px 24px; }
+
+    .hero-title { margin-bottom: 20px; }
+    .hero-title .lead { display: block; }
+
+    .hero-sub { font-size: clamp(17px, 2.8vw, 21px); color: #d3d8e4; max-width: 30ch; }
+
+    .hero-actions { margin-top: 34px; }
+
+    /*
+     * The hero decoration: the real ULMOX mark inside the luminous ring the
+     * mark itself carries. It is not a screen, not a frame around a screen and
+     * not a stand-in for one — there is no product screenshot in this
+     * repository, so the page shows the one piece of artwork it does own.
+     */
+    /*
+     * overflow:hidden is load-bearing. The ring and the orbit are square
+     * boxes that rotate, and a rotated square's scroll box is up to 1.41x its
+     * own width — enough to push a 390px phone into horizontal scrolling. The
+     * artwork is a circle inscribed in that square, so clipping the square
+     * removes the overflow without clipping anything a reader can see.
+     */
+    .hero-art {
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      margin-top: 52px;
+      aspect-ratio: 1 / 1;
+      width: min(340px, 82vw);
+      margin-inline: auto;
+    }
+
+    .hero-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(from 210deg, rgba(168, 85, 247, 0) 0deg, #a855f7 90deg, #38bdf8 210deg, rgba(56, 189, 248, 0) 330deg);
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+      mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+      animation: ulmox-spin 26s linear infinite;
+    }
+
+    .hero-ring-2 {
+      position: absolute;
+      inset: 13%;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: 16%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 42%, rgba(168, 85, 247, 0.34), rgba(7, 7, 11, 0) 68%);
+      filter: blur(6px);
+    }
+
+    .hero-mark {
+      position: relative;
+      width: 42%;
+      height: auto;
+      border-radius: 26%;
+      display: block;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+    }
+
+    .orbit {
+      position: absolute;
+      inset: 0;
+      animation: ulmox-spin 38s linear infinite reverse;
+    }
+
+    .orbit span {
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #7fe3ff;
+      box-shadow: 0 0 16px rgba(127, 227, 255, 0.85);
+    }
+
+    .orbit span:nth-child(1) { inset-block-start: 4%; inset-inline-start: 50%; }
+    .orbit span:nth-child(2) { inset-block-start: 63%; inset-inline-start: 6%; background: #f0a6ff; box-shadow: 0 0 16px rgba(240, 166, 255, 0.85); }
+    .orbit span:nth-child(3) { inset-block-start: 74%; inset-inline-start: 84%; background: #ffd24d; box-shadow: 0 0 16px rgba(255, 210, 77, 0.8); }
+
+    @keyframes ulmox-spin { to { transform: rotate(360deg); } }
+
+    /* ------------------------------------------------------------ sections */
+
+    .section { padding-block: 56px; border-top: 1px solid var(--line); }
+    .section > .lede { margin-top: 16px; }
+    .section-head { max-width: var(--measure); }
+
+    .split { display: grid; gap: 34px; }
+    .split-copy > * + * { margin-top: 16px; }
+
+    /* ---------------------------------------------------------------- grids */
+
+    .grid {
+      list-style: none;
+      margin: 34px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 14px;
+      counter-reset: ulmox-step;
+    }
+
+    .grid li {
+      position: relative;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .grid p { margin-top: 8px; font-size: 16px; color: #d3d8e4; }
+
+    .numbered li { padding-block-start: 26px; }
+
+    .numbered li::before {
+      counter-increment: ulmox-step;
+      content: counter(ulmox-step);
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 14px;
+      border-radius: 50%;
+      border: 1px solid var(--line-strong);
+      color: #a8b0c2;
+      font-size: 14px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ---------------------------------------------------------- world live */
+
+    .globe { display: block; width: min(420px, 100%); margin-inline: auto; height: auto; }
+    .globe-dot { animation: ulmox-pulse 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .globe-dot:nth-of-type(2) { animation-delay: 0.9s; }
+    .globe-dot:nth-of-type(3) { animation-delay: 1.8s; }
+    .globe-dot:nth-of-type(4) { animation-delay: 2.7s; }
+
+    @keyframes ulmox-pulse {
+      0%, 100% { opacity: 0.35; transform: scale(0.82); }
+      50% { opacity: 1; transform: scale(1.18); }
+    }
+
+    /* --------------------------------------------------------- connections */
+
+    .connections {
+      border-radius: 30px;
+      border: 1px solid var(--line-strong);
+      background:
+        radial-gradient(760px 420px at 12% 0%, rgba(240, 166, 255, 0.11), transparent 62%),
+        radial-gradient(680px 420px at 96% 12%, rgba(127, 227, 255, 0.09), transparent 60%),
+        rgba(255, 255, 255, 0.025);
+      padding: 40px 22px;
+      margin-block: 8px;
+    }
+
+    .connections .eyebrow { color: #f0a6ff; }
+
+    .link-art { display: block; width: min(264px, 74%); margin: 0 0 28px; height: auto; }
+
+    .note {
+      margin-top: 22px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      color: #d3d8e4;
+      font-size: 15.5px;
+      max-width: var(--measure);
+    }
+
+    .note-safe { border-inline-start: 3px solid #ffd24d; }
+    .note-rollout { color: #a8b0c2; font-size: 14.5px; }
+
+    /* -------------------------------------------------------------- global */
+
+    /*
+     * A decorative wall, and only that. The tiles are faded out towards the
+     * bottom and carry no frame, caption or aspect ratio borrowed from the
+     * app, so they read as an abstract suggestion of a feed rather than as six
+     * product images that failed to load — which is how a solid, fully opaque
+     * grid of empty rectangles reads.
+     */
+    .mosaic {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: min(380px, 100%);
+      margin-inline: auto;
+      opacity: 0.85;
+      -webkit-mask-image: linear-gradient(180deg, #000 52%, rgba(0, 0, 0, 0) 100%);
+      mask-image: linear-gradient(180deg, #000 52%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .mosaic span {
+      display: block;
+      aspect-ratio: 3 / 4;
+      border-radius: 14px;
+      background: linear-gradient(150deg, rgba(168, 85, 247, 0.2), rgba(56, 189, 248, 0.08));
+    }
+
+    .mosaic span:nth-child(2) { background: linear-gradient(150deg, rgba(255, 138, 76, 0.17), rgba(255, 210, 77, 0.07)); }
+    .mosaic span:nth-child(3) { background: linear-gradient(150deg, rgba(56, 189, 248, 0.18), rgba(16, 185, 129, 0.08)); }
+    .mosaic span:nth-child(4) { background: linear-gradient(150deg, rgba(16, 185, 129, 0.15), rgba(127, 227, 255, 0.07)); }
+    .mosaic span:nth-child(5) { background: linear-gradient(150deg, rgba(240, 166, 255, 0.16), rgba(168, 85, 247, 0.07)); }
+    .mosaic span:nth-child(6) { background: linear-gradient(150deg, rgba(255, 210, 77, 0.15), rgba(255, 138, 76, 0.07)); }
+
+    /* -------------------------------------------------------------- safety */
+
+    .text-link { color: #ffd24d; font-weight: 700; }
+
+    .safety-more { margin-top: 26px; }
+
+    /* --------------------------------------------------------------- store */
+
+    .store-badges {
+      display: flex;
+      align-items: center;
       gap: 12px;
       flex-wrap: wrap;
     }
@@ -107,20 +434,17 @@
       text-decoration: none;
       border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 14px;
-      transition: transform 0.22s ease, filter 0.22s ease;
+      background: rgba(255, 255, 255, 0.04);
+      transition: transform 0.22s ease, filter 0.22s ease, border-color 0.22s ease;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
       cursor: pointer;
     }
 
     .store-badge-link:hover {
-      filter: drop-shadow(0 10px 22px rgba(120, 80, 255, 0.24));
-      transform: scale(1.03);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .store-badge-link { transition: none; }
-      .store-badge-link:hover { transform: none; }
+      filter: drop-shadow(0 12px 26px rgba(168, 85, 247, 0.26));
+      border-color: rgba(255, 255, 255, 0.28);
+      transform: translateY(-2px);
     }
 
     .store-badge {
@@ -137,15 +461,15 @@
 
     .browser-help {
       display: none;
-      margin: 18px auto 0;
+      margin-top: 18px;
       max-width: 560px;
       padding: 16px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      border: 1px solid var(--line-strong);
       border-radius: 16px;
       background: rgba(255, 255, 255, 0.08);
-      color: #e5e5ea;
+      color: #d3d8e4;
       font-size: 15px;
-      line-height: 1.45;
+      line-height: 1.5;
       text-align: start;
     }
 
@@ -164,111 +488,80 @@
       cursor: pointer;
     }
 
-    /*
-     * The product introduction. This is the region that used to hold an
-     * autoplaying <video> pointing at a file that does not exist. It is now a
-     * static, decorative device frame around the ULMOX mark: no media request,
-     * no playback control, nothing that suggests something is about to play.
-     */
-    .intro { margin-top: 64px; }
+    /* ------------------------------------------------------------ download */
 
-    .device {
-      margin: 0 auto;
-      width: 260px;
-      max-width: 78vw;
-      aspect-ratio: 1 / 2;
-      border-radius: 46px;
-      background: linear-gradient(180deg, #171722, #07070b);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      box-shadow: 0 30px 90px rgba(120, 80, 255, 0.35);
-      padding: 18px;
+    .cta {
+      text-align: center;
+      border-top: 1px solid var(--line);
+      padding-block: 60px 12px;
     }
 
-    .device-screen {
-      height: 100%;
-      border-radius: 34px;
-      background: radial-gradient(circle at top, #6d28d9 0%, #111827 40%, #020617 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 24px 18px;
-    }
+    .cta .lede { margin-inline: auto; margin-top: 16px; }
+    .cta .store-badges { justify-content: center; margin-top: 30px; }
 
-    .device-mark {
-      width: 72px;
-      height: 72px;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.92);
-      padding: 12px;
-    }
-
-    .device-wordmark {
-      font-size: 15px;
-      letter-spacing: 4px;
-      font-weight: 900;
-      color: #ffffff;
-    }
+    /* -------------------------------------------------------------- motion */
 
     /*
-     * The caption *is* the section heading. Repeating the same sentence above
-     * the frame and inside it would make a screen reader read the region
-     * twice for a difference only a sighted reader can see.
+     * Reveal-on-scroll is opt-in from JavaScript: the class that hides an
+     * element is only applied once the observer that will show it again is
+     * running. With JavaScript off, or before it runs, every section is
+     * visible — an animation must never be the reason content is missing.
      */
-    .device-caption {
-      margin: 0;
-      font-size: 20px;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1.35;
+    [data-motion="on"] .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
-    .features {
-      margin-top: 70px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      text-align: start;
+    [data-motion="on"] .reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-ring, .orbit, .globe-dot { animation: none; }
+      .store-badge-link { transition: none; }
+      .store-badge-link:hover { transform: none; }
+      [data-motion="on"] .reveal { opacity: 1; transform: none; transition: none; }
     }
 
-    .feature {
-      padding: 24px;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    /* ---------------------------------------------------------- responsive */
+
+    @media (min-width: 720px) {
+      .page { padding-inline: 32px; }
+      .hero { padding-block: 84px 40px; }
+      .section { padding-block: 76px; }
+      .connections { padding: 60px 44px; }
+      .grid { gap: 16px; grid-template-columns: repeat(2, 1fr); }
+      .grid li { padding: 28px; }
+      .split { grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
+      .hero-art { width: min(400px, 60vw); }
     }
 
-    .feature h2 { margin: 0 0 8px; font-size: 18px; }
-
-    .feature p {
-      margin: 0;
-      color: #d6d6d6;
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    @media (max-width: 600px) {
-      .container { padding: 56px 20px 0; }
-      h1 { font-size: 42px; }
-      .subtitle { font-size: 17px; }
-      .store-cta h2 { font-size: 24px; }
-      .logo-img { width: 95px; }
-
-      .store-badges { flex-direction: column; gap: 10px; }
-      .store-badge-link { width: min(198px, 78vw); height: 66px; }
-      .store-badge-app-store { height: 54px; max-width: 172px; }
-      .store-badge-link-google-play { width: min(198px, 78vw); height: 66px; }
-      .store-badge-google-play { height: 72px; max-width: 194px; }
+    @media (min-width: 1040px) {
+      .hero {
+        display: grid;
+        grid-template-columns: 1.06fr 0.94fr;
+        align-items: center;
+        gap: 56px;
+        padding-block: 108px 56px;
+      }
+      .hero-art { margin-top: 0; width: 100%; max-width: 460px; }
+      .grid { grid-template-columns: repeat(3, 1fr); }
+      .steps-3 { grid-template-columns: repeat(3, 1fr); }
+      .connections { padding: 72px 64px; }
+      .brand-mark { width: 58px; height: 58px; }
     }
 
     /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
     .ulmox-skip-link {
       position: absolute;
-      left: -9999px;
-      top: 0;
+      inset-block-start: 0;
+      inset-inline-start: 0;
       z-index: 10000;
-      padding: 12px 18px;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
       background: #ffd24d;
       color: #000;
       font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
@@ -276,7 +569,13 @@
     }
 
     .ulmox-skip-link:focus,
-    .ulmox-skip-link:focus-visible { left: 0; }
+    .ulmox-skip-link:focus-visible {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
 
     a:focus-visible,
     button:focus-visible,
@@ -321,87 +620,279 @@
 <body>
   <a class="ulmox-skip-link" href="#main">İçeriğe geç</a>
 
-  <div class="container">
+  <div class="page">
     <main id="main">
-      <div class="logo-wrap">
-        <img src="/logo.png" class="logo-img" alt="ULMOX logo">
-        <div class="logo-text">ULMOX</div>
-      </div>
 
-      <h1>
-        Gerçek<br>
-        <span class="gradient-text">video anları paylaş.</span>
-      </h1>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="brand">
+            <img class="brand-mark" src="/assets/brand/ulmox-mark-192.png" alt="ULMOX" width="192" height="192">
+            <span class="brand-word">ULMOX</span>
+          </div>
 
-      <p class="subtitle">
-        Dünyanın dört bir yanındaki insanlarla gerçek video anları paylaş. Samimi deneyimleri yakala, beklenmedik anlar al ve ULMOX küresel topluluğundaki hikayeleri keşfet.
-      </p>
+          <p class="eyebrow">Gerçek anlar. Gerçek insanlar.</p>
 
-      <section class="store-cta" aria-labelledby="store-cta-heading">
-        <h2 id="store-cta-heading">Şimdi App Store ve Google Play’de</h2>
-        <p>ULMOX’u bugün App Store veya Google Play’den indir ve gerçek video anları paylaşmaya başla.</p>
+          <h1 class="hero-title">
+            <span class="lead">Bir an paylaş.</span>
+            <span class="accent">Bir dünya keşfet.</span>
+          </h1>
 
-        <div class="store-badges">
-          <a
-            class="store-badge-link"
-            href="https://apps.apple.com/se/app/ulmox/id6765990174"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Download ULMOX on the App Store"
-          >
-            <img
-              class="store-badge store-badge-app-store"
-              src="/assets/badges/app-store.svg"
-              width="162"
-              height="54"
-              alt="Download on the App Store"
+          <p class="hero-sub">Gerçek bir an paylaş ve bambaşka bir yerde yaşayan insanlardan gerçek anlar al.</p>
+
+          <div class="hero-actions">
+          <div class="store-badges">
+            <a
+              class="store-badge-link"
+            data-analytics-location="homepage_hero_store_badges"
+              href="https://apps.apple.com/se/app/ulmox/id6765990174"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="ULMOX’u App Store’dan indir"
             >
-          </a>
+              <img
+                class="store-badge store-badge-app-store"
+                src="/assets/badges/app-store.svg"
+                width="162"
+                height="54"
+                alt="Download on the App Store"
+              >
+            </a>
 
-          <a
-            class="store-badge-link store-badge-link-google-play"
-            href="https://play.google.com/store/apps/details?id=com.ulmox.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Get ULMOX on Google Play"
-          >
-            <img
-              class="store-badge store-badge-google-play"
-              src="/assets/badges/google-play.png"
-              width="140"
-              height="54"
-              alt="Get it on Google Play"
+            <a
+              class="store-badge-link store-badge-link-google-play"
+            data-analytics-location="homepage_hero_store_badges"
+              href="https://play.google.com/store/apps/details?id=com.ulmox.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="ULMOX’u Google Play’den edin"
             >
-          </a>
+              <img
+                class="store-badge store-badge-google-play"
+                src="/assets/badges/google-play.png"
+                width="140"
+                height="54"
+                alt="Get it on Google Play"
+              >
+            </a>
+          </div>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <span class="hero-ring"></span>
+          <span class="hero-glow"></span>
+          <span class="hero-ring-2"></span>
+          <span class="orbit"><span></span><span></span><span></span></span>
+          <img class="hero-mark" src="/assets/brand/ulmox-mark-192.png" alt="" width="192" height="192" loading="lazy" decoding="async">
         </div>
       </section>
 
-      <section class="intro" aria-labelledby="intro-heading">
-        <div class="device">
-          <div class="device-screen">
-            <img class="device-mark" src="/logo.png" alt="" width="72" height="72">
-            <span class="device-wordmark">ULMOX</span>
-            <h2 class="device-caption" id="intro-heading">Gerçek bir an</h2>
+      <section class="section reveal" aria-labelledby="how-heading">
+        <div class="section-head">
+          <h2 id="how-heading">ULMOX nasıl çalışır</h2>
+          <p class="lede">Üç basit adım. Cilalanacak bir şey yok, rol yapmaya gerek yok.</p>
+        </div>
+        <ol class="grid numbered steps-3">
+            <li>
+              <h3>Bir an paylaş</h3>
+              <p>Gününden gerçek bir şey kaydet ve dünyaya gönder.</p>
+            </li>
+            <li>
+              <h3>Bir an al</h3>
+              <p>Bir başkasının anı sana ulaşır: bir sokak, bir manzara, sıradan bir öğleden sonra.</p>
+            </li>
+            <li>
+              <h3>Keşfetmeye devam et</h3>
+              <p>Dünyanın şu anda başka nerede olduğunu görmek için World Live ve Global’i aç.</p>
+            </li>
+        </ol>
+      </section>
+
+      <section class="section reveal" aria-labelledby="world-heading">
+        <div class="split">
+          <div class="split-copy">
+            <h2 id="world-heading">World Live</h2>
+            <p class="lede">Dünyanın farklı yerlerinden paylaşılan gerçek anları tek bir etkileşimli dünya üzerinde keşfet.</p>
+            <p>Küreyi çevir, gözüne çarpan bir yerde dur ve oradan gelen anı izle.</p>
+          </div>
+          <div class="split-art">
+          <svg class="globe" viewBox="0 0 240 240" role="img" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="ulmox-globe" cx="38%" cy="30%" r="78%">
+                <stop offset="0%" stop-color="#a855f7" stop-opacity="0.34" />
+                <stop offset="62%" stop-color="#38bdf8" stop-opacity="0.12" />
+                <stop offset="100%" stop-color="#07070b" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <circle cx="120" cy="120" r="96" fill="url(#ulmox-globe)" />
+            <circle cx="120" cy="120" r="96" fill="none" stroke="rgba(255,255,255,0.22)" />
+            <ellipse cx="120" cy="120" rx="96" ry="34" fill="none" stroke="rgba(255,255,255,0.13)" />
+            <ellipse cx="120" cy="120" rx="96" ry="68" fill="none" stroke="rgba(255,255,255,0.09)" />
+            <ellipse cx="120" cy="120" rx="34" ry="96" fill="none" stroke="rgba(255,255,255,0.13)" />
+            <ellipse cx="120" cy="120" rx="68" ry="96" fill="none" stroke="rgba(255,255,255,0.09)" />
+            <line x1="120" y1="24" x2="120" y2="216" stroke="rgba(255,255,255,0.09)" />
+            <line x1="24" y1="120" x2="216" y2="120" stroke="rgba(255,255,255,0.09)" />
+            <circle class="globe-dot" cx="86" cy="76" r="6" fill="#f0a6ff" />
+            <circle class="globe-dot" cx="163" cy="104" r="6" fill="#7fe3ff" />
+            <circle class="globe-dot" cx="99" cy="158" r="6" fill="#ffd24d" />
+            <circle class="globe-dot" cx="151" cy="171" r="5" fill="#7fe3ff" />
+          </svg>
           </div>
         </div>
       </section>
 
-      <section class="features">
-          <div class="feature">
-            <h2>Gerçek videolar</h2>
-            <p>Kurgulanmış anlar yok. Gerçek hissettiren anı yakala.</p>
-          </div>
+      <section class="section connections reveal" aria-labelledby="connections-heading">
+          <svg class="link-art" viewBox="0 0 300 120" role="img" aria-hidden="true" focusable="false">
+            <circle cx="72" cy="60" r="38" fill="none" stroke="rgba(240,166,255,0.55)" stroke-width="1.5" />
+            <circle cx="228" cy="60" r="38" fill="none" stroke="rgba(127,227,255,0.55)" stroke-width="1.5" />
+            <circle cx="72" cy="60" r="16" fill="rgba(240,166,255,0.22)" />
+            <circle cx="228" cy="60" r="16" fill="rgba(127,227,255,0.22)" />
+            <path d="M110 60 H190" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-dasharray="5 7" />
+            <circle cx="150" cy="60" r="15" fill="rgba(7,7,11,0.9)" stroke="rgba(255,210,77,0.8)" stroke-width="1.5" />
+            <path d="M143 60 l5 5 l9 -10" fill="none" stroke="#ffd24d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        <div class="section-head">
+          <p class="eyebrow">Connections</p>
+          <h2 id="connections-heading">Gerçek anlar gerçek bağlara dönüşebilir.</h2>
+          <p class="lede">Kaydırma yok. Takipçi yarışı yok. Önce anlar üzerinden tanışın.</p>
+        </div>
 
-          <div class="feature">
-            <h2>Günlük anlar</h2>
-            <p>Sınırlı günlük paylaşım sistemi.</p>
-          </div>
+        <ol class="grid numbered">
+            <li>
+              <h3>Gerçek anlar paylaş</h3>
+              <p>Her şey gerçekten yaşadığın bir şeyle başlar, bir profille değil.</p>
+            </li>
+            <li>
+              <h3>İnsanlarla doğal şekilde tanış</h3>
+              <p>Paylaştığınız anlar üzerinden başkalarıyla karşılaşırsın.</p>
+            </li>
+            <li>
+              <h3>Bir Connection mümkün hale gelir</h3>
+              <p>Samimi karşılaşmalar iki kişi arasında bir Connection’ı mümkün kılabilir.</p>
+            </li>
+            <li>
+              <h3>İstek gönder</h3>
+              <p>Mümkün olduğunda iki kişiden biri Connection isteyebilir.</p>
+            </li>
+            <li>
+              <h3>İki taraf da onaylar</h3>
+              <p>İkiniz de ayrı ayrı evet demeden hiçbir şey açılmaz.</p>
+            </li>
+            <li>
+              <h3>Konuşmaya başla</h3>
+              <p>Etkin bir Connection, metin mesajları ve birbirinizin profili demektir.</p>
+            </li>
+        </ol>
 
-          <div class="feature">
-            <h2>Küresel akış</h2>
-            <p>Seçtiğin anları dünyayla paylaş.</p>
+        <p class="note note-safe">Kontrol baştan sona sende. Bildir, Engelle ve Connection’ı sonlandır her zaman elinin altında.</p>
+        <p class="note note-rollout">Connections ve isteğe bağlı mesaj çevirisi kademeli olarak kullanıma sunuluyor; her hesapta veya yüklü her uygulama sürümünde henüz mevcut olmayabilir.</p>
+      </section>
+
+      <section class="section reveal" aria-labelledby="global-heading">
+        <div class="split">
+          <div class="split-copy">
+            <h2 id="global-heading">Global</h2>
+            <p class="lede">İnsanların geniş ULMOX topluluğuyla paylaşmayı seçtiği gerçek anları keşfet.</p>
+            <p>Topluluğun şu anda açıkça ne paylaştığını görebileceğin tek yer.</p>
+          </div>
+          <div class="split-art">
+          <div class="mosaic" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" aria-labelledby="different-heading">
+        <div class="section-head">
+          <h2 id="different-heading">ULMOX neden farklı</h2>
+        </div>
+        <ul class="grid">
+            <li>
+              <h3>Cilalı profiller değil, gerçek anlar</h3>
+              <p>Olmak istediğin kişinin resmini değil, yaşadığın bir anı paylaşırsın.</p>
+            </li>
+            <li>
+              <h3>Çevrenin ötesindeki insanlar</h3>
+              <p>ULMOX, tanıdıkların üzerinden asla karşılaşmayacağın insanları sana getirir.</p>
+            </li>
+            <li>
+              <h3>Takipçi yarışı yok</h3>
+              <p>Peşinden koşulacak bir sayı ve kurulacak bir izleyici kitlesi yok.</p>
+            </li>
+            <li>
+              <h3>Bağlar karşılaşmalardan doğar</h3>
+              <p>Bir sohbet, önce gerçek bir şey yaşandığı için başlar.</p>
+            </li>
+            <li>
+              <h3>Dünyayı içinde yaşayanlar üzerinden gör</h3>
+              <p>Her an, gerçekten orada duran birinden gelir.</p>
+            </li>
+        </ul>
+      </section>
+
+      <section class="section reveal" aria-labelledby="safety-heading">
+        <div class="section-head">
+          <h2 id="safety-heading">Güvenlik ve kontrol</h2>
+          <p class="lede">Mesajlaşma yabancılara asla açık değildir. Bir sohbet ancak ULMOX’un gerektirdiği karşılaşmalardan ve iki kişinin de onayından sonra başlayabilir; dilediğin an sonlandırabilirsin.</p>
+        </div>
+        <ul class="grid">
+            <li>
+              <h3>Bildir</h3>
+              <p>Bir kullanıcıyı ya da tek bir mesajı bildir. Bunu bir insan inceler.</p>
+            </li>
+            <li>
+              <h3>Engelle</h3>
+              <p>Engelleme, iletişimi her iki yönde de durdurur.</p>
+            </li>
+            <li>
+              <h3>Connection’ı sonlandır</h3>
+              <p>Ayrılmak her zaman mümkündür ve o ikili için kalıcıdır.</p>
+            </li>
+        </ul>
+        <p class="safety-more">
+          <a class="text-link" href="safety.html">Güvenlik ve Moderasyon</a>
+        </p>
+      </section>
+
+      <section class="section cta reveal" aria-labelledby="cta-heading">
+        <h2 id="cta-heading">Şimdi App Store ve Google Play’de</h2>
+        <p class="lede">ULMOX’u bugün App Store veya Google Play’den indir ve gerçek video anları paylaşmaya başla.</p>
+          <div class="store-badges">
+            <a
+              class="store-badge-link"
+              href="https://apps.apple.com/se/app/ulmox/id6765990174"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="ULMOX’u App Store’dan indir"
+            >
+              <img
+                class="store-badge store-badge-app-store"
+                src="/assets/badges/app-store.svg"
+                width="162"
+                height="54"
+                alt="Download on the App Store"
+              >
+            </a>
+
+            <a
+              class="store-badge-link store-badge-link-google-play"
+              href="https://play.google.com/store/apps/details?id=com.ulmox.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="ULMOX’u Google Play’den edin"
+            >
+              <img
+                class="store-badge store-badge-google-play"
+                src="/assets/badges/google-play.png"
+                width="140"
+                height="54"
+                alt="Get it on Google Play"
+              >
+            </a>
           </div>
       </section>
+
     </main>
   </div>
 
@@ -422,5 +913,50 @@
 
   <script src="/assets/js/i18n-config.js"></script>
   <script src="/assets/js/language-switcher.js" defer></script>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduced) return;
+
+      var pending = [].slice.call(document.querySelectorAll(".reveal"));
+      if (!pending.length) return;
+
+      document.documentElement.setAttribute("data-motion", "on");
+
+      var ticking = false;
+
+      function sweep() {
+        ticking = false;
+        var limit = window.innerHeight * 0.92;
+        var remaining = [];
+        for (var i = 0; i < pending.length; i += 1) {
+          if (pending[i].getBoundingClientRect().top < limit) {
+            pending[i].classList.add("is-visible");
+          } else {
+            remaining.push(pending[i]);
+          }
+        }
+        pending = remaining;
+        if (!pending.length) {
+          window.removeEventListener("scroll", schedule);
+          window.removeEventListener("resize", schedule);
+        }
+      }
+
+      function schedule() {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(sweep);
+      }
+
+      window.addEventListener("scroll", schedule, { passive: true });
+      window.addEventListener("resize", schedule);
+      window.addEventListener("load", schedule);
+      sweep();
+    })();
+  </script>
 </body>
 </html>

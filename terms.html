@@ -27,17 +27,29 @@
       -webkit-text-size-adjust: 100%;
     }
 
+    /* Clipped, not offset: see scripts/legal-pages.js. */
     .skip-link {
       position: absolute;
-      left: -9999px;
-      top: 0;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
       background: var(--accent);
       color: #000;
-      padding: 12px 18px;
       z-index: 10;
     }
 
-    .skip-link:focus { left: 0; }
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
 
     .container {
       max-width: 860px;

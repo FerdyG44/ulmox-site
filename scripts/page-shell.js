@@ -247,18 +247,29 @@ const SHELL_MARKER = "ULMOX_PAGE_SHELL";
  *   #ffd24d on #24113f  = 11.4:1   (links and the focus ring)
  *
  * All are above the WCAG AA 4.5:1 minimum for body text. The focus ring is a
- * 3px outline with a 3px offset, so it stays visible on both grounds, and the
- * skip link is moved off-screen by position rather than by `display:none`,
- * which would take it out of the tab order entirely.
+ * 3px outline with a 3px offset, so it stays visible on both grounds.
+ *
+ * The skip link is hidden by clipping rather than by `display:none`, which
+ * would take it out of the tab order entirely, and rather than by the
+ * `left: -9999px` it used until now. That offset is off-screen in a
+ * left-to-right page but *inside the scrollable area* of a right-to-left one:
+ * every Arabic route on this site could be dragged 9999px sideways, on every
+ * page, because of it. Clipping a 1px box hides the link in both directions
+ * and keeps it reachable by keyboard, which is the whole point of having it.
  */
 const SHELL_STYLE = `
     /* ${SHELL_MARKER} — canonical accessible chrome. Do not edit per page. */
     .ulmox-skip-link {
       position: absolute;
-      left: -9999px;
-      top: 0;
+      inset-block-start: 0;
+      inset-inline-start: 0;
       z-index: 10000;
-      padding: 12px 18px;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
       background: #ffd24d;
       color: #000;
       font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
@@ -266,7 +277,13 @@ const SHELL_STYLE = `
     }
 
     .ulmox-skip-link:focus,
-    .ulmox-skip-link:focus-visible { left: 0; }
+    .ulmox-skip-link:focus-visible {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
 
     a:focus-visible,
     button:focus-visible,
@@ -501,8 +518,22 @@ function applyShell(html, { route, title, description, copyright } = {}) {
       : output.replace(/<head>/i, `<head>\n${headInsert.join("\n")}`);
   }
 
-  /* 6. Shell stylesheet, once. */
-  if (!output.includes(SHELL_MARKER)) {
+  /*
+   * 6. Shell stylesheet, once — and always the *current* one.
+   *
+   * This used to be `if the page has no marker, add the style`, which meant a
+   * page could only ever receive the shell it was first given. Correcting the
+   * chrome then silently skipped every already-shelled page: the download page
+   * kept a stale skip-link rule through a fix that was meant to be site-wide,
+   * and nothing reported it, because "the marker is present" was being read as
+   * "the stylesheet is up to date". An existing block is replaced instead, so
+   * running the generator twice still produces the same file and a correction
+   * actually reaches the pages it was written for.
+   */
+  const shellStyleBlock = new RegExp(`<style>\\s*/\\* ${SHELL_MARKER}[\\s\\S]*?</style>`, "i");
+  if (shellStyleBlock.test(output)) {
+    output = output.replace(shellStyleBlock, `<style>${SHELL_STYLE}  </style>`);
+  } else if (!output.includes(SHELL_MARKER)) {
     output = output.replace(/<\/head>/i, `  <style>${SHELL_STYLE}  </style>\n</head>`);
   }
 

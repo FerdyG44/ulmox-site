@@ -27,6 +27,18 @@ const PAGES = Object.freeze([
   { file: "translation.html", label: "Translation Information" },
 ]);
 
+/*
+ * The shared stylesheet.
+ *
+ * On the skip link: it is clipped to a 1px box rather than pushed to
+ * `left: -9999px`, which is where it sat until now. That offset is off-screen
+ * on a left-to-right page but *inside the scrollable area* of a right-to-left
+ * one — every Arabic route on this site could be dragged 9999px sideways
+ * because of it. Clipping hides the link in both directions and keeps it in
+ * the tab order, which is the only reason it exists. The reasoning lives here
+ * rather than in the CSS because this stylesheet is inlined into 120 public
+ * pages and none of them needs to carry the story.
+ */
 const STYLE = `
     :root {
       --bg: #0d0d0f;
@@ -49,17 +61,29 @@ const STYLE = `
       -webkit-text-size-adjust: 100%;
     }
 
+    /* Clipped, not offset: see scripts/legal-pages.js. */
     .skip-link {
       position: absolute;
-      left: -9999px;
-      top: 0;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
       background: var(--accent);
       color: #000;
-      padding: 12px 18px;
       z-index: 10;
     }
 
-    .skip-link:focus { left: 0; }
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
 
     .container {
       max-width: 860px;

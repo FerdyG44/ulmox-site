@@ -752,3 +752,48 @@ in any language now says ULMOX uses no automated filtering.
 - **No fixed evidence-retention period has been introduced**, and none may be
   invented here. Evidence is retained where there is a justified safety, abuse
   prevention, legal or appeals reason, for as long as that reason applies.
+- **The 20 landing pages described a product that no longer exists.** Every
+  landing route sold "real video moments" and three feature cards — "Real
+  videos", "Daily moments", "Global feed" — and named none of the surfaces a
+  person actually opens. World Live appeared nowhere on the website, in any
+  language; Connections appeared only in the legal pages, so the one page a
+  store reviewer, a journalist or a prospective user reaches first described a
+  different app from the one the Terms govern. **Resolved at Stage 1.6X.** All
+  20 routes now carry Hero, How ULMOX works, World Live, Connections, Global,
+  Why ULMOX is different, Safety and control, and the download call to action,
+  from `scripts/landing-content.js` through
+  `scripts/generate-landing-pages.js`. The Connections section states the flow
+  the Terms state — genuine encounters can make a Connection *possible*, either
+  person may then ask, both approve independently, and only then text messages
+  and each other's profile — and renders each locale's own
+  `webGradualRollout` sentence from `scripts/translation-content.js`, the same
+  sentence the six legal pages carry, so the landing page and the Terms cannot
+  come to disagree about whether the feature is on. No screenshot was invented:
+  this repository owns `logo.png` and two store badges, and every other
+  illustration on the page is an `aria-hidden` drawing. No statistic,
+  testimonial, user count, rating or review appears in any locale, and
+  `tests/landing-pages.test.js` fails on a two-digit number in any slot but the
+  copyright line.
+- **Every Arabic route on the site could be scrolled 9999px sideways.** Both
+  page shells hid the skip link with `left: -9999px`. That offset is off-screen
+  on a left-to-right page and *inside the scrollable overflow area* of a
+  right-to-left one, so all 20 Arabic routes — landing, legal, support,
+  deletion — had 9999px of empty page to the side of the content, on every
+  device. Measured in a headless browser: `scrollLeft` ranged `-9999..0` on
+  `/ar/` and `/ar/privacy.html`, and `0..0` on the English equivalents.
+  **Resolved at Stage 1.6X.** Both shells clip the link to a 1px box instead,
+  which hides it in either direction and keeps it in the tab order; the range
+  is now `0..0` on every route at 320, 390, 768 and 1440px. A related hole was
+  closed with it: `applyShell()` only added its stylesheet when the page had no
+  shell marker, so a page could never receive a *corrected* shell — the
+  download page kept the old rule through the fix. It replaces an existing
+  block now, and generation is still idempotent.
+- **No native speaker has read the new landing copy in the 18 translated
+  locales.** The Connections, World Live, Global and differentiation sections
+  are new marketing prose, authored in this repository in all 19 languages
+  against the English master, and reviewed by the same process that wrote them.
+  Every slot is filled, no slot is still the English string, and the product
+  claims match the Terms. What has not happened is a reading by a native
+  speaker of each language, or a visual check on a real device in any locale.
+  **Open.** This is the same review task as the localized policy pages above,
+  and it is a review task, not a code task.
