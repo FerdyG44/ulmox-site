@@ -47,6 +47,70 @@ and run `npm run generate`. A locale that is missing a slot cannot be rendered �
 the generator throws, and `npm test` fails — so a policy change cannot ship in
 one language only.
 
+## The landing pages are generated too
+
+The 20 landing routes — `/` and `/<locale>/` — are generated, not hand-edited,
+for the same reason the policy pages are: 20 near-identical files diverged into
+20 slightly different defects once already.
+
+| Source | What it holds |
+| --- | --- |
+| `scripts/landing-content.js` | Every localized string on the page, one block per locale |
+| `scripts/generate-landing-pages.js` | The page template, the stylesheet and the search/social metadata |
+
+The page has eight sections: Hero, How ULMOX works, World Live, Connections,
+Global, Why ULMOX is different, Safety and control, and the download call to
+action. Three rules govern what may be written into `landing-content.js`:
+
+1. **No page may say Connections is on for everyone.** The availability
+   sentence is not written there — the Connections section renders each
+   locale's `webGradualRollout` from `scripts/translation-content.js`, which is
+   the same sentence the six legal pages carry.
+2. **No page may promise that sharing a Moment produces a Connection.** The
+   copy says a genuine encounter *can* make one possible, which is what
+   `/terms.html` §3 says.
+3. **No statistic, testimonial, user count, rating or review**, in any locale.
+   `tests/landing-pages.test.js` fails on a two-digit number in any slot but the
+   copyright line.
+
+`World Live`, `Global` and `Connections` stay in English in every locale — the
+convention the localized legal pages already use. Everything else is
+translated.
+
+### Imagery
+
+This repository owns three pieces of ULMOX artwork: `logo.png` and the two
+store badges. There are no product screenshots here, so the pages show none and
+invent none; every other illustration is an `aria-hidden` drawing in CSS or
+inline SVG. `assets/brand/*.png` are resized renditions of `logo.png` itself,
+so a page no longer loads 1.4 MB to draw a 64px mark. `logo.png` stays at its
+own URL.
+
+```sh
+npm run generate      # regenerates the landing routes with everything else
+node --test tests/landing-pages.test.js
+```
+
+## Previewing the site locally
+
+`npm run build` writes the deployable site to `dist/`. Serve that directory —
+the pages use root-relative paths, so opening an HTML file directly will not
+load the stylesheets, the badges or the language switcher:
+
+```sh
+npm run build
+python3 -m http.server 8080 --directory dist
+```
+
+Then open `http://localhost:8080/en/` (or any other locale). `/` redirects to a
+locale using the browser's language.
+
+Use a server that does not rewrite URLs. `npx serve` strips `.html` by default
+— `/en/privacy.html` becomes a 301 to `/en/privacy` — so the footer links
+behave differently in preview from how they behave on GitHub Pages, which
+serves those paths directly. The one-line Python server above does not rewrite
+anything.
+
 ## Google Analytics 4 setup
 
 1. Open Google Analytics and create or select the ULMOX GA4 property.
