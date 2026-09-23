@@ -3,14 +3,19 @@
 /**
  * Suomi — ULMOXin käytäntötekstit.
  *
- * Translated from the canonical English pages at revision 2026-09-04
+ * Translated from the canonical English pages at revision 2026-09-23
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-04",
+  revision: "2026-09-23",
   effective: "Voimassa 2026-09-04 alkaen. Viimeksi päivitetty 2026-09-04.",
+
+  // The Privacy Policy alone was revised on 2026-09-23 (Location
+  // section). The other four documents still carry `effective` above,
+  // unchanged, because their text did not change.
+  privacyEffective: "Voimassa 2026-09-04 alkaen. Viimeksi päivitetty 2026-09-23.",
 
   privacy: {
     title: "Tietosuojakäytäntö - ULMOX",
@@ -54,8 +59,10 @@ module.exports = {
       ],
       "collect-location": [
         "Sijainti",
-        "Luvallasi ULMOX käyttää laitteesi sijaintia näyttääkseen kaupungin ja maan, jossa hetki kuvattiin, ja sijoittaakseen sisällön maailmankartalle. Jos kieltäydyt, sovellus toimii edelleen ilman sitä.",
-        "Sijainti luetaan <strong>vain sovellusta käyttäessäsi</strong>, yhtenä lukemana kuvaushetkellä. ULMOX ei seuraa sijaintiasi taustalla, ei jäljitä sitä jatkuvasti eikä lue sitä sovelluksen ollessa suljettuna.",
+        "Luvallasi ULMOX voi tehdä yhden sijaintimäärityksen, kun luot hetkeä. Sitä käytetään kyseiseen hetkeen liittyvän kaupungin ja maan määrittämiseen sekä hetken yksityisten toimintojen tukemiseen.",
+        "ULMOX ei julkaise laitteesi koordinaatteja World Livessä. World Live näyttää jaettuun hetkeen liittyvän kaupungin tai maan, ei käyttäjän nykyistä tai reaaliaikaista sijaintia. Julkiset karttamerkinnät asetetaan yleisiin kaupunki- tai maasijainteihin, eivätkä ne liiku, kun sisällön luonut henkilö liikkuu.",
+        "Jos laitteen sijainti ei ole käytettävissä tai kieltäydyt luvasta, ULMOX toimii edelleen normaalisti. Hetki voi tällöin käyttää kaupunkia ja maata, jotka olet itse kirjoittanut profiiliisi.",
+        "Sijainti luetaan vain silloin, kun käytät sovellusta, ja vain yhtenä määrityksenä hetken luomisen aikana. ULMOX ei lue sijaintia käynnistyksessä, ei seuraa sijaintiasi taustalla, ei jäljitä sitä jatkuvasti eikä lue sitä sovelluksen ollessa suljettuna.",
         "ULMOX pyytää vain käytönaikaista sijaintia. Se ei käytä taustasijaintia, jatkuvaa seurantaa, merkittävien muutosten seurantaa eikä geoaitausta, eikä sovellus ilmoita mitään käyttöoikeutta, joka mahdollistaisi minkään näistä.",
       ],
       "collect-translation": [

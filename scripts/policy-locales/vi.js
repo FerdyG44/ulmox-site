@@ -3,14 +3,19 @@
 /**
  * Tiếng Việt — nội dung chính sách của ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-04
+ * Translated from the canonical English pages at revision 2026-09-23
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-04",
+  revision: "2026-09-23",
   effective: "Có hiệu lực từ 2026-09-04. Cập nhật lần cuối 2026-09-04.",
+
+  // The Privacy Policy alone was revised on 2026-09-23 (Location
+  // section). The other four documents still carry `effective` above,
+  // unchanged, because their text did not change.
+  privacyEffective: "Có hiệu lực từ 2026-09-04. Cập nhật lần cuối 2026-09-23.",
 
   privacy: {
     title: "Chính sách quyền riêng tư - ULMOX",
@@ -54,8 +59,10 @@ module.exports = {
       ],
       "collect-location": [
         "Vị trí",
-        "Khi bạn cho phép, ULMOX dùng vị trí thiết bị để hiển thị thành phố và quốc gia nơi một khoảnh khắc được quay, và để đặt nội dung lên bản đồ thế giới. Nếu bạn từ chối, ứng dụng vẫn hoạt động bình thường mà không cần đến nó.",
-        "Vị trí chỉ được đọc <strong>trong lúc bạn dùng ứng dụng</strong>, dưới dạng một lần đọc duy nhất tại thời điểm bạn quay. ULMOX không theo dõi vị trí của bạn ở chế độ nền, không theo dõi liên tục, và không đọc khi ứng dụng đã đóng.",
+        "Khi bạn cho phép, ULMOX có thể đọc vị trí một lần duy nhất trong khi bạn tạo một khoảnh khắc. Thông tin này dùng để xác định thành phố và quốc gia gắn với khoảnh khắc đó và để hỗ trợ các tính năng riêng tư của khoảnh khắc.",
+        "ULMOX không công bố toạ độ thiết bị của bạn lên World Live. World Live hiển thị thành phố hoặc quốc gia gắn với một khoảnh khắc đã chia sẻ, không phải vị trí hiện tại hay vị trí trực tiếp của người dùng. Các dấu vị trí công khai trên bản đồ được đặt ở vị trí chung của thành phố hoặc quốc gia và không di chuyển khi người tạo nội dung di chuyển.",
+        "Nếu không có vị trí thiết bị hoặc bạn từ chối quyền, ULMOX vẫn hoạt động bình thường. Khi đó, khoảnh khắc có thể dùng thành phố và quốc gia mà bạn đã tự nhập trong trang cá nhân.",
+        "Vị trí chỉ được đọc trong khi bạn đang dùng ứng dụng và chỉ là một lần đọc trong quá trình tạo khoảnh khắc. ULMOX không đọc vị trí khi khởi động, không theo dõi vị trí của bạn ở chế độ nền, không theo dõi liên tục và không đọc khi ứng dụng đã đóng.",
         "ULMOX chỉ xin vị trí khi đang sử dụng. Ứng dụng không dùng vị trí nền, giám sát liên tục, giám sát thay đổi đáng kể hay hàng rào địa lý, và không khai báo bất kỳ quyền nào cho phép làm những việc đó.",
       ],
       "collect-translation": [

@@ -3,14 +3,19 @@
 /**
  * Svenska — ULMOX policytexter.
  *
- * Translated from the canonical English pages at revision 2026-09-04
+ * Translated from the canonical English pages at revision 2026-09-23
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-04",
+  revision: "2026-09-23",
   effective: "Gäller från 2026-09-04. Senast uppdaterad 2026-09-04.",
+
+  // The Privacy Policy alone was revised on 2026-09-23 (Location
+  // section). The other four documents still carry `effective` above,
+  // unchanged, because their text did not change.
+  privacyEffective: "Gäller från 2026-09-04. Senast uppdaterad 2026-09-23.",
 
   privacy: {
     title: "Integritetspolicy - ULMOX",
@@ -54,8 +59,10 @@ module.exports = {
       ],
       "collect-location": [
         "Plats",
-        "Med din tillåtelse använder ULMOX din enhets plats för att visa i vilken stad och vilket land ett ögonblick spelades in och för att placera innehåll på världskartan. Om du avböjer fortsätter appen att fungera utan den.",
-        "Platsen läses <strong>endast medan du använder appen</strong>, som en enda avläsning i det ögonblick du spelar in. ULMOX följer inte din plats i bakgrunden, spårar den inte kontinuerligt och läser den inte när appen är stängd.",
+        "Med din tillåtelse kan ULMOX göra en enda platsavläsning medan du skapar ett ögonblick. Den används för att avgöra vilken stad och vilket land som hör till det ögonblicket och för att stödja privata ögonblicksfunktioner.",
+        "ULMOX publicerar inte din enhets koordinater till World Live. World Live visar den stad eller det land som hör till ett delat ögonblick, inte en användares nuvarande eller aktuella plats. Offentliga kartmarkörer placeras på allmänna stads- eller landspositioner och flyttar sig inte när den som skapat innehållet förflyttar sig.",
+        "Om enhetens plats inte är tillgänglig eller om du avböjer tillåtelse fortsätter ULMOX att fungera som vanligt. Ett ögonblick kan i stället använda den stad och det land som du själv har angett i din profil.",
+        "Platsen läses endast medan du använder appen, och endast som en enda avläsning under skapandet av ett ögonblick. ULMOX läser inte platsen vid start, följer inte din plats i bakgrunden, spårar den inte kontinuerligt och läser den inte när appen är stängd.",
         "ULMOX ber endast om plats under användning. Appen använder inte bakgrundsplats, kontinuerlig övervakning, övervakning av betydande förändringar eller geostaket, och den deklarerar ingen behörighet som skulle låta den göra något av det.",
       ],
       "collect-translation": [

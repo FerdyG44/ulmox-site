@@ -3,15 +3,20 @@
 /**
  * العربية — نصوص سياسات ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-04
+ * Translated from the canonical English pages at revision 2026-09-23
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  * Rendered right-to-left: scripts/page-shell.js sets dir="rtl" for this locale.
  */
 
 module.exports = {
-  revision: "2026-09-04",
+  revision: "2026-09-23",
   effective: "سارية اعتبارًا من 2026-09-04. آخر تحديث في 2026-09-04.",
+
+  // The Privacy Policy alone was revised on 2026-09-23 (Location
+  // section). The other four documents still carry `effective` above,
+  // unchanged, because their text did not change.
+  privacyEffective: "سارية اعتبارًا من 2026-09-04. آخر تحديث في 2026-09-23.",
 
   privacy: {
     title: "سياسة الخصوصية - ULMOX",
@@ -55,8 +60,10 @@ module.exports = {
       ],
       "collect-location": [
         "الموقع",
-        "بإذنك، يستخدم ULMOX موقع جهازك لعرض المدينة والبلد اللذين سُجّلت فيهما اللحظة، ولوضع المحتوى على خريطة العالم. وإذا رفضت، يواصل التطبيق عمله من دون ذلك.",
-        "يُقرأ الموقع <strong>أثناء استخدامك للتطبيق فقط</strong>، كقراءة واحدة تُؤخذ لحظة التسجيل. ولا يتتبّع ULMOX موقعك في الخلفية، ولا يرصده باستمرار، ولا يقرأه والتطبيق مغلق.",
+        "بإذنك، قد يأخذ ULMOX قراءة موقع واحدة أثناء إنشائك للحظة. وتُستخدم هذه القراءة لتحديد المدينة والبلد المرتبطين بتلك اللحظة، ولدعم ميزات اللحظة الخاصة.",
+        "لا ينشر ULMOX إحداثيات جهازك في World Live. فـ World Live يعرض المدينة أو البلد المرتبطين بلحظة تمت مشاركتها، لا الموقع الحالي أو المباشر للمستخدم. وتُوضع علامات الخريطة العامة في مواقع عامة للمدينة أو البلد، ولا تتحرك عند تحرّك من أنشأ المحتوى.",
+        "إذا لم يكن موقع الجهاز متاحًا أو رفضت الإذن، يواصل ULMOX عمله بصورة طبيعية. وقد تستخدم اللحظة بدلًا من ذلك المدينة والبلد اللذين أدخلتهما بنفسك في ملفك الشخصي.",
+        "لا تُقرأ الموقع إلا أثناء استخدامك للتطبيق، وكقراءة واحدة فقط خلال إنشاء لحظة. ولا يقرأ ULMOX الموقع عند بدء التشغيل، ولا يتابع موقعك في الخلفية، ولا يتتبعه بشكل مستمر، ولا يقرأه أثناء إغلاق التطبيق.",
         "لا يطلب ULMOX سوى الموقع أثناء الاستخدام. وهو لا يستخدم الموقع في الخلفية ولا المراقبة المستمرة ولا مراقبة التغيّر الجوهري ولا السياج الجغرافي، ولا يعلن التطبيق أي إذن يتيح له أيًّا من ذلك.",
       ],
       "collect-translation": [

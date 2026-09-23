@@ -3,14 +3,19 @@
 /**
  * Nederlands — ULMOX-beleidsteksten.
  *
- * Translated from the canonical English pages at revision 2026-09-04
+ * Translated from the canonical English pages at revision 2026-09-23
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-04",
+  revision: "2026-09-23",
   effective: "Van kracht vanaf 2026-09-04. Voor het laatst gewijzigd op 2026-09-04.",
+
+  // The Privacy Policy alone was revised on 2026-09-23 (Location
+  // section). The other four documents still carry `effective` above,
+  // unchanged, because their text did not change.
+  privacyEffective: "Van kracht vanaf 2026-09-04. Voor het laatst gewijzigd op 2026-09-23.",
 
   privacy: {
     title: "Privacybeleid - ULMOX",
@@ -54,8 +59,10 @@ module.exports = {
       ],
       "collect-location": [
         "Locatie",
-        "Met jouw toestemming gebruikt ULMOX de locatie van je toestel om de stad en het land te tonen waar een moment is opgenomen en om inhoud op de wereldkaart te plaatsen. Als je weigert, blijft de app zonder werken.",
-        "De locatie wordt <strong>alleen gelezen terwijl je de app gebruikt</strong>, als één meting op het moment dat je opneemt. ULMOX volgt je locatie niet op de achtergrond, houdt die niet doorlopend bij en leest die niet uit terwijl de app gesloten is.",
+        "Met jouw toestemming kan ULMOX één enkele locatiemeting doen terwijl je een moment maakt. Die wordt gebruikt om de stad en het land te bepalen die bij dat moment horen, en om privéfuncties van het moment te ondersteunen.",
+        "ULMOX publiceert de coördinaten van je toestel niet op World Live. World Live toont de stad of het land die bij een gedeeld moment horen, niet de huidige of live locatie van een persoon. Openbare kaartmarkeringen staan op algemene stads- of landlocaties en verplaatsen zich niet wanneer degene die de inhoud maakte zich verplaatst.",
+        "Als de locatie van je toestel niet beschikbaar is of je de toestemming weigert, blijft ULMOX gewoon werken. Een moment kan in plaats daarvan de stad en het land gebruiken die je zelf in je profiel hebt ingevuld.",
+        "De locatie wordt alleen gelezen terwijl je de app gebruikt, en alleen als één meting tijdens het maken van een moment. ULMOX leest de locatie niet bij het opstarten, volgt je locatie niet op de achtergrond, houdt die niet continu bij en leest die niet terwijl de app gesloten is.",
         "ULMOX vraagt uitsluitend om locatie tijdens gebruik. De app gebruikt geen achtergrondlocatie, geen doorlopende bewaking, geen bewaking van significante wijzigingen en geen geofencing, en declareert geen enkele toestemming die dat mogelijk zou maken.",
       ],
       "collect-translation": [

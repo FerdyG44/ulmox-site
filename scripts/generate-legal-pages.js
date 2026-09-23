@@ -371,21 +371,33 @@ const privacy = page({
 
     <h3>Location</h3>
     <p>
-      With your permission, ULMOX uses your device location to show the city and
-      country where a moment was recorded, and to place content on the world
-      map. If you decline, the app continues to work without it.
+      With your permission, ULMOX may take a single location reading while you
+      are creating a Moment. This is used to determine the city and country
+      associated with that Moment and to support private Moment features.
     </p>
     <p>
-      Location is read <strong>only while you are using the app</strong>, as a
-      single reading taken at the moment you record. ULMOX does not follow your
-      location in the background, does not track it continuously, and does not
-      read it while the app is closed.
+      ULMOX does not publish your device coordinates to World Live. World Live
+      displays the city or country associated with a shared Moment, not a
+      user's current or live location. Public map markers are placed at general
+      city or country locations and do not move when the creator moves.
     </p>
     <p>
-      ULMOX asks only for while-in-use location. It does not use background
+      If device location is unavailable or you decline permission, ULMOX
+      continues to work normally. A Moment may instead use the city and country
+      that you entered manually in your profile.
+    </p>
+    <p>
+      Location is accessed only while you are using the app and only as a
+      single reading during the Moment creation flow. ULMOX does not access
+      location at launch, does not follow your location in the background, does
+      not continuously track your location, and does not access it while the
+      app is closed.
+    </p>
+    <p>
+      ULMOX requests only while-in-use location. It does not use background
       location, continuous monitoring, significant-change monitoring or
-      geofencing, and the app declares no permission that would let it do any of
-      them.
+      geofencing, and the app declares no permission that would allow those
+      activities.
     </p>
 
     <h3>Message translation (Google ML Kit)</h3>

@@ -215,6 +215,63 @@ test("every translated locale declares the canonical revision it implements", ()
   }
 });
 
+/**
+ * The Privacy Policy was revised on its own, and only it says so.
+ *
+ * Every page used to share one date line, so re-dating one document would have
+ * re-dated five. Only the Privacy Policy's Location section changed on
+ * 2026-09-23; printing that date on the Terms, Safety, Support or Delete
+ * Account page would be a false statement about a document nobody edited —
+ * and dropping the 2026-09-04 effective date from any page would be the
+ * opposite failure. Both are asserted here, in all 19 languages.
+ */
+test("only the Privacy Policy carries the 2026-09-23 revision date", () => {
+  const REVISED = "2026-09-23";
+  const EFFECTIVE = "2026-09-04";
+
+  const dateLine = (relative) => {
+    const match = read(relative).match(/<p class="effective">([\s\S]*?)<\/p>/i);
+    assert.ok(match, `${relative} has no date line at all`);
+    return match[1].replace(/<[^>]+>/g, " ");
+  };
+
+  const assertPage = (relative, key) => {
+    const line = dateLine(relative);
+    assert.ok(line.includes(EFFECTIVE), `${relative} lost its ${EFFECTIVE} effective date`);
+    assert.equal(
+      line.includes(REVISED),
+      key === "privacy",
+      key === "privacy"
+        ? `${relative} does not show the ${REVISED} revision`
+        : `${relative} claims a ${REVISED} revision it did not have`
+    );
+  };
+
+  for (const key of SCHEMA.PAGE_KEYS) {
+    // The canonical English pages, served from the site root.
+    assertPage(SCHEMA.PAGES[key].file, key);
+    for (const locale of LOCALES) {
+      assertPage(`${locale}/${SCHEMA.PAGES[key].file}`, key);
+    }
+  }
+
+  // And the source of those lines: every translation states the privacy date
+  // in its own words, and none of them quietly re-dates the shared line the
+  // other four documents still use.
+  for (const locale of LOCALE_CONTENT.TRANSLATED_LOCALES) {
+    const { effective, privacyEffective } = LOCALE_CONTENT[locale];
+    assert.ok(privacyEffective, `${locale} has no privacyEffective line`);
+    assert.ok(
+      privacyEffective.includes(REVISED),
+      `${locale} privacyEffective does not carry ${REVISED}`
+    );
+    assert.ok(
+      effective.includes(EFFECTIVE) && !effective.includes(REVISED),
+      `${locale} re-dated the line shared by the four unchanged documents`
+    );
+  }
+});
+
 /* -------------------------------------------------------------------------- */
 /* 3. The numbers agree                                                       */
 /* -------------------------------------------------------------------------- */

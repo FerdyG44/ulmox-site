@@ -3,14 +3,19 @@
 /**
  * Français — textes des politiques ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-04
+ * Translated from the canonical English pages at revision 2026-09-23
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-04",
+  revision: "2026-09-23",
   effective: "En vigueur au 2026-09-04. Dernière modification le 2026-09-04.",
+
+  // The Privacy Policy alone was revised on 2026-09-23 (Location
+  // section). The other four documents still carry `effective` above,
+  // unchanged, because their text did not change.
+  privacyEffective: "En vigueur au 2026-09-04. Dernière modification le 2026-09-23.",
 
   privacy: {
     title: "Politique de confidentialité - ULMOX",
@@ -54,8 +59,10 @@ module.exports = {
       ],
       "collect-location": [
         "Localisation",
-        "Avec votre autorisation, ULMOX utilise la localisation de votre appareil pour afficher la ville et le pays où un moment a été enregistré et pour placer le contenu sur la carte du monde. Si vous refusez, l’application continue de fonctionner sans cela.",
-        "La localisation est lue <strong>uniquement pendant que vous utilisez l’application</strong>, sous la forme d’une seule mesure prise au moment de l’enregistrement. ULMOX ne suit pas votre position en arrière-plan, ne la piste pas en continu et ne la lit pas lorsque l’application est fermée.",
+        "Avec votre autorisation, ULMOX peut effectuer une seule mesure de localisation pendant que vous créez un moment. Elle sert à déterminer la ville et le pays associés à ce moment et à prendre en charge des fonctionnalités privées du moment.",
+        "ULMOX ne publie pas les coordonnées de votre appareil sur World Live. World Live affiche la ville ou le pays associés à un moment partagé, et non la position actuelle ou en direct d’une personne. Les repères publics de la carte sont placés à des emplacements généraux de ville ou de pays et ne se déplacent pas lorsque la personne qui a créé le contenu se déplace.",
+        "Si la localisation de l’appareil n’est pas disponible ou si vous refusez l’autorisation, ULMOX continue de fonctionner normalement. Un moment peut alors utiliser la ville et le pays que vous avez saisis vous-même dans votre profil.",
+        "La localisation n’est lue que pendant que vous utilisez l’application, et uniquement sous la forme d’une seule mesure lors de la création d’un moment. ULMOX ne lit pas la localisation au démarrage, ne suit pas votre position en arrière-plan, ne la suit pas en continu et ne la lit pas lorsque l’application est fermée.",
         "ULMOX ne demande que la localisation pendant l’utilisation. L’application n’utilise ni localisation en arrière-plan, ni surveillance continue, ni surveillance des changements significatifs, ni géorepérage, et elle ne déclare aucune autorisation qui lui permettrait de le faire.",
       ],
       "collect-translation": [

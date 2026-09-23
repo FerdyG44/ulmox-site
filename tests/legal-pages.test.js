@@ -602,11 +602,23 @@ test("no page asks for a credential, authorisation code or token by email", () =
 test("location is described as foreground-only, never background tracking", () => {
   const html = pages["privacy.html"];
   assert.match(html, /only while you are using the app/);
-  assert.match(html, /single reading taken at the moment you record/);
+  // The single reading is now tied to the Moment creation flow rather than to
+  // "the moment you record": the reading is taken while a Moment is being
+  // created, which is the same guarantee stated in the app's own terms.
+  assert.match(html, /single reading during the Moment creation flow/);
   assert.match(
     html,
     /does not follow your\s*\n?\s*location in the background/
   );
+  // Launch is the one foreground moment a reader would not think to ask about,
+  // and it is the one Apple asked about, so it is stated and asserted.
+  assert.match(html, /does not access\s*\n?\s*location at launch/);
+  // What the public surface shows is a property of the Moment, not of a person:
+  // a city or country, never device coordinates, and a marker that does not
+  // move when its creator moves.
+  assert.match(html, /does not publish your device coordinates to World Live/);
+  assert.match(html, /not a\s*\n?\s*user's current or live location/);
+  assert.match(html, /do not move when the creator moves/);
   for (const [file, page_] of Object.entries(pages)) {
     for (const sentence of positiveSentences(page_)) {
       assert.doesNotMatch(
@@ -642,12 +654,15 @@ test("no stale Always-location or planned-removal wording remains", () => {
 
 test("the app is described as declaring no background-location capability", () => {
   const html = pages["privacy.html"];
-  assert.match(html, /ULMOX asks only for while-in-use location/);
+  assert.match(html, /ULMOX requests only while-in-use location/);
   assert.match(
     html,
     /does not use background\s*\n?\s*location, continuous monitoring, significant-change monitoring or\s*\n?\s*geofencing/
   );
-  assert.match(html, /declares no permission that would let it do any of\s*\n?\s*them/);
+  assert.match(
+    html,
+    /declares no permission that would allow those\s*\n?\s*activities/
+  );
 });
 
 test("media access wording is platform-specific and not falsely absolute", () => {

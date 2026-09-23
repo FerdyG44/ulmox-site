@@ -3,14 +3,19 @@
 /**
  * Español — textos de las políticas de ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-04
+ * Translated from the canonical English pages at revision 2026-09-23
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-04",
+  revision: "2026-09-23",
   effective: "En vigor desde el 2026-09-04. Actualizado por última vez el 2026-09-04.",
+
+  // The Privacy Policy alone was revised on 2026-09-23 (Location
+  // section). The other four documents still carry `effective` above,
+  // unchanged, because their text did not change.
+  privacyEffective: "En vigor desde el 2026-09-04. Actualizado por última vez el 2026-09-23.",
 
   privacy: {
     title: "Política de privacidad - ULMOX",
@@ -54,8 +59,10 @@ module.exports = {
       ],
       "collect-location": [
         "Ubicación",
-        "Con tu permiso, ULMOX usa la ubicación de tu dispositivo para mostrar la ciudad y el país donde se grabó un momento y para situar el contenido en el mapa del mundo. Si no lo concedes, la aplicación sigue funcionando sin ello.",
-        "La ubicación se lee <strong>solo mientras usas la aplicación</strong>, como una única lectura tomada en el momento de grabar. ULMOX no sigue tu ubicación en segundo plano, no la rastrea de forma continua y no la lee con la aplicación cerrada.",
+        "Con tu permiso, ULMOX puede tomar una única lectura de ubicación mientras creas un momento. Se usa para determinar la ciudad y el país asociados a ese momento y para dar soporte a funciones privadas del momento.",
+        "ULMOX no publica las coordenadas de tu dispositivo en World Live. World Live muestra la ciudad o el país asociados a un momento compartido, no la ubicación actual o en directo de una persona. Los marcadores públicos del mapa se sitúan en ubicaciones generales de ciudad o país y no se desplazan cuando se desplaza quien creó el contenido.",
+        "Si la ubicación del dispositivo no está disponible o no concedes el permiso, ULMOX sigue funcionando con normalidad. Un momento puede usar en su lugar la ciudad y el país que hayas introducido manualmente en tu perfil.",
+        "La ubicación se lee únicamente mientras usas la aplicación y solo como una lectura durante el proceso de creación de un momento. ULMOX no lee la ubicación al iniciarse, no sigue tu ubicación en segundo plano, no la rastrea de forma continua y no la lee mientras la aplicación está cerrada.",
         "ULMOX solicita únicamente la ubicación durante el uso. No emplea ubicación en segundo plano, monitorización continua, monitorización de cambios significativos ni geovallas, y la aplicación no declara ningún permiso que le permitiera hacer nada de eso.",
       ],
       "collect-translation": [

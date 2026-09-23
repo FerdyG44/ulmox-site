@@ -3,14 +3,19 @@
 /**
  * 한국어 — ULMOX 정책 본문.
  *
- * Translated from the canonical English pages at revision 2026-09-04
+ * Translated from the canonical English pages at revision 2026-09-23
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-04",
+  revision: "2026-09-23",
   effective: "시행일 2026-09-04. 최종 수정일 2026-09-04.",
+
+  // The Privacy Policy alone was revised on 2026-09-23 (Location
+  // section). The other four documents still carry `effective` above,
+  // unchanged, because their text did not change.
+  privacyEffective: "시행일 2026-09-04. 최종 수정일 2026-09-23.",
 
   privacy: {
     title: "개인정보 처리방침 - ULMOX",
@@ -54,8 +59,10 @@ module.exports = {
       ],
       "collect-location": [
         "위치",
-        "허락하시면 ULMOX는 기기 위치를 사용해 순간이 녹화된 도시와 국가를 표시하고 콘텐츠를 세계 지도에 배치합니다. 거절하셔도 앱은 그대로 작동합니다.",
-        "위치는 <strong>앱을 사용하는 동안에만</strong>, 녹화하는 순간에 한 번만 읽습니다. ULMOX는 백그라운드에서 위치를 따라가지 않고, 지속적으로 추적하지 않으며, 앱이 닫혀 있는 동안 읽지도 않습니다.",
+        "허락하시면 ULMOX는 순간을 만드는 동안 위치를 한 번 측정할 수 있습니다. 이는 해당 순간과 연결된 도시와 국가를 확인하고 비공개 순간 기능을 지원하기 위해 사용됩니다.",
+        "ULMOX는 기기 좌표를 World Live에 공개하지 않습니다. World Live는 공유된 순간과 연결된 도시 또는 국가를 표시하며, 이용자의 현재 위치나 실시간 위치를 표시하지 않습니다. 공개 지도 표시는 도시 또는 국가의 일반적인 위치에 놓이며, 콘텐츠를 만든 사람이 이동해도 함께 이동하지 않습니다.",
+        "기기 위치를 사용할 수 없거나 권한을 거절하셔도 ULMOX는 그대로 작동합니다. 이 경우 순간은 이용자가 프로필에 직접 입력한 도시와 국가를 사용할 수 있습니다.",
+        "위치는 앱을 사용하는 동안에만, 그리고 순간 생성 과정에서 한 번의 측정으로만 읽습니다. ULMOX는 실행 시 위치를 읽지 않고, 백그라운드에서 위치를 따라가지 않으며, 지속적으로 추적하지 않고, 앱이 종료된 상태에서 읽지 않습니다.",
         "ULMOX가 요청하는 것은 사용 중 위치뿐입니다. 백그라운드 위치, 지속적 모니터링, 중요 변경 모니터링, 지오펜싱을 사용하지 않으며, 그런 일을 가능하게 할 어떤 권한도 앱은 선언하지 않습니다.",
       ],
       "collect-translation": [

@@ -188,7 +188,15 @@ function renderBody(locale, pageKey) {
     throw new Error(`${locale}: no "${pageKey}" content`);
   }
 
-  const parts = [`    <p class="effective">${expand(LOCALE_CONTENT[locale].effective, locale)}</p>`];
+  // A document revised after it took effect carries its own date line. Every
+  // locale states both dates in its own words, so the privacy page cannot pick
+  // up a sentence that says "last updated" with the wrong date in it, and the
+  // four documents that have not changed keep the line they already had.
+  const dateLine =
+    (pageKey === "privacy" && LOCALE_CONTENT[locale].privacyEffective) ||
+    LOCALE_CONTENT[locale].effective;
+
+  const parts = [`    <p class="effective">${expand(dateLine, locale)}</p>`];
 
   for (const section of definition.sections) {
     const strings = content.sections[section.id];

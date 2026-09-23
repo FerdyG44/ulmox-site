@@ -3,14 +3,19 @@
 /**
  * Türkçe — ULMOX politika metinleri.
  *
- * Translated from the canonical English pages at revision 2026-09-04
+ * Translated from the canonical English pages at revision 2026-09-23
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-04",
+  revision: "2026-09-23",
   effective: "Yürürlük tarihi 2026-09-04. Son güncelleme 2026-09-04.",
+
+  // The Privacy Policy alone was revised on 2026-09-23 (Location
+  // section). The other four documents still carry `effective` above,
+  // unchanged, because their text did not change.
+  privacyEffective: "Yürürlük tarihi 2026-09-04. Son güncelleme 2026-09-23.",
 
   privacy: {
     title: "Gizlilik Politikası - ULMOX",
@@ -54,8 +59,10 @@ module.exports = {
       ],
       "collect-location": [
         "Konum",
-        "İzniniz varsa ULMOX, bir anın kaydedildiği şehri ve ülkeyi göstermek ve içeriği dünya haritasına yerleştirmek için cihaz konumunuzu kullanır. Reddederseniz uygulama konum olmadan çalışmaya devam eder.",
-        "Konum <strong>yalnızca uygulamayı kullanırken</strong>, kayıt yaptığınız anda alınan tek bir okuma olarak okunur. ULMOX konumunuzu arka planda izlemez, sürekli takip etmez ve uygulama kapalıyken okumaz.",
+        "İzniniz varsa ULMOX, bir an oluştururken tek bir konum okuması alabilir. Bu okuma, o anla ilişkili şehri ve ülkeyi belirlemek ve gizli an özelliklerini desteklemek için kullanılır.",
+        "ULMOX, cihazınızın koordinatlarını World Live’da yayınlamaz. World Live, paylaşılan bir anla ilişkili şehri veya ülkeyi gösterir; bir kullanıcının mevcut ya da anlık konumunu göstermez. Herkese açık harita işaretleri genel şehir veya ülke konumlarına yerleştirilir ve içeriği oluşturan kişi hareket ettiğinde yer değiştirmez.",
+        "Cihaz konumu kullanılamıyorsa veya izni reddederseniz ULMOX normal şekilde çalışmaya devam eder. Bir an, bunun yerine profilinizde kendi girdiğiniz şehri ve ülkeyi kullanabilir.",
+        "Konum yalnızca uygulamayı kullanırken ve yalnızca an oluşturma akışı sırasında tek bir okuma olarak okunur. ULMOX açılışta konumu okumaz, konumunuzu arka planda izlemez, sürekli takip etmez ve uygulama kapalıyken okumaz.",
         "ULMOX yalnızca kullanım sırasındaki konumu ister. Arka plan konumu, sürekli izleme, önemli değişiklik izlemesi veya coğrafi sınır özelliklerini kullanmaz ve uygulama bunlardan herhangi birini yapmasına imkân verecek hiçbir izin tanımlamaz.",
       ],
       "collect-translation": [

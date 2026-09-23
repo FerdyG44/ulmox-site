@@ -3,14 +3,19 @@
 /**
  * 简体中文 — ULMOX 政策文本。
  *
- * Translated from the canonical English pages at revision 2026-09-04
+ * Translated from the canonical English pages at revision 2026-09-23
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-04",
+  revision: "2026-09-23",
   effective: "自 2026-09-04 起生效。最近更新于 2026-09-04。",
+
+  // The Privacy Policy alone was revised on 2026-09-23 (Location
+  // section). The other four documents still carry `effective` above,
+  // unchanged, because their text did not change.
+  privacyEffective: "自 2026-09-04 起生效。最近更新于 2026-09-23。",
 
   privacy: {
     title: "隐私政策 - ULMOX",
@@ -54,8 +59,10 @@ module.exports = {
       ],
       "collect-location": [
         "位置",
-        "在你许可的情况下，ULMOX 会使用设备位置来显示某个瞬间的录制城市和国家，并把内容标注在世界地图上。如果你拒绝，应用仍可照常使用。",
-        "位置<strong>仅在你使用应用期间</strong>读取，且只在录制那一刻读取一次。ULMOX 不会在后台跟随你的位置，不会持续追踪，也不会在应用关闭时读取。",
+        "在你许可的情况下，ULMOX 可能在你创建瞬间时读取一次位置。它用于确定与该瞬间关联的城市和国家，并支持瞬间的私密功能。",
+        "ULMOX 不会把你的设备坐标发布到 World Live。World Live 显示的是与已分享瞬间关联的城市或国家，而不是用户的当前位置或实时位置。公开的地图标记放置在城市或国家的大致位置，不会随创建内容的人移动而移动。",
+        "如果设备位置不可用或你拒绝授权，ULMOX 仍可照常使用。此时瞬间可以改用你在个人资料中自行填写的城市和国家。",
+        "只有在你使用应用期间才会读取位置，并且仅在创建瞬间的流程中读取一次。ULMOX 不会在启动时读取位置，不会在后台跟随你的位置，不会持续追踪位置，也不会在应用关闭时读取位置。",
         "ULMOX 只请求使用期间的位置。它不使用后台位置、持续监测、显著变化监测或地理围栏，应用也未声明任何可实现上述功能的权限。",
       ],
       "collect-translation": [

@@ -3,14 +3,19 @@
 /**
  * Deutsch — ULMOX-Richtlinientexte.
  *
- * Translated from the canonical English pages at revision 2026-09-04
+ * Translated from the canonical English pages at revision 2026-09-23
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-04",
+  revision: "2026-09-23",
   effective: "Gültig ab 2026-09-04. Zuletzt geändert am 2026-09-04.",
+
+  // The Privacy Policy alone was revised on 2026-09-23 (Location
+  // section). The other four documents still carry `effective` above,
+  // unchanged, because their text did not change.
+  privacyEffective: "Gültig ab 2026-09-04. Zuletzt geändert am 2026-09-23.",
 
   privacy: {
     title: "Datenschutzerklärung - ULMOX",
@@ -54,8 +59,10 @@ module.exports = {
       ],
       "collect-location": [
         "Standort",
-        "Mit Ihrer Erlaubnis nutzt ULMOX den Standort Ihres Geräts, um Stadt und Land anzuzeigen, in denen ein Moment aufgenommen wurde, und um Inhalte auf der Weltkarte zu verorten. Lehnen Sie ab, funktioniert die App weiterhin ohne diese Angabe.",
-        "Der Standort wird <strong>nur während der Nutzung der App</strong> ausgelesen, als eine einzelne Messung im Moment der Aufnahme. ULMOX verfolgt Ihren Standort nicht im Hintergrund, erfasst ihn nicht fortlaufend und liest ihn nicht aus, wenn die App geschlossen ist.",
+        "Mit Ihrer Erlaubnis kann ULMOX während der Erstellung eines Moments eine einzige Standortabfrage vornehmen. Sie dient dazu, die zu diesem Moment gehörende Stadt und das Land zu bestimmen und private Moment-Funktionen zu unterstützen.",
+        "ULMOX veröffentlicht die Koordinaten Ihres Geräts nicht in World Live. World Live zeigt die Stadt oder das Land, die zu einem geteilten Moment gehören, nicht den aktuellen oder Live-Standort einer Person. Öffentliche Kartenmarkierungen werden an allgemeinen Stadt- oder Länderpositionen gesetzt und bewegen sich nicht mit, wenn sich die erstellende Person bewegt.",
+        "Ist der Gerätestandort nicht verfügbar oder lehnen Sie die Erlaubnis ab, funktioniert ULMOX weiterhin normal. Ein Moment kann stattdessen die Stadt und das Land verwenden, die Sie selbst in Ihrem Profil eingetragen haben.",
+        "Der Standort wird nur während der Nutzung der App abgefragt und nur als einzige Abfrage während der Erstellung eines Moments. ULMOX fragt den Standort nicht beim Start ab, verfolgt Ihren Standort nicht im Hintergrund, erfasst ihn nicht fortlaufend und fragt ihn nicht ab, während die App geschlossen ist.",
         "ULMOX fragt ausschließlich den Standort während der Nutzung an. Die App verwendet weder Hintergrundstandort noch fortlaufende Überwachung, Überwachung wesentlicher Standortänderungen oder Geofencing, und sie deklariert keine Berechtigung, die ihr eines davon erlauben würde.",
       ],
       "collect-translation": [

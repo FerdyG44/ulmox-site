@@ -13,6 +13,27 @@
  */
 
 const EFFECTIVE_DATE = "2026-09-04";
+
+/**
+ * When each document was last revised, where that differs from the date it
+ * took effect.
+ *
+ * Keyed by file, and absent means "not revised since it took effect" — which
+ * is why the four documents that have not changed are simply not listed. The
+ * date used to be one constant shared by every legal page, so revising one
+ * document silently re-dated the other four as though they had been revised
+ * too. For published legal text that is a false statement, not a cosmetic one.
+ */
+const LAST_UPDATED = Object.freeze({
+  // Location section rewritten to describe the World Live privacy model
+  // precisely: a Moment's city or country, never a live user location.
+  "privacy.html": "2026-09-23",
+});
+
+/** The last-updated date for one document, defaulting to its effective date. */
+function lastUpdatedFor(file) {
+  return LAST_UPDATED[file] || EFFECTIVE_DATE;
+}
 const CONTACT_EMAIL = "ulmoxapp@outlook.com";
 const CHILD_SAFETY_LABEL = "ULMOX Child Safety Contact";
 
@@ -221,7 +242,7 @@ function page({
   <div class="container">
   <main id="main">
     <h1>${heading}</h1>
-${effective ? `    <p class="effective">Effective ${EFFECTIVE_DATE}. Last updated ${EFFECTIVE_DATE}.</p>\n` : ""}${body}
+${effective ? `    <p class="effective">Effective ${EFFECTIVE_DATE}. Last updated ${lastUpdatedFor(file)}.</p>\n` : ""}${body}
   </main>
 ${footerHtml === undefined ? footer(file) : footerHtml}
   </div>
@@ -232,6 +253,8 @@ ${footerHtml === undefined ? footer(file) : footerHtml}
 
 module.exports = {
   EFFECTIVE_DATE,
+  LAST_UPDATED,
+  lastUpdatedFor,
   CONTACT_EMAIL,
   CHILD_SAFETY_LABEL,
   PAGES,

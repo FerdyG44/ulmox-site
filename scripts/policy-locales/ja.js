@@ -3,14 +3,19 @@
 /**
  * 日本語 — ULMOX のポリシー本文。
  *
- * Translated from the canonical English pages at revision 2026-09-04
+ * Translated from the canonical English pages at revision 2026-09-23
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-04",
+  revision: "2026-09-23",
   effective: "発効日 2026-09-04。最終更新 2026-09-04。",
+
+  // The Privacy Policy alone was revised on 2026-09-23 (Location
+  // section). The other four documents still carry `effective` above,
+  // unchanged, because their text did not change.
+  privacyEffective: "発効日 2026-09-04。最終更新 2026-09-23。",
 
   privacy: {
     title: "プライバシーポリシー - ULMOX",
@@ -54,8 +59,10 @@ module.exports = {
       ],
       "collect-location": [
         "位置情報",
-        "許可をいただいた場合、ULMOX は端末の位置情報を用いて、モーメントが撮影された都市と国を表示し、コンテンツを世界地図上に配置します。許可しない場合も、アプリは位置情報なしで動作します。",
-        "位置情報は<strong>アプリの利用中のみ</strong>、撮影の瞬間に 1 回だけ取得されます。ULMOX がバックグラウンドで位置情報を追跡することはなく、継続的に記録することもなく、アプリを閉じている間に読み取ることもありません。",
+        "お客様の許可がある場合、ULMOX はモーメントの作成中に一度だけ位置情報を取得することがあります。これはそのモーメントに関連する都市と国を判定し、非公開のモーメント機能を提供するために使用されます。",
+        "ULMOX はお客様の端末の座標を World Live に公開しません。World Live は共有されたモーメントに関連する都市または国を表示するもので、利用者の現在地やリアルタイムの位置を表示するものではありません。公開される地図上のマーカーは都市または国の一般的な位置に置かれ、作成した人が移動してもマーカーは移動しません。",
+        "端末の位置情報を利用できない場合や許可されない場合でも、ULMOX は通常どおり動作します。その場合、モーメントはお客様がプロフィールにご自身で入力した都市と国を使用することがあります。",
+        "位置情報を読み取るのは、アプリをご利用中のあいだ、かつモーメント作成時の一度の取得に限られます。ULMOX は起動時に位置情報を読み取らず、バックグラウンドで位置を追跡せず、継続的に追跡することもなく、アプリが終了している間に読み取ることもありません。",
         "ULMOX が求めるのは利用中の位置情報だけです。バックグラウンド位置情報、継続的な監視、大幅変更の監視、ジオフェンシングは使用しておらず、それらを可能にする権限もアプリは一切宣言していません。",
       ],
       "collect-translation": [
