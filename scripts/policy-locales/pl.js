@@ -3,19 +3,25 @@
 /**
  * Polski — teksty regulaminów i polityk ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-23
+ * Translated from the canonical English pages at revision 2026-09-24
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-23",
+  revision: "2026-09-24",
   effective: "Obowiązuje od 2026-09-04. Ostatnia zmiana: 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
   // section). The other four documents still carry `effective` above,
   // unchanged, because their text did not change.
   privacyEffective: "Obowiązuje od 2026-09-04. Ostatnia zmiana: 2026-09-23.",
+
+  // The Terms of Service were revised on 2026-09-24 (an explicit
+  // zero-tolerance statement in "What is not allowed"). Privacy keeps its
+  // own 2026-09-23 line above, and the three unchanged documents keep
+  // `effective`.
+  termsEffective: "Obowiązuje od 2026-09-04. Ostatnia zmiana: 2026-09-24.",
 
   privacy: {
     title: "Polityka prywatności - ULMOX",
@@ -238,6 +244,7 @@ module.exports = {
         "Oszustwa, wyłudzenia i spam.",
         "Treści niezgodne z prawem i działalność niezgodna z prawem.",
         "Udostępnianie prywatnych informacji innej osoby bez jej zgody.",
+        "ULMOX stosuje zasadę zerowej tolerancji wobec treści niedozwolonych oraz wobec użytkowników dopuszczających się nadużyć. Treści naruszające te zasady są usuwane, a odpowiedzialne konta zawieszane lub zamykane.",
       ],
       moderation: [
         "5. Zgłaszanie, blokowanie i moderacja",

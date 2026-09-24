@@ -3,19 +3,25 @@
 /**
  * ไทย — ข้อความนโยบายของ ULMOX
  *
- * Translated from the canonical English pages at revision 2026-09-23
+ * Translated from the canonical English pages at revision 2026-09-24
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-23",
+  revision: "2026-09-24",
   effective: "มีผลตั้งแต่ 2026-09-04 อัปเดตล่าสุด 2026-09-04",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
   // section). The other four documents still carry `effective` above,
   // unchanged, because their text did not change.
   privacyEffective: "มีผลตั้งแต่ 2026-09-04 อัปเดตล่าสุด 2026-09-23",
+
+  // The Terms of Service were revised on 2026-09-24 (an explicit
+  // zero-tolerance statement in "What is not allowed"). Privacy keeps its
+  // own 2026-09-23 line above, and the three unchanged documents keep
+  // `effective`.
+  termsEffective: "มีผลตั้งแต่ 2026-09-04 อัปเดตล่าสุด 2026-09-24",
 
   privacy: {
     title: "นโยบายความเป็นส่วนตัว - ULMOX",
@@ -238,6 +244,7 @@ module.exports = {
         "การหลอกลวง การฉ้อโกง และสแปม",
         "เนื้อหาที่ผิดกฎหมายและกิจกรรมที่ผิดกฎหมาย",
         "การเผยแพร่ข้อมูลส่วนตัวของผู้อื่นโดยไม่ได้รับอนุญาต",
+        "ULMOX ไม่ยอมรับเนื้อหาที่ไม่เหมาะสมและผู้ใช้ที่ละเมิดผู้อื่นอย่างเด็ดขาด เนื้อหาที่ฝ่าฝืนกฎเหล่านี้จะถูกลบ และบัญชีที่รับผิดชอบจะถูกระงับหรือปิด",
       ],
       moderation: [
         "5. การรายงาน การบล็อก และการกำกับดูแล",

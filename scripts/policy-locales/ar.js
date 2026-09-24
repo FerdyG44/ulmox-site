@@ -3,20 +3,26 @@
 /**
  * العربية — نصوص سياسات ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-23
+ * Translated from the canonical English pages at revision 2026-09-24
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  * Rendered right-to-left: scripts/page-shell.js sets dir="rtl" for this locale.
  */
 
 module.exports = {
-  revision: "2026-09-23",
+  revision: "2026-09-24",
   effective: "سارية اعتبارًا من 2026-09-04. آخر تحديث في 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
   // section). The other four documents still carry `effective` above,
   // unchanged, because their text did not change.
   privacyEffective: "سارية اعتبارًا من 2026-09-04. آخر تحديث في 2026-09-23.",
+
+  // The Terms of Service were revised on 2026-09-24 (an explicit
+  // zero-tolerance statement in "What is not allowed"). Privacy keeps its
+  // own 2026-09-23 line above, and the three unchanged documents keep
+  // `effective`.
+  termsEffective: "سارية اعتبارًا من 2026-09-04. آخر تحديث في 2026-09-24.",
 
   privacy: {
     title: "سياسة الخصوصية - ULMOX",
@@ -239,6 +245,7 @@ module.exports = {
         "الاحتيال والغش والرسائل غير المرغوب فيها.",
         "المحتوى غير القانوني والنشاط غير القانوني.",
         "مشاركة المعلومات الخاصة بشخص آخر دون إذنه.",
+        "لا يتسامح ULMOX مطلقًا مع المحتوى المسيء ولا مع المستخدمين الذين يسيئون إلى غيرهم. ويُحذف المحتوى المخالف لهذه القواعد، وتُعلَّق الحسابات المسؤولة عنه أو تُغلق.",
       ],
       moderation: [
         "5. الإبلاغ والحظر والإشراف",

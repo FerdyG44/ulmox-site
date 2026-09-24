@@ -3,19 +3,25 @@
 /**
  * Suomi — ULMOXin käytäntötekstit.
  *
- * Translated from the canonical English pages at revision 2026-09-23
+ * Translated from the canonical English pages at revision 2026-09-24
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-23",
+  revision: "2026-09-24",
   effective: "Voimassa 2026-09-04 alkaen. Viimeksi päivitetty 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
   // section). The other four documents still carry `effective` above,
   // unchanged, because their text did not change.
   privacyEffective: "Voimassa 2026-09-04 alkaen. Viimeksi päivitetty 2026-09-23.",
+
+  // The Terms of Service were revised on 2026-09-24 (an explicit
+  // zero-tolerance statement in "What is not allowed"). Privacy keeps its
+  // own 2026-09-23 line above, and the three unchanged documents keep
+  // `effective`.
+  termsEffective: "Voimassa 2026-09-04 alkaen. Viimeksi päivitetty 2026-09-24.",
 
   privacy: {
     title: "Tietosuojakäytäntö - ULMOX",
@@ -238,6 +244,7 @@ module.exports = {
         "Huijaukset, petokset ja roskaposti.",
         "Laiton sisältö ja laiton toiminta.",
         "Toisen henkilön yksityisten tietojen jakaminen ilman hänen lupaansa.",
+        "ULMOX ei suvaitse lainkaan sopimatonta sisältöä eikä muita loukkaavia käyttäjiä. Näitä sääntöjä rikkova sisältö poistetaan, ja vastuussa olevat tilit jäädytetään tai suljetaan.",
       ],
       moderation: [
         "5. Ilmoittaminen, estäminen ja moderointi",

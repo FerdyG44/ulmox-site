@@ -802,6 +802,11 @@ const terms = page({
       <li>Sharing someone else&rsquo;s private information without their
         permission.</li>
     </ul>
+    <p>
+      ULMOX has zero tolerance for objectionable content and for abusive users.
+      Content that breaches these rules is removed, and the accounts responsible
+      are suspended or terminated.
+    </p>
 
     <h2>5. Reporting, blocking and moderation</h2>
     <ul>

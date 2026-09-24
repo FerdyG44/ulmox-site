@@ -3,19 +3,25 @@
 /**
  * Tiếng Việt — nội dung chính sách của ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-23
+ * Translated from the canonical English pages at revision 2026-09-24
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-23",
+  revision: "2026-09-24",
   effective: "Có hiệu lực từ 2026-09-04. Cập nhật lần cuối 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
   // section). The other four documents still carry `effective` above,
   // unchanged, because their text did not change.
   privacyEffective: "Có hiệu lực từ 2026-09-04. Cập nhật lần cuối 2026-09-23.",
+
+  // The Terms of Service were revised on 2026-09-24 (an explicit
+  // zero-tolerance statement in "What is not allowed"). Privacy keeps its
+  // own 2026-09-23 line above, and the three unchanged documents keep
+  // `effective`.
+  termsEffective: "Có hiệu lực từ 2026-09-04. Cập nhật lần cuối 2026-09-24.",
 
   privacy: {
     title: "Chính sách quyền riêng tư - ULMOX",
@@ -238,6 +244,7 @@ module.exports = {
         "Lừa đảo, gian lận và thư rác.",
         "Nội dung bất hợp pháp và hoạt động bất hợp pháp.",
         "Chia sẻ thông tin riêng tư của người khác mà không được họ cho phép.",
+        "ULMOX không khoan nhượng với nội dung phản cảm và với những người dùng có hành vi lạm dụng. Nội dung vi phạm các quy định này sẽ bị xoá và tài khoản chịu trách nhiệm sẽ bị tạm ngưng hoặc chấm dứt.",
       ],
       moderation: [
         "5. Báo cáo, chặn và kiểm duyệt",

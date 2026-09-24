@@ -28,6 +28,10 @@ const LAST_UPDATED = Object.freeze({
   // Location section rewritten to describe the World Live privacy model
   // precisely: a Moment's city or country, never a live user location.
   "privacy.html": "2026-09-23",
+  // An explicit zero-tolerance statement added to "What is not allowed". The
+  // rules it describes were already listed there; what was missing was the
+  // consequence, stated plainly.
+  "terms.html": "2026-09-24",
 });
 
 /** The last-updated date for one document, defaulting to its effective date. */

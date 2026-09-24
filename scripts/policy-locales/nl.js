@@ -3,19 +3,25 @@
 /**
  * Nederlands — ULMOX-beleidsteksten.
  *
- * Translated from the canonical English pages at revision 2026-09-23
+ * Translated from the canonical English pages at revision 2026-09-24
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-23",
+  revision: "2026-09-24",
   effective: "Van kracht vanaf 2026-09-04. Voor het laatst gewijzigd op 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
   // section). The other four documents still carry `effective` above,
   // unchanged, because their text did not change.
   privacyEffective: "Van kracht vanaf 2026-09-04. Voor het laatst gewijzigd op 2026-09-23.",
+
+  // The Terms of Service were revised on 2026-09-24 (an explicit
+  // zero-tolerance statement in "What is not allowed"). Privacy keeps its
+  // own 2026-09-23 line above, and the three unchanged documents keep
+  // `effective`.
+  termsEffective: "Van kracht vanaf 2026-09-04. Voor het laatst gewijzigd op 2026-09-24.",
 
   privacy: {
     title: "Privacybeleid - ULMOX",
@@ -238,6 +244,7 @@ module.exports = {
         "Oplichting, fraude en spam.",
         "Illegale inhoud en illegale activiteiten.",
         "Privégegevens van iemand anders delen zonder diens toestemming.",
+        "ULMOX hanteert nultolerantie voor aanstootgevende content en voor gebruikers die anderen misbruiken. Content die deze regels overtreedt wordt verwijderd en de verantwoordelijke accounts worden geschorst of beëindigd.",
       ],
       moderation: [
         "5. Melden, blokkeren en moderatie",

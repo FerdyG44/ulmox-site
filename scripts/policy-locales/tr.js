@@ -3,19 +3,25 @@
 /**
  * Türkçe — ULMOX politika metinleri.
  *
- * Translated from the canonical English pages at revision 2026-09-23
+ * Translated from the canonical English pages at revision 2026-09-24
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-23",
+  revision: "2026-09-24",
   effective: "Yürürlük tarihi 2026-09-04. Son güncelleme 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
   // section). The other four documents still carry `effective` above,
   // unchanged, because their text did not change.
   privacyEffective: "Yürürlük tarihi 2026-09-04. Son güncelleme 2026-09-23.",
+
+  // The Terms of Service were revised on 2026-09-24 (an explicit
+  // zero-tolerance statement in "What is not allowed"). Privacy keeps its
+  // own 2026-09-23 line above, and the three unchanged documents keep
+  // `effective`.
+  termsEffective: "Yürürlük tarihi 2026-09-04. Son güncelleme 2026-09-24.",
 
   privacy: {
     title: "Gizlilik Politikası - ULMOX",
@@ -238,6 +244,7 @@ module.exports = {
         "Dolandırıcılık, sahtecilik ve spam.",
         "Yasa dışı içerik ve yasa dışı faaliyet.",
         "Bir başkasının özel bilgilerini izni olmadan paylaşmak.",
+        "ULMOX, sakıncalı içeriğe ve kötüye kullanan kullanıcılara karşı sıfır tolerans uygular. Bu kuralları ihlal eden içerik kaldırılır ve sorumlu hesaplar askıya alınır veya kapatılır.",
       ],
       moderation: [
         "5. Raporlama, engelleme ve moderasyon",

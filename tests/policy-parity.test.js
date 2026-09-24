@@ -216,18 +216,36 @@ test("every translated locale declares the canonical revision it implements", ()
 });
 
 /**
- * The Privacy Policy was revised on its own, and only it says so.
+ * Each document carries its own revision date, and only its own.
  *
- * Every page used to share one date line, so re-dating one document would have
- * re-dated five. Only the Privacy Policy's Location section changed on
- * 2026-09-23; printing that date on the Terms, Safety, Support or Delete
- * Account page would be a false statement about a document nobody edited —
- * and dropping the 2026-09-04 effective date from any page would be the
- * opposite failure. Both are asserted here, in all 19 languages.
+ * Every page once shared one date line, so re-dating one document would have
+ * re-dated five. Two have since been revised on their own — the Privacy
+ * Policy's Location section on 2026-09-23, the Terms' zero-tolerance statement
+ * on 2026-09-24 — and the three that have not changed must keep saying so.
+ * Printing a revision date on a document nobody edited is a false statement
+ * about that document, and dropping the 2026-09-04 effective date from any of
+ * them is the opposite failure. Both are asserted here, in all 19 languages.
+ *
+ * Expressed as a table rather than as "privacy is special", because privacy
+ * stopped being the only special one the moment the Terms were revised.
  */
-test("only the Privacy Policy carries the 2026-09-23 revision date", () => {
-  const REVISED = "2026-09-23";
+test("each document shows its own last-updated date and no other", () => {
   const EFFECTIVE = "2026-09-04";
+  const LAST_UPDATED = {
+    privacy: "2026-09-23",
+    terms: "2026-09-24",
+    safety: EFFECTIVE,
+    support: EFFECTIVE,
+    deleteAccount: EFFECTIVE,
+  };
+  const REVISED = Object.values(LAST_UPDATED).filter((d) => d !== EFFECTIVE);
+
+  // Every key the schema knows is dated here, so adding a page cannot skip it.
+  assert.deepEqual(
+    Object.keys(LAST_UPDATED).sort(),
+    [...SCHEMA.PAGE_KEYS].sort(),
+    "a page is missing from the date table"
+  );
 
   const dateLine = (relative) => {
     const match = read(relative).match(/<p class="effective">([\s\S]*?)<\/p>/i);
@@ -237,14 +255,19 @@ test("only the Privacy Policy carries the 2026-09-23 revision date", () => {
 
   const assertPage = (relative, key) => {
     const line = dateLine(relative);
-    assert.ok(line.includes(EFFECTIVE), `${relative} lost its ${EFFECTIVE} effective date`);
-    assert.equal(
-      line.includes(REVISED),
-      key === "privacy",
-      key === "privacy"
-        ? `${relative} does not show the ${REVISED} revision`
-        : `${relative} claims a ${REVISED} revision it did not have`
+    assert.ok(
+      line.includes(EFFECTIVE),
+      `${relative} lost its ${EFFECTIVE} effective date`
     );
+    for (const date of REVISED) {
+      assert.equal(
+        line.includes(date),
+        LAST_UPDATED[key] === date,
+        LAST_UPDATED[key] === date
+          ? `${relative} does not show its ${date} revision`
+          : `${relative} claims a ${date} revision it did not have`
+      );
+    }
   };
 
   for (const key of SCHEMA.PAGE_KEYS) {
@@ -255,19 +278,34 @@ test("only the Privacy Policy carries the 2026-09-23 revision date", () => {
     }
   }
 
-  // And the source of those lines: every translation states the privacy date
-  // in its own words, and none of them quietly re-dates the shared line the
-  // other four documents still use.
+  // And the source of those lines. Every translation states a revised date in
+  // its own words, and none of them quietly re-dates the shared line the
+  // unrevised documents still use.
   for (const locale of LOCALE_CONTENT.TRANSLATED_LOCALES) {
-    const { effective, privacyEffective } = LOCALE_CONTENT[locale];
-    assert.ok(privacyEffective, `${locale} has no privacyEffective line`);
+    const content = LOCALE_CONTENT[locale];
+    for (const key of SCHEMA.PAGE_KEYS) {
+      const override = content[`${key}Effective`];
+      if (LAST_UPDATED[key] === EFFECTIVE) {
+        assert.ok(
+          !override,
+          `${locale} has a ${key}Effective line for an unrevised document`
+        );
+        continue;
+      }
+      assert.ok(override, `${locale} has no ${key}Effective line`);
+      assert.ok(
+        override.includes(LAST_UPDATED[key]),
+        `${locale} ${key}Effective does not carry ${LAST_UPDATED[key]}`
+      );
+      assert.ok(
+        override.includes(EFFECTIVE),
+        `${locale} ${key}Effective dropped the effective date`
+      );
+    }
     assert.ok(
-      privacyEffective.includes(REVISED),
-      `${locale} privacyEffective does not carry ${REVISED}`
-    );
-    assert.ok(
-      effective.includes(EFFECTIVE) && !effective.includes(REVISED),
-      `${locale} re-dated the line shared by the four unchanged documents`
+      content.effective.includes(EFFECTIVE) &&
+        !REVISED.some((d) => content.effective.includes(d)),
+      `${locale} re-dated the line shared by the unrevised documents`
     );
   }
 });

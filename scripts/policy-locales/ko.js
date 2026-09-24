@@ -3,19 +3,25 @@
 /**
  * 한국어 — ULMOX 정책 본문.
  *
- * Translated from the canonical English pages at revision 2026-09-23
+ * Translated from the canonical English pages at revision 2026-09-24
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-23",
+  revision: "2026-09-24",
   effective: "시행일 2026-09-04. 최종 수정일 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
   // section). The other four documents still carry `effective` above,
   // unchanged, because their text did not change.
   privacyEffective: "시행일 2026-09-04. 최종 수정일 2026-09-23.",
+
+  // The Terms of Service were revised on 2026-09-24 (an explicit
+  // zero-tolerance statement in "What is not allowed"). Privacy keeps its
+  // own 2026-09-23 line above, and the three unchanged documents keep
+  // `effective`.
+  termsEffective: "시행일 2026-09-04. 최종 수정일 2026-09-24.",
 
   privacy: {
     title: "개인정보 처리방침 - ULMOX",
@@ -238,6 +244,7 @@ module.exports = {
         "사기, 기만, 스팸.",
         "불법 콘텐츠와 불법 행위.",
         "다른 사람의 사적인 정보를 허락 없이 공유하는 행위.",
+        "ULMOX는 부적절한 콘텐츠와 다른 이용자를 괴롭히는 이용자를 절대 허용하지 않습니다. 이 규정을 위반한 콘텐츠는 삭제되며, 책임이 있는 계정은 이용이 정지되거나 해지됩니다.",
       ],
       moderation: [
         "5. 신고, 차단, 검수",

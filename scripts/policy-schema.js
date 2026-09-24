@@ -43,7 +43,7 @@
  */
 
 /** The canonical content revision every locale in this repository implements. */
-const CANONICAL_REVISION = "2026-09-23";
+const CANONICAL_REVISION = "2026-09-24";
 
 /** Blocks that carry no translatable slot of their own. */
 const ZERO_SLOT_BLOCKS = Object.freeze(new Set(["rollout", "links"]));
@@ -184,7 +184,12 @@ const PAGES = Object.freeze({
         id: "connections",
         blocks: [{ t: "h2" }, { t: "rollout" }, { t: "p" }, { t: "ul", n: 10 }],
       },
-      { id: "prohibited", blocks: [{ t: "h2" }, { t: "p" }, { t: "ul", n: 9 }] },
+      {
+        id: "prohibited",
+        // The closing paragraph is the zero-tolerance statement: the list says
+        // what is forbidden, and it says what happens.
+        blocks: [{ t: "h2" }, { t: "p" }, { t: "ul", n: 9 }, { t: "p" }],
+      },
       {
         id: "moderation",
         blocks: [

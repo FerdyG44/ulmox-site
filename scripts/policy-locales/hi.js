@@ -3,19 +3,25 @@
 /**
  * हिन्दी — ULMOX की नीतियों का पाठ।
  *
- * Translated from the canonical English pages at revision 2026-09-23
+ * Translated from the canonical English pages at revision 2026-09-24
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-23",
+  revision: "2026-09-24",
   effective: "2026-09-04 से प्रभावी। अंतिम बार 2026-09-04 को अद्यतन किया गया।",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
   // section). The other four documents still carry `effective` above,
   // unchanged, because their text did not change.
   privacyEffective: "2026-09-04 से प्रभावी। अंतिम बार 2026-09-23 को अद्यतन किया गया।",
+
+  // The Terms of Service were revised on 2026-09-24 (an explicit
+  // zero-tolerance statement in "What is not allowed"). Privacy keeps its
+  // own 2026-09-23 line above, and the three unchanged documents keep
+  // `effective`.
+  termsEffective: "2026-09-04 से प्रभावी। अंतिम बार 2026-09-24 को अद्यतन किया गया।",
 
   privacy: {
     title: "गोपनीयता नीति - ULMOX",
@@ -238,6 +244,7 @@ module.exports = {
         "ठगी, धोखाधड़ी और स्पैम।",
         "अवैध सामग्री और अवैध गतिविधि।",
         "किसी और की निजी जानकारी उसकी अनुमति के बिना साझा करना।",
+        "ULMOX आपत्तिजनक सामग्री और अन्य उपयोगकर्ताओं के साथ दुर्व्यवहार करने वालों के प्रति शून्य सहनशीलता रखता है। इन नियमों का उल्लंघन करने वाली सामग्री हटा दी जाती है और उत्तरदायी खाते निलंबित या समाप्त कर दिए जाते हैं।",
       ],
       moderation: [
         "5. रिपोर्टिंग, ब्लॉक करना और मॉडरेशन",
