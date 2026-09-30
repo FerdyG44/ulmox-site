@@ -1414,7 +1414,7 @@ const DELETE_LABELS = Object.freeze({
   es: "Eliminar cuenta",
   fr: "Supprimer le compte",
   it: "Elimina account",
-  pt: "Excluir conta",
+  pt: "Eliminar conta",
   nl: "Account verwijderen",
   pl: "Usuń konto",
   fi: "Poista tili",

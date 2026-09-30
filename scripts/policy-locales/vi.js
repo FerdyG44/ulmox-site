@@ -215,7 +215,7 @@ module.exports = {
       ],
       ownership: [
         "Quyền sở hữu và giấy phép",
-        "<strong>Bạn vẫn giữ quyền sở hữu nội dung của mình.</strong> Để vận hành dịch vụ, bạn cấp cho ULMOX một giấy phép không độc quyền, toàn cầu, miễn phí bản quyền để lưu trữ, sao chép và truyền tải nội dung của bạn, chỉ nhằm để chúng tôi chuyển nó tới người nhận được chọn, tạo ảnh thu nhỏ, và hiển thị nó trên bảng tin Global nếu người nhận chia sẻ ở đó. Giấy phép này chỉ tồn tại để vận hành ULMOX và chấm dứt khi nội dung bị gỡ, trừ trường hợp chúng tôi phải giữ một bản sao làm bằng chứng an toàn hoặc để đáp ứng nghĩa vụ pháp lý.",
+        "<strong>Bạn vẫn giữ quyền sở hữu nội dung của mình.</strong> Để vận hành dịch vụ, bạn cấp cho ULMOX một giấy phép không độc quyền, toàn cầu, miễn phí bản quyền để lưu trữ trên máy chủ, lưu giữ, sao chép và truyền tải nội dung của bạn, chỉ nhằm để chúng tôi chuyển nó tới người nhận được chọn, tạo ảnh thu nhỏ, và hiển thị nó trên bảng tin Global nếu người nhận chia sẻ ở đó. Giấy phép này chỉ tồn tại để vận hành ULMOX và chấm dứt khi nội dung bị gỡ, trừ trường hợp chúng tôi phải giữ một bản sao làm bằng chứng an toàn hoặc để đáp ứng nghĩa vụ pháp lý.",
         "Khi ai đó chia sẻ lên bảng tin Global một video mà họ nhận được, họ <strong>không</strong> trở thành chủ sở hữu của video đó. Người đã quay nó vẫn là chủ sở hữu.",
       ],
       connections: [

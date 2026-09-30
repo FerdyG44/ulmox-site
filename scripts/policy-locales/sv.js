@@ -215,7 +215,7 @@ module.exports = {
       ],
       ownership: [
         "Äganderätt och licens",
-        "<strong>Du behåller äganderätten till ditt innehåll.</strong> För att driva tjänsten ger du ULMOX en icke-exklusiv, världsomspännande och royaltyfri licens att lagra, återge och överföra ditt innehåll, enbart så att vi kan leverera det till den mottagare som valts för det, generera miniatyrbilder och visa det i Global-flödet om en mottagare delar det där. Licensen finns endast för att driva ULMOX och upphör när innehållet tas bort, utom där vi måste behålla en kopia som säkerhetsbevis eller för att uppfylla en rättslig skyldighet.",
+        "<strong>Du behåller äganderätten till ditt innehåll.</strong> För att driva tjänsten ger du ULMOX en icke-exklusiv, världsomspännande och royaltyfri licens att vara värd för, lagra, återge och överföra ditt innehåll, enbart så att vi kan leverera det till den mottagare som valts för det, generera miniatyrbilder och visa det i Global-flödet om en mottagare delar det där. Licensen finns endast för att driva ULMOX och upphör när innehållet tas bort, utom där vi måste behålla en kopia som säkerhetsbevis eller för att uppfylla en rättslig skyldighet.",
         "När någon delar en video hen har fått till Global-flödet blir hen <strong>inte</strong> dess ägare. Den som spelade in den förblir ägare.",
       ],
       connections: [
