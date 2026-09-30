@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
-const LOCALES = "en sv tr de es fr it pt nl pl fi ru ja ko zh ar hi th vi".split(
+const LOCALES = "en sv tr de es fr it pt nl pl fi ru ja ko zh ar hi th vi el id ms sr".split(
   " "
 );
 const LEGAL_PAGES = [
@@ -261,7 +261,7 @@ test("no page claims deletion faster than the worker supports", () => {
 
 test("no locale deletion page still promises 7-day deletion", () => {
   const claim =
-    /7\s*(days?|dagar|gün|Tagen|días|jours|giorni|dias|dagen|dni|päivän|дней|天|أيام|दिन|วัน|ngày)/i;
+    /7\s*(days?|dagar|gün|Tagen|días|jours|giorni|dias|dagen|dni|päivän|дней|天|أيام|दिन|วัน|ngày|ημέρ|дана|hari)/i;
   for (const locale of LOCALES) {
     assert.doesNotMatch(
       read(`${locale}/delete_account.html`),

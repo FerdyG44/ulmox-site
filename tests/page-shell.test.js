@@ -221,7 +221,7 @@ test("the battery covers every page of the build, not a sample", () => {
   const { pages, routes } = audit();
   assert.equal(pages, routes.length);
   assert.equal(pages, SITE_HTML.length);
-  assert.ok(pages >= 161, `only ${pages} pages were audited`);
+  assert.ok(pages >= 193, `only ${pages} pages were audited`);
 });
 
 test("5: every complete page declares the lang its route serves", () => {
@@ -499,7 +499,7 @@ test("19: Translation Information content survived the footer change", () => {
 test("20: every sitemap route resolves in the build", () => {
   const { outputRoot } = build();
   const locations = [...read("sitemap.xml").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  assert.ok(locations.length >= 140, `sitemap lists only ${locations.length} routes`);
+  assert.ok(locations.length >= 168, `sitemap lists only ${locations.length} routes`);
   assert.equal(new Set(locations).size, locations.length, "the sitemap has a duplicate");
 
   for (const location of locations) {
@@ -638,13 +638,14 @@ test("the shell is canonical: regenerating every page changes nothing", () => {
 
 test("every shelled page carries the one shared chrome definition", () => {
   const shelled = SITE_HTML.filter((file) => read(file).includes(SHELL_MARKER));
-  // The 20 landing pages, the 95 localized legal pages, 20 redirects, download.
-  assert.equal(shelled.length, 136, `${shelled.length} pages carry the shell`);
+  // The 24 landing pages, the 115 localized legal pages, 24 redirects, download.
+  assert.equal(shelled.length, 164, `${shelled.length} pages carry the shell`);
 
-  // The 25 generated legal and Translation Information routes carry the Stage
+  // The 29 generated legal and Translation Information routes carry the Stage
   // 0.13 shell instead, which satisfies the same contract — proven above by the
-  // battery running over all 161 routes.
-  assert.equal(SITE_HTML.length - shelled.length, 25);
+  // battery running over all 193 routes.
+  assert.equal(SITE_HTML.length - shelled.length, 6 + LOCALES.length);
+  assert.equal(SITE_HTML.length - shelled.length, 29);
 });
 
 test("the localized chrome names every route in the locale's own words", () => {
@@ -687,7 +688,7 @@ test("the two localized-content defects are resolved, and cannot return quietly"
     "the claims scan reports a localized-content defect"
   );
 
-  // Defect 1: the seven sections are gone, from all 19 locales, not just seven.
+  // Defect 1: the seven sections are gone, from all 23 locales, not just seven.
   assert.equal(REMOVED_AUTOMATED_DETECTION_SECTIONS.length, 7);
   for (const locale of LOCALES) {
     const safety = read(`${locale}/safety.html`);
@@ -702,7 +703,7 @@ test("the two localized-content defects are resolved, and cannot return quietly"
   // Defect 2: every localized policy page states policy instead of repeating
   // itself. The 36 that were at 26–54% distinct are measured here with the
   // rest, against the same threshold and with no locale exempted.
-  assert.equal(measurements.length, 19 * 3);
+  assert.equal(measurements.length, LOCALES.length * 3);
   for (const measurement of measurements) {
     assert.ok(
       measurement.share >= DISTINCT_BLOCK_THRESHOLD,

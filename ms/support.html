@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sokongan - ULMOX</title>
+  <meta name="description" content="Hubungi sokongan ULMOX: pemadaman akaun, pembetulan umur, rayuan penyederhanaan, rayuan pengharaman dan laporan keselamatan kanak-kanak." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Clipped, not offset: see scripts/legal-pages.js. */
+    .skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: var(--accent);
+      color: #000;
+      z-index: 10;
+    }
+
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-24" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      z-index: 10000;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="ulmox-skip-link" href="#main">Langkau ke kandungan</a>
+<div class="container">
+  <main id="main">
+    <h1>Sokongan ULMOX</h1>
+    <p class="effective">Berkuat kuasa mulai 2026-09-04. Kali terakhir dikemas kini pada 2026-09-04.</p>
+
+    <p>Tulis kepada <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Menggunakan salah satu baris subjek di bawah membantu kami menghalakan mesej anda dengan betul.</p>
+
+    <table>
+      <tr><th scope="col">Saya memerlukan bantuan untuk</th><th scope="col">Baris subjek</th><th scope="col">Catatan</th></tr>
+      <tr><td>Sokongan am</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Support">ULMOX Support</a></td><td>Apa-apa sahaja yang tidak diliputi di bawah.</td></tr>
+      <tr><td>Memadam akaun saya</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">ULMOX Account Deletion Request</a></td><td>Lihat <a href="delete_account.html">Padam Akaun</a> terlebih dahulu — laluan dalam aplikasi lebih pantas.</td></tr>
+      <tr><td>Membetulkan pengesahan umur saya</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Age%20Verification%20Correction">ULMOX Age Verification Correction</a></td><td>Jika anda tersilap memasukkan tarikh lahir anda. Anda tidak boleh mengubahnya sendiri.</td></tr>
+      <tr><td>Merayu keputusan kandungan</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Content%20Appeal">ULMOX Content Appeal</a></td><td>Jika kandungan anda telah disembunyikan atau dialih keluar.</td></tr>
+      <tr><td>Merayu pengehadan akaun</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Appeal">ULMOX Account Appeal</a></td><td>Jika akaun anda telah digantung atau diharamkan.</td></tr>
+      <tr><td>Melaporkan kebimbangan keselamatan kanak-kanak</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ULMOX Child Safety Report</a></td><td>Keutamaan tertinggi. Lihat <a href="safety.html">Keselamatan dan Penyederhanaan</a>.</td></tr>
+    </table>
+
+    <h2>Berapa cepat kami memberi respons</h2>
+
+    <ul>
+      <li><strong>Laporan keselamatan kanak-kanak yang mendesak</strong> disasarkan untuk semakan oleh manusia <strong>dalam tempoh 24 jam</strong>. Itu ialah sasaran untuk memulakan semakan, bukan jaminan bahawa sesuatu kes diselesaikan sepenuhnya dalam tempoh 24 jam.</li>
+      <li><strong>Semua perkara lain</strong> dikendalikan secepat yang munasabah.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Kami tidak akan sekali-kali meminta kata laluan, kata laluan Apple atau Google, kod pengesahan sekali guna, kod kebenaran atau token log masuk daripada anda, dan kami tidak akan sekali-kali meminta anda menghantar pasport atau dokumen identiti lain melalui e-mel.</strong> Sila jangan hantar perkara tersebut. Jika mesej yang mendakwa datang daripada ULMOX meminta mana-mana perkara ini, mesej itu bukan daripada kami.</p>
+    </div>
+
+    <h2>Connections dan terjemahan mesej</h2>
+
+    <div class="callout">
+      <p><strong>Connections dan terjemahan mesej pilihan sedang diperkenalkan secara berperingkat dan mungkin belum tersedia untuk setiap akaun atau setiap versi aplikasi yang dipasang.</strong></p>
+    </div>
+
+    <p>Jika Connections tiada pada akaun anda, tiada apa-apa yang perlu dibaiki dan tiada apa-apa yang perlu diminta daripada kami: ia bukan ralat, bukan kerosakan pada akaun anda, dan bukan sesuatu yang boleh dihidupkan oleh pasukan sokongan untuk anda. Mengemas kini kepada versi semasa aplikasi ialah satu-satunya perkara yang wajar dilakukan.</p>
+
+    <p>Apabila terjemahan tersedia kepada anda, ini ialah perkara yang biasanya tidak berjalan lancar dan apa yang perlu dilakukan mengenainya. Lihat <a href="translation.html">Maklumat terjemahan</a> untuk cara ciri ini berfungsi.</p>
+
+    <table>
+      <tr><th scope="col">Apa yang anda lihat</th><th scope="col">Maksudnya</th></tr>
+      <tr><td>Pek bahasa masih dimuat turun</td><td>Sesuatu bahasa perlu dimuat turun sekali sebelum ia boleh diterjemahkan. Biarkan skrin terbuka; mesej asal kekal boleh dibaca sepanjang masa.</td></tr>
+      <tr><td>Muat turun tidak bermula</td><td>Muat turun menggunakan Wi-Fi secara lalai. Pada data mudah alih, anda perlu memilih untuk menggunakannya secara nyata — ULMOX tidak akan menggunakan data anda tanpa diminta.</td></tr>
+      <tr><td>Muat turun gagal</td><td>Cuba lagi pada sambungan yang stabil. Tiada apa-apa tentang mesej itu berubah jika muat turun gagal.</td></tr>
+      <tr><td>“Mesej ini tidak dapat diterjemahkan”</td><td>Bahasa itu berada di luar set yang disokong, atau tidak dapat dikenal pasti dengan yakin. ULMOX tidak memaparkan apa-apa dan bukannya meneka.</td></tr>
+      <tr><td>Terjemahan kedengaran janggal</td><td>Terjemahan mesin boleh salah walaupun kedengaran pasti, dan pasangan bahasa yang tidak melibatkan bahasa Inggeris mungkin diterjemahkan melalui bahasa Inggeris. Baca mesej asal.</td></tr>
+      <tr><td>Anda mahu mendapatkan semula ruang storan</td><td>Padam pek bahasa yang dimuat turun dalam Model terjemahan, di dalam aplikasi.</td></tr>
+      <tr><td>Mesej itu merupakan masalah keselamatan</td><td>Laporkannya dalam aplikasi. Laporan membawa mesej asal, iaitu apa yang disemak oleh seorang manusia.</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>Jangan e-melkan mesej itu kepada kami.</strong> Sila jangan hantar teks mesej, tangkapan skrin perbualan peribadi, data pengesahan atau pengecam peranti. Sebaliknya, laporkan mesej itu dalam aplikasi — cara itu memberikan mesej asal kepada penyemak dengan selamat, dan kami tidak pernah memerlukan salinan daripada anda.</p>
+    </div>
+
+    <h2>Rayuan</h2>
+
+    <p>Rayuan tersedia sama ada anda boleh menggunakan aplikasi pada masa ini atau tidak, dan pautan Sokongan dalam aplikasi kekal boleh dicapai jika akaun anda dihadkan.</p>
+
+    <ul>
+      <li>Rayuan dibaca oleh seorang manusia yang diberi kuasa.</li>
+      <li>Mengemukakan rayuan tidak memulihkan akaun atau kandungan anda secara automatik.</li>
+      <li>Rayuan tidak menghapuskan laporan atau rekod keselamatan.</li>
+      <li>Kami tidak memberitahu anda siapa yang melaporkan anda, dan kami tidak menerangkan ambang dalaman yang digunakan oleh sistem keselamatan kami.</li>
+    </ul>
+
+    <p>Sila sertakan nama pengguna ULMOX anda dan, jika berkaitan, anggaran masa keputusan itu dibuat. Jangan sertakan kata laluan atau dokumen identiti.</p>
+
+    <h2>Halaman berkaitan</h2>
+
+    <p>
+      <a href="privacy.html">Dasar Privasi</a>
+      &middot;
+      <a href="terms.html">Terma</a>
+      &middot;
+      <a href="safety.html">Keselamatan dan Penyederhanaan</a>
+      &middot;
+      <a href="delete_account.html">Padam Akaun</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Maklumat undang-undang dan sokongan">
+      <ul>
+        <li><a href="index.html">Laman utama</a></li>
+        <li><a href="privacy.html">Dasar Privasi</a></li>
+        <li><a href="terms.html">Terma</a></li>
+        <li><a href="safety.html">Keselamatan dan Penyederhanaan</a></li>
+        <li><span aria-current="page">Sokongan</span></li>
+        <li><a href="delete_account.html">Padam Akaun</a></li>
+        <li><a href="translation.html">Maklumat terjemahan</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Versi bahasa Inggeris dasar ini ialah versi yang sahih. Sekiranya terdapat sebarang percanggahan antara terjemahan dengan versi bahasa Inggeris, versi bahasa Inggeris hendaklah diguna pakai.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+</body>
+</html>

@@ -1426,6 +1426,10 @@ const DELETE_LABELS = Object.freeze({
   hi: "खाता हटाएँ",
   th: "ลบบัญชี",
   vi: "Xóa tài khoản",
+  el: "Διαγραφή λογαριασμού",
+  id: "Hapus Akun",
+  ms: "Padam Akaun",
+  sr: "Избриши налог",
 });
 
 function generate(targetRoot = ROOT) {

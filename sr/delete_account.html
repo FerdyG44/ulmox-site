@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Брисање налога - ULMOX</title>
+  <meta name="description" content="Како трајно избрисати ULMOX налог, у апликацији или путем е-поште, и шта се дешава са вашим подацима." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Clipped, not offset: see scripts/legal-pages.js. */
+    .skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: var(--accent);
+      color: #000;
+      z-index: 10;
+    }
+
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-24" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      z-index: 10000;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="ulmox-skip-link" href="#main">Пређи на садржај</a>
+<div class="container">
+  <main id="main">
+    <h1>Избришите свој ULMOX налог</h1>
+    <p class="effective">Важи од 2026-09-04. Последњи пут ажурирано 2026-09-04.</p>
+
+    <p>На овој страници објашњено је како да трајно избришете свој ULMOX налог и шта се након тога дешава са вашим подацима.</p>
+
+    <div class="callout">
+      <p><strong>Деактивација није брисање.</strong> Деактивација скрива ваш профил и ваш садржај и може се опозвати. Брисање налога је трајно и не може се опозвати.</p>
+    </div>
+
+    <h2>1. опција — брисање у апликацији (препоручено)</h2>
+
+    <p>Ово је најбржи пут и не захтева преписку е-поштом. Није доступан за сваки налог на сваком уређају: налог повезан са услугом Sign in with Apple не може да доврши брисање са Android телефона и мора да га доврши на Apple уређају. Погледајте <a href="#apple-linked">Ако је ваш налог повезан са услугом Sign in with Apple</a> у наставку.</p>
+
+    <ol>
+      <li>Отворите ULMOX и идите на <strong>Профил &rarr; Правне информације и безбедност &rarr; Управљање налогом &rarr; Избриши налог</strong>.</li>
+      <li>Прочитајте потврду, у којој је објашњено да је брисање трајно.</li>
+      <li>Потврдите. Можда ће се најпре тражити да се поново пријавите, што штити ваш налог од тога да га неко други избрише.</li>
+    </ol>
+
+    <h2>2. опција — захтев за брисање путем е-поште</h2>
+
+    <p>Ако не можете да отворите апликацију, можете нас замолити да избришемо ваш налог.</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">Пошаљите е-поруку на ulmoxapp@outlook.com са насловом „ULMOX Account Deletion Request”</a></p>
+
+    <p>Молимо вас да наведете само најмање што је потребно да бисмо пронашли ваш налог:</p>
+
+    <ul>
+      <li>адресу е-поште повезану са вашим ULMOX налогом, и</li>
+      <li>своје ULMOX корисничко име, ако га знате.</li>
+    </ul>
+
+    <p>Када је могуће, пишите са адресе е-поште повезане са вашим налогом. Ако је ваш налог повезан са услугом Sign in with Apple и користили сте <strong>Hide My Email</strong>, пишите са своје Apple адресе за прослеђивање или нам дајте довољно података о налогу који нису поверљиви да бисмо налог могли да идентификујемо.</p>
+
+    <div class="callout">
+      <p><strong>Никада нећемо тражити од вас лозинку, Apple или Google лозинку, једнократни код за аутентификацију, код за ауторизацију, токен за пријаву ни фотографију документа за идентификацију</strong>, и никада нећемо тражити да нам било шта од тога пошаљете е-поштом. Ако примите поруку која тврди да долази од ULMOX-а и тражи било шта од наведеног, она не долази од нас.</p>
+    </div>
+
+    <p>Пре брисања проверавамо да ли сте власник налога. Захтев послат преко јавног веб-обрасца или са непроверене адресе сам по себи не брише налог. Можемо да затражимо да власништво потврдите на безбедан начин, на пример одговором са адресе е-поште налога.</p>
+
+    <h2>Шта се дешава када се налог избрише</h2>
+
+    <ul>
+      <li>Приступ и видљивост уклањају се чим се брисање успешно покрене. Ваш профил престаје да буде видљив другим људима и ваш налог се више не бира за нове доставе.</li>
+      <li>Физичко брисање сачуваних података затим се наставља у позадини. Циљ је да буде завршено у року од 30 дана, осим ако оправдана безбедносна или законска обавеза не захтева ограничено чување.</li>
+      <li>Уклањају се видео-снимци које сте снимили, њихове сличице, подаци вашег профила, ваша профилна фотографија и Global садржај чији сте власник.</li>
+      <li>Садржај чији је власник неко други <em>не</em> брише се само зато што сте га ви поделили. Уместо тога уклања се ваша повезаност са њим, а видео остаје код особе која га је направила.</li>
+      <li>Ваше корисничко име се након брисања задржава 90 дана пре него што може поново да се користи, тако да га неко други не може одмах преузети.</li>
+      <li>Ограничени безбедносни, правни или трансакциони записи могу се задржати тамо где постоји оправдан разлог, и то само док тај разлог постоји. Тамо где се безбедносни запис задржава, везе које га повезују са вашим идентитетом уклањају се у оквиру брисања, тако да оно што остаје представља запис о томе шта се догодило, а не запис о вама.</li>
+      <li>Брисање вашег налога не брише туђи налог. У Connection-у учествују две особе, а поруке, видео-снимци и записи који припадају другом учеснику остају код њега.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Безбедносни докази нису обична историја порука.</strong> Connections и необавезни превод порука уводе се постепено и можда још нису доступни за сваки налог или сваку инсталирану верзију апликације. Ако имате Connection: обична порука у њему сматра се истеклом отприлике седам дана након слања. На поруку која је пријављена то се више не примењује: она је доказ у прегледу и чува се док је преглед у току, а након тога тамо где исход оправдава њено чување — укључујући и после брисања налога са ког је потекла. Брисање вашег налога не повлачи пријаву коју сте поднели и не брише пријаву поднету против вас.</p>
+    </div>
+
+    <h2 id="apple-linked">Ако је ваш налог повезан са услугом Sign in with Apple</h2>
+
+    <p>Неки ULMOX налози повезани су са услугом Sign in with Apple. Ако је ваш такав, трајно брисање има један додатни корак, јер Apple захтева да се апликација приликом брисања налога одрекне свог Sign in with Apple овлашћења, а не само да избрише сопствени запис.</p>
+
+    <ol>
+      <li>На Apple уређају ULMOX од вас тражи да још једном потврдите директно код Apple-а. Та потврда се обавља између вас и Apple-а на вашем сопственом уређају. <strong>ULMOX не добија вашу Apple лозинку</strong> и никада је од вас не тражимо.</li>
+      <li>Управо та потврда омогућава ULMOX-у да опозове сопствено Sign in with Apple овлашћење за ваш налог.</li>
+      <li>Тек тада почиње горе описано трајно брисање.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Ако се тај корак не заврши, ништа се не брише.</strong> Ако затворите Apple екран, ако потврда врати Apple налог различит од оног који је пријављен или ако корак не успе из било ког другог разлога, ULMOX се зауставља пре него што се догоди било шта трајно и обавештава вас да ништа није избрисано. Можете покушати поново.</p>
+    </div>
+
+    <p>Три различите ствари лако је помешати:</p>
+
+    <ul>
+      <li><strong>Опозивање ULMOX-овог Sign in with Apple овлашћења</strong> спречава ULMOX да за вас користи Sign in with Apple. Само по себи не брише ваш ULMOX налог и не брише податке у њему.</li>
+      <li><strong>Брисање вашег ULMOX налога</strong> је радња којом се уклањају ваши ULMOX подаци. Завршено је тек када се изврши брисање описано на овој страници — ниједна промена овлашћења за пријаву га не довршава.</li>
+      <li><strong>Брисање вашег Apple ID-а</strong> може да изврши само Apple, на ваш лични захтев — ULMOX то никада не ради и не може да уради.</li>
+    </ul>
+
+    <h3>Брисање налога повезаног са Apple-ом са Android уређаја</h3>
+
+    <p>Корак потврде код Apple-а може се завршити само на Apple уређају. Ако покушате да избришете ULMOX налог повезан са Apple-ом са Android телефона, ULMOX се зауставља пре него што било шта уклони и обавештава вас да <strong>ништа није избрисано</strong>. Брисање завршите на Apple уређају.</p>
+
+    <p>Налог који користи само Google Sign-In или само адресу е-поште брише се нормално на обе врсте уређаја. Налогу повезаном и са Apple-ом и са Google-ом и даље је потребан корак код Apple-а.</p>
+
+    <h2>Ако желите само паузу</h2>
+
+    <p>Деактивација скрива ваш профил и ваш Global садржај и може се опозвати тако што се поново пријавите и изаберете <strong>Поново активирај налог</strong>. Сама пријава не активира налог поново. Видео-снимци које сте већ послали могу да остану код људи који су их примили током њиховог уобичајеног рока чувања. Деактивација не испуњава захтев за брисање — ако желите да ваши подаци буду уклоњени, користите опцију Избриши налог.</p>
+
+    <p>Деактивација не брише безбедносне записе, а поновна активација ништа не поништава. Повратак враћа ваш приступ; не поништава одлуку о модерацији, не враћа садржај који је модерација уклонила или сакрила и не отвара поново Connection који је завршен. Завршавање Connection-а је коначно за тај пар. Блокирање функционише другачије: блокада завршава Connection који сада имате и зауставља контакт у оба смера док траје. Ни уклањање блокаде не враћа стари Connection — два налога би морала поново да се квалификују од почетка, кроз две нове квалификујуће размене видео-снимака и ново одобрење сваке од особа.</p>
+
+    <h2>Питања</h2>
+
+    <p>Обратите се на <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Погледајте и: <a href="privacy.html">Политика приватности</a> и <a href="terms.html">Услови коришћења</a>.</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Правне информације и подршка">
+      <ul>
+        <li><a href="index.html">Почетна</a></li>
+        <li><a href="privacy.html">Политика приватности</a></li>
+        <li><a href="terms.html">Услови коришћења</a></li>
+        <li><a href="safety.html">Безбедност и модерација</a></li>
+        <li><a href="support.html">Подршка</a></li>
+        <li><span aria-current="page">Избриши налог</span></li>
+        <li><a href="translation.html">Информације о превођењу</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Меродавна је верзија ове политике на енглеском језику. Ако се превод од ње разликује, примењује се верзија на енглеском језику.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+</body>
+</html>

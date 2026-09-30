@@ -9,7 +9,7 @@
  * Nothing here was machine-translated and nothing is an English placeholder.
  *
  * The `web*` keys have no counterpart in the application's ARB files — they are
- * website-only sentences, hand-localized here for the same 19 locales.
+ * website-only sentences, hand-localized here for the same 23 locales.
  *
  * Stage 1.6W replaced `webNotYet` ("Connections and message translation are not
  * available yet") with `webGradualRollout`. The old sentence was a "coming soon"
@@ -31,10 +31,10 @@
  *     ships none, and inventing one would reshape the mark.
  *   - DISCLAIMER is the notice Google requires to be reproduced exactly. It is
  *     not translated, re-cased, abridged or paraphrased in any locale. The
- *     application carries the identical string, and all 19 application locales
+ *     application carries the identical string, and all 23 application locales
  *     already hold exactly one distinct value for it.
  *
- * That is why one identical English run of text legitimately appears on all 20
+ * That is why one identical English run of text legitimately appears on all 24
  * routes. tests/translation-pages.test.js asserts it stays identical.
  */
 
@@ -53,7 +53,7 @@ const ATTRIBUTION_WORDMARK = "powered by Google Translate";
 const DISCLAIMER =
   "THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.";
 
-const LOCALE_CODES = Object.freeze(["en","sv","tr","de","es","fr","it","pt","nl","pl","fi","ru","ja","ko","zh","ar","hi","th","vi"]);
+const LOCALE_CODES = Object.freeze(["en","sv","tr","de","es","fr","it","pt","nl","pl","fi","ru","ja","ko","zh","ar","hi","th","vi","el","id","ms","sr"]);
 
 const LOCALES = Object.freeze({
   "en": {
@@ -643,6 +643,130 @@ const LOCALES = Object.freeze({
     "webNoCopy": "ULMOX không lưu bản dịch. Bản dịch không được lưu thành một tin nhắn riêng trên máy chủ của chúng tôi, và không được đính kèm vào báo cáo, thông báo, bằng chứng kiểm duyệt hay dữ liệu phân tích.",
     "webGradualRollout": "Connections và tính năng dịch tin nhắn tùy chọn đang được triển khai dần và có thể chưa khả dụng với mọi tài khoản hoặc mọi phiên bản ứng dụng đã cài đặt.",
     "webPrivacyLink": "Chính sách quyền riêng tư",
+    "translationAttribution": "powered by Google Translate"
+  },
+  "el": {
+    "translationInformationTitle": "Πληροφορίες μετάφρασης",
+    "translationInfoPoweredBy": "Η μετάφραση στο ULMOX παρέχεται από το Google Translate.",
+    "translationInfoOptional": "Η μετάφραση είναι προαιρετική. Τίποτα δεν μεταφράζεται αν δεν το ζητήσεις, ένα μήνυμα τη φορά.",
+    "translationInfoOnDevice": "Η μετάφραση ενός μηνύματος γίνεται σε αυτήν τη συσκευή. Το μήνυμα και η μετάφραση δεν αποστέλλονται πουθενά για να μεταφραστούν.",
+    "translationInfoModels": "Πρέπει να γίνει λήψη ενός πακέτου γλώσσας πριν μεταφραστεί μια γλώσσα. Το ULMOX ρωτά πρώτα και κάνει τη λήψη μέσω Wi-Fi, εκτός αν επιλέξεις διαφορετικά.",
+    "translationInfoNetwork": "Το στοιχείο μετάφρασης της Google μπορεί ωστόσο να χρησιμοποιεί το δίκτυο από μόνο του: για τη λήψη πακέτων γλώσσας, για την ανάγνωση της δικής του απομακρυσμένης διαμόρφωσης και για την αποστολή διαγνωστικών στοιχείων και αναλυτικών στοιχείων χρήσης σχετικά με το ίδιο το στοιχείο. Το κείμενο των μηνυμάτων σου δεν περιλαμβάνεται σε αυτά.",
+    "translationInfoAccuracy": "Η μηχανική μετάφραση μπορεί να είναι λανθασμένη, ακόμα κι όταν διαβάζεται σαν να είναι βέβαιη.",
+    "translationInfoOriginal": "Αυτό που μετράει είναι το πρωτότυπο μήνυμα. Παραμένει στην οθόνη και είναι το μόνο στο οποίο αναφέρεται πάντα μια αναφορά.",
+    "translationInfoPivot": "Μεταξύ δύο γλωσσών όπου καμία δεν είναι τα Αγγλικά, η μετάφραση μπορεί να περάσει ενδιάμεσα από τα Αγγλικά και το αποτέλεσμα να είναι αισθητά χειρότερο.",
+    "translationDisclaimerTitle": "Αποποίηση ευθύνης της Google",
+    "translationDisclaimer": "THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.",
+    "translationDisclaimerNote": "Η Google απαιτεί αυτή η ειδοποίηση να εμφανίζεται ακριβώς όπως είναι γραμμένη, γι' αυτό δεν μεταφράζεται.",
+    "translationLinksTitle": "Σχετικά με την υπηρεσία μετάφρασης",
+    "translateWithGoogle": "Translate with Google",
+    "translationModelsTitle": "Μοντέλα μετάφρασης",
+    "translationModelsStoredOnDevice": "Αυτά τα πακέτα γλώσσας είναι αποθηκευμένα σε αυτήν τη συσκευή.",
+    "translationQualityNotice": "Η μηχανική μετάφραση μπορεί να είναι ανακριβής. Το πρωτότυπο εμφανίζεται πάντα.",
+    "translationWifiRequired": "Απαιτείται Wi-Fi για τη λήψη του πακέτου γλώσσας.",
+    "translationUseMobileData": "Χρήση δεδομένων κινητής",
+    "translationDownloadFailed": "Δεν ήταν δυνατή η λήψη του πακέτου γλώσσας.",
+    "translationDeleteModelTitle": "Διαγραφή αυτού του πακέτου γλώσσας;",
+    "translationModelBody": "Η μετάφραση γίνεται στη συσκευή σου. Το ULMOX πρέπει να κατεβάσει ένα πακέτο γλώσσας περίπου 30 MB για κάθε γλώσσα. Μπορείς να το διαγράψεις αργότερα από τα Μοντέλα μετάφρασης.",
+    "translationUnavailable": "Αυτό το μήνυμα δεν μπορεί να μεταφραστεί.",
+    "webModeration": "Η μετάφραση ενός μηνύματος δεν αλλάζει τίποτα όσον αφορά τις αναφορές, τη φραγή, την εποπτεία ή τις αποφάσεις για λογαριασμούς. Μια αναφορά περιλαμβάνει πάντα το αρχικό μήνυμα, και ένας άνθρωπος εξετάζει αυτό το αρχικό μήνυμα — ποτέ τη μετάφραση.",
+    "webModels": "Μπορείτε να δείτε και να διαγράψετε τα πακέτα γλωσσών που έχετε λάβει από την ενότητα Μοντέλα μετάφρασης, μέσα στην εφαρμογή. Η αφαίρεση του ULMOX τα αφαιρεί επίσης, με τον συνήθη τρόπο με τον οποίο το λειτουργικό σας σύστημα αφαιρεί τα αρχεία μιας εφαρμογής.",
+    "webNoCopy": "Το ULMOX δεν διατηρεί τη μετάφραση. Δεν αποθηκεύεται ως ξεχωριστό μήνυμα στους διακομιστές μας και δεν επισυνάπτεται σε αναφορά, ειδοποίηση, αποδεικτικά στοιχεία εποπτείας ή δεδομένα ανάλυσης.",
+    "webGradualRollout": "Οι Connections και η προαιρετική μετάφραση μηνυμάτων εισάγονται σταδιακά και ενδέχεται να μην είναι ακόμη διαθέσιμες για κάθε λογαριασμό ή κάθε εγκατεστημένη έκδοση της εφαρμογής.",
+    "webPrivacyLink": "Πολιτική απορρήτου",
+    "translationAttribution": "powered by Google Translate"
+  },
+  "id": {
+    "translationInformationTitle": "Informasi terjemahan",
+    "translationInfoPoweredBy": "Terjemahan di ULMOX didukung oleh Google Translate.",
+    "translationInfoOptional": "Terjemahan bersifat opsional. Tidak ada yang diterjemahkan kecuali Anda memintanya, satu pesan setiap kali.",
+    "translationInfoOnDevice": "Penerjemahan pesan dilakukan di perangkat ini. Pesan dan terjemahannya tidak dikirim ke mana pun untuk diterjemahkan.",
+    "translationInfoModels": "Paket bahasa harus diunduh sebelum suatu bahasa dapat diterjemahkan. ULMOX akan bertanya terlebih dahulu, dan mengunduh melalui Wi-Fi kecuali Anda memilih sebaliknya.",
+    "translationInfoNetwork": "Komponen terjemahan Google tetap dapat menggunakan jaringan secara mandiri: untuk mengunduh paket bahasa, membaca konfigurasi jarak jauhnya sendiri, dan melaporkan diagnostik serta analitik penggunaan tentang komponen tersebut. Teks pesan Anda tidak termasuk di dalamnya.",
+    "translationInfoAccuracy": "Terjemahan mesin bisa salah, dan bisa salah meskipun terdengar sangat meyakinkan.",
+    "translationInfoOriginal": "Pesan aslilah yang berlaku. Pesan asli tetap ditampilkan di layar, dan hanya pesan asli yang menjadi rujukan setiap laporan.",
+    "translationInfoPivot": "Di antara dua bahasa yang keduanya bukan bahasa Inggris, terjemahan mungkin melewati bahasa Inggris terlebih dahulu, dan hasilnya bisa jauh lebih lemah.",
+    "translationDisclaimerTitle": "Penafian Google",
+    "translationDisclaimer": "THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.",
+    "translationDisclaimerNote": "Google mewajibkan pemberitahuan ini ditampilkan persis seperti aslinya, sehingga tidak diterjemahkan.",
+    "translationLinksTitle": "Tentang layanan terjemahan",
+    "translateWithGoogle": "Translate with Google",
+    "translationModelsTitle": "Model terjemahan",
+    "translationModelsStoredOnDevice": "Paket bahasa ini disimpan di perangkat ini.",
+    "translationQualityNotice": "Terjemahan mesin bisa tidak akurat. Teks asli selalu ditampilkan.",
+    "translationWifiRequired": "Wi-Fi diperlukan untuk mengunduh paket bahasa.",
+    "translationUseMobileData": "Gunakan data seluler",
+    "translationDownloadFailed": "Paket bahasa tidak dapat diunduh.",
+    "translationDeleteModelTitle": "Hapus paket bahasa ini?",
+    "translationModelBody": "Terjemahan dilakukan di perangkat Anda. ULMOX perlu mengunduh paket bahasa sekitar 30 MB untuk setiap bahasa. Anda dapat menghapusnya nanti di Model terjemahan.",
+    "translationUnavailable": "Pesan ini tidak dapat diterjemahkan.",
+    "webModeration": "Menerjemahkan pesan tidak mengubah apa pun terkait pelaporan, pemblokiran, moderasi, atau keputusan tentang akun. Laporan selalu memuat pesan asli, dan seorang manusia meninjau pesan asli tersebut — tidak pernah terjemahannya.",
+    "webModels": "Anda dapat melihat dan menghapus paket bahasa yang telah diunduh di Model terjemahan, di dalam aplikasi. Menghapus ULMOX juga akan menghapusnya, dengan cara biasa sistem operasi Anda menghapus file sebuah aplikasi.",
+    "webNoCopy": "ULMOX tidak menyimpan terjemahan. Terjemahan tidak disimpan sebagai pesan terpisah di server kami, dan tidak dilampirkan pada laporan, notifikasi, bukti moderasi, atau analitik.",
+    "webGradualRollout": "Connections dan terjemahan pesan opsional sedang diperkenalkan secara bertahap dan mungkin belum tersedia untuk setiap akun atau setiap versi aplikasi yang terpasang.",
+    "webPrivacyLink": "Kebijakan Privasi",
+    "translationAttribution": "powered by Google Translate"
+  },
+  "ms": {
+    "translationInformationTitle": "Maklumat terjemahan",
+    "translationInfoPoweredBy": "Terjemahan dalam ULMOX dikuasakan oleh Google Translate.",
+    "translationInfoOptional": "Terjemahan adalah pilihan. Tiada apa-apa diterjemahkan melainkan anda memintanya, satu mesej pada satu masa.",
+    "translationInfoOnDevice": "Terjemahan mesej berlaku pada peranti ini. Mesej dan terjemahannya tidak dihantar ke mana-mana untuk diterjemahkan.",
+    "translationInfoModels": "Pek bahasa perlu dimuat turun sebelum sesuatu bahasa boleh diterjemahkan. ULMOX akan bertanya dahulu, dan memuat turun melalui Wi-Fi melainkan anda memilih sebaliknya.",
+    "translationInfoNetwork": "Komponen terjemahan Google masih boleh menggunakan rangkaian dengan sendirinya: untuk memuat turun pek bahasa, membaca konfigurasi jauhnya sendiri, dan melaporkan diagnostik serta analitik penggunaan tentang komponen tersebut. Teks mesej anda tidak termasuk dalam hal itu.",
+    "translationInfoAccuracy": "Terjemahan mesin boleh salah, dan ia boleh salah walaupun kedengaran seolah-olah pasti.",
+    "translationInfoOriginal": "Mesej asal ialah yang diambil kira. Ia kekal pada skrin, dan hanya mesej asal yang dirujuk oleh sesuatu laporan.",
+    "translationInfoPivot": "Antara dua bahasa yang kedua-duanya bukan bahasa Inggeris, terjemahan mungkin melalui bahasa Inggeris terlebih dahulu, dan hasilnya boleh menjadi ketara lebih lemah.",
+    "translationDisclaimerTitle": "Penafian Google",
+    "translationDisclaimer": "THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.",
+    "translationDisclaimerNote": "Google menghendaki notis ini dipaparkan tepat seperti yang ditulis, jadi ia tidak diterjemahkan.",
+    "translationLinksTitle": "Mengenai perkhidmatan terjemahan",
+    "translateWithGoogle": "Translate with Google",
+    "translationModelsTitle": "Model terjemahan",
+    "translationModelsStoredOnDevice": "Pek bahasa ini disimpan pada peranti ini.",
+    "translationQualityNotice": "Terjemahan mesin mungkin tidak tepat. Teks asal sentiasa ditunjukkan.",
+    "translationWifiRequired": "Wi-Fi diperlukan untuk memuat turun pek bahasa.",
+    "translationUseMobileData": "Guna data mudah alih",
+    "translationDownloadFailed": "Pek bahasa tidak dapat dimuat turun.",
+    "translationDeleteModelTitle": "Padam pek bahasa ini?",
+    "translationModelBody": "Terjemahan berlaku pada peranti anda. ULMOX perlu memuat turun pek bahasa kira-kira 30 MB untuk setiap bahasa. Anda boleh memadamnya kemudian dalam Model terjemahan.",
+    "translationUnavailable": "Mesej ini tidak boleh diterjemahkan.",
+    "webModeration": "Menterjemah mesej tidak mengubah apa-apa tentang pelaporan, penyekatan, penyederhanaan atau keputusan akaun. Laporan sentiasa membawa mesej asal, dan seorang manusia menyemak mesej asal itu — tidak pernah terjemahannya.",
+    "webModels": "Anda boleh melihat dan memadam pek bahasa yang dimuat turun dalam Model terjemahan, di dalam aplikasi. Mengalih keluar ULMOX juga akan mengalih keluarnya, mengikut cara biasa sistem pengendalian anda mengalih keluar fail sesebuah aplikasi.",
+    "webNoCopy": "ULMOX tidak menyimpan terjemahan. Ia tidak disimpan sebagai mesej berasingan di pelayan kami, dan ia tidak dilampirkan pada laporan, pemberitahuan, bukti penyederhanaan atau analitis.",
+    "webGradualRollout": "Connections dan terjemahan mesej pilihan sedang diperkenalkan secara berperingkat dan mungkin belum tersedia untuk setiap akaun atau setiap versi aplikasi yang dipasang.",
+    "webPrivacyLink": "Dasar Privasi",
+    "translationAttribution": "powered by Google Translate"
+  },
+  "sr": {
+    "translationInformationTitle": "Информације о превођењу",
+    "translationInfoPoweredBy": "Превођење у ULMOX-у омогућава Google Translate.",
+    "translationInfoOptional": "Превођење није обавезно. Ништа се не преводи ако то не затражиш, и то порука по порука.",
+    "translationInfoOnDevice": "Превођење поруке обавља се на овом уређају. Порука и превод се не шаљу никуда ради превођења.",
+    "translationInfoModels": "Пре него што језик може да се преводи, мора да се преузме језички пакет. ULMOX прво пита и преузима преко Wi-Fi мреже, осим ако не изабереш другачије.",
+    "translationInfoNetwork": "Google-ова компонента за превођење и даље може сама да користи мрежу: да преузме језичке пакете, да прочита сопствену удаљену конфигурацију и да шаље дијагностику и аналитику коришћења о самој компоненти. Текст твојих порука није део тога.",
+    "translationInfoAccuracy": "Машински превод може бити погрешан, и то тако да звучи као да је потпуно сигуран.",
+    "translationInfoOriginal": "Важи оригинална порука. Она остаје на екрану и једино се на њу пријава икада односи.",
+    "translationInfoPivot": "Између два језика од којих ниједан није енглески, превод може успут да прође кроз енглески, па резултат може бити приметно слабији.",
+    "translationDisclaimerTitle": "Google-ово одрицање одговорности",
+    "translationDisclaimer": "THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.",
+    "translationDisclaimerNote": "Google захтева да се ово обавештење прикаже тачно онако како је написано, па није преведено.",
+    "translationLinksTitle": "О услузи превођења",
+    "translateWithGoogle": "Translate with Google",
+    "translationModelsTitle": "Модели за превод",
+    "translationModelsStoredOnDevice": "Ови језички пакети су сачувани на овом уређају.",
+    "translationQualityNotice": "Машински превод може бити нетачан. Оригинал се увек приказује.",
+    "translationWifiRequired": "За преузимање језичког пакета потребан је Wi-Fi.",
+    "translationUseMobileData": "Користи мобилне податке",
+    "translationDownloadFailed": "Језички пакет није могао да се преузме.",
+    "translationDeleteModelTitle": "Обрисати овај језички пакет?",
+    "translationModelBody": "Превођење се обавља на твом уређају. ULMOX треба да преузме језички пакет од око 30 МБ за сваки језик. Касније га можеш обрисати у Моделима за превод.",
+    "translationUnavailable": "Ова порука не може да се преведе.",
+    "webModeration": "Превођење поруке не мења ништа у вези са пријављивањем, блокирањем, модерацијом или одлукама о налозима. Пријава увек садржи оригиналну поруку, а човек прегледа тај оригинал — никада превод.",
+    "webModels": "Преузете језичке пакете можете да видите и избришете у одељку Модели за превод, у апликацији. Уклањањем ULMOX-а уклањају се и они, на уобичајен начин на који ваш оперативни систем уклања датотеке апликације.",
+    "webNoCopy": "ULMOX не чува превод. Не чува се као засебна порука на нашим серверима и не придружује се пријави, обавештењу, доказима за модерацију ни аналитици.",
+    "webGradualRollout": "Connections и необавезни превод порука уводе се постепено и можда још нису доступни за сваки налог или сваку инсталирану верзију апликације.",
+    "webPrivacyLink": "Политика приватности",
     "translationAttribution": "powered by Google Translate"
   }
 });

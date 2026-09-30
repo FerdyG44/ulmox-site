@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
-const languages = ['en', 'sv', 'tr', 'de', 'es', 'fr', 'it', 'pt', 'nl', 'pl', 'fi', 'ru', 'ja', 'ko', 'zh', 'ar', 'hi', 'th', 'vi'];
+const languages = ['en', 'sv', 'tr', 'de', 'es', 'fr', 'it', 'pt', 'nl', 'pl', 'fi', 'ru', 'ja', 'ko', 'zh', 'ar', 'hi', 'th', 'vi', 'el', 'id', 'ms', 'sr'];
 const pages = ['index.html', 'support.html', 'safety.html', 'privacy.html', 'terms.html', 'delete_account.html', 'delete-account/index.html', 'translation.html'];
 const appStore = 'https://apps.apple.com/se/app/ulmox/id6765990174';
 const googlePlay = 'https://play.google.com/store/apps/details?id=com.ulmox.app';
@@ -26,7 +26,11 @@ const expectedTitles = {
   ar: { privacy: 'سياسة الخصوصية', terms: 'شروط الخدمة', safety: 'السلامة' },
   hi: { privacy: 'गोपनीयता नीति', terms: 'सेवा की शर्तें', safety: 'सुरक्षा' },
   th: { privacy: 'นโยบายความเป็นส่วนตัว', terms: 'ข้อกำหนดการให้บริการ', safety: 'ความปลอดภัย' },
-  vi: { privacy: 'Chính sách quyền riêng tư', terms: 'Điều khoản dịch vụ', safety: 'An toàn' }
+  vi: { privacy: 'Chính sách quyền riêng tư', terms: 'Điều khoản dịch vụ', safety: 'An toàn' },
+  el: { privacy: 'Πολιτική απορρήτου', terms: 'Όροι Παροχής Υπηρεσιών', safety: 'Ασφάλεια' },
+  id: { privacy: 'Kebijakan Privasi', terms: 'Ketentuan Layanan', safety: 'Keselamatan' },
+  ms: { privacy: 'Dasar Privasi', terms: 'Terma Perkhidmatan', safety: 'Keselamatan' },
+  sr: { privacy: 'Политика приватности', terms: 'Услови коришћења', safety: 'Безбедност' }
 };
 
 const spanishLeakPhrases = [
@@ -124,7 +128,7 @@ for (const language of languages) {
       const href = match[1];
       if (/^(https?:|mailto:|#)/.test(href)) continue;
       if (href.startsWith('/')) continue;
-      if (/^(en|sv|tr|de|es|fr|it|pt|nl|pl|fi|ru|ja|ko|zh|ar|hi|th|vi)\//.test(href)) {
+      if (/^(en|sv|tr|de|es|fr|it|pt|nl|pl|fi|ru|ja|ko|zh|ar|hi|th|vi|el|id|ms|sr)\//.test(href)) {
         assert(href.startsWith(`${language}/`), `${relativePath}: href points to wrong locale: ${href}`);
       }
     }

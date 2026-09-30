@@ -128,7 +128,7 @@ test("handoff 1: every page describing Connections carries the rollout sentence"
   }
 });
 
-test("handoff 1: the rollout sentence is hand-localized for all 19 locales", () => {
+test("handoff 1: the rollout sentence is hand-localized for all 23 locales", () => {
   for (const locale of LOCALES) {
     const value = T.LOCALES[locale].webGradualRollout;
     assert.ok(value && value.trim(), `${locale} has no rollout sentence`);
@@ -875,14 +875,14 @@ test("all locale routes build, root and localized", () => {
 /**
  * Accessibility, for the routes this stage owns.
  *
- * Scope is deliberate and stated rather than assumed. The 25 routes below —
- * the six canonical English pages and all 19 localized Translation Information
+ * Scope is deliberate and stated rather than assumed. The 29 routes below —
+ * the six canonical English pages and all 23 localized Translation Information
  * routes — come out of the shared generator chrome, so the checks are
  * meaningful and enforceable on every one of them.
  *
  * The hand-maintained localized legal pages (`<locale>/privacy.html`,
  * `terms.html`, `safety.html`, `support.html`, `delete_account.html`) and the
- * 20 `index.html` landing pages are NOT generated and carry none of that
+ * 24 `index.html` landing pages are NOT generated and carry none of that
  * chrome. That is a pre-existing gap — it is equally absent at git HEAD, and
  * Stage 1.6W did not touch those files. It is recorded as an open publication
  * blocker in PUBLICATION_CHECKLIST.md rather than quietly excluded here.
@@ -890,7 +890,7 @@ test("all locale routes build, root and localized", () => {
 const ACCESSIBLE_ROUTES = [...CANONICAL_PAGES, ...LOCALIZED_TRANSLATION];
 
 test("every route this stage generates is structurally sound and accessible", () => {
-  assert.equal(ACCESSIBLE_ROUTES.length, 25);
+  assert.equal(ACCESSIBLE_ROUTES.length, 29);
   for (const route of ACCESSIBLE_ROUTES) {
     const html = read(route);
     const locale = route.includes("/") ? route.split("/")[0] : "en";

@@ -62,7 +62,7 @@ test("Google's mandatory disclaimer appears verbatim on every route", () => {
   }
 });
 
-test("the disclaimer is identical across all 20 routes", () => {
+test("the disclaimer is identical across all 24 routes", () => {
   const found = new Set();
   for (const html of Object.values(routes)) {
     const match = html.match(/THIS SERVICE MAY CONTAIN TRANSLATIONS[^<]*/);
@@ -185,7 +185,7 @@ const PRIVACY = () => read("privacy.html");
  * review, during review, during a staged rollout and afterwards.
  *
  * This assertion is stricter than the one it replaces, not weaker: it requires
- * the rollout sentence in all 20 routes *and* on Privacy, and the availability
+ * the rollout sentence in all 24 routes *and* on Privacy, and the availability
  * guards below forbid the claim the old wording was protecting against.
  */
 test("translation is described as optional, on-device and gradually rolled out", () => {
@@ -445,7 +445,8 @@ test("the sitemap lists every translation route and nothing unbuilt", () => {
   for (const url of expected) {
     assert.ok(sitemap.includes(`<loc>${url}</loc>`), `sitemap missing ${url}`);
   }
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 140);
+  // 23 locales x 7 routes + 7 root routes.
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 168);
 });
 
 test("robots does not block the translation route", () => {
@@ -483,7 +484,7 @@ test("the build ships every translation route and keeps deletion analytics-free"
       measurementId: "G-TEST123456",
       environment: "production",
     });
-    assert.equal(result.htmlFiles, 161);
+    assert.equal(result.htmlFiles, 193);
 
     for (const file of TRANSLATION_ROUTES) {
       const built = path.join(outputRoot, file);
@@ -492,7 +493,7 @@ test("the build ships every translation route and keeps deletion analytics-free"
       assert.match(fs.readFileSync(built, "utf8"), /ULMOX_GA4_ANALYTICS/, file);
     }
 
-    // Adding 20 routes must not have leaked analytics onto a deletion route.
+    // Adding 24 routes must not have leaked analytics onto a deletion route.
     const deletion = [
       "delete_account.html",
       "delete-account/index.html",

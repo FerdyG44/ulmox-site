@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Penghapusan Akun - ULMOX</title>
+  <meta name="description" content="Cara menghapus akun ULMOX Anda secara permanen, di aplikasi atau melalui permintaan." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Clipped, not offset: see scripts/legal-pages.js. */
+    .skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: var(--accent);
+      color: #000;
+      z-index: 10;
+    }
+
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-24" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      z-index: 10000;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="ulmox-skip-link" href="#main">Langsung ke konten</a>
+<div class="container">
+  <main id="main">
+    <h1>Hapus akun ULMOX Anda</h1>
+    <p class="effective">Berlaku sejak 2026-09-04. Terakhir diperbarui 2026-09-04.</p>
+
+    <p>Halaman ini menjelaskan cara menghapus akun ULMOX Anda secara permanen dan apa yang terjadi pada data Anda setelahnya.</p>
+
+    <div class="callout">
+      <p><strong>Menonaktifkan tidak sama dengan menghapus.</strong> Penonaktifan menyembunyikan profil dan konten Anda serta dapat dibatalkan. Menghapus akun Anda bersifat permanen dan tidak dapat dibatalkan.</p>
+    </div>
+
+    <h2>Opsi 1 — hapus di aplikasi (disarankan)</h2>
+
+    <p>Ini adalah cara tercepat dan tidak memerlukan pertukaran email. Cara ini tidak tersedia untuk setiap akun di setiap perangkat: akun yang ditautkan dengan Masuk dengan Apple tidak dapat menyelesaikan penghapusan dari ponsel Android, dan harus menyelesaikannya di perangkat Apple. Lihat <a href="#apple-linked">Jika akun Anda ditautkan dengan Masuk dengan Apple</a> di bawah.</p>
+
+    <ol>
+      <li>Buka ULMOX dan buka <strong>Profil &rarr; Hukum &amp; Keamanan &rarr; Pengelolaan Akun &rarr; Hapus Akun</strong>.</li>
+      <li>Baca konfirmasinya, yang menjelaskan bahwa penghapusan bersifat permanen.</li>
+      <li>Konfirmasikan. Anda mungkin diminta login kembali terlebih dahulu, yang melindungi akun Anda agar tidak dihapus oleh orang lain.</li>
+    </ol>
+
+    <h2>Opsi 2 — minta penghapusan melalui email</h2>
+
+    <p>Jika Anda tidak dapat membuka aplikasi, Anda dapat meminta kami menghapus akun Anda.</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">Kirim email ke ulmoxapp@outlook.com dengan subjek “ULMOX Account Deletion Request”</a></p>
+
+    <p>Mohon sertakan hanya informasi minimum yang diperlukan untuk menemukan akun Anda:</p>
+
+    <ul>
+      <li>alamat email yang terkait dengan akun ULMOX Anda, dan</li>
+      <li>nama pengguna ULMOX Anda, jika Anda mengetahuinya.</li>
+    </ul>
+
+    <p>Jika memungkinkan, kirimkan dari alamat email yang terkait dengan akun Anda. Jika akun Anda ditautkan dengan Masuk dengan Apple dan Anda menggunakan <strong>Sembunyikan Email Saya</strong>, kirimkan dari alamat penerusan Apple Anda, atau berikan kepada kami detail akun yang tidak bersifat rahasia yang cukup untuk mengidentifikasi akun tersebut.</p>
+
+    <div class="callout">
+      <p><strong>Kami tidak akan pernah meminta kata sandi, kata sandi Apple atau Google, kode autentikasi sekali pakai, kode otorisasi, token login, atau foto dokumen identitas dari Anda</strong>, dan kami tidak akan pernah meminta Anda mengirimkan salah satu dari hal tersebut kepada kami melalui email. Jika Anda menerima pesan yang mengaku berasal dari ULMOX dan meminta salah satu dari hal tersebut, pesan itu bukan dari kami.</p>
+    </div>
+
+    <p>Kami memverifikasi bahwa Anda adalah pemilik akun sebelum menghapusnya. Permintaan yang dikirim dari formulir web publik atau alamat yang belum diverifikasi tidak dengan sendirinya menghapus akun. Kami dapat meminta Anda mengonfirmasi kepemilikan melalui proses yang aman, seperti membalas dari alamat email akun tersebut.</p>
+
+    <h2>Apa yang terjadi ketika akun dihapus</h2>
+
+    <ul>
+      <li>Akses dan keterlihatan dihapus segera setelah penghapusan berhasil dimulai. Profil Anda tidak lagi terlihat oleh orang lain dan akun Anda tidak lagi dipilih untuk pengiriman baru.</li>
+      <li>Penghapusan fisik atas data yang tersimpan berlanjut di latar belakang setelah itu. Penghapusan tersebut ditargetkan selesai dalam 30 hari, kecuali jika kewajiban keselamatan atau kewajiban hukum yang beralasan mengharuskan penyimpanan terbatas.</li>
+      <li>Video yang Anda rekam, thumbnail-nya, informasi profil Anda, foto profil Anda, dan konten Global yang Anda miliki akan dihapus.</li>
+      <li>Konten milik orang lain <em>tidak</em> dihapus hanya karena Anda membagikannya. Sebagai gantinya, keterkaitan Anda dengan konten tersebut yang dihapus, dan video tetap berada pada orang yang membuatnya.</li>
+      <li>Nama pengguna Anda ditahan selama 90 hari setelah penghapusan sebelum dapat digunakan kembali, sehingga tidak dapat langsung diambil oleh orang lain.</li>
+      <li>Catatan keselamatan, hukum, atau transaksi yang terbatas dapat disimpan apabila ada alasan yang dapat dibenarkan, dan hanya selama alasan tersebut masih berlaku. Jika suatu catatan keselamatan disimpan, tautan yang mengaitkannya dengan identitas Anda dihapus sebagai bagian dari penghapusan data, sehingga yang tersisa adalah catatan tentang apa yang terjadi, bukan catatan tentang Anda.</li>
+      <li>Menghapus akun Anda tidak menghapus akun orang lain. Sebuah Connection melibatkan dua orang, dan pesan, video, serta catatan milik peserta lainnya tetap berada pada orang tersebut.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Bukti keselamatan bukanlah riwayat pesan biasa.</strong> Connections dan terjemahan pesan opsional sedang diperkenalkan secara bertahap dan mungkin belum tersedia untuk setiap akun atau setiap versi aplikasi yang terpasang. Jika Anda memiliki Connection: pesan biasa di dalamnya diperlakukan sebagai kedaluwarsa sekitar tujuh hari setelah dikirim. Pesan yang telah dilaporkan tidak lagi tunduk pada aturan tersebut: pesan itu menjadi bukti dalam peninjauan, dan disimpan selama peninjauan masih berlangsung dan sesudahnya apabila hasil peninjauan membenarkan penyimpanannya — termasuk setelah akun asalnya dihapus. Menghapus akun Anda tidak menarik kembali laporan yang Anda buat dan tidak menghapus laporan yang dibuat tentang Anda.</p>
+    </div>
+
+    <h2 id="apple-linked">Jika akun Anda ditautkan dengan Masuk dengan Apple</h2>
+
+    <p>Sebagian akun ULMOX ditautkan dengan Masuk dengan Apple. Jika akun Anda termasuk di antaranya, penghapusan permanen memiliki satu langkah tambahan, karena Apple mewajibkan aplikasi melepaskan otorisasi Masuk dengan Apple miliknya ketika menghapus akun, bukan hanya menghapus catatannya sendiri.</p>
+
+    <ol>
+      <li>Di perangkat Apple, ULMOX meminta Anda mengonfirmasi sekali lagi langsung dengan Apple. Konfirmasi tersebut berlangsung antara Anda dan Apple di perangkat Anda sendiri. <strong>ULMOX tidak menerima kata sandi Apple Anda</strong>, dan kami tidak pernah memintanya dari Anda.</li>
+      <li>Konfirmasi itulah yang memungkinkan ULMOX mencabut otorisasi Masuk dengan Apple miliknya sendiri untuk akun Anda.</li>
+      <li>Baru setelah itu penghapusan permanen yang dijelaskan di atas dimulai.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Jika langkah tersebut tidak selesai, tidak ada yang dihapus.</strong> Jika Anda menutup layar Apple, jika konfirmasi mengembalikan akun Apple yang berbeda dari akun yang sedang login, atau jika langkah tersebut gagal karena alasan lain apa pun, ULMOX berhenti sebelum terjadi hal permanen apa pun dan memberi tahu Anda bahwa tidak ada yang dihapus. Anda dapat mencoba lagi.</p>
+    </div>
+
+    <p>Tiga hal yang berbeda ini mudah tertukar:</p>
+
+    <ul>
+      <li><strong>Mencabut otorisasi Masuk dengan Apple milik ULMOX</strong> membuat ULMOX tidak dapat lagi menggunakan Masuk dengan Apple untuk Anda. Tindakan itu sendiri tidak menghapus akun ULMOX Anda dan tidak menghapus data di dalamnya.</li>
+      <li><strong>Menghapus akun ULMOX Anda</strong> adalah tindakan yang menghapus data ULMOX Anda. Tindakan ini baru selesai ketika penghapusan data yang dijelaskan di halaman ini telah dijalankan — tidak ada perubahan pada otorisasi login yang dapat menyelesaikannya.</li>
+      <li><strong>Menghapus ID Apple Anda</strong> adalah sesuatu yang hanya dapat dilakukan oleh Apple, atas permintaan Anda sendiri — ULMOX tidak pernah melakukannya dan tidak dapat melakukannya.</li>
+    </ul>
+
+    <h3>Menghapus akun yang ditautkan dengan Apple dari perangkat Android</h3>
+
+    <p>Langkah konfirmasi Apple hanya dapat diselesaikan di perangkat Apple. Jika Anda mencoba menghapus akun ULMOX yang ditautkan dengan Apple dari ponsel Android, ULMOX berhenti sebelum menghapus apa pun dan memberi tahu Anda bahwa <strong>tidak ada yang dihapus</strong>. Selesaikan penghapusan di perangkat Apple.</p>
+
+    <p>Akun yang hanya menggunakan Login dengan Google, atau hanya alamat email, dapat dihapus seperti biasa di kedua jenis perangkat. Akun yang ditautkan dengan Apple sekaligus Google tetap memerlukan langkah Apple.</p>
+
+    <h2>Jika Anda hanya ingin rehat sejenak</h2>
+
+    <p>Penonaktifan menyembunyikan profil dan konten Global Anda serta dapat dibatalkan dengan login kembali dan memilih <strong>Aktifkan Kembali Akun</strong>. Login saja tidak mengaktifkan kembali akun. Video yang telah Anda kirim dapat tetap berada pada orang yang menerimanya selama masa penyimpanan normalnya. Penonaktifan tidak memenuhi permintaan penghapusan — jika Anda ingin data Anda dihapus, gunakan Hapus Akun.</p>
+
+    <p>Menonaktifkan tidak menghapus catatan keselamatan, dan mengaktifkan kembali tidak membatalkan apa pun. Kembali menggunakan akun memulihkan akses Anda; hal itu tidak membatalkan keputusan moderasi, tidak mengembalikan konten yang dihapus atau disembunyikan oleh moderasi, dan tidak membuka kembali Connection yang telah diakhiri. Mengakhiri Connection bersifat final bagi pasangan tersebut. Pemblokiran bekerja secara berbeda: blokir mengakhiri Connection yang Anda miliki saat ini dan menghentikan kontak dua arah selama blokir tersebut berlaku. Mencabut blokir juga tidak memulihkan Connection yang lama — kedua akun harus memenuhi syarat lagi dari awal, melalui dua pertukaran video baru yang memenuhi syarat dan persetujuan baru dari masing-masing orang.</p>
+
+    <h2>Pertanyaan</h2>
+
+    <p>Hubungi <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Lihat juga <a href="privacy.html">Kebijakan Privasi</a> dan <a href="terms.html">Ketentuan</a> kami.</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Informasi hukum dan dukungan">
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="privacy.html">Kebijakan Privasi</a></li>
+        <li><a href="terms.html">Ketentuan</a></li>
+        <li><a href="safety.html">Keselamatan &amp; Moderasi</a></li>
+        <li><a href="support.html">Dukungan</a></li>
+        <li><span aria-current="page">Hapus Akun</span></li>
+        <li><a href="translation.html">Informasi Terjemahan</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Versi bahasa Inggris dari kebijakan ini adalah versi yang mengikat. Jika suatu terjemahan berbeda dari versi tersebut, versi bahasa Inggris yang berlaku.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+</body>
+</html>

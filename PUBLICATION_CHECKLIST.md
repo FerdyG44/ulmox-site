@@ -13,6 +13,10 @@ Cleared is not the same as published. Nothing here has been published, and the
 publication itself is still a deliberate act taken through the release order.
 This status means the pages may now be published, not that they have been.
 
+**Exception — Greek (`el`), Serbian Cyrillic (`sr`), Malay (`ms`) and
+Indonesian (`id`) are NOT cleared.** Their pages are prepared in source only;
+see [Stage 1.7](#stage-17--four-prepared-locales-el-sr-ms-id--source-only-not-published).
+
 **The guard does not retire.** If a page ever describes something again that is
 not deployed, this file goes back to DO NOT PUBLISH. The store-console, device
 and deployment handoff tables further down remain **Open** and are unaffected by
@@ -637,6 +641,35 @@ in any language now says ULMOX uses no automated filtering.
 | English prose leakage | `npm test` | No eight-word run of canonical English prose survives in a localized page |
 | Accessibility and references | `npm run audit` | 161 built routes, 2062 local references |
 
+## Stage 1.7 — four prepared locales (el, sr, ms, id) — source only, NOT published
+
+Greek (`el`), Serbian in Cyrillic (`sr`, `lang="sr"`), Malay (`ms`, Malaysia)
+and Indonesian (`id`) were added to every per-locale structure in source:
+`scripts/policy-locales/{el,sr,ms,id}.js` (canonical revision 2026-09-24),
+`page-shell.js`, `translation-content.js`, `landing-content.js`, the legal and
+landing generators, `build-site.js`, `audit-site.js`, `verify-locales.js`,
+`assets/js/i18n-config.js`, `assets/js/language-switcher.js` and
+`sitemap.xml`. The source now holds 23 locales (22 translated), 115 localized
+policy routes, 24 landing routes and 168 sitemap URLs; a build has 193 HTML
+pages.
+
+- **Prepared in source, NOT published.** No page in these four languages has
+  been deployed. They go live only with a deliberate deploy of `dist/`, and that
+  deploy waits for **native legal review** of each of the four languages. The
+  translations were authored in this repository; no lawyer, professional
+  translator or native speaker has read them. **Open.**
+- **Order: the website first, then the app.** The website carrying these four
+  locales must be deployed **before** the app build that activates them. Until
+  that deploy, the app keeps `el`, `sr`, `ms` and `id` in
+  `LegalLinks.websitePendingLanguages` and links those users to the English
+  pages; removing them from that list in a build that ships first would send
+  users to routes that do not exist.
+- The Translation Information strings for the four locales are copied verbatim
+  from the app's `lib/l10n/app_{el,sr,ms,id}.arb`, and the in-app labels the
+  policy pages quote were aligned with the app's strings. If the app's labels
+  change before publication, the pages must be re-aligned.
+- No public page states a number of languages; none should.
+
 ## Open blockers
 
 - Analytics, Crashlytics and Performance retention windows are **UNKNOWN**
@@ -747,6 +780,10 @@ in any language now says ULMOX uses no automated filtering.
   each language, and no visual check on a real device in any locale. **Open.**
   This is a review task, not a code task; the repository cannot perform it and
   does not claim it was performed.
+- **The four Stage 1.7 locales (`el`, `sr`, `ms`, `id`) are not published and
+  must not be until native legal review is done**; the website deploy that
+  carries them must precede the app build that activates them. See Stage 1.7.
+  **Open.**
 - No published human-moderation SLA beyond the 24-hour child-safety review
   target.
 - **No fixed evidence-retention period has been introduced**, and none may be

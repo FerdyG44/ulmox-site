@@ -26,9 +26,10 @@ test("production build injects GA4 once into every HTML page", (t) => {
   });
 
   // Stage 0.13: the 40 account-deletion pages are deliberately excluded from
-  // analytics, so 121 of the 161 pages are instrumented.
-  assert.equal(result.htmlFiles, 161);
-  assert.equal(result.instrumentedHtmlFiles, 121);
+  // analytics, so 145 of the 193 pages are instrumented (23 locales x 8 HTML
+  // files + 9 root pages; 23 x 6 + 7 instrumented).
+  assert.equal(result.htmlFiles, 193);
+  assert.equal(result.instrumentedHtmlFiles, 145);
   const htmlFiles = [];
   function collect(directory) {
     for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {

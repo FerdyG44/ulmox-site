@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dasar Privasi - ULMOX</title>
+  <meta name="description" content="Data yang dikumpul oleh ULMOX, sebabnya, siapa yang memprosesnya, berapa lama ia disimpan dan cara memadamkannya." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Clipped, not offset: see scripts/legal-pages.js. */
+    .skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: var(--accent);
+      color: #000;
+      z-index: 10;
+    }
+
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-24" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      z-index: 10000;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="ulmox-skip-link" href="#main">Langkau ke kandungan</a>
+<div class="container">
+  <main id="main">
+    <h1>Dasar Privasi</h1>
+    <p class="effective">Berkuat kuasa mulai 2026-09-04. Kali terakhir dikemas kini pada 2026-09-23.</p>
+
+    <p>ULMOX ialah aplikasi perkongsian video. Anda merakam video pendek dan pelayan kami menghantarnya kepada seorang penerima yang layak yang dipilih secara rawak. Hanya penerima boleh memilih untuk berkongsi video yang diterimanya ke suapan Global awam.</p>
+
+    <p>ULMOX dikendalikan oleh Ferdi G&uuml;lseren. Untuk sebarang pertanyaan tentang privasi, hubungi <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>.</p>
+
+    <h2>1. Siapa yang boleh menggunakan ULMOX</h2>
+
+    <p>ULMOX ialah <strong>perkhidmatan untuk 18 tahun ke atas</strong>. Ia tidak bertujuan untuk kanak-kanak, dan kami tidak secara sedar mengumpul data daripada sesiapa yang berumur di bawah 18 tahun.</p>
+
+    <h2>2. Apa yang kami kumpul</h2>
+
+    <h3>Akaun dan pengesahan</h3>
+
+    <ul>
+      <li>Alamat e-mel dan nama paparan.</li>
+      <li>Pengecam akaun dan pengecam penyedia log masuk.</li>
+      <li>Penyedia log masuk yang disokong digunakan untuk mencipta dan mengakses akaun anda. Jika akaun dipautkan dengan <strong>Log Masuk dengan Apple</strong> dan menggunakan <strong>Sembunyikan E-mel Saya</strong> Apple, kami menerima alamat geganti dan bukannya alamat sebenar anda.</li>
+    </ul>
+
+    <h3>Kandungan yang anda cipta</h3>
+
+    <ul>
+      <li>Video yang anda rakam dan lakaran kenit yang dijana daripadanya.</li>
+      <li>Foto profil dan butiran profil anda.</li>
+      <li>Kandungan Global, apabila penerima berkongsi video secara awam.</li>
+      <li>Laporan yang anda serahkan, dan butiran teks bebas pilihan yang anda tambahkan padanya.</li>
+    </ul>
+
+    <h3>Kamera, mikrofon dan foto</h3>
+
+    <ul>
+      <li><strong>Kamera dan mikrofon.</strong> ULMOX meminta akses ini supaya anda boleh merakam momen video beserta bunyi dan mengambil foto profil. Rakaman hanya bermula apabila anda memulakannya.</li>
+      <li><strong>Memilih foto.</strong> Apabila anda menetapkan foto profil, ULMOX membuka pemilih foto dan menerima imej yang anda pilih. Pada versi Android semasa, ini ialah pemilih foto sistem, jadi ULMOX tidak meminta sebarang kebenaran untuk mengakses pustaka foto anda yang lebih luas. Pada iOS, ULMOX meminta akses foto bagi aliran yang benar-benar memerlukannya, dan iOS membenarkan anda memberikan akses kepada foto yang dipilih sahaja dan bukannya kepada seluruh pustaka anda.</li>
+      <li><strong>Menyimpan ke peranti anda.</strong> Jika anda memilih untuk menyimpan momen ke telefon anda, ULMOX meminta kebenaran untuk menambahkannya ke pustaka foto anda. Kebenaran itu menambah fail dan bukannya membaca pustaka anda.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Media yang anda cipta dimuat naik; ia tidak kekal di peranti anda sahaja.</strong> Video, lakaran kenit yang dijana daripadanya dan foto profil anda dimuat naik ke dan disimpan dalam Firebase Cloud Storage supaya ia boleh dihantar dan dipaparkan. Menyimpan salinan anda sendiri ke telefon anda ialah langkah yang berasingan dan pilihan.</p>
+    </div>
+
+    <p>Pada Android, ULMOX tidak lagi mengisytiharkan kebenaran akses foto dan video yang luas yang digunakan oleh Android 13 dan versi kemudian, kerana pemilih foto sistem menggantikannya. Dua kebenaran storan yang lebih lama masih diisytiharkan, kedua-duanya diwarisi daripada komponen yang menjadi asas binaan ULMOX, dan kedua-duanya dihadkan supaya versi Android moden tidak dapat memberikannya:</p>
+
+    <ul>
+      <li>Kebenaran storan <strong>baca</strong> warisan, yang diisytiharkan untuk keserasian dengan Android 12 dan versi terdahulu sahaja.</li>
+      <li>Kebenaran storan <strong>tulis</strong> warisan, yang diisytiharkan untuk keserasian dengan <strong>Android 9 dan versi terdahulu</strong> sahaja. Ini ialah cara lama, sebelum wujudnya storan berskop, untuk menulis fail ke storan kongsi. Ia bukan kebenaran pustaka foto atau video moden, dan ia bukan salah satu kebenaran media Android 13+ yang diterangkan di atas.</li>
+    </ul>
+
+    <p>Setiap had itu adalah sebahagian daripada pengisytiharan itu sendiri, jadi pada versi Android yang lebih baharu kebenaran tersebut tidak diberikan, tidak diminta dan tidak mempunyai sebarang kesan. ULMOX tidak pernah meminta mana-mana satu daripadanya daripada anda. Pada versi Android semasa, pemilihan imej dilakukan melalui pemilih foto sistem, yang tidak memerlukan sebarang kebenaran storan langsung.</p>
+
+    <p>ULMOX tidak meminta pengecam pengiklanan. Kebenaran pengiklanan dan atribusi iklan tiada dalam aplikasi Android yang kami bina, jadi tiada apa-apa untuk dibaca oleh pengiklan atau rangkaian iklan.</p>
+
+    <h3>Lokasi</h3>
+
+    <p>Dengan kebenaran anda, ULMOX boleh mengambil satu bacaan lokasi semasa anda mencipta momen. Bacaan ini digunakan untuk menentukan bandar dan negara yang dikaitkan dengan momen itu dan untuk menyokong ciri momen peribadi.</p>
+
+    <p>ULMOX tidak menerbitkan koordinat peranti anda ke World Live. World Live memaparkan bandar atau negara yang dikaitkan dengan momen yang dikongsi, bukan lokasi semasa atau lokasi langsung seseorang pengguna. Penanda peta awam diletakkan di lokasi umum bandar atau negara dan tidak bergerak apabila pencipta momen itu bergerak.</p>
+
+    <p>Jika lokasi peranti tidak tersedia atau anda menolak kebenaran, ULMOX terus berfungsi seperti biasa. Sebaliknya, momen boleh menggunakan bandar dan negara yang anda masukkan secara manual dalam profil anda.</p>
+
+    <p>Lokasi hanya diakses semasa anda menggunakan aplikasi dan hanya sebagai satu bacaan semasa aliran penciptaan momen. ULMOX tidak mengakses lokasi semasa aplikasi dilancarkan, tidak mengikuti lokasi anda di latar belakang, tidak menjejaki lokasi anda secara berterusan dan tidak mengaksesnya semasa aplikasi ditutup.</p>
+
+    <p>ULMOX hanya meminta lokasi semasa aplikasi digunakan. Ia tidak menggunakan lokasi latar belakang, pemantauan berterusan, pemantauan perubahan ketara atau pemagaran geo, dan aplikasi ini tidak mengisytiharkan sebarang kebenaran yang membolehkan aktiviti tersebut.</p>
+
+    <h3>Terjemahan mesej (Google ML Kit)</h3>
+
+    <p>ULMOX menawarkan terjemahan pilihan bagi mesej Connections yang telah anda terima. Terjemahan hanya dijalankan apabila anda memilih <strong>Translate with Google</strong> pada satu mesej, dan mesej asal kekal pada skrin serta terus menjadi versi yang sah. Connections dan terjemahan mesej pilihan sedang diperkenalkan secara berperingkat dan mungkin belum tersedia untuk setiap akaun atau setiap versi aplikasi yang dipasang. Lihat <a href="translation.html">Maklumat terjemahan</a>.</p>
+
+    <table>
+      <caption class="effective">Apa yang dilakukan oleh setiap bahagian terjemahan terhadap data.</caption>
+      <tr><th scope="col">Bahagian</th><th scope="col">Apa yang berlaku</th></tr>
+      <tr><td>Mesej dan terjemahannya</td><td>Dikendalikan pada peranti anda oleh Google ML Kit. ULMOX tidak menghantar mana-mana satu daripadanya ke mana-mana untuk diterjemahkan, dan tidak menyimpan terjemahan itu di pelayan kami, dalam laporan, dalam bukti penyederhanaan, dalam pemberitahuan, dalam analitis atau dalam log kami.</td></tr>
+      <tr><td>Pek bahasa</td><td>Dimuat turun ke peranti anda apabila sesuatu bahasa diterjemahkan buat kali pertama. ULMOX bertanya terlebih dahulu dan memuat turun melalui Wi-Fi melainkan anda secara nyata memilih data mudah alih. Anda boleh melihat dan memadamkannya dalam aplikasi; mengalih keluar ULMOX akan mengalih keluarnya mengikut cara biasa sistem pengendalian anda mengalih keluar fail sesebuah aplikasi.</td></tr>
+      <tr><td>Metadata terjemahan dan bahasa</td><td>Bahasa yang dikonfigurasikan, dan bahasa yang dikenal pasti, digunakan untuk memilih model dan melabelkan hasilnya. Maklumat ini tidak direkodkan bersama mesej, akaun atau Connection.</td></tr>
+      <tr><td>Penggunaan rangkaian oleh Google ML Kit sendiri</td><td>Komponen Google boleh menggunakan rangkaian untuk tujuannya sendiri: menghantar pek bahasa, membaca konfigurasi jauhnya dan melaporkan diagnostik serta analitis penggunaan tentang komponen tersebut. Google mendokumenkan bahawa komponen itu mengumpul maklumat aplikasi dan peranti, pengecam bagi setiap pemasangan, data prestasi, konfigurasi API, peristiwa ciri, kod ralat, bahasa terjemahan yang dikonfigurasikan dan bahasa yang dikenal pasti.</td></tr>
+      <tr><td>Data pelayan ULMOX</td><td>Tidak berubah. Pelayan kami hanya menyimpan mesej asal, tepat seperti yang diterangkan di bahagian lain dasar ini.</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>Tiga perkara yang tidak akan kami dakwa.</strong> Kami tidak mendakwa bahawa Google menerima teks mesej anda — dokumentasi Google bagi ciri ini tidak menyatakan bahawa teks itu dimuat naik. Dan kami tidak mendakwa bahawa tiada apa-apa pernah meninggalkan peranti anda: komponen Google membuat sambungan rangkaiannya sendiri untuk tujuan yang disenaraikan di atas. Dan kami tidak mendakwa bahawa kami telah menolak kemungkinan itu sepenuhnya — pengisytiharan privasi Google bagi kit pembelajaran mesinnya meliputi setiap ciri dalam kit itu, termasuk ciri yang memang mengendalikan kandungan pengguna, dan komponen itu bukan sumber terbuka, jadi kami tidak dapat memeriksanya sendiri. Kami memberitahu anda apa yang dapat kami sahkan dan bukannya mengisi jurang itu dengan jaminan.</p>
+    </div>
+
+    <p>Data terjemahan tidak pernah digunakan untuk pengiklanan atau pemprofilan, sama ada oleh kami atau bagi pihak kami. Terjemahan tidak pernah menjadi bukti penyederhanaan: laporan dan orang yang menyemaknya menggunakan mesej asal.</p>
+
+    <h3>Maklumat peranti dan teknikal</h3>
+
+    <ul>
+      <li>Pengecam peranti dan pemasangan, versi aplikasi dan platform.</li>
+      <li>Token pemberitahuan tolak, supaya kami boleh menghantar pemberitahuan.</li>
+      <li>Isyarat yang digunakan untuk melindungi perkhidmatan daripada penyalahgunaan, seperti sama ada beberapa akaun berkongsi satu peranti.</li>
+    </ul>
+
+    <h3>Penggunaan dan diagnostik</h3>
+
+    <ul>
+      <li>Firebase Analytics: penggunaan produk secara agregat.</li>
+      <li>Firebase Crashlytics: laporan ranap.</li>
+      <li>Firebase Performance Monitoring: ukuran prestasi.</li>
+      <li>Log pelayan operasi, yang digunakan untuk mengendalikan dan melindungi perkhidmatan.</li>
+    </ul>
+
+    <h3>Jaminan umur</h3>
+
+    <p>Untuk mengesahkan bahawa anda berumur 18 tahun atau lebih, ULMOX menggunakan isyarat umur yang disediakan oleh platform anda jika tersedia, dan jika tidak, meminta tarikh lahir anda.</p>
+
+    <div class="callout">
+      <p><strong>Tarikh lahir anda tidak disimpan.</strong> Ia hanya digunakan semasa permintaan sedang diproses, untuk menentukan sama ada anda berumur 18 tahun atau lebih. Kami menyimpan hasilnya — sama ada anda layak — dan bukan tarikh itu sendiri, bukan umur tepat anda dan bukan julat umur.</p>
+    </div>
+
+    <p>Maklumat umur tidak pernah digunakan untuk pengiklanan, pemprofilan, pemeringkatan atau analitis.</p>
+
+    <h3>Pelaporan, penyederhanaan dan penyekatan</h3>
+
+    <ul>
+      <li>Laporan tentang kandungan dan tentang pengguna, termasuk kategori khusus untuk keselamatan kanak-kanak.</li>
+      <li>Rekod penyederhanaan yang diwujudkan apabila laporan disemak.</li>
+      <li>Sekatan yang anda buat. Penyekatan ialah tindakan keselamatan peribadi; orang yang anda sekat tidak diberitahu.</li>
+    </ul>
+
+    <p>Kandungan yang dilaporkan boleh diletakkan dalam kuarantin boleh balik semasa seorang manusia menyemaknya. Laporan tidak mengharamkan akaun. Hanya pentadbir ULMOX yang diberi kuasa boleh mengharamkan akaun, dan hanya selepas semakan oleh manusia.</p>
+
+    <p>ULMOX tidak menganalisis bingkai video, audio atau transkrip secara automatik.</p>
+
+    <h2>3. Penyahaktifan dan pemadaman</h2>
+
+    <h3>Penyahaktifan</h3>
+
+    <p>Penyahaktifan boleh diterbalikkan: anda memulihkan akaun dengan log masuk semula dan memilih <strong>Aktifkan Semula Akaun</strong>; log masuk sahaja tidak berbuat demikian. Profil dan kandungan Global anda disembunyikan dan akaun anda tidak dipilih untuk penghantaran baharu. Data anda dikekalkan supaya akaun itu boleh dipulihkan. Video yang telah anda hantar mungkin kekal pada orang yang menerimanya bagi tempoh penyimpanan biasa mereka.</p>
+
+    <p>Penyahaktifan bukan penghapusan dan ia tidak mengosongkan rekod keselamatan. Laporan, keputusan penyederhanaan, sekatan dan bukti keselamatan lain tidak terjejas oleh penyahaktifan mahupun pengaktifan semula. Pengaktifan semula memulihkan akses anda; ia tidak membatalkan keputusan penyederhanaan, tidak mengembalikan kandungan yang telah dialih keluar atau disembunyikan melalui penyederhanaan, dan tidak membuka semula Connection yang telah ditamatkan. Menamatkan Connection adalah muktamad bagi pasangan tersebut. Penyekatan berfungsi secara berbeza: sekatan menamatkan Connection yang anda ada sekarang dan menghentikan komunikasi dalam kedua-dua arah selagi sekatan itu berkuat kuasa. Menarik balik sekatan juga tidak memulihkan Connection yang lama — kedua-dua akaun itu perlu layak semula dari awal, melalui dua pertukaran video layak yang baharu dan kelulusan baharu daripada setiap orang.</p>
+
+    <h3>Pemadaman</h3>
+
+    <p>Pemadaman adalah kekal. Akses dan kebolehtemuan dialih keluar sebaik sahaja pemadaman berjaya dimulakan, dan penghapusan fizikal diteruskan di latar belakang, dengan sasaran untuk selesai dalam tempoh 30 hari melainkan suatu kewajipan keselamatan atau undang-undang yang wajar memerlukan penyimpanan terhad. Nama pengguna anda ditahan selama 90 hari sebelum ia boleh digunakan semula. Lihat <a href="delete_account.html">Padam Akaun</a>.</p>
+
+    <p>Jika akaun anda dipautkan dengan <strong>Log Masuk dengan Apple</strong>, pemadaman kekal pada peranti Apple meminta anda mengesahkan sekali lagi secara terus dengan Apple, supaya ULMOX dapat membatalkan kebenaran Log Masuk dengan Apple miliknya sendiri sebelum akaun dipadamkan. Kami tidak menerima kata laluan Apple anda. Jika langkah itu tidak selesai, tiada apa-apa yang dipadamkan. Akaun yang dipautkan dengan Apple tidak dapat melengkapkan langkah ini pada peranti Android; ULMOX berhenti sebelum mengalih keluar apa-apa dan meminta anda menyelesaikannya pada peranti Apple.</p>
+
+    <p>Memadam akaun ULMOX anda tidak memadamkan <strong>Apple ID</strong> atau Akaun Google anda. ULMOX tidak boleh memadamkan mana-mana satu daripadanya. Membatalkan kebenaran Log Masuk dengan Apple bagi ULMOX juga merupakan tindakan yang berbeza daripada memadam akaun anda, dan tindakan itu sahaja tidak menghapuskan data ULMOX anda.</p>
+
+    <p>Memadam akaun anda mengalih keluar data anda. Ia tidak mengalih keluar data orang lain: sesuatu Connection melibatkan dua orang, dan mesej, video serta rekod milik peserta yang satu lagi kekal bersama mereka. Jika bukti keselamatan perlu disimpan atas sebab yang wajar, pautan yang mengaitkannya dengan identiti anda dihapuskan sebagai sebahagian daripada penghapusan, supaya yang tinggal ialah rekod tentang apa yang berlaku dan bukannya rekod tentang anda.</p>
+
+    <h2>4. Berapa lama kami menyimpan data</h2>
+
+    <table>
+      <caption class="effective">Tempoh penyimpanan ditentukan oleh syarat-syarat di bawah dan bukannya oleh satu tempoh tetap.</caption>
+      <tr><th scope="col">Data</th><th scope="col">Berapa lama</th></tr>
+      <tr><td>Profil dan tetapan akaun</td><td>Selagi akaun anda wujud.</td></tr>
+      <tr><td>Video yang tidak pernah dibuka</td><td>Dialih keluar kira-kira 7 hari selepas dihantar.</td></tr>
+      <tr><td>Video yang telah dibuka tetapi tidak dikongsi ke Global</td><td>Dialih keluar kira-kira 15 hari selepas dihantar.</td></tr>
+      <tr><td>Kandungan Global</td><td>Disimpan selagi ia kekal tersedia, sehingga pemiliknya memadamkannya atau penyederhanaan mengalih keluarnya. Kami tidak memadamkan kandungan Global mengikut pemasa tetap.</td></tr>
+      <tr><td>Muat naik yang tidak selesai</td><td>Dibersihkan kira-kira 24 jam selepas ditinggalkan.</td></tr>
+      <tr><td>Token tolak dan rekod peranti</td><td>Selagi berdaftar; dialih keluar semasa penyahaktifan dan pemadaman.</td></tr>
+      <tr><td>Keputusan kelayakan umur</td><td>Selagi akaun anda wujud. Tarikh lahir anda tidak pernah disimpan.</td></tr>
+      <tr><td>Tempahan nama pengguna selepas pemadaman</td><td>90 hari.</td></tr>
+      <tr><td>Rekod pemadaman dalaman</td><td>90 hari, disimpan supaya sesuatu pemadaman boleh diaudit.</td></tr>
+      <tr><td>Mesej Connection</td><td>Mesej biasa dalam sesuatu Connection dianggap tamat tempoh kira-kira tujuh hari selepas dihantar, dan pada ketika itu tidak lagi menjadi sebahagian daripada perbualan. Itu ialah peraturan tentang mesej tersebut, bukan janji tentang pemasa: tamat tempoh automatik bagi rekod yang disimpan belum diaktifkan pada masa ini, jadi pengalihan keluar berlaku melalui pembersihan rutin dan bukannya pada saat yang tetap.</td></tr>
+      <tr><td>Laporan, rekod penyederhanaan, sekatan dan peristiwa keselamatan</td><td>Disimpan sebagai bukti keselamatan, termasuk selepas sesuatu akaun dipadamkan, selagi terdapat sebab keselamatan atau undang-undang yang wajar. Bukti keselamatan bukan sejarah mesej biasa: sebaik sahaja mesej dilampirkan pada laporan, tamat tempoh tujuh hari tidak lagi terpakai padanya, dan ia disimpan semasa semakan masih dibuka dan selepas itu jika hasilnya mewajarkan penyimpanannya.</td></tr>
+      <tr><td>Data analitis, ranap dan prestasi</td><td>Dikekalkan mengikut tetapan penyimpanan yang dikonfigurasikan dalam perkhidmatan Google yang berkaitan.</td></tr>
+    </table>
+
+    <h2>5. Siapa yang memproses data bagi pihak kami</h2>
+
+    <p>ULMOX menggunakan perkhidmatan berikut:</p>
+
+    <ul>
+      <li>Firebase Authentication, Cloud Firestore, Cloud Storage, Cloud Functions dan Cloud Messaging (Google).</li>
+      <li>Firebase Analytics, Crashlytics dan Performance Monitoring (Google).</li>
+      <li>Firebase App Check, iaitu semakan integriti peranti yang digunakan, jika platform menyokongnya, untuk mengurangkan penyalahgunaan automatik terhadap perkhidmatan.</li>
+      <li>Log masuk dengan Google, dan Log Masuk dengan Apple bagi akaun yang dipautkan dengannya, untuk pengesahan.</li>
+      <li>Google ML Kit Translation dan Language Identification, yang menjalankan terjemahan mesej pada peranti anda dan boleh menggunakan rangkaian seperti yang diterangkan di bawah “Terjemahan mesej” di atas.</li>
+      <li>Firebase Remote Config dan Firebase Installations, yang digunakan oleh ML Kit untuk konfigurasinya sendiri dan untuk pengecam bagi setiap pemasangan yang diterangkan di atas.</li>
+      <li>Isyarat umur platform daripada Google Play dan Apple, jika platform menyediakannya dan anda memilih untuk berkongsinya.</li>
+    </ul>
+
+    <p>Kami tidak menjual maklumat peribadi, dan kami tidak menggunakannya untuk pengiklanan atau penjejakan merentas aplikasi.</p>
+
+    <h2>6. Pemprosesan antarabangsa</h2>
+
+    <p>ULMOX tersedia di seluruh dunia dan penyedia kami mengendalikan pusat data di beberapa negara, jadi data anda mungkin diproses di luar negara tempat anda tinggal. Kami bergantung pada perlindungan yang ditawarkan oleh penyedia kami bagi pemindahan tersebut.</p>
+
+    <h2>7. Hak anda</h2>
+
+    <p>Bergantung pada tempat anda tinggal, anda mungkin mempunyai hak untuk mengakses, membetulkan atau memadam data anda, untuk membantah atau mengehadkan pemprosesan tertentu, dan untuk menarik balik persetujuan jika pemprosesan adalah berdasarkan persetujuan. Anda boleh memadam akaun anda sendiri dalam aplikasi, dan anda boleh melaksanakan hak lain dengan menulis kepada <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>.</p>
+
+    <p>Jika anda tidak berpuas hati dengan jawapan kami, anda boleh membuat aduan kepada pihak berkuasa perlindungan data tempatan anda.</p>
+
+    <h2>8. Keselamatan</h2>
+
+    <p>Data dihantar melalui sambungan yang disulitkan dan disimpan menggunakan infrastruktur terurus penyedia kami. Akses kepada bukti penyederhanaan dihadkan kepada penyemak yang diberi kuasa. Tiada perkhidmatan dalam talian yang boleh menjanjikan keselamatan yang sempurna, dan kami tidak mendakwa sedemikian.</p>
+
+    <h2>9. Perubahan</h2>
+
+    <p>Kami akan mengemas kini halaman ini apabila amalan kami berubah dan akan mengemas kini tarikh berkuat kuasa di atas. Perubahan penting mungkin memerlukan anda menerima Terma yang dikemas kini dalam aplikasi.</p>
+
+    <h2>10. Halaman berkaitan</h2>
+
+    <p>
+      <a href="delete_account.html">Padam Akaun</a>
+      &middot;
+      <a href="terms.html">Terma</a>
+      &middot;
+      <a href="safety.html">Keselamatan dan Penyederhanaan</a>
+      &middot;
+      <a href="support.html">Sokongan</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Maklumat undang-undang dan sokongan">
+      <ul>
+        <li><a href="index.html">Laman utama</a></li>
+        <li><span aria-current="page">Dasar Privasi</span></li>
+        <li><a href="terms.html">Terma</a></li>
+        <li><a href="safety.html">Keselamatan dan Penyederhanaan</a></li>
+        <li><a href="support.html">Sokongan</a></li>
+        <li><a href="delete_account.html">Padam Akaun</a></li>
+        <li><a href="translation.html">Maklumat terjemahan</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Versi bahasa Inggeris dasar ini ialah versi yang sahih. Sekiranya terdapat sebarang percanggahan antara terjemahan dengan versi bahasa Inggeris, versi bahasa Inggeris hendaklah diguna pakai.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+</body>
+</html>

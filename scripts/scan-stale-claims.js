@@ -66,9 +66,13 @@ const REMOVED_AUTOMATED_DETECTION_SECTIONS = Object.freeze([
  * with a section that denies automated video analysis, and a denial contains the
  * same words as a claim — the difference is the grammar around them, which a
  * heading does not have room for.
+ *
+ * `automat` already covers Malay "automatik"; Serbian "аутомат", Indonesian
+ * "otomatis" and Greek "αυτόματ"/"αυτοματ" (with or without the tonos) need
+ * their own alternatives.
  */
 const AUTOMATED_DETECTION_HEADING =
-  /\bAI\b|\bIA\b|KI-|\bML\b|automat|автомат|自動|자동|自动|تلقائي|स्वचालित|อัตโนมัติ|tự động/i;
+  /\bAI\b|\bIA\b|KI-|\bML\b|automat|автомат|аутомат|自動|자동|自动|تلقائي|स्वचालित|อัตโนมัติ|tự động|otomatis|αυτόματ|αυτοματ/i;
 
 /** Below this share of distinct blocks, a page is repeating itself. */
 const DISTINCT_BLOCK_THRESHOLD = 0.75;

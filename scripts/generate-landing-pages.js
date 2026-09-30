@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Generates the 20 ULMOX landing routes.
+ * Generates the 24 ULMOX landing routes.
  *
  * Why they are generated
  * ----------------------
@@ -75,7 +75,7 @@ const UNSPACED = new Set(["ja", "zh", "th"]);
 
 /**
  * `og:locale` wants a language and a territory. These are the conventional
- * pairings for the 19 languages this site ships; they affect nothing but how a
+ * pairings for the 23 languages this site ships; they affect nothing but how a
  * social card is labelled.
  */
 const OG_LOCALE = Object.freeze({
@@ -83,6 +83,7 @@ const OG_LOCALE = Object.freeze({
   fr: "fr_FR", it: "it_IT", pt: "pt_PT", nl: "nl_NL", pl: "pl_PL",
   fi: "fi_FI", ru: "ru_RU", ja: "ja_JP", ko: "ko_KR", zh: "zh_CN",
   ar: "ar_AR", hi: "hi_IN", th: "th_TH", vi: "vi_VN",
+  el: "el_GR", id: "id_ID", ms: "ms_MY", sr: "sr_RS",
 });
 
 /* -------------------------------------------------------------------------- */

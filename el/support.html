@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Υποστήριξη πελατών - ULMOX</title>
+  <meta name="description" content="Πώς να επικοινωνήσετε με το ULMOX, πόσο γρήγορα απαντάμε και πώς να υποβάλετε ένσταση κατά μιας απόφασης." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Clipped, not offset: see scripts/legal-pages.js. */
+    .skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: var(--accent);
+      color: #000;
+      z-index: 10;
+    }
+
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-24" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      z-index: 10000;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="ulmox-skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
+<div class="container">
+  <main id="main">
+    <h1>Υποστήριξη ULMOX</h1>
+    <p class="effective">Σε ισχύ από 2026-09-04. Τελευταία ενημέρωση 2026-09-04.</p>
+
+    <p>Γράψτε στη διεύθυνση <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Η χρήση ενός από τα παρακάτω θέματα μάς βοηθά να δρομολογήσουμε σωστά το μήνυμά σας.</p>
+
+    <table>
+      <tr><th scope="col">Χρειάζομαι βοήθεια με</th><th scope="col">Θέμα</th><th scope="col">Σημειώσεις</th></tr>
+      <tr><td>Γενική υποστήριξη</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Support">ULMOX Support</a></td><td>Οτιδήποτε δεν καλύπτεται παρακάτω.</td></tr>
+      <tr><td>Τη διαγραφή του λογαριασμού μου</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">ULMOX Account Deletion Request</a></td><td>Δείτε πρώτα τη σελίδα <a href="delete_account.html">Διαγραφή λογαριασμού</a> — η διαδρομή μέσα στην εφαρμογή είναι ταχύτερη.</td></tr>
+      <tr><td>Τη διόρθωση της επαλήθευσης ηλικίας μου</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Age%20Verification%20Correction">ULMOX Age Verification Correction</a></td><td>Αν καταχωρίσατε λανθασμένα την ημερομηνία γέννησής σας. Δεν μπορείτε να την αλλάξετε μόνοι σας.</td></tr>
+      <tr><td>Ένσταση κατά απόφασης για περιεχόμενο</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Content%20Appeal">ULMOX Content Appeal</a></td><td>Αν περιεχόμενό σας αποκρύφθηκε ή αφαιρέθηκε.</td></tr>
+      <tr><td>Ένσταση κατά περιορισμού λογαριασμού</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Appeal">ULMOX Account Appeal</a></td><td>Αν ο λογαριασμός σας τέθηκε σε αναστολή ή αποκλείστηκε.</td></tr>
+      <tr><td>Αναφορά ανησυχίας για την ασφάλεια ενός παιδιού</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ULMOX Child Safety Report</a></td><td>Υψηλότερη προτεραιότητα. Δείτε τη σελίδα <a href="safety.html">Ασφάλεια και εποπτεία</a>.</td></tr>
+    </table>
+
+    <h2>Πόσο γρήγορα απαντάμε</h2>
+
+    <ul>
+      <li>Για τις <strong>επείγουσες αναφορές για την ασφάλεια των παιδιών</strong> στόχος είναι ο ανθρώπινος έλεγχος <strong>εντός 24 ωρών</strong>. Πρόκειται για στόχο έναρξης του ελέγχου, όχι για εγγύηση ότι μια υπόθεση επιλύεται οριστικά εντός 24 ωρών.</li>
+      <li><strong>Όλα τα υπόλοιπα</strong> διεκπεραιώνονται όσο το δυνατόν ταχύτερα, εντός εύλογων ορίων.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Δεν θα σας ζητήσουμε ποτέ κωδικό πρόσβασης, κωδικό πρόσβασης Apple ή Google, κωδικό ελέγχου ταυτότητας μίας χρήσης, κωδικό εξουσιοδότησης ή διακριτικό σύνδεσης, και δεν θα σας ζητήσουμε ποτέ να στείλετε με email διαβατήριο ή άλλο έγγραφο ταυτότητας.</strong> Παρακαλούμε μην τα στέλνετε. Αν ένα μήνυμα που ισχυρίζεται ότι προέρχεται από το ULMOX ζητά οτιδήποτε από αυτά, δεν προέρχεται από εμάς.</p>
+    </div>
+
+    <h2>Connections και μετάφραση μηνυμάτων</h2>
+
+    <div class="callout">
+      <p><strong>Οι Connections και η προαιρετική μετάφραση μηνυμάτων εισάγονται σταδιακά και ενδέχεται να μην είναι ακόμη διαθέσιμες για κάθε λογαριασμό ή κάθε εγκατεστημένη έκδοση της εφαρμογής.</strong></p>
+    </div>
+
+    <p>Αν οι Connections δεν είναι διαθέσιμες στον λογαριασμό σας, δεν υπάρχει τίποτα να διορθωθεί και τίποτα να μας ζητήσετε: δεν πρόκειται για σφάλμα, ούτε για πρόβλημα του λογαριασμού σας, ούτε για κάτι που μπορεί να ενεργοποιήσει για εσάς η υποστήριξη. Το μόνο που αξίζει να κάνετε είναι να ενημερώσετε την εφαρμογή στην τρέχουσα έκδοση.</p>
+
+    <p>Όταν η μετάφραση είναι διαθέσιμη για εσάς, αυτά είναι τα προβλήματα που εμφανίζονται συνήθως και ο τρόπος αντιμετώπισής τους. Δείτε τη σελίδα <a href="translation.html">Πληροφορίες μετάφρασης</a> για το πώς λειτουργεί η δυνατότητα.</p>
+
+    <table>
+      <tr><th scope="col">Τι βλέπετε</th><th scope="col">Τι σημαίνει</th></tr>
+      <tr><td>Η λήψη του πακέτου γλώσσας βρίσκεται ακόμη σε εξέλιξη</td><td>Μια γλώσσα πρέπει να ληφθεί μία φορά πριν μπορέσει να μεταφραστεί. Αφήστε την οθόνη ανοιχτή· το αρχικό μήνυμα παραμένει αναγνώσιμο καθ’ όλη τη διάρκεια.</td></tr>
+      <tr><td>Η λήψη δεν ξεκινά</td><td>Οι λήψεις χρησιμοποιούν από προεπιλογή Wi-Fi. Με δεδομένα κινητής τηλεφωνίας πρέπει να επιλέξετε ρητά να τα χρησιμοποιήσετε — το ULMOX δεν καταναλώνει τα δεδομένα σας χωρίς να σας ρωτήσει.</td></tr>
+      <tr><td>Η λήψη απέτυχε</td><td>Δοκιμάστε ξανά με σταθερή σύνδεση. Τίποτα στο μήνυμα δεν αλλάζει αν αποτύχει μια λήψη.</td></tr>
+      <tr><td>«Αυτό το μήνυμα δεν μπορεί να μεταφραστεί»</td><td>Η γλώσσα δεν ανήκει στις υποστηριζόμενες ή δεν ήταν δυνατό να αναγνωριστεί με επαρκή βεβαιότητα. Το ULMOX προτιμά να μην εμφανίσει τίποτα παρά να μαντέψει.</td></tr>
+      <tr><td>Η μετάφραση ακούγεται παράξενη</td><td>Η αυτόματη μετάφραση μπορεί να είναι λανθασμένη ενώ ακούγεται βέβαιη, και ένα ζεύγος γλωσσών που δεν περιλαμβάνει τα αγγλικά ενδέχεται να μεταφραστεί μέσω των αγγλικών. Διαβάστε το αρχικό μήνυμα.</td></tr>
+      <tr><td>Θέλετε να ελευθερώσετε χώρο</td><td>Διαγράψτε τα πακέτα γλωσσών που έχετε λάβει από την ενότητα Μοντέλα μετάφρασης, μέσα στην εφαρμογή.</td></tr>
+      <tr><td>Το μήνυμα αποτελεί ζήτημα ασφάλειας</td><td>Αναφέρετέ το μέσα στην εφαρμογή. Η αναφορά περιλαμβάνει το αρχικό μήνυμα, και αυτό εξετάζει ένας άνθρωπος.</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>Μη μας στέλνετε το μήνυμα με email.</strong> Παρακαλούμε μη στέλνετε κείμενο μηνυμάτων, στιγμιότυπα οθόνης από ιδιωτική συνομιλία, δεδομένα ελέγχου ταυτότητας ή αναγνωριστικά συσκευής. Αντί γι’ αυτό, αναφέρετε το μήνυμα μέσα στην εφαρμογή — έτσι ο ελεγκτής λαμβάνει με ασφάλεια το αρχικό μήνυμα, και εμείς δεν χρειαζόμαστε ποτέ αντίγραφο από εσάς.</p>
+    </div>
+
+    <h2>Ενστάσεις</h2>
+
+    <p>Μπορείτε να υποβάλετε ένσταση είτε μπορείτε αυτή τη στιγμή να χρησιμοποιήσετε την εφαρμογή είτε όχι, και ο σύνδεσμος Υποστήριξης μέσα στην εφαρμογή παραμένει προσβάσιμος αν ο λογαριασμός σας έχει υποβληθεί σε περιορισμό.</p>
+
+    <ul>
+      <li>Μια ένσταση διαβάζεται από εξουσιοδοτημένο άνθρωπο.</li>
+      <li>Η υποβολή ένστασης δεν επαναφέρει αυτόματα τον λογαριασμό σας ή το περιεχόμενό σας.</li>
+      <li>Οι ενστάσεις δεν εξαλείφουν αναφορές ή αρχεία ασφάλειας.</li>
+      <li>Δεν σας αποκαλύπτουμε ποιος σας ανέφερε και δεν εξηγούμε τα εσωτερικά όρια που χρησιμοποιούν τα συστήματα ασφάλειάς μας.</li>
+    </ul>
+
+    <p>Παρακαλούμε να αναφέρετε το όνομα χρήστη σας στο ULMOX και, αν έχει σημασία, περίπου πότε ελήφθη η απόφαση. Μη συμπεριλαμβάνετε κωδικούς πρόσβασης ή έγγραφα ταυτότητας.</p>
+
+    <h2>Σχετικές σελίδες</h2>
+
+    <p>
+      <a href="privacy.html">Πολιτική απορρήτου</a>
+      &middot;
+      <a href="terms.html">Όροι</a>
+      &middot;
+      <a href="safety.html">Ασφάλεια και εποπτεία</a>
+      &middot;
+      <a href="delete_account.html">Διαγραφή λογαριασμού</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Νομικές πληροφορίες και υποστήριξη">
+      <ul>
+        <li><a href="index.html">Αρχική</a></li>
+        <li><a href="privacy.html">Πολιτική απορρήτου</a></li>
+        <li><a href="terms.html">Όροι</a></li>
+        <li><a href="safety.html">Ασφάλεια και εποπτεία</a></li>
+        <li><span aria-current="page">Υποστήριξη</span></li>
+        <li><a href="delete_account.html">Διαγραφή λογαριασμού</a></li>
+        <li><a href="translation.html">Πληροφορίες μετάφρασης</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Η αγγλική έκδοση της παρούσας πολιτικής είναι η αυθεντική. Εάν μια μετάφραση διαφέρει από αυτήν, ισχύει η αγγλική έκδοση.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+</body>
+</html>

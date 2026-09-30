@@ -176,9 +176,10 @@ test("the canonical anchors the schema records are the ones the pages carry", ()
 /* 2. Every locale covers every section                                       */
 /* -------------------------------------------------------------------------- */
 
-test("all 19 locales cover all five pages, section for section", () => {
+test("all 23 locales cover all five pages, section for section", () => {
   const rows = parityMatrix();
-  assert.equal(rows.length, LOCALES.length * SCHEMA.PAGE_KEYS.length, "95 rows expected");
+  assert.equal(rows.length, LOCALES.length * SCHEMA.PAGE_KEYS.length, `${LOCALES.length * SCHEMA.PAGE_KEYS.length} rows expected`);
+  assert.equal(rows.length, 115);
 
   const gaps = rows
     .filter((row) => row.missing.length)
@@ -191,7 +192,8 @@ test("all 19 locales cover all five pages, section for section", () => {
 });
 
 test("every translated locale declares the canonical revision it implements", () => {
-  assert.equal(LOCALE_CONTENT.TRANSLATED_LOCALES.length, 18, "en is not a translation");
+  assert.equal(LOCALE_CONTENT.TRANSLATED_LOCALES.length, 22, "en is not a translation");
+  assert.equal(LOCALE_CONTENT.TRANSLATED_LOCALES.length, LOCALES.length - 1);
   assert.ok(!LOCALE_CONTENT.TRANSLATED_LOCALES.includes("en"));
 
   for (const locale of LOCALE_CONTENT.TRANSLATED_LOCALES) {
@@ -224,7 +226,7 @@ test("every translated locale declares the canonical revision it implements", ()
  * on 2026-09-24 — and the three that have not changed must keep saying so.
  * Printing a revision date on a document nobody edited is a false statement
  * about that document, and dropping the 2026-09-04 effective date from any of
- * them is the opposite failure. Both are asserted here, in all 19 languages.
+ * them is the opposite failure. Both are asserted here, in all 23 languages.
  *
  * Expressed as a table rather than as "privacy is special", because privacy
  * stopped being the only special one the moment the Terms were revised.

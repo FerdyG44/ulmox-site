@@ -5,7 +5,8 @@ const path = require("path");
 
 const LANGUAGES = [
   "en", "sv", "tr", "de", "es", "fr", "it", "pt", "nl", "pl",
-  "fi", "ru", "ja", "ko", "zh", "ar", "hi", "th", "vi"
+  "fi", "ru", "ja", "ko", "zh", "ar", "hi", "th", "vi",
+  "el", "id", "ms", "sr"
 ];
 const SITE_DIRECTORIES = new Set([
   "assets", "download", "delete-account", ...LANGUAGES

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Безбедност и модерација - ULMOX</title>
+  <meta name="description" content="Како ULMOX спречава, открива и сузбија сексуално злостављање и искоришћавање деце." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Clipped, not offset: see scripts/legal-pages.js. */
+    .skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: var(--accent);
+      color: #000;
+      z-index: 10;
+    }
+
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-24" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      z-index: 10000;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="ulmox-skip-link" href="#main">Пређи на садржај</a>
+<div class="container">
+  <main id="main">
+    <h1>ULMOX стандарди безбедности деце</h1>
+    <p class="effective">Важи од 2026-09-04. Последњи пут ажурирано 2026-09-04.</p>
+
+    <p>ULMOX је ограничен на пунолетне особе од <strong>18 или више година</strong>. На овој страници описано је како спречавамо и откривамо сексуално злостављање и искоришћавање деце и како поступамо у вези са њим.</p>
+
+    <div class="callout">
+      <p><strong>Ако је дете у непосредној опасности, најпре се обратите локалним службама за хитне случајеве.</strong> Пријава ULMOX-у није замена за обраћање надлежним органима.</p>
+    </div>
+
+    <h2>Нулта толеранција</h2>
+
+    <p>ULMOX има нулту толеранцију према сексуалном злостављању и искоришћавању деце (CSAE) и према материјалу који приказује сексуално злостављање деце (CSAM). Налози и садржај који су у то умешани се уклањају.</p>
+
+    <h2>Шта је забрањено</h2>
+
+    <p>Једноставно речено, на ULMOX-у следеће никада није дозвољено:</p>
+
+    <ul>
+      <li>Било какав сексуални садржај у који је укључена особа млађа од 18 година, стварна или приказана.</li>
+      <li>Громинг (врбовање): стицање поверења малолетника ради његовог сексуалног искоришћавања, укључујући тражење од малолетника да контакт крије од родитеља или старатеља.</li>
+      <li>Сексуализација малолетника или тражење од малолетника сексуалних слика или сексуалног контакта.</li>
+      <li>Принуда, уцена (укључујући сексуалну изнуду), трговина људима или било какво понашање које малолетника доводи у озбиљну опасност.</li>
+      <li>Оглашавање, тражење или постављање линкова ка материјалу ове врсте.</li>
+    </ul>
+
+    <h2>Како пријавити</h2>
+
+    <p>У апликацији можете да користите <strong>Пријави садржај</strong> и <strong>Пријави корисника</strong>. Обе опције нуде посебну категорију <strong>Безбедност деце</strong>. Можете и да блокирате корисника, чиме се зауставља свака интеракција између вас у оба смера.</p>
+
+    <p>Можете нам и писати:</p>
+
+    <p><strong>ULMOX контакт за безбедност деце</strong><br /> <a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ulmoxapp@outlook.com</a></p>
+
+    <h2>Шта се затим дешава</h2>
+
+    <ul>
+      <li>Пријаве које се тичу безбедности деце имају <strong>највиши приоритет</strong> за преглед од стране човека.</li>
+      <li>Конкретан пријављени садржај одмах се ставља у <strong>реверзибилни карантин</strong>, тако да се више не приказује јавно нити доставља, док га човек прегледа.</li>
+      <li>Докази се чувају ради прегледа и доступни су само овлашћеним модераторима.</li>
+      <li>Пријаве <strong>не</strong> доводе аутоматски до забране налога. До ње не доводе ни број пријава, ни аутоматски филтер који задржи поруку, ни карантин, ни превод. Забрана је засебна, промишљена одлука коју може да донесе само овлашћени ULMOX администратор, и то тек након што размотри случај.</li>
+      <li>Решавањем се пријава уклања са листе активних прегледа. Тиме се она не брише: докази и запис о донетој одлуци чувају се тамо где постоји оправдан разлог за њихово чување, како би одлука могла да се провери и како би се могло одговорити на жалбу.</li>
+      <li>Ако проверитељ одобри пријављени видео, он се враћа у Global фид само ако и даље самостално испуњава услове. Садржај чији је власник отишао, ограничен је или му је налог забрањен, или који је недоступан из неког другог разлога, остаје недоступан без обзира на одлуку о пријави.</li>
+      <li>Тамо где то налаже меродавно право, пријављујемо одговарајућем законом одређеном органу.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Наш циљ је да хитне пријаве које се тичу безбедности деце прегледамо у року од 24 сата.</strong> То је циљ за почетак прегледа од стране човека. То није гаранција да ће сваки случај бити коначно решен у року од 24 сата, а сложени случајеви могу трајати дуже.</p>
+    </div>
+
+    <p>Остале безбедносне пријаве прегледају се што је брже разумно могуће.</p>
+
+    <h2>Безбедност у Connections</h2>
+
+    <div class="callout">
+      <p><strong>Connections и необавезни превод порука уводе се постепено и можда још нису доступни за сваки налог или сваку инсталирану верзију апликације.</strong></p>
+    </div>
+
+    <p>Connection је искључиво текстуални разговор између двоје пунолетних који су га обоје одобрили након две засебне квалификујуће размене видео-снимака. ULMOX нема претрагу корисника, тако да вас нико не може пронаћи да би вам писао. Ово су безбедносне контроле у оквиру Connection-а:</p>
+
+    <ul>
+      <li><strong>Пријави поруку.</strong> Доступно на поруци коју сте примили. Пријавом се оригинална порука шаље човеку на преглед.</li>
+      <li><strong>Пријава скрива поруку за вас, и само за вас.</strong> Када пријавите поруку, она нестаје из вашег приказа разговора. Пошиљаочева копија остаје непромењена и пошиљалац не бива обавештен да сте је пријавили. Скривање је ради ваше добробити; то није казна за пошиљаоца, а одлуку о поруци и даље доноси човек.</li>
+      <li><strong>Пријави корисника.</strong> Доступно засебно, за особу, а не за појединачну поруку. У оба случаја постоји посебна категорија за безбедност деце.</li>
+      <li><strong>Блокирај.</strong> Блокирање зауставља интеракцију у оба смера. Нуди се након пријаве као засебан избор, никада није уграђено у њу, а ако га одбијете, ваша пријава остаје нетакнута. Блокада такође завршава Connection који сада имате. Уклањање блокаде не враћа тај Connection: пар би морао поново да се квалификује од почетка, кроз две нове квалификујуће размене видео-снимака и ново одобрење сваке од особа.</li>
+      <li><strong>Прекини Везу.</strong> Завршава разговор за обе особе. Не може се вратити и не отвара се поново при будућем сусрету. Завршавање није исто што и блокирање и не брише пријаве које сте већ поднели.</li>
+      <li><strong>Излазак увек функционише.</strong> Блокирање и завршавање Connection-а остају вам доступни шта год да се друго дешава — безбедносна радња никада није оно што је недоступно.</li>
+      <li><strong>Поруке истичу.</strong> Обична порука у Connection-у сматра се истеклом отприлике седам дана након слања. Са поруком коју пријавите поступа се другачије: када постане доказ у прегледу, на њу се више не примењује истицање после седам дана, и она се чува док је преглед у току, а након тога тамо где исход оправдава њено чување.</li>
+      <li><strong>Ништа се не прилаже.</strong> Connections преносе само писане поруке — без фотографија, видео-снимака, датотека или гласовних порука.</li>
+    </ul>
+
+    <h2>Преведене поруке</h2>
+
+    <ul>
+      <li>Пријава се увек односи на <strong>оригиналну поруку</strong>. Пријава садржи оригинал, и то је оно што модератор чита.</li>
+      <li>Необавезан превод приказан читаоцу није одлука о модерацији и није доказ.</li>
+      <li>Превод не може учинити да порука буде достављена. Садржај који је блокиран или задржан остаје блокиран или задржан без обзира на то на ком се језику чита.</li>
+      <li>Ниједан налог се не забрањује због онога што је превод произвео. Само овлашћени ULMOX администратор може да забрани налог, и то тек након што размотри оригиналне доказе.</li>
+    </ul>
+
+    <p>Погледајте <a href="translation.html">Информације о превођењу</a>.</p>
+
+    <h2>Шта ULMOX не ради</h2>
+
+    <ul>
+      <li>ULMOX не анализира аутоматски видео-кадрове, звук ни транскрипте. Безбедност видео-снимака заснива се на пријављивању, реверзибилном карантину, блокирању и прегледу од стране људи.</li>
+      <li>ULMOX не забрањује налоге аутоматски, и никакав број пријава не доводи до аутоматске забране.</li>
+      <li>ULMOX не тврди да било која аутоматска провера открива сваки прекршај. Безбедност ове услуге почива на пријављивању и прегледу од стране људи.</li>
+      <li>ULMOX не објављује интерне прагове, алате ни радне процедуре које користе његови безбедносни системи, јер би њихово објављивање управо онима које покушавамо да зауставимо тачно показало шта да избегавају.</li>
+    </ul>
+
+    <h2>Жалбе</h2>
+
+    <p>Ако сматрате да је мера према садржају или налогу предузета грешком, пишите на <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> и човек ће то размотрити. На страници <a href="support.html">Подршка</a> погледајте шта треба да наведете.</p>
+
+    <h2>Повезане странице</h2>
+
+    <p>
+      <a href="terms.html">Услови коришћења</a>
+      &middot;
+      <a href="privacy.html">Политика приватности</a>
+      &middot;
+      <a href="support.html">Подршка</a>
+      &middot;
+      <a href="delete_account.html">Избриши налог</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Правне информације и подршка">
+      <ul>
+        <li><a href="index.html">Почетна</a></li>
+        <li><a href="privacy.html">Политика приватности</a></li>
+        <li><a href="terms.html">Услови коришћења</a></li>
+        <li><span aria-current="page">Безбедност и модерација</span></li>
+        <li><a href="support.html">Подршка</a></li>
+        <li><a href="delete_account.html">Избриши налог</a></li>
+        <li><a href="translation.html">Информације о превођењу</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Меродавна је верзија ове политике на енглеском језику. Ако се превод од ње разликује, примењује се верзија на енглеском језику.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+</body>
+</html>

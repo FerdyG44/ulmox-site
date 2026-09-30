@@ -194,7 +194,7 @@ const STYLE = `
 /** Footer navigation, generated so a link can never go stale on one page. */
 function footer(currentFile) {
   // One source of truth for the sentence and for which routes carry it: the
-  // English pages render the same notice, from the same table, as the eighteen
+  // English pages render the same notice, from the same table, as the twenty-two
   // translations. Required lazily so this module stays dependency-free at load.
   const { CHROME, LEGAL_ROUTES } = require("./page-shell");
 

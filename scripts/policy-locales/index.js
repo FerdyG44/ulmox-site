@@ -16,6 +16,7 @@
 const TRANSLATED_LOCALES = Object.freeze([
   "sv", "tr", "de", "es", "fr", "it", "pt", "nl", "pl",
   "fi", "ru", "ja", "ko", "zh", "ar", "hi", "th", "vi",
+  "el", "id", "ms", "sr",
 ]);
 
 const content = {};

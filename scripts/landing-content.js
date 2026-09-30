@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * The localized copy for the 20 ULMOX landing routes.
+ * The localized copy for the 24 ULMOX landing routes.
  *
  * Stage 1.6W.1 brought the landing pages under one generator and harvested the
  * copy that was already published. That copy described an app that shared
@@ -2272,6 +2272,474 @@ const LANDING = Object.freeze({
     ctaHeading: "Hiện đã có trên App Store và Google Play",
     ctaBody:
       "Tải ULMOX hôm nay từ App Store hoặc Google Play và bắt đầu chia sẻ những khoảnh khắc video thật.",
+    copyright: "© 2026 ULMOX",
+  }),
+
+  el: Object.freeze({
+    heroBadge: "Αληθινές στιγμές. Αληθινοί άνθρωποι.",
+    lead: "Μοιράσου μια στιγμή.",
+    accent: "Ανακάλυψε έναν κόσμο.",
+    subtitle:
+      "Μοιράσου μια αληθινή στιγμή και λάβε αληθινές στιγμές από ανθρώπους που ζουν κάπου εντελώς αλλού.",
+    metaDescription:
+      "Το ULMOX είναι εκεί όπου οι αληθινές στιγμές συναντούν αληθινούς ανθρώπους. Μοιράσου μια στιγμή, εξερεύνησε το World Live, ανακάλυψε το Global και άφησε τις γνήσιες συναντήσεις να εξελιχθούν σε Connections.",
+    appStoreAria: "Λήψη του ULMOX από το App Store",
+    playStoreAria: "Λήψη του ULMOX από το Google Play",
+
+    howHeading: "Πώς λειτουργεί το ULMOX",
+    howBody: "Τρία απλά βήματα. Τίποτα να τελειοποιήσεις, τίποτα να παραστήσεις.",
+    howSteps: Object.freeze([
+      Object.freeze({
+        heading: "Μοιράσου μια στιγμή",
+        body: "Κατέγραψε κάτι αληθινό από τη μέρα σου και στείλε το στον κόσμο.",
+      }),
+      Object.freeze({
+        heading: "Λάβε μια στιγμή",
+        body: "Φτάνει η στιγμή κάποιου άλλου: ένας δρόμος, μια θέα, ένα συνηθισμένο απόγευμα.",
+      }),
+      Object.freeze({
+        heading: "Συνέχισε την εξερεύνηση",
+        body: "Άνοιξε το World Live και το Global για να δεις πού αλλού βρίσκεται ο κόσμος αυτή τη στιγμή.",
+      }),
+    ]),
+
+    worldHeading: "World Live",
+    worldBody:
+      "Εξερεύνησε αληθινές στιγμές που μοιράζονται από διάφορα μέρη του κόσμου, πάνω σε μια διαδραστική υδρόγειο.",
+    worldBody2:
+      "Γύρνα την υδρόγειο, σταμάτα κάπου που σου τραβά την προσοχή και δες τη στιγμή που ήρθε από εκεί.",
+
+    connectionsHeading: "Οι αληθινές στιγμές μπορούν να γίνουν αληθινές συνδέσεις.",
+    connectionsBody: "Χωρίς swipe. Χωρίς κυνήγι ακολούθων. Γνωριστείτε πρώτα μέσα από στιγμές.",
+    connectionsSteps: Object.freeze([
+      Object.freeze({
+        heading: "Μοιράσου αληθινές στιγμές",
+        body: "Όλα ξεκινούν από κάτι που πραγματικά έζησες, όχι από ένα προφίλ.",
+      }),
+      Object.freeze({
+        heading: "Γνώρισε ανθρώπους με φυσικό τρόπο",
+        body: "Συναντάς άλλους ανθρώπους μέσα από τις στιγμές που ανταλλάσσετε.",
+      }),
+      Object.freeze({
+        heading: "Μια Connection γίνεται δυνατή",
+        body: "Οι γνήσιες συναντήσεις μπορούν να κάνουν δυνατή μια Connection ανάμεσα σε δύο ανθρώπους.",
+      }),
+      Object.freeze({
+        heading: "Στείλε ένα αίτημα",
+        body: "Όταν είναι δυνατό, οποιοσδήποτε από τους δύο μπορεί να ζητήσει μια Connection.",
+      }),
+      Object.freeze({
+        heading: "Εγκρίνετε και οι δύο",
+        body: "Τίποτα δεν ανοίγει μέχρι να πείτε και οι δύο ναι, ο καθένας χωριστά.",
+      }),
+      Object.freeze({
+        heading: "Αρχίστε να μιλάτε",
+        body: "Μια ενεργή Connection σημαίνει μηνύματα κειμένου και πρόσβαση ο ένας στο προφίλ του άλλου.",
+      }),
+    ]),
+    connectionsSafety:
+      "Έχεις τον έλεγχο σε όλη τη διαδρομή. Η Αναφορά, η Φραγή και ο Τερματισμός Connection είναι πάντα διαθέσιμα.",
+
+    globalBody:
+      "Ανακάλυψε αληθινές στιγμές που οι άνθρωποι επιλέγουν να μοιραστούν με την ευρύτερη κοινότητα του ULMOX.",
+    globalBody2: "Ένα μέρος για να δεις τι μοιράζεται ανοιχτά η κοινότητα, αυτή τη στιγμή.",
+
+    differentHeading: "Γιατί το ULMOX είναι διαφορετικό",
+    differences: Object.freeze([
+      Object.freeze({
+        heading: "Αληθινές στιγμές, όχι γυαλισμένα προφίλ",
+        body: "Μοιράζεσαι μια στιγμή που έζησες, όχι μια εικόνα αυτού που θα ήθελες να είσαι.",
+      }),
+      Object.freeze({
+        heading: "Άνθρωποι πέρα από τον κύκλο σου",
+        body: "Το ULMOX σε φέρνει κοντά σε ανθρώπους που δεν θα γνώριζες ποτέ μέσα από όσους ήδη ξέρεις.",
+      }),
+      Object.freeze({
+        heading: "Χωρίς κυνήγι ακολούθων",
+        body: "Δεν υπάρχει κανένας μετρητής να κυνηγάς ούτε κοινό να χτίσεις.",
+      }),
+      Object.freeze({
+        heading: "Οι Connections γεννιούνται από συναντήσεις",
+        body: "Μια συζήτηση ξεκινά επειδή πρώτα συνέβη κάτι αληθινό.",
+      }),
+      Object.freeze({
+        heading: "Ο κόσμος μέσα από τους ανθρώπους του",
+        body: "Κάθε στιγμή προέρχεται από κάποιον που βρίσκεται πραγματικά εκεί.",
+      }),
+    ]),
+
+    safetyHeading: "Ασφάλεια και έλεγχος",
+    safetyBody:
+      "Τα μηνύματα δεν είναι ποτέ ανοιχτά σε αγνώστους. Μια συζήτηση μπορεί να ξεκινήσει μόνο μετά τις συναντήσεις στο ULMOX που απαιτούνται και την έγκριση και των δύο ανθρώπων, και μπορείς να την τερματίσεις οποιαδήποτε στιγμή.",
+    safetyControls: Object.freeze([
+      Object.freeze({
+        heading: "Αναφορά",
+        body: "Ανάφερε έναν χρήστη ή ένα μεμονωμένο μήνυμα. Το εξετάζει ένας άνθρωπος.",
+      }),
+      Object.freeze({
+        heading: "Φραγή",
+        body: "Η φραγή σταματά την επικοινωνία και προς τις δύο κατευθύνσεις.",
+      }),
+      Object.freeze({
+        heading: "Τερματισμός Connection",
+        body: "Η αποχώρηση λειτουργεί πάντα και είναι οριστική για το συγκεκριμένο ζευγάρι.",
+      }),
+    ]),
+
+    ctaHeading: "Διαθέσιμο τώρα στο App Store και στο Google Play",
+    ctaBody:
+      "Κατέβασε το ULMOX σήμερα από το App Store ή το Google Play και ξεκίνα να μοιράζεσαι αληθινές στιγμές σε βίντεο.",
+    copyright: "© 2026 ULMOX",
+  }),
+
+  id: Object.freeze({
+    heroBadge: "Momen nyata. Orang-orang nyata.",
+    lead: "Bagikan sebuah momen.",
+    accent: "Temukan sebuah dunia.",
+    subtitle:
+      "Bagikan satu momen nyata dan terima momen-momen nyata dari orang-orang yang tinggal di tempat yang sama sekali berbeda.",
+    metaDescription:
+      "ULMOX adalah tempat momen nyata bertemu orang-orang nyata. Bagikan momen, jelajahi World Live, temukan Global, dan biarkan pertemuan yang tulus tumbuh menjadi Connections.",
+    appStoreAria: "Unduh ULMOX di App Store",
+    playStoreAria: "Dapatkan ULMOX di Google Play",
+
+    howHeading: "Cara kerja ULMOX",
+    howBody: "Tiga langkah sederhana. Tak perlu sempurna, tak perlu berpura-pura.",
+    howSteps: Object.freeze([
+      Object.freeze({
+        heading: "Bagikan momen",
+        body: "Rekam sesuatu yang nyata dari hari Anda dan kirimkan ke dunia.",
+      }),
+      Object.freeze({
+        heading: "Terima momen",
+        body: "Momen milik orang lain pun tiba: sebuah jalan, sebuah pemandangan, sore yang biasa saja.",
+      }),
+      Object.freeze({
+        heading: "Terus menjelajah",
+        body: "Buka World Live dan Global untuk melihat keadaan di belahan dunia lain saat ini.",
+      }),
+    ]),
+
+    worldHeading: "World Live",
+    worldBody:
+      "Jelajahi momen nyata yang dibagikan dari berbagai tempat di seluruh dunia, dalam satu bola dunia interaktif.",
+    worldBody2:
+      "Putar bola dunia, berhenti di tempat yang menarik perhatian Anda, dan tonton momen yang berasal dari sana.",
+
+    connectionsHeading: "Momen nyata dapat menjadi hubungan yang nyata.",
+    connectionsBody: "Tanpa geser-geser. Tanpa berlomba mengejar pengikut. Bertemu lewat momen terlebih dahulu.",
+    connectionsSteps: Object.freeze([
+      Object.freeze({
+        heading: "Bagikan momen nyata",
+        body: "Semuanya berawal dari sesuatu yang benar-benar Anda alami, bukan dari sebuah profil.",
+      }),
+      Object.freeze({
+        heading: "Bertemu orang secara alami",
+        body: "Anda mengenal orang lain melalui momen-momen yang Anda tukarkan.",
+      }),
+      Object.freeze({
+        heading: "Connection menjadi mungkin",
+        body: "Pertemuan yang tulus dapat membuat Connection menjadi mungkin di antara dua orang.",
+      }),
+      Object.freeze({
+        heading: "Kirim permintaan",
+        body: "Jika sudah memungkinkan, salah satu dari kedua orang dapat meminta Connection.",
+      }),
+      Object.freeze({
+        heading: "Kedua orang menyetujui",
+        body: "Tidak ada yang terbuka sampai Anda berdua mengatakan ya, masing-masing secara mandiri.",
+      }),
+      Object.freeze({
+        heading: "Mulai mengobrol",
+        body: "Connection yang aktif berarti pesan teks dan profil satu sama lain.",
+      }),
+    ]),
+    connectionsSafety:
+      "Anda tetap memegang kendali sepanjang waktu. Laporkan, Blokir, dan Akhiri Connection selalu dalam jangkauan.",
+
+    globalBody:
+      "Temukan momen nyata yang dipilih orang-orang untuk dibagikan kepada komunitas ULMOX yang lebih luas.",
+    globalBody2: "Satu tempat untuk melihat apa yang sedang dibagikan komunitas secara terbuka, saat ini juga.",
+
+    differentHeading: "Mengapa ULMOX berbeda",
+    differences: Object.freeze([
+      Object.freeze({
+        heading: "Momen nyata, bukan profil yang dipoles",
+        body: "Anda membagikan momen yang Anda jalani, bukan gambaran tentang sosok yang Anda inginkan.",
+      }),
+      Object.freeze({
+        heading: "Orang-orang di luar lingkaran Anda",
+        body: "ULMOX mempertemukan Anda dengan orang-orang yang tidak akan pernah Anda temui melalui orang-orang yang sudah Anda kenal.",
+      }),
+      Object.freeze({
+        heading: "Tanpa berlomba mengejar pengikut",
+        body: "Tidak ada angka yang harus dikejar dan tidak ada penonton yang harus dibangun.",
+      }),
+      Object.freeze({
+        heading: "Connections tumbuh dari pertemuan",
+        body: "Percakapan dimulai karena sesuatu yang nyata terjadi lebih dulu.",
+      }),
+      Object.freeze({
+        heading: "Dunia melalui orang-orang di dalamnya",
+        body: "Setiap momen berasal dari seseorang yang benar-benar berada di sana.",
+      }),
+    ]),
+
+    safetyHeading: "Keselamatan dan kendali",
+    safetyBody:
+      "Pesan tidak pernah terbuka bagi orang asing. Percakapan hanya dapat dimulai setelah pertemuan di ULMOX yang disyaratkan dan persetujuan dari kedua orang, dan Anda dapat mengakhirinya kapan saja.",
+    safetyControls: Object.freeze([
+      Object.freeze({
+        heading: "Laporkan",
+        body: "Laporkan pengguna atau satu pesan. Seorang manusia akan meninjaunya.",
+      }),
+      Object.freeze({
+        heading: "Blokir",
+        body: "Pemblokiran menghentikan kontak dua arah.",
+      }),
+      Object.freeze({
+        heading: "Akhiri Connection",
+        body: "Keluar selalu dapat dilakukan, dan bersifat final bagi pasangan tersebut.",
+      }),
+    ]),
+
+    ctaHeading: "Kini tersedia di App Store dan Google Play",
+    ctaBody:
+      "Unduh ULMOX hari ini dari App Store atau Google Play dan mulailah berbagi momen video yang nyata.",
+    copyright: "© 2026 ULMOX",
+  }),
+
+  ms: Object.freeze({
+    heroBadge: "Momen sebenar. Orang sebenar.",
+    lead: "Kongsi satu momen.",
+    accent: "Temui sebuah dunia.",
+    subtitle:
+      "Kongsi satu momen sebenar dan terima momen sebenar daripada orang yang tinggal di tempat yang sama sekali berbeza.",
+    metaDescription:
+      "ULMOX ialah tempat momen sebenar bertemu orang sebenar. Kongsi satu momen, terokai World Live, temui Global dan biarkan pertemuan yang tulen berkembang menjadi Connections.",
+    appStoreAria: "Muat turun ULMOX di App Store",
+    playStoreAria: "Dapatkan ULMOX di Google Play",
+
+    howHeading: "Cara ULMOX berfungsi",
+    howBody: "Tiga langkah mudah. Tiada apa-apa yang perlu disempurnakan, tiada apa-apa yang perlu dilakonkan.",
+    howSteps: Object.freeze([
+      Object.freeze({
+        heading: "Kongsi satu momen",
+        body: "Rakam sesuatu yang sebenar daripada hari anda dan hantarkannya ke dunia.",
+      }),
+      Object.freeze({
+        heading: "Terima satu momen",
+        body: "Momen orang lain tiba: sebatang jalan, satu pemandangan, satu petang yang biasa.",
+      }),
+      Object.freeze({
+        heading: "Terus meneroka",
+        body: "Buka World Live dan Global untuk melihat keadaan dunia di tempat lain sekarang.",
+      }),
+    ]),
+
+    worldHeading: "World Live",
+    worldBody:
+      "Terokai momen sebenar yang dikongsi dari pelbagai tempat di seluruh dunia, pada satu glob interaktif.",
+    worldBody2:
+      "Putar glob, berhenti di tempat yang menarik perhatian anda dan tonton momen yang datang dari situ.",
+
+    connectionsHeading: "Momen sebenar boleh menjadi hubungan sebenar.",
+    connectionsBody: "Tiada leretan. Tiada perlumbaan pengikut. Bertemu melalui momen terlebih dahulu.",
+    connectionsSteps: Object.freeze([
+      Object.freeze({
+        heading: "Kongsi momen sebenar",
+        body: "Ia bermula dengan sesuatu yang benar-benar anda lalui, bukan dengan profil.",
+      }),
+      Object.freeze({
+        heading: "Bertemu orang secara semula jadi",
+        body: "Anda bertemu orang lain melalui momen yang anda saling bertukar.",
+      }),
+      Object.freeze({
+        heading: "Connection menjadi mungkin",
+        body: "Pertemuan yang tulen boleh menjadikan Connection mungkin antara dua orang.",
+      }),
+      Object.freeze({
+        heading: "Hantar permintaan",
+        body: "Apabila ia mungkin, mana-mana seorang boleh meminta Connection.",
+      }),
+      Object.freeze({
+        heading: "Kedua-dua orang meluluskan",
+        body: "Tiada apa-apa yang dibuka sehingga anda berdua bersetuju, masing-masing secara berasingan.",
+      }),
+      Object.freeze({
+        heading: "Mula berbual",
+        body: "Connection yang aktif bermakna mesej teks dan profil masing-masing.",
+      }),
+    ]),
+    connectionsSafety:
+      "Anda kekal memegang kawalan sepanjang masa. Laporkan, Sekat dan Tamatkan Connection sentiasa dalam jangkauan.",
+
+    globalBody:
+      "Temui momen sebenar yang dipilih oleh orang ramai untuk dikongsi dengan komuniti ULMOX yang lebih luas.",
+    globalBody2: "Satu tempat untuk melihat apa yang dikongsi secara terbuka oleh komuniti, sekarang juga.",
+
+    differentHeading: "Mengapa ULMOX berbeza",
+    differences: Object.freeze([
+      Object.freeze({
+        heading: "Momen sebenar, bukan profil yang digilap",
+        body: "Anda berkongsi momen yang anda lalui, bukan gambaran tentang siapa yang anda ingin jadi.",
+      }),
+      Object.freeze({
+        heading: "Orang di luar lingkungan anda",
+        body: "ULMOX menemukan anda dengan orang yang tidak mungkin anda temui melalui kenalan sedia ada anda.",
+      }),
+      Object.freeze({
+        heading: "Tiada perlumbaan pengikut",
+        body: "Tiada angka untuk dikejar dan tiada khalayak untuk dibina.",
+      }),
+      Object.freeze({
+        heading: "Connections berkembang daripada pertemuan",
+        body: "Perbualan bermula kerana sesuatu yang sebenar berlaku terlebih dahulu.",
+      }),
+      Object.freeze({
+        heading: "Dunia melalui orang di dalamnya",
+        body: "Setiap momen datang daripada seseorang yang benar-benar berada di situ.",
+      }),
+    ]),
+
+    safetyHeading: "Keselamatan dan kawalan",
+    safetyBody:
+      "Pemesejan tidak pernah terbuka kepada orang yang tidak dikenali. Perbualan hanya boleh bermula selepas pertemuan ULMOX yang diperlukan dan kelulusan daripada kedua-dua orang, dan anda boleh menamatkannya pada bila-bila masa.",
+    safetyControls: Object.freeze([
+      Object.freeze({
+        heading: "Laporkan",
+        body: "Laporkan pengguna atau satu mesej. Seorang manusia akan menyemaknya.",
+      }),
+      Object.freeze({
+        heading: "Sekat",
+        body: "Penyekatan menghentikan komunikasi dalam kedua-dua arah.",
+      }),
+      Object.freeze({
+        heading: "Tamatkan Connection",
+        body: "Keluar sentiasa berfungsi, dan ia muktamad bagi pasangan tersebut.",
+      }),
+    ]),
+
+    ctaHeading: "Kini tersedia di App Store dan Google Play",
+    ctaBody:
+      "Muat turun ULMOX hari ini dari App Store atau Google Play dan mula berkongsi momen video sebenar.",
+    copyright: "© 2026 ULMOX",
+  }),
+
+  sr: Object.freeze({
+    heroBadge: "Стварни тренуци. Стварни људи.",
+    lead: "Поделите тренутак.",
+    accent: "Откријте свет.",
+    subtitle:
+      "Поделите један стваран тренутак и примајте стварне тренутке од људи који живе негде сасвим другде.",
+    metaDescription:
+      "ULMOX је место где се стварни тренуци сусрећу са стварним људима. Поделите тренутак, истражите World Live, откријте Global и пустите да искрени сусрети прерасту у Connections.",
+    appStoreAria: "Преузмите ULMOX са App Store-а",
+    playStoreAria: "Набавите ULMOX на Google Play-у",
+
+    howHeading: "Како ULMOX функционише",
+    howBody: "Три једноставна корака. Ништа не мора бити савршено, ништа не морате да глумите.",
+    howSteps: Object.freeze([
+      Object.freeze({
+        heading: "Поделите тренутак",
+        body: "Снимите нешто стварно из свог дана и пошаљите то у свет.",
+      }),
+      Object.freeze({
+        heading: "Примите тренутак",
+        body: "Стиже туђи тренутак: улица, поглед, једно обично поподне.",
+      }),
+      Object.freeze({
+        heading: "Наставите да истражујете",
+        body: "Отворите World Live и Global да видите где је остатак света управо сада.",
+      }),
+    ]),
+
+    worldHeading: "World Live",
+    worldBody:
+      "Истражите стварне тренутке подељене са различитих места широм света, на једном интерактивном глобусу.",
+    worldBody2:
+      "Окрените глобус, зауставите се на месту које вам привуче пажњу и погледајте тренутак који је стигао одатле.",
+
+    connectionsHeading: "Стварни тренуци могу постати стварне везе.",
+    connectionsBody: "Без превлачења. Без трке за пратиоцима. Прво се упознајете кроз тренутке.",
+    connectionsSteps: Object.freeze([
+      Object.freeze({
+        heading: "Делите стварне тренутке",
+        body: "Почиње нечим што сте заиста доживели, а не профилом.",
+      }),
+      Object.freeze({
+        heading: "Упознајте људе природно",
+        body: "Друге људе упознајете кроз тренутке које размењујете.",
+      }),
+      Object.freeze({
+        heading: "Connection постаје могућ",
+        body: "Искрени сусрети могу да омогуће Connection између двоје људи.",
+      }),
+      Object.freeze({
+        heading: "Пошаљите захтев",
+        body: "Када је то могуће, било која од две особе може да затражи Connection.",
+      }),
+      Object.freeze({
+        heading: "Обоје одобравате",
+        body: "Ништа се не отвара док обоје не кажете да, свако за себе.",
+      }),
+      Object.freeze({
+        heading: "Почните разговор",
+        body: "Активан Connection значи текстуалне поруке и међусобни увид у профиле.",
+      }),
+    ]),
+    connectionsSafety:
+      "Контролу задржавате све време. Пријави, Блокирај и Заврши Connection увек су вам на дохват руке.",
+
+    globalBody:
+      "Откријте стварне тренутке које људи одлуче да поделе са широм ULMOX заједницом.",
+    globalBody2: "Једно место на коме видите шта заједница управо сада отворено дели.",
+
+    differentHeading: "Зашто је ULMOX другачији",
+    differences: Object.freeze([
+      Object.freeze({
+        heading: "Стварни тренуци, а не дотерани профили",
+        body: "Делите тренутак који сте проживели, а не слику онога какви бисте желели да будете.",
+      }),
+      Object.freeze({
+        heading: "Људи изван вашег круга",
+        body: "ULMOX вас спаја са људима које никада не бисте упознали преко оних које већ познајете.",
+      }),
+      Object.freeze({
+        heading: "Без трке за пратиоцима",
+        body: "Нема бројке за којом јурите и нема публике коју морате да градите.",
+      }),
+      Object.freeze({
+        heading: "Connections настају из сусрета",
+        body: "Разговор почиње зато што се прво догодило нешто стварно.",
+      }),
+      Object.freeze({
+        heading: "Свет кроз људе који у њему живе",
+        body: "Сваки тренутак долази од некога ко заиста стоји баш тамо.",
+      }),
+    ]),
+
+    safetyHeading: "Безбедност и контрола",
+    safetyBody:
+      "Дописивање никада није отворено за непознате. Разговор може да почне тек након сусрета у ULMOX-у који су за то потребни и одобрења обе особе, а можете да га завршите у било ком тренутку.",
+    safetyControls: Object.freeze([
+      Object.freeze({
+        heading: "Пријави",
+        body: "Пријавите корисника или појединачну поруку. Пријаву прегледа човек.",
+      }),
+      Object.freeze({
+        heading: "Блокирај",
+        body: "Блокирање зауставља контакт у оба смера.",
+      }),
+      Object.freeze({
+        heading: "Заврши Connection",
+        body: "Излазак увек функционише и коначан је за тај пар.",
+      }),
+    ]),
+
+    ctaHeading: "Сада доступно на App Store-у и Google Play-у",
+    ctaBody:
+      "Преузмите ULMOX већ данас са App Store-а или Google Play-а и почните да делите стварне видео-тренутке.",
     copyright: "© 2026 ULMOX",
   }),
 });

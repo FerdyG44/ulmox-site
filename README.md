@@ -1,8 +1,12 @@
 # ULMOX Website
 
 Static, dependency-free HTML/CSS/JavaScript website for `ulmoxapp.com`. The
-repository contains the main marketing page, 19 localized versions, legal and
+repository contains the main marketing page, 23 localized versions, legal and
 support pages, and the smart `/download/` landing page.
+
+Four of those locales — Greek (`el`), Serbian Cyrillic (`sr`), Malay (`ms`) and
+Indonesian (`id`) — are prepared in source but **not published**, pending
+native legal review; see `PUBLICATION_CHECKLIST.md`, Stage 1.7.
 
 ## Development and verification
 
@@ -22,7 +26,7 @@ analytics configuration and tags are included on every HTML page.
 ## Legal and policy pages are generated, never hand-edited
 
 The five policy pages — Privacy, Terms, Child Safety, Support and Account
-Deletion — exist in 20 renditions each: the canonical English routes at the site
+Deletion — exist in 24 renditions each: the canonical English routes at the site
 root, and one per locale. All of them are generated. Editing
 `tr/privacy.html` by hand is a change the next `npm run generate` throws away.
 
@@ -30,26 +34,26 @@ root, and one per locale. All of them are generated. Editing
 | --- | --- |
 | `scripts/generate-legal-pages.js` | The canonical English policy text, and the only place it lives |
 | `scripts/policy-schema.js` | Section order and block shape of the canonical pages, with stable section IDs |
-| `scripts/policy-locales/<code>.js` | One translated string per slot, for each of the 18 translated locales |
-| `scripts/generate-localized-policies.js` | Renders the 95 localized routes; `/en/*` mirrors the canonical pages rather than a second English copy |
+| `scripts/policy-locales/<code>.js` | One translated string per slot, for each of the 22 translated locales |
+| `scripts/generate-localized-policies.js` | Renders the 115 localized routes; `/en/*` mirrors the canonical pages rather than a second English copy |
 
 ```sh
 npm run generate      # regenerate every generated route; idempotent
-npm run parity        # 5-page x 19-locale section-coverage matrix
+npm run parity        # 5-page x 23-locale section-coverage matrix
 npm run scan:claims   # stale claims, repeated content, revision drift
 npm run audit         # accessibility and local references, over dist/
 ```
 
 To change a policy: edit the canonical English text in
 `scripts/generate-legal-pages.js`, update `scripts/policy-schema.js` if the
-block structure changed, add the corresponding string to all 18 locale files,
+block structure changed, add the corresponding string to all 22 locale files,
 and run `npm run generate`. A locale that is missing a slot cannot be rendered —
 the generator throws, and `npm test` fails — so a policy change cannot ship in
 one language only.
 
 ## The landing pages are generated too
 
-The 20 landing routes — `/` and `/<locale>/` — are generated, not hand-edited,
+The 24 landing routes — `/` and `/<locale>/` — are generated, not hand-edited,
 for the same reason the policy pages are: 20 near-identical files diverged into
 20 slightly different defects once already.
 

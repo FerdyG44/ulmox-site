@@ -1,7 +1,8 @@
 "use strict";
 
 /**
- * Stage 1.6W.2 — generates the 95 localized policy pages.
+ * Stage 1.6W.2 — generates the localized policy pages (115 since Stage 1.7:
+ * five pages × 23 locales).
  *
  * WHAT CHANGED
  *
@@ -26,7 +27,7 @@
  * `/en/privacy.html` is the canonical `/privacy.html`, re-shelled for its
  * route. There is no English entry in `scripts/policy-locales/`, because a
  * second hand-maintained English policy is exactly the thing that produced the
- * defects above. The 18 translation files are checked against the canonical
+ * defects above. The 22 translation files are checked against the canonical
  * structure, not against a copy of it.
  *
  * WHAT THIS IS NOT
@@ -84,9 +85,9 @@ function escapeAttribute(value) {
  * Expands the tokens a translated string may contain.
  *
  * Translators write prose and inline emphasis. Everything that must stay
- * consistent across 19 locales — an address, a route, a word mark, the
+ * consistent across 23 locales — an address, a route, a word mark, the
  * gradual-availability sentence — is a token, so it cannot be mistyped in one
- * language and correct in the other eighteen.
+ * language and correct in the other twenty-two.
  */
 function expand(text, locale) {
   const chrome = CHROME[locale];
@@ -303,7 +304,7 @@ function withRevisionMeta(html) {
 /* -------------------------------------------------------------------------- */
 
 /**
- * Section-level coverage for all 19 locales of all five pages.
+ * Section-level coverage for all 23 locales of all five pages.
  *
  * A locale "covers" a section when it supplies a non-empty string for every
  * slot the canonical section has, and none of them repeats another slot in the

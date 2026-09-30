@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Подршка - ULMOX</title>
+  <meta name="description" content="Како да контактирате ULMOX, колико брзо одговарамо и како да уложите жалбу на одлуку." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Clipped, not offset: see scripts/legal-pages.js. */
+    .skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: var(--accent);
+      color: #000;
+      z-index: 10;
+    }
+
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-24" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      z-index: 10000;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="ulmox-skip-link" href="#main">Пређи на садржај</a>
+<div class="container">
+  <main id="main">
+    <h1>ULMOX подршка</h1>
+    <p class="effective">Важи од 2026-09-04. Последњи пут ажурирано 2026-09-04.</p>
+
+    <p>Пишите на <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Коришћење неког од доле наведених наслова поруке помаже нам да вашу поруку правилно усмеримо.</p>
+
+    <table>
+      <tr><th scope="col">Потребна ми је помоћ у вези са</th><th scope="col">Наслов поруке</th><th scope="col">Напомене</th></tr>
+      <tr><td>Општа подршка</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Support">ULMOX Support</a></td><td>Све што није обухваћено у наставку.</td></tr>
+      <tr><td>Брисање мог налога</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">ULMOX Account Deletion Request</a></td><td>Најпре погледајте <a href="delete_account.html">Избриши налог</a> — пут кроз апликацију је бржи.</td></tr>
+      <tr><td>Исправка провере мог узраста</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Age%20Verification%20Correction">ULMOX Age Verification Correction</a></td><td>Ако сте погрешно унели датум рођења. То не можете сами да промените.</td></tr>
+      <tr><td>Жалба на одлуку о садржају</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Content%20Appeal">ULMOX Content Appeal</a></td><td>Ако је ваш садржај сакривен или уклоњен.</td></tr>
+      <tr><td>Жалба на ограничење налога</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Appeal">ULMOX Account Appeal</a></td><td>Ако је ваш налог суспендован или забрањен.</td></tr>
+      <tr><td>Пријава забринутости за безбедност детета</td><td><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Child%20Safety%20Report">ULMOX Child Safety Report</a></td><td>Највиши приоритет. Погледајте <a href="safety.html">Безбедност и модерација</a>.</td></tr>
+    </table>
+
+    <h2>Колико брзо одговарамо</h2>
+
+    <ul>
+      <li>За <strong>хитне пријаве које се тичу безбедности деце</strong> циљ је преглед од стране човека <strong>у року од 24 сата</strong>. То је циљ за почетак прегледа, а не гаранција да ће случај бити коначно решен у року од 24 сата.</li>
+      <li><strong>Све остало</strong> решава се што је брже разумно могуће.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Никада нећемо тражити од вас лозинку, Apple или Google лозинку, једнократни код за аутентификацију, код за ауторизацију или токен за пријаву, и никада нећемо тражити да нам е-поштом пошаљете пасош или други документ за идентификацију.</strong> Молимо вас да их не шаљете. Ако порука која тврди да долази од ULMOX-а тражи било шта од наведеног, она не долази од нас.</p>
+    </div>
+
+    <h2>Connections и превод порука</h2>
+
+    <div class="callout">
+      <p><strong>Connections и необавезни превод порука уводе се постепено и можда још нису доступни за сваки налог или сваку инсталирану верзију апликације.</strong></p>
+    </div>
+
+    <p>Ако Connections није доступан на вашем налогу, нема шта да се поправи и нема шта да од нас тражите: то није грешка, није проблем са вашим налогом и није нешто што подршка може да вам укључи. Ажурирање апликације на актуелну верзију једино је што вреди учинити.</p>
+
+    <p>Када вам је превод доступан, ово су ствари које обично пођу наопако и шта да у вези са њима урадите. Како функција ради, погледајте на страници <a href="translation.html">Информације о превођењу</a>.</p>
+
+    <table>
+      <tr><th scope="col">Шта видите</th><th scope="col">Шта то значи</th></tr>
+      <tr><td>Језички пакет се још преузима</td><td>Језик мора једном да се преузме пре него што може да се преводи. Оставите екран отвореним; оригинална порука све време остаје читљива.</td></tr>
+      <tr><td>Преузимање не почиње</td><td>Преузимања подразумевано користе Wi-Fi. На мобилним подацима морате изричито изабрати да их користите — ULMOX неће трошити ваш мобилни пренос података а да вас не пита.</td></tr>
+      <tr><td>Преузимање није успело</td><td>Покушајте поново са стабилном везом. Ако преузимање не успе, ништа се у вези са поруком не мења.</td></tr>
+      <tr><td>„Ова порука не може да се преведе”</td><td>Језик није међу подржанима или није могао да буде препознат са довољно сигурности. ULMOX радије не приказује ништа него да нагађа.</td></tr>
+      <tr><td>Превод звучи чудно</td><td>Машински превод може бити погрешан, а да звучи сигурно, а пар језика у коме нема енглеског може бити преведен преко енглеског. Прочитајте оригинал.</td></tr>
+      <tr><td>Желите да ослободите простор</td><td>Избришите преузете језичке пакете у одељку Модели за превод, у апликацији.</td></tr>
+      <tr><td>Порука представља безбедносни проблем</td><td>Пријавите је у апликацији. Пријава садржи оригиналну поруку, а њу прегледа човек.</td></tr>
+    </table>
+
+    <div class="callout">
+      <p><strong>Не шаљите нам поруку е-поштом.</strong> Молимо вас да не шаљете текст порука, снимке екрана приватног разговора, податке за аутентификацију ни идентификаторе уређаја. Уместо тога пријавите поруку у апликацији — тако проверитељ безбедно добија оригинал, а нама никада није потребна копија од вас.</p>
+    </div>
+
+    <h2>Жалбе</h2>
+
+    <p>Жалбу можете уложити без обзира на то да ли тренутно можете да користите апликацију, а веза ка подршци у апликацији остаје доступна и ако је ваш налог ограничен.</p>
+
+    <ul>
+      <li>Жалбу чита овлашћена особа.</li>
+      <li>Подношење жалбе не враћа аутоматски ваш налог ни ваш садржај.</li>
+      <li>Жалбе не бришу пријаве ни безбедносне записе.</li>
+      <li>Не откривамо вам ко вас је пријавио и не објашњавамо интерне прагове које користе наши безбедносни системи.</li>
+    </ul>
+
+    <p>Молимо вас да наведете своје ULMOX корисничко име и, ако је релевантно, отприлике када је одлука донета. Немојте прилагати лозинке ни документе за идентификацију.</p>
+
+    <h2>Повезане странице</h2>
+
+    <p>
+      <a href="privacy.html">Политика приватности</a>
+      &middot;
+      <a href="terms.html">Услови коришћења</a>
+      &middot;
+      <a href="safety.html">Безбедност и модерација</a>
+      &middot;
+      <a href="delete_account.html">Избриши налог</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Правне информације и подршка">
+      <ul>
+        <li><a href="index.html">Почетна</a></li>
+        <li><a href="privacy.html">Политика приватности</a></li>
+        <li><a href="terms.html">Услови коришћења</a></li>
+        <li><a href="safety.html">Безбедност и модерација</a></li>
+        <li><span aria-current="page">Подршка</span></li>
+        <li><a href="delete_account.html">Избриши налог</a></li>
+        <li><a href="translation.html">Информације о превођењу</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Меродавна је верзија ове политике на енглеском језику. Ако се превод од ње разликује, примењује се верзија на енглеском језику.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+</body>
+</html>

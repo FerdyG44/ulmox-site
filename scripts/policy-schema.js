@@ -38,7 +38,7 @@
  * `tests/policy-parity.test.js` parses the canonical English pages and asserts
  * that their real block structure equals the structure declared below. Editing
  * a canonical page without updating this file fails the suite; updating this
- * file without giving all 18 locales the new slot fails it too. That is the
+ * file without giving all 22 locales the new slot fails it too. That is the
  * whole point: divergence becomes a test failure instead of a discovery.
  */
 

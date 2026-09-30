@@ -96,14 +96,49 @@ window.ULMOX_I18N = {
     "code": "vi",
     "nativeName": "Tiếng Việt",
     "englishName": "Vietnamese"
+  },
+  {
+    "code": "el",
+    "nativeName": "Ελληνικά",
+    "englishName": "Greek"
+  },
+  {
+    "code": "id",
+    "nativeName": "Bahasa Indonesia",
+    "englishName": "Indonesian"
+  },
+  {
+    "code": "ms",
+    "nativeName": "Bahasa Melayu",
+    "englishName": "Malay"
+  },
+  {
+    "code": "sr",
+    "nativeName": "Српски",
+    "englishName": "Serbian"
   }
 ]
 };
+
+/*
+ * Primary subtags that name a language this site ships under another code.
+ * Older Java/Android runtimes report Indonesian as "in" (e.g. "in-ID"); it is
+ * the same language as "id".
+ *
+ * Serbian: the site ships Serbian in Cyrillic only (/sr/, lang="sr"). Every
+ * "sr-*" browser tag, including "sr-Latn" and "sr-Latn-RS", reduces to "sr"
+ * and lands on the Cyrillic pages. This is deliberate: Serbian readers read
+ * both scripts, and an English fallback would serve them worse.
+ */
+window.ULMOX_I18N.aliases = { 'in': 'id' };
 
 window.ULMOX_I18N.getSupportedLanguage = function getSupportedLanguage(language) {
   if (!language) return window.ULMOX_I18N.defaultLanguage;
   var normalized = String(language).toLowerCase();
   var base = normalized.split('-')[0];
+  if (Object.prototype.hasOwnProperty.call(window.ULMOX_I18N.aliases, base)) {
+    base = window.ULMOX_I18N.aliases[base];
+  }
   var supported = window.ULMOX_I18N.languages.some(function (item) {
     return item.code === base;
   });

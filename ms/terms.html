@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terma Perkhidmatan - ULMOX</title>
+  <meta name="description" content="Peraturan penggunaan ULMOX, termasuk kelayakan, kandungan yang dilarang, penyederhanaan dan pengalihan keluar akaun." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Clipped, not offset: see scripts/legal-pages.js. */
+    .skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: var(--accent);
+      color: #000;
+      z-index: 10;
+    }
+
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-24" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      z-index: 10000;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="ulmox-skip-link" href="#main">Langkau ke kandungan</a>
+<div class="container">
+  <main id="main">
+    <h1>Terma Perkhidmatan</h1>
+    <p class="effective">Berkuat kuasa mulai 2026-09-04. Kali terakhir dikemas kini pada 2026-09-24.</p>
+
+    <p>Terma ini terpakai apabila anda menggunakan ULMOX. Jika anda tidak bersetuju dengannya, sila jangan gunakan perkhidmatan ini.</p>
+
+    <h2>1. Siapa yang boleh menggunakan ULMOX</h2>
+
+    <ul>
+      <li>Anda mestilah berumur <strong>18 tahun atau lebih</strong>.</li>
+      <li>Anda mesti memberikan maklumat yang benar tentang umur anda.</li>
+      <li>Anda tidak boleh cuba mengelak keperluan umur, dan anda tidak boleh membantu orang lain berbuat demikian.</li>
+      <li>Akaun bersifat tetap dan bukan tanpa nama. Anda log masuk dengan penyedia yang disokong dan mengekalkan satu identiti di seluruh perkhidmatan.</li>
+    </ul>
+
+    <h2>2. Kandungan anda</h2>
+
+    <p>Anda bertanggungjawab atas video dan kandungan profil yang anda cipta dan muat naik. Anda mesti mempunyai hak untuk berkongsi apa yang anda muat naik, dan kandungan itu tidak boleh melanggar Terma ini atau undang-undang.</p>
+
+    <h3>Pemilikan dan lesen</h3>
+
+    <p><strong>Anda mengekalkan pemilikan kandungan anda.</strong> Untuk mengendalikan perkhidmatan, anda memberi ULMOX lesen bukan eksklusif, di seluruh dunia dan bebas royalti untuk mengehos, menyimpan, mengeluarkan semula dan menghantar kandungan anda, semata-mata supaya kami dapat menghantarnya kepada penerima yang dipilih untuknya, menjana lakaran kenit, dan memaparkannya dalam suapan Global jika penerima berkongsinya di sana. Lesen ini wujud hanya untuk menjalankan ULMOX dan tamat apabila kandungan itu dialih keluar, kecuali jika kami perlu menyimpan salinan sebagai bukti keselamatan atau untuk memenuhi kewajipan undang-undang.</p>
+
+    <p>Apabila seseorang berkongsi video yang diterimanya ke suapan Global, dia <strong>tidak</strong> menjadi pemiliknya. Orang yang merakamnya kekal sebagai pemilik.</p>
+
+    <h2>3. Connections</h2>
+
+    <div class="callout">
+      <p><strong>Connections dan terjemahan mesej pilihan sedang diperkenalkan secara berperingkat dan mungkin belum tersedia untuk setiap akaun atau setiap versi aplikasi yang dipasang.</strong></p>
+    </div>
+
+    <p>Connection ialah perbualan bersama, teks sahaja, antara dua orang dewasa yang telah pun bertukar momen video. Ia bukan direktori sembang dan ia bukan pemesejan terbuka. Ini ialah peraturan yang digunakannya:</p>
+
+    <ul>
+      <li><strong>Dewasa sahaja.</strong> Connections adalah sebahagian daripada perkhidmatan untuk 18 tahun ke atas dan hanya tersedia kepada akaun yang telah memenuhi keperluan umur.</li>
+      <li><strong>Anda tidak boleh mencari orang.</strong> ULMOX tidak mempunyai carian pengguna dan tiada cara untuk mencari seseorang bagi menghubunginya. Connection hanya boleh berkembang daripada hubungan yang telah sedia ada.</li>
+      <li><strong>Dua pertemuan video layak sebelumnya.</strong> Sesuatu pasangan hanya menjadi layak selepas dua pertukaran video layak yang berasingan antara kedua-dua akaun itu. Satu tidak mencukupi.</li>
+      <li><strong>Kedua-dua orang mesti meluluskan.</strong> Setiap orang meluluskan secara berasingan. Selagi kedua-duanya belum berbuat demikian, tiada Connection wujud dan tiada mesej boleh dihantar.</li>
+      <li><strong>Teks sahaja, tanpa lampiran.</strong> Connection membawa mesej bertulis. Tiada lampiran — tiada foto, tiada video, tiada fail, tiada nota suara.</li>
+      <li><strong>Akaun bersifat tetap dan bukan tanpa nama.</strong> Orang yang berhubung dengan anda mempunyai satu identiti yang sama di seluruh ULMOX, sama seperti orang lain.</li>
+      <li><strong>Mesej tamat tempoh.</strong> Mesej biasa dianggap tamat tempoh kira-kira tujuh hari selepas dihantar. Mesej yang dilaporkan dikendalikan secara berbeza — lihat Dasar Privasi.</li>
+      <li><strong>Melapor dan keluar sentiasa berfungsi.</strong> Anda boleh menggunakan <strong>Laporkan pengguna</strong> dan <strong>Laporkan mesej</strong>, anda boleh <strong>Sekat</strong>, dan anda boleh <strong>Tamatkan Hubungan</strong>. Menamatkan Connection adalah muktamad bagi pasangan tersebut: ia tidak disambung semula, dan pertemuan kemudian tidak membukanya semula. Sekatan bukan perkara yang sama. Sekatan menamatkan Connection yang anda ada sekarang dan menghentikan komunikasi dalam kedua-dua arah selagi sekatan itu berkuat kuasa. Menarik balik sekatan tidak memulihkan Connection yang lama: pasangan itu perlu layak semula dari awal, melalui dua pertukaran video layak yang baharu dan kelulusan baharu daripada setiap orang.</li>
+      <li><strong>Manusia menyemak laporan, bukan mesin.</strong> Mesej yang dilaporkan dinilai oleh seorang manusia.</li>
+      <li><strong>Terjemahan adalah pilihan.</strong> Anda boleh menterjemah mesej yang telah anda terima, pada peranti anda sendiri. Mesej asal ialah yang diambil kira dan yang dibaca oleh penyemak. Lihat <a href="translation.html">Maklumat terjemahan</a>.</li>
+    </ul>
+
+    <h2>4. Apa yang tidak dibenarkan</h2>
+
+    <p>Perkara berikut dilarang di ULMOX:</p>
+
+    <ul>
+      <li>Penderaan dan eksploitasi seksual kanak-kanak (CSAE) dan bahan penderaan seksual kanak-kanak (CSAM), dalam apa jua bentuk.</li>
+      <li>Eksploitasi seksual terhadap mana-mana orang.</li>
+      <li>Kandungan seksual tanpa persetujuan, dan kandungan seksual yang melibatkan sesiapa yang mungkin berumur di bawah 18 tahun.</li>
+      <li>Ugutan, hasutan kepada keganasan, dan kandungan yang mengagungkan keganasan.</li>
+      <li>Ucapan kebencian dan gangguan yang disasarkan.</li>
+      <li>Menyamar sebagai orang atau organisasi lain.</li>
+      <li>Scam, penipuan dan spam.</li>
+      <li>Kandungan yang menyalahi undang-undang dan aktiviti yang menyalahi undang-undang.</li>
+      <li>Berkongsi maklumat peribadi orang lain tanpa kebenaran mereka.</li>
+    </ul>
+
+    <p>ULMOX mempunyai toleransi sifar terhadap kandungan yang tidak wajar dan terhadap pengguna yang berkelakuan kesat. Kandungan yang melanggar peraturan ini akan dialih keluar, dan akaun yang bertanggungjawab akan digantung atau ditamatkan.</p>
+
+    <h2>5. Pelaporan, penyekatan dan penyederhanaan</h2>
+
+    <ul>
+      <li>Anda boleh melaporkan kandungan dan anda boleh melaporkan pengguna, dari dalam aplikasi. Terdapat kategori khusus untuk keselamatan kanak-kanak.</li>
+      <li>Anda boleh menyekat pengguna lain. Penyekatan menghentikan interaksi dalam kedua-dua arah, dan orang yang anda sekat tidak diberitahu.</li>
+      <li>Kandungan yang dilaporkan boleh diletakkan dalam <strong>kuarantin boleh balik</strong> semasa ia disemak. Kuarantin menyembunyikan kandungan buat sementara waktu; ia tidak memadamkannya dan ia bukan penalti terhadap akaun.</li>
+      <li>Keputusan penyederhanaan dibuat oleh manusia, bukan secara automatik. Video yang dilaporkan dan mesej yang dilaporkan kedua-duanya disemak oleh seorang manusia.</li>
+      <li>Mesej yang ditahan oleh penapis keselamatan automatik <strong>bukan</strong> keputusan tentang akaun anda. Menahan mesej, atau mengkuarantin kandungan, hanya mengehadkan item itu dan tidak lebih daripada itu.</li>
+      <li>Jika penyemak meluluskan sesuatu video, video itu kembali ke suapan Global hanya jika ia masih layak secara bebas. Video yang pemiliknya telah keluar, telah dihadkan atau telah diharamkan, atau yang tidak tersedia atas sebab lain, kekal tidak tersedia walau apa pun keputusan laporan itu.</li>
+      <li>Apabila laporan diselesaikan, ia keluar daripada senarai semakan aktif. Ia tidak dihapuskan: bukti dan rekod tentang apa yang diputuskan disimpan jika terdapat sebab yang wajar untuk menyimpannya.</li>
+      <li>Laporan sentiasa berkenaan kandungan asal. Terjemahan yang anda pilih untuk dibaca tidak pernah menjadi perkara yang disemak dan tidak pernah menjadi bukti.</li>
+      <li>Kami tidak menerbitkan ambang dalaman, alatan atau prosedur kerja yang digunakan oleh sistem keselamatan kami.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Laporan tidak mengharamkan akaun.</strong> Tiada bilangan laporan yang mengharamkan akaun secara automatik. Tiada perkara lain yang berbuat demikian juga: bukan penapis automatik yang menahan mesej, bukan kuarantin, bukan terjemahan, dan bukan keputusan untuk mengalih keluar satu kandungan. Hanya pentadbir ULMOX yang diberi kuasa boleh mengharamkan akaun, sebagai keputusan yang berasingan dan disengajakan, dan hanya selepas menyemak kes tersebut.</p>
+    </div>
+
+    <p>ULMOX tidak menganalisis bingkai video, audio atau transkrip secara automatik. Keselamatan bergantung pada pelaporan, kuarantin boleh balik, penyekatan dan semakan oleh manusia.</p>
+
+    <h2>6. Penyahaktifan dan pemadaman</h2>
+
+    <ul>
+      <li><strong>Penyahaktifan</strong> boleh diterbalikkan: anda memulihkan akaun dengan log masuk semula dan memilih <strong>Aktifkan Semula Akaun</strong>; log masuk sahaja tidak berbuat demikian. Profil dan kandungan Global anda disembunyikan dan data anda disimpan supaya akaun itu boleh dipulihkan. Video yang telah anda hantar mungkin kekal pada orang yang menerimanya bagi tempoh penyimpanan biasa mereka.</li>
+      <li><strong>Pemadaman</strong> adalah kekal dan tidak boleh dibuat asal. Akses dan kebolehtemuan tamat serta-merta, dan penghapusan diteruskan di latar belakang. Rekod keselamatan, undang-undang atau transaksi yang terhad mungkin disimpan jika wajar. Lihat <a href="delete_account.html">Padam Akaun</a>.</li>
+    </ul>
+
+    <h2>7. Penguatkuasaan dan rayuan</h2>
+
+    <p>Kami boleh menyembunyikan kandungan semasa ia sedang disemak, mengalih keluar kandungan yang melanggar Terma ini, dan, melalui pentadbir yang diberi kuasa, menggantung atau menamatkan akaun. Jika anda percaya keputusan tentang kandungan anda atau akaun anda adalah salah, tulis kepada <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a> dan seorang manusia akan menyemaknya. Lihat <a href="support.html">Sokongan</a>.</p>
+
+    <h2>Terjemahan mesin</h2>
+
+    <ul>
+      <li>ULMOX mungkin menawarkan terjemahan mesin pilihan bagi mesej yang telah anda terima. <strong>Terjemahan mesin mungkin tidak lengkap atau tidak tepat.</strong></li>
+      <li>Apabila maksud adalah penting, bergantunglah pada mesej asal. Mesej asal kekal kelihatan dan merupakan versi yang sah.</li>
+      <li>Menterjemah mesej tidak mengubah tanggungjawab anda terhadap kandungan yang anda tulis. Anda kekal bertanggungjawab atas mesej asal anda.</li>
+      <li>Terjemahan tidak mewujudkan pengecualian kepada Terma ini. Kandungan yang melanggar peraturan tetap melanggarnya dalam setiap bahasa.</li>
+      <li>Google menyediakan teknologi terjemahan. Google tidak menulis, menyemak, meluluskan atau menyokong sebarang mesej yang dihantar melalui ULMOX.</li>
+    </ul>
+
+    <p>Lihat <a href="translation.html">Maklumat terjemahan</a>.</p>
+
+    <h2 id="ulmox-music">ULMOX Music</h2>
+
+    <p>ULMOX mungkin menyediakan muzik untuk digunakan dalam Momen. Tertakluk kepada Terma ini, anda boleh menyegerakkan muzik tersebut dengan video yang anda cipta dalam ULMOX dan berkongsi video yang telah siap itu melalui ULMOX. Anda tidak boleh mengekstrak, mengedarkan semula, menjual atau menyediakan muzik itu sebagai audio kendiri.</p>
+
+    <h2>8. Perubahan kepada Terma ini</h2>
+
+    <p>Kami boleh mengemas kini Terma ini. Tarikh berkuat kuasa di atas menunjukkan versi semasa. Apabila sesuatu perubahan adalah penting, kami mungkin meminta anda menerima Terma yang dikemas kini dalam aplikasi sebelum terus menggunakan ULMOX.</p>
+
+    <h2>9. Halaman berkaitan</h2>
+
+    <p>
+      <a href="privacy.html">Dasar Privasi</a>
+      &middot;
+      <a href="safety.html">Keselamatan dan Penyederhanaan</a>
+      &middot;
+      <a href="support.html">Sokongan</a>
+      &middot;
+      <a href="delete_account.html">Padam Akaun</a>
+    </p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Maklumat undang-undang dan sokongan">
+      <ul>
+        <li><a href="index.html">Laman utama</a></li>
+        <li><a href="privacy.html">Dasar Privasi</a></li>
+        <li><span aria-current="page">Terma</span></li>
+        <li><a href="safety.html">Keselamatan dan Penyederhanaan</a></li>
+        <li><a href="support.html">Sokongan</a></li>
+        <li><a href="delete_account.html">Padam Akaun</a></li>
+        <li><a href="translation.html">Maklumat terjemahan</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Versi bahasa Inggeris dasar ini ialah versi yang sahih. Sekiranya terdapat sebarang percanggahan antara terjemahan dengan versi bahasa Inggeris, versi bahasa Inggeris hendaklah diguna pakai.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+</body>
+</html>

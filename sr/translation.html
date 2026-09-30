@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Информације о превођењу - ULMOX</title>
+  <meta name="description" content="Превођење у ULMOX-у омогућава Google Translate." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Clipped, not offset: see scripts/legal-pages.js. */
+    .skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: var(--accent);
+      color: #000;
+      z-index: 10;
+    }
+
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Информације о превођењу</a>
+  <div class="container">
+  <main id="main">
+    <h1>Информације о превођењу</h1>
+    <div class="callout">
+      <p><strong>Connections и необавезни превод порука уводе се постепено и можда још нису доступни за сваки налог или сваку инсталирану верзију апликације.</strong></p>
+    </div>
+
+    <p>Превођење у ULMOX-у омогућава Google Translate.</p>
+
+    <ul>
+      <li>Превођење није обавезно. Ништа се не преводи ако то не затражиш, и то порука по порука.</li>
+      <li>Превођење поруке обавља се на овом уређају. Порука и превод се не шаљу никуда ради превођења.</li>
+      <li>Пре него што језик може да се преводи, мора да се преузме језички пакет. ULMOX прво пита и преузима преко Wi-Fi мреже, осим ако не изабереш другачије.</li>
+      <li>Google-ова компонента за превођење и даље може сама да користи мрежу: да преузме језичке пакете, да прочита сопствену удаљену конфигурацију и да шаље дијагностику и аналитику коришћења о самој компоненти. Текст твојих порука није део тога.</li>
+      <li>Машински превод може бити погрешан, и то тако да звучи као да је потпуно сигуран.</li>
+      <li>Између два језика од којих ниједан није енглески, превод може успут да прође кроз енглески, па резултат може бити приметно слабији.</li>
+      <li>Важи оригинална порука. Она остаје на екрану и једино се на њу пријава икада односи.</li>
+      <li>Превођење поруке не мења ништа у вези са пријављивањем, блокирањем, модерацијом или одлукама о налозима. Пријава увек садржи оригиналну поруку, а човек прегледа тај оригинал — никада превод.</li>
+      <li>ULMOX не чува превод. Не чува се као засебна порука на нашим серверима и не придружује се пријави, обавештењу, доказима за модерацију ни аналитици.</li>
+      <li>Преузете језичке пакете можете да видите и избришете у одељку Модели за превод, у апликацији. Уклањањем ULMOX-а уклањају се и они, на уобичајен начин на који ваш оперативни систем уклања датотеке апликације.</li>
+    </ul>
+
+    <h2>Google-ово одрицање одговорности</h2>
+    <div class="callout">
+      <p>THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</p>
+    </div>
+    <p>Google захтева да се ово обавештење прикаже тачно онако како је написано, па није преведено.</p>
+
+    <h2>О услузи превођења</h2>
+    <p>
+      <a href="https://translate.google.com/" target="_blank" rel="noopener noreferrer">Google Translate</a>
+      &middot;
+      <a href="https://cloud.google.com/translate" target="_blank" rel="noopener noreferrer">Cloud Translation</a>
+    </p>
+  </main>
+  <footer>
+    <nav aria-label="Правне информације и подршка">
+      <ul>
+        <li><a href="index.html">Почетна</a></li>
+        <li><a href="privacy.html">Политика приватности</a></li>
+        <li><a href="terms.html">Услови коришћења</a></li>
+        <li><a href="safety.html">Безбедност и модерација</a></li>
+        <li><a href="support.html">Подршка</a></li>
+        <li><a href="delete_account.html">Избриши налог</a></li>
+        <li><span aria-current="page">Информације о превођењу</span></li>
+      </ul>
+    </nav>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+  </div>
+</body>
+</html>

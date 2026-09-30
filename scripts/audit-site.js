@@ -21,7 +21,8 @@ const path = require("path");
 
 const LOCALES = Object.freeze([
   "en", "sv", "tr", "de", "es", "fr", "it", "pt", "nl", "pl",
-  "fi", "ru", "ja", "ko", "zh", "ar", "hi", "th", "vi"
+  "fi", "ru", "ja", "ko", "zh", "ar", "hi", "th", "vi",
+  "el", "id", "ms", "sr"
 ]);
 
 /** Extensions whose absence is a broken media element, not a broken link. */

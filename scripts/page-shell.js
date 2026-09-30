@@ -29,7 +29,8 @@
 
 const LOCALES = Object.freeze([
   "en", "sv", "tr", "de", "es", "fr", "it", "pt", "nl", "pl",
-  "fi", "ru", "ja", "ko", "zh", "ar", "hi", "th", "vi"
+  "fi", "ru", "ja", "ko", "zh", "ar", "hi", "th", "vi",
+  "el", "id", "ms", "sr"
 ]);
 
 const CONTACT_EMAIL = "ulmoxapp@outlook.com";
@@ -219,6 +220,42 @@ const CHROME = Object.freeze({
     moved: "Trang này đã được chuyển.", deleteHeading: "Xóa tài khoản của bạn",
     englishPrecedence:
       "Bản tiếng Anh của chính sách này là bản có hiệu lực. Nếu bản dịch khác với bản tiếng Anh, bản tiếng Anh sẽ được áp dụng.",
+  },
+  el: {
+    skip: "Μετάβαση στο περιεχόμενο", navLabel: "Νομικές πληροφορίες και υποστήριξη", home: "Αρχική",
+    privacy: "Πολιτική απορρήτου", terms: "Όροι", support: "Υποστήριξη",
+    safety: "Ασφάλεια και εποπτεία", deleteAccount: "Διαγραφή λογαριασμού",
+    translation: "Πληροφορίες μετάφρασης",
+    moved: "Αυτή η σελίδα έχει μετακινηθεί.", deleteHeading: "Διαγραφή του λογαριασμού σας",
+    englishPrecedence:
+      "Η αγγλική έκδοση της παρούσας πολιτικής είναι η αυθεντική. Εάν μια μετάφραση διαφέρει από αυτήν, ισχύει η αγγλική έκδοση.",
+  },
+  id: {
+    skip: "Langsung ke konten", navLabel: "Informasi hukum dan dukungan", home: "Beranda",
+    privacy: "Kebijakan Privasi", terms: "Ketentuan", support: "Dukungan",
+    safety: "Keselamatan &amp; Moderasi", deleteAccount: "Hapus Akun",
+    translation: "Informasi Terjemahan",
+    moved: "Halaman ini telah dipindahkan.", deleteHeading: "Hapus Akun Anda",
+    englishPrecedence:
+      "Versi bahasa Inggris dari kebijakan ini adalah versi yang mengikat. Jika suatu terjemahan berbeda dari versi tersebut, versi bahasa Inggris yang berlaku.",
+  },
+  ms: {
+    skip: "Langkau ke kandungan", navLabel: "Maklumat undang-undang dan sokongan", home: "Laman utama",
+    privacy: "Dasar Privasi", terms: "Terma", support: "Sokongan",
+    safety: "Keselamatan dan Penyederhanaan", deleteAccount: "Padam Akaun",
+    translation: "Maklumat terjemahan",
+    moved: "Halaman ini telah dipindahkan.", deleteHeading: "Padam Akaun Anda",
+    englishPrecedence:
+      "Versi bahasa Inggeris dasar ini ialah versi yang sahih. Sekiranya terdapat sebarang percanggahan antara terjemahan dengan versi bahasa Inggeris, versi bahasa Inggeris hendaklah diguna pakai.",
+  },
+  sr: {
+    skip: "Пређи на садржај", navLabel: "Правне информације и подршка", home: "Почетна",
+    privacy: "Политика приватности", terms: "Услови коришћења", support: "Подршка",
+    safety: "Безбедност и модерација", deleteAccount: "Избриши налог",
+    translation: "Информације о превођењу",
+    moved: "Ова страница је премештена.", deleteHeading: "Избришите свој налог",
+    englishPrecedence:
+      "Меродавна је верзија ове политике на енглеском језику. Ако се превод од ње разликује, примењује се верзија на енглеском језику.",
   },
 });
 
@@ -435,7 +472,7 @@ function attributeSafe(value) {
  *
  * Nothing is written here: the description is the localized prose the page
  * already carries, trimmed to a length a search result will show. Inventing a
- * description would mean writing marketing copy in 19 languages nobody has
+ * description would mean writing marketing copy in 23 languages nobody has
  * reviewed, which is exactly how an unsupported claim gets published.
  */
 function deriveDescription(bodyHtml, { limit = 155 } = {}) {

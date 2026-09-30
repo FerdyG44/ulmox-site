@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pemadaman Akaun - ULMOX</title>
+  <meta name="description" content="Cara memadam akaun ULMOX anda secara kekal, dalam aplikasi atau melalui permintaan, dan apa yang berlaku kepada data anda." />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #16161a;
+      --text: #ffffff;
+      /* #d6d6d6 on #0d0d0f is ~12.4:1, comfortably above WCAG AA. */
+      --muted: #d6d6d6;
+      --accent: #ffd24d;
+      --border: rgba(255, 255, 255, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Clipped, not offset: see scripts/legal-pages.js. */
+    .skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: var(--accent);
+      color: #000;
+      z-index: 10;
+    }
+
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    h1 { font-size: clamp(28px, 6vw, 40px); margin: 0 0 8px; line-height: 1.25; }
+    h2 { font-size: clamp(20px, 4vw, 25px); margin: 40px 0 12px; }
+    h3 { font-size: clamp(17px, 3.4vw, 19px); margin: 26px 0 8px; }
+
+    p, li { color: var(--muted); font-size: 17px; }
+    li { margin-bottom: 8px; }
+
+    a { color: var(--accent); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .effective {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 22px 0;
+    }
+
+    .callout p:last-child { margin-bottom: 0; }
+    .callout p:first-child { margin-top: 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: start;
+      font-size: 15px;
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    th { color: var(--text); background: var(--panel); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+      padding-top: 24px;
+    }
+
+    footer nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    footer li { margin-bottom: 0; }
+    footer p { font-size: 15px; }
+
+    @media (max-width: 520px) {
+      .container { padding: 32px 16px 56px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+  <meta name="ulmox-policy-revision" content="2026-09-24" />
+  <style>
+    /* ULMOX_PAGE_SHELL — canonical accessible chrome. Do not edit per page. */
+    .ulmox-skip-link {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      z-index: 10000;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      background: #ffd24d;
+      color: #000;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .ulmox-skip-link:focus,
+    .ulmox-skip-link:focus-visible {
+      width: auto;
+      height: auto;
+      padding: 12px 18px;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #ffd24d;
+      outline-offset: 3px;
+    }
+
+    body > footer {
+      margin: 64px auto 0;
+      max-width: 900px;
+      padding: 24px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: #b9b9c4;
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-align: start;
+    }
+
+    body > footer nav ul {
+      list-style: none;
+      margin: 0 0 14px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    body > footer li { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer a { color: #ffd24d; }
+    body > footer p { margin: 0; color: #b9b9c4; font-size: 15px; }
+    body > footer [aria-current="page"] { color: #ffffff; font-weight: 700; }
+
+    @media (max-width: 600px) {
+      body > footer { padding: 20px 16px 32px; }
+      body > footer nav ul { gap: 6px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="ulmox-skip-link" href="#main">Langkau ke kandungan</a>
+<div class="container">
+  <main id="main">
+    <h1>Padam akaun ULMOX anda</h1>
+    <p class="effective">Berkuat kuasa mulai 2026-09-04. Kali terakhir dikemas kini pada 2026-09-04.</p>
+
+    <p>Halaman ini menerangkan cara memadam akaun ULMOX anda secara kekal dan apa yang berlaku kepada data anda selepas itu.</p>
+
+    <div class="callout">
+      <p><strong>Menyahaktifkan bukan memadam.</strong> Penyahaktifan menyembunyikan profil dan kandungan anda dan boleh dibuat asal. Memadam akaun anda adalah kekal dan tidak boleh dibuat asal.</p>
+    </div>
+
+    <h2>Pilihan 1 — padam dalam aplikasi (disyorkan)</h2>
+
+    <p>Ini ialah laluan terpantas dan tidak memerlukan pertukaran e-mel. Ia tidak tersedia untuk setiap akaun pada setiap peranti: akaun yang dipautkan dengan Log Masuk dengan Apple tidak dapat menyelesaikan pemadaman daripada telefon Android, dan mesti melengkapkannya pada peranti Apple. Lihat <a href="#apple-linked">Jika akaun anda dipautkan dengan Log Masuk dengan Apple</a> di bawah.</p>
+
+    <ol>
+      <li>Buka ULMOX dan pergi ke <strong>Profil &rarr; Undang-undang &amp; Keselamatan &rarr; Pengurusan Akaun &rarr; Padam Akaun</strong>.</li>
+      <li>Baca pengesahan, yang menerangkan bahawa pemadaman adalah kekal.</li>
+      <li>Sahkan. Anda mungkin diminta log masuk semula terlebih dahulu, yang melindungi akaun anda daripada dipadamkan oleh orang lain.</li>
+    </ol>
+
+    <h2>Pilihan 2 — minta pemadaman melalui e-mel</h2>
+
+    <p>Jika anda tidak dapat membuka aplikasi, anda boleh meminta kami memadamkan akaun anda.</p>
+
+    <p><a href="mailto:ulmoxapp@outlook.com?subject=ULMOX%20Account%20Deletion%20Request">E-mel ulmoxapp@outlook.com dengan subjek “ULMOX Account Deletion Request”</a></p>
+
+    <p>Sila sertakan hanya maklumat minimum yang diperlukan untuk mencari akaun anda:</p>
+
+    <ul>
+      <li>alamat e-mel yang dikaitkan dengan akaun ULMOX anda, dan</li>
+      <li>nama pengguna ULMOX anda, jika anda mengetahuinya.</li>
+    </ul>
+
+    <p>Jika boleh, tulis daripada alamat e-mel yang dikaitkan dengan akaun anda. Jika akaun anda dipautkan dengan Log Masuk dengan Apple dan anda menggunakan <strong>Sembunyikan E-mel Saya</strong>, tulis daripada alamat geganti Apple anda, atau berikan kami butiran akaun yang bukan rahsia secukupnya untuk mengenal pasti akaun tersebut.</p>
+
+    <div class="callout">
+      <p><strong>Kami tidak akan sekali-kali meminta kata laluan, kata laluan Apple atau Google, kod pengesahan sekali guna, kod kebenaran, token log masuk atau gambar dokumen identiti daripada anda</strong>, dan kami tidak akan sekali-kali meminta anda menghantar mana-mana daripadanya kepada kami melalui e-mel. Jika anda menerima mesej yang mendakwa datang daripada ULMOX dan meminta mana-mana perkara ini, mesej itu bukan daripada kami.</p>
+    </div>
+
+    <p>Kami mengesahkan bahawa anda memiliki akaun tersebut sebelum memadamkannya. Permintaan yang dihantar daripada borang web awam atau alamat yang tidak disahkan tidak dengan sendirinya memadamkan akaun. Kami mungkin meminta anda mengesahkan pemilikan melalui proses yang selamat, seperti membalas daripada alamat e-mel akaun tersebut.</p>
+
+    <h2>Apa yang berlaku apabila akaun dipadamkan</h2>
+
+    <ul>
+      <li>Akses dan kebolehtemuan dialih keluar sebaik sahaja pemadaman berjaya dimulakan. Profil anda tidak lagi kelihatan kepada orang lain dan akaun anda tidak lagi dipilih untuk penghantaran baharu.</li>
+      <li>Penghapusan fizikal data yang disimpan diteruskan di latar belakang selepas itu. Ia disasarkan untuk selesai dalam tempoh 30 hari, melainkan suatu kewajipan keselamatan atau undang-undang yang wajar memerlukan penyimpanan terhad.</li>
+      <li>Video yang anda rakam, lakaran kenitnya, maklumat profil anda, foto profil anda dan kandungan Global yang anda miliki akan dialih keluar.</li>
+      <li>Kandungan yang dimiliki oleh orang lain <em>tidak</em> dipadamkan hanya kerana anda telah berkongsinya. Sebaliknya, perkaitan anda dengannya dialih keluar, dan video itu kekal bersama orang yang menciptanya.</li>
+      <li>Nama pengguna anda ditahan selama 90 hari selepas pemadaman sebelum ia boleh digunakan semula, supaya ia tidak boleh diambil serta-merta oleh orang lain.</li>
+      <li>Rekod keselamatan, undang-undang atau transaksi yang terhad mungkin disimpan jika terdapat sebab yang wajar, dan hanya selagi sebab itu masih terpakai. Jika rekod keselamatan disimpan, pautan yang mengaitkannya dengan identiti anda dihapuskan sebagai sebahagian daripada penghapusan, supaya yang tinggal ialah rekod tentang apa yang berlaku dan bukannya rekod tentang anda.</li>
+      <li>Memadam akaun anda tidak memadamkan akaun orang lain. Sesuatu Connection melibatkan dua orang, dan mesej, video serta rekod milik peserta yang satu lagi kekal bersama mereka.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Bukti keselamatan bukan sejarah mesej biasa.</strong> Connections dan terjemahan mesej pilihan sedang diperkenalkan secara berperingkat dan mungkin belum tersedia untuk setiap akaun atau setiap versi aplikasi yang dipasang. Jika anda mempunyai Connection: mesej biasa di dalamnya dianggap tamat tempoh kira-kira tujuh hari selepas dihantar. Mesej yang telah dilaporkan tidak lagi tertakluk kepada peraturan itu: ia ialah bukti dalam semakan, dan ia disimpan semasa semakan masih dibuka dan selepas itu jika hasilnya mewajarkan penyimpanannya — termasuk selepas akaun asalnya dipadamkan. Memadam akaun anda tidak menarik balik laporan yang telah anda buat dan tidak menghapuskan laporan yang dibuat tentang anda.</p>
+    </div>
+
+    <h2 id="apple-linked">Jika akaun anda dipautkan dengan Log Masuk dengan Apple</h2>
+
+    <p>Sesetengah akaun ULMOX dipautkan dengan Log Masuk dengan Apple. Jika akaun anda salah satu daripadanya, pemadaman kekal mempunyai satu langkah tambahan, kerana Apple menghendaki sesebuah aplikasi melepaskan kebenaran Log Masuk dengan Apple miliknya apabila ia memadamkan akaun, dan bukan sekadar memadamkan rekodnya sendiri.</p>
+
+    <ol>
+      <li>Pada peranti Apple, ULMOX meminta anda mengesahkan sekali lagi secara terus dengan Apple. Pengesahan itu berlaku antara anda dan Apple pada peranti anda sendiri. <strong>ULMOX tidak menerima kata laluan Apple anda</strong>, dan kami tidak pernah memintanya daripada anda.</li>
+      <li>Pengesahan itulah yang membolehkan ULMOX membatalkan kebenaran Log Masuk dengan Apple miliknya sendiri bagi akaun anda.</li>
+      <li>Hanya selepas itu barulah pemadaman kekal yang diterangkan di atas bermula.</li>
+    </ol>
+
+    <div class="callout">
+      <p><strong>Jika langkah itu tidak selesai, tiada apa-apa yang dipadamkan.</strong> Jika anda menutup skrin Apple, jika pengesahan mengembalikan akaun Apple yang berbeza daripada akaun yang sedang dilog masuk, atau jika langkah itu gagal atas apa-apa sebab lain, ULMOX berhenti sebelum apa-apa yang kekal berlaku dan memberitahu anda bahawa tiada apa-apa yang telah dipadamkan. Anda boleh mencuba lagi.</p>
+    </div>
+
+    <p>Tiga perkara berasingan yang mudah dikelirukan:</p>
+
+    <ul>
+      <li><strong>Membatalkan kebenaran Log Masuk dengan Apple bagi ULMOX</strong> menghalang ULMOX daripada dapat menggunakan Log Masuk dengan Apple untuk anda. Tindakan itu sahaja tidak memadamkan akaun ULMOX anda dan tidak menghapuskan data di dalamnya.</li>
+      <li><strong>Memadam akaun ULMOX anda</strong> ialah tindakan yang mengalih keluar data ULMOX anda. Ia hanya lengkap apabila penghapusan yang diterangkan di halaman ini telah dijalankan — tiada perubahan pada kebenaran log masuk yang melengkapkannya.</li>
+      <li><strong>Memadam Apple ID anda</strong> ialah sesuatu yang hanya boleh dilakukan oleh Apple, atas permintaan anda sendiri — ULMOX tidak pernah melakukannya dan tidak boleh melakukannya.</li>
+    </ul>
+
+    <h3>Memadam akaun yang dipautkan dengan Apple daripada peranti Android</h3>
+
+    <p>Langkah pengesahan Apple hanya boleh diselesaikan pada peranti Apple. Jika anda cuba memadam akaun ULMOX yang dipautkan dengan Apple daripada telefon Android, ULMOX berhenti sebelum apa-apa dialih keluar dan memberitahu anda bahawa <strong>tiada apa-apa yang telah dipadamkan</strong>. Selesaikan pemadaman pada peranti Apple.</p>
+
+    <p>Akaun yang hanya menggunakan Log masuk dengan Google, atau hanya alamat e-mel, dipadamkan seperti biasa pada mana-mana jenis peranti. Akaun yang dipautkan dengan kedua-dua Apple dan Google masih memerlukan langkah Apple.</p>
+
+    <h2>Jika anda hanya mahu berehat seketika</h2>
+
+    <p>Penyahaktifan menyembunyikan profil dan kandungan Global anda dan boleh diterbalikkan dengan log masuk semula dan memilih <strong>Aktifkan Semula Akaun</strong>. Log masuk sahaja tidak mengaktifkan semula akaun. Video yang telah anda hantar mungkin kekal pada orang yang menerimanya bagi tempoh penyimpanan biasa mereka. Penyahaktifan tidak memenuhi permintaan pemadaman — jika anda mahu data anda dialih keluar, gunakan Padam Akaun.</p>
+
+    <p>Menyahaktifkan tidak menghapuskan rekod keselamatan, dan mengaktifkan semula tidak membatalkan apa-apa. Kembali semula memulihkan akses anda; ia tidak membalikkan keputusan penyederhanaan, tidak mengembalikan kandungan yang telah dialih keluar atau disembunyikan melalui penyederhanaan, dan tidak membuka semula Connection yang telah ditamatkan. Menamatkan Connection adalah muktamad bagi pasangan tersebut. Penyekatan berfungsi secara berbeza: sekatan menamatkan Connection yang anda ada sekarang dan menghentikan komunikasi dalam kedua-dua arah selagi sekatan itu berkuat kuasa. Menarik balik sekatan juga tidak memulihkan Connection yang lama — kedua-dua akaun itu perlu layak semula dari awal, melalui dua pertukaran video layak yang baharu dan kelulusan baharu daripada setiap orang.</p>
+
+    <h2>Soalan</h2>
+
+    <p>Hubungi <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a>. Lihat juga <a href="privacy.html">Dasar Privasi</a> dan <a href="terms.html">Terma</a>.</p>
+  </main>
+
+  </div>
+  <footer>
+    <nav aria-label="Maklumat undang-undang dan sokongan">
+      <ul>
+        <li><a href="index.html">Laman utama</a></li>
+        <li><a href="privacy.html">Dasar Privasi</a></li>
+        <li><a href="terms.html">Terma</a></li>
+        <li><a href="safety.html">Keselamatan dan Penyederhanaan</a></li>
+        <li><a href="support.html">Sokongan</a></li>
+        <li><span aria-current="page">Padam Akaun</span></li>
+        <li><a href="translation.html">Maklumat terjemahan</a></li>
+      </ul>
+    </nav>
+    <p class="ulmox-precedence">Versi bahasa Inggeris dasar ini ialah versi yang sahih. Sekiranya terdapat sebarang percanggahan antara terjemahan dengan versi bahasa Inggeris, versi bahasa Inggeris hendaklah diguna pakai.</p>
+    <p>ULMOX &middot; <a href="mailto:ulmoxapp@outlook.com">ulmoxapp@outlook.com</a></p>
+  </footer>
+</body>
+</html>

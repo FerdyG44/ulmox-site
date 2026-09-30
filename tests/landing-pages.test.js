@@ -1,18 +1,18 @@
 "use strict";
 
 /**
- * The 20 ULMOX landing routes.
+ * The 24 ULMOX landing routes.
  *
  * The landing pages used to describe an app that shared video moments and
  * nothing else. They now describe the product: Moments, World Live, Global and
- * Connections. That is a marketing page making product claims in 19 languages,
+ * Connections. That is a marketing page making product claims in 23 languages,
  * which is the exact shape of change that goes wrong quietly — a claim the app
  * does not support, an English sentence left in a Turkish page, a Connections
  * section that reads as open messaging to a store reviewer, a fabricated
  * figure nobody can source.
  *
  * This suite is the guard on all of it. It asserts what the pages must say,
- * what they must never say, and that everything they say exists in all 20
+ * what they must never say, and that everything they say exists in all 24
  * renditions rather than only in English.
  *
  * The site-wide batteries stay where they are: structural accessibility in
@@ -40,7 +40,7 @@ const {
 const ROOT = path.resolve(__dirname, "..");
 const read = (relative) => fs.readFileSync(path.join(ROOT, relative), "utf8");
 
-/** The 20 routes, each with the content key and the locale it serves. */
+/** The 24 routes, each with the content key and the locale it serves. */
 const ROUTES = Object.freeze([
   { route: "index.html", key: "root", locale: "en", root: true },
   ...LOCALES.map((locale) => ({
@@ -79,7 +79,8 @@ function positiveSentences(text) {
 /* -------------------------------------------------------------------------- */
 
 test("every landing route names all four ULMOX surfaces", () => {
-  assert.equal(ROUTES.length, 20);
+  assert.equal(ROUTES.length, LOCALES.length + 1);
+  assert.equal(ROUTES.length, 24);
   for (const { route, key } of ROUTES) {
     const html = read(route);
     const content = LANDING[key];
@@ -192,9 +193,9 @@ test("every landing route carries its own locale's gradual-rollout sentence", ()
  * `positiveSentences` recognises English negation, and several of these words
  * are loanwords elsewhere — German says "Kein Follower-Wettlauf", which is the
  * denial, not the offer, and an English-only negation test reads it as the
- * offer. Scanning 19 languages with English patterns produces false alarms
+ * offer. Scanning 23 languages with English patterns produces false alarms
  * that get silenced by weakening the patterns, which is worse than scoping
- * them honestly. The other 18 locales are held to the structural contract
+ * them honestly. The other 22 locales are held to the structural contract
  * instead: the rollout sentence, approval before messaging, and the safety
  * controls, all asserted above for every route.
  */
