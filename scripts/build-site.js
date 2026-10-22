@@ -2,12 +2,9 @@
 
 const fs = require("fs");
 const path = require("path");
+const { PUBLISHED_LANGUAGES, UNPUBLISHED_LANGUAGES } = require("./publication-policy");
 
-const LANGUAGES = [
-  "en", "sv", "tr", "de", "es", "fr", "it", "pt", "nl", "pl",
-  "fi", "ru", "ja", "ko", "zh", "ar", "hi", "th", "vi",
-  "el", "id", "ms", "sr"
-];
+const LANGUAGES = PUBLISHED_LANGUAGES;
 const SITE_DIRECTORIES = new Set([
   "assets", "download", "delete-account", ...LANGUAGES
 ]);
@@ -90,6 +87,25 @@ function walkHtmlFiles(directory, files = []) {
   return files;
 }
 
+/**
+ * Source landing pages keep alternates for every prepared translation. A
+ * production build must publish alternates only for locales cleared for release.
+ */
+function filterUnpublishedLocaleAlternates(html) {
+  return html.replace(/<link\b[^>]*>/gi, (tag) => {
+    if (!/\brel=["']alternate["']/i.test(tag)) return tag;
+    const match = tag.match(/\bhreflang=["']([^"']+)["']/i);
+    return match && UNPUBLISHED_LANGUAGES.includes(match[1]) ? "" : tag;
+  });
+}
+
+function filterUnpublishedSitemap(sitemap) {
+  return sitemap.replace(/<url>[\s\S]*?<\/url>/gi, (block) => {
+    const match = block.match(/<loc>https:\/\/ulmoxapp\.com\/([^/<]+)\//i);
+    return match && UNPUBLISHED_LANGUAGES.includes(match[1]) ? "" : block;
+  });
+}
+
 function injectAnalyticsTags(html, relativePath) {
   if (html.includes(ANALYTICS_MARKER)) return html;
   if (!/<\/head>/i.test(html)) {
@@ -162,11 +178,20 @@ function buildSite({
     }
   }
 
+  const sitemapPath = path.join(outputRoot, "sitemap.xml");
+  fs.writeFileSync(
+    sitemapPath,
+    filterUnpublishedSitemap(fs.readFileSync(sitemapPath, "utf8")),
+    "utf8"
+  );
+
   const htmlFiles = walkHtmlFiles(outputRoot);
   let instrumentedHtmlFiles = 0;
   for (const htmlPath of htmlFiles) {
     const relativePath = path.relative(outputRoot, htmlPath);
-    const html = fs.readFileSync(htmlPath, "utf8");
+    const sourceHtml = fs.readFileSync(htmlPath, "utf8");
+    const html = filterUnpublishedLocaleAlternates(sourceHtml);
+    if (html !== sourceHtml) fs.writeFileSync(htmlPath, html, "utf8");
     if (!html.trim()) continue;
     // Stage 0.13: the account-deletion route is deliberately analytics-free.
     // Someone deleting their account should not be measured while doing it,
@@ -219,5 +244,7 @@ module.exports = {
   buildSite,
   injectAnalyticsTags,
   validateMeasurementId,
-  verifyReferences
+  verifyReferences,
+  filterUnpublishedLocaleAlternates,
+  filterUnpublishedSitemap
 };

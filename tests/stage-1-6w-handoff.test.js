@@ -45,6 +45,8 @@ const path = require("path");
 const ROOT = path.resolve(__dirname, "..");
 const T = require("../scripts/translation-content.js");
 const LOCALES = T.LOCALE_CODES;
+const { PUBLISHED_LANGUAGES } = require("../scripts/publication-policy");
+const PUBLISHED_TRANSLATION = PUBLISHED_LANGUAGES.map((locale) => `${locale}/translation.html`);
 
 const read = (relative) => fs.readFileSync(path.join(ROOT, relative), "utf8");
 
@@ -1081,7 +1083,7 @@ test("the sitemap stays valid and lists only built routes", () => {
   }
 
   // Every Translation Information route is listed, root and localized.
-  for (const route of ["translation.html", ...LOCALIZED_TRANSLATION]) {
+  for (const route of ["translation.html", ...PUBLISHED_TRANSLATION]) {
     assert.ok(
       locs.includes(`https://ulmoxapp.com/${route}`),
       `sitemap omits ${route}`
@@ -1128,12 +1130,12 @@ test("every deletion route is analytics-free in a real build", () => {
     const deletionRoutes = [
       "delete_account.html",
       "delete-account/index.html",
-      ...LOCALES.flatMap((l) => [
+      ...PUBLISHED_LANGUAGES.flatMap((l) => [
         `${l}/delete_account.html`,
         `${l}/delete-account/index.html`,
       ]),
     ];
-    assert.equal(deletionRoutes.length, 2 + LOCALES.length * 2);
+    assert.equal(deletionRoutes.length, 2 + PUBLISHED_LANGUAGES.length * 2);
 
     for (const relative of deletionRoutes) {
       const built = path.join(outputRoot, relative);
@@ -1148,7 +1150,7 @@ test("every deletion route is analytics-free in a real build", () => {
 
     // Every translation route is shipped, and is instrumented like any other
     // ordinary page — so the exclusion above is targeted, not global.
-    for (const route of ["translation.html", ...LOCALIZED_TRANSLATION]) {
+    for (const route of ["translation.html", ...PUBLISHED_TRANSLATION]) {
       const built = path.join(outputRoot, route);
       assert.ok(fs.existsSync(built), `translation route missing: ${route}`);
       assert.match(

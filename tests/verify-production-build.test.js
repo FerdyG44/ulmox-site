@@ -29,10 +29,10 @@ test("production artifact passes deployment safety checks", (t) => {
   });
 
   const result = verifyProductionBuild({ outputRoot, measurementId });
-  // Stage 0.13: 193 HTML pages exist (23 locales); the 48 account-deletion
-  // pages are deliberately excluded from analytics, leaving 145 instrumented.
-  assert.equal(result.htmlFiles, 193);
-  assert.equal(result.instrumentedHtmlFiles, 145);
+  // Stage 0.13: 161 HTML pages exist (19 published locales); the 40 account-deletion
+  // pages are deliberately excluded from analytics, leaving 121 instrumented.
+  assert.equal(result.htmlFiles, 161);
+  assert.equal(result.instrumentedHtmlFiles, 121);
   assert.equal(result.customDomain, "ulmoxapp.com");
   assert.equal(result.analyticsConfigured, true);
   assert.equal(result.storeLinksVerified, true);
