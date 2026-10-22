@@ -97,38 +97,17 @@ window.ULMOX_I18N = {
     "nativeName": "Tiếng Việt",
     "englishName": "Vietnamese"
   },
-  {
-    "code": "el",
-    "nativeName": "Ελληνικά",
-    "englishName": "Greek"
-  },
-  {
-    "code": "id",
-    "nativeName": "Bahasa Indonesia",
-    "englishName": "Indonesian"
-  },
-  {
-    "code": "ms",
-    "nativeName": "Bahasa Melayu",
-    "englishName": "Malay"
-  },
-  {
-    "code": "sr",
-    "nativeName": "Српски",
-    "englishName": "Serbian"
-  }
 ]
 };
 
 /*
- * Primary subtags that name a language this site ships under another code.
+ * Legacy primary subtags for prepared translations.
  * Older Java/Android runtimes report Indonesian as "in" (e.g. "in-ID"); it is
  * the same language as "id".
  *
- * Serbian: the site ships Serbian in Cyrillic only (/sr/, lang="sr"). Every
- * "sr-*" browser tag, including "sr-Latn" and "sr-Latn-RS", reduces to "sr"
- * and lands on the Cyrillic pages. This is deliberate: Serbian readers read
- * both scripts, and an English fallback would serve them worse.
+ * Greek, Indonesian, Malay and Serbian are pending legal review and are absent
+ * from the public languages list above. Their browser tags, including this
+ * Indonesian alias, fall back to English until they are cleared for publication.
  */
 window.ULMOX_I18N.aliases = { 'in': 'id' };
 

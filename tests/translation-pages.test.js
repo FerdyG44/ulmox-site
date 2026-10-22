@@ -19,6 +19,9 @@ const path = require("path");
 const ROOT = path.resolve(__dirname, "..");
 const T = require("../scripts/translation-content.js");
 const LOCALES = T.LOCALE_CODES;
+const { PUBLISHED_LANGUAGES } = require("../scripts/publication-policy");
+const PUBLISHED_TRANSLATION_ROUTES = ["translation.html",
+  ...PUBLISHED_LANGUAGES.map((locale) => `${locale}/translation.html`)];
 
 const read = (relative) => fs.readFileSync(path.join(ROOT, relative), "utf8");
 
@@ -441,12 +444,12 @@ test("the translation route is reachable from every footer", () => {
 test("the sitemap lists every translation route and nothing unbuilt", () => {
   const sitemap = read("sitemap.xml");
   const expected = ["https://ulmoxapp.com/translation.html",
-    ...LOCALES.map((l) => `https://ulmoxapp.com/${l}/translation.html`)];
+    ...PUBLISHED_LANGUAGES.map((l) => `https://ulmoxapp.com/${l}/translation.html`)];
   for (const url of expected) {
     assert.ok(sitemap.includes(`<loc>${url}</loc>`), `sitemap missing ${url}`);
   }
-  // 23 locales x 7 routes + 7 root routes.
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 168);
+  // 19 published locales x 7 routes + 7 root routes.
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 140);
 });
 
 test("robots does not block the translation route", () => {
@@ -484,20 +487,20 @@ test("the build ships every translation route and keeps deletion analytics-free"
       measurementId: "G-TEST123456",
       environment: "production",
     });
-    assert.equal(result.htmlFiles, 193);
+    assert.equal(result.htmlFiles, 161);
 
-    for (const file of TRANSLATION_ROUTES) {
+    for (const file of PUBLISHED_TRANSLATION_ROUTES) {
       const built = path.join(outputRoot, file);
       assert.ok(fs.existsSync(built), `${file} missing from the build`);
       // A translation page is ordinary content and is instrumented.
       assert.match(fs.readFileSync(built, "utf8"), /ULMOX_GA4_ANALYTICS/, file);
     }
 
-    // Adding 24 routes must not have leaked analytics onto a deletion route.
+    // Published translation routes must not leak analytics onto deletion routes.
     const deletion = [
       "delete_account.html",
       "delete-account/index.html",
-      ...LOCALES.flatMap((l) => [
+      ...PUBLISHED_LANGUAGES.flatMap((l) => [
         `${l}/delete_account.html`,
         `${l}/delete-account/index.html`,
       ]),

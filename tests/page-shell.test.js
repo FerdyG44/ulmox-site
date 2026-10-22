@@ -38,6 +38,7 @@ const {
   MEDIA_EXTENSIONS,
 } = require("../scripts/audit-site.js");
 const { CHROME, LOCALES, NAV_ROUTES, SHELL_MARKER } = require("../scripts/page-shell.js");
+const { PUBLISHED_LANGUAGES, UNPUBLISHED_LANGUAGES } = require("../scripts/publication-policy");
 const T = require("../scripts/translation-content.js");
 
 const ROOT = path.resolve(__dirname, "..");
@@ -220,8 +221,10 @@ function findingsFor(...rules) {
 test("the battery covers every page of the build, not a sample", () => {
   const { pages, routes } = audit();
   assert.equal(pages, routes.length);
-  assert.equal(pages, SITE_HTML.length);
-  assert.ok(pages >= 193, `only ${pages} pages were audited`);
+  const publishedSourceRoutes = SITE_HTML.filter((route) =>
+    !UNPUBLISHED_LANGUAGES.includes(route.split("/")[0]));
+  assert.equal(pages, publishedSourceRoutes.length);
+  assert.equal(pages, 161);
 });
 
 test("5: every complete page declares the lang its route serves", () => {
@@ -431,12 +434,12 @@ test("17: every deletion route in the build is analytics-free", () => {
   const routes = [
     "delete_account.html",
     "delete-account/index.html",
-    ...LOCALES.flatMap((l) => [
+    ...PUBLISHED_LANGUAGES.flatMap((l) => [
       `${l}/delete_account.html`,
       `${l}/delete-account/index.html`,
     ]),
   ];
-  assert.equal(routes.length, 2 + LOCALES.length * 2);
+  assert.equal(routes.length, 2 + PUBLISHED_LANGUAGES.length * 2);
 
   for (const route of routes) {
     const file = path.join(outputRoot, route);
@@ -450,7 +453,7 @@ test("17: every deletion route in the build is analytics-free", () => {
 
   // The canonical route and the hyphenated redirect both still resolve.
   assert.ok(fs.existsSync(path.join(outputRoot, "delete_account.html")));
-  for (const locale of LOCALES) {
+  for (const locale of PUBLISHED_LANGUAGES) {
     const redirect = fs.readFileSync(
       path.join(outputRoot, locale, "delete-account", "index.html"),
       "utf8"
@@ -499,7 +502,7 @@ test("19: Translation Information content survived the footer change", () => {
 test("20: every sitemap route resolves in the build", () => {
   const { outputRoot } = build();
   const locations = [...read("sitemap.xml").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  assert.ok(locations.length >= 168, `sitemap lists only ${locations.length} routes`);
+  assert.equal(locations.length, 140, `sitemap should contain only the 19 published locales`);
   assert.equal(new Set(locations).size, locations.length, "the sitemap has a duplicate");
 
   for (const location of locations) {
@@ -511,12 +514,16 @@ test("20: every sitemap route resolves in the build", () => {
   }
 
   // Every Translation Information route and the canonical deletion route.
-  for (const route of ["translation.html", ...LOCALES.map((l) => `${l}/translation.html`),
+  for (const route of ["translation.html", ...PUBLISHED_LANGUAGES.map((l) => `${l}/translation.html`),
     "delete_account.html"]) {
     assert.ok(
       locations.includes(`https://ulmoxapp.com/${route}`),
       `sitemap omits ${route}`
     );
+  }
+  for (const language of UNPUBLISHED_LANGUAGES) {
+    assert.ok(!locations.some((location) => location.includes(`/${language}/`)),
+      `sitemap exposes unpublished locale: ${language}`);
   }
 });
 
@@ -578,24 +585,14 @@ test("23: the production verifier still refuses a build with no Measurement ID",
   }
 });
 
-test("24: the publication status is explicit, and publication is not claimed", () => {
+test("24: publication clearance and current exposure are explicitly distinguished", () => {
   const checklist = CHECKLIST();
-  // Cleared 2026-09-09: every dependency row is Yes and the operational
-  // commitment is recorded. The guard now holds the file to stating a status
-  // explicitly, and to never claiming the site has actually been published.
   assert.match(checklist, /\*\*Status: CLEARED FOR PUBLICATION\.\*\*/);
-  assert.match(checklist, /Cleared is not the same as published/);
   assert.match(checklist, /goes back to DO NOT PUBLISH/);
-
-  // The guard used to assert that nothing at all had been deployed. That
-  // sentence was true when written and is not any more -- most of the
-  // dependencies shipped -- so asserting it would now lock a falsehood in
-  // place. What must stay true is narrower and more useful: the WEBSITE is
-  // still unpublished, and the reasons it is held back are stated rather than
-  // implied.
-  assert.doesNotMatch(checklist, /has been published to production/i);
+  assert.match(checklist, /NOT cleared/);
+  assert.match(checklist, /inadvertently deployed/);
+  assert.match(checklist, /not deployed yet/);
   assert.match(checklist, /## Remaining blockers/);
-  assert.match(checklist, /Deactivation is described but not deployed/i);
 });
 
 /* -------------------------------------------------------------------------- */

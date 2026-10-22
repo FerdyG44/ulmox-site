@@ -9,13 +9,13 @@ observing real production data or a physical device. The last item that was not
 a code question — operational readiness — has been confirmed by the ULMOX
 operator, recorded below.
 
-Cleared is not the same as published. Nothing here has been published, and the
-publication itself is still a deliberate act taken through the release order.
-This status means the pages may now be published, not that they have been.
+A cleared status makes the pages eligible for publication; it does not itself
+publish them. Production state is recorded in Stage 1.8 below.
 
 **Exception — Greek (`el`), Serbian Cyrillic (`sr`), Malay (`ms`) and
-Indonesian (`id`) are NOT cleared.** Their pages are prepared in source only;
-see [Stage 1.7](#stage-17--four-prepared-locales-el-sr-ms-id--source-only-not-published).
+Indonesian (`id`) are NOT cleared.** Their source translations are retained,
+but these routes were inadvertently deployed and remain live pending the next
+production deployment; see Stage 1.7 and the remediation in Stage 1.8.
 
 **The guard does not retire.** If a page ever describes something again that is
 not deployed, this file goes back to DO NOT PUBLISH. The store-console, device
@@ -641,7 +641,7 @@ in any language now says ULMOX uses no automated filtering.
 | English prose leakage | `npm test` | No eight-word run of canonical English prose survives in a localized page |
 | Accessibility and references | `npm run audit` | 161 built routes, 2062 local references |
 
-## Stage 1.7 — four prepared locales (el, sr, ms, id) — source only, NOT published
+## Stage 1.7 — four prepared locales (el, sr, ms, id) — NOT cleared for publication
 
 Greek (`el`), Serbian in Cyrillic (`sr`, `lang="sr"`), Malay (`ms`, Malaysia)
 and Indonesian (`id`) were added to every per-locale structure in source:
@@ -649,15 +649,14 @@ and Indonesian (`id`) were added to every per-locale structure in source:
 `page-shell.js`, `translation-content.js`, `landing-content.js`, the legal and
 landing generators, `build-site.js`, `audit-site.js`, `verify-locales.js`,
 `assets/js/i18n-config.js`, `assets/js/language-switcher.js` and
-`sitemap.xml`. The source now holds 23 locales (22 translated), 115 localized
-policy routes, 24 landing routes and 168 sitemap URLs; a build has 193 HTML
-pages.
+`sitemap.xml`. The source retains 23 locale page trees (22 translated), 115 localized policy
+routes and 24 landing routes. Stage 1.8 limits the public sitemap to 140 URLs and
+the production build to 161 HTML pages.
 
-- **Prepared in source, NOT published.** No page in these four languages has
-  been deployed. They go live only with a deliberate deploy of `dist/`, and that
-  deploy waits for **native legal review** of each of the four languages. The
-  translations were authored in this repository; no lawyer, professional
-  translator or native speaker has read them. **Open.**
+- **Prepared in source; NOT cleared for publication.** Native legal review of
+  each language remains open. These translations were authored in this repository;
+  no lawyer, professional translator or native speaker has read them. Their
+  accidental deployment is recorded in Stage 1.8.
 - **Order: the website first, then the app.** The website carrying these four
   locales must be deployed **before** the app build that activates them. Until
   that deploy, the app keeps `el`, `sr`, `ms` and `id` in
@@ -670,6 +669,28 @@ pages.
   change before publication, the pages must be re-aligned.
 - No public page states a number of languages; none should.
 
+## Stage 1.8 — production locale allowlist (2026-10-22)
+
+The 2026-09-30 GitHub Pages production workflow completed successfully at
+`153a12be667bddcb661c2ba5eeb7cb25d66bb62e`. That verified the deployment
+workflow, not compliance with Stage 1.7. On 2026-10-22, the live routes
+`/el/`, `/sr/`, `/ms/` and `/id/` each returned their localized landing
+page; `/en/` was also checked as a published control.
+
+The publication fix retains all 23 source locales and translation content, while
+an explicit allowlist in `scripts/publication-policy.js` permits only the 19
+cleared locales into production. The production build omits the four locale
+directories, their sitemap entries and their `hreflang` alternates. The public
+language selector configuration also contains only the 19 cleared locales.
+Tests assert these exclusions and confirm the four source locale directories
+remain present.
+
+This change is prepared for review and is not deployed. The four URLs can
+continue to resolve until a production deployment runs with the allowlist.
+Native legal review remains **Open**; their publication stays blocked until it
+is complete.
+
+---
 ## Open blockers
 
 - Analytics, Crashlytics and Performance retention windows are **UNKNOWN**
@@ -780,10 +801,11 @@ pages.
   each language, and no visual check on a real device in any locale. **Open.**
   This is a review task, not a code task; the repository cannot perform it and
   does not claim it was performed.
-- **The four Stage 1.7 locales (`el`, `sr`, `ms`, `id`) are not published and
-  must not be until native legal review is done**; the website deploy that
-  carries them must precede the app build that activates them. See Stage 1.7.
-  **Open.**
+- **The four Stage 1.7 locales (`el`, `sr`, `ms`, `id`) are not cleared for
+  publication and must remain excluded until native legal review is done. They
+  are currently live due to the 2026-09-30 deployment; Stage 1.8 records the
+  allowlist remediation, which is not deployed yet. The website must be deployed
+  before the app build that activates them. **Open.**
 - No published human-moderation SLA beyond the 24-hour child-safety review
   target.
 - **No fixed evidence-retention period has been introduced**, and none may be

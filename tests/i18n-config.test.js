@@ -13,7 +13,7 @@ const path = require("node:path");
 const test = require("node:test");
 const vm = require("node:vm");
 
-const { LOCALES } = require("../scripts/page-shell");
+const { PUBLISHED_LANGUAGES } = require("../scripts/publication-policy");
 
 function loadConfig() {
   const source = fs.readFileSync(
@@ -25,28 +25,29 @@ function loadConfig() {
   return window.ULMOX_I18N;
 }
 
-test("i18n-config lists exactly the locales the site generates", () => {
+test("i18n-config lists exactly the locales cleared for publication", () => {
   const config = loadConfig();
   assert.deepEqual(
     Array.from(config.languages, (item) => String(item.code)).sort(),
-    [...LOCALES].sort()
+    [...PUBLISHED_LANGUAGES].sort()
   );
 });
 
-test("browser tags for the new locales resolve to their pages", () => {
-  const { getSupportedLanguage } = loadConfig();
-  const cases = {
-    "el": "el", "el-GR": "el", "el-CY": "el",
-    "ms": "ms", "ms-MY": "ms", "ms-SG": "ms",
-    "id": "id", "id-ID": "id",
+test("pending locale browser tags and saved preferences fall back to English", () => {
+  const { getSupportedLanguage, getLocalizedPath } = loadConfig();
+  const tags = [
+    "el", "el-GR", "el-CY",
+    "ms", "ms-MY", "ms-SG",
+    "id", "id-ID",
     // Legacy Java/Android code for Indonesian.
-    "in": "id", "in-ID": "id", "IN-id": "id",
-    // Serbian ships in Cyrillic only; every sr-* tag lands on /sr/.
-    "sr": "sr", "sr-RS": "sr", "sr-Cyrl-RS": "sr",
-    "sr-Latn": "sr", "sr-Latn-RS": "sr", "sr-ME": "sr",
-  };
-  for (const [tag, expected] of Object.entries(cases)) {
-    assert.equal(getSupportedLanguage(tag), expected, tag);
+    "in", "in-ID", "IN-id",
+    // All Serbian script variants stay blocked pending legal review.
+    "sr", "sr-RS", "sr-Cyrl-RS",
+    "sr-Latn", "sr-Latn-RS", "sr-ME",
+  ];
+  for (const tag of tags) {
+    assert.equal(getSupportedLanguage(tag), "en", tag);
+    assert.equal(getLocalizedPath(tag), "/en/", tag);
   }
 });
 

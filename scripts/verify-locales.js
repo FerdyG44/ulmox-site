@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
+const { PUBLISHED_LANGUAGES, UNPUBLISHED_LANGUAGES } = require('./publication-policy');
 const languages = ['en', 'sv', 'tr', 'de', 'es', 'fr', 'it', 'pt', 'nl', 'pl', 'fi', 'ru', 'ja', 'ko', 'zh', 'ar', 'hi', 'th', 'vi', 'el', 'id', 'ms', 'sr'];
 const pages = ['index.html', 'support.html', 'safety.html', 'privacy.html', 'terms.html', 'delete_account.html', 'delete-account/index.html', 'translation.html'];
 const appStore = 'https://apps.apple.com/se/app/ulmox/id6765990174';
@@ -141,8 +142,11 @@ for (const language of languages) {
 }
 
 const config = read('assets/js/i18n-config.js');
-for (const language of languages) {
-  assert(config.includes(`"code": "${language}"`), `i18n config missing language: ${language}`);
+for (const language of PUBLISHED_LANGUAGES) {
+  assert(config.includes(`"code": "${language}"`), `i18n config missing published language: ${language}`);
+}
+for (const language of UNPUBLISHED_LANGUAGES) {
+  assert(!config.includes(`"code": "${language}"`), `i18n config exposes unpublished language: ${language}`);
 }
 
 if (errors.length) {

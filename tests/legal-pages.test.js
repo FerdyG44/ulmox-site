@@ -5,6 +5,7 @@ const { test } = require("node:test");
 const fs = require("fs");
 const path = require("path");
 
+const { PUBLISHED_LANGUAGES } = require("../scripts/publication-policy");
 const ROOT = path.resolve(__dirname, "..");
 const LOCALES = "en sv tr de es fr it pt nl pl fi ru ja ko zh ar hi th vi el id ms sr".split(
   " "
@@ -110,7 +111,7 @@ test("the privacy page links to deletion", () => {
 test("the sitemap includes the deletion page for every locale", () => {
   const sitemap = read("sitemap.xml");
   assert.match(sitemap, /https:\/\/ulmoxapp\.com\/delete_account\.html/);
-  for (const locale of LOCALES) {
+  for (const locale of PUBLISHED_LANGUAGES) {
     assert.match(
       sitemap,
       new RegExp(`https://ulmoxapp\\.com/${locale}/delete_account\\.html`),
@@ -435,7 +436,7 @@ test("the account deletion route carries no analytics in the build", () => {
     const deletionPages = [
       "delete_account.html",
       "delete-account/index.html",
-      ...LOCALES.flatMap((l) => [
+      ...PUBLISHED_LANGUAGES.flatMap((l) => [
         `${l}/delete_account.html`,
         `${l}/delete-account/index.html`,
       ]),
@@ -982,7 +983,7 @@ test("every sitemap URL uses the production origin and maps to a built route", (
     // The canonical deletion route is listed; the hyphenated redirect is not.
     assert.ok(seen.has(`${PRODUCTION_ORIGIN}/delete_account.html`));
     assert.ok(!seen.has(`${PRODUCTION_ORIGIN}/delete-account/`));
-    for (const locale of LOCALES) {
+    for (const locale of PUBLISHED_LANGUAGES) {
       assert.ok(
         seen.has(`${PRODUCTION_ORIGIN}/${locale}/delete_account.html`),
         `sitemap missing ${locale} deletion route`
