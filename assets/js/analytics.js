@@ -10,6 +10,9 @@
 
   var STATE_KEY = "__ULMOX_GA4_STATE__";
   var CONSENT_KEY = "ulmox.analytics.consent.v1";
+  var REVOCATION_KEY = "ulmox.analytics.revoked.v1";
+  var REVOCATION_COOKIE = "ulmox_analytics_revoked_v1";
+  var REVOCATION_WINDOW_NAME = "ulmox-analytics-revoked-v1";
   var MEASUREMENT_ID_PATTERN = /^G-[A-Z0-9]{4,20}$/;
   var COOKIE_PATTERN = /^(_ga(?:_|$)|_gid$|_gat(?:_|$)|_gac_|_gcl_)/;
   var state = root[STATE_KEY] || { initializedId: "", outboundTrackingBound: false, consent: "", storageAvailable: true };
@@ -19,7 +22,49 @@
   function measurementId() { return String(config().gaMeasurementId || "").trim().toUpperCase(); }
   function currentPagePath() { return root.location && root.location.pathname ? String(root.location.pathname) : "/"; }
 
+  function hasRevocationMarker() {
+    try {
+      if (root.sessionStorage && root.sessionStorage.getItem(REVOCATION_KEY) === "denied") return true;
+    } catch (_) { /* Continue with the other fail-closed markers. */ }
+    try {
+      if (root.document && ("; " + root.document.cookie).indexOf("; " + REVOCATION_COOKIE + "=denied") !== -1) return true;
+    } catch (_) { /* Continue with the other fail-closed markers. */ }
+    try { return String(root.name || "").split(" ").indexOf(REVOCATION_WINDOW_NAME) !== -1; } catch (_) { return false; }
+  }
+
+  function markRevoked() {
+    var marked = false;
+    try {
+      if (root.sessionStorage) {
+        root.sessionStorage.setItem(REVOCATION_KEY, "denied");
+        marked = root.sessionStorage.getItem(REVOCATION_KEY) === "denied" || marked;
+      }
+    } catch (_) { /* Continue with the other fail-closed markers. */ }
+    try {
+      if (root.document) {
+        root.document.cookie = REVOCATION_COOKIE + "=denied; Max-Age=31536000; Path=/; SameSite=Lax";
+        marked = hasRevocationMarker() || marked;
+      }
+    } catch (_) { /* Continue with the window marker. */ }
+    try {
+      var parts = String(root.name || "").split(" ").filter(Boolean);
+      if (parts.indexOf(REVOCATION_WINDOW_NAME) === -1) parts.push(REVOCATION_WINDOW_NAME);
+      root.name = parts.join(" ");
+      marked = String(root.name).split(" ").indexOf(REVOCATION_WINDOW_NAME) !== -1 || marked;
+    } catch (_) { /* The caller will avoid an unsafe reload. */ }
+    return marked;
+  }
+
+  function clearRevocationMarker() {
+    try { if (root.sessionStorage) root.sessionStorage.removeItem(REVOCATION_KEY); } catch (_) { /* Best effort. */ }
+    try { if (root.document) root.document.cookie = REVOCATION_COOKIE + "=; Max-Age=0; Path=/; SameSite=Lax"; } catch (_) { /* Best effort. */ }
+    try {
+      root.name = String(root.name || "").split(" ").filter(function (part) { return part && part !== REVOCATION_WINDOW_NAME; }).join(" ");
+    } catch (_) { /* Best effort. */ }
+  }
+
   function readConsent() {
+    if (hasRevocationMarker()) return "denied";
     try {
       var value = root.localStorage && root.localStorage.getItem(CONSENT_KEY);
       state.storageAvailable = Boolean(root.localStorage);
@@ -34,6 +79,14 @@
       state.storageAvailable = true;
       return true;
     } catch (_) { state.storageAvailable = false; return false; }
+  }
+
+  function removeSavedConsent() {
+    try {
+      if (!root.localStorage) return false;
+      root.localStorage.removeItem(CONSENT_KEY);
+      return root.localStorage.getItem(CONSENT_KEY) === null;
+    } catch (_) { return false; }
   }
 
   function isAutomatedOrLocalEnvironment() {
@@ -171,10 +224,15 @@
     if (value !== "granted" && value !== "denied") return false;
     var wasLoaded = Boolean(state.initializedId);
     state.consent = value;
-    saveConsent(value);
-    if (value === "granted") return loadAnalytics();
+    if (value === "granted") {
+      if (saveConsent(value)) clearRevocationMarker();
+      return loadAnalytics();
+    }
+    var revocationMarked = markRevoked();
+    var denialSaved = saveConsent(value);
+    var staleConsentRemoved = denialSaved ? true : removeSavedConsent();
     disableLoadedAnalytics();
-    if (wasLoaded && root.location && typeof root.location.reload === "function") root.location.reload();
+    if (wasLoaded && (denialSaved || staleConsentRemoved || revocationMarked) && root.location && typeof root.location.reload === "function") root.location.reload();
     return true;
   }
 

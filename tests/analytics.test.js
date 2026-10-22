@@ -12,7 +12,11 @@ function fakeBrowser({
   environment = "production",
   consent,
   storage = {},
-  storageError = false,
+  session = {},
+  getStorageError = false,
+  setStorageError = false,
+  removeStorageError = false,
+  sessionStorageError = false,
   webdriver = false,
   pathname = "/tr/"
 } = {}) {
@@ -21,7 +25,7 @@ function fakeBrowser({
   const listeners = new Map();
   const elements = new Map();
   const cookieWrites = [];
-  let cookieValue = "_ga=GA1.1.123; _ga_TEST12345=GS1.1.456; unrelated=keep";
+  const cookies = new Map([["_ga", "GA1.1.123"], ["_ga_TEST12345", "GS1.1.456"], ["unrelated", "keep"]]);
   let reloads = 0;
   if (consent !== undefined) storage[CONSENT_KEY] = consent;
 
@@ -95,17 +99,32 @@ function fakeBrowser({
     }
   };
   Object.defineProperty(document, "cookie", {
-    get() { return cookieValue; },
-    set(value) { cookieWrites.push(value); cookieValue = value; }
+    get() { return Array.from(cookies, ([name, value]) => `${name}=${value}`).join("; "); },
+    set(value) {
+      cookieWrites.push(value);
+      const pair = value.split(";", 1)[0];
+      const separator = pair.indexOf("=");
+      const name = pair.slice(0, separator);
+      const cookieValue = pair.slice(separator + 1);
+      if (/Max-Age=0/i.test(value)) cookies.delete(name);
+      else cookies.set(name, cookieValue);
+    }
   });
 
   const localStorage = {
-    getItem(key) { if (storageError) throw new Error("blocked"); return storage[key] ?? null; },
-    setItem(key, value) { if (storageError) throw new Error("blocked"); storage[key] = String(value); }
+    getItem(key) { if (getStorageError) throw new Error("getItem blocked"); return storage[key] ?? null; },
+    setItem(key, value) { if (setStorageError) throw new Error("QuotaExceededError"); storage[key] = String(value); },
+    removeItem(key) { if (removeStorageError) throw new Error("removeItem blocked"); delete storage[key]; }
+  };
+  const sessionStorage = {
+    getItem(key) { if (sessionStorageError) throw new Error("session getItem blocked"); return session[key] ?? null; },
+    setItem(key, value) { if (sessionStorageError) throw new Error("session setItem blocked"); session[key] = String(value); },
+    removeItem(key) { if (sessionStorageError) throw new Error("session removeItem blocked"); delete session[key]; }
   };
   const root = {
     document,
     localStorage,
+    sessionStorage,
     location: {
       href: `https://ulmoxapp.com${pathname}`,
       hostname: "ulmoxapp.com",
@@ -120,7 +139,7 @@ function fakeBrowser({
     ULMOX_ANALYTICS_COPY: COPY,
     ULMOX_WEB_CONFIG: { gaMeasurementId: measurementId, environment }
   };
-  return { root, document, scripts, networkRequests, listeners, elements, storage, cookieWrites, reloads: () => reloads };
+  return { root, document, scripts, networkRequests, listeners, elements, storage, session, cookieWrites, reloads: () => reloads };
 }
 
 function commands(root) {
@@ -214,7 +233,7 @@ test("missing, malformed and unreadable preferences fail closed", () => {
   for (const browser of [
     fakeBrowser(),
     fakeBrowser({ consent: "maybe" }),
-    fakeBrowser({ storageError: true })
+    fakeBrowser({ getStorageError: true })
   ]) {
     assert.equal(createAnalytics(browser.root).initialize(), false);
     assert.equal(browser.root.dataLayer, undefined);
@@ -223,7 +242,7 @@ test("missing, malformed and unreadable preferences fail closed", () => {
 });
 
 test("a choice still works for the current page when storage is unavailable", () => {
-  const browser = fakeBrowser({ storageError: true });
+  const browser = fakeBrowser({ getStorageError: true, setStorageError: true, removeStorageError: true, sessionStorageError: true });
   const analytics = createAnalytics(browser.root);
   analytics.initialize();
   assert.equal(analytics.setConsent("granted"), true);
@@ -231,6 +250,51 @@ test("a choice still works for the current page when storage is unavailable", ()
   assert.equal(analytics.trackEvent("storage_blocked_accept"), true);
   assert.equal(analytics.setConsent("denied"), true);
   assert.equal(analytics.trackEvent("storage_blocked_denied"), false);
+});
+
+test("a getItem failure ignores an old grant while a new explicit choice still works", () => {
+  const storage = { [CONSENT_KEY]: "granted" };
+  const browser = fakeBrowser({ storage, getStorageError: true });
+  const analytics = createAnalytics(browser.root);
+  assert.equal(analytics.initialize(), false);
+  assert.deepEqual(browser.networkRequests, []);
+  assert.equal(analytics.setConsent("granted"), true);
+  assert.equal(browser.networkRequests.length, 1);
+});
+
+test("failed denial write cannot reactivate a stale grant after reload and reaccept", () => {
+  const storage = { [CONSENT_KEY]: "granted" };
+  const session = {};
+  const first = fakeBrowser({ storage, session, setStorageError: true });
+  const analytics = createAnalytics(first.root);
+  assert.equal(analytics.initialize(), true);
+  assert.equal(analytics.setConsent("denied"), true);
+  assert.equal(first.reloads(), 1);
+  assert.equal(storage[CONSENT_KEY], undefined);
+
+  const reloaded = fakeBrowser({ storage, session });
+  const reloadedAnalytics = createAnalytics(reloaded.root);
+  assert.equal(reloadedAnalytics.initialize(), false);
+  assert.deepEqual(reloaded.networkRequests, []);
+  assert.equal(reloadedAnalytics.setConsent("granted"), true);
+  assert.equal(storage[CONSENT_KEY], "granted");
+  assert.equal(session["ulmox.analytics.revoked.v1"], undefined);
+  assert.equal(reloaded.networkRequests.length, 1);
+});
+
+test("revocation marker fails closed when denial write and stale-grant removal both fail", () => {
+  const storage = { [CONSENT_KEY]: "granted" };
+  const session = {};
+  const first = fakeBrowser({ storage, session, setStorageError: true, removeStorageError: true });
+  const analytics = createAnalytics(first.root);
+  assert.equal(analytics.initialize(), true);
+  assert.equal(analytics.setConsent("denied"), true);
+  assert.equal(storage[CONSENT_KEY], "granted");
+  assert.equal(first.reloads(), 1);
+
+  const reloaded = fakeBrowser({ storage, session });
+  assert.equal(createAnalytics(reloaded.root).initialize(), false);
+  assert.deepEqual(reloaded.networkRequests, []);
 });
 
 test("test, webdriver and localhost guards do not substitute for consent-path coverage", () => {
