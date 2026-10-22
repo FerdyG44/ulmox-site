@@ -11,7 +11,9 @@ const SITE_DIRECTORIES = new Set([
 const ANALYTICS_MARKER = "ULMOX_GA4_ANALYTICS";
 const ANALYTICS_TAGS = [
   `  <!-- ${ANALYTICS_MARKER} -->`,
+  '  <link rel="stylesheet" href="/assets/css/analytics-consent.css">',
   '  <script src="/assets/js/analytics-config.js"></script>',
+  '  <script src="/assets/js/analytics-consent-copy.js"></script>',
   '  <script src="/assets/js/analytics.js" defer></script>'
 ].join("\n");
 

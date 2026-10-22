@@ -165,6 +165,16 @@ function verifyProductionBuild({
         0,
         `${htmlPath}: the deletion route must carry no analytics script.`
       );
+      assert.equal(
+        html.split('/assets/js/analytics-consent-copy.js').length - 1,
+        0,
+        `${htmlPath}: the deletion route must carry no analytics consent runtime.`
+      );
+      assert.equal(
+        html.split('/assets/css/analytics-consent.css').length - 1,
+        0,
+        `${htmlPath}: the deletion route must carry no analytics consent stylesheet.`
+      );
       continue;
     }
 
@@ -177,6 +187,16 @@ function verifyProductionBuild({
       html.split('/assets/js/analytics-config.js').length - 1,
       1,
       `${htmlPath}: expected exactly one analytics config tag.`
+    );
+    assert.equal(
+      html.split('/assets/js/analytics-consent-copy.js').length - 1,
+      1,
+      `${htmlPath}: expected exactly one analytics consent copy tag.`
+    );
+    assert.equal(
+      html.split('/assets/css/analytics-consent.css').length - 1,
+      1,
+      `${htmlPath}: expected exactly one analytics consent stylesheet.`
     );
     assert.equal(
       html.split('/assets/js/analytics.js').length - 1,

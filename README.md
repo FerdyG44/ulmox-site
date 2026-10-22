@@ -139,9 +139,10 @@ analytics without producing browser errors.
 
 ### Events
 
-GA4 automatically records the initial page view and standard campaign
-attribution, including `utm_source`, `utm_medium`, `utm_campaign`,
-`utm_content`, and `utm_term`.
+After a visitor accepts optional analytics, GA4 records the initial page view
+and standard campaign attribution, including `utm_source`, `utm_medium`,
+`utm_campaign`, `utm_content`, and `utm_term`. These are not recorded before
+consent or after consent is withdrawn.
 
 Custom events:
 
@@ -168,29 +169,23 @@ attribution parameters.
 
 ## Privacy and consent
 
-The inspected website had no analytics, cookie banner, consent-management
-platform, or tracking-cookie implementation before this integration. This
-change does not add a speculative cookie banner and does not enable Google Ads,
-remarketing, Google Signals, or advertising personalization.
+The site displays an analytics choice before contacting Google Analytics.
+Until a visitor accepts optional analytics, it does not create a Google
+Analytics command queue, load Google's `gtag.js`, or send page-view or store
+click events. Accepting starts GA4 with advertising storage and all ad-related
+signals denied. Rejecting keeps analytics disabled. The persistent “Privacy
+choices” control lets a visitor reopen the choice and change it later.
 
-The centralized helper is compatible with a future consent manager. A CMP can
-set this before analytics initializes:
+The choice is stored in browser local storage. Missing, malformed or unreadable
+storage defaults to analytics off. If storage is unavailable, an explicit
+choice still works for the current page. Withdrawing consent sets Google's
+documented per-property disable flag, removes the loader, clears accessible GA
+cookies and reloads the page into the saved denied state before further
+measurement can occur. Accepting again from that denied state starts a fresh
+GA4 session.
 
-```html
-<script>window.ULMOX_ANALYTICS_CONSENT = "denied";</script>
-```
-
-It can later update Consent Mode without reinitializing GA4:
-
-```js
-document.dispatchEvent(new CustomEvent("ulmox:analytics-consent", {
-  detail: { analyticsGranted: true }
-}));
-```
-
-Advertising consent remains denied in both cases. Any future consent rollout
-must be reviewed against the jurisdictions where ULMOX operates before the
-production behavior is changed.
+Google Ads, remarketing, Google Signals and advertising personalization remain
+disabled. This website choice is separate from analytics inside the ULMOX app.
 
 ## Production deployment
 
