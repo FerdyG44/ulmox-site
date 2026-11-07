@@ -59,6 +59,8 @@ test("production build injects GA4 once into every HTML page", (t) => {
 
   for (const language of PUBLISHED_LANGUAGES) {
     assert.ok(fs.existsSync(path.join(outputRoot, language)), `published locale missing from dist: ${language}`);
+    const privacy = fs.readFileSync(path.join(outputRoot, language, "privacy.html"), "utf8");
+    assert.match(privacy, /class="callout ulmox-analytics-disclosure"/, `${language}: static analytics disclosure missing`);
   }
   for (const language of UNPUBLISHED_LANGUAGES) {
     assert.ok(fs.existsSync(path.join(sourceRoot, language)), `prepared source translation was removed: ${language}`);
@@ -76,6 +78,8 @@ test("production build injects GA4 once into every HTML page", (t) => {
   }
 
   const publicLocaleConfig = fs.readFileSync(path.join(outputRoot, "assets/js/i18n-config.js"), "utf8");
+  const rootPrivacy = fs.readFileSync(path.join(outputRoot, "privacy.html"), "utf8");
+  assert.match(rootPrivacy, /class="callout ulmox-analytics-disclosure"/);
   assert.equal((publicLocaleConfig.match(/"code":/g) || []).length, PUBLISHED_LANGUAGES.length);
   for (const language of UNPUBLISHED_LANGUAGES) {
     assert.ok(!publicLocaleConfig.includes(`"code": "${language}"`), `language selector exposes unpublished locale: ${language}`);
@@ -128,7 +132,10 @@ test("pending translations cannot ship when their sitemap entries and alternates
   const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), "ulmox-publication-"));
   t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
   fs.mkdirSync(path.join(temporaryRoot, "assets/js"), { recursive: true });
+  fs.mkdirSync(path.join(temporaryRoot, "assets/css"), { recursive: true });
   fs.writeFileSync(path.join(temporaryRoot, "assets/js/analytics.js"), "// fixture\n");
+  fs.writeFileSync(path.join(temporaryRoot, "assets/js/analytics-consent-copy.js"), "// fixture\n");
+  fs.writeFileSync(path.join(temporaryRoot, "assets/css/analytics-consent.css"), "/* fixture */\n");
   fs.writeFileSync(path.join(temporaryRoot, "CNAME"), "ulmoxapp.com\n");
   fs.writeFileSync(path.join(temporaryRoot, "robots.txt"), "User-agent: *\nAllow: /\n");
   const languages = ["en", ...UNPUBLISHED_LANGUAGES];

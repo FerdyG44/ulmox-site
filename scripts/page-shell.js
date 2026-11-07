@@ -1,5 +1,7 @@
 "use strict";
 
+const ANALYTICS_COPY = require("../assets/js/analytics-consent-copy");
+
 /**
  * Stage 1.6W.1 — the canonical accessible page shell for every ULMOX route.
  *
@@ -444,6 +446,15 @@ function skipLink(route) {
   return `  <a class="ulmox-skip-link" href="#main">${CHROME[localeOf(route)].skip}</a>`;
 }
 
+function privacyDisclosure(route) {
+  if (pageOf(route) !== "privacy.html") return "";
+  const copy = ANALYTICS_COPY[localeOf(route)] || ANALYTICS_COPY.en;
+  return `  <aside class="callout ulmox-analytics-disclosure" aria-labelledby="ulmox-analytics-disclosure-title">
+    <h2 id="ulmox-analytics-disclosure-title">${attributeSafe(copy[0])}</h2>
+    <p>${attributeSafe(copy[1])}</p>
+  </aside>`;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Description                                                                */
 /* -------------------------------------------------------------------------- */
@@ -581,6 +592,9 @@ function applyShell(html, { route, title, description, copyright } = {}) {
   const [, openTag, originalBody, closeTag] = bodyMatch;
   let body = originalBody;
 
+  // Re-emit the generated privacy disclosure from one source on every pass.
+  body = body.replace(/\s*<aside class="[^"]*\bulmox-analytics-disclosure\b[^"]*"[\s\S]*?<\/aside>/i, "");
+
   // Trailing <script> tags belong after the landmarks, not inside <main>.
   const scriptsMatch = body.match(TRAILING_SCRIPTS);
   const scripts = scriptsMatch ? scriptsMatch[0].trim() : "";
@@ -617,6 +631,7 @@ function applyShell(html, { route, title, description, copyright } = {}) {
     openTag,
     skipLink(route),
     body.trim(),
+    privacyDisclosure(route),
     footer,
     scripts ? `  ${scripts}` : "",
     closeTag,
@@ -704,6 +719,7 @@ module.exports = {
   relativePrefix,
   siteFooter,
   skipLink,
+  privacyDisclosure,
   deriveDescription,
   attributeSafe,
   decodeEntities,

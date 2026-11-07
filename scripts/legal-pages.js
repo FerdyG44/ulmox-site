@@ -1,5 +1,7 @@
 "use strict";
 
+const ANALYTICS_COPY = require("../assets/js/analytics-consent-copy");
+
 /**
  * Stage 0.13 — shared chrome for the ULMOX legal and safety pages.
  *
@@ -232,6 +234,12 @@ function page({
   footerHtml
 }) {
   const dir = lang === "ar" ? ' dir="rtl"' : "";
+  const analyticsDisclosure = file === "privacy.html"
+    ? `  <aside class="callout ulmox-analytics-disclosure" aria-labelledby="ulmox-analytics-disclosure-title">
+    <h2 id="ulmox-analytics-disclosure-title">${ANALYTICS_COPY.en[0]}</h2>
+    <p>${ANALYTICS_COPY.en[1]}</p>
+  </aside>\n`
+    : "";
   return `<!DOCTYPE html>
 <html lang="${lang}"${dir}>
 <head>
@@ -248,7 +256,7 @@ function page({
     <h1>${heading}</h1>
 ${effective ? `    <p class="effective">Effective ${EFFECTIVE_DATE}. Last updated ${lastUpdatedFor(file)}.</p>\n` : ""}${body}
   </main>
-${footerHtml === undefined ? footer(file) : footerHtml}
+${analyticsDisclosure}${footerHtml === undefined ? footer(file) : footerHtml}
   </div>
 </body>
 </html>
