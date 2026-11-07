@@ -65,6 +65,9 @@ const LANDING = Object.freeze({
 
     howHeading: "How ULMOX works",
     howBody: "Three simple steps. Nothing to perfect, nothing to perform.",
+    tourLabel: "A short tour of the ULMOX app",
+    tourPause: "Pause the tour",
+    tourPlay: "Play the tour",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Share a moment",
@@ -182,6 +185,9 @@ const LANDING = Object.freeze({
 
     howHeading: "Så fungerar ULMOX",
     howBody: "Tre enkla steg. Inget att finslipa, inget att spela upp.",
+    tourLabel: "En kort rundtur i ULMOX-appen",
+    tourPause: "Pausa rundturen",
+    tourPlay: "Spela upp rundturen",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Dela ett ögonblick",
@@ -299,6 +305,9 @@ const LANDING = Object.freeze({
 
     howHeading: "ULMOX nasıl çalışır",
     howBody: "Üç basit adım. Cilalanacak bir şey yok, rol yapmaya gerek yok.",
+    tourLabel: "ULMOX uygulamasında kısa bir tur",
+    tourPause: "Turu duraklat",
+    tourPlay: "Turu oynat",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Bir an paylaş",
@@ -416,6 +425,9 @@ const LANDING = Object.freeze({
 
     howHeading: "So funktioniert ULMOX",
     howBody: "Drei einfache Schritte. Nichts zu perfektionieren, nichts vorzuspielen.",
+    tourLabel: "Ein kurzer Rundgang durch die ULMOX-App",
+    tourPause: "Rundgang pausieren",
+    tourPlay: "Rundgang abspielen",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Einen Moment teilen",
@@ -533,6 +545,9 @@ const LANDING = Object.freeze({
 
     howHeading: "Cómo funciona ULMOX",
     howBody: "Tres pasos sencillos. Nada que perfeccionar, nada que actuar.",
+    tourLabel: "Un breve recorrido por la app ULMOX",
+    tourPause: "Pausar el recorrido",
+    tourPlay: "Reproducir el recorrido",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Comparte un momento",
@@ -650,6 +665,9 @@ const LANDING = Object.freeze({
 
     howHeading: "Comment fonctionne ULMOX",
     howBody: "Trois étapes simples. Rien à peaufiner, rien à jouer.",
+    tourLabel: "Une courte visite de l’app ULMOX",
+    tourPause: "Mettre la visite en pause",
+    tourPlay: "Lancer la visite",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Partagez un moment",
@@ -767,6 +785,9 @@ const LANDING = Object.freeze({
 
     howHeading: "Come funziona ULMOX",
     howBody: "Tre passaggi semplici. Niente da perfezionare, niente da recitare.",
+    tourLabel: "Un breve tour dell’app ULMOX",
+    tourPause: "Metti in pausa il tour",
+    tourPlay: "Riproduci il tour",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Condividi un momento",
@@ -884,6 +905,9 @@ const LANDING = Object.freeze({
 
     howHeading: "Como funciona o ULMOX",
     howBody: "Três passos simples. Nada para aperfeiçoar, nada para encenar.",
+    tourLabel: "Um breve tour pelo app ULMOX",
+    tourPause: "Pausar o tour",
+    tourPlay: "Reproduzir o tour",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Partilhe um momento",
@@ -1001,6 +1025,9 @@ const LANDING = Object.freeze({
 
     howHeading: "Zo werkt ULMOX",
     howBody: "Drie eenvoudige stappen. Niets te perfectioneren, niets te spelen.",
+    tourLabel: "Een korte rondleiding door de ULMOX-app",
+    tourPause: "Rondleiding pauzeren",
+    tourPlay: "Rondleiding afspelen",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Deel een moment",
@@ -1118,6 +1145,9 @@ const LANDING = Object.freeze({
 
     howHeading: "Jak działa ULMOX",
     howBody: "Trzy proste kroki. Nic do dopieszczania, nic do odegrania.",
+    tourLabel: "Krótka prezentacja aplikacji ULMOX",
+    tourPause: "Wstrzymaj prezentację",
+    tourPlay: "Odtwórz prezentację",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Podziel się chwilą",
@@ -1235,6 +1265,9 @@ const LANDING = Object.freeze({
 
     howHeading: "Näin ULMOX toimii",
     howBody: "Kolme yksinkertaista askelta. Ei mitään hiottavaa, ei mitään esitettävää.",
+    tourLabel: "Lyhyt esittely ULMOX-sovelluksesta",
+    tourPause: "Keskeytä esittely",
+    tourPlay: "Toista esittely",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Jaa hetki",
@@ -1352,6 +1385,9 @@ const LANDING = Object.freeze({
 
     howHeading: "Как работает ULMOX",
     howBody: "Три простых шага. Ничего не нужно отполировать и ничего не нужно играть.",
+    tourLabel: "Короткий обзор приложения ULMOX",
+    tourPause: "Приостановить обзор",
+    tourPlay: "Воспроизвести обзор",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Поделитесь моментом",
@@ -1469,6 +1505,9 @@ const LANDING = Object.freeze({
 
     howHeading: "ULMOXの使い方",
     howBody: "3つのシンプルなステップ。作り込む必要も、演じる必要もありません。",
+    tourLabel: "ULMOXアプリのショートツアー",
+    tourPause: "ツアーを一時停止",
+    tourPlay: "ツアーを再生",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "瞬間を共有する",
@@ -1586,6 +1625,9 @@ const LANDING = Object.freeze({
 
     howHeading: "ULMOX 이용 방법",
     howBody: "간단한 세 단계. 다듬을 것도, 연기할 것도 없습니다.",
+    tourLabel: "ULMOX 앱 둘러보기",
+    tourPause: "둘러보기 일시정지",
+    tourPlay: "둘러보기 재생",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "순간을 공유하기",
@@ -1703,6 +1745,9 @@ const LANDING = Object.freeze({
 
     howHeading: "ULMOX 怎么用",
     howBody: "三个简单步骤。不用精修，也不用表演。",
+    tourLabel: "ULMOX 应用快速导览",
+    tourPause: "暂停导览",
+    tourPlay: "播放导览",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "分享一个瞬间",
@@ -1820,6 +1865,9 @@ const LANDING = Object.freeze({
 
     howHeading: "كيف يعمل ULMOX",
     howBody: "ثلاث خطوات بسيطة. لا شيء تصقله، ولا دور تؤديه.",
+    tourLabel: "جولة قصيرة في تطبيق ULMOX",
+    tourPause: "إيقاف الجولة مؤقتًا",
+    tourPlay: "تشغيل الجولة",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "شارك لحظة",
@@ -1937,6 +1985,9 @@ const LANDING = Object.freeze({
 
     howHeading: "ULMOX कैसे काम करता है",
     howBody: "तीन आसान कदम। न कुछ चमकाना है, न कोई किरदार निभाना है।",
+    tourLabel: "ULMOX ऐप का एक छोटा टूर",
+    tourPause: "टूर रोकें",
+    tourPlay: "टूर चलाएँ",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "एक पल साझा करें",
@@ -2054,6 +2105,9 @@ const LANDING = Object.freeze({
 
     howHeading: "ULMOX ทำงานอย่างไร",
     howBody: "สามขั้นตอนง่าย ๆ ไม่ต้องขัดเกลา ไม่ต้องแสดง",
+    tourLabel: "ทัวร์สั้น ๆ ในแอป ULMOX",
+    tourPause: "หยุดทัวร์ชั่วคราว",
+    tourPlay: "เล่นทัวร์",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "แชร์ช่วงเวลา",
@@ -2171,6 +2225,9 @@ const LANDING = Object.freeze({
 
     howHeading: "ULMOX hoạt động thế nào",
     howBody: "Ba bước đơn giản. Không có gì để trau chuốt, không có gì để diễn.",
+    tourLabel: "Giới thiệu ngắn về ứng dụng ULMOX",
+    tourPause: "Tạm dừng giới thiệu",
+    tourPlay: "Phát giới thiệu",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Chia sẻ một khoảnh khắc",
@@ -2288,6 +2345,9 @@ const LANDING = Object.freeze({
 
     howHeading: "Πώς λειτουργεί το ULMOX",
     howBody: "Τρία απλά βήματα. Τίποτα να τελειοποιήσεις, τίποτα να παραστήσεις.",
+    tourLabel: "Μια σύντομη περιήγηση στην εφαρμογή ULMOX",
+    tourPause: "Παύση περιήγησης",
+    tourPlay: "Αναπαραγωγή περιήγησης",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Μοιράσου μια στιγμή",
@@ -2405,6 +2465,9 @@ const LANDING = Object.freeze({
 
     howHeading: "Cara kerja ULMOX",
     howBody: "Tiga langkah sederhana. Tak perlu sempurna, tak perlu berpura-pura.",
+    tourLabel: "Tur singkat aplikasi ULMOX",
+    tourPause: "Jeda tur",
+    tourPlay: "Putar tur",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Bagikan momen",
@@ -2522,6 +2585,9 @@ const LANDING = Object.freeze({
 
     howHeading: "Cara ULMOX berfungsi",
     howBody: "Tiga langkah mudah. Tiada apa-apa yang perlu disempurnakan, tiada apa-apa yang perlu dilakonkan.",
+    tourLabel: "Lawatan ringkas aplikasi ULMOX",
+    tourPause: "Jeda lawatan",
+    tourPlay: "Main lawatan",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Kongsi satu momen",
@@ -2639,6 +2705,9 @@ const LANDING = Object.freeze({
 
     howHeading: "Како ULMOX функционише",
     howBody: "Три једноставна корака. Ништа не мора бити савршено, ништа не морате да глумите.",
+    tourLabel: "Кратак обилазак апликације ULMOX",
+    tourPause: "Паузирај обилазак",
+    tourPlay: "Пусти обилазак",
     howSteps: Object.freeze([
       Object.freeze({
         heading: "Поделите тренутак",

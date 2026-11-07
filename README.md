@@ -62,7 +62,7 @@ for the same reason the policy pages are: 20 near-identical files diverged into
 | `scripts/landing-content.js` | Every localized string on the page, one block per locale |
 | `scripts/generate-landing-pages.js` | The page template, the stylesheet and the search/social metadata |
 
-The page has eight sections: Hero, How ULMOX works, World Live, Connections,
+The page has eight sections: Hero, How ULMOX works (with the tour film), World Live, Connections,
 Global, Why ULMOX is different, Safety and control, and the download call to
 action. Three rules govern what may be written into `landing-content.js`:
 
@@ -83,15 +83,27 @@ translated.
 
 ### Imagery
 
-This repository owns three pieces of ULMOX artwork: `logo.png` and the two
-store badges. There are no product screenshots here, so the pages show none and
-invent none; every other illustration is an `aria-hidden` drawing in CSS or
-inline SVG. `assets/brand/*.png` are resized renditions of `logo.png` itself,
-so a page no longer loads 1.4 MB to draw a 64px mark. `logo.png` stays at its
-own URL.
+Every app screen on the landing pages is a genuine ULMOX screen, taken from the
+localized App Store artwork in the app repository
+(`moment_app/store/screenshots/final_medium/<locale>`). Nothing is mocked up.
+
+| Path | What it is |
+| --- | --- |
+| `assets/screens/<locale>/*.webp` | The phone cut out of six store screenshots (hero, World Live, Connections, Global) |
+| `assets/tour/<locale>.mp4` + `.jpg` | The "how ULMOX works" tour: a silent, looping carousel of all eight store screens, and its poster |
+| `assets/brand/*.png` | Resized renditions of `logo.png`, so a page does not load 1.4 MB to draw a 64px mark |
+
+Every published locale gets its own language's screens and tour; Serbian
+(prepared, not published) borrows English. The tour is a plain `<video>` with
+native controls when JavaScript is off; the page script swaps those for one
+play/pause toggle, plays only while the film is on screen, and never starts it
+for readers who prefer reduced motion.
+
+To re-render after the store artwork changes (needs Pillow, numpy and ffmpeg):
 
 ```sh
-npm run generate      # regenerates the landing routes with everything else
+tools/media/render_all.sh ~/projects/moment_app/store/screenshots/final_medium
+npm run generate
 node --test tests/landing-pages.test.js
 ```
 

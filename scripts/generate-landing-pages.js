@@ -22,12 +22,12 @@
  *
  * Imagery
  * -------
- * This repository owns exactly three pieces of ULMOX artwork: `logo.png` and
- * the two store badges. There are no product screenshots here, so none are
- * shown and none were invented. Every illustration on the page is either the
- * real ULMOX mark or an abstract, `aria-hidden` decoration drawn in CSS and
- * inline SVG — a ring, a wireframe globe, a mosaic of empty tiles. Nothing on
- * the page is dressed up to look like a screen from the app.
+ * Every screen on the page is a genuine ULMOX screen, cut from the localized
+ * App Store artwork (moment_app/store/screenshots/final_medium/<locale>) —
+ * nothing is mocked up. `assets/screens/<locale>/*.webp` are the phones cut
+ * out of that artwork, and `assets/tour/<locale>.mp4` is a short looping
+ * film of all eight store screens, with a JPEG poster beside it. Both are
+ * rendered by `tools/media/` in this repository; see the README.
  *
  * `assets/brand/*.png` are resized renditions of `logo.png` itself, so the
  * page no longer loads a 1.4 MB image to draw a 64 px mark, and social cards
@@ -93,47 +93,51 @@ const OG_LOCALE = Object.freeze({
 /**
  * The landing-page style.
  *
- * Palette and contrast. The page ground is a single dark colour, `#07070b`,
- * with three very low-opacity colour washes painted over it; the washes are
- * `rgba()` so the ground the auditor measures against is the real one. Every
- * text colour below is measured against `#07070b`:
+ * Direction. A warm, quiet, editorial page: one deep warm-black ground, a
+ * champagne-gold accent taken from the store artwork's cream-and-gold frame,
+ * a soft sage for World Live and a warm rose for Connections. No purple —
+ * the earlier violet washes read as generic "AI product" styling, which is
+ * the look ULMOX's own interface deliberately avoids.
  *
- *   #ffffff  on #07070b = 19.9:1
- *   #d3d8e4  on #07070b = 14.2:1   (body copy)
- *   #a8b0c2  on #07070b =  8.7:1   (captions, step numbers)
- *   #ffd24d  on #07070b = 14.0:1   (links, the shell's accent)
- *   #7fe3ff  on #07070b = 13.9:1   (World Live accent)
- *   #f0a6ff  on #07070b = 10.0:1   (Connections accent)
- *   #07070b  on #ffd24d = 14.0:1   (the one light-on-dark inversion)
+ * Palette and contrast. The page ground is a single colour, `#0b0a08`, with
+ * very low-opacity colour washes painted over it; the washes are `rgba()` so
+ * the ground the auditor measures against is the real one. Every text colour
+ * below is measured against `#0b0a08`:
+ *
+ *   #fbf7ef  on #0b0a08 = 19.0:1   (headings)
+ *   #ddd6c9  on #0b0a08 = 14.0:1   (body copy)
+ *   #aea592  on #0b0a08 =  8.0:1   (captions, step numbers)
+ *   #e8c88a  on #0b0a08 = 12.4:1   (links, gold accent)
+ *   #a9d8cc  on #0b0a08 = 12.1:1   (World Live accent)
+ *   #f2bba4  on #0b0a08 = 11.5:1   (Connections accent)
+ *   #0b0a08  on #e8c88a = 12.4:1   (the one dark-on-gold inversion)
  *
  * All are far above the WCAG AA 4.5:1 minimum, and `scripts/audit-site.js`
  * re-measures every one of them on every build.
  *
- * The accent colours are taken from the ULMOX mark itself — the luminous
- * magenta-to-blue ring around the U — rather than from the flat purple wash
- * the old page painted over the whole viewport.
- *
  * Layout is mobile-first: the base rules are the phone layout, and the two
  * `min-width` blocks add columns. Spacing, padding and borders use logical
- * properties throughout, so the Arabic page mirrors correctly under dir="rtl"
- * instead of keeping a left-hand rail on a right-to-left page.
+ * properties throughout, so the Arabic page mirrors correctly under dir="rtl".
  */
 const STYLE = `
     :root {
-      --ink: #07070b;
-      --text: #ffffff;
-      --body: #d3d8e4;
-      --soft: #a8b0c2;
-      --amber: #ffd24d;
-      --cyan: #7fe3ff;
-      --magenta: #f0a6ff;
-      --surface: rgba(255, 255, 255, 0.045);
-      --surface-strong: rgba(255, 255, 255, 0.07);
-      --line: rgba(255, 255, 255, 0.11);
-      --line-strong: rgba(255, 255, 255, 0.18);
-      --radius: 22px;
-      --measure: 62ch;
-      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      --ink: #0b0a08;
+      --text: #fbf7ef;
+      --body: #ddd6c9;
+      --soft: #aea592;
+      --gold: #e8c88a;
+      --gold-deep: #b8925a;
+      --sage: #a9d8cc;
+      --rose: #f2bba4;
+      --surface: rgba(255, 244, 222, 0.035);
+      --surface-strong: rgba(255, 244, 222, 0.06);
+      --line: rgba(255, 236, 200, 0.10);
+      --line-strong: rgba(255, 236, 200, 0.18);
+      --radius: 24px;
+      --measure: 60ch;
+      --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      --serif: "New York", ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     * { box-sizing: border-box; }
@@ -142,21 +146,20 @@ const STYLE = `
 
     body {
       margin: 0;
-      background-color: #07070b;
-      color: #ffffff;
+      background-color: #0b0a08;
+      color: #fbf7ef;
       font-family: var(--sans);
       font-size: 17px;
-      line-height: 1.6;
+      line-height: 1.65;
       text-align: start;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     /*
      * The colour wash sits on a fixed pseudo-element rather than on the body's
      * own background with background-attachment: fixed, which iOS Safari does
-     * not honour — there the gradient would be sized to the whole scroll
-     * height and wash out. Every stop is rgba() over the one real ground
-     * colour above, so the ground stays exactly #07070b.
+     * not honour. Every stop is rgba() over the one real ground colour above.
      */
     body::before {
       content: "";
@@ -165,13 +168,24 @@ const STYLE = `
       z-index: -1;
       pointer-events: none;
       background-image:
-        radial-gradient(1200px 700px at 50% -15%, rgba(168, 85, 247, 0.17), rgba(7, 7, 11, 0) 62%),
-        radial-gradient(820px 560px at 92% 6%, rgba(56, 189, 248, 0.12), rgba(7, 7, 11, 0) 60%),
-        radial-gradient(900px 620px at 4% 34%, rgba(255, 138, 76, 0.07), rgba(7, 7, 11, 0) 60%);
+        radial-gradient(1100px 680px at 72% -12%, rgba(232, 200, 138, 0.13), rgba(11, 10, 8, 0) 62%),
+        radial-gradient(760px 540px at 0% 26%, rgba(169, 216, 204, 0.06), rgba(11, 10, 8, 0) 60%),
+        radial-gradient(900px 600px at 100% 78%, rgba(242, 187, 164, 0.05), rgba(11, 10, 8, 0) 60%);
+    }
+
+    /* A whisper of film grain, so the dark ground reads as a surface. */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
     .page {
-      max-width: 1120px;
+      max-width: 1180px;
       margin-inline: auto;
       padding-inline: 20px;
     }
@@ -179,38 +193,53 @@ const STYLE = `
     /* ---------------------------------------------------------------- type */
 
     h1, h2, h3 {
-      color: #ffffff;
+      color: #fbf7ef;
       margin: 0;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.025em;
       text-wrap: balance;
     }
 
-    h1 { font-size: clamp(38px, 8.4vw, 68px); line-height: 1.04; font-weight: 800; }
-    h2 { font-size: clamp(27px, 5.4vw, 42px); line-height: 1.1; font-weight: 800; }
-    h3 { font-size: clamp(17px, 2.6vw, 19px); line-height: 1.3; font-weight: 700; }
+    h1 { font-size: clamp(40px, 8.6vw, 76px); line-height: 1.02; font-weight: 700; }
+    h2 { font-size: clamp(30px, 5.4vw, 48px); line-height: 1.08; font-weight: 700; }
+    h3 { font-size: clamp(17px, 2.6vw, 19px); line-height: 1.3; font-weight: 650; letter-spacing: -0.01em; }
 
-    p { margin: 0; color: #d3d8e4; }
+    p { margin: 0; color: #ddd6c9; }
 
-    .lede { font-size: clamp(17px, 2.6vw, 20px); color: #d3d8e4; max-width: var(--measure); }
+    .lede { font-size: clamp(17px, 2.5vw, 20px); color: #ddd6c9; max-width: var(--measure); }
 
     .eyebrow {
-      margin: 0 0 14px;
-      color: #a8b0c2;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 18px;
+      color: #e8c88a;
+      font-size: 12.5px;
+      font-weight: 650;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
     }
 
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(232, 200, 138, 0), #e8c88a);
+    }
+
     /*
-     * The gradient is decoration on top of a real colour. A browser that does
-     * not clip a background to text still renders #ffffff, so the headline is
-     * never invisible because an effect failed.
+     * The accent line is set in a serif italic for an editorial voice. The
+     * gradient is decoration on top of a real colour: a browser that does not
+     * clip a background to text still renders #e8c88a.
      */
     .accent {
       display: block;
-      color: #ffffff;
-      background-image: linear-gradient(96deg, #ffffff 4%, #f0a6ff 46%, #7fe3ff 96%);
+      color: #e8c88a;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      padding-block-end: 0.06em;
+      background-image: linear-gradient(100deg, #f6e3bc 0%, #e8c88a 45%, #c9a46a 100%);
       background-clip: text;
       -webkit-background-clip: text;
     }
@@ -225,128 +254,176 @@ const STYLE = `
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
 
     .brand-mark {
-      width: 52px;
-      height: 52px;
-      border-radius: 15px;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
       display: block;
-      box-shadow: 0 10px 34px rgba(168, 85, 247, 0.34);
+      box-shadow: 0 0 0 1px rgba(255, 236, 200, 0.16), 0 14px 36px rgba(0, 0, 0, 0.5);
     }
 
     .brand-word {
-      color: #ffffff;
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: 0.34em;
+      color: #fbf7ef;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.42em;
     }
 
     /* --------------------------------------------------------------- hero */
 
-    .hero { padding-block: 64px 24px; }
+    .hero { padding-block: 56px 32px; }
 
-    .hero-title { margin-bottom: 20px; }
+    .hero-title { margin-bottom: 24px; }
     .hero-title .lead { display: block; }
 
-    .hero-sub { font-size: clamp(17px, 2.8vw, 21px); color: #d3d8e4; max-width: 30ch; }
+    .hero-sub { font-size: clamp(17px, 2.6vw, 21px); color: #ddd6c9; max-width: 34ch; }
 
-    .hero-actions { margin-top: 34px; }
+    .hero-actions { margin-top: 36px; }
 
     /*
-     * The hero decoration: the real ULMOX mark inside the luminous ring the
-     * mark itself carries. It is not a screen, not a frame around a screen and
-     * not a stand-in for one — there is no product screenshot in this
-     * repository, so the page shows the one piece of artwork it does own.
-     */
-    /*
-     * overflow:hidden is load-bearing. The ring and the orbit are square
-     * boxes that rotate, and a rotated square's scroll box is up to 1.41x its
-     * own width — enough to push a 390px phone into horizontal scrolling. The
-     * artwork is a circle inscribed in that square, so clipping the square
-     * removes the overflow without clipping anything a reader can see.
+     * Three real ULMOX screens, cut from the App Store artwork: today's
+     * moment in front, a moment being shared and its video reactions behind.
+     * overflow is clipped so the tilted back phones can never push a narrow
+     * phone into sideways scrolling.
      */
     .hero-art {
       position: relative;
-      display: grid;
-      place-items: center;
+      margin: 56px auto 0;
+      width: min(420px, 92vw);
+      aspect-ratio: 1 / 1.08;
       overflow: hidden;
-      margin-top: 52px;
-      aspect-ratio: 1 / 1;
-      width: min(340px, 82vw);
-      margin-inline: auto;
+      padding-block: 4%;
+    }
+
+    .hero-halo {
+      position: absolute;
+      inset: 6% 4% 0;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(232, 200, 138, 0.30), rgba(232, 200, 138, 0.06) 60%, rgba(11, 10, 8, 0) 100%);
+      filter: blur(8px);
     }
 
     .hero-ring {
       position: absolute;
-      inset: 0;
+      inset: 10% 8% 4%;
       border-radius: 50%;
-      background: conic-gradient(from 210deg, rgba(168, 85, 247, 0) 0deg, #a855f7 90deg, #38bdf8 210deg, rgba(56, 189, 248, 0) 330deg);
-      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
-      mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
-      animation: ulmox-spin 26s linear infinite;
+      border: 1px solid rgba(232, 200, 138, 0.16);
     }
 
-    .hero-ring-2 {
-      position: absolute;
-      inset: 13%;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.13);
-    }
-
-    .hero-glow {
-      position: absolute;
-      inset: 16%;
-      border-radius: 50%;
-      background: radial-gradient(circle at 50% 42%, rgba(168, 85, 247, 0.34), rgba(7, 7, 11, 0) 68%);
-      filter: blur(6px);
-    }
-
-    .hero-mark {
-      position: relative;
-      width: 42%;
-      height: auto;
-      border-radius: 26%;
+    .phone {
       display: block;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+      height: auto;
+      border-radius: 13% / 6.2%;
+      box-shadow:
+        0 0 0 1px rgba(255, 236, 200, 0.12),
+        0 30px 60px -12px rgba(0, 0, 0, 0.75),
+        0 18px 36px -18px rgba(0, 0, 0, 0.8);
     }
 
-    .orbit {
-      position: absolute;
-      inset: 0;
-      animation: ulmox-spin 38s linear infinite reverse;
+    .hero-art .phone { position: absolute; inset-block-start: 6%; }
+    .hero-art .phone-front { width: 46%; inset-inline-start: 27%; z-index: 2; animation: ulmox-float 9s ease-in-out infinite; }
+    .hero-art .phone-back { width: 37%; inset-block-start: 15%; filter: brightness(0.62) saturate(0.9); }
+    .hero-art .phone-left { inset-inline-start: 2%; transform: rotate(-7deg); }
+    .hero-art .phone-right { inset-inline-end: 2%; transform: rotate(7deg); }
+
+    @keyframes ulmox-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
-
-    .orbit span {
-      position: absolute;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #7fe3ff;
-      box-shadow: 0 0 16px rgba(127, 227, 255, 0.85);
-    }
-
-    .orbit span:nth-child(1) { inset-block-start: 4%; inset-inline-start: 50%; }
-    .orbit span:nth-child(2) { inset-block-start: 63%; inset-inline-start: 6%; background: #f0a6ff; box-shadow: 0 0 16px rgba(240, 166, 255, 0.85); }
-    .orbit span:nth-child(3) { inset-block-start: 74%; inset-inline-start: 84%; background: #ffd24d; box-shadow: 0 0 16px rgba(255, 210, 77, 0.8); }
-
-    @keyframes ulmox-spin { to { transform: rotate(360deg); } }
 
     /* ------------------------------------------------------------ sections */
 
-    .section { padding-block: 56px; border-top: 1px solid var(--line); }
+    .section { padding-block: 64px; border-top: 1px solid var(--line); }
     .section > .lede { margin-top: 16px; }
     .section-head { max-width: var(--measure); }
+    .section-head .lede { margin-top: 16px; }
 
-    .split { display: grid; gap: 34px; }
+    .split { display: grid; gap: 40px; }
     .split-copy > * + * { margin-top: 16px; }
+
+    /* ---------------------------------------------------------------- tour */
+
+    /*
+     * The tour: a short looping film of the eight App Store screens. The
+     * frame is the cinema; the film itself carries no sound, and the toggle
+     * is the one control it needs — anything that moves for more than five
+     * seconds must be pausable. On a phone the frame is portrait and crops to
+     * the centre of the film, so the screen in focus stays legible.
+     */
+    .tour { margin: 40px 0 0; }
+
+    .tour-frame {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #0b0a08;
+      box-shadow:
+        0 0 0 1px rgba(255, 236, 200, 0.14),
+        0 40px 90px -30px rgba(0, 0, 0, 0.9),
+        0 0 120px -40px rgba(232, 200, 138, 0.35);
+    }
+
+    .tour-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 1px 0 rgba(255, 244, 222, 0.10);
+    }
+
+    .tour-video {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      background: #0b0a08;
+    }
+
+    .tour-toggle {
+      position: absolute;
+      inset-block-end: 14px;
+      inset-inline-end: 14px;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 236, 200, 0.24);
+      background: rgba(11, 10, 8, 0.62);
+      color: #fbf7ef;
+      cursor: pointer;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tour-toggle:hover { background: rgba(11, 10, 8, 0.82); border-color: rgba(232, 200, 138, 0.6); }
+    .tour-toggle:focus-visible { outline: 3px solid #e8c88a; outline-offset: 3px; }
+
+    .tour-toggle svg { width: 16px; height: 16px; display: block; }
+    .tour-toggle .icon-play { display: none; }
+    .tour-toggle[data-state="paused"] .icon-play { display: block; }
+    .tour-toggle[data-state="paused"] .icon-pause { display: none; }
+    .tour-toggle[hidden] { display: none; }
+
+    .tour-caption {
+      margin-top: 14px;
+      color: #aea592;
+      font-size: 14px;
+      text-align: center;
+    }
 
     /* ---------------------------------------------------------------- grids */
 
     .grid {
       list-style: none;
-      margin: 34px 0 0;
+      margin: 36px 0 0;
       padding: 0;
       display: grid;
       gap: 14px;
@@ -355,62 +432,81 @@ const STYLE = `
 
     .grid li {
       position: relative;
-      padding: 24px;
-      border: 1px solid var(--line);
+      padding: 26px;
       border-radius: var(--radius);
-      background: var(--surface);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255, 244, 222, 0.05), rgba(255, 244, 222, 0.012));
+      transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
     }
 
-    .grid p { margin-top: 8px; font-size: 16px; color: #d3d8e4; }
+    .grid li:hover { border-color: rgba(232, 200, 138, 0.32); transform: translateY(-2px); }
 
-    .numbered li { padding-block-start: 26px; }
+    .grid p { margin-top: 8px; font-size: 16px; color: #ddd6c9; }
+
+    .numbered li { padding-block-start: 28px; }
 
     .numbered li::before {
       counter-increment: ulmox-step;
-      content: counter(ulmox-step);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 30px;
-      height: 30px;
-      margin-bottom: 14px;
-      border-radius: 50%;
-      border: 1px solid var(--line-strong);
-      color: #a8b0c2;
-      font-size: 14px;
-      font-weight: 700;
+      content: counter(ulmox-step, decimal-leading-zero);
+      display: block;
+      margin-bottom: 16px;
+      color: #e8c88a;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1;
       font-variant-numeric: tabular-nums;
     }
 
+    /* ----------------------------------------------------------- showcases */
+
+    /*
+     * A real screen from the app, standing on a soft pool of the section's
+     * own accent colour.
+     */
+    .showcase {
+      position: relative;
+      display: grid;
+      place-items: center;
+      margin: 0;
+      padding-block: 12px 24px;
+    }
+
+    .showcase::before {
+      content: "";
+      position: absolute;
+      inset: 4% 8% 0;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(232, 200, 138, 0.22), rgba(11, 10, 8, 0) 100%);
+      filter: blur(10px);
+    }
+
+    .showcase-sage::before { background: radial-gradient(closest-side, rgba(169, 216, 204, 0.22), rgba(11, 10, 8, 0) 100%); }
+    .showcase-rose::before { background: radial-gradient(closest-side, rgba(242, 187, 164, 0.22), rgba(11, 10, 8, 0) 100%); }
+
+    .showcase .phone { position: relative; width: min(270px, 66vw); }
+
     /* ---------------------------------------------------------- world live */
 
-    .globe { display: block; width: min(420px, 100%); margin-inline: auto; height: auto; }
-    .globe-dot { animation: ulmox-pulse 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-    .globe-dot:nth-of-type(2) { animation-delay: 0.9s; }
-    .globe-dot:nth-of-type(3) { animation-delay: 1.8s; }
-    .globe-dot:nth-of-type(4) { animation-delay: 2.7s; }
-
-    @keyframes ulmox-pulse {
-      0%, 100% { opacity: 0.35; transform: scale(0.82); }
-      50% { opacity: 1; transform: scale(1.18); }
-    }
+    .world .eyebrow { color: #a9d8cc; }
+    .world .eyebrow::before { background: linear-gradient(90deg, rgba(169, 216, 204, 0), #a9d8cc); }
 
     /* --------------------------------------------------------- connections */
 
     .connections {
-      border-radius: 30px;
+      border-radius: 34px;
       border: 1px solid var(--line-strong);
       background:
-        radial-gradient(760px 420px at 12% 0%, rgba(240, 166, 255, 0.11), transparent 62%),
-        radial-gradient(680px 420px at 96% 12%, rgba(127, 227, 255, 0.09), transparent 60%),
-        rgba(255, 255, 255, 0.025);
-      padding: 40px 22px;
-      margin-block: 8px;
+        radial-gradient(760px 420px at 10% 0%, rgba(242, 187, 164, 0.09), transparent 62%),
+        radial-gradient(680px 420px at 96% 14%, rgba(232, 200, 138, 0.07), transparent 60%),
+        rgba(255, 244, 222, 0.02);
+      padding: 44px 22px;
+      margin-block: 12px;
     }
 
-    .connections .eyebrow { color: #f0a6ff; }
-
-    .link-art { display: block; width: min(264px, 74%); margin: 0 0 28px; height: auto; }
+    .connections .eyebrow { color: #f2bba4; }
+    .connections .eyebrow::before { background: linear-gradient(90deg, rgba(242, 187, 164, 0), #f2bba4); }
 
     .note {
       margin-top: 22px;
@@ -418,50 +514,22 @@ const STYLE = `
       border-radius: 16px;
       border: 1px solid var(--line);
       background: var(--surface-strong);
-      color: #d3d8e4;
+      color: #ddd6c9;
       font-size: 15.5px;
       max-width: var(--measure);
     }
 
-    .note-safe { border-inline-start: 3px solid #ffd24d; }
-    .note-rollout { color: #a8b0c2; font-size: 14.5px; }
-
-    /* -------------------------------------------------------------- global */
-
-    /*
-     * A decorative wall, and only that. The tiles are faded out towards the
-     * bottom and carry no frame, caption or aspect ratio borrowed from the
-     * app, so they read as an abstract suggestion of a feed rather than as six
-     * product images that failed to load — which is how a solid, fully opaque
-     * grid of empty rectangles reads.
-     */
-    .mosaic {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      width: min(380px, 100%);
-      margin-inline: auto;
-      opacity: 0.85;
-      -webkit-mask-image: linear-gradient(180deg, #000 52%, rgba(0, 0, 0, 0) 100%);
-      mask-image: linear-gradient(180deg, #000 52%, rgba(0, 0, 0, 0) 100%);
-    }
-
-    .mosaic span {
-      display: block;
-      aspect-ratio: 3 / 4;
-      border-radius: 14px;
-      background: linear-gradient(150deg, rgba(168, 85, 247, 0.2), rgba(56, 189, 248, 0.08));
-    }
-
-    .mosaic span:nth-child(2) { background: linear-gradient(150deg, rgba(255, 138, 76, 0.17), rgba(255, 210, 77, 0.07)); }
-    .mosaic span:nth-child(3) { background: linear-gradient(150deg, rgba(56, 189, 248, 0.18), rgba(16, 185, 129, 0.08)); }
-    .mosaic span:nth-child(4) { background: linear-gradient(150deg, rgba(16, 185, 129, 0.15), rgba(127, 227, 255, 0.07)); }
-    .mosaic span:nth-child(5) { background: linear-gradient(150deg, rgba(240, 166, 255, 0.16), rgba(168, 85, 247, 0.07)); }
-    .mosaic span:nth-child(6) { background: linear-gradient(150deg, rgba(255, 210, 77, 0.15), rgba(255, 138, 76, 0.07)); }
+    .note-safe { border-inline-start: 2px solid #e8c88a; }
+    .note-rollout { color: #aea592; font-size: 14.5px; }
 
     /* -------------------------------------------------------------- safety */
 
-    .text-link { color: #ffd24d; font-weight: 700; }
+    .text-link {
+      color: #e8c88a;
+      font-weight: 650;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
 
     .safety-more { margin-top: 26px; }
 
@@ -482,18 +550,18 @@ const STYLE = `
       height: 66px;
       line-height: 0;
       text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.04);
-      transition: transform 0.22s ease, filter 0.22s ease, border-color 0.22s ease;
+      border: 1px solid rgba(255, 236, 200, 0.16);
+      border-radius: 16px;
+      background: rgba(255, 244, 222, 0.04);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
       cursor: pointer;
     }
 
     .store-badge-link:hover {
-      filter: drop-shadow(0 12px 26px rgba(168, 85, 247, 0.26));
-      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 14px 34px -10px rgba(232, 200, 138, 0.35);
+      border-color: rgba(232, 200, 138, 0.45);
       transform: translateY(-2px);
     }
 
@@ -516,8 +584,8 @@ const STYLE = `
       padding: 16px 18px;
       border: 1px solid var(--line-strong);
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.08);
-      color: #d3d8e4;
+      background: rgba(255, 244, 222, 0.08);
+      color: #ddd6c9;
       font-size: 15px;
       line-height: 1.5;
       text-align: start;
@@ -527,12 +595,12 @@ const STYLE = `
 
     .copy-link {
       appearance: none;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 236, 200, 0.2);
       border-radius: 12px;
       padding: 11px 14px;
       margin-top: 12px;
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
+      background: rgba(255, 244, 222, 0.1);
+      color: #fbf7ef;
       font: inherit;
       font-weight: 700;
       cursor: pointer;
@@ -541,13 +609,25 @@ const STYLE = `
     /* ------------------------------------------------------------ download */
 
     .cta {
+      position: relative;
       text-align: center;
       border-top: 1px solid var(--line);
-      padding-block: 60px 12px;
+      padding-block: 76px 20px;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      inset-inline: 10%;
+      inset-block-start: 20px;
+      height: 260px;
+      z-index: -1;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(232, 200, 138, 0.14), rgba(11, 10, 8, 0));
     }
 
     .cta .lede { margin-inline: auto; margin-top: 16px; }
-    .cta .store-badges { justify-content: center; margin-top: 30px; }
+    .cta .store-badges { justify-content: center; margin-top: 32px; }
 
     /* -------------------------------------------------------------- motion */
 
@@ -559,16 +639,16 @@ const STYLE = `
      */
     [data-motion="on"] .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(22px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
     }
 
     [data-motion="on"] .reveal.is-visible { opacity: 1; transform: none; }
 
     @media (prefers-reduced-motion: reduce) {
-      .hero-ring, .orbit, .globe-dot { animation: none; }
-      .store-badge-link { transition: none; }
-      .store-badge-link:hover { transform: none; }
+      .hero-art .phone-front { animation: none; }
+      .store-badge-link, .grid li { transition: none; }
+      .store-badge-link:hover, .grid li:hover { transform: none; }
       [data-motion="on"] .reveal { opacity: 1; transform: none; transition: none; }
     }
 
@@ -576,28 +656,33 @@ const STYLE = `
 
     @media (min-width: 720px) {
       .page { padding-inline: 32px; }
-      .hero { padding-block: 84px 40px; }
-      .section { padding-block: 76px; }
-      .connections { padding: 60px 44px; }
+      .hero { padding-block: 84px 48px; }
+      .section { padding-block: 92px; }
+      .connections { padding: 64px 48px; }
       .grid { gap: 16px; grid-template-columns: repeat(2, 1fr); }
-      .grid li { padding: 28px; }
-      .split { grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
-      .hero-art { width: min(400px, 60vw); }
+      .grid li { padding: 30px; }
+      .split { grid-template-columns: 1fr 1fr; align-items: center; gap: 56px; }
+      .hero-art { width: min(500px, 70vw); }
+      .tour { margin-top: 52px; }
+      .tour-video { aspect-ratio: 16 / 9; }
+      .tour-toggle { inset-block-end: 20px; inset-inline-end: 20px; }
     }
 
     @media (min-width: 1040px) {
       .hero {
         display: grid;
-        grid-template-columns: 1.06fr 0.94fr;
+        grid-template-columns: 1.02fr 0.98fr;
         align-items: center;
-        gap: 56px;
-        padding-block: 108px 56px;
+        gap: 48px;
+        padding-block: 112px 72px;
       }
-      .hero-art { margin-top: 0; width: 100%; max-width: 460px; }
+      .hero-art { margin-top: 0; width: 100%; max-width: 540px; }
       .grid { grid-template-columns: repeat(3, 1fr); }
       .steps-3 { grid-template-columns: repeat(3, 1fr); }
-      .connections { padding: 72px 64px; }
-      .brand-mark { width: 58px; height: 58px; }
+      .connections { padding: 80px 72px; }
+      .split-connections { grid-template-columns: 1.25fr 0.75fr; }
+      .split-reverse .split-art { order: -1; }
+      .brand-mark { width: 52px; height: 52px; }
     }
 `;
 
@@ -618,6 +703,8 @@ const SCRIPT_STYLE = `
     /* Tracking that is correct for Latin is wrong for this script. */
     h1, h2, h3 { letter-spacing: normal; }
     .eyebrow { letter-spacing: normal; text-transform: none; }
+    /* An italic serif is a Latin voice; these scripts keep their own face. */
+    .accent { font-family: var(--sans); font-style: normal; font-weight: 700; letter-spacing: normal; }
 `;
 
 /* -------------------------------------------------------------------------- */
@@ -684,69 +771,159 @@ const BROWSER_HELP = `
         </div>`;
 
 /**
- * The hero decoration: the real ULMOX mark inside the ring the mark carries.
- *
- * Entirely decorative, so it is hidden from assistive technology — the mark is
- * already named by the brand lockup above it, and announcing it twice tells a
- * screen-reader user nothing new.
+ * Locales the App Store artwork exists for. Every published locale has its
+ * own localized screens and tour; Serbian, which is prepared but not
+ * published, borrows the English set.
  */
-const HERO_ART = `        <div class="hero-art" aria-hidden="true">
+const MEDIA_LOCALES = new Set([
+  "en", "sv", "tr", "de", "es", "fr", "it", "pt", "nl", "pl", "fi", "ru",
+  "ja", "ko", "zh", "ar", "hi", "th", "vi", "el", "id", "ms",
+]);
+
+function mediaLocale(locale) {
+  return MEDIA_LOCALES.has(locale) ? locale : "en";
+}
+
+/** A real screen from the app, cut from that locale's App Store artwork. */
+function screen(locale, id) {
+  return `/assets/screens/${mediaLocale(locale)}/${id}.webp`;
+}
+
+/**
+ * One phone. The screens are illustrations of the copy next to them — the
+ * heading already says what the phone shows — so they carry an empty alt
+ * and stay out of the screen-reader's way.
+ */
+function phone(locale, id, cls, { eager = false } = {}) {
+  const loading = eager ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
+  return `<img class="phone${cls ? ` ${cls}` : ""}" src="${screen(locale, id)}" alt="" width="440" height="929" ${loading} decoding="async">`;
+}
+
+/**
+ * The hero: today's moment in front, a moment being shared and its video
+ * reactions tilted behind it. All three are genuine ULMOX screens from the
+ * App Store artwork, in the page's own language.
+ */
+function heroArt(locale) {
+  return `        <div class="hero-art" aria-hidden="true">
+          <span class="hero-halo"></span>
           <span class="hero-ring"></span>
-          <span class="hero-glow"></span>
-          <span class="hero-ring-2"></span>
-          <span class="orbit"><span></span><span></span><span></span></span>
-          <img class="hero-mark" src="${MARK_192}" alt="" width="192" height="192" loading="lazy" decoding="async">
+          ${phone(locale, "04-video-reactions", "phone-back phone-left")}
+          ${phone(locale, "03-share-moment", "phone-back phone-right")}
+          ${phone(locale, "01-daily-moments", "phone-front", { eager: true })}
         </div>`;
+}
+
+/** A single screen on a soft pool of the section's accent colour. */
+function showcase(locale, id, tone) {
+  return `          <figure class="showcase showcase-${tone}" aria-hidden="true">
+            ${phone(locale, id, "")}
+          </figure>`;
+}
 
 /**
- * A wireframe globe with four pulsing points.
+ * The tour: a looping, silent film of the eight App Store screens.
  *
- * A drawing of the idea, not a picture of the app. It carries no place names,
- * no coastlines and no interface, so it cannot be mistaken for a capture of
- * World Live, and nothing here claims to be one.
+ * Without JavaScript it is an ordinary video with the browser's own
+ * controls, so nobody is left with a poster they cannot play. The script
+ * replaces those controls with one play/pause toggle, plays the film only
+ * while it is on screen, and never starts it for a reader who has asked for
+ * reduced motion.
  */
-const GLOBE = `          <svg class="globe" viewBox="0 0 240 240" role="img" aria-hidden="true" focusable="false">
-            <defs>
-              <radialGradient id="ulmox-globe" cx="38%" cy="30%" r="78%">
-                <stop offset="0%" stop-color="#a855f7" stop-opacity="0.34" />
-                <stop offset="62%" stop-color="#38bdf8" stop-opacity="0.12" />
-                <stop offset="100%" stop-color="#07070b" stop-opacity="0" />
-              </radialGradient>
-            </defs>
-            <circle cx="120" cy="120" r="96" fill="url(#ulmox-globe)" />
-            <circle cx="120" cy="120" r="96" fill="none" stroke="rgba(255,255,255,0.22)" />
-            <ellipse cx="120" cy="120" rx="96" ry="34" fill="none" stroke="rgba(255,255,255,0.13)" />
-            <ellipse cx="120" cy="120" rx="96" ry="68" fill="none" stroke="rgba(255,255,255,0.09)" />
-            <ellipse cx="120" cy="120" rx="34" ry="96" fill="none" stroke="rgba(255,255,255,0.13)" />
-            <ellipse cx="120" cy="120" rx="68" ry="96" fill="none" stroke="rgba(255,255,255,0.09)" />
-            <line x1="120" y1="24" x2="120" y2="216" stroke="rgba(255,255,255,0.09)" />
-            <line x1="24" y1="120" x2="216" y2="120" stroke="rgba(255,255,255,0.09)" />
-            <circle class="globe-dot" cx="86" cy="76" r="6" fill="#f0a6ff" />
-            <circle class="globe-dot" cx="163" cy="104" r="6" fill="#7fe3ff" />
-            <circle class="globe-dot" cx="99" cy="158" r="6" fill="#ffd24d" />
-            <circle class="globe-dot" cx="151" cy="171" r="5" fill="#7fe3ff" />
-          </svg>`;
+function tour(locale, content) {
+  const m = mediaLocale(locale);
+  return `        <figure class="tour">
+          <div class="tour-frame">
+            <video
+              class="tour-video"
+              controls
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              width="1280"
+              height="720"
+              poster="/assets/tour/${m}.jpg"
+              aria-describedby="tour-caption"
+            >
+              <source src="/assets/tour/${m}.mp4" type="video/mp4">
+            </video>
+            <button
+              class="tour-toggle"
+              type="button"
+              hidden
+              data-state="paused"
+              data-label-play="${attributeSafe(content.tourPlay)}"
+              data-label-pause="${attributeSafe(content.tourPause)}"
+              aria-label="${attributeSafe(content.tourPlay)}"
+            >
+              <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="2" width="3.5" height="12" rx="1" fill="currentColor"/><rect x="9.5" y="2" width="3.5" height="12" rx="1" fill="currentColor"/></svg>
+              <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 2.6v10.8a.8.8 0 0 0 1.2.7l8.6-5.4a.8.8 0 0 0 0-1.4L5.2 1.9A.8.8 0 0 0 4 2.6z" fill="currentColor"/></svg>
+            </button>
+          </div>
+          <figcaption id="tour-caption" class="tour-caption">${content.tourLabel}</figcaption>
+        </figure>`;
+}
 
 /**
- * Two people, one link, formed only where both sides meet.
- *
- * Abstract on purpose: no avatars, no names, no message bubbles, nothing that
- * could read as a capture of a real conversation.
+ * The tour's player: one toggle, play-while-visible, and a reader's pause
+ * is never overridden by scrolling.
  */
-const LINK_ART = `          <svg class="link-art" viewBox="0 0 300 120" role="img" aria-hidden="true" focusable="false">
-            <circle cx="72" cy="60" r="38" fill="none" stroke="rgba(240,166,255,0.55)" stroke-width="1.5" />
-            <circle cx="228" cy="60" r="38" fill="none" stroke="rgba(127,227,255,0.55)" stroke-width="1.5" />
-            <circle cx="72" cy="60" r="16" fill="rgba(240,166,255,0.22)" />
-            <circle cx="228" cy="60" r="16" fill="rgba(127,227,255,0.22)" />
-            <path d="M110 60 H190" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-dasharray="5 7" />
-            <circle cx="150" cy="60" r="15" fill="rgba(7,7,11,0.9)" stroke="rgba(255,210,77,0.8)" stroke-width="1.5" />
-            <path d="M143 60 l5 5 l9 -10" fill="none" stroke="#ffd24d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>`;
+const TOUR_SCRIPT = `  <script>
+    (function () {
+      "use strict";
 
-/** Six empty tiles standing in for a feed, with nothing pretending to be in them. */
-const MOSAIC = `          <div class="mosaic" aria-hidden="true">
-            <span></span><span></span><span></span><span></span><span></span><span></span>
-          </div>`;
+      var video = document.querySelector(".tour-video");
+      var toggle = document.querySelector(".tour-toggle");
+      if (!video || !toggle) return;
+
+      var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var heldByReader = reduced;
+      var visible = false;
+
+      video.removeAttribute("controls");
+      toggle.hidden = false;
+
+      function render() {
+        var playing = !video.paused;
+        toggle.setAttribute("data-state", playing ? "playing" : "paused");
+        toggle.setAttribute(
+          "aria-label",
+          toggle.getAttribute(playing ? "data-label-pause" : "data-label-play")
+        );
+      }
+
+      function play() {
+        var attempt = video.play();
+        if (attempt && attempt.catch) attempt.catch(render);
+      }
+
+      function sync() {
+        if (visible && !heldByReader) play();
+        else video.pause();
+      }
+
+      toggle.addEventListener("click", function () {
+        heldByReader = !video.paused;
+        if (heldByReader) video.pause();
+        else play();
+      });
+
+      video.addEventListener("play", render);
+      video.addEventListener("pause", render);
+
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries) {
+          visible = entries[0].isIntersecting;
+          sync();
+        }, { threshold: 0.35 }).observe(video);
+      } else {
+        visible = true;
+        sync();
+      }
+      render();
+    })();
+  </script>`;
 
 /**
  * Reveal-on-scroll, and nothing else.
@@ -1027,18 +1204,22 @@ function landingPage(key) {
 
 ${ROOT_SCRIPT}
 
-${MOTION_SCRIPT}`
+${MOTION_SCRIPT}
+
+${TOUR_SCRIPT}`
     : `  <script src="/assets/js/i18n-config.js"></script>
   <script src="/assets/js/language-switcher.js" defer></script>
 
-${MOTION_SCRIPT}`;
+${MOTION_SCRIPT}
+
+${TOUR_SCRIPT}`;
 
   return `<!DOCTYPE html>
 <html lang="${locale}"${dir}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#07070b" />
+  <meta name="theme-color" content="#0b0a08" />
   <title>${attributeSafe(landingTitle(key, content))}</title>
   <meta name="description" content="${attributeSafe(content.metaDescription)}" />
 
@@ -1079,7 +1260,7 @@ ${storeBadges(content, {
 ${isRoot ? BROWSER_HELP : ""}          </div>
         </div>
 
-${HERO_ART}
+${heroArt(locale)}
       </section>
 
       <section class="section reveal" aria-labelledby="how-heading">
@@ -1087,12 +1268,13 @@ ${HERO_ART}
           <h2 id="how-heading">${content.howHeading}</h2>
           <p class="lede">${content.howBody}</p>
         </div>
+${tour(locale, content)}
         <ol class="grid numbered steps-3">
 ${cards(content.howSteps)}
         </ol>
       </section>
 
-      <section class="section reveal" aria-labelledby="world-heading">
+      <section class="section world reveal" aria-labelledby="world-heading">
         <div class="split">
           <div class="split-copy">
             <h2 id="world-heading">${content.worldHeading}</h2>
@@ -1100,17 +1282,21 @@ ${cards(content.howSteps)}
             <p>${content.worldBody2}</p>
           </div>
           <div class="split-art">
-${GLOBE}
+${showcase(locale, "02-world-live", "sage")}
           </div>
         </div>
       </section>
 
       <section class="section connections reveal" aria-labelledby="connections-heading">
-${LINK_ART}
-        <div class="section-head">
-          <p class="eyebrow">Connections</p>
-          <h2 id="connections-heading">${content.connectionsHeading}</h2>
-          <p class="lede">${content.connectionsBody}</p>
+        <div class="split split-connections">
+          <div class="section-head">
+            <p class="eyebrow">Connections</p>
+            <h2 id="connections-heading">${content.connectionsHeading}</h2>
+            <p class="lede">${content.connectionsBody}</p>
+          </div>
+          <div class="split-art">
+${showcase(locale, "05-connections", "rose")}
+          </div>
         </div>
 
         <ol class="grid numbered">
@@ -1122,14 +1308,14 @@ ${cards(content.connectionsSteps)}
       </section>
 
       <section class="section reveal" aria-labelledby="global-heading">
-        <div class="split">
+        <div class="split split-reverse">
           <div class="split-copy">
             <h2 id="global-heading">Global</h2>
             <p class="lede">${content.globalBody}</p>
             <p>${content.globalBody2}</p>
           </div>
           <div class="split-art">
-${MOSAIC}
+${showcase(locale, "08-global-discovery", "gold")}
           </div>
         </div>
       </section>
