@@ -111,12 +111,18 @@ test("1: no page anywhere still references demo.mp4", () => {
     );
   }
 
-  // The 20 landing pages specifically: no <video>, no <source>, no play control.
+  // The landing pages now carry a real tour film. What stays forbidden is the
+  // old failure: a video, source or poster pointing at a file that does not
+  // exist, or a decorative "▶" pretending to be a control.
   for (const route of ["index.html", ...LOCALES.map((l) => `${l}/index.html`)]) {
     const markup = elementMarkup(read(route));
-    assert.doesNotMatch(markup, /<video\b/i, `${route} still has a <video>`);
-    assert.doesNotMatch(markup, /<source\b/i, `${route} still has a <source>`);
-    assert.doesNotMatch(markup, /play-circle|▶/, `${route} still shows a play control`);
+    for (const ref of markup.matchAll(/<(?:source|video)\b[^>]*\b(?:src|poster)="([^"]+)"/gi)) {
+      assert.ok(
+        fs.existsSync(path.join(ROOT, ref[1].replace(/^\//, ""))),
+        `${route} references missing media ${ref[1]}`
+      );
+    }
+    assert.doesNotMatch(markup, /play-circle|▶/, `${route} still shows a fake play control`);
   }
 });
 

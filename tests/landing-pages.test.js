@@ -290,11 +290,13 @@ test("the landing copy carries no statistic, rating or testimonial", () => {
 });
 
 /**
- * The only ULMOX artwork this repository owns is `logo.png` and the two store
- * badges. No product screenshot exists here, so the page must not be showing
- * one — every image on it resolves to a real asset, and the decorations are
- * drawn rather than photographed.
+ * The page shows the ULMOX mark, the two store badges, and genuine app
+ * screens cut from the localized App Store artwork. Every image resolves to a
+ * real asset, and every screen comes from the screens folder — nothing is
+ * drawn to look like the app.
  */
+const SCREEN = /^\/assets\/screens\/[a-z]{2}\/0[1-8]-[a-z-]+\.webp$/;
+
 test("every image on the page is a real ULMOX asset that exists", () => {
   const allowed = new Set([
     "/assets/brand/ulmox-mark-192.png",
@@ -304,7 +306,10 @@ test("every image on the page is a real ULMOX asset that exists", () => {
   for (const { route } of ROUTES) {
     const html = read(route);
     for (const image of html.matchAll(/<img\b[^>]*src="([^"]+)"[^>]*>/g)) {
-      assert.ok(allowed.has(image[1]), `${route}: unexpected image ${image[1]}`);
+      assert.ok(
+        allowed.has(image[1]) || SCREEN.test(image[1]),
+        `${route}: unexpected image ${image[1]}`
+      );
       assert.ok(
         fs.existsSync(path.join(ROOT, image[1].slice(1))),
         `${route}: ${image[1]} does not exist`
@@ -315,6 +320,38 @@ test("every image on the page is a real ULMOX asset that exists", () => {
     for (const svg of html.matchAll(/<svg\b[^>]*>/g)) {
       assert.match(svg[0], /aria-hidden="true"/, `${route}: ${svg[0]} is not decorative`);
     }
+  }
+});
+
+/**
+ * The tour film. It must exist, play without sound, work with JavaScript off
+ * (native controls in the markup), and be pausable with a toggle labelled in
+ * the page's own language.
+ */
+test("every landing route carries a playable, pausable tour", () => {
+  for (const { route, key } of ROUTES) {
+    const html = read(route);
+    const video = html.match(/<video\b[^>]*>[\s\S]*?<\/video>/);
+    assert.ok(video, `${route}: no tour video`);
+    for (const attr of ["controls", "muted", "loop", "playsinline", "poster="]) {
+      assert.match(video[0], new RegExp(`\\b${attr}`), `${route}: tour lacks ${attr}`);
+    }
+    assert.doesNotMatch(video[0], /\bautoplay\b/, `${route}: the tour autoplays without the script`);
+
+    const media = [
+      video[0].match(/poster="([^"]+)"/)[1],
+      ...[...video[0].matchAll(/<source\b[^>]*src="([^"]+)"/g)].map((m) => m[1]),
+    ];
+    assert.ok(media.length >= 2, `${route}: tour has no source`);
+    for (const file of media) {
+      assert.ok(fs.existsSync(path.join(ROOT, file.slice(1))), `${route}: ${file} does not exist`);
+    }
+
+    const content = LANDING[key];
+    assert.ok(html.includes(content.tourLabel), `${route}: tour caption missing`);
+    assert.ok(html.includes(`data-label-pause="${content.tourPause}"`), `${route}: pause label missing`);
+    assert.ok(html.includes(`data-label-play="${content.tourPlay}"`), `${route}: play label missing`);
+    assert.match(html, /prefers-reduced-motion: reduce\)"\)\.matches;\s*var heldByReader = reduced;/, route);
   }
 });
 
