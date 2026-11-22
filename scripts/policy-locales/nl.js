@@ -3,13 +3,13 @@
 /**
  * Nederlands — ULMOX-beleidsteksten.
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "Van kracht vanaf 2026-09-04. Voor het laatst gewijzigd op 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -21,7 +21,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "Van kracht vanaf 2026-09-04. Voor het laatst gewijzigd op 2026-09-24.",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "Van kracht vanaf 2026-09-04. Voor het laatst gewijzigd op 2026-11-22.",
 
   privacy: {
     title: "Privacybeleid - ULMOX",
@@ -212,6 +213,7 @@ module.exports = {
       "your-content": [
         "2. Jouw inhoud",
         "Je bent verantwoordelijk voor de video’s en profielinhoud die je maakt en uploadt. Je moet het recht hebben te delen wat je uploadt, en het mag deze voorwaarden noch de wet schenden.",
+        "<strong>Bezorging en Global.</strong> Een moment dat je verstuurt, wordt bezorgd bij een andere ULMOX-gebruiker. De ontvanger kan ervoor kiezen het te delen op Global (World Live), waar andere ULMOX-gebruikers het samen met je weergavenaam kunnen zien.",
       ],
       ownership: [
         "Eigendom en licentie",

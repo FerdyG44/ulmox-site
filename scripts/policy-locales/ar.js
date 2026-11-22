@@ -3,14 +3,14 @@
 /**
  * العربية — نصوص سياسات ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  * Rendered right-to-left: scripts/page-shell.js sets dir="rtl" for this locale.
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "سارية اعتبارًا من 2026-09-04. آخر تحديث في 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -22,7 +22,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "سارية اعتبارًا من 2026-09-04. آخر تحديث في 2026-09-24.",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "سارية اعتبارًا من 2026-09-04. آخر تحديث في 2026-11-22.",
 
   privacy: {
     title: "سياسة الخصوصية - ULMOX",
@@ -213,6 +214,7 @@ module.exports = {
       "your-content": [
         "2. المحتوى الخاص بك",
         "أنت مسؤول عن مقاطع الفيديو ومحتوى الملف الشخصي التي تنشئها وترفعها. ويجب أن يكون لديك الحق في مشاركة ما ترفعه، وألا يخالف هذه الشروط أو القانون.",
+        "<strong>التسليم وGlobal.</strong> تُسلَّم اللحظة التي ترسلها إلى مستخدم آخر في ULMOX. ويمكن للمستلم أن يختار مشاركتها في Global (World Live)، حيث يمكن لمستخدمي ULMOX الآخرين رؤيتها مع اسمك المعروض.",
       ],
       ownership: [
         "الملكية والترخيص",

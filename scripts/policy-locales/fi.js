@@ -3,13 +3,13 @@
 /**
  * Suomi — ULMOXin käytäntötekstit.
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "Voimassa 2026-09-04 alkaen. Viimeksi päivitetty 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -21,7 +21,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "Voimassa 2026-09-04 alkaen. Viimeksi päivitetty 2026-09-24.",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "Voimassa 2026-09-04 alkaen. Viimeksi päivitetty 2026-11-22.",
 
   privacy: {
     title: "Tietosuojakäytäntö - ULMOX",
@@ -212,6 +213,7 @@ module.exports = {
       "your-content": [
         "2. Sinun sisältösi",
         "Vastaat luomistasi ja lataamistasi videoista ja profiilisisällöstä. Sinulla on oltava oikeus jakaa lataamasi sisältö, eikä se saa rikkoa näitä ehtoja tai lakia.",
+        "<strong>Toimitus ja Global.</strong> Lähettämäsi hetki toimitetaan toiselle ULMOX-käyttäjälle. Vastaanottaja voi halutessaan jakaa sen Globaliin (World Live), jossa muut ULMOX-käyttäjät voivat nähdä sen yhdessä näyttönimesi kanssa.",
       ],
       ownership: [
         "Omistus ja käyttöoikeus",

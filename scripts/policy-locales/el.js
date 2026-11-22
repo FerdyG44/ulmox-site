@@ -3,7 +3,7 @@
 /**
  * Ελληνικά — ULMOX κείμενα πολιτικών.
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  *
@@ -19,7 +19,7 @@
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "Σε ισχύ από 2026-09-04. Τελευταία ενημέρωση 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -31,7 +31,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "Σε ισχύ από 2026-09-04. Τελευταία ενημέρωση 2026-09-24.",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "Σε ισχύ από 2026-09-04. Τελευταία ενημέρωση 2026-11-22.",
 
   privacy: {
     title: "Πολιτική απορρήτου - ULMOX",
@@ -222,6 +223,7 @@ module.exports = {
       "your-content": [
         "2. Το περιεχόμενό σας",
         "Είστε υπεύθυνοι για τα βίντεο και το περιεχόμενο προφίλ που δημιουργείτε και μεταφορτώνετε. Πρέπει να έχετε το δικαίωμα να κοινοποιείτε ό,τι μεταφορτώνετε, και αυτό δεν πρέπει να παραβιάζει τους παρόντες Όρους ή τον νόμο.",
+        "<strong>Παράδοση και Global.</strong> Μια στιγμή που στέλνετε παραδίδεται σε άλλον χρήστη του ULMOX. Ο παραλήπτης μπορεί να επιλέξει να την κοινοποιήσει στο Global (World Live), όπου μπορούν να τη δουν άλλοι χρήστες του ULMOX μαζί με το εμφανιζόμενο όνομά σας.",
       ],
       ownership: [
         "Κυριότητα και άδεια χρήσης",

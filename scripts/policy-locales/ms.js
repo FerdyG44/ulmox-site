@@ -3,7 +3,7 @@
 /**
  * Bahasa Melayu — teks dasar ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  *
@@ -19,7 +19,7 @@
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "Berkuat kuasa mulai 2026-09-04. Kali terakhir dikemas kini pada 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -31,7 +31,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "Berkuat kuasa mulai 2026-09-04. Kali terakhir dikemas kini pada 2026-09-24.",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "Berkuat kuasa mulai 2026-09-04. Kali terakhir dikemas kini pada 2026-11-22.",
 
   privacy: {
     title: "Dasar Privasi - ULMOX",
@@ -222,6 +223,7 @@ module.exports = {
       "your-content": [
         "2. Kandungan anda",
         "Anda bertanggungjawab atas video dan kandungan profil yang anda cipta dan muat naik. Anda mesti mempunyai hak untuk berkongsi apa yang anda muat naik, dan kandungan itu tidak boleh melanggar Terma ini atau undang-undang.",
+        "<strong>Penghantaran dan Global.</strong> Momen yang anda hantar akan disampaikan kepada pengguna ULMOX lain. Penerima boleh memilih untuk berkongsinya ke Global (World Live), di mana ia boleh dilihat oleh pengguna ULMOX yang lain bersama nama paparan anda.",
       ],
       ownership: [
         "Pemilikan dan lesen",

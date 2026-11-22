@@ -3,13 +3,13 @@
 /**
  * 日本語 — ULMOX のポリシー本文。
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "発効日 2026-09-04。最終更新 2026-09-04。",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -21,7 +21,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "発効日 2026-09-04。最終更新 2026-09-24。",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "発効日 2026-09-04。最終更新 2026-11-22。",
 
   privacy: {
     title: "プライバシーポリシー - ULMOX",
@@ -212,6 +213,7 @@ module.exports = {
       "your-content": [
         "2. お客様のコンテンツ",
         "作成しアップロードする動画とプロフィールのコンテンツについては、お客様が責任を負います。アップロードするものを共有する権利を有している必要があり、その内容は本規約および法令に違反してはなりません。",
+        "<strong>配信と Global。</strong>お客様が送信したモーメントは、別の ULMOX ユーザーに配信されます。受信者はそれを Global（World Live）で共有することを選択でき、そこでは他の ULMOX ユーザーがお客様の表示名とともに閲覧できます。",
       ],
       ownership: [
         "所有権とライセンス",

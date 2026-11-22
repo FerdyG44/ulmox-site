@@ -3,13 +3,13 @@
 /**
  * Français — textes des politiques ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "En vigueur au 2026-09-04. Dernière modification le 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -21,7 +21,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "En vigueur au 2026-09-04. Dernière modification le 2026-09-24.",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "En vigueur au 2026-09-04. Dernière modification le 2026-11-22.",
 
   privacy: {
     title: "Politique de confidentialité - ULMOX",
@@ -212,6 +213,7 @@ module.exports = {
       "your-content": [
         "2. Vos contenus",
         "Vous êtes responsable des vidéos et du contenu de profil que vous créez et téléversez. Vous devez avoir le droit de partager ce que vous téléversez, et cela ne doit enfreindre ni les présentes Conditions ni la loi.",
+        "<strong>Remise et Global.</strong> Un moment que vous envoyez est remis à un autre utilisateur d’ULMOX. Le destinataire peut choisir de le partager dans Global (World Live), où il peut être vu par d’autres utilisateurs d’ULMOX avec votre nom d’affichage.",
       ],
       ownership: [
         "Propriété et licence",

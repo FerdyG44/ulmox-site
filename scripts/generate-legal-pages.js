@@ -720,6 +720,12 @@ const terms = page({
       upload. You must have the right to share what you upload, and it must not
       break these Terms or the law.
     </p>
+    <p>
+      <strong>Delivery and Global.</strong> A Moment you send is delivered to
+      another ULMOX user. The recipient may choose to share it to Global (World
+      Live), where it can be seen by other ULMOX users together with your
+      display name.
+    </p>
 
     <h3>Ownership and licence</h3>
     <p>

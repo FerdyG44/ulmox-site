@@ -3,13 +3,13 @@
 /**
  * 한국어 — ULMOX 정책 본문.
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "시행일 2026-09-04. 최종 수정일 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -21,7 +21,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "시행일 2026-09-04. 최종 수정일 2026-09-24.",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "시행일 2026-09-04. 최종 수정일 2026-11-22.",
 
   privacy: {
     title: "개인정보 처리방침 - ULMOX",
@@ -212,6 +213,7 @@ module.exports = {
       "your-content": [
         "2. 이용자의 콘텐츠",
         "만들고 업로드하는 동영상과 프로필 콘텐츠에 대한 책임은 이용자에게 있습니다. 업로드하는 것을 공유할 권리가 있어야 하며, 그 내용은 본 약관이나 법률을 위반해서는 안 됩니다.",
+        "<strong>전달 및 Global.</strong> 이용자가 보낸 모먼트는 다른 ULMOX 이용자에게 전달됩니다. 받은 사람은 이를 Global(World Live)에 공유하기로 선택할 수 있으며, 그곳에서는 다른 ULMOX 이용자가 해당 모먼트를 이용자의 표시 이름과 함께 볼 수 있습니다.",
       ],
       ownership: [
         "소유권과 라이선스",

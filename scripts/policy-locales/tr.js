@@ -3,13 +3,13 @@
 /**
  * Türkçe — ULMOX politika metinleri.
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "Yürürlük tarihi 2026-09-04. Son güncelleme 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -21,7 +21,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "Yürürlük tarihi 2026-09-04. Son güncelleme 2026-09-24.",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "Yürürlük tarihi 2026-09-04. Son güncelleme 2026-11-22.",
 
   privacy: {
     title: "Gizlilik Politikası - ULMOX",
@@ -212,6 +213,7 @@ module.exports = {
       "your-content": [
         "2. İçerikleriniz",
         "Oluşturduğunuz ve yüklediğiniz videolardan ve profil içeriğinden siz sorumlusunuz. Yüklediğiniz şeyi paylaşma hakkına sahip olmalısınız ve bu içerik bu Şartları veya yasayı ihlal etmemelidir.",
+        "<strong>Teslim ve Global.</strong> Gönderdiğiniz bir an, başka bir ULMOX kullanıcısına teslim edilir. Alıcı, onu Global'de (World Live) paylaşmayı seçebilir; orada diğer ULMOX kullanıcıları tarafından görünen adınızla birlikte görülebilir.",
       ],
       ownership: [
         "Mülkiyet ve lisans",

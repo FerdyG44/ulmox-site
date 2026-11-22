@@ -3,13 +3,13 @@
 /**
  * Tiếng Việt — nội dung chính sách của ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "Có hiệu lực từ 2026-09-04. Cập nhật lần cuối 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -21,7 +21,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "Có hiệu lực từ 2026-09-04. Cập nhật lần cuối 2026-09-24.",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "Có hiệu lực từ 2026-09-04. Cập nhật lần cuối 2026-11-22.",
 
   privacy: {
     title: "Chính sách quyền riêng tư - ULMOX",
@@ -212,6 +213,7 @@ module.exports = {
       "your-content": [
         "2. Nội dung của bạn",
         "Bạn chịu trách nhiệm về video và nội dung hồ sơ mà bạn tạo và tải lên. Bạn phải có quyền chia sẻ những gì bạn tải lên, và nội dung đó không được vi phạm các Điều khoản này hay pháp luật.",
+        "<strong>Gửi và Global.</strong> Khoảnh khắc bạn gửi sẽ được chuyển đến một người dùng ULMOX khác. Người nhận có thể chọn chia sẻ nó lên Global (World Live), nơi những người dùng ULMOX khác có thể xem nó cùng với tên hiển thị của bạn.",
       ],
       ownership: [
         "Quyền sở hữu và giấy phép",
