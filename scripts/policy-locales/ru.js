@@ -3,13 +3,13 @@
 /**
  * Русский — тексты политик ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "Действует с 2026-09-04. Последнее изменение: 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -21,7 +21,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "Действует с 2026-09-04. Последнее изменение: 2026-09-24.",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "Действует с 2026-09-04. Последнее изменение: 2026-11-22.",
 
   privacy: {
     title: "Политика конфиденциальности - ULMOX",
@@ -212,6 +213,7 @@ module.exports = {
       "your-content": [
         "2. Ваш контент",
         "Вы отвечаете за видео и содержимое профиля, которые создаёте и загружаете. У вас должно быть право делиться тем, что вы загружаете, и это не должно нарушать настоящие Условия или закон.",
+        "<strong>Доставка и Global.</strong> Отправленный вами момент доставляется другому пользователю ULMOX. Получатель может решить поделиться им в Global (World Live), где его смогут увидеть другие пользователи ULMOX вместе с вашим отображаемым именем.",
       ],
       ownership: [
         "Права и лицензия",

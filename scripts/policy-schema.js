@@ -43,7 +43,7 @@
  */
 
 /** The canonical content revision every locale in this repository implements. */
-const CANONICAL_REVISION = "2026-09-24";
+const CANONICAL_REVISION = "2026-11-22";
 
 /** Blocks that carry no translatable slot of their own. */
 const ZERO_SLOT_BLOCKS = Object.freeze(new Set(["rollout", "links"]));
@@ -178,7 +178,7 @@ const PAGES = Object.freeze({
     sections: [
       { id: "intro", blocks: [{ t: "p" }] },
       { id: "eligibility", blocks: [{ t: "h2" }, { t: "ul", n: 4 }] },
-      { id: "your-content", blocks: [{ t: "h2" }, { t: "p" }] },
+      { id: "your-content", blocks: [{ t: "h2" }, { t: "p" }, { t: "p" }] },
       { id: "ownership", blocks: [{ t: "h3" }, { t: "p" }, { t: "p" }] },
       {
         id: "connections",

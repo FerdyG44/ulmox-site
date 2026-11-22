@@ -3,7 +3,7 @@
 /**
  * Српски (ћирилица) — текстови политика ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  *
@@ -16,7 +16,7 @@
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "Важи од 2026-09-04. Последњи пут ажурирано 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -28,7 +28,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "Важи од 2026-09-04. Последњи пут ажурирано 2026-09-24.",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "Важи од 2026-09-04. Последњи пут ажурирано 2026-11-22.",
 
   privacy: {
     title: "Политика приватности - ULMOX",
@@ -219,6 +220,7 @@ module.exports = {
       "your-content": [
         "2. Ваш садржај",
         "Одговорни сте за видео-снимке и садржај профила које правите и отпремате. Морате имати право да делите оно што отпремате, и то не сме кршити ове Услове ни закон.",
+        "<strong>Достава и Global.</strong> Момент који пошаљете доставља се другом кориснику ULMOX-а. Прималац може да одлучи да га подели у Global (World Live), где га други корисници ULMOX-а могу видети заједно са вашим приказаним именом.",
       ],
       ownership: [
         "Власништво и лиценца",

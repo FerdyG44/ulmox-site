@@ -3,13 +3,13 @@
 /**
  * हिन्दी — ULMOX की नीतियों का पाठ।
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "2026-09-04 से प्रभावी। अंतिम बार 2026-09-04 को अद्यतन किया गया।",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -21,7 +21,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "2026-09-04 से प्रभावी। अंतिम बार 2026-09-24 को अद्यतन किया गया।",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "2026-09-04 से प्रभावी। अंतिम बार 2026-11-22 को अद्यतन किया गया।",
 
   privacy: {
     title: "गोपनीयता नीति - ULMOX",
@@ -212,6 +213,7 @@ module.exports = {
       "your-content": [
         "2. आपकी सामग्री",
         "आप उन वीडियो और प्रोफ़ाइल सामग्री के लिए ज़िम्मेदार हैं जिन्हें आप बनाते और अपलोड करते हैं। जो आप अपलोड करते हैं उसे साझा करने का अधिकार आपके पास होना चाहिए, और वह इन शर्तों या कानून का उल्लंघन नहीं करनी चाहिए।",
+        "<strong>डिलीवरी और Global।</strong> आप जो मोमेंट भेजते हैं, वह किसी दूसरे ULMOX उपयोगकर्ता को पहुँचाया जाता है। प्राप्तकर्ता उसे Global (World Live) पर साझा करना चुन सकता है, जहाँ ULMOX के अन्य उपयोगकर्ता उसे आपके प्रदर्शित नाम के साथ देख सकते हैं।",
       ],
       ownership: [
         "स्वामित्व और लाइसेंस",

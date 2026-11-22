@@ -223,7 +223,8 @@ test("every translated locale declares the canonical revision it implements", ()
  * Every page once shared one date line, so re-dating one document would have
  * re-dated five. Two have since been revised on their own — the Privacy
  * Policy's Location section on 2026-09-23, the Terms' zero-tolerance statement
- * on 2026-09-24 — and the three that have not changed must keep saying so.
+ * on 2026-09-24 (and "Delivery and Global" on 2026-11-22) — and the three that
+ * have not changed must keep saying so.
  * Printing a revision date on a document nobody edited is a false statement
  * about that document, and dropping the 2026-09-04 effective date from any of
  * them is the opposite failure. Both are asserted here, in all 23 languages.
@@ -235,7 +236,7 @@ test("each document shows its own last-updated date and no other", () => {
   const EFFECTIVE = "2026-09-04";
   const LAST_UPDATED = {
     privacy: "2026-09-23",
-    terms: "2026-09-24",
+    terms: "2026-11-22",
     safety: EFFECTIVE,
     support: EFFECTIVE,
     deleteAccount: EFFECTIVE,

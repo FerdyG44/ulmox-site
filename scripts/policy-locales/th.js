@@ -3,13 +3,13 @@
 /**
  * ไทย — ข้อความนโยบายของ ULMOX
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "มีผลตั้งแต่ 2026-09-04 อัปเดตล่าสุด 2026-09-04",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -21,7 +21,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "มีผลตั้งแต่ 2026-09-04 อัปเดตล่าสุด 2026-09-24",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "มีผลตั้งแต่ 2026-09-04 อัปเดตล่าสุด 2026-11-22",
 
   privacy: {
     title: "นโยบายความเป็นส่วนตัว - ULMOX",
@@ -212,6 +213,7 @@ module.exports = {
       "your-content": [
         "2. เนื้อหาของคุณ",
         "คุณรับผิดชอบวิดีโอและเนื้อหาโปรไฟล์ที่คุณสร้างและอัปโหลด คุณต้องมีสิทธิ์ในการแบ่งปันสิ่งที่คุณอัปโหลด และเนื้อหานั้นต้องไม่ละเมิดข้อกำหนดนี้หรือกฎหมาย",
+        "<strong>การส่งและ Global</strong> โมเมนต์ที่คุณส่งจะถูกส่งถึงผู้ใช้ ULMOX คนอื่น ผู้รับอาจเลือกแชร์ไปยัง Global (World Live) ซึ่งผู้ใช้ ULMOX คนอื่นๆ จะสามารถเห็นได้พร้อมกับชื่อที่แสดงของคุณ",
       ],
       ownership: [
         "ความเป็นเจ้าของและสิทธิ์การใช้",

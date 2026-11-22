@@ -3,7 +3,7 @@
 /**
  * Bahasa Indonesia — teks kebijakan ULMOX.
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  *
@@ -14,7 +14,7 @@
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "Berlaku sejak 2026-09-04. Terakhir diperbarui 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -26,7 +26,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "Berlaku sejak 2026-09-04. Terakhir diperbarui 2026-09-24.",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "Berlaku sejak 2026-09-04. Terakhir diperbarui 2026-11-22.",
 
   privacy: {
     title: "Kebijakan Privasi - ULMOX",
@@ -217,6 +218,7 @@ module.exports = {
       "your-content": [
         "2. Konten Anda",
         "Anda bertanggung jawab atas video dan konten profil yang Anda buat dan unggah. Anda harus memiliki hak untuk membagikan apa yang Anda unggah, dan konten tersebut tidak boleh melanggar Ketentuan ini atau hukum.",
+        "<strong>Pengiriman dan Global.</strong> Momen yang Anda kirim akan dikirimkan ke pengguna ULMOX lain. Penerima dapat memilih untuk membagikannya ke Global (World Live), tempat Momen tersebut dapat dilihat oleh pengguna ULMOX lainnya bersama nama tampilan Anda.",
       ],
       ownership: [
         "Kepemilikan dan lisensi",

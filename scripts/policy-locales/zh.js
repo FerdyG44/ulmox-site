@@ -3,13 +3,13 @@
 /**
  * 简体中文 — ULMOX 政策文本。
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "自 2026-09-04 起生效。最近更新于 2026-09-04。",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -21,7 +21,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "自 2026-09-04 起生效。最近更新于 2026-09-24。",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "自 2026-09-04 起生效。最近更新于 2026-11-22。",
 
   privacy: {
     title: "隐私政策 - ULMOX",
@@ -212,6 +213,7 @@ module.exports = {
       "your-content": [
         "2. 你的内容",
         "你对自己创建并上传的视频和资料内容负责。你必须拥有分享所上传内容的权利，且该内容不得违反本条款或法律。",
+        "<strong>送达与 Global。</strong>你发送的瞬间会被送达给另一位 ULMOX 用户。接收者可以选择将其分享到 Global（World Live），其他 ULMOX 用户可以在那里看到它以及你的显示名称。",
       ],
       ownership: [
         "所有权与许可",

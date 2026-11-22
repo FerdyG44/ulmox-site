@@ -3,13 +3,13 @@
 /**
  * Svenska — ULMOX policytexter.
  *
- * Translated from the canonical English pages at revision 2026-09-24
+ * Translated from the canonical English pages at revision 2026-11-22
  * (scripts/policy-schema.js, CANONICAL_REVISION). Authored in this repository;
  * not reviewed by an independent legal or professional translator.
  */
 
 module.exports = {
-  revision: "2026-09-24",
+  revision: "2026-11-22",
   effective: "Gäller från 2026-09-04. Senast uppdaterad 2026-09-04.",
 
   // The Privacy Policy alone was revised on 2026-09-23 (Location
@@ -21,7 +21,8 @@ module.exports = {
   // zero-tolerance statement in "What is not allowed"). Privacy keeps its
   // own 2026-09-23 line above, and the three unchanged documents keep
   // `effective`.
-  termsEffective: "Gäller från 2026-09-04. Senast uppdaterad 2026-09-24.",
+  // Revised again on 2026-11-22: "Delivery and Global" in "Your content".
+  termsEffective: "Gäller från 2026-09-04. Senast uppdaterad 2026-11-22.",
 
   privacy: {
     title: "Integritetspolicy - ULMOX",
@@ -212,6 +213,7 @@ module.exports = {
       "your-content": [
         "2. Ditt innehåll",
         "Du ansvarar för de videor och det profilinnehåll du skapar och laddar upp. Du måste ha rätt att dela det du laddar upp, och det får inte bryta mot dessa villkor eller mot lagen.",
+        "<strong>Leverans och Global.</strong> Ett ögonblick som du skickar levereras till en annan ULMOX-användare. Mottagaren kan välja att dela det till Global (World Live), där andra ULMOX-användare kan se det tillsammans med ditt visningsnamn.",
       ],
       ownership: [
         "Äganderätt och licens",
